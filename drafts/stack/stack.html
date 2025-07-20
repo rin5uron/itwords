@@ -1,0 +1,381 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>スタック構造 - 実践型IT用語辞典</title>
+  <!-- Font Awesome CDN -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+  <style>
+    body {
+      font-family: 'Noto Sans JP', sans-serif;
+      line-height: 1.8;
+      color: #333;
+      background-color: #f4f1e2;
+      margin: 0;
+      padding: 40px 20px;
+    }
+    .container {
+      max-width: 800px;
+      margin: 0 auto;
+      background-color: #fff;
+      padding: 50px;
+      border-radius: 10px;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.07);
+    }
+    h1, h2, h3 {
+      font-weight: 700;
+      color: #4a4a4a;
+      border-bottom: 2px solid #ead3c3;
+      padding-bottom: 15px;
+    }
+    h1 {
+      font-size: 2.2em;
+      display: flex;
+      align-items: center;
+    }
+    h1 .icon {
+      font-size: 0.9em;
+      margin-right: 20px;
+      color: #8abdea;
+    }
+    h2 {
+      font-size: 1.6em;
+      margin-top: 50px;
+    }
+    h3 {
+        font-size: 1.3em;
+        border-bottom: none;
+        margin-top: 40px;
+    }
+    p, ul, li, table {
+      font-size: 1.05em;
+    }
+    ul {
+      padding-left: 25px;
+    }
+    li {
+      margin-bottom: 12px;
+    }
+    strong {
+      color: #d9534f;
+      font-weight: 700;
+    }
+    table {
+        width: 100%;
+        border-collapse: collapse;
+        margin-top: 20px;
+    }
+    th, td {
+        border: 1px solid #ddd;
+        padding: 12px;
+        text-align: left;
+    }
+    th {
+        background-color: #f9f7ef;
+    }
+    .summary-box {
+        background-color: #f9f7ef;
+        border-left: 5px solid #8abdea;
+        padding: 25px;
+        margin: 40px 0;
+        font-size: 1.2em;
+        font-weight: bold;
+        text-align: center;
+    }
+
+    /* --- Demo Section --- */
+    .demo-section {
+      margin-top: 30px;
+      padding: 30px;
+      background-color: #f9f7ef;
+      border-radius: 8px;
+      display: flex;
+      gap: 20px;
+      align-items: flex-start;
+    }
+    .demo-controls {
+        width: 200px;
+        text-align: center;
+    }
+    .demo-button {
+      font-size: 1.1em;
+      padding: 12px 25px;
+      width: 120px;
+      margin: 5px;
+      border: none;
+      border-radius: 8px;
+      background-color: #8abdea;
+      color: white;
+      cursor: pointer;
+      transition: background-color 0.3s, transform 0.2s;
+    }
+    .demo-button:hover {
+      background-color: #7aaad4;
+      transform: translateY(-2px);
+    }
+    .demo-button.pop {
+        background-color: #ea9b8a;
+    }
+    .demo-button.pop:hover {
+        background-color: #e08a7a;
+    }
+    #stack-visualizer {
+        flex-grow: 1;
+        border: 2px dashed #ccc;
+        border-radius: 5px;
+        padding: 10px;
+        min-height: 200px;
+        display: flex;
+        flex-direction: column-reverse; /* 上に積むように見せる */
+        align-items: center;
+    }
+    .stack-item {
+        background-color: #8abdea;
+        color: white;
+        padding: 10px 20px;
+        margin-top: 5px;
+        border-radius: 5px;
+        width: 80%;
+        text-align: center;
+        font-weight: bold;
+        animation: fadeIn 0.3s ease-in-out;
+    }
+    @keyframes fadeIn {
+        from { opacity: 0; transform: translateY(10px); }
+        to { opacity: 1; transform: translateY(0); }
+    }
+    #demo-message {
+      margin-top: 15px;
+      font-weight: bold;
+      min-height: 1.5em;
+    }
+    
+    /* --- Code Highlight Styles --- */
+    details {
+      border: 1px solid #e0e0e0;
+      border-radius: 8px;
+      margin-top: 20px;
+      overflow: hidden;
+    }
+    summary {
+      font-size: 1.1em;
+      font-weight: bold;
+      padding: 16px 20px;
+      cursor: pointer;
+      list-style: none;
+      display: block;
+      background-color: #f9f9f9;
+      border-bottom: 1px solid #e0e0e0;
+    }
+    details[open] summary {
+      border-bottom: 1px solid #e0e0e0;
+    }
+    summary::-webkit-details-marker { display: none; }
+    summary:hover { background-color: #f2f2f2; }
+
+    .code-example {
+        background-color: #1e1e1e;
+        color: #d4d4d4;
+        padding: 20px;
+        border-bottom-left-radius: 8px;
+        border-bottom-right-radius: 8px;
+        overflow-x: auto;
+    }
+    .code-example pre { margin: 0; }
+    .code-example code {
+        font-family: "SFMono-Regular", Consolas, "Liberation Mono", Menlo, monospace;
+        font-size: 0.95em;
+        white-space: pre;
+    }
+    .code-example .token.comment { color: #6A9955; }
+    .code-example .token.keyword { color: #C586C0; }
+    .code-example .token.function { color: #DCDCAA; }
+    .code-example .token.string { color: #CE9178; }
+    .code-example .token.variable { color: #9CDCFE; }
+    .code-example .token.punctuation { color: #d4d4d4; }
+    .code-example .token.operator { color: #d4d4d4; }
+
+    .footer-nav {
+      text-align: center;
+      margin-top: 50px;
+      padding-top: 30px;
+      border-top: 1px solid #eee;
+    }
+    .footer-nav a {
+      color: #4a4a4a;
+      text-decoration: none;
+      font-weight: bold;
+    }
+    .footer-nav a:hover { text-decoration: underline; }
+
+    @media (max-width: 768px) {
+      body { padding: 20px 10px; }
+      .container { padding: 30px; }
+      h1 { font-size: 1.8em; }
+      h2 { font-size: 1.4em; }
+      .demo-section { flex-direction: column; }
+      .demo-controls { width: 100%; margin-bottom: 20px; }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="container">
+    <article class="term-page">
+      <header class="term-header">
+        <h1><i class="fas fa-layer-group icon"></i>スタック構造 (Stack)</h1>
+        <p class="reading">よみかた：<strong>すたっくこうぞう</strong></p>
+      </header>
+
+      <section class="term-intro">
+        <h2>意味</h2>
+        <p>
+          <strong>最後に入れたものが、最初に出てくる</strong>という仕組みのデータ構造のこと。<br>
+          専門用語で「<strong>LIFO（Last In, First Out）</strong>」と呼ばれます。<br>
+          積み重ねた本やお皿の山を想像するとわかりやすいでしょう。
+        </p>
+      </section>
+
+      <section class="term-point">
+        <h2>ポイント</h2>
+        <ul>
+          <li>「上に積む (<strong>push</strong>)」「上から取る (<strong>pop</strong>)」が基本操作です。</li>
+          <li>ウェブブラウザの「戻る」ボタン、アプリケーションの「元に戻す(Undo)」機能、プログラミングの関数呼び出し履歴など、身近なところで使われています。</li>
+          <li>順番どおりに処理したいときに便利ですが、途中のデータ（真ん中のお皿など）を直接取り出すのは苦手です。</li>
+        </ul>
+      </section>
+
+      <section class="term-visual">
+        <h2>実際に体験してみよう</h2>
+        <p>下のボタンを押して、スタックの「後入れ先出し」を体験してみましょう。「Push」でデータを追加し、「Pop」でデータを取り出せます。</p>
+        <div class="demo-section">
+          <div class="demo-controls">
+            <button class="demo-button" onclick="pushItem()">Push</button>
+            <button class="demo-button pop" onclick="popItem()">Pop</button>
+            <p id="demo-message"></p>
+          </div>
+          <div id="stack-visualizer">
+            <!-- Stack items will be added here -->
+          </div>
+        </div>
+      </section>
+
+      <section class="term-related">
+        <h2>関連用語・比較</h2>
+        <table>
+          <thead>
+            <tr>
+              <th>用語</th>
+              <th>構造の違い</th>
+              <th>特徴</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><strong>スタック</strong></td>
+              <td>後入れ先出し (LIFO)</td>
+              <td>「戻る」操作や、一時的な処理に強い</td>
+            </tr>
+            <tr>
+              <td><strong>キュー</strong></td>
+              <td>先入れ先出し (FIFO)</td>
+              <td>受付や行列のような順番通りの処理に向く</td>
+            </tr>
+            <tr>
+              <td><strong>配列 (Array)</strong></td>
+              <td>任意の位置にアクセス可能</td>
+              <td>特定のデータを直接取り出せる</td>
+            </tr>
+          </tbody>
+        </table>
+      </section>
+
+      <section class="term-code">
+        <h2>コードで見てみよう (git stash)</h2>
+        <p>バージョン管理ツールGitの一次保存コマンド <code>git stash</code> は、スタック構造の代表的な応用例です。変更内容を一時的に「積み重ねて」退避させることができます。</p>
+        <details>
+          <summary>サンプルコードを見る (Bash)</summary>
+          <div class="code-example">
+<pre><code class="language-bash"><span class="token comment"># 作業内容をスタックに積む</span>
+$ git stash
+
+<span class="token comment"># 最後に積んだものを取り出して適用する</span>
+$ git stash pop
+
+<span class="token comment"># スタックの中身を一覧で確認する</span>
+$ git stash list
+
+<span class="token comment"># 特定のスタックを取り出して適用する (例: 1番目)</span>
+$ git stash apply stash@{1}
+</code></pre>
+          </div>
+        </details>
+        <p style="margin-top: 20px;">
+            🧠 <strong>覚えておきたいポイント：</strong><br>
+            <code>stash</code> するたびに変更が「上に積まれ」、<code>pop</code> で「一番上＝最後に積んだもの」が取り出されます。まさにスタックそのものです。
+        </p>
+      </section>
+
+      <div class="summary-box">
+        スタック構造とは、「積み重ねて、上から取り出す」ルールのこと。<br>
+        シンプルだけど、Undo・履歴・メモリ処理などいろんな場面で大活躍！
+      </div>
+
+      <footer class="term-footer">
+        <nav class="footer-nav">
+          <p><a href="../index.html">IT用語一覧へ戻る</a></p>
+        </nav>
+      </footer>
+    </article>
+  </div>
+
+  <script>
+    let stack = [];
+    let itemCount = 0;
+    const visualizer = document.getElementById('stack-visualizer');
+    const message = document.getElementById('demo-message');
+
+    function pushItem() {
+      if (stack.length >= 5) {
+        message.textContent = "スタックがいっぱいです！";
+        message.style.color = "#d9534f";
+        return;
+      }
+      itemCount++;
+      const newItem = `データ ${itemCount}`;
+      stack.push(newItem);
+      renderStack();
+      message.textContent = `"${newItem}" をPushしました。`;
+      message.style.color = "#333";
+    }
+
+    function popItem() {
+      if (stack.length === 0) {
+        message.textContent = "スタックは空です。";
+        message.style.color = "#d9534f";
+        return;
+      }
+      const poppedItem = stack.pop();
+      renderStack();
+      message.textContent = `"${poppedItem}" をPopしました。`;
+      message.style.color = "#333";
+    }
+
+    function renderStack() {
+      visualizer.innerHTML = '';
+      stack.forEach(item => {
+        const div = document.createElement('div');
+        div.className = 'stack-item';
+        div.textContent = item;
+        visualizer.appendChild(div);
+      });
+    }
+    
+    // 初期状態
+    pushItem();
+    pushItem();
+  </script>
+
+</body>
+</html>
