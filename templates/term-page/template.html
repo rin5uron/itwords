@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>{{term_name}} - 実践型IT用語辞典</title>
+  <!-- Font Awesome CDN -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+  <link rel="stylesheet" href="./styles.css">
+</head>
+<body>
+
+  <div class="container">
+    <article class="term-page">
+      <header class="term-header">
+        <h1><i class="{{icon_class}} icon"></i>{{term_name}}</h1>
+        <p class="reading">よみかた：<strong>{{reading}}</strong></p>
+      </header>
+
+      <section class="term-intro">
+        <h2>意味</h2>
+        <p>{{description}}</p>
+      </section>
+
+      <section class="term-point">
+        <h2>ポイント</h2>
+        <ul>
+{{points}}
+        </ul>
+      </section>
+
+      {{related_terms_section}}
+
+      <section class="term-visual">
+        <h2>実際に体験してみよう</h2>
+        {{demo_content}}
+        <div class="demo-section">
+          <p><strong>{{demo_title}}</strong></p>
+          <button class="demo-button" onclick="{{demo_function}}()">{{demo_button_text}}</button>
+          <p id="demo-message"></p>
+        </div>
+      </section>
+
+      <section class="term-code">
+        <h2>コードを書いてみよう</h2>
+        <p>{{code_description}}</p>
+        <details>
+          <summary>サンプルコードを見る ({{code_language}})</summary>
+          <div class="code-example">
+            <pre><code>{{sample_code}}</code></pre>
+          </div>
+        </details>
+
+        <details>
+          <summary>HTML/CSS/JS 統合版テンプレート</summary>
+          <p style="padding: 15px 20px 0;">このページの完全なコードです。以下の内容をコピーして<code>index.html</code>などの名前で保存すると、ご自身のPCやブラウザで直接開いて確認できます。</p>
+          <div class="code-example">
+            <pre><code>{{full_html_code}}</code></pre>
+          </div>
+        </details>
+      </section>
+
+      <footer class="term-footer">
+        <nav class="footer-nav">
+          <p><a href="../index.html">トップページへ戻る</a></p>
+        </nav>
+      </footer>
+    </article>
+  </div>
+
+  <script>
+{{javascript_code}}
+  </script>
+
+</body>
+</html> 
