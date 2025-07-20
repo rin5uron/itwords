@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<rss version="2.0">
+<channel>
+  <title>実践型IT用語辞典</title>
+  <link>https://example.com</link>  <description>体験しながら学べる実践型IT用語辞典の更新情報</description>
+  <language>ja</language>
+  <lastBuildDate>Sat, 12 Jul 2025 00:00:00 GMT</lastBuildDate>
+
+  <item>
+    <title>SQL（INSERT文）</title>
+    <link>https://example.com/sql-insert.html</link>
+    <description>データベースにデータを追加するためのSQL文を実際に体験できます。</description>
+    <pubDate>Sat, 12 Jul 2025 00:00:00 GMT</pubDate>
+  </item>
+
+  <item>
+    <title>IPアドレス</title>
+    <link>https://example.com/ip-address.html</link>
+    <description>インターネット上の住所。実際のIPアドレスを調べて体験できます。</description>
+    <pubDate>Sat, 12 Jul 2025 00:00:00 GMT</pubDate>
+  </item>
+
+</channel>
+</rss>
