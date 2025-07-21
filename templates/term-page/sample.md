@@ -1,3 +1,20 @@
+---
+title: "{{term_name}} - IT用語辞典"
+description: "{{description_summary}}"
+keywords: ["{{keyword1}}", "{{keyword2}}", "{{keyword3}}"]
+category: "{{category}}"
+tags: ["{{tag1}}", "{{tag2}}"]
+difficulty: "{{difficulty_level}}"
+reading_time: "{{reading_time}}"
+author: "IT用語辞典"
+date: "{{creation_date}}"
+slug: "{{url_slug}}"
+canonical_url: "{{site_url}}/{{url_slug}}"
+featured_image: "{{image_path}}"
+ga_measurement_id: "{{ga_id}}"
+gtm_container_id: "{{gtm_id}}"
+---
+
 # 用語名
 読み方: よみかた
 アイコン: fas fa-example-icon
@@ -48,9 +65,33 @@ function startDemo() {
 ### 関連する用語名
 関連用語との関係性や違いを説明する。
 
+## 関連用語・比較
+| 用語名 | 特徴 |
+|--------|------|
+| 用語1 | 特徴の説明 |
+| 用語2 | 特徴の説明 |
+| 用語3 | 特徴の説明 |
+
 ---
 
 # 記入例（フールプルーフの場合）
+
+---
+title: "フールプルーフ - IT用語辞典"
+description: "利用者の操作ミスを防ぐ設計思想。誰が使っても安全な仕組みを目指す考え方を分かりやすく解説"
+keywords: ["フールプルーフ", "UI/UX", "設計思想", "安全性", "エラー防止"]
+category: "設計・UX"
+tags: ["安全性", "UI設計", "エラー防止", "ユーザビリティ"]
+difficulty: "初級"
+reading_time: "5分"
+author: "IT用語辞典"
+date: "2025-07-21"
+slug: "foolproof"
+canonical_url: "https://itwords.example.com/foolproof"
+featured_image: "https://itwords.example.com/images/foolproof.jpg"
+ga_measurement_id: "G-XXXXXXXXXX"
+gtm_container_id: "GTM-XXXXXXX"
+---
 
 # フールプルーフ  
 読み方: ふーるぷるーふ  
@@ -130,4 +171,11 @@ function startDemo() {
 ### バリデーション
 フールプルーフと概念は違うが、併せて実装されることが多い
 - フールプルーフは間違いを防ぐ、バリデーションは正しいかどうかのチェック
-- 2つが併用、フールプルーフが包含している場面多数 
+- 2つが併用、フールプルーフが包含している場面多数
+
+## 関連用語・比較
+| 用語名 | 特徴 |
+|--------|------|
+| localStorage | ページを閉じても残る、永続的 |
+| sessionStorage | 同じタブ内だけ。閉じると消える |
+| クッキー | サーバーにも送れる、小さい、やや古い | 

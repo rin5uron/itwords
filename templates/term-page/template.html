@@ -3,12 +3,79 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>{{term_name}} - 実践型IT用語辞典</title>
+  
+  <!-- SEO メタタグ -->
+  <title>{{meta_title}}</title>
+  <meta name="description" content="{{meta_description}}">
+  <meta name="keywords" content="{{meta_keywords}}">
+  <meta name="author" content="{{author}}">
+  <meta name="robots" content="index, follow">
+  <link rel="canonical" href="{{canonical_url}}">
+  
+  <!-- Open Graph / SNS -->
+  <meta property="og:type" content="article">
+  <meta property="og:title" content="{{meta_title}}">
+  <meta property="og:description" content="{{meta_description}}">
+  <meta property="og:url" content="{{canonical_url}}">
+  <meta property="og:site_name" content="IT用語辞典">
+  <meta property="og:image" content="{{featured_image}}">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="{{meta_title}}">
+  <meta name="twitter:description" content="{{meta_description}}">
+  <meta name="twitter:image" content="{{featured_image}}">
+  
+  <!-- Google Tag Manager -->
+  <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+  new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+  j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+  'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+  })(window,document,'script','dataLayer','{{gtm_container_id}}');</script>
+  
+  <!-- Google Analytics 4 -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id={{ga_measurement_id}}"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', '{{ga_measurement_id}}');
+  </script>
+  
+  <!-- 構造化データ (JSON-LD) -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "headline": "{{meta_title}}",
+    "description": "{{meta_description}}",
+    "author": {
+      "@type": "Organization",
+      "name": "{{author}}"
+    },
+    "datePublished": "{{creation_date}}",
+    "dateModified": "{{creation_date}}",
+    "keywords": "{{meta_keywords}}",
+    "articleSection": "{{category}}",
+    "timeRequired": "{{reading_time}}",
+    "url": "{{canonical_url}}",
+    "mainEntityOfPage": {
+      "@type": "WebPage",
+      "@id": "{{canonical_url}}"
+    },
+    "publisher": {
+      "@type": "Organization",
+      "name": "IT用語辞典"
+    }
+  }
+  </script>
+  
   <!-- Font Awesome CDN -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
   <link rel="stylesheet" href="./styles.css">
 </head>
 <body>
+  <!-- Google Tag Manager (noscript) -->
+  <noscript><iframe src="https://www.googletagmanager.com/gtm.ns.html?id={{gtm_container_id}}"
+  height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
   <div class="container">
     <article class="term-page">
@@ -60,9 +127,26 @@
         </details>
       </section>
 
+      <section class="term-comparison">
+        <h2>関連用語・比較</h2>
+        <div class="comparison-table">
+          <table>
+            <thead>
+              <tr>
+                <th>用語名</th>
+                <th>特徴</th>
+              </tr>
+            </thead>
+            <tbody>
+{{related_comparison_table}}
+            </tbody>
+          </table>
+        </div>
+      </section>
+
       <footer class="term-footer">
         <nav class="footer-nav">
-          <p><a href="../index.html">トップページへ戻る</a></p>
+          <p><a href="../index.html">IT用語一覧に戻る</a></p>
         </nav>
       </footer>
     </article>

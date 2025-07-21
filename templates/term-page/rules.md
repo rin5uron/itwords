@@ -61,6 +61,43 @@
 |--------|----------------------|----------|
 | `{{related_terms_section}}` | `## 関連用語` | HTML section要素として構築 |
 
+### 関連用語・比較セクション
+| 変数名 | 対応Markdownセクション | 処理方法 |
+|--------|----------------------|----------|
+| `{{related_comparison_table}}` | `## 関連用語・比較` | Markdownテーブルを HTML table rows に変換 |
+
+### YAML Front Matter処理
+| 変数名 | 対応YAMLフィールド | 処理方法 |
+|--------|-------------------|----------|
+| `{{meta_title}}` | `title` | HTMLタイトルタグに挿入 |
+| `{{meta_description}}` | `description` | メタディスクリプションに設定 |
+| `{{meta_keywords}}` | `keywords` | 配列をカンマ区切り文字列に変換 |
+| `{{category}}` | `category` | カテゴリ表示、構造化データに使用 |
+| `{{difficulty_badge}}` | `difficulty` | 難易度バッジのスタイル適用 |
+| `{{reading_time}}` | `reading_time` | 読了時間表示 |
+| `{{author}}` | `author` | 著者情報、構造化データに使用 |
+| `{{creation_date}}` | `date` | 構造化データの日付情報 |
+| `{{canonical_url}}` | `canonical_url` | 正規URL、OGタグに使用 |
+| `{{featured_image}}` | `featured_image` | SNSシェア用画像 |
+| `{{ga_measurement_id}}` | `ga_measurement_id` | Google Analytics設定 |
+| `{{gtm_container_id}}` | `gtm_container_id` | Google Tag Manager設定 |
+
+**YAML Front Matter処理詳細:**
+- ファイル冒頭の`---`で囲まれた部分をYAMLとして解析
+- 各フィールド値を対応するHTML変数に置換
+- 構造化データ（JSON-LD）の自動生成
+- SEOメタタグの自動設定
+- Google Analytics・Tag Managerコードの自動挿入
+- Open GraphタグによるSNS最適化
+
+**関連用語・比較の処理詳細:**
+- Markdownテーブル形式を解析してHTML table rowsを生成
+- 用語名列には`class="term-name"`を適用
+- 用語名の色は読み方の色（#666）と統一
+- リンク判定：同一ディレクトリに`用語名.html`が存在する場合は`href="./用語名.html"`
+- リンクなしの場合は`href=""`でスタイリング変更
+- 特徴列はそのままテキストとして表示
+
 ---
 
 ## 文体・表現ルール

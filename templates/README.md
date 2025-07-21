@@ -13,7 +13,7 @@ templates/
     ├── template.html   ← HTMLテンプレート（変数置換対応）
     ├── styles.css      ← CSSスタイルファイル  
     ├── sample.md       ← Markdownテンプレート（記入例付き）
-    └── generation-rules.md ← 用語ページ生成の詳細ルール
+    └── rules.md ← 用語ページ生成の詳細ルール
 ```
 
 ---
@@ -77,6 +77,25 @@ git-stash.mdから用語ページ作成して
 | `{{sample_code}}` | サンプルコード | `### サンプルコード` |
 | `{{javascript_code}}` | JavaScript処理 | `### JavaScript処理` |
 | `{{related_terms_section}}` | 関連用語セクション | `## 関連用語` |
+| `{{related_comparison_table}}` | 関連用語・比較テーブル | `## 関連用語・比較` |
+
+### YAML Front Matter関連変数
+
+| 変数名 | 説明 | YAML Front Matter対応箇所 |
+|--------|------|---------------------------|
+| `{{meta_title}}` | ページタイトル | `title: "用語名 - IT用語辞典"` |
+| `{{meta_description}}` | メタディスクリプション | `description: "概要説明文"` |
+| `{{meta_keywords}}` | SEOキーワード | `keywords: ["キーワード1", "キーワード2"]` |
+| `{{category}}` | カテゴリ分類 | `category: "設計・UX"` |
+| `{{difficulty_badge}}` | 難易度バッジ | `difficulty: "初級|中級|上級"` |
+| `{{reading_time}}` | 読了時間表示 | `reading_time: "5分"` |
+| `{{author}}` | 著者情報 | `author: "IT用語辞典"` |
+| `{{creation_date}}` | 作成日 | `date: "YYYY-MM-DD"` |
+| `{{url_slug}}` | URLスラッグ | `slug: "url-slug"` |
+| `{{canonical_url}}` | 正規URL | `canonical_url: "https://example.com/slug"` |
+| `{{featured_image}}` | アイキャッチ画像 | `featured_image: "https://example.com/image.jpg"` |
+| `{{ga_measurement_id}}` | Google Analytics測定ID | `ga_measurement_id: "G-XXXXXXXXXX"` |
+| `{{gtm_container_id}}` | Google Tag Managerコンテナ | `gtm_container_id: "GTM-XXXXXXX"` |
 
 ---
 

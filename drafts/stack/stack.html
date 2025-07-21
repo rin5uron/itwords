@@ -6,73 +6,11 @@
   <title>スタック構造 - 実践型IT用語辞典</title>
   <!-- Font Awesome CDN -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+  <link rel="stylesheet" href="../../templates/term-page/styles.css">
   <style>
-    body {
-      font-family: 'Noto Sans JP', sans-serif;
-      line-height: 1.8;
-      color: #333;
-      background-color: #f4f1e2;
-      margin: 0;
-      padding: 40px 20px;
-    }
-    .container {
-      max-width: 800px;
-      margin: 0 auto;
-      background-color: #fff;
-      padding: 50px;
-      border-radius: 10px;
-      box-shadow: 0 4px 20px rgba(0,0,0,0.07);
-    }
-    h1, h2, h3 {
-      font-weight: 700;
-      color: #4a4a4a;
-      border-bottom: 2px solid #ead3c3;
-      padding-bottom: 15px;
-    }
-    h1 {
-      font-size: 2.2em;
-      display: flex;
-      align-items: center;
-    }
+    /* 個別ページ用のスタイル調整 */
     h1 .icon {
-      font-size: 0.9em;
-      margin-right: 20px;
       color: #8abdea;
-    }
-    h2 {
-      font-size: 1.6em;
-      margin-top: 50px;
-    }
-    h3 {
-        font-size: 1.3em;
-        border-bottom: none;
-        margin-top: 40px;
-    }
-    p, ul, li, table {
-      font-size: 1.05em;
-    }
-    ul {
-      padding-left: 25px;
-    }
-    li {
-      margin-bottom: 12px;
-    }
-    strong {
-      color: #d9534f;
-      font-weight: 700;
-    }
-    table {
-        width: 100%;
-        border-collapse: collapse;
-        margin-top: 20px;
-    }
-    th, td {
-        border: 1px solid #ddd;
-        padding: 12px;
-        text-align: left;
-    }
-    th {
-        background-color: #f9f7ef;
     }
     .summary-box {
       background-color: transparent;
@@ -86,36 +24,11 @@
       font-style: italic;
       color: #555;
     }
-
-    /* --- Demo Section --- */
-    .demo-section {
-      margin-top: 30px;
-      padding: 30px;
-      background-color: #f9f7ef;
-      border-radius: 8px;
-      display: flex;
-      gap: 20px;
-      align-items: flex-start;
-    }
-    .demo-controls {
-        width: 200px;
-        text-align: center;
-    }
     .demo-button {
-      font-size: 1.1em;
-      padding: 12px 25px;
-      width: 120px;
-      margin: 5px;
-      border: none;
-      border-radius: 8px;
-      background-color: #8abdea;
-      color: white;
-      cursor: pointer;
-      transition: background-color 0.3s, transform 0.2s;
+        background-color: #8abdea;
     }
     .demo-button:hover {
-      background-color: #7aaad4;
-      transform: translateY(-2px);
+        background-color: #7aaad4;
     }
     .demo-button.pop {
         background-color: #ea9b8a;
@@ -123,102 +36,15 @@
     .demo-button.pop:hover {
         background-color: #e08a7a;
     }
-    #stack-visualizer {
-        flex-grow: 1;
-        border: 2px dashed #ccc;
-        border-radius: 5px;
-        padding: 10px;
-        min-height: 200px;
-        display: flex;
-        flex-direction: column-reverse; /* 上に積むように見せる */
-        align-items: center;
-    }
-    .stack-item {
+    #stack-visualizer .stack-item {
         background-color: #8abdea;
-        color: white;
-        padding: 10px 20px;
-        margin-top: 5px;
-        border-radius: 5px;
-        width: 80%;
-        text-align: center;
-        font-weight: bold;
-        animation: fadeIn 0.3s ease-in-out;
     }
-    @keyframes fadeIn {
-        from { opacity: 0; transform: translateY(10px); }
-        to { opacity: 1; transform: translateY(0); }
+    /* 関連用語テーブルのテーマカラー */
+    .comparison-table .term-name {
+        color: #8abdea;
     }
-    #demo-message {
-      margin-top: 15px;
-      font-weight: bold;
-      min-height: 1.5em;
-    }
-    
-    /* --- Code Highlight Styles --- */
-    details {
-      border: 1px solid #e0e0e0;
-      border-radius: 8px;
-      margin-top: 20px;
-      overflow: hidden;
-    }
-    summary {
-      font-size: 1.1em;
-      font-weight: bold;
-      padding: 16px 20px;
-      cursor: pointer;
-      list-style: none;
-      display: block;
-      background-color: #f9f9f9;
-      border-bottom: 1px solid #e0e0e0;
-    }
-    details[open] summary {
-      border-bottom: 1px solid #e0e0e0;
-    }
-    summary::-webkit-details-marker { display: none; }
-    summary:hover { background-color: #f2f2f2; }
-
-    .code-example {
-        background-color: #1e1e1e;
-        color: #d4d4d4;
-        padding: 20px;
-        border-bottom-left-radius: 8px;
-        border-bottom-right-radius: 8px;
-        overflow-x: auto;
-    }
-    .code-example pre { margin: 0; }
-    .code-example code {
-        font-family: "SFMono-Regular", Consolas, "Liberation Mono", Menlo, monospace;
-        font-size: 0.95em;
-        white-space: pre;
-    }
-    .code-example .token.comment { color: #6A9955; }
-    .code-example .token.keyword { color: #C586C0; }
-    .code-example .token.function { color: #DCDCAA; }
-    .code-example .token.string { color: #CE9178; }
-    .code-example .token.variable { color: #9CDCFE; }
-    .code-example .token.punctuation { color: #d4d4d4; }
-    .code-example .token.operator { color: #d4d4d4; }
-
-    .footer-nav {
-      text-align: center;
-      margin-top: 50px;
-      padding-top: 30px;
-      border-top: 1px solid #eee;
-    }
-    .footer-nav a {
-      color: #4a4a4a;
-      text-decoration: none;
-      font-weight: bold;
-    }
-    .footer-nav a:hover { text-decoration: underline; }
-
-    @media (max-width: 768px) {
-      body { padding: 20px 10px; }
-      .container { padding: 30px; }
-      h1 { font-size: 1.8em; }
-      h2 { font-size: 1.4em; }
-      .demo-section { flex-direction: column; }
-      .demo-controls { width: 100%; margin-bottom: 20px; }
+    .comparison-table .term-name:hover {
+        color: #7aaad4;
     }
   </style>
 </head>
@@ -264,38 +90,41 @@
         </div>
       </section>
 
-      <section class="term-related">
+      <section class="term-related term-comparison">
         <h2>関連用語・比較</h2>
-        <table>
-          <thead>
-            <tr>
-              <th>用語</th>
-              <th>構造の違い</th>
-              <th>特徴</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td><strong>スタック</strong></td>
-              <td>後入れ先出し (LIFO)</td>
-              <td>「戻る」操作や、一時的な処理に強い</td>
-            </tr>
-            <tr>
-              <td><strong>キュー</strong></td>
-              <td>先入れ先出し (FIFO)</td>
-              <td>受付や行列のような順番通りの処理に向く</td>
-            </tr>
-            <tr>
-              <td><strong>配列 (Array)</strong></td>
-              <td>任意の位置にアクセス可能</td>
-              <td>特定のデータを直接取り出せる</td>
-            </tr>
-          </tbody>
-        </table>
+        <div class="comparison-table">
+          <table>
+            <thead>
+              <tr>
+                <th>用語名</th>
+                <th>構造</th>
+                <th>特徴</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><a href="./stack.html" class="term-name">スタック</a></td>
+                <td>後入れ先出し (LIFO)</td>
+                <td>「戻る」操作や、一時的な処理に強い</td>
+              </tr>
+              <tr>
+                <td><a href="../queue/queue.html" class="term-name">キュー</a></td>
+                <td>先入れ先出し (FIFO)</td>
+                <td>受付や行列のような順番通りの処理に向く</td>
+              </tr>
+              <tr>
+                <td><a href="#" class="term-name">配列 (Array)</a></td>
+                <td>任意の位置にアクセス可能</td>
+                <td>特定のデータを直接取り出せる</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
       </section>
 
       <section class="term-code">
-        <h2>コードで見てみよう (git stash)</h2>
+        <h2>コードで見てみよう</h2>
+        <h3>git stash実践シナリオ</h3>
         <p>バージョン管理ツールGitの一次保存コマンド <code>git stash</code> は、スタック構造の代表的な応用例です。変更内容を一時的に「積み重ねて」退避させることができます。</p>
         <details>
           <summary>サンプルコードを見る (Bash)</summary>

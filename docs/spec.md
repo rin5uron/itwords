@@ -230,6 +230,132 @@
 
 ---
 
+### YAML Front Matterによるメタデータ管理
+
+#### 🎯 目的
+各用語ページにメタデータを体系的に管理し、SEO最適化とサイト管理の効率化を実現する。
+
+<br>
+
+#### ✨ 導入効果
+
+**SEO最適化:**
+- メタタイトル・ディスクリプションの自動生成
+- キーワード設定による検索順位向上
+- 構造化データ（JSON-LD）の自動挿入
+
+**ブログ連携:**
+- カテゴリ・タグによる分類管理
+- 記事一覧ページの自動生成
+- RSS配信の充実
+
+**サイト管理:**
+- 難易度・読了時間による学習レベル管理
+- 作成・更新日の履歴管理
+- 著者・監修者の明示
+
+<br>
+
+#### 📝 YAML Front Matter仕様
+
+**必須フィールド:**
+```yaml
+---
+title: "用語名 - 実践型IT用語辞典"
+description: "用語の概要説明（160文字以内）"
+keywords: ["キーワード1", "キーワード2", "キーワード3"]
+category: "カテゴリ名"
+difficulty: "初級|中級|上級"
+date: "YYYY-MM-DD"
+---
+```
+
+**推奨フィールド:**
+```yaml
+tags: ["タグ1", "タグ2"]
+reading_time: "○分"
+author: "実践型IT用語辞典"
+slug: "url-slug"
+featured_image: "画像パス"
+canonical: "正規URL"
+```
+
+<br>
+
+#### 💡 実装例（フールプルーフ）
+
+```yaml
+---
+title: "フールプルーフ - 実践型IT用語辞典"
+description: "利用者の操作ミスを防ぐ設計思想。誰が使っても安全な仕組みを目指す考え方を分かりやすく解説"
+keywords: ["フールプルーフ", "UI/UX", "設計思想", "安全性", "エラー防止"]
+category: "設計・UX"
+tags: ["安全性", "UI設計", "エラー防止", "ユーザビリティ"]
+difficulty: "初級"
+reading_time: "5分"
+author: "実践型IT用語辞典"
+date: "2025-07-20"
+slug: "foolproof"
+canonical: "https://example.com/foolproof"
+---
+```
+
+<br>
+
+#### 🔧 変数置換仕様
+
+**HTMLテンプレートでの利用:**
+- `{{meta_title}}`: ページタイトル
+- `{{meta_description}}`: メタディスクリプション
+- `{{meta_keywords}}`: SEOキーワード
+- `{{category}}`: カテゴリ分類
+- `{{difficulty_badge}}`: 難易度バッジ
+- `{{reading_time}}`: 読了時間表示
+
+**構造化データ自動生成:**
+```html
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "headline": "{{meta_title}}",
+  "description": "{{meta_description}}",
+  "author": "{{author}}",
+  "datePublished": "{{date}}"
+}
+</script>
+```
+
+<br>
+
+#### 📊 カテゴリ分類体系
+
+- **基礎・概念**: プログラミング基礎、IT概念
+- **設計・UX**: UI/UX設計、アーキテクチャ
+- **セキュリティ**: 暗号化、認証、脆弱性
+- **ネットワーク**: 通信、プロトコル、インフラ
+- **データベース**: SQL、NoSQL、データ管理
+- **Web技術**: HTML、CSS、JavaScript、フレームワーク
+- **開発ツール**: Git、API、テスト
+
+<br>
+
+#### 🚀 今後の拡張
+
+**自動化機能:**
+- カテゴリ別一覧ページの自動生成
+- タグクラウドの動的生成
+- 関連記事の自動推薦
+
+**分析機能:**
+- 難易度別学習フローの提案
+- 読了時間による学習計画
+- カテゴリ別人気度ランキング
+
+<br>
+
+---
+
 ## 非機能要件
 
 ### デザインレスポンシブ対応
