@@ -451,15 +451,26 @@ Googleアドセンス/アナリティクス利用要件およびSEO向上のた�
 
 ```
 /index.html               ← トップページ（用語一覧やナビゲーションなど）
-/styles.css               ← 全ページ共通のスタイルシート
+/styles.css               ← 全ページ共通のスタイルシート（テンプレート用デザインに統一）
 /script.js                ← 全ページ共通のJavaScript
-/samplepage/              ← 各用語ページの格納ディレクトリ
-  ├── foolproof/
-  │   ├── index.html
-  │   └── custom.css（※必要な場合のみ）
-  └── local-storage/
-      ├── index.html
-      └── custom.css（※必要な場合のみ）
+/rss.xml                  ← RSSフィード
+/stack/                   ← 各用語ページ（ディレクトリ形式）
+  └── stack.html
+/foolproof/
+  └── foolproof.html
+/local-storage/
+  └── local-storage.html
+/docs/                    ← ドキュメント・設計書類
+  ├── spec.md            ← この仕様書
+  ├── vision.md          ← ビジョン文書
+  └── templates/         ← テンプレート開発用リソース
+      └── term-page/
+          ├── template.html
+          ├── template.css
+          ├── sample.md
+          └── rules.md
+/drafts/                  ← 作業中・検討中のファイル
+└── work_log/            ← 学習・開発ログ
 ```
 
 <br>
@@ -468,35 +479,42 @@ Googleアドセンス/アナリティクス利用要件およびSEO向上のた�
 
 ## CSS設計方針
 
-### ✅ 共通スタイル（全体）
+### ✅ 共通スタイル（統一デザインシステム）
 
-- `/styles.css` に下記のような全体共通スタイルを定義
-  - フォント、配色、基本レイアウト
-  - 用語ページ共通のボックス・ボタン・見出し
-  - 絵文字調整などの補助クラス
+- `/styles.css` に **テンプレート用デザイン** を統一適用
+- 全用語ページで一貫したデザイン体験を提供
+- ベージュ系背景（`#f4f1e2`）とサーモンピンクアクセント（`#ea9b8a`）
 
-#### 例：
+#### 主要スタイル特徴：
 
 ```css
 body {
-  font-family: system-ui, sans-serif;
-  line-height: 1.6;
-  background-color: #fefefe;
+  font-family: 'Noto Sans JP', sans-serif;
+  line-height: 1.8;
   color: #333;
+  background-color: #f4f1e2;
+  margin: 0;
+  padding: 40px 20px;
 }
 
-.term-box {
-  border: 1px solid #ddd;
-  padding: 1.5rem;
-  border-radius: 8px;
-  margin-bottom: 2rem;
-  background: #fff;
+.container {
+  max-width: 800px;
+  margin: 0 auto;
+  background-color: #fff;
+  padding: 50px;
+  border-radius: 10px;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.07);
 }
 
-.emoji {
-  font-size: 1.2em;
-  margin-right: 0.3em;
-  vertical-align: middle;
+.demo-button {
+  background-color: #ea9b8a;
+  color: white;
+  transition: background-color 0.3s, transform 0.2s;
+}
+
+.demo-button:hover {
+  background-color: #e08a7a;
+  transform: translateY(-2px);
 }
 ```
 
@@ -506,17 +524,46 @@ body {
 
 ### ✅ ページ固有スタイル
 
-- カスタマイズが必要な場合のみ、`custom.css` を配置
-- または、対象の HTML 内に `<style>` タグで直接記述
+- 基本的にはインラインスタイル（`<style>`タグ内）で個別調整
+- 各用語ページのテーマカラーや特殊なインタラクティブ要素に使用
+- 例：スタックページの青いテーマ（`#8abdea`）
 
-#### HTML内での読み込み例：
+#### HTML内でのスタイル適用例：
 
 ```html
-<!-- 共通スタイル -->
-<link rel="stylesheet" href="/styles.css">
-<!-- ページごとの個別スタイル（必要に応じて） -->
-<link rel="stylesheet" href="./custom.css">
+<!-- 共通デザインシステム -->
+<link rel="stylesheet" href="../styles.css">
+
+<!-- ページ固有の調整 -->
+<style>
+  /* スタック用のテーマカラー調整 */
+  h1 .icon {
+    color: #8abdea;
+  }
+  .demo-button {
+    background-color: #8abdea;
+  }
+  .demo-button:hover {
+    background-color: #7aaad4;
+  }
+</style>
 ```
+
+<br>
+
+---
+
+### ✅ テンプレートシステム
+
+**開発用テンプレート**: `/docs/templates/term-page/`
+- **template.html**: HTML構造テンプレート
+- **template.css**: デザインシステム（本番用styles.cssの元）
+- **sample.md**: 記入例とフォーマット仕様
+- **rules.md**: 生成ルール・運用指針
+
+**本番サイト**: 直下のファイル群
+- 各用語ページは独立したディレクトリで管理
+- 共通デザインシステムで統一性を確保
 
 <br>
 
@@ -524,10 +571,17 @@ body {
 
 ## 補足
 
-- 絵文字サイズ・装飾はクラスで共通管理
-- カスタマイズは最小限にし、基本は `styles.css` に集約
-- クラス名は「読みやすさ」「役割が分かる命名」を優先
-- 今後、SCSSやTailwindへの移行も見据えて、分離しやすい構造を意識
+### 🎯 設計方針
+- **SEO最適化**: 各用語ページが独自URL（`/stack/`, `/foolproof/`）
+- **管理効率**: テンプレートシステムによる量産体制
+- **一貫性**: 共通CSSによる統一デザイン
+- **拡張性**: 新しい用語追加が容易な構造
+
+### 🗂️ ファイル管理
+- **本番サイト**: 直下（シンプルなURL構造）
+- **開発リソース**: `docs/` 配下に整理
+- **作業中**: `drafts/` で管理
+- **ログ**: `work_log/` で学習履歴管理
 
 <br>
 
@@ -535,11 +589,18 @@ body {
 
 ## 今後の拡張
 
-- 用語ページを Markdown ベースで管理する場合でもこの構造は踏襲可能
-- Eleventy や Next.js などの静的サイトジェネレータでも活用しやすい構成
+### 🚀 予定されている改善
+- **関連用語リンク自動化**: `terms.json` による用語間リンク
+- **カテゴリ別一覧**: YAML Front Matterによる分類
+- **検索機能**: 全文検索システムの実装
+
+### 🔧 技術的拡張性
+- 静的サイトジェネレータ（Eleventy, Next.js）への移行準備済み
+- Markdown ベース管理システムとの互換性確保
+- CDN・PWA対応の基盤構造
 
 <br>
 
 ---
 
-**最終更新日**: 2025年7月20日
+**最終更新日**: 2025年7月21日
