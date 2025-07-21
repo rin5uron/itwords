@@ -1,85 +1,110 @@
-# 📦 ローカルストレージとは？
-
-**よみかた**：ろーかるすとれーじ
-
+---
+title: "ローカルストレージ - IT用語辞典"
+description: "ブラウザにデータを永続的に保存する仕組み、ローカルストレージについて、JSONを使ったオブジェクトの保存方法などを分かりやすく解説します。"
+keywords: ["ローカルストレージ", "JSON", "Webストレージ", "JavaScript", "データ永続化"]
+category: "Web開発"
+tags: ["JavaScript", "データ保存", "フロントエンド", "JSON"]
+difficulty: "初級"
+reading_time: "7分"
+author: "IT用語辞典"
+date: "2025-07-21"
+slug: "local-storage"
+canonical_url: "https://itwords.example.com/local-storage"
+featured_image: "https://itwords.example.com/images/local-storage.jpg"
+ga_measurement_id: "G-XXXXXXXXXX"
+gtm_container_id: "GTM-XXXXXXX"
 ---
 
-## 意味
+# ローカルストレージ
+読み方: ろーかるすとれーじ
+アイコン: fas fa-database
 
-ブラウザに**小さなデータを保存しておける場所**のこと。  
+## 概要
+ブラウザに**小さなデータを保存しておける場所**のこと。<br>
 JavaScriptからアクセスできて、**ページを閉じても情報が残る**のが特徴。
 
----
-
 ## ポイント
-
 - ブラウザ内に保存される（サーバーには送られない）
 - `localStorage.setItem()` と `getItem()` で読み書きできる
-- 文字列しか保存できない（JSONとの組み合わせが必須）
+- 文字列しか保存できないため、オブジェクトを保存するには<a href="#">JSON</a>形式への変換が必須
 
----
+## 体験デモ
+### デモタイトル
+ユーザー情報をJSONで保存
 
-## よく使う用途
+### ボタンテキスト
+保存,クリア
 
-- ログイン状態の保存
-- テーマのダークモード設定
-- 入力フォームの一時保存
-- カウンターやメモなどの小さなWebアプリ
+### デモ処理名
+`saveData`, `clearData`
 
----
+## コード例
+### 言語
+JavaScript
 
-## 実例：カウントを保存する
+### 説明
+<a href="#">JSON</a>形式に変換することで、オブジェクトや配列のような複雑なデータも`localStorage`に保存できます。
 
-```js
-// 保存
-localStorage.setItem("count", 5);
+### サンプルコード
+```javascript
+// ユーザーオブジェクトを作成
+const user = {
+  name: "山田",
+  age: 30
+};
 
-// 取得
-const saved = localStorage.getItem("count");
-console.log(saved); // → "5"
+// オブジェクトをJSON文字列に変換して保存
+localStorage.setItem('userData', JSON.stringify(user));
+
+// JSON文字列を取得してオブジェクトに変換
+const jsonData = localStorage.getItem('userData');
+const savedUser = JSON.parse(jsonData);
+
+console.log(savedUser.name); // "山田"
 ```
 
----
+### JavaScript処理
+```javascript
+const nameInput = document.getElementById('name-input');
+const ageInput = document.getElementById('age-input');
+const savedDataSpan = document.getElementById('saved-data');
 
-## JSONと一緒に使うとこうなる
+function saveData() {
+  const user = {
+    name: nameInput.value,
+    age: ageInput.value
+  };
+  // オブジェクトをJSON文字列に変換して保存
+  localStorage.setItem('userData', JSON.stringify(user));
+  displayData();
+}
 
-```js
-const user = { name: "Taro", age: 25 };
+function displayData() {
+  // JSON文字列を取得
+  const jsonData = localStorage.getItem('userData');
+  if (jsonData) {
+    // JSON文字列をオブジェクトにパース
+    const user = JSON.parse(jsonData);
+    savedDataSpan.textContent = `名前: ${user.name}, 年齢: ${user.age}`;
+  } else {
+    savedDataSpan.textContent = 'なし';
+  }
+}
 
-// 保存するとき
-localStorage.setItem("user", JSON.stringify(user));
+function clearData() {
+  localStorage.removeItem('userData');
+  nameInput.value = '山田';
+  ageInput.value = '30';
+  displayData();
+}
 
-// 読み込むとき
-const data = JSON.parse(localStorage.getItem("user"));
-console.log(data.name); // → "Taro"
+// ページ読み込み時に保存されたデータを表示
+window.onload = displayData;
 ```
 
----
-
-## 注意点
-
-- 容量はだいたい5MB程度（大量保存には向かない）
-- セキュリティ上の理由で、**個人情報やパスワードは保存NG**
-- 複数ページ・アプリ間で共有不可（同じドメイン内だけ）
-
----
-
-## 似ているものとの違い
-
-| 名前 | 特徴 |
-|------|------|
-| `localStorage` | ページを閉じても残る、永続的 |
-| `sessionStorage` | 同じタブ内だけ。閉じると消える |
+## 関連用語・比較
+| 用語名 | 特徴 |
+|---|---|
+| localStorage | ページを閉じても残る、永続的 |
+| sessionStorage | 同じタブ内だけ。閉じると消える |
 | クッキー | サーバーにも送れる、小さい、やや古い |
-
----
-
-## 関連用語
-
-- [JSON](./json.md)
-- [セッションストレージ（sessionStorage）](#)
-- [フールプルーフ](./foolproof.md)
-
----
-
-> 「なんか動いてるけど、よくわからない」を「なるほど！」に変えよう✌️  
