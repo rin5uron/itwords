@@ -1,0 +1,1381 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <!-- SEO メタタグ -->
+  <title>キュー構造 - IT用語辞典</title>
+  <meta name="description" content="先に入れたものが、先に出ていくという仕組みのデータ構造のこと。専門用語で「FIFO（First In, First Out）」と呼ばれます。レジの行列やバスの順番待ちなど、現実世界の「順番通り」の場面とそっくりです。">
+  <meta name="keywords" content="キュー, FIFO, データ構造, プログラミング">
+  <meta name="author" content="IT用語辞典">
+  <meta name="robots" content="index, follow">
+  <link rel="canonical" href="https://itwords.example.com/queue">
+  
+  <!-- Open Graph / SNS -->
+  <meta property="og:type" content="article">
+  <meta property="og:title" content="キュー構造 - IT用語辞典">
+  <meta property="og:description" content="先に入れたものが、先に出ていくという仕組みのデータ構造のこと。専門用語で「FIFO（First In, First Out）」と呼ばれます。レジの行列やバスの順番待ちなど、現実世界の「順番通り」の場面とそっくりです。">
+  <meta property="og:url" content="https://itwords.example.com/queue">
+  <meta property="og:site_name" content="IT用語辞典">
+  <meta property="og:image" content="https://itwords.example.com/images/queue.jpg">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="キュー構造 - IT用語辞典">
+  <meta property="twitter:description" content="先に入れたものが、先に出ていくという仕組みのデータ構造のこと。専門用語で「FIFO（First In, First Out）」と呼ばれます。レジの行列やバスの順番待ちなど、現実世界の「順番通り」の場面とそっくりです。">
+  <meta name="twitter:image" content="https://itwords.example.com/images/queue.jpg">
+  
+  <!-- Google Tag Manager -->
+  <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+  new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+  j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+  'https://www.googletagmanager.com/gtm.js?id=GTM-XXXXXXX';f.parentNode.insertBefore(j,f);
+  })(window,document,'script','dataLayer','GTM-XXXXXXX');</script>
+  
+  <!-- Google Analytics 4 -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-XXXXXXXXXX');
+  </script>
+  
+  <!-- 構造化データ (JSON-LD) -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "headline": "キュー構造 - IT用語辞典",
+    "description": "先に入れたものが、先に出ていくという仕組みのデータ構造のこと。専門用語で「FIFO（First In, First Out）」と呼ばれます。レジの行列やバスの順番待ちなど、現実世界の「順番通り」の場面とそっくりです。",
+    "author": {
+      "@type": "Organization",
+      "name": "IT用語辞典"
+    },
+    "datePublished": "2025-07-21",
+    "dateModified": "2025-07-21",
+    "keywords": "キュー, FIFO, データ構造, プログラミング",
+    "articleSection": "データ構造・アルゴリズム",
+    "timeRequired": "5分",
+    "url": "https://itwords.example.com/queue",
+    "mainEntityOfPage": {
+      "@type": "WebPage",
+      "@id": "https://itwords.example.com/queue"
+    },
+    "publisher": {
+      "@type": "Organization",
+      "name": "IT用語辞典"
+    }
+  }
+  </script>
+  
+  <!-- Font Awesome CDN -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+  <link rel="stylesheet" href="../styles.css">
+  <style>
+    /* 個別ページ用のスタイル調整 */
+    h1 .icon {
+      color: #82c9a0;
+    }
+    .summary-box {
+        background-color: #f9f7ef;
+        border-left: 5px solid #82c9a0;
+        padding: 25px;
+        margin: 40px auto;
+        max-width: 90%;
+        font-size: 1.2em;
+        font-weight: bold;
+        text-align: center;
+    }
+
+    /* --- Demo Section --- */
+    .demo-button {
+      background-color: #82c9a0;
+    }
+    .demo-button:hover {
+      background-color: #70b88f;
+    }
+    .demo-button.dequeue {
+        background-color: #ea9b8a;
+    }
+    .demo-button.dequeue:hover {
+        background-color: #e08a7a;
+    }
+    #queue-visualizer {
+        border: 2px dashed #ccc;
+        border-radius: 5px;
+        padding: 20px;
+        min-height: 60px;
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        overflow-x: auto;
+    }
+    .queue-item {
+        background-color: #82c9a0;
+        color: white;
+        padding: 10px 20px;
+        margin-right: 10px;
+        border-radius: 5px;
+        font-weight: bold;
+        white-space: nowrap;
+        animation: slideIn 0.4s ease-out;
+    }
+    @keyframes slideIn {
+        from { opacity: 0; transform: translateX(20px); }
+        to { opacity: 1; transform: translateX(0); }
+    }
+    #demo-message {
+      margin-top: 20px;
+      font-weight: bold;
+      min-height: 1.5em;
+    }
+  </style>
+</head>
+<body>
+  <!-- Google Tag Manager (noscript) -->
+  <noscript><iframe src="https://www.googletagmanager.com/gtm.ns.html?id=GTM-XXXXXXX"
+  height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+
+  <div class="container">
+    <article class="term-page">
+      <header class="term-header">
+        <h1><i class="fas fa-users icon"></i>キュー構造 (Queue)</h1>
+        <p class="reading">よみかた：<strong>きゅー</strong></p>
+      </header>
+
+      <section class="term-intro">
+        <h2>意味</h2>
+        <p>
+          先に入れたものが、先に出ていくという仕組みのデータ構造。<br>
+          <strong>先入れ先出し</strong>、「FIFO（First In, First Out）」とも呼ばれる。<br>
+        </p>
+      </section>
+
+      <section class="term-point">
+        <h2>ポイント</h2>
+        <ul>
+          <li><code>enqueue</code> (エンキュー) : <strong>列の後ろに並ぶ</strong>ようにデータを追加する。</li>
+          <li><code>dequeue</code> (デキュー) : <strong>列の先頭から出る</strong>ようにデータを取り出す。</li>
+          <li>印刷ジョブの管理やタスク処理など、<strong>順番を守って処理したいとき</strong>に最適。</li>
+        </ul>
+      </section>
+
+      <section class="term-visual">
+        <h2>体験してみよう</h2>
+        <p>下のボタンを押して、キューの「先入れ先出し」を体験してみましょう。「Enqueue」で列の末尾に人を追加し、「Dequeue」で列の先頭から人が退出します。</p>
+        <div class="demo-section">
+          <div class="demo-controls">
+            <button class="demo-button" onclick="enqueueItem()">Enqueue</button>
+            <button class="demo-button dequeue" onclick="dequeueItem()">Dequeue</button>
+            <p id="demo-message"></p>
+          </div>
+          <div id="queue-visualizer">
+            <!-- Queue items will be added here -->
+          </div>
+        </div>
+      </section>
+
+      <section class="term-code">
+        <h2>JavaScript配列で実践してみよう</h2>
+        <p>JavaScriptで簡単にキューを実装できます。<code>push</code>で追加し、<code>shift</code>で取り出すことで「先入れ先出し」を実現します。</p>
+        <details>
+          <summary>サンプルコードを見る (JavaScript)</summary>
+          <div class="code-example">
+<pre><code class="language-javascript"><span class="token comment">// 配列を使った簡単なキュー</span>
+<span class="token keyword">const</span> queue <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
+
+<span class="token comment">// enqueue（追加：後ろに並ぶ）</span>
+queue<span class="token punctuation">.</span><span class="token function">push</span><span class="token punctuation">(</span><span class="token string">"タスク1"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+queue<span class="token punctuation">.</span><span class="token function">push</span><span class="token punctuation">(</span><span class="token string">"タスク2"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+queue<span class="token punctuation">.</span><span class="token function">push</span><span class="token punctuation">(</span><span class="token string">"タスク3"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+<span class="token comment">// dequeue（取り出し：先頭から出る）</span>
+<span class="token keyword">const</span> firstTask <span class="token operator">=</span> queue<span class="token punctuation">.</span><span class="token function">shift</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>firstTask<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// => "タスク1"</span>
+console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>queue<span class="token punctuation">)</span><span class="token punctuation">;</span>     <span class="token comment">// => ["タスク2", "タスク3"]</span>
+</code></pre>
+          </div>
+        </details>
+
+        <details>
+          <summary>HTML/CSS/JS 統合版テンプレート</summary>
+          <p style="padding: 15px 20px 0;">このページの完全なコードです。以下の内容をコピーして<code>index.html</code>などの名前で保存すると、ご自身のPCやブラウザで直接開いて確認できます。</p>
+          <div class="code-example">
+            <pre><code>&lt;!DOCTYPE html&gt;
+&lt;html lang="ja"&gt;
+&lt;head&gt;
+  &lt;meta charset="UTF-8"&gt;
+  &lt;meta name="viewport" content="width=device-width, initial-scale=1.0"&gt;
+  
+  &lt;!-- SEO メタタグ --&gt;
+  &lt;title&gt;キュー構造 - IT用語辞典&lt;/title&gt;
+  &lt;meta name="description" content="先に入れたものが、先に出ていくという仕組みのデータ構造のこと。専門用語で「FIFO（First In, First Out）」と呼ばれます。レジの行列やバスの順番待ちなど、現実世界の「順番通り」の場面とそっくりです。"&gt;
+  &lt;meta name="keywords" content="キュー, FIFO, データ構造, プログラミング"&gt;
+  &lt;meta name="author" content="IT用語辞典"&gt;
+  &lt;meta name="robots" content="index, follow"&gt;
+  &lt;link rel="canonical" href="https://itwords.example.com/queue"&gt;
+  
+  &lt;!-- Open Graph / SNS --&gt;
+  &lt;meta property="og:type" content="article"&gt;
+  &lt;meta property="og:title" content="キュー構造 - IT用語辞典"&gt;
+  &lt;meta property="og:description" content="先に入れたものが、先に出ていくという仕組みのデータ構造のこと。専門用語で「FIFO（First In, First Out）」と呼ばれます。レジの行列やバスの順番待ちなど、現実世界の「順番通り」の場面とそっくりです。"&gt;
+  &lt;meta property="og:url" content="https://itwords.example.com/queue"&gt;
+  &lt;meta property="og:site_name" content="IT用語辞典"&gt;
+  &lt;meta property="og:image" content="https://itwords.example.com/images/queue.jpg"&gt;
+  &lt;meta name="twitter:card" content="summary_large_image"&gt;
+  &lt;meta name="twitter:title" content="キュー構造 - IT用語辞典"&gt;
+  &lt;meta property="twitter:description" content="先に入れたものが、先に出ていくという仕組みのデータ構造のこと。専門用語で「FIFO（First In, First Out）」と呼ばれます。レジの行列やバスの順番待ちなど、現実世界の「順番通り」の場面とそっくりです。"&gt;
+  &lt;meta name="twitter:image" content="https://itwords.example.com/images/queue.jpg"&gt;
+  
+  &lt;!-- Google Tag Manager --&gt;
+  &lt;script&gt;(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+  new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+  j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+  'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+  })(window,document,'script','dataLayer','GTM-XXXXXXX');&lt;/script&gt;
+  
+  &lt;!-- Google Analytics 4 --&gt;
+  &lt;script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"&gt;&lt;/script&gt;
+  &lt;script&gt;
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-XXXXXXXXXX');
+  &lt;/script&gt;
+  
+  &lt;!-- 構造化データ (JSON-LD) --&gt;
+  &lt;script type="application/ld+json"&gt;
+  {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "headline": "キュー構造 - IT用語辞典",
+    "description": "先に入れたものが、先に出ていくという仕組みのデータ構造のこと。専門用語で「FIFO（First In, First Out）」と呼ばれます。レジの行列やバスの順番待ちなど、現実世界の「順番通り」の場面とそっくりです。",
+    "author": {
+      "@type": "Organization",
+      "name": "IT用語辞典"
+    },
+    "datePublished": "2025-07-21",
+    "dateModified": "2025-07-21",
+    "keywords": "キュー, FIFO, データ構造, プログラミング",
+    "articleSection": "データ構造・アルゴリズム",
+    "timeRequired": "5分",
+    "url": "https://itwords.example.com/queue",
+    "mainEntityOfPage": {
+      "@type": "WebPage",
+      "@id": "https://itwords.example.com/queue"
+    },
+    "publisher": {
+      "@type": "Organization",
+      "name": "IT用語辞典"
+    }
+  }
+  &lt;/script&gt;
+  
+  &lt;!-- Font Awesome CDN --&gt;
+  &lt;link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css"&gt;
+  &lt;link rel="stylesheet" href="../styles.css"&gt;
+  &lt;style&gt;
+    /* 個別ページ用のスタイル調整 */
+    h1 .icon {
+      color: #82c9a0;
+    }
+    .summary-box {
+        background-color: #f9f7ef;
+        border-left: 5px solid #82c9a0;
+        padding: 25px;
+        margin: 40px auto;
+        max-width: 90%;
+        font-size: 1.2em;
+        font-weight: bold;
+        text-align: center;
+    }
+
+    /* --- Demo Section --- */
+    .demo-button {
+      background-color: #82c9a0;
+    }
+    .demo-button:hover {
+      background-color: #70b88f;
+    }
+    .demo-button.dequeue {
+        background-color: #ea9b8a;
+    }
+    .demo-button.dequeue:hover {
+        background-color: #e08a7a;
+    }
+    #queue-visualizer {
+        border: 2px dashed #ccc;
+        border-radius: 5px;
+        padding: 20px;
+        min-height: 60px;
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        overflow-x: auto;
+    }
+    .queue-item {
+        background-color: #82c9a0;
+        color: white;
+        padding: 10px 20px;
+        margin-right: 10px;
+        border-radius: 5px;
+        font-weight: bold;
+        white-space: nowrap;
+        animation: slideIn 0.4s ease-out;
+    }
+    @keyframes slideIn {
+        from { opacity: 0; transform: translateX(20px); }
+        to { opacity: 1; transform: translateX(0); }
+    }
+    #demo-message {
+      margin-top: 20px;
+      font-weight: bold;
+      min-height: 1.5em;
+    }
+  &lt;/style&gt;
+&lt;/head&gt;
+&lt;body&gt;
+  &lt;!-- Google Tag Manager (noscript) --&gt;
+  &lt;noscript&gt;&lt;iframe src="https://www.googletagmanager.com/gtm.ns.html?id=GTM-XXXXXXX"
+  height="0" width="0" style="display:none;visibility:hidden"&gt;&lt;/iframe&gt;&lt;/noscript&gt;
+
+  &lt;div class="container"&gt;
+    &lt;article class="term-page"&gt;
+      &lt;header class="term-header"&gt;
+        &lt;h1&gt;&lt;i class="fas fa-users icon"&gt;&lt;/i&gt;キュー構造 (Queue)&lt;/h1&gt;
+        &lt;p class="reading"&gt;よみかた：&lt;strong&gt;きゅー&lt;/strong&gt;&lt;/p&gt;
+      &lt;/header&gt;
+
+      &lt;section class="term-intro"&gt;
+        &lt;h2&gt;意味&lt;/h2&gt;
+        &lt;p&gt;
+          &lt;strong&gt;先に入れたものが、先に出ていく&lt;/strong&gt;という仕組みのデータ構造のこと。&lt;br&gt;
+          専門用語で「&lt;strong&gt;FIFO（First In, First Out）&lt;/strong&gt;」と呼ばれます。&lt;br&gt;
+          レジの行列やバスの順番待ちなど、現実世界の「順番通り」の場面とそっくりです。
+        &lt;/p&gt;
+      &lt;/section&gt;
+
+      &lt;section class="term-point"&gt;
+        &lt;h2&gt;ポイント&lt;/h2&gt;
+        &lt;ul&gt;
+          &lt;li&gt;&lt;code&gt;enqueue&lt;/code&gt; (エンキュー) : &lt;strong&gt;列の後ろに並ぶ&lt;/strong&gt;ようにデータを追加します。&lt;/li&gt;
+          &lt;li&gt;&lt;code&gt;dequeue&lt;/code&gt; (デキュー) : &lt;strong&gt;列の先頭から出る&lt;/strong&gt;ようにデータを取り出します。&lt;/li&gt;
+          &lt;li&gt;印刷ジョブの管理やタスク処理など、&lt;strong&gt;順番を守って処理したいとき&lt;/strong&gt;に最適です。&lt;/li&gt;
+        &lt;/ul&gt;
+      &lt;/section&gt;
+
+      &lt;section class="term-visual"&gt;
+        &lt;h2&gt;実際に体験してみよう&lt;/h2&gt;
+        &lt;p&gt;下のボタンを押して、キューの「先入れ先出し」を体験してみましょう。「Enqueue」で列の末尾に人を追加し、「Dequeue」で列の先頭から人が退出します。&lt;/p&gt;
+        &lt;div class="demo-section"&gt;
+          &lt;div class="demo-controls"&gt;
+            &lt;button class="demo-button" onclick="enqueueItem()"&gt;Enqueue&lt;/button&gt;
+            &lt;button class="demo-button dequeue" onclick="dequeueItem()"&gt;Dequeue&lt;/button&gt;
+            &lt;p id="demo-message"&gt;&lt;/p&gt;
+          &lt;/div&gt;
+          &lt;div id="queue-visualizer"&gt;
+            &lt;!-- Queue items will be added here --&gt;
+          &lt;/div&gt;
+        &lt;/div&gt;
+      &lt;/section&gt;
+
+      &lt;section class="term-code"&gt;
+        &lt;h2&gt;コードを書いてみよう&lt;/h2&gt;
+        &lt;p&gt;JavaScriptの配列を使えば、簡単にキューを実装できます。&lt;code&gt;push&lt;/code&gt;で追加し、&lt;code&gt;shift&lt;/code&gt;で取り出すことで「先入れ先出し」を実現します。&lt;/p&gt;
+        &lt;details&gt;
+          &lt;summary&gt;サンプルコードを見る (JavaScript)&lt;/summary&gt;
+          &lt;div class="code-example"&gt;
+&lt;pre&gt;&lt;code class="language-javascript"&gt;&lt;span class="token comment"&gt;// 配列を使った簡単なキュー&lt;/span&gt;
+&lt;span class="token keyword"&gt;const&lt;/span&gt; queue &lt;span class="token operator"&gt;=&lt;/span&gt; &lt;span class="token punctuation"&gt;[&lt;/span&gt;&lt;span class="token punctuation"&gt;]&lt;/span&gt;&lt;span class="token punctuation"&gt;;&lt;/span&gt;
+
+&lt;span class="token comment"&gt;// enqueue（追加：後ろに並ぶ）&lt;/span&gt;
+queue&lt;span class="token punctuation"&gt;.&lt;/span&gt;&lt;span class="token function"&gt;push&lt;/span&gt;&lt;span class="token punctuation"&gt;(&lt;/span&gt;&lt;span class="token string"&gt;"タスク1"&lt;/span&gt;&lt;span class="token punctuation"&gt;)&lt;/span&gt;&lt;span class="token punctuation"&gt;;&lt;/span&gt;
+queue&lt;span class="token punctuation"&gt;.&lt;/span&gt;&lt;span class="token function"&gt;push&lt;/span&gt;&lt;span class="token punctuation"&gt;(&lt;/span&gt;&lt;span class="token string"&gt;"タスク2"&lt;/span&gt;&lt;span class="token punctuation"&gt;)&lt;/span&gt;&lt;span class="token punctuation"&gt;;&lt;/span&gt;
+queue&lt;span class="token punctuation"&gt;.&lt;/span&gt;&lt;span class="token function"&gt;push&lt;/span&gt;&lt;span class="token punctuation"&gt;(&lt;/span&gt;&lt;span class="token string"&gt;"タスク3"&lt;/span&gt;&lt;span class="token punctuation"&gt;)&lt;/span&gt;&lt;span class="token punctuation"&gt;;&lt;/span&gt;
+
+&lt;span class="token comment"&gt;// dequeue（取り出し：先頭から出る）&lt;/span&gt;
+&lt;span class="token keyword"&gt;const&lt;/span&gt; firstTask &lt;span class="token operator"&gt;=&lt;/span&gt; queue&lt;span class="token punctuation"&gt;.&lt;/span&gt;&lt;span class="token function"&gt;shift&lt;/span&gt;&lt;span class="token punctuation"&gt;(&lt;/span&gt;&lt;span class="token punctuation"&gt;)&lt;/span&gt;&lt;span class="token punctuation"&gt;;&lt;/span&gt;
+
+console&lt;span class="token punctuation"&gt;.&lt;/span&gt;&lt;span class="token function"&gt;log&lt;/span&gt;&lt;span class="token punctuation"&gt;(&lt;/span&gt;firstTask&lt;span class="token punctuation"&gt;)&lt;/span&gt;&lt;span class="token punctuation"&gt;;&lt;/span&gt; &lt;span class="token comment"&gt;// =&gt; "タスク1"&lt;/span&gt;
+console&lt;span class="token punctuation"&gt;.&lt;/span&gt;&lt;span class="token function"&gt;log&lt;/span&gt;&lt;span class="token punctuation"&gt;(&lt;/span&gt;queue&lt;span class="token punctuation"&gt;)&lt;/span&gt;&lt;span class="token punctuation"&gt;;&lt;/span&gt;     &lt;span class="token comment"&gt;// =&gt; ["タスク2", "タスク3"]&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;
+          &lt;/div&gt;
+        &lt;/details&gt;
+
+        &lt;details&gt;
+          &lt;summary&gt;HTML/CSS/JS 統合版テンプレート&lt;/summary&gt;
+          &lt;p style="padding: 15px 20px 0;"&gt;このページの完全なコードです。以下の内容をコピーして&lt;code&gt;index.html&lt;/code&gt;などの名前で保存すると、ご自身のPCやブラウザで直接開いて確認できます。&lt;/p&gt;
+          &lt;div class="code-example"&gt;
+            &lt;pre&gt;&lt;code&gt;&lt;!DOCTYPE html&gt;
+&lt;html lang="ja"&gt;
+&lt;head&gt;
+  &lt;meta charset="UTF-8"&gt;
+  &lt;meta name="viewport" content="width=device-width, initial-scale=1.0"&gt;
+  
+  &lt;!-- SEO メタタグ --&gt;
+  &lt;title&gt;キュー構造 - IT用語辞典&lt;/title&gt;
+  &lt;meta name="description" content="先に入れたものが、先に出ていくという仕組みのデータ構造のこと。専門用語で「FIFO（First In, First Out）」と呼ばれます。レジの行列やバスの順番待ちなど、現実世界の「順番通り」の場面とそっくりです。"&gt;
+  &lt;meta name="keywords" content="キュー, FIFO, データ構造, プログラミング"&gt;
+  &lt;meta name="author" content="IT用語辞典"&gt;
+  &lt;meta name="robots" content="index, follow"&gt;
+  &lt;link rel="canonical" href="https://itwords.example.com/queue"&gt;
+  
+  &lt;!-- Open Graph / SNS --&gt;
+  &lt;meta property="og:type" content="article"&gt;
+  &lt;meta property="og:title" content="キュー構造 - IT用語辞典"&gt;
+  &lt;meta property="og:description" content="先に入れたものが、先に出ていくという仕組みのデータ構造のこと。専門用語で「FIFO（First In, First Out）」と呼ばれます。レジの行列やバスの順番待ちなど、現実世界の「順番通り」の場面とそっくりです。"&gt;
+  &lt;meta property="og:url" content="https://itwords.example.com/queue"&gt;
+  &lt;meta property="og:site_name" content="IT用語辞典"&gt;
+  &lt;meta property="og:image" content="https://itwords.example.com/images/queue.jpg"&gt;
+  &lt;meta name="twitter:card" content="summary_large_image"&gt;
+  &lt;meta name="twitter:title" content="キュー構造 - IT用語辞典"&gt;
+  &lt;meta property="twitter:description" content="先に入れたものが、先に出ていくという仕組みのデータ構造のこと。専門用語で「FIFO（First In, First Out）」と呼ばれます。レジの行列やバスの順番待ちなど、現実世界の「順番通り」の場面とそっくりです。"&gt;
+  &lt;meta name="twitter:image" content="https://itwords.example.com/images/queue.jpg"&gt;
+  
+  &lt;!-- Google Tag Manager --&gt;
+  &lt;script&gt;(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+  new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+  j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+  'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+  })(window,document,'script','dataLayer','GTM-XXXXXXX');&lt;/script&gt;
+  
+  &lt;!-- Google Analytics 4 --&gt;
+  &lt;script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"&gt;&lt;/script&gt;
+  &lt;script&gt;
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-XXXXXXXXXX');
+  &lt;/script&gt;
+  
+  &lt;!-- 構造化データ (JSON-LD) --&gt;
+  &lt;script type="application/ld+json"&gt;
+  {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "headline": "キュー構造 - IT用語辞典",
+    "description": "先に入れたものが、先に出ていくという仕組みのデータ構造のこと。専門用語で「FIFO（First In, First Out）」と呼ばれます。レジの行列やバスの順番待ちなど、現実世界の「順番通り」の場面とそっくりです。",
+    "author": {
+      "@type": "Organization",
+      "name": "IT用語辞典"
+    },
+    "datePublished": "2025-07-21",
+    "dateModified": "2025-07-21",
+    "keywords": "キュー, FIFO, データ構造, プログラミング",
+    "articleSection": "データ構造・アルゴリズム",
+    "timeRequired": "5分",
+    "url": "https://itwords.example.com/queue",
+    "mainEntityOfPage": {
+      "@type": "WebPage",
+      "@id": "https://itwords.example.com/queue"
+    },
+    "publisher": {
+      "@type": "Organization",
+      "name": "IT用語辞典"
+    }
+  }
+  &lt;/script&gt;
+  
+  &lt;!-- Font Awesome CDN --&gt;
+  &lt;link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css"&gt;
+  &lt;link rel="stylesheet" href="../styles.css"&gt;
+  &lt;style&gt;
+    /* 個別ページ用のスタイル調整 */
+    h1 .icon {
+      color: #82c9a0;
+    }
+    .summary-box {
+        background-color: #f9f7ef;
+        border-left: 5px solid #82c9a0;
+        padding: 25px;
+        margin: 40px auto;
+        max-width: 90%;
+        font-size: 1.2em;
+        font-weight: bold;
+        text-align: center;
+    }
+
+    /* --- Demo Section --- */
+    .demo-button {
+      background-color: #82c9a0;
+    }
+    .demo-button:hover {
+      background-color: #70b88f;
+    }
+    .demo-button.dequeue {
+        background-color: #ea9b8a;
+    }
+    .demo-button.dequeue:hover {
+        background-color: #e08a7a;
+    }
+    #queue-visualizer {
+        border: 2px dashed #ccc;
+        border-radius: 5px;
+        padding: 20px;
+        min-height: 60px;
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        overflow-x: auto;
+    }
+    .queue-item {
+        background-color: #82c9a0;
+        color: white;
+        padding: 10px 20px;
+        margin-right: 10px;
+        border-radius: 5px;
+        font-weight: bold;
+        white-space: nowrap;
+        animation: slideIn 0.4s ease-out;
+    }
+    @keyframes slideIn {
+        from { opacity: 0; transform: translateX(20px); }
+        to { opacity: 1; transform: translateX(0); }
+    }
+    #demo-message {
+      margin-top: 20px;
+      font-weight: bold;
+      min-height: 1.5em;
+    }
+  &lt;/style&gt;
+&lt;/head&gt;
+&lt;body&gt;
+  &lt;!-- Google Tag Manager (noscript) --&gt;
+  &lt;noscript&gt;&lt;iframe src="https://www.googletagmanager.com/gtm.ns.html?id=GTM-XXXXXXX"
+  height="0" width="0" style="display:none;visibility:hidden"&gt;&lt;/iframe&gt;&lt;/noscript&gt;
+
+  &lt;div class="container"&gt;
+    &lt;article class="term-page"&gt;
+      &lt;header class="term-header"&gt;
+        &lt;h1&gt;&lt;i class="fas fa-users icon"&gt;&lt;/i&gt;キュー構造 (Queue)&lt;/h1&gt;
+        &lt;p class="reading"&gt;よみかた：&lt;strong&gt;きゅー&lt;/strong&gt;&lt;/p&gt;
+      &lt;/header&gt;
+
+      &lt;section class="term-intro"&gt;
+        &lt;h2&gt;意味&lt;/h2&gt;
+        &lt;p&gt;
+          &lt;strong&gt;先に入れたものが、先に出ていく&lt;/strong&gt;という仕組みのデータ構造のこと。&lt;br&gt;
+          専門用語で「&lt;strong&gt;FIFO（First In, First Out）&lt;/strong&gt;」と呼ばれます。&lt;br&gt;
+          レジの行列やバスの順番待ちなど、現実世界の「順番通り」の場面とそっくりです。
+        &lt;/p&gt;
+      &lt;/section&gt;
+
+      &lt;section class="term-point"&gt;
+        &lt;h2&gt;ポイント&lt;/h2&gt;
+        &lt;ul&gt;
+          &lt;li&gt;&lt;code&gt;enqueue&lt;/code&gt; (エンキュー) : &lt;strong&gt;列の後ろに並ぶ&lt;/strong&gt;ようにデータを追加します。&lt;/li&gt;
+          &lt;li&gt;&lt;code&gt;dequeue&lt;/code&gt; (デキュー) : &lt;strong&gt;列の先頭から出る&lt;/strong&gt;ようにデータを取り出します。&lt;/li&gt;
+          &lt;li&gt;印刷ジョブの管理やタスク処理など、&lt;strong&gt;順番を守って処理したいとき&lt;/strong&gt;に最適です。&lt;/li&gt;
+        &lt;/ul&gt;
+      &lt;/section&gt;
+
+      &lt;section class="term-visual"&gt;
+        &lt;h2&gt;実際に体験してみよう&lt;/h2&gt;
+        &lt;p&gt;下のボタンを押して、キューの「先入れ先出し」を体験してみましょう。「Enqueue」で列の末尾に人を追加し、「Dequeue」で列の先頭から人が退出します。&lt;/p&gt;
+        &lt;div class="demo-section"&gt;
+          &lt;div class="demo-controls"&gt;
+            &lt;button class="demo-button" onclick="enqueueItem()"&gt;Enqueue&lt;/button&gt;
+            &lt;button class="demo-button dequeue" onclick="dequeueItem()"&gt;Dequeue&lt;/button&gt;
+            &lt;p id="demo-message"&gt;&lt;/p&gt;
+          &lt;/div&gt;
+          &lt;div id="queue-visualizer"&gt;
+            &lt;!-- Queue items will be added here --&gt;
+          &lt;/div&gt;
+        &lt;/div&gt;
+      &lt;/section&gt;
+
+      &lt;section class="term-code"&gt;
+        &lt;h2&gt;コードを書いてみよう&lt;/h2&gt;
+        &lt;p&gt;JavaScriptの配列を使えば、簡単にキューを実装できます。&lt;code&gt;push&lt;/code&gt;で追加し、&lt;code&gt;shift&lt;/code&gt;で取り出すことで「先入れ先出し」を実現します。&lt;/p&gt;
+        &lt;details&gt;
+          &lt;summary&gt;サンプルコードを見る (JavaScript)&lt;/summary&gt;
+          &lt;div class="code-example"&gt;
+&lt;pre&gt;&lt;code class="language-javascript"&gt;&lt;span class="token comment"&gt;// 配列を使った簡単なキュー&lt;/span&gt;
+&lt;span class="token keyword"&gt;const&lt;/span&gt; queue &lt;span class="token operator"&gt;=&lt;/span&gt; &lt;span class="token punctuation"&gt;[&lt;/span&gt;&lt;span class="token punctuation"&gt;]&lt;/span&gt;&lt;span class="token punctuation"&gt;;&lt;/span&gt;
+
+&lt;span class="token comment"&gt;// enqueue（追加：後ろに並ぶ）&lt;/span&gt;
+queue&lt;span class="token punctuation"&gt;.&lt;/span&gt;&lt;span class="token function"&gt;push&lt;/span&gt;&lt;span class="token punctuation"&gt;(&lt;/span&gt;&lt;span class="token string"&gt;"タスク1"&lt;/span&gt;&lt;span class="token punctuation"&gt;)&lt;/span&gt;&lt;span class="token punctuation"&gt;;&lt;/span&gt;
+queue&lt;span class="token punctuation"&gt;.&lt;/span&gt;&lt;span class="token function"&gt;push&lt;/span&gt;&lt;span class="token punctuation"&gt;(&lt;/span&gt;&lt;span class="token string"&gt;"タスク2"&lt;/span&gt;&lt;span class="token punctuation"&gt;)&lt;/span&gt;&lt;span class="token punctuation"&gt;;&lt;/span&gt;
+queue&lt;span class="token punctuation"&gt;.&lt;/span&gt;&lt;span class="token function"&gt;push&lt;/span&gt;&lt;span class="token punctuation"&gt;(&lt;/span&gt;&lt;span class="token string"&gt;"タスク3"&lt;/span&gt;&lt;span class="token punctuation"&gt;)&lt;/span&gt;&lt;span class="token punctuation"&gt;;&lt;/span&gt;
+
+&lt;span class="token comment"&gt;// dequeue（取り出し：先頭から出る）&lt;/span&gt;
+&lt;span class="token keyword"&gt;const&lt;/span&gt; firstTask &lt;span class="token operator"&gt;=&lt;/span&gt; queue&lt;span class="token punctuation"&gt;.&lt;/span&gt;&lt;span class="token function"&gt;shift&lt;/span&gt;&lt;span class="token punctuation"&gt;(&lt;/span&gt;&lt;span class="token punctuation"&gt;)&lt;/span&gt;&lt;span class="token punctuation"&gt;;&lt;/span&gt;
+
+console&lt;span class="token punctuation"&gt;.&lt;/span&gt;&lt;span class="token function"&gt;log&lt;/span&gt;&lt;span class="token punctuation"&gt;(&lt;/span&gt;firstTask&lt;span class="token punctuation"&gt;)&lt;/span&gt;&lt;span class="token punctuation"&gt;;&lt;/span&gt; &lt;span class="token comment"&gt;// =&gt; "タスク1"&lt;/span&gt;
+console&lt;span class="token punctuation"&gt;.&lt;/span&gt;&lt;span class="token function"&gt;log&lt;/span&gt;&lt;span class="token punctuation"&gt;(&lt;/span&gt;queue&lt;span class="token punctuation"&gt;)&lt;/span&gt;&lt;span class="token punctuation"&gt;;&lt;/span&gt;     &lt;span class="token comment"&gt;// =&gt; ["タスク2", "タスク3"]&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;
+          &lt;/div&gt;
+        &lt;/details&gt;
+
+        &lt;details&gt;
+          &lt;summary&gt;HTML/CSS/JS 統合版テンプレート&lt;/summary&gt;
+          &lt;p style="padding: 15px 20px 0;"&gt;このページの完全なコードです。以下の内容をコピーして&lt;code&gt;index.html&lt;/code&gt;などの名前で保存すると、ご自身のPCやブラウザで直接開いて確認できます。&lt;/p&gt;
+          &lt;div class="code-example"&gt;
+            &lt;pre&gt;&lt;code&gt;&lt;!DOCTYPE html&gt;
+&lt;html lang="ja"&gt;
+&lt;head&gt;
+  &lt;meta charset="UTF-8"&gt;
+  &lt;meta name="viewport" content="width=device-width, initial-scale=1.0"&gt;
+  
+  &lt;!-- SEO メタタグ --&gt;
+  &lt;title&gt;キュー構造 - IT用語辞典&lt;/title&gt;
+  &lt;meta name="description" content="先に入れたものが、先に出ていくという仕組みのデータ構造のこと。専門用語で「FIFO（First In, First Out）」と呼ばれます。レジの行列やバスの順番待ちなど、現実世界の「順番通り」の場面とそっくりです。"&gt;
+  &lt;meta name="keywords" content="キュー, FIFO, データ構造, プログラミング"&gt;
+  &lt;meta name="author" content="IT用語辞典"&gt;
+  &lt;meta name="robots" content="index, follow"&gt;
+  &lt;link rel="canonical" href="https://itwords.example.com/queue"&gt;
+  
+  &lt;!-- Open Graph / SNS --&gt;
+  &lt;meta property="og:type" content="article"&gt;
+  &lt;meta property="og:title" content="キュー構造 - IT用語辞典"&gt;
+  &lt;meta property="og:description" content="先に入れたものが、先に出ていくという仕組みのデータ構造のこと。専門用語で「FIFO（First In, First Out）」と呼ばれます。レジの行列やバスの順番待ちなど、現実世界の「順番通り」の場面とそっくりです。"&gt;
+  &lt;meta property="og:url" content="https://itwords.example.com/queue"&gt;
+  &lt;meta property="og:site_name" content="IT用語辞典"&gt;
+  &lt;meta property="og:image" content="https://itwords.example.com/images/queue.jpg"&gt;
+  &lt;meta name="twitter:card" content="summary_large_image"&gt;
+  &lt;meta name="twitter:title" content="キュー構造 - IT用語辞典"&gt;
+  &lt;meta property="twitter:description" content="先に入れたものが、先に出ていくという仕組みのデータ構造のこと。専門用語で「FIFO（First In, First Out）」と呼ばれます。レジの行列やバスの順番待ちなど、現実世界の「順番通り」の場面とそっくりです。"&gt;
+  &lt;meta name="twitter:image" content="https://itwords.example.com/images/queue.jpg"&gt;
+  
+  &lt;!-- Google Tag Manager --&gt;
+  &lt;script&gt;(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+  new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+  j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+  'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+  })(window,document,'script','dataLayer','GTM-XXXXXXX');&lt;/script&gt;
+  
+  &lt;!-- Google Analytics 4 --&gt;
+  &lt;script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"&gt;&lt;/script&gt;
+  &lt;script&gt;
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-XXXXXXXXXX');
+  &lt;/script&gt;
+  
+  &lt;!-- 構造化データ (JSON-LD) --&gt;
+  &lt;script type="application/ld+json"&gt;
+  {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "headline": "キュー構造 - IT用語辞典",
+    "description": "先に入れたものが、先に出ていくという仕組みのデータ構造のこと。専門用語で「FIFO（First In, First Out）」と呼ばれます。レジの行列やバスの順番待ちなど、現実世界の「順番通り」の場面とそっくりです。",
+    "author": {
+      "@type": "Organization",
+      "name": "IT用語辞典"
+    },
+    "datePublished": "2025-07-21",
+    "dateModified": "2025-07-21",
+    "keywords": "キュー, FIFO, データ構造, プログラミング",
+    "articleSection": "データ構造・アルゴリズム",
+    "timeRequired": "5分",
+    "url": "https://itwords.example.com/queue",
+    "mainEntityOfPage": {
+      "@type": "WebPage",
+      "@id": "https://itwords.example.com/queue"
+    },
+    "publisher": {
+      "@type": "Organization",
+      "name": "IT用語辞典"
+    }
+  }
+  &lt;/script&gt;
+  
+  &lt;!-- Font Awesome CDN --&gt;
+  &lt;link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css"&gt;
+  &lt;link rel="stylesheet" href="../styles.css"&gt;
+  &lt;style&gt;
+    /* 個別ページ用のスタイル調整 */
+    h1 .icon {
+      color: #82c9a0;
+    }
+    .summary-box {
+        background-color: #f9f7ef;
+        border-left: 5px solid #82c9a0;
+        padding: 25px;
+        margin: 40px auto;
+        max-width: 90%;
+        font-size: 1.2em;
+        font-weight: bold;
+        text-align: center;
+    }
+
+    /* --- Demo Section --- */
+    .demo-button {
+      background-color: #82c9a0;
+    }
+    .demo-button:hover {
+      background-color: #70b88f;
+    }
+    .demo-button.dequeue {
+        background-color: #ea9b8a;
+    }
+    .demo-button.dequeue:hover {
+        background-color: #e08a7a;
+    }
+    #queue-visualizer {
+        border: 2px dashed #ccc;
+        border-radius: 5px;
+        padding: 20px;
+        min-height: 60px;
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        overflow-x: auto;
+    }
+    .queue-item {
+        background-color: #82c9a0;
+        color: white;
+        padding: 10px 20px;
+        margin-right: 10px;
+        border-radius: 5px;
+        font-weight: bold;
+        white-space: nowrap;
+        animation: slideIn 0.4s ease-out;
+    }
+    @keyframes slideIn {
+        from { opacity: 0; transform: translateX(20px); }
+        to { opacity: 1; transform: translateX(0); }
+    }
+    #demo-message {
+      margin-top: 20px;
+      font-weight: bold;
+      min-height: 1.5em;
+    }
+  &lt;/style&gt;
+&lt;/head&gt;
+&lt;body&gt;
+  &lt;!-- Google Tag Manager (noscript) --&gt;
+  &lt;noscript&gt;&lt;iframe src="https://www.googletagmanager.com/gtm.ns.html?id=GTM-XXXXXXX"
+  height="0" width="0" style="display:none;visibility:hidden"&gt;&lt;/iframe&gt;&lt;/noscript&gt;
+
+  &lt;div class="container"&gt;
+    &lt;article class="term-page"&gt;
+      &lt;header class="term-header"&gt;
+        &lt;h1&gt;&lt;i class="fas fa-users icon"&gt;&lt;/i&gt;キュー構造 (Queue)&lt;/h1&gt;
+        &lt;p class="reading"&gt;よみかた：&lt;strong&gt;きゅー&lt;/strong&gt;&lt;/p&gt;
+      &lt;/header&gt;
+
+      &lt;section class="term-intro"&gt;
+        &lt;h2&gt;意味&lt;/h2&gt;
+        &lt;p&gt;
+          &lt;strong&gt;先に入れたものが、先に出ていく&lt;/strong&gt;という仕組みのデータ構造のこと。&lt;br&gt;
+          専門用語で「&lt;strong&gt;FIFO（First In, First Out）&lt;/strong&gt;」と呼ばれます。&lt;br&gt;
+          レジの行列やバスの順番待ちなど、現実世界の「順番通り」の場面とそっくりです。
+        &lt;/p&gt;
+      &lt;/section&gt;
+
+      &lt;section class="term-point"&gt;
+        &lt;h2&gt;ポイント&lt;/h2&gt;
+        &lt;ul&gt;
+          &lt;li&gt;&lt;code&gt;enqueue&lt;/code&gt; (エンキュー) : &lt;strong&gt;列の後ろに並ぶ&lt;/strong&gt;ようにデータを追加します。&lt;/li&gt;
+          &lt;li&gt;&lt;code&gt;dequeue&lt;/code&gt; (デキュー) : &lt;strong&gt;列の先頭から出る&lt;/strong&gt;ようにデータを取り出します。&lt;/li&gt;
+          &lt;li&gt;印刷ジョブの管理やタスク処理など、&lt;strong&gt;順番を守って処理したいとき&lt;/strong&gt;に最適です。&lt;/li&gt;
+        &lt;/ul&gt;
+      &lt;/section&gt;
+
+      &lt;section class="term-visual"&gt;
+        &lt;h2&gt;実際に体験してみよう&lt;/h2&gt;
+        &lt;p&gt;下のボタンを押して、キューの「先入れ先出し」を体験してみましょう。「Enqueue」で列の末尾に人を追加し、「Dequeue」で列の先頭から人が退出します。&lt;/p&gt;
+        &lt;div class="demo-section"&gt;
+          &lt;div class="demo-controls"&gt;
+            &lt;button class="demo-button" onclick="enqueueItem()"&gt;Enqueue&lt;/button&gt;
+            &lt;button class="demo-button dequeue" onclick="dequeueItem()"&gt;Dequeue&lt;/button&gt;
+            &lt;p id="demo-message"&gt;&lt;/p&gt;
+          &lt;/div&gt;
+          &lt;div id="queue-visualizer"&gt;
+            &lt;!-- Queue items will be added here --&gt;
+          &lt;/div&gt;
+        &lt;/div&gt;
+      &lt;/section&gt;
+
+      &lt;section class="term-code"&gt;
+        &lt;h2&gt;コードを書いてみよう&lt;/h2&gt;
+        &lt;p&gt;JavaScriptの配列を使えば、簡単にキューを実装できます。&lt;code&gt;push&lt;/code&gt;で追加し、&lt;code&gt;shift&lt;/code&gt;で取り出すことで「先入れ先出し」を実現します。&lt;/p&gt;
+        &lt;details&gt;
+          &lt;summary&gt;サンプルコードを見る (JavaScript)&lt;/summary&gt;
+          &lt;div class="code-example"&gt;
+&lt;pre&gt;&lt;code class="language-javascript"&gt;&lt;span class="token comment"&gt;// 配列を使った簡単なキュー&lt;/span&gt;
+&lt;span class="token keyword"&gt;const&lt;/span&gt; queue &lt;span class="token operator"&gt;=&lt;/span&gt; &lt;span class="token punctuation"&gt;[&lt;/span&gt;&lt;span class="token punctuation"&gt;]&lt;/span&gt;&lt;span class="token punctuation"&gt;;&lt;/span&gt;
+
+&lt;span class="token comment"&gt;// enqueue（追加：後ろに並ぶ）&lt;/span&gt;
+queue&lt;span class="token punctuation"&gt;.&lt;/span&gt;&lt;span class="token function"&gt;push&lt;/span&gt;&lt;span class="token punctuation"&gt;(&lt;/span&gt;&lt;span class="token string"&gt;"タスク1"&lt;/span&gt;&lt;span class="token punctuation"&gt;)&lt;/span&gt;&lt;span class="token punctuation"&gt;;&lt;/span&gt;
+queue&lt;span class="token punctuation"&gt;.&lt;/span&gt;&lt;span class="token function"&gt;push&lt;/span&gt;&lt;span class="token punctuation"&gt;(&lt;/span&gt;&lt;span class="token string"&gt;"タスク2"&lt;/span&gt;&lt;span class="token punctuation"&gt;)&lt;/span&gt;&lt;span class="token punctuation"&gt;;&lt;/span&gt;
+queue&lt;span class="token punctuation"&gt;.&lt;/span&gt;&lt;span class="token function"&gt;push&lt;/span&gt;&lt;span class="token punctuation"&gt;(&lt;/span&gt;&lt;span class="token string"&gt;"タスク3"&lt;/span&gt;&lt;span class="token punctuation"&gt;)&lt;/span&gt;&lt;span class="token punctuation"&gt;;&lt;/span&gt;
+
+&lt;span class="token comment"&gt;// dequeue（取り出し：先頭から出る）&lt;/span&gt;
+&lt;span class="token keyword"&gt;const&lt;/span&gt; firstTask &lt;span class="token operator"&gt;=&lt;/span&gt; queue&lt;span class="token punctuation"&gt;.&lt;/span&gt;&lt;span class="token function"&gt;shift&lt;/span&gt;&lt;span class="token punctuation"&gt;(&lt;/span&gt;&lt;span class="token punctuation"&gt;)&lt;/span&gt;&lt;span class="token punctuation"&gt;;&lt;/span&gt;
+
+console&lt;span class="token punctuation"&gt;.&lt;/span&gt;&lt;span class="token function"&gt;log&lt;/span&gt;&lt;span class="token punctuation"&gt;(&lt;/span&gt;firstTask&lt;span class="token punctuation"&gt;)&lt;/span&gt;&lt;span class="token punctuation"&gt;;&lt;/span&gt; &lt;span class="token comment"&gt;// =&gt; "タスク1"&lt;/span&gt;
+console&lt;span class="token punctuation"&gt;.&lt;/span&gt;&lt;span class="token function"&gt;log&lt;/span&gt;&lt;span class="token punctuation"&gt;(&lt;/span&gt;queue&lt;span class="token punctuation"&gt;)&lt;/span&gt;&lt;span class="token punctuation"&gt;;&lt;/span&gt;     &lt;span class="token comment"&gt;// =&gt; ["タスク2", "タスク3"]&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;
+          &lt;/div&gt;
+        &lt;/details&gt;
+
+        &lt;details&gt;
+          &lt;summary&gt;HTML/CSS/JS 統合版テンプレート&lt;/summary&gt;
+          &lt;p style="padding: 15px 20px 0;"&gt;このページの完全なコードです。以下の内容をコピーして&lt;code&gt;index.html&lt;/code&gt;などの名前で保存すると、ご自身のPCやブラウザで直接開いて確認できます。&lt;/p&gt;
+          &lt;div class="code-example"&gt;
+            &lt;pre&gt;&lt;code&gt;&lt;!DOCTYPE html&gt;
+&lt;html lang="ja"&gt;
+&lt;head&gt;
+  &lt;meta charset="UTF-8"&gt;
+  &lt;meta name="viewport" content="width=device-width, initial-scale=1.0"&gt;
+  
+  &lt;!-- SEO メタタグ --&gt;
+  &lt;title&gt;キュー構造 - IT用語辞典&lt;/title&gt;
+  &lt;meta name="description" content="先に入れたものが、先に出ていくという仕組みのデータ構造のこと。専門用語で「FIFO（First In, First Out）」と呼ばれます。レジの行列やバスの順番待ちなど、現実世界の「順番通り」の場面とそっくりです。"&gt;
+  &lt;meta name="keywords" content="キュー, FIFO, データ構造, プログラミング"&gt;
+  &lt;meta name="author" content="IT用語辞典"&gt;
+  &lt;meta name="robots" content="index, follow"&gt;
+  &lt;link rel="canonical" href="https://itwords.example.com/queue"&gt;
+  
+  &lt;!-- Open Graph / SNS --&gt;
+  &lt;meta property="og:type" content="article"&gt;
+  &lt;meta property="og:title" content="キュー構造 - IT用語辞典"&gt;
+  &lt;meta property="og:description" content="先に入れたものが、先に出ていくという仕組みのデータ構造のこと。専門用語で「FIFO（First In, First Out）」と呼ばれます。レジの行列やバスの順番待ちなど、現実世界の「順番通り」の場面とそっくりです。"&gt;
+  &lt;meta property="og:url" content="https://itwords.example.com/queue"&gt;
+  &lt;meta property="og:site_name" content="IT用語辞典"&gt;
+  &lt;meta property="og:image" content="https://itwords.example.com/images/queue.jpg"&gt;
+  &lt;meta name="twitter:card" content="summary_large_image"&gt;
+  &lt;meta name="twitter:title" content="キュー構造 - IT用語辞典"&gt;
+  &lt;meta property="twitter:description" content="先に入れたものが、先に出ていくという仕組みのデータ構造のこと。専門用語で「FIFO（First In, First Out）」と呼ばれます。レジの行列やバスの順番待ちなど、現実世界の「順番通り」の場面とそっくりです。"&gt;
+  &lt;meta name="twitter:image" content="https://itwords.example.com/images/queue.jpg"&gt;
+  
+  &lt;!-- Google Tag Manager --&gt;
+  &lt;script&gt;(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+  new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+  j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+  'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+  })(window,document,'script','dataLayer','GTM-XXXXXXX');&lt;/script&gt;
+  
+  &lt;!-- Google Analytics 4 --&gt;
+  &lt;script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"&gt;&lt;/script&gt;
+  &lt;script&gt;
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-XXXXXXXXXX');
+  &lt;/script&gt;
+  
+  &lt;!-- 構造化データ (JSON-LD) --&gt;
+  &lt;script type="application/ld+json"&gt;
+  {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "headline": "キュー構造 - IT用語辞典",
+    "description": "先に入れたものが、先に出ていくという仕組みのデータ構造のこと。専門用語で「FIFO（First In, First Out）」と呼ばれます。レジの行列やバスの順番待ちなど、現実世界の「順番通り」の場面とそっくりです。",
+    "author": {
+      "@type": "Organization",
+      "name": "IT用語辞典"
+    },
+    "datePublished": "2025-07-21",
+    "dateModified": "2025-07-21",
+    "keywords": "キュー, FIFO, データ構造, プログラミング",
+    "articleSection": "データ構造・アルゴリズム",
+    "timeRequired": "5分",
+    "url": "https://itwords.example.com/queue",
+    "mainEntityOfPage": {
+      "@type": "WebPage",
+      "@id": "https://itwords.example.com/queue"
+    },
+    "publisher": {
+      "@type": "Organization",
+      "name": "IT用語辞典"
+    }
+  }
+  &lt;/script&gt;
+  
+  &lt;!-- Font Awesome CDN --&gt;
+  &lt;link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css"&gt;
+  &lt;link rel="stylesheet" href="../styles.css"&gt;
+  &lt;style&gt;
+    /* 個別ページ用のスタイル調整 */
+    h1 .icon {
+      color: #82c9a0;
+    }
+    .summary-box {
+        background-color: #f9f7ef;
+        border-left: 5px solid #82c9a0;
+        padding: 25px;
+        margin: 40px auto;
+        max-width: 90%;
+        font-size: 1.2em;
+        font-weight: bold;
+        text-align: center;
+    }
+
+    /* --- Demo Section --- */
+    .demo-button {
+      background-color: #82c9a0;
+    }
+    .demo-button:hover {
+      background-color: #70b88f;
+    }
+    .demo-button.dequeue {
+        background-color: #ea9b8a;
+    }
+    .demo-button.dequeue:hover {
+        background-color: #e08a7a;
+    }
+    #queue-visualizer {
+        border: 2px dashed #ccc;
+        border-radius: 5px;
+        padding: 20px;
+        min-height: 60px;
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        overflow-x: auto;
+    }
+    .queue-item {
+        background-color: #82c9a0;
+        color: white;
+        padding: 10px 20px;
+        margin-right: 10px;
+        border-radius: 5px;
+        font-weight: bold;
+        white-space: nowrap;
+        animation: slideIn 0.4s ease-out;
+    }
+    @keyframes slideIn {
+        from { opacity: 0; transform: translateX(20px); }
+        to { opacity: 1; transform: translateX(0); }
+    }
+    #demo-message {
+      margin-top: 20px;
+      font-weight: bold;
+      min-height: 1.5em;
+    }
+  &lt;/style&gt;
+&lt;/head&gt;
+&lt;body&gt;
+  &lt;!-- Google Tag Manager (noscript) --&gt;
+  &lt;noscript&gt;&lt;iframe src="https://www.googletagmanager.com/gtm.ns.html?id=GTM-XXXXXXX"
+  height="0" width="0" style="display:none;visibility:hidden"&gt;&lt;/iframe&gt;&lt;/noscript&gt;
+
+  &lt;div class="container"&gt;
+    &lt;article class="term-page"&gt;
+      &lt;header class="term-header"&gt;
+        &lt;h1&gt;&lt;i class="fas fa-users icon"&gt;&lt;/i&gt;キュー構造 (Queue)&lt;/h1&gt;
+        &lt;p class="reading"&gt;よみかた：&lt;strong&gt;きゅー&lt;/strong&gt;&lt;/p&gt;
+      &lt;/header&gt;
+
+      &lt;section class="term-intro"&gt;
+        &lt;h2&gt;意味&lt;/h2&gt;
+        &lt;p&gt;
+          &lt;strong&gt;先に入れたものが、先に出ていく&lt;/strong&gt;という仕組みのデータ構造のこと。&lt;br&gt;
+          専門用語で「&lt;strong&gt;FIFO（First In, First Out）&lt;/strong&gt;」と呼ばれます。&lt;br&gt;
+          レジの行列やバスの順番待ちなど、現実世界の「順番通り」の場面とそっくりです。
+        &lt;/p&gt;
+      &lt;/section&gt;
+
+      &lt;section class="term-point"&gt;
+        &lt;h2&gt;ポイント&lt;/h2&gt;
+        &lt;ul&gt;
+          &lt;li&gt;&lt;code&gt;enqueue&lt;/code&gt; (エンキュー) : &lt;strong&gt;列の後ろに並ぶ&lt;/strong&gt;ようにデータを追加します。&lt;/li&gt;
+          &lt;li&gt;&lt;code&gt;dequeue&lt;/code&gt; (デキュー) : &lt;strong&gt;列の先頭から出る&lt;/strong&gt;ようにデータを取り出します。&lt;/li&gt;
+          &lt;li&gt;印刷ジョブの管理やタスク処理など、&lt;strong&gt;順番を守って処理したいとき&lt;/strong&gt;に最適です。&lt;/li&gt;
+        &lt;/ul&gt;
+      &lt;/section&gt;
+
+      &lt;section class="term-visual"&gt;
+        &lt;h2&gt;実際に体験してみよう&lt;/h2&gt;
+        &lt;p&gt;下のボタンを押して、キューの「先入れ先出し」を体験してみましょう。「Enqueue」で列の末尾に人を追加し、「Dequeue」で列の先頭から人が退出します。&lt;/p&gt;
+        &lt;div class="demo-section"&gt;
+          &lt;div class="demo-controls"&gt;
+            &lt;button class="demo-button" onclick="enqueueItem()"&gt;Enqueue&lt;/button&gt;
+            &lt;button class="demo-button dequeue" onclick="dequeueItem()"&gt;Dequeue&lt;/button&gt;
+            &lt;p id="demo-message"&gt;&lt;/p&gt;
+          &lt;/div&gt;
+          &lt;div id="queue-visualizer"&gt;
+            &lt;!-- Queue items will be added here --&gt;
+          &lt;/div&gt;
+        &lt;/div&gt;
+      &lt;/section&gt;
+
+      &lt;section class="term-code"&gt;
+        &lt;h2&gt;コードを書いてみよう&lt;/h2&gt;
+        &lt;p&gt;JavaScriptの配列を使えば、簡単にキューを実装できます。&lt;code&gt;push&lt;/code&gt;で追加し、&lt;code&gt;shift&lt;/code&gt;で取り出すことで「先入れ先出し」を実現します。&lt;/p&gt;
+        &lt;details&gt;
+          &lt;summary&gt;サンプルコードを見る (JavaScript)&lt;/summary&gt;
+          &lt;div class="code-example"&gt;
+&lt;pre&gt;&lt;code class="language-javascript"&gt;&lt;span class="token comment"&gt;// 配列を使った簡単なキュー&lt;/span&gt;
+&lt;span class="token keyword"&gt;const&lt;/span&gt; queue &lt;span class="token operator"&gt;=&lt;/span&gt; &lt;span class="token punctuation"&gt;[&lt;/span&gt;&lt;span class="token punctuation"&gt;]&lt;/span&gt;&lt;span class="token punctuation"&gt;;&lt;/span&gt;
+
+&lt;span class="token comment"&gt;// enqueue（追加：後ろに並ぶ）&lt;/span&gt;
+queue&lt;span class="token punctuation"&gt;.&lt;/span&gt;&lt;span class="token function"&gt;push&lt;/span&gt;&lt;span class="token punctuation"&gt;(&lt;/span&gt;&lt;span class="token string"&gt;"タスク1"&lt;/span&gt;&lt;span class="token punctuation"&gt;)&lt;/span&gt;&lt;span class="token punctuation"&gt;;&lt;/span&gt;
+queue&lt;span class="token punctuation"&gt;.&lt;/span&gt;&lt;span class="token function"&gt;push&lt;/span&gt;&lt;span class="token punctuation"&gt;(&lt;/span&gt;&lt;span class="token string"&gt;"タスク2"&lt;/span&gt;&lt;span class="token punctuation"&gt;)&lt;/span&gt;&lt;span class="token punctuation"&gt;;&lt;/span&gt;
+queue&lt;span class="token punctuation"&gt;.&lt;/span&gt;&lt;span class="token function"&gt;push&lt;/span&gt;&lt;span class="token punctuation"&gt;(&lt;/span&gt;&lt;span class="token string"&gt;"タスク3"&lt;/span&gt;&lt;span class="token punctuation"&gt;)&lt;/span&gt;&lt;span class="token punctuation"&gt;;&lt;/span&gt;
+
+&lt;span class="token comment"&gt;// dequeue（取り出し：先頭から出る）&lt;/span&gt;
+&lt;span class="token keyword"&gt;const&lt;/span&gt; firstTask &lt;span class="token operator"&gt;=&lt;/span&gt; queue&lt;span class="token punctuation"&gt;.&lt;/span&gt;&lt;span class="token function"&gt;shift&lt;/span&gt;&lt;span class="token punctuation"&gt;(&lt;/span&gt;&lt;span class="token punctuation"&gt;)&lt;/span&gt;&lt;span class="token punctuation"&gt;;&lt;/span&gt;
+
+console&lt;span class="token punctuation"&gt;.&lt;/span&gt;&lt;span class="token function"&gt;log&lt;/span&gt;&lt;span class="token punctuation"&gt;(&lt;/span&gt;firstTask&lt;span class="token punctuation"&gt;)&lt;/span&gt;&lt;span class="token punctuation"&gt;;&lt;/span&gt; &lt;span class="token comment"&gt;// =&gt; "タスク1"&lt;/span&gt;
+console&lt;span class="token punctuation"&gt;.&lt;/span&gt;&lt;span class="token function"&gt;log&lt;/span&gt;&lt;span class="token punctuation"&gt;(&lt;/span&gt;queue&lt;span class="token punctuation"&gt;)&lt;/span&gt;&lt;span class="token punctuation"&gt;;&lt;/span&gt;     &lt;span class="token comment"&gt;// =&gt; ["タスク2", "タスク3"]&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;
+          &lt;/div&gt;
+        &lt;/details&gt;
+
+        &lt;details&gt;
+          &lt;summary&gt;HTML/CSS/JS 統合版テンプレート&lt;/summary&gt;
+          &lt;p style="padding: 15px 20px 0;"&gt;このページの完全なコードです。以下の内容をコピーして&lt;code&gt;index.html&lt;/code&gt;などの名前で保存すると、ご自身のPCやブラウザで直接開いて確認できます。&lt;/p&gt;
+          &lt;div class="code-example"&gt;
+            &lt;pre&gt;&lt;code&gt;&lt;!DOCTYPE html&gt;
+&lt;html lang="ja"&gt;
+&lt;head&gt;
+  &lt;meta charset="UTF-8"&gt;
+  &lt;meta name="viewport" content="width=device-width, initial-scale=1.0"&gt;
+  
+  &lt;!-- SEO メタタグ --&gt;
+  &lt;title&gt;キュー構造 - IT用語辞典&lt;/title&gt;
+  &lt;meta name="description" content="先に入れたものが、先に出ていくという仕組みのデータ構造のこと。専門用語で「FIFO（First In, First Out）」と呼ばれます。レジの行列やバスの順番待ちなど、現実世界の「順番通り」の場面とそっくりです。"&gt;
+  &lt;meta name="keywords" content="キュー, FIFO, データ構造, プログラミング"&gt;
+  &lt;meta name="author" content="IT用語辞典"&gt;
+  &lt;meta name="robots" content="index, follow"&gt;
+  &lt;link rel="canonical" href="https://itwords.example.com/queue"&gt;
+  
+  &lt;!-- Open Graph / SNS --&gt;
+  &lt;meta property="og:type" content="article"&gt;
+  &lt;meta property="og:title" content="キュー構造 - IT用語辞典"&gt;
+  &lt;meta property="og:description" content="先に入れたものが、先に出ていくという仕組みのデータ構造のこと。専門用語で「FIFO（First In, First Out）」と呼ばれます。レジの行列やバスの順番待ちなど、現実世界の「順番通り」の場面とそっくりです。"&gt;
+  &lt;meta property="og:url" content="https://itwords.example.com/queue"&gt;
+  &lt;meta property="og:site_name" content="IT用語辞典"&gt;
+  &lt;meta property="og:image" content="https://itwords.example.com/images/queue.jpg"&gt;
+  &lt;meta name="twitter:card" content="summary_large_image"&gt;
+  &lt;meta name="twitter:title" content="キュー構造 - IT用語辞典"&gt;
+  &lt;meta property="twitter:description" content="先に入れたものが、先に出ていくという仕組みのデータ構造のこと。専門用語で「FIFO（First In, First Out）」と呼ばれます。レジの行列やバスの順番待ちなど、現実世界の「順番通り」の場面とそっくりです。"&gt;
+  &lt;meta name="twitter:image" content="https://itwords.example.com/images/queue.jpg"&gt;
+  
+  &lt;!-- Google Tag Manager --&gt;
+  &lt;script&gt;(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+  new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+  j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+  'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+  })(window,document,'script','dataLayer','GTM-XXXXXXX');&lt;/script&gt;
+  
+  &lt;!-- Google Analytics 4 --&gt;
+  &lt;script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"&gt;&lt;/script&gt;
+  &lt;script&gt;
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-XXXXXXXXXX');
+  &lt;/script&gt;
+  
+  &lt;!-- 構造化データ (JSON-LD) --&gt;
+  &lt;script type="application/ld+json"&gt;
+  {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "headline": "キュー構造 - IT用語辞典",
+    "description": "先に入れたものが、先に出ていくという仕組みのデータ構造のこと。専門用語で「FIFO（First In, First Out）」と呼ばれます。レジの行列やバスの順番待ちなど、現実世界の「順番通り」の場面とそっくりです。",
+    "author": {
+      "@type": "Organization",
+      "name": "IT用語辞典"
+    },
+    "datePublished": "2025-07-21",
+    "dateModified": "2025-07-21",
+    "keywords": "キュー, FIFO, データ構造, プログラミング",
+    "articleSection": "データ構造・アルゴリズム",
+    "timeRequired": "5分",
+    "url": "https://itwords.example.com/queue",
+    "mainEntityOfPage": {
+      "@type": "WebPage",
+      "@id": "https://itwords.example.com/queue"
+    },
+    "publisher": {
+      "@type": "Organization",
+      "name": "IT用語辞典"
+    }
+  }
+  &lt;/script&gt;
+  
+  &lt;!-- Font Awesome CDN --&gt;
+  &lt;link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css"&gt;
+  &lt;link rel="stylesheet" href="../styles.css"&gt;
+  &lt;style&gt;
+    /* 個別ページ用のスタイル調整 */
+    h1 .icon {
+      color: #82c9a0;
+    }
+    .summary-box {
+        background-color: #f9f7ef;
+        border-left: 5px solid #82c9a0;
+        padding: 25px;
+        margin: 40px auto;
+        max-width: 90%;
+        font-size: 1.2em;
+        font-weight: bold;
+        text-align: center;
+    }
+
+    /* --- Demo Section --- */
+    .demo-button {
+      background-color: #82c9a0;
+    }
+    .demo-button:hover {
+      background-color: #70b88f;
+    }
+    .demo-button.dequeue {
+        background-color: #ea9b8a;
+    }
+    .demo-button.dequeue:hover {
+        background-color: #e08a7a;
+    }
+    #queue-visualizer {
+        border: 2px dashed #ccc;
+        border-radius: 5px;
+        padding: 20px;
+        min-height: 60px;
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        overflow-x: auto;
+    }
+    .queue-item {
+        background-color: #82c9a0;
+        color: white;
+        padding: 10px 20px;
+        margin-right: 10px;
+        border-radius: 5px;
+        font-weight: bold;
+        white-space: nowrap;
+        animation: slideIn 0.4s ease-out;
+    }
+    @keyframes slideIn {
+        from { opacity: 0; transform: translateX(20px); }
+        to { opacity: 1; transform: translateX(0); }
+    }
+    #demo-message {
+      margin-top: 20px;
+      font-weight: bold;
+      min-height: 1.5em;
+    }
+  &lt;/style&gt;
+&lt;/head&gt;
+&lt;body&gt;
+  &lt;!-- Google Tag Manager (noscript) --&gt;
+  &lt;noscript&gt;&lt;iframe src="https://www.googletagmanager.com/gtm.ns.html?id=GTM-XXXXXXX"
+  height="0" width="0" style="display:none;visibility:hidden"&gt;&lt;/iframe&gt;&lt;/noscript&gt;
+
+  &lt;div class="container"&gt;
+    &lt;article class="term-page"&gt;
+      &lt;header class="term-header"&gt;
+        &lt;h1&gt;&lt;i class="fas fa-users icon"&gt;&lt;/i&gt;キュー構造 (Queue)&lt;/h1&gt;
+        &lt;p class="reading"&gt;よみかた：&lt;strong&gt;きゅー&lt;/strong&gt;&lt;/p&gt;
+      &lt;/header&gt;
+
+      &lt;section class="term-intro"&gt;
+        &lt;h2&gt;意味&lt;/h2&gt;
+        &lt;p&gt;
+          &lt;strong&gt;先に入れたものが、先に出ていく&lt;/strong&gt;という仕組みのデータ構造のこと。&lt;br&gt;
+          専門用語で「&lt;strong&gt;FIFO（First In, First Out）&lt;/strong&gt;」と呼ばれます。&lt;br&gt;
+          レジの行列やバスの順番待ちなど、現実世界の「順番通り」の場面とそっくりです。
+        &lt;/p&gt;
+      &lt;/section&gt;
+
+      &lt;section class="term-point"&gt;
+        &lt;h2&gt;ポイント&lt;/h2&gt;
+        &lt;ul&gt;
+          &lt;li&gt;&lt;code&gt;enqueue&lt;/code&gt; (エンキュー) : &lt;strong&gt;列の後ろに並ぶ&lt;/strong&gt;ようにデータを追加します。&lt;/li&gt;
+          &lt;li&gt;&lt;code&gt;dequeue&lt;/code&gt; (デキュー) : &lt;strong&gt;列の先頭から出る&lt;/strong&gt;ようにデータを取り出します。&lt;/li&gt;
+          &lt;li&gt;印刷ジョブの管理やタスク処理など、&lt;strong&gt;順番を守って処理したいとき&lt;/strong&gt;に最適です。&lt;/li&gt;
+        &lt;/ul&gt;
+      &lt;/section&gt;
+
+      &lt;section class="term-visual"&gt;
+        &lt;h2&gt;実際に体験してみよう&lt;/h2&gt;
+        &lt;p&gt;下のボタンを押して、キューの「先入れ先出し」を体験してみましょう。「Enqueue」で列の末尾に人を追加し、「Dequeue」で列の先頭から人が退出します。&lt;/p&gt;
+        &lt;div class="demo-section"&gt;
+          &lt;div class="demo-controls"&gt;
+            &lt;button class="demo-button" onclick="enqueueItem()"&gt;Enqueue&lt;/button&gt;
+            &lt;button class="demo-button dequeue" onclick="dequeueItem()"&gt;Dequeue&lt;/button&gt;
+            &lt;p id="demo-message"&gt;&lt;/p&gt;
+          &lt;/div&gt;
+          &lt;div id="queue-visualizer"&gt;
+            &lt;!-- Queue items will be added here --&gt;
+          &lt;/div&gt;
+        &lt;/div&gt;
+      &lt;/section&gt;
+
+      &lt;section class="term-code"&gt;
+        &lt;h2&gt;コードを書いてみよう&lt;/h2&gt;
+        &lt;p&gt;JavaScriptの配列を使えば、簡単にキューを実装できます。&lt;code&gt;push&lt;/code&gt;で追加し、&lt;code&gt;shift&lt;/code&gt;で取り出すことで「先入れ先出し」を実現します。&lt;/p&gt;
+        &lt;details&gt;
+          &lt;summary&gt;サンプルコードを見る (JavaScript)&lt;/summary&gt;
+          &lt;div class="code-example"&gt;
+&lt;pre&gt;&lt;code class="language-javascript"&gt;&lt;span class="token comment"&gt;// 配列を使った簡単なキュー&lt;/span&gt;
+&lt;span class="token keyword"&gt;const&lt;/span&gt; queue &lt;span class="token operator"&gt;=&lt;/span&gt; &lt;span class="token punctuation"&gt;[&lt;/span&gt;&lt;span class="token punctuation"&gt;]&lt;/span&gt;&lt;span class="token punctuation"&gt;;&lt;/span&gt;
+
+&lt;span class="token comment"&gt;// enqueue（追加：後ろに並ぶ）&lt;/span&gt;
+queue&lt;span class="token punctuation"&gt;.&lt;/span&gt;&lt;span class="token function"&gt;push&lt;/span&gt;&lt;span class="token punctuation"&gt;(&lt;/span&gt;&lt;span class="token string"&gt;"タスク1"&lt;/span&gt;&lt;span class="token punctuation"&gt;)&lt;/span&gt;&lt;span class="token punctuation"&gt;;&lt;/span&gt;
+queue&lt;span class="token punctuation"&gt;.&lt;/span&gt;&lt;span class="token function"&gt;push&lt;/span&gt;&lt;span class="token punctuation"&gt;(&lt;/span&gt;&lt;span class="token string"&gt;"タスク2"&lt;/span&gt;&lt;span class="token punctuation"&gt;)&lt;/span&gt;&lt;span class="token punctuation"&gt;;&lt;/span&gt;
+queue&lt;span class="token punctuation"&gt;.&lt;/span&gt;&lt;span class="token function"&gt;push&lt;/span&gt;&lt;span class="token punctuation"&gt;(&lt;/span&gt;&lt;span class="token string"&gt;"タスク3"&lt;/span&gt;&lt;span class="token punctuation"&gt;)&lt;/span&gt;&lt;span class="token punctuation"&gt;;&lt;/span&gt;
+
+&lt;span class="token comment"&gt;// dequeue（取り出し：先頭から出る）&lt;/span&gt;
+&lt;span class="token keyword"&gt;const&lt;/span&gt; firstTask &lt;span class="token operator"&gt;=&lt;/span&gt; queue&lt;span class="token punctuation"&gt;.&lt;/span&gt;&lt;span class="token function"&gt;shift&lt;/span&gt;&lt;span class="token punctuation"&gt;(&lt;/span&gt;&lt;span class="token punctuation"&gt;)&lt;/span&gt;&lt;span class="token punctuation"&gt;;&lt;/span&gt;
+
+console&lt;span class="token punctuation"&gt;.&lt;/span&gt;&lt;span class="token function"&gt;log&lt;/span&gt;&lt;span class="token punctuation"&gt;(&lt;/span&gt;firstTask&lt;span class="token punctuation"&gt;)&lt;/span&gt;&lt;span class="token punctuation"&gt;;&lt;/span&gt; &lt;span class="token comment"&gt;// =&gt; "タスク1"&lt;/span&gt;
+console&lt;span class="token punctuation"&gt;.&lt;/span&gt;&lt;span class="token function"&gt;log&lt;/span&gt;&lt;span class="token punctuation"&gt;(&lt;/span&gt;queue&lt;span class="token punctuation"&gt;)&lt;/span&gt;&lt;span class="token punctuation"&gt;;&lt;/span&gt;     &lt;span class="token comment"&gt;// =&gt; ["タスク2", "タスク3"]&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;
+          &lt;/div&gt;
+        &lt;/details&gt;
+      &lt;/section&gt;
+
+      &lt;section class="term-comparison"&gt;
+        &lt;h2&gt;関連用語・比較&lt;/h2&gt;
+        &lt;div class="comparison-table"&gt;
+          &lt;table&gt;
+            &lt;thead&gt;
+              &lt;tr&gt;
+                &lt;th&gt;用語名&lt;/th&gt;
+                &lt;th&gt;構造の違い&lt;/th&gt;
+                &lt;th&gt;特徴&lt;/th&gt;
+              &lt;/tr&gt;
+            &lt;/thead&gt;
+            &lt;tbody&gt;
+              &lt;tr&gt;
+                &lt;td&gt;&lt;strong&gt;キュー&lt;/strong&gt;&lt;/td&gt;
+                &lt;td&gt;先入れ先出し (FIFO)&lt;/td&gt;
+                &lt;td&gt;最初に入れたものが最初に出る（レジの列）&lt;/td&gt;
+              &lt;/tr&gt;
+              &lt;tr&gt;
+                &lt;td&gt;&lt;strong&gt;スタック&lt;/strong&gt;&lt;/td&gt;
+                &lt;td&gt;後入れ先出し (LIFO)&lt;/td&gt;
+                &lt;td&gt;最後に入れたものが最初に出る（お皿の山）&lt;/td&gt;
+              &lt;/tr&gt;
+              &lt;tr&gt;
+                &lt;td&gt;&lt;strong&gt;優先度付きキュー&lt;/strong&gt;&lt;/td&gt;
+                &lt;td&gt;優先度順に処理&lt;/td&gt;
+                &lt;td&gt;重要なものを優先的に処理できる&lt;/td&gt;
+              &lt;/tr&gt;
+            &lt;/tbody&gt;
+          &lt;/table&gt;
+        &lt;/div&gt;
+      &lt;/section&gt;
+
+      &lt;div class="summary-box"&gt;
+        キューとは「並んだ順に処理する」データ構造のこと。&lt;br&gt;
+        現実の行列と同じように、順番を守って一つずつ処理するときに活躍します！
+      &lt;/div&gt;
+
+      &lt;footer class="term-footer"&gt;
+        &lt;nav class="footer-nav"&gt;
+          &lt;p&gt;&lt;a href="../index.html"&gt;IT用語一覧に戻る&lt;/a&gt;&lt;/p&gt;
+        &lt;/nav&gt;
+      &lt;/footer&gt;
+    &lt;/article&gt;
+  &lt;/div&gt;
+
+  &lt;script&gt;
+    let queue = [];
+    let personCount = 0;
+    const visualizer = document.getElementById('queue-visualizer');
+    const message = document.getElementById('demo-message');
+
+    function enqueueItem() {
+      if (queue.length >= 5) {
+        message.textContent = "行列が長すぎます！";
+        message.style.color = "#d9534f";
+        return;
+      }
+      personCount++;
+      const newPerson = `客 ${personCount}`;
+      queue.push(newPerson);
+      renderQueue();
+      message.textContent = `"${newPerson}" が列に並びました。`;
+      message.style.color = "#333";
+    }
+
+    function dequeueItem() {
+      if (queue.length === 0) {
+        message.textContent = "誰も並んでいません。";
+        message.style.color = "#d9534f";
+        return;
+      }
+      const servedPerson = queue.shift();
+      renderQueue();
+      message.textContent = `"${servedPerson}" がレジを終えました。`;
+      message.style.color = "#333";
+    }
+
+    function renderQueue() {
+      visualizer.innerHTML = '';
+      queue.forEach(item => {
+        const div = document.createElement('div');
+        div.className = 'queue-item';
+        div.textContent = item;
+        visualizer.appendChild(div);
+      });
+    }
+    
+    // 初期状態
+    enqueueItem();
+    enqueueItem();
+  &lt;/script&gt;
+
+&lt;/body&gt;
+&lt;/html&gt;</code></pre>
+          </div>
+        </details>
+      </section>
+
+      <footer class="term-footer">
+        <nav class="footer-nav">
+          <p><a href="../index.html">IT用語一覧に戻る</a></p>
+        </nav>
+      </footer>
+    </article>
+  </div>
+
+  <script>
+    let queue = [];
+    let personCount = 0;
+    const visualizer = document.getElementById('queue-visualizer');
+    const message = document.getElementById('demo-message');
+
+    function enqueueItem() {
+      if (queue.length >= 5) {
+        message.textContent = "行列が長すぎます！";
+        message.style.color = "#d9534f";
+        return;
+      }
+      personCount++;
+      const newPerson = `客 ${personCount}`;
+      queue.push(newPerson);
+      renderQueue();
+      message.textContent = `"${newPerson}" が列に並びました。`;
+      message.style.color = "#333";
+    }
+
+    function dequeueItem() {
+      if (queue.length === 0) {
+        message.textContent = "誰も並んでいません。";
+        message.style.color = "#d9534f";
+        return;
+      }
+      const servedPerson = queue.shift();
+      renderQueue();
+      message.textContent = `"${servedPerson}" がレジを終えました。`;
+      message.style.color = "#333";
+    }
+
+    function renderQueue() {
+      visualizer.innerHTML = '';
+      queue.forEach(item => {
+        const div = document.createElement('div');
+        div.className = 'queue-item';
+        div.textContent = item;
+        visualizer.appendChild(div);
+      });
+    }
+    
+    // 初期状態
+    enqueueItem();
+    enqueueItem();
+  </script>
+
+</body>
+</html>
