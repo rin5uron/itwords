@@ -37,8 +37,11 @@
 
       <section class="term-visual">
         <h2>体験してみよう</h2>
+        <p>ユーザー情報を入力して保存すると、ページを更新してもデータが残ります。これは裏側で入力値を<a href="#">JSON</a>という形式の文字列に変換して、ローカルストレージに保存しているためです。</p>
+        <p>①ユーザー情報を入力して保存してみよう</p>
+        <p>②ページを更新してみよう</p>
         <div class="demo-section">
-          <p>ユーザー情報をJSON形式で保存します。</p>
+          <p>ユーザー情報を入力してください。</p>
           <input type="text" id="name-input" placeholder="名前" style="width: 40%; padding: 10px; font-size: 1em; margin-bottom: 15px;" value="山田">
           <input type="number" id="age-input" placeholder="年齢" style="width: 30%; padding: 10px; font-size: 1em; margin-bottom: 15px;" value="30">
           <button class="demo-button" onclick="saveData()">保存</button>
@@ -48,53 +51,76 @@
       </section>
 
       <section class="term-code">
-        <h2>コードを書いてみよう</h2>
-        <p><a href="#">JSON</a>形式に変換することで、オブジェクトや配列のような複雑なデータも<code>localStorage</code>に保存できます。</p>
+        <h2>コードを書いて実践してみよう</h2>
+        <p>「体験してみよう」の裏側では、このように<a href="#">JSON</a>を利用してオブジェクトを文字列に変換しています。<code>JSON.stringify()</code>で保存し、<code>JSON.parse()</code>で元に戻すのがポイントです。</p>
         <details>
           <summary>サンプルコードを見る (JavaScript)</summary>
           <div class="code-example">
-            <pre><code>// ユーザーオブジェクトを作成
-const user = {
-  name: document.getElementById('name-input').value,
-  age: document.getElementById('age-input').value
-};
+            <pre><code class="language-javascript"><span class="token comment">// ユーザーオブジェクトを作成</span>
+<span class="token keyword">const</span> <span class="token variable">user</span> <span class="token punctuation">=</span> <span class="token punctuation">{</span> name<span class="token punctuation">:</span> <span class="token string">'山田'</span><span class="token punctuation">,</span> age<span class="token punctuation">:</span> <span class="token number">30</span> <span class="token punctuation">}</span><span class="token punctuation">;</span>
 
-// オブジェクトをJSON文字列に変換して保存
-localStorage.setItem('userData', JSON.stringify(user));
+<span class="token comment">// オブジェクトをJSON文字列に変換して保存</span>
+localStorage<span class="token punctuation">.</span><span class="token function">setItem</span><span class="token punctuation">(</span><span class="token string">'userData'</span><span class="token punctuation">,</span> JSON<span class="token punctuation">.</span><span class="token function">stringify</span><span class="token punctuation">(</span>user<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 
-// JSON文字列を取得してオブジェクトに変換
-const jsonData = localStorage.getItem('userData');
-const savedUser = JSON.parse(jsonData);
+<span class="token comment">// JSON文字列を取得してオブジェクトに変換</span>
+<span class="token keyword">const</span> <span class="token variable">jsonData</span> <span class="token punctuation">=</span> localStorage<span class="token punctuation">.</span><span class="token function">getItem</span><span class="token punctuation">(</span><span class="token string">'userData'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token keyword">const</span> <span class="token variable">savedUser</span> <span class="token punctuation">=</span> JSON<span class="token punctuation">.</span><span class="token function">parse</span><span class="token punctuation">(</span>jsonData<span class="token punctuation">)</span><span class="token punctuation">;</span>
 
-console.log(savedUser.name); // "山田"
-</code></pre>
+console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>savedUser<span class="token punctuation">.</span>name<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// "山田"</span></code></pre>
           </div>
         </details>
         <details>
           <summary>HTML/CSS/JS 統合版テンプレート</summary>
           <p style="padding: 15px 20px 0;">このページの完全なコードです。以下の内容をコピーして<code>index.html</code>などの名前で保存すると、ご自身のPCやブラウザで直接開いて確認できます。</p>
           <div class="code-example">
-            <pre><code>&lt;!DOCTYPE html&gt;
-&lt;html lang="ja"&gt;
-&lt;head&gt;
-  &lt;meta charset="UTF-8"&gt;
-  &lt;meta name="viewport" content="width=device-width, initial-scale=1.0"&gt;
-  &lt;title&gt;ローカルストレージ - 実践型IT用語辞典&lt;/title&gt;
-  &lt;link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css"&gt;
-  &lt;style&gt;
-    /* ここにstyles.cssの内容をコピー */
-  &lt;/style&gt;
-&lt;/head&gt;
-&lt;body&gt;
-  &lt;div class="container"&gt;
-    &lt;!-- ここにbodyの内容をコピー --&gt;
-  &lt;/div&gt;
-  &lt;script&gt;
-    // ここにscriptの内容をコピー
-  &lt;/script&gt;
-&lt;/body&gt;
-&lt;/html&gt;
-</code></pre>
+            <pre><code><span class="token comment">&lt;!DOCTYPE html&gt;</span>
+<span class="token punctuation">&lt;</span><span class="token keyword">html</span> <span class="token variable">lang</span><span class="token punctuation">=</span><span class="token string">"ja"</span><span class="token punctuation">&gt;</span>
+<span class="token punctuation">&lt;</span><span class="token keyword">head</span><span class="token punctuation">&gt;</span>
+  <span class="token punctuation">&lt;</span><span class="token keyword">meta</span> <span class="token variable">charset</span><span class="token punctuation">=</span><span class="token string">"UTF-8"</span><span class="token punctuation">&gt;</span>
+  <span class="token punctuation">&lt;</span><span class="token keyword">meta</span> <span class="token variable">name</span><span class="token punctuation">=</span><span class="token string">"viewport"</span> <span class="token variable">content</span><span class="token punctuation">=</span><span class="token string">"width=device-width, initial-scale=1.0"</span><span class="token punctuation">&gt;</span>
+  <span class="token punctuation">&lt;</span><span class="token keyword">title</span><span class="token punctuation">&gt;</span>ローカルストレージ - 実践型IT用語辞典<span class="token punctuation">&lt;/</span><span class="token keyword">title</span><span class="token punctuation">&gt;</span>
+  <span class="token punctuation">&lt;</span><span class="token keyword">link</span> <span class="token variable">rel</span><span class="token punctuation">=</span><span class="token string">"stylesheet"</span> <span class="token variable">href</span><span class="token punctuation">=</span><span class="token string">"https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css"</span><span class="token punctuation">&gt;</span>
+  <span class="token punctuation">&lt;</span><span class="token keyword">style</span><span class="token punctuation">&gt;</span>
+    <span class="token comment">/* styles.cssの内容 */</span>
+    <span class="token variable">body</span> <span class="token punctuation">{</span> <span class="token variable">font-family</span><span class="token punctuation">:</span> <span class="token string">'Noto Sans JP'</span><span class="token punctuation">,</span> <span class="token keyword">sans-serif</span><span class="token punctuation">;</span> <span class="token variable">line-height</span><span class="token punctuation">:</span> <span class="token number">1.8</span><span class="token punctuation">;</span> <span class="token variable">color</span><span class="token punctuation">:</span> <span class="token string">#333</span><span class="token punctuation">;</span> <span class="token variable">background-color</span><span class="token punctuation">:</span> <span class="token string">#f4f1e2</span><span class="token punctuation">;</span> <span class="token punctuation">}</span>
+    <span class="token punctuation">.</span><span class="token variable">container</span> <span class="token punctuation">{</span> <span class="token variable">max-width</span><span class="token punctuation">:</span> <span class="token number">800px</span><span class="token punctuation">;</span> <span class="token variable">margin</span><span class="token punctuation">:</span> <span class="token number">0</span> <span class="token keyword">auto</span><span class="token punctuation">;</span> <span class="token variable">background-color</span><span class="token punctuation">:</span> <span class="token string">#fff</span><span class="token punctuation">;</span> <span class="token variable">padding</span><span class="token punctuation">:</span> <span class="token number">50px</span><span class="token punctuation">;</span> <span class="token punctuation">}</span>
+    <span class="token comment">/* ... 他のスタイル ... */</span>
+  <span class="token punctuation">&lt;/</span><span class="token keyword">style</span><span class="token punctuation">&gt;</span>
+<span class="token punctuation">&lt;/</span><span class="token keyword">head</span><span class="token punctuation">&gt;</span>
+<span class="token punctuation">&lt;</span><span class="token keyword">body</span><span class="token punctuation">&gt;</span>
+  <span class="token punctuation">&lt;</span><span class="token keyword">div</span> <span class="token variable">class</span><span class="token punctuation">=</span><span class="token string">"container"</span><span class="token punctuation">&gt;</span>
+    <span class="token comment">&lt;!-- ページのHTML構造 --&gt;</span>
+  <span class="token punctuation">&lt;/</span><span class="token keyword">div</span><span class="token punctuation">&gt;</span>
+  <span class="token punctuation">&lt;</span><span class="token keyword">script</span><span class="token punctuation">&gt;</span>
+    <span class="token keyword">const</span> <span class="token variable">nameInput</span> <span class="token punctuation">=</span> document<span class="token punctuation">.</span><span class="token function">getElementById</span><span class="token punctuation">(</span><span class="token string">'name-input'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token keyword">const</span> <span class="token variable">ageInput</span> <span class="token punctuation">=</span> document<span class="token punctuation">.</span><span class="token function">getElementById</span><span class="token punctuation">(</span><span class="token string">'age-input'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token keyword">const</span> <span class="token variable">savedDataSpan</span> <span class="token punctuation">=</span> document<span class="token punctuation">.</span><span class="token function">getElementById</span><span class="token punctuation">(</span><span class="token string">'saved-data'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+    <span class="token keyword">function</span> <span class="token function">saveData</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+      <span class="token keyword">const</span> <span class="token variable">user</span> <span class="token punctuation">=</span> <span class="token punctuation">{</span> <span class="token variable">name</span><span class="token punctuation">:</span> nameInput<span class="token punctuation">.</span>value<span class="token punctuation">,</span> <span class="token variable">age</span><span class="token punctuation">:</span> ageInput<span class="token punctuation">.</span>value <span class="token punctuation">}</span><span class="token punctuation">;</span>
+      localStorage<span class="token punctuation">.</span><span class="token function">setItem</span><span class="token punctuation">(</span><span class="token string">'userData'</span><span class="token punctuation">,</span> JSON<span class="token punctuation">.</span><span class="token function">stringify</span><span class="token punctuation">(</span>user<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+      <span class="token function">displayData</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+
+    <span class="token keyword">function</span> <span class="token function">displayData</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+      <span class="token keyword">const</span> <span class="token variable">jsonData</span> <span class="token punctuation">=</span> localStorage<span class="token punctuation">.</span><span class="token function">getItem</span><span class="token punctuation">(</span><span class="token string">'userData'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+      <span class="token keyword">if</span> <span class="token punctuation">(</span>jsonData<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">const</span> <span class="token variable">user</span> <span class="token punctuation">=</span> JSON<span class="token punctuation">.</span><span class="token function">parse</span><span class="token punctuation">(</span>jsonData<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        savedDataSpan<span class="token punctuation">.</span>textContent <span class="token punctuation">=</span> <span class="token string">`名前: </span><span class="token punctuation">${</span>user<span class="token punctuation">.</span>name<span class="token punctuation">}</span><span class="token string">, 年齢: </span><span class="token punctuation">${</span>user<span class="token punctuation">.</span>age<span class="token punctuation">}</span><span class="token string">`</span><span class="token punctuation">;</span>
+      <span class="token punctuation">}</span> <span class="token keyword">else</span> <span class="token punctuation">{</span>
+        savedDataSpan<span class="token punctuation">.</span>textContent <span class="token punctuation">=</span> <span class="token string">'なし'</span><span class="token punctuation">;</span>
+      <span class="token punctuation">}</span>
+    <span class="token punctuation">}</span>
+
+    <span class="token keyword">function</span> <span class="token function">clearData</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+      localStorage<span class="token punctuation">.</span><span class="token function">removeItem</span><span class="token punctuation">(</span><span class="token string">'userData'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+      <span class="token function">displayData</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+
+    window<span class="token punctuation">.</span><span class="token variable">onload</span> <span class="token punctuation">=</span> displayData<span class="token punctuation">;</span>
+  <span class="token punctuation">&lt;/</span><span class="token keyword">script</span><span class="token punctuation">&gt;</span>
+<span class="token punctuation">&lt;/</span><span class="token keyword">body</span><span class="token punctuation">&gt;</span>
+<span class="token punctuation">&lt;/</span><span class="token keyword">html</span><span class="token punctuation">&gt;</span></code></pre>
           </div>
         </details>
       </section>
