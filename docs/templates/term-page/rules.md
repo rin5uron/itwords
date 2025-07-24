@@ -7,6 +7,7 @@
 ## コマンド仕様
 
 ### トリガーコマンド
+- `[用語名]のページを作成して`
 - `○○.mdから用語ページ生成して`
 - `○○.mdから用語ページ作成して`
 - `用語ページを作成して`（対象ファイルが明確な場合）
@@ -20,6 +21,7 @@
    - `template.html`を基準にHTMLを生成
    - 変数置換処理を実行
    - 外部CSSファイル（`styles.css`）との連携
+   - Prism.jsシンタックスハイライト適用
 
 3. **ファイル出力**
    - .mdファイルと**同じディレクトリ**に配置
@@ -39,27 +41,23 @@
 | `{{description}}` | `## 概要` | セクション内容をHTMLに変換 |
 | `{{points}}` | `## ポイント` | リスト項目を`<li>`タグに変換 |
 
-### デモ関連変数
+### デモ関連変数（強化版）
 | 変数名 | 対応Markdownセクション | 処理方法 |
 |--------|----------------------|----------|
+| `{{demo_content}}` | `### デモ説明` | デモの説明文 |
 | `{{demo_title}}` | `### デモタイトル` | 見出し直下のテキスト |
 | `{{demo_button_text}}` | `### ボタンテキスト` | 見出し直下のテキスト |
-| `{{demo_function}}` | `### デモ処理名` | 関数名として使用 |
-| `{{demo_content}}` | 最初の説明文 | デモ説明テキスト |
+| `{{demo_function}}` | `### デモ処理名` | 関数名として使用（例：startApiDemo） |
 
-### コード関連変数
+### コード関連変数（シンタックスハイライト対応）
 | 変数名 | 対応Markdownセクション | 処理方法 |
 |--------|----------------------|----------|
-| `{{code_language}}` | `### 言語` | 言語名をそのまま使用 |
+| `{{code_language}}` | `### 言語` | 言語名をそのまま使用（例：JavaScript） |
+| `{{code_language_class}}` | `### 言語クラス` | Prism.js用クラス名（例：javascript） |
 | `{{code_description}}` | `### 説明` | 説明文をHTMLに変換 |
 | `{{sample_code}}` | `### サンプルコード` | コードブロックの内容を抽出 |
 | `{{javascript_code}}` | `### JavaScript処理` | コードブロックの内容を抽出 |
 | `{{full_html_code}}` | 生成されたHTML全体 | 完全なHTMLコードを挿入 |
-
-### 関連用語セクション
-| 変数名 | 対応Markdownセクション | 処理方法 |
-|--------|----------------------|----------|
-| `{{related_terms_section}}` | `## 関連用語` | HTML section要素として構築 |
 
 ### 関連用語・比較セクション
 | 変数名 | 対応Markdownセクション | 処理方法 |
@@ -100,6 +98,34 @@
 
 ---
 
+## シンタックスハイライト仕様
+
+### Prism.js設定
+- **テーマ**: `prism-tomorrow`（VS Code風）
+- **CDN**: Cloudflare CDN使用
+- **機能**: 自動言語検出、コードハイライト
+
+### 言語クラス対応表
+| 言語名（Markdown） | Prism.jsクラス | 変数設定例 |
+|-------------------|---------------|------------|
+| JavaScript | `language-javascript` | `code_language_class: javascript` |  
+| HTML | `language-html` | `code_language_class: html` |
+| CSS | `language-css` | `code_language_class: css` |
+| Python | `language-python` | `code_language_class: python` |
+| Java | `language-java` | `code_language_class: java` |
+| JSON | `language-json` | `code_language_class: json` |
+
+### コードブロック生成例
+```html
+<pre><code class="language-javascript">
+async function startApiDemo() {
+  // コード内容
+}
+</code></pre>
+```
+
+---
+
 ## 文体・表現ルール
 
 ### 基本方針
@@ -127,24 +153,21 @@
 ```
 templates/term-page/
 ├── template.html    ← HTMLテンプレート
-├── styles.css       ← 共通CSSファイル
 ├── sample.md        ← Markdown記入例
-└── generation-rules.md  ← このファイル
+└── rules.md         ← このファイル
 ```
+
+**📝 重要**: CSSファイルは `itwords/styles.css` を使用（テンプレートディレクトリには配置しない）
 
 ### HTMLテンプレート仕様
 - Font Awesome CDN読み込み済み
+- **Prism.jsシンタックスハイライト対応**
 - レスポンシブ対応
-- VS Code風コードハイライト
 - アコーディオン式コード表示
-
-**シンタックスハイライトルール:**
-- コードブロックは `<pre><code>` タグで囲む。
-- `<code>` タグには `language-javascript` のように言語名をクラスとして付与する。
-- コード内の各トークン（キーワード、変数、コメントなど）は、`<span>` タグで囲み、それぞれに対応するクラス（`.token.keyword`, `.token.variable`, `.token.comment`など）を付与する。
-- スタイルは `styles.css` に定義された配色を適用する。
+- Google Analytics/Tag Manager統合
 
 ### CSS仕様
+- **ファイル場所**: `itwords/styles.css`（プロジェクトルート）
 - フールプルーフページと同一デザイン継承
 - カラーテーマ: ベージュ系背景、茶系アクセント
 - フォント: Noto Sans JP
@@ -166,24 +189,37 @@ templates/term-page/
 - 必須項目が不足している場合は、生成前にユーザーに確認
 - デフォルト値の提案（アイコン: fas fa-question-circle など）
 
+### シンタックスハイライト関連
+- 対応していない言語の場合は`language-text`を適用
+- コードブロックが空の場合はサンプルコードを提案
+
 ---
 
 ## 生成後の確認事項
 
 ### HTML品質チェック
 - リンク切れの確認
-- CSS読み込みパスの確認
+- CSS読み込みパスの確認（`../../styles.css`）
 - JavaScript動作確認
 - レスポンシブデザイン確認
+- **Prism.jsシンタックスハイライト**動作確認
 
 ### コンテンツ品質チェック
 - 用語説明の正確性
 - コード例の動作確認
 - デモ機能の動作確認
+- **シンタックスハイライト**適用確認
 
 ---
 
 ## 更新履歴
+
+- **2025-07-23**: 大幅アップデート
+  - Prism.jsシンタックスハイライト対応
+  - デモ関連変数の詳細化
+  - CSSファイル名統一（styles.css）
+  - 言語クラス対応表追加
+  - エラーハンドリング強化
 
 - **2025-07-20**: 初回作成
   - 基本的な生成ルールを定義
@@ -192,4 +228,4 @@ templates/term-page/
 
 ---
 
-**最終更新**: 2025年7月20日 
+**最終更新**: 2025年7月23日 

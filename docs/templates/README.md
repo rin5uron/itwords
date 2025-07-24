@@ -11,50 +11,35 @@ templates/
 ├── README.md           ← このファイル（使い方説明）
 └── term-page/
     ├── template.html   ← HTMLテンプレート（変数置換対応）
-    ├── styles.css      ← CSSスタイルファイル  
     ├── sample.md       ← Markdownテンプレート（記入例付き）
-    └── rules.md ← 用語ページ生成の詳細ルール
+    └── rules.md        ← 用語ページ生成の詳細ルール
 ```
+
+**📝 重要**: CSSファイルは `itwords/styles.css` を使用します（テンプレートディレクトリにはCSSファイルはありません）
 
 ---
 
 ## 使い方
 
-### 新しい用語の.mdファイルを作成
-`sample.md`をコピーして、新しい用語名で.mdファイルを作成します。
-
-```bash
-cp templates/term-page/sample.md git-stash.md
-```
-
-### .mdファイルに内容を記入
-`sample.md`の構造に従って、用語の詳細情報を記入します。
-
-**必須項目：**
-- 用語名
-- 読み方
-- アイコン（Font Awesomeクラス）
-- 概要
-- ポイント
-- 体験デモ内容
-- コード例
-
-### AIに変換を依頼
-Cursorで以下のように依頼します：
+### 自動生成コマンド
+以下のコマンドで完全自動生成：
 
 ```
-○○.mdから用語ページ生成して
+「[用語名]のページを作成して」
+
+必要情報:
+- 用語名: API
+- 読み方: エーピーアイ
+- カテゴリ: 基礎知識・開発
+- 難易度: 初級
+- デモ内容: API呼び出しデモ
+- 関連用語: REST API, JSON, HTTP
 ```
 
-または
-
-```
-git-stash.mdから用語ページ作成して
-```
-
-### 自動生成される配置
-生成されたHTMLファイルは.mdファイルと**同じディレクトリに同じファイル名**で配置されます。
-- 例：`git-stash.md` → `git-stash.html`
+### 手動作成方法
+1. `sample.md`をコピーして新しい用語名で.mdファイルを作成
+2. 内容を記入
+3. 「○○.mdから用語ページ生成して」で変換
 
 ---
 
@@ -62,6 +47,7 @@ git-stash.mdから用語ページ作成して
 
 `template.html`で使用される変数と対応するMarkdown項目：
 
+### 基本情報
 | 変数名 | 説明 | Markdown対応箇所 |
 |--------|------|------------------|
 | `{{term_name}}` | 用語名 | `# 用語名` |
@@ -69,14 +55,28 @@ git-stash.mdから用語ページ作成して
 | `{{icon_class}}` | Font Awesomeアイコン | `アイコン: fas fa-example-icon` |
 | `{{description}}` | 概要・説明 | `## 概要` |
 | `{{points}}` | ポイントリスト | `## ポイント` |
+
+### デモ関連
+| 変数名 | 説明 | Markdown対応箇所 |
+|--------|------|------------------|
+| `{{demo_content}}` | デモ説明文 | `### デモ説明` |
 | `{{demo_title}}` | デモタイトル | `### デモタイトル` |
 | `{{demo_button_text}}` | ボタンテキスト | `### ボタンテキスト` |
 | `{{demo_function}}` | デモ関数名 | `### デモ処理名` |
+
+### コード関連 
+| 変数名 | 説明 | Markdown対応箇所 |
+|--------|------|------------------|
 | `{{code_language}}` | プログラミング言語 | `### 言語` |
+| `{{code_language_class}}` | Prism.js用言語クラス | `### 言語クラス` |
 | `{{code_description}}` | コード説明 | `### 説明` |
 | `{{sample_code}}` | サンプルコード | `### サンプルコード` |
 | `{{javascript_code}}` | JavaScript処理 | `### JavaScript処理` |
-| `{{related_terms_section}}` | 関連用語セクション | `## 関連用語` |
+| `{{full_html_code}}` | 完全なHTMLコード | 自動生成 |
+
+### 関連用語
+| 変数名 | 説明 | Markdown対応箇所 |
+|--------|------|------------------|
 | `{{related_comparison_table}}` | 関連用語・比較テーブル | `## 関連用語・比較` |
 
 ### YAML Front Matter関連変数
@@ -96,6 +96,25 @@ git-stash.mdから用語ページ作成して
 | `{{featured_image}}` | アイキャッチ画像 | `featured_image: "https://example.com/image.jpg"` |
 | `{{ga_measurement_id}}` | Google Analytics測定ID | `ga_measurement_id: "G-XXXXXXXXXX"` |
 | `{{gtm_container_id}}` | Google Tag Managerコンテナ | `gtm_container_id: "GTM-XXXXXXX"` |
+
+---
+
+## 新機能
+
+### ✨ シンタックスハイライト対応
+- **Prism.js**自動読み込み
+- **VS Code Tomorrow**テーマ適用
+- **言語自動検出**機能
+
+### ✨ 改善されたデモシステム
+- より詳細なデモ制御変数
+- 統一されたデモUI
+- エラーハンドリング強化
+
+### ✨ SEO最適化
+- 完全なOpen Graph対応
+- JSON-LD構造化データ
+- Google Analytics/Tag Manager統合
 
 ---
 
@@ -144,12 +163,22 @@ git-stash.mdから用語ページ作成して
 - APIコールのシミュレーション
 - データ変換の可視化
 
+### Prism.js言語クラス対応表
+| 言語名 | クラス名 |
+|--------|----------|
+| JavaScript | `language-javascript` |
+| HTML | `language-html` |
+| CSS | `language-css` |
+| Python | `language-python` |
+| Java | `language-java` |
+| JSON | `language-json` |
+
 ---
 
 ## 詳細仕様
 
 ### 生成ルール詳細
-`generation-rules.md`に詳細な生成ルールが記載されています：
+`rules.md`に詳細な生成ルールが記載されています：
 - コマンドトリガー仕様
 - 変数置換処理の詳細
 - エラーハンドリング方法
@@ -157,12 +186,18 @@ git-stash.mdから用語ページ作成して
 
 ### 参考例
 既存の用語ページ：
-- `/samplepage/foolproof/foolproof.html` - フールプルーフの実装例
+- `itwords/drafts/api/api.html` - API用語の実装例
 - このテンプレートの元となった完成形
 
 ---
 
 ## 更新履歴
+
+- **2025-07-23**: 大幅アップデート
+  - Prism.jsシンタックスハイライト追加
+  - デモシステム変数の詳細化
+  - CSSファイル名統一（styles.css）
+  - 自動生成システム完成
 
 - **2025-07-20**: 初回作成・更新
   - HTMLテンプレート、CSS、Markdownサンプルを作成
@@ -173,4 +208,4 @@ git-stash.mdから用語ページ作成して
 
 ---
 
-**最終更新**: 2025年7月20日 
+**最終更新**: 2025年7月23日 

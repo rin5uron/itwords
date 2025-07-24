@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <!-- SEO メタタグ -->
+  <title>API - IT用語辞典</title>
+  <meta name="description" content="アプリケーション同士が情報をやりとりするための仕組み。Webサービスやアプリ開発で頻繁に使用される重要な概念を分かりやすく解説">
+  <meta name="keywords" content="API,Application Programming Interface,Web API,REST API,JSON,HTTP">
+  <meta name="author" content="IT用語辞典">
+  <meta name="robots" content="index, follow">
+  <link rel="canonical" href="https://itwords.jp/api/">
+  
+  <!-- Open Graph / SNS -->
+  <meta property="og:type" content="article">
+  <meta property="og:title" content="API - IT用語辞典">
+  <meta property="og:description" content="アプリケーション同士が情報をやりとりするための仕組み。Webサービスやアプリ開発で頻繁に使用される重要な概念を分かりやすく解説">
+  <meta property="og:url" content="https://itwords.jp/api/">
+  <meta property="og:site_name" content="IT用語辞典">
+  <meta property="og:image" content="https://itwords.jp/images/api.jpg">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="API - IT用語辞典">
+  <meta name="twitter:description" content="アプリケーション同士が情報をやりとりするための仕組み。Webサービスやアプリ開発で頻繁に使用される重要な概念を分かりやすく解説">
+  <meta name="twitter:image" content="https://itwords.jp/images/api.jpg">
+  
+  <!-- Google Tag Manager -->
+  <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+  new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+  j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+  'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+  })(window,document,'script','dataLayer','GTM-XXXXXXX');</script>
+  
+  <!-- Google Analytics 4 -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-XXXXXXXXXX');
+  </script>
+  
+  <!-- 構造化データ (JSON-LD) -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "headline": "API - IT用語辞典",
+    "description": "アプリケーション同士が情報をやりとりするための仕組み。Webサービスやアプリ開発で頻繁に使用される重要な概念を分かりやすく解説",
+    "author": {
+      "@type": "Organization",
+      "name": "IT用語辞典"
+    },
+    "datePublished": "2025-07-23",
+    "dateModified": "2025-07-23",
+    "keywords": "API,Application Programming Interface,Web API,REST API,JSON,HTTP",
+    "articleSection": "基礎知識・開発",
+    "timeRequired": "7分",
+    "url": "https://itwords.jp/api/",
+    "mainEntityOfPage": {
+      "@type": "WebPage",
+      "@id": "https://itwords.jp/api/"
+    },
+    "publisher": {
+      "@type": "Organization",
+      "name": "IT用語辞典"
+    }
+  }
+  </script>
+  
+  <!-- Font Awesome CDN -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+  <link rel="stylesheet" href="../../styles.css">
+</head>
+<body>
+  <!-- Google Tag Manager (noscript) -->
+  <noscript><iframe src="https://www.googletagmanager.com/gtm.ns.html?id=GTM-XXXXXXX"
+  height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+
+  <div class="container">
+    <article class="term-page">
+      <header class="term-header">
+        <h1><i class="fas fa-plug icon"></i>API</h1>
+        <p class="reading">よみかた：<strong>エーピーアイ</strong></p>
+      </header>
+
+      <section class="term-intro">
+        <h2>意味</h2>
+        <p>
+          <strong>アプリケーション同士が情報をやりとりするための仕組み</strong>。<br>
+          Application Programming Interface（アプリケーション・プログラミング・インターフェース）の略で、異なるシステムやサービス間でデータを交換するための決まりごと（ルール）のこと。
+        </p>
+      </section>
+
+      <section class="term-point">
+        <h2>ポイント</h2>
+        <ul>
+          <li>異なるシステム間でデータを安全に交換できる</li>
+          <li>決まった形式（ルール）に従って通信するため、安定した連携が可能</li>
+          <li>Webサービスやスマホアプリ開発で頻繁に使用される</li>
+          <li>天気予報、地図、SNSなど多くのサービスがAPIを提供している</li>
+        </ul>
+      </section>
+
+      <section class="term-visual">
+        <h2>体験してみよう</h2>
+        <p>実際のAPIを呼び出して、リアルタイムの情報を取得してみましょう。
+          <br>※無料のAPIサービスを使用しています。
+        </p>
+        <div class="demo-section">
+          <p><strong>ランダムな名言</strong>を取得します</p>
+          <button class="demo-button" onclick="startApiDemo()">APIを呼び出す</button>
+          <div id="demo-message"></div>
+        </div>
+      </section>
+
+      <section class="term-code">
+        <h2>JavaScriptで実践してみよう</h2>
+        <p>JavaScriptの<code>fetch</code>関数を使うと、簡単にAPIを呼び出すことができます。以下のサンプルコードで、その実装方法を確認してみましょう。</p>
+        <details>
+          <summary>サンプルコードを見る (JavaScript)</summary>
+          <div class="code-example">
+            <pre><code>async function startApiDemo() {
+  const messageDiv = document.getElementById('demo-message');
+  messageDiv.innerHTML = '<p style="color: #666;">APIを呼び出し中...</p>';
+  
+  try {
+    // APIエンドポイントにリクエストを送信
+    const response = await fetch('https://api.quotable.io/random?minLength=50');
+    
+    // レスポンスをJSONとして解析
+    const data = await response.json();
+    
+    // 取得した名言を表示
+    messageDiv.innerHTML = `
+      <div style="margin-top: 20px; padding: 20px; background-color: #f9f7ef; border-radius: 8px;">
+        <p style="font-size: 1.2em; font-style: italic; margin-bottom: 10px;">"${data.content}"</p>
+        <p style="text-align: right; color: #666; margin: 0;">- ${data.author}</p>
+      </div>
+    `;
+  } catch (error) {
+    messageDiv.innerHTML = '<p style="color: #d9534f;">エラーが発生しました。</p>';
+  }
+}</code></pre>
+          </div>
+        </details>
+
+        <details>
+          <summary>HTML/CSS/JS 統合版テンプレート</summary>
+          <p style="padding: 15px 20px 0;">このページの完全なコードです。以下の内容をコピーして<code>index.html</code>などの名前で保存すると、ご自身のPCやブラウザで直接開いて確認できます。</p>
+          <div class="code-example">
+            <pre><code>&lt;!DOCTYPE html&gt;
+&lt;html lang="ja"&gt;
+&lt;head&gt;
+  &lt;meta charset="UTF-8"&gt;
+  &lt;meta name="viewport" content="width=device-width, initial-scale=1.0"&gt;
+  &lt;title&gt;API - IT用語辞典&lt;/title&gt;
+  &lt;link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css"&gt;
+  &lt;style&gt;
+    /* styles.cssの内容をここに含める */
+  &lt;/style&gt;
+&lt;/head&gt;
+&lt;body&gt;
+  &lt;div class="container"&gt;
+    &lt;h1&gt;&lt;i class="fas fa-plug icon"&gt;&lt;/i&gt;API&lt;/h1&gt;
+    &lt;p&gt;アプリケーション同士が情報をやりとりするための仕組み&lt;/p&gt;
+    &lt;button onclick="startApiDemo()"&gt;APIを呼び出す&lt;/button&gt;
+    &lt;div id="demo-message"&gt;&lt;/div&gt;
+  &lt;/div&gt;
+  
+  &lt;script&gt;
+    async function startApiDemo() {
+      const messageDiv = document.getElementById('demo-message');
+      messageDiv.innerHTML = '&lt;p&gt;APIを呼び出し中...&lt;/p&gt;';
+      
+      try {
+        const response = await fetch('https://api.quotable.io/random?minLength=50');
+        const data = await response.json();
+        
+        messageDiv.innerHTML = \`
+          &lt;div style="margin-top: 20px; padding: 20px; background-color: #f9f7ef; border-radius: 8px;"&gt;
+            &lt;p style="font-size: 1.2em; font-style: italic;"&gt;"\${data.content}"&lt;/p&gt;
+            &lt;p style="text-align: right; color: #666;"&gt;- \${data.author}&lt;/p&gt;
+          &lt;/div&gt;
+        \`;
+      } catch (error) {
+        messageDiv.innerHTML = '&lt;p style="color: #d9534f;"&gt;エラーが発生しました。&lt;/p&gt;';
+      }
+    }
+  &lt;/script&gt;
+&lt;/body&gt;
+&lt;/html&gt;</code></pre>
+          </div>
+        </details>
+      </section>
+
+      <section class="term-comparison">
+        <h2>関連用語・比較</h2>
+        <div class="comparison-table">
+          <table>
+            <thead>
+              <tr>
+                <th>用語名</th>
+                <th>役割</th>
+                <th>特徴</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><a class="term-name" href="">API</a></td>
+                <td>アプリケーション間の<strong>データ交換</strong>の仕組み</td>
+                <td>決まったルールで安全にデータをやりとりできる</td>
+              </tr>
+              <tr>
+                <td><a class="term-name" href="">REST API</a></td>
+                <td>Web上での<strong>標準的なAPI設計</strong>方式</td>
+                <td>HTTP通信を使い、シンプルで理解しやすい</td>
+              </tr>
+              <tr>
+                <td><a class="term-name" href="">JSON</a></td>
+                <td>APIで使われる<strong>データ形式</strong></td>
+                <td>軽量で人間にも読みやすい構造</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <footer class="term-footer">
+        <nav class="footer-nav">
+          <p><a href="../index.html">IT用語一覧に戻る</a></p>
+        </nav>
+      </footer>
+    </article>
+  </div>
+
+  <script>
+    async function startApiDemo() {
+      const messageDiv = document.getElementById('demo-message');
+      messageDiv.innerHTML = '<p style="color: #666; margin-top: 20px;">APIを呼び出し中...</p>';
+      
+      try {
+        // 無料の名言APIを呼び出し
+        const response = await fetch('https://api.quotable.io/random?minLength=50');
+        
+        if (!response.ok) {
+          throw new Error('API呼び出しに失敗しました');
+        }
+        
+        const data = await response.json();
+        
+        // 取得した名言を表示
+        messageDiv.innerHTML = `
+          <div style="margin-top: 20px; padding: 20px; background-color: #f9f7ef; border-radius: 8px; border-left: 4px solid #ea9b8a;">
+            <p style="font-size: 1.2em; font-style: italic; margin-bottom: 15px; line-height: 1.6;">"${data.content}"</p>
+            <p style="text-align: right; color: #666; margin: 0; font-weight: bold;">- ${data.author}</p>
+            <p style="margin-top: 15px; font-size: 0.9em; color: #888;">✨ APIから取得したリアルタイムデータです</p>
+          </div>
+        `;
+      } catch (error) {
+        messageDiv.innerHTML = `
+          <div style="margin-top: 20px; padding: 20px; background-color: #f8d7da; border-radius: 8px; border-left: 4px solid #d9534f;">
+            <p style="color: #721c24; margin: 0;">❌ エラーが発生しました: ${error.message}</p>
+          </div>
+        `;
+      }
+    }
+  </script>
+
+</body>
+</html> 
