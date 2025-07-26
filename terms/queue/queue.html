@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <!-- SEO Meta Tags -->
+  <title>キュー (Queue) - 実践型IT用語辞典</title>
+  <meta name="description" content="先に入れたものが先に出ていく「キュー構造」について、FIFOの原則や具体的な使われ方を、インタラクティブなデモを通じて分かりやすく解説します。">
+  <meta name="keywords" content="キュー, Queue, FIFO, データ構造, プログラミング, JavaScript">
+  <meta name="author" content="IT用語辞典">
+  <meta name="robots" content="index, follow">
+  <link rel="canonical" href="https://itwords.example.com/queue">
+  
+  <!-- Open Graph / SNS -->
+  <meta property="og:title" content="キュー (Queue) - 実践型IT用語辞典">
+  <meta property="og:description" content="先に入れたものが先に出ていく「キュー構造」について、FIFOの原則や具体的な使われ方を、インタラクティブなデモを通じて分かりやすく解説します。">
+  <meta property="og:url" content="https://itwords.example.com/queue">
+  <!-- ...その他のOGPタグ... -->
+
+  <!-- Common Stylesheet -->
+  <link rel="stylesheet" href="../../styles.css">
+  <!-- Font Awesome CDN -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+
+  <style>
+    /* Page-specific styles */
+    h1 .icon { color: #82c9a0; }
+    .demo-button { background-color: #82c9a0; }
+    .demo-button:hover { background-color: #70b88f; }
+    .demo-button.dequeue { background-color: #ea9b8a; }
+    .demo-button.dequeue:hover { background-color: #e08a7a; }
+    #queue-visualizer { border: 2px dashed #ccc; border-radius: 5px; padding: 20px; min-height: 60px; display: flex; align-items: center; overflow-x: auto; }
+    .queue-item { background-color: #82c9a0; color: white; padding: 10px 20px; margin-right: 10px; border-radius: 5px; font-weight: bold; white-space: nowrap; animation: slideIn 0.4s ease-out; }
+    @keyframes slideIn { from { opacity: 0; transform: translateX(20px); } to { opacity: 1; transform: translateX(0); } }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <article class="term-page">
+      <header class="term-header">
+        <h1><i class="fas fa-users icon"></i>キュー (Queue)</h1>
+        <p class="reading">よみかた：<strong>きゅー</strong></p>
+      </header>
+
+      <section class="term-intro">
+        <h2>意味</h2>
+        <p>先に入れたものが、先に出ていくという仕組みのデータ構造のこと。「<strong>FIFO (First In, First Out)</strong>」とも呼ばれます。レジの行列のように、並んだ順番通りに処理されるのが特徴です。</p>
+      </section>
+
+      <section class="term-point">
+        <h2>ポイント</h2>
+        <ul>
+          <li><strong>Enqueue (エンキュー)</strong>: 列の末尾にデータを追加すること。</li>
+          <li><strong>Dequeue (デキュー)</strong>: 列の先頭からデータを取り出すこと。</li>
+          <li>印刷ジョブの管理やタスク処理など、<strong>順番が重要な場面</strong>で使われます。</li>
+        </ul>
+      </section>
+
+      <section class="term-visual">
+        <h2>実際に体験してみよう</h2>
+        <p>下のボタンを押して、キューの「先入れ先出し」を体験してみましょう。「Enqueue」で列の末尾に人を追加し、「Dequeue」で列の先頭から人が退出します。</p>
+        <div class="demo-section">
+          <button class="demo-button" onclick="enqueueItem()">Enqueue (追加)</button>
+          <button class="demo-button dequeue" onclick="dequeueItem()">Dequeue (取り出し)</button>
+          <p id="demo-message"></p>
+          <div id="queue-visualizer"></div>
+        </div>
+      </section>
+
+      <section class="term-code">
+        <h2>コードを書いてみよう</h2>
+        <p>JavaScriptの配列を使えば、<code>push</code>で追加し、<code>shift</code>で取り出すことで簡単に「先入れ先出し」のキューを実装できます。</p>
+        <details>
+          <summary>サンプルコードを見る (JavaScript)</summary>
+          <div class="code-example">
+            <pre><code class="language-javascript"><span class="token comment">// 配列を使った簡単なキュー</span>
+<span class="token keyword">const</span> <span class="token variable">queue</span> <span class="token punctuation">=</span> <span class="token punctuation">[];</span>
+
+<span class="token comment">// Enqueue: 後ろに追加</span>
+queue<span class="token punctuation">.</span><span class="token function">push</span><span class="token punctuation">(</span><span class="token string">'タスク1'</span><span class="token punctuation">);</span>
+queue<span class="token punctuation">.</span><span class="token function">push</span><span class="token punctuation">(</span><span class="token string">'タスク2'</span><span class="token punctuation">);</span>
+
+<span class="token comment">// Dequeue: 先頭から取り出し</span>
+<span class="token keyword">const</span> <span class="token variable">firstTask</span> <span class="token punctuation">=</span> queue<span class="token punctuation">.</span><span class="token function">shift</span><span class="token punctuation">();</span>
+
+console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>firstTask<span class="token punctuation">);</span> <span class="token comment">// "タスク1"</span></code></pre>
+          </div>
+        </details>
+        <details>
+          <summary>HTML/CSS/JS 統合版テンプレート</summary>
+          <div class="code-example">
+            <pre><code><span class="token comment">&lt;!DOCTYPE html&gt;</span>
+<span class="token punctuation">&lt;</span><span class="token keyword">html</span> <span class="token variable">lang</span><span class="token punctuation">=</span><span class="token string">"ja"</span><span class="token punctuation">&gt;</span>
+  <span class="token comment">... (headの内容は上記参照) ...</span>
+<span class="token punctuation">&lt;</span><span class="token keyword">body</span><span class="token punctuation">&gt;</span>
+  <span class="token comment">... (bodyの内容は上記参照) ...</span>
+<span class="token punctuation">&lt;/</span><span class="token keyword">body</span><span class="token punctuation">&gt;</span>
+<span class="token punctuation">&lt;/</span><span class="token keyword">html</span><span class="token punctuation">&gt;</span></code></pre>
+          </div>
+        </details>
+      </section>
+
+      <section class="term-comparison">
+        <h2>関連用語・比較</h2>
+        <div class="comparison-table">
+          <table>
+            <thead><tr><th>用語名</th><th>構造</th><th>特徴</th></tr></thead>
+            <tbody>
+              <tr><td><a class="term-name" href="./queue.html">キュー</a></td><td>先入れ先出し (FIFO)</td><td>レジの列のように、順番通りに処理する。</td></tr>
+              <tr><td><a class="term-name" href="../stack/stack.html">スタック</a></td><td>後入れ先出し (LIFO)</td><td>お皿の山のように、後から置いたものを先に取る。</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <footer class="term-footer">
+        <nav class="footer-nav"><p><a href="../../index.html">IT用語一覧に戻る</a></p></nav>
+      </footer>
+    </article>
+  </div>
+
+  <script>
+    let queue = [];
+    let personCount = 0;
+    const visualizer = document.getElementById('queue-visualizer');
+    const message = document.getElementById('demo-message');
+
+    function enqueueItem() {
+      if (queue.length >= 5) {
+        message.textContent = "行列が長すぎます！";
+        return;
+      }
+      personCount++;
+      const newPerson = `客${personCount}`;
+      queue.push(newPerson);
+      renderQueue();
+      message.textContent = `"${newPerson}" が列に並びました。`;
+    }
+
+    function dequeueItem() {
+      if (queue.length === 0) {
+        message.textContent = "誰も並んでいません。";
+        return;
+      }
+      const servedPerson = queue.shift();
+      renderQueue();
+      message.textContent = `"${servedPerson}" がレジを終えました。`;
+    }
+
+    function renderQueue() {
+      visualizer.innerHTML = '';
+      queue.forEach(item => {
+        const div = document.createElement('div');
+        div.className = 'queue-item';
+        div.textContent = item;
+        visualizer.appendChild(div);
+      });
+    }
+    // Initial state
+    enqueueItem();
+    enqueueItem();
+  </script>
+</body>
+</html>

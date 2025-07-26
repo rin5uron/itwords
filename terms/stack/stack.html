@@ -1,0 +1,350 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <!-- SEO メタタグ -->
+  <title>スタック構造 - IT用語辞典</title>
+  <meta name="description" content="最後に入れたものが最初に出てくるデータ構造。LIFO（Last In, First Out）の仕組みを、身近な例とgit stashで分かりやすく解説">
+  <meta name="keywords" content="スタック, LIFO, データ構造, git stash, プログラミング">
+  <meta name="author" content="IT用語辞典">
+  <meta name="robots" content="index, follow">
+  <link rel="canonical" href="https://itwords.example.com/stack">
+  
+  <!-- Open Graph / SNS -->
+  <meta property="og:type" content="article">
+  <meta property="og:title" content="スタック構造 - IT用語辞典">
+  <meta property="og:description" content="最後に入れたものが最初に出てくるデータ構造。LIFO（Last In, First Out）の仕組みを、身近な例とgit stashで分かりやすく解説">
+  <meta property="og:url" content="https://itwords.example.com/stack">
+  <meta property="og:site_name" content="IT用語辞典">
+  <meta property="og:image" content="https://itwords.example.com/images/stack.jpg">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="スタック構造 - IT用語辞典">
+  <meta property="twitter:description" content="最後に入れたものが最初に出てくるデータ構造。LIFO（Last In, First Out）の仕組みを、身近な例とgit stashで分かりやすく解説">
+  <meta name="twitter:image" content="https://itwords.example.com/images/stack.jpg">
+  
+  <!-- Google Tag Manager -->
+  <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+  new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+  j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+  'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+  })(window,document,'script','dataLayer','GTM-XXXXXXX');</script>
+  
+  <!-- Google Analytics 4 -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-XXXXXXXXXX');
+  </script>
+  
+  <!-- 構造化データ (JSON-LD) -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "headline": "スタック構造 - IT用語辞典",
+    "description": "最後に入れたものが最初に出てくるデータ構造。LIFO（Last In, First Out）の仕組みを、身近な例とgit stashで分かりやすく解説",
+    "author": {
+      "@type": "Organization",
+      "name": "IT用語辞典"
+    },
+    "datePublished": "2025-07-21",
+    "dateModified": "2025-07-21",
+    "keywords": "スタック, LIFO, データ構造, git stash, プログラミング",
+    "articleSection": "データ構造・アルゴリズム",
+    "timeRequired": "5分",
+    "url": "https://itwords.example.com/stack",
+    "mainEntityOfPage": {
+      "@type": "WebPage",
+      "@id": "https://itwords.example.com/stack"
+    },
+    "publisher": {
+      "@type": "Organization",
+      "name": "IT用語辞典"
+    }
+  }
+  </script>
+  
+  <!-- Font Awesome CDN -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+  <link rel="stylesheet" href="../../styles.css">
+  <style>
+    /* 個別ページ用のスタイル調整 */
+    h1 .icon {
+      color: #8abdea;
+    }
+    .summary-box {
+      background-color: transparent;
+      border: none;
+      padding: 40px 20px;
+      margin: 40px auto;
+      max-width: 90%;
+      font-size: 1.2em;
+      line-height: 1.8;
+      text-align: center;
+      font-style: normal;
+      color: #555;
+    }
+    .demo-button {
+        background-color: #8abdea;
+    }
+    .demo-button:hover {
+        background-color: #7aaad4;
+    }
+    .demo-button.pop {
+        background-color: #ea9b8a;
+    }
+    .demo-button.pop:hover {
+        background-color: #e08a7a;
+    }
+    #stack-visualizer .stack-item {
+        background-color: #8abdea;
+        margin: 2px;
+        padding: 10px;
+        border-radius: 5px;
+        color: white;
+        text-align: center;
+        font-weight: bold;
+    }
+    /* 関連用語テーブルのテーマカラー */
+    .comparison-table .term-name {
+        color: #8abdea;
+    }
+    .comparison-table .term-name:hover {
+        color: #7aaad4;
+    }
+    .demo-controls {
+      margin-bottom: 20px;
+    }
+    .demo-controls button {
+      margin: 0 10px;
+    }
+    #stack-visualizer {
+      min-height: 100px;
+      border: 2px dashed #ddd;
+      padding: 20px;
+      border-radius: 10px;
+      display: flex;
+      flex-direction: column-reverse;
+      align-items: center;
+      justify-content: flex-start;
+      background-color: #f9f9f9;
+    }
+  </style>
+</head>
+<body>
+  <!-- Google Tag Manager (noscript) -->
+  <noscript><iframe src="https://www.googletagmanager.com/gtm.ns.html?id=GTM-XXXXXXX"
+  height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+
+  <div class="container">
+    <article class="term-page">
+      <header class="term-header">
+        <h1><i class="fas fa-layer-group icon"></i>スタック構造</h1>
+        <p class="reading">よみかた：<strong>すたっくこうぞう</strong></p>
+      </header>
+
+      <section class="term-intro">
+        <h2>概要</h2>
+        <p>
+          最後に入れたものが、最初に出てくるという仕組みのデータ構造。<br>
+          <strong>後入れ先だし</strong>、「LIFO（Last In, First Out）」とも呼ばれる。<br>
+          
+        </p>
+      </section>
+
+      <section class="term-point">
+        <h2>ポイント</h2>
+        <ul>
+          <li>「上に積む（<strong>push</strong>）」「上から取る（<strong>pop</strong>）」が基本操作</li>
+          <li><strong>戻るボタン、Undo、ブラウザ履歴</strong>などにも使われる</li>
+          <li>順番どおりに処理したいときには便利だが、途中のデータを取り出すのは苦手</li>
+        </ul>
+      </section>
+
+      <section class="term-experience">
+        <h2>体験してみよう①【日常編】</h2>
+        <p>色の違うお皿を重ねてみよう！
+        <br>→ 後から置いたものから取る！<strong>＝スタック構造の仕組みと同じ！</strong></p>
+        <ol>
+          <li>最初に青いお皿を置く</li>
+          <li>その上に赤いお皿を置く</li>
+          <li>一番上の赤いお皿から先に取る</li>
+        </ol>
+    
+      </section>
+
+      <section class="term-visual">
+        <h2>体験してみよう②【実務編】</h2>
+        <p>下のボタンを押して、スタックの「後入れ先出し」を体験してみよう！
+        <p><strong>Push（プッシュ）</strong>でデータを追加し、<br>
+           <strong>Pop（ポップ）</strong>でスタックから一番上のデータを取り出せるよ。</p>
+        
+        <div class="demo-section">
+          <div class="demo-controls">
+            <button class="demo-button" onclick="pushItem()">Push</button>
+            <button class="demo-button pop" onclick="popItem()">Pop</button>
+          </div>
+          <p id="demo-message"></p>
+          <div id="stack-visualizer">
+            <!-- Stack items will be added here -->
+          </div>
+        </div>
+      </section>
+
+      <section class="term-practice">
+        <h2>git stashで実践してみよう</h2>
+        <p>Gitでの一時保存コマンド <code>git stash</code> は、まさにスタックそのもの！<br>
+           ターミナルを開いてgit連携しているテキストエディタ上で<code>git stash</code> を体験してみよう。</p>
+        
+        <details>
+          <summary>サンプルコマンド</summary>
+          <div class="code-example">
+            <pre><code>
+# 作業内容をスタックに積む
+git stash
+git stash push -m "メッセージ"` - メッセージ付きでstash
+
+# 最後に積んだものを取り出す
+git stash pop
+
+# スタックの中身を確認する
+git stash list
+
+# 特定のスタックを取り出す
+git stash apply stash@{1}</code></pre>
+          </div>
+        </details>
+
+        <details>
+          <summary>ターミナルの実行結果の例</summary>
+          <div class="code-example">
+            <pre><code>
+# UI変更①、②を順にstashに積み、①だけを適用する例
+
+# 作業①をスタックに積む
+$ git stash push -m "UI変更①（ボタン位置調整）"
+Saved working directory and index state WIP on main: 9abcde1 UI変更①（ボタン位置調整）
+
+# 作業②をスタックに積む
+$ git stash push -m "UI変更②（配色調整）"
+Saved working directory and index state WIP on main: bcd2345 UI変更②（配色調整）
+
+# スタックの状態を確認
+$ git stash list
+stash@{0}: WIP on main: bcd2345 UI変更②（配色調整）
+stash@{1}: WIP on main: 9abcde1 UI変更①（ボタン位置調整）
+
+# UI変更①を適用する
+$ git stash apply stash@{0}
+On branch main
+Changes not staged for commit:
+  (use "git add <file>..." to update what will be committed)
+
+            </code></pre>
+          </div>
+        </details>
+        <p style="margin-top: 20px;">
+          <strong>ポイント</strong><br>
+          - <code>stash</code> するたびに「上に積まれる」<br>
+          - <code>pop</code> で「一番上＝最後に積んだやつ」が出てくる<br>
+      </p>
+      </section>
+
+      <section class="term-comparison">
+        <h2>関連用語・比較</h2>
+        <div class="comparison-table">
+          <table>
+            <thead>
+              <tr>
+                <th>用語名</th>
+                <th>構造の違い</th>
+                <th>特徴</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><a href="./stack.html" class="term-name"><strong>スタック</strong></a></td>
+                <td>後入れ先出し</td>
+                <td>「戻る」操作や、一時的な処理に強い</td>
+              </tr>
+              <tr>
+                <td><a href="../queue/queue.html" class="term-name"><strong>キュー</strong></a></td>
+                <td>先入れ先出し</td>
+                <td>受付や行列のような順番処理に向く</td>
+              </tr>
+              <tr>
+                <td><a href="#" class="term-name"><strong>配列（Array）</strong></a></td>
+                <td>任意の位置にアクセス可能</td>
+                <td>特定のデータを直接取り出せる</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <div class="summary-box">
+        スタック構造とは、<strong>「積み重ねて、上から取り出す」</strong>ルールのこと。<br>
+        シンプルだけど、Undo・履歴・メモリ処理などいろんな場面で大活躍！
+      </div>
+
+      <footer class="term-footer">
+        <nav class="footer-nav">
+          <p><a href="../../index.html">IT用語一覧に戻る</a></p>
+        </nav>
+      </footer>
+    </article>
+  </div>
+
+  <script>
+    let stack = [];
+    let itemCount = 0;
+    const visualizer = document.getElementById('stack-visualizer');
+    const message = document.getElementById('demo-message');
+
+    function pushItem() {
+      if (stack.length >= 5) {
+        message.textContent = "スタックがいっぱいです！";
+        message.style.color = "#d9534f";
+        return;
+      }
+      itemCount++;
+      const newItem = `データ ${itemCount}`;
+      stack.push(newItem);
+      renderStack();
+      message.textContent = `"${newItem}" をPushしました。`;
+      message.style.color = "#333";
+    }
+
+    function popItem() {
+      if (stack.length === 0) {
+        message.textContent = "スタックは空です。";
+        message.style.color = "#d9534f";
+        return;
+      }
+      const poppedItem = stack.pop();
+      renderStack();
+      message.textContent = `"${poppedItem}" をPopしました。`;
+      message.style.color = "#333";
+    }
+
+    function renderStack() {
+      visualizer.innerHTML = '';
+      stack.forEach(item => {
+        const div = document.createElement('div');
+        div.className = 'stack-item';
+        div.textContent = item;
+        visualizer.appendChild(div);
+      });
+    }
+    
+    // 初期状態
+    pushItem();
+    pushItem();
+  </script>
+
+</body>
+</html>

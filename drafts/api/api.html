@@ -104,13 +104,19 @@
 
       <section class="term-visual">
         <h2>体験してみよう</h2>
-        <p>実際のAPIを呼び出して、リアルタイムの情報を取得してみましょう。
-          <br>※無料のAPIサービスを使用しています。
-        </p>
+        <p>APIは<strong>JSONデータで情報を交換する仕組み</strong>です。まずは実際のAPIがどんなJSONデータを返すのか確認してみましょう。</p>
         <div class="demo-section">
-          <p><strong>ランダムな名言</strong>を取得します</p>
-          <button class="demo-button" onclick="startApiDemo()">APIを呼び出す</button>
-          <div id="demo-message"></div>
+          <p>以下のURLをブラウザで開いてみてください：</p>
+          <input type="text" value="https://api.github.com/users/octocat" readonly onclick="this.select()" style="font-family: monospace; background: #f5f5f5; padding: 10px; border: 1px solid #ddd; border-radius: 4px; margin: 15px 0; width: 100%; box-sizing: border-box; font-size: 14px; cursor: pointer;">
+          <div style="margin-top: 20px; padding: 20px; background-color: #f9f7ef; border-radius: 8px; border-left: 4px solid #ea9b8a;">
+            <h4 style="margin-top: 0; color: #333; margin-bottom: 15px;">💡 ここがポイント</h4>
+            <ul style="margin: 0; padding-left: 20px; line-height: 1.8; color: #555;">
+              <li>ブラウザに<strong>JSONデータ</strong>が表示されます</li>
+              <li>これがAPIから返ってくる<strong>生のデータ</strong>です</li>
+              <li><code>login</code>、<code>avatar_url</code>、<code>public_repos</code>などの情報が含まれています</li>
+              <li><strong>このJSONデータを使って様々なアプリケーションを作ることができます</strong></li>
+            </ul>
+          </div>
         </div>
       </section>
 
