@@ -1,192 +1,462 @@
-/* 基本スタイル - オレンジ系 */
+/* 完全な用語ページスタイル - 体験デモ対応 */
+
 body {
-    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
-    line-height: 1.6;
-    margin: 0;
-    padding: 20px;
-    background-color: #fdf6e3; /* 暖色系の背景 */
-    color: #657b83; /* 落ち着いたテキスト色 */
+  font-family: 'Noto Sans JP', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  line-height: 1.8;
+  color: #333;
+  background-color: #f4f1e2;
+  margin: 0;
+  padding: 40px 20px;
 }
 
 .container {
-    max-width: 850px;
-    margin: 0 auto;
-    padding: 20px;
-    background-color: #fff;
-    border-radius: 10px;
-    box-shadow: 0 4px 10px rgba(0,0,0,0.08);
+  max-width: 800px;
+  margin: 0 auto;
+  background-color: #fff;
+  padding: 50px;
+  border-radius: 10px;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.07);
 }
 
-h1, h2, h3, h4 {
-    color: #b58900; /* アクセントカラー */
-    margin-top: 1.5em;
-    margin-bottom: 0.5em;
+h1, h2 {
+  font-weight: 700;
+  color: #4a4a4a;
+  border-bottom: 2px solid #ead3c3;
+  padding-bottom: 0.5em;
 }
 
 h1 {
-    font-size: 2.5em;
-    text-align: center;
-    margin-top: 0;
-    color: #cb4b16; /* より強いオレンジ */
+  font-size: 2.2em;
+  display: flex;
+  align-items: center;
+  margin-top: 0;
 }
 
-a {
-    color: #268bd2;
-    text-decoration: none;
+h1 i {
+  font-size: 0.9em;
+  margin-right: 20px;
+  color: #ea9b8a;
 }
 
-a:hover {
-    color: #2aa198;
-    text-decoration: underline;
+h2 {
+  font-size: 1.6em;
+  margin-top: 50px;
 }
 
-/* ナビゲーション */
+h3 {
+  font-size: 1.3em;
+  color: #4a4a4a;
+  margin-top: 30px;
+}
+
+p, ul, li {
+  font-size: 1.05em;
+}
+
+ul {
+  padding-left: 25px;
+}
+
+li {
+  margin-bottom: 12px;
+}
+
+strong {
+  color: #d9534f;
+  font-weight: 700;
+}
+
+code {
+  background-color: #f5f5f5;
+  padding: 2px 6px;
+  border-radius: 3px;
+  font-family: "SFMono-Regular", Consolas, "Liberation Mono", Menlo, monospace;
+  font-size: 0.9em;
+}
+
+.reading {
+  font-size: 1.1em;
+  margin-top: 10px;
+  color: #666;
+}
+
+/* 体験デモセクション */
+.demo-section {
+  text-align: center;
+  margin-top: 30px;
+  padding: 40px;
+  background-color: #f9f7ef;
+  border-radius: 8px;
+}
+
+.demo-section p {
+  font-size: 1.2em;
+}
+
+.demo-button {
+  font-size: 1.2em;
+  padding: 15px 35px;
+  border: none;
+  border-radius: 8px;
+  background-color: #ea9b8a;
+  color: white;
+  cursor: pointer;
+  transition: background-color 0.3s, transform 0.2s;
+}
+
+.demo-button:hover {
+  background-color: #e08a7a;
+  transform: translateY(-2px);
+}
+
+#demo-message {
+  margin-top: 25px;
+  font-size: 1.5em;
+  font-weight: bold;
+  min-height: 1.5em;
+}
+
+/* アコーディオン & コードハイライト */
+details {
+  border: 1px solid #e0e0e0;
+  border-radius: 8px;
+  margin-top: 20px;
+  overflow: hidden;
+}
+
+summary {
+  font-size: 1.1em;
+  font-weight: bold;
+  padding: 16px 20px;
+  cursor: pointer;
+  list-style: none;
+  display: block;
+  background-color: #f9f9f9;
+  border-bottom: 1px solid #e0e0e0;
+}
+
+details[open] summary {
+  border-bottom: 1px solid #e0e0e0;
+}
+
+summary::-webkit-details-marker {
+  display: none;
+}
+
+summary:hover {
+  background-color: #f2f2f2;
+}
+
+.code-example {
+  background-color: #1e1e1e;
+  color: #d4d4d4;
+  padding: 20px;
+  border-bottom-left-radius: 8px;
+  border-bottom-right-radius: 8px;
+  overflow-x: auto;
+}
+
+.code-example pre {
+  margin: 0;
+}
+
+.code-example code {
+  font-family: "SFMono-Regular", Consolas, "Liberation Mono", Menlo, monospace;
+  font-size: 0.95em;
+  white-space: pre;
+  background-color: transparent;
+  padding: 0;
+}
+
+/* シンタックスハイライトカラー */
+.code-example .token.comment { color: #6A9955; }
+.code-example .token.keyword { color: #C586C0; }
+.code-example .token.function { color: #DCDCAA; }
+.code-example .token.string { color: #CE9178; }
+.code-example .token.variable { color: #9CDCFE; }
+.code-example .token.punctuation { color: #d4d4d4; }
+
+/* フッターナビゲーション */
+.footer-nav {
+  text-align: center;
+  margin-top: 50px;
+  padding-top: 30px;
+  border-top: 1px solid #eee;
+}
+
+.footer-nav a {
+  color: #4a4a4a;
+  text-decoration: none;
+  font-weight: bold;
+  margin: 0 15px;
+}
+
+.footer-nav a:hover {
+  text-decoration: underline;
+}
+
+/* 関連用語比較テーブル */
+.term-comparison {
+  margin-top: 50px;
+}
+
+.comparison-table {
+  margin-top: 20px;
+  overflow-x: auto;
+}
+
+.comparison-table table {
+  width: 100%;
+  border-collapse: collapse;
+  border: 1px solid #e0e0e0;
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.comparison-table th,
+.comparison-table td {
+  padding: 15px 20px;
+  text-align: left;
+  border-bottom: 1px solid #e0e0e0;
+}
+
+.comparison-table th {
+  background-color: #f9f9f9;
+  font-weight: bold;
+  font-size: 1.1em;
+  color: #4a4a4a;
+}
+
+.comparison-table td {
+  font-size: 1.05em;
+  line-height: 1.6;
+}
+
+.comparison-table tr:last-child td {
+  border-bottom: none;
+}
+
+.comparison-table tr:hover {
+  background-color: #f9f7ef;
+}
+
+.comparison-table .term-name {
+  font-weight: bold;
+  color: #666;
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+.comparison-table .term-name:hover {
+  color: #4a4a4a;
+  text-decoration: underline;
+}
+
+blockquote {
+  margin: 1.5em 10px;
+  padding: 0.5em 10px;
+  border-left: 4px solid #ccc;
+  color: #666;
+  font-size: 0.95em;
+}
+
+/* トップページ用追加スタイル */
 nav ul {
-    list-style: none;
-    padding: 15px 0;
-    display: flex;
-    justify-content: center;
-    gap: 25px;
-    flex-wrap: wrap;
-    border-top: 1px solid #eee8d5;
-    border-bottom: 1px solid #eee8d5;
+  list-style: none;
+  padding: 15px 0;
+  display: flex;
+  justify-content: center;
+  gap: 25px;
+  flex-wrap: wrap;
+  border-top: 1px solid #eee8d5;
+  border-bottom: 1px solid #eee8d5;
 }
 
-/* ヒーローセクション */
 .hero {
-    text-align: center;
-    padding: 20px 0;
+  text-align: center;
+  padding: 20px 0;
 }
 
-/* CTAボタンコンテナを追加 */
 .cta-buttons {
-    display: flex;
-    justify-content: center;
-    gap: 15px;
-    flex-wrap: wrap;
-    margin-top: 20px;
+  display: flex;
+  justify-content: center;
+  gap: 15px;
+  flex-wrap: wrap;
+  margin-top: 20px;
 }
 
 .cta-button {
-    display: inline-block;
-    background-color: #cb4b16;
-    color: #fff;
-    padding: 12px 25px;
-    border-radius: 8px; /* 角丸を統一 */
-    font-weight: bold;
-    transition: background-color 0.3s, transform 0.2s;
-    min-width: 120px; /* 最小幅を設定 */
-    text-align: center;
+  display: inline-block;
+  background-color: #ea9b8a;
+  color: #fff;
+  padding: 12px 25px;
+  border-radius: 8px;
+  font-weight: bold;
+  text-decoration: none;
+  transition: background-color 0.3s, transform 0.2s;
+  min-width: 120px;
+  text-align: center;
 }
 
 .cta-button:hover {
-    background-color: #dc3912;
-    text-decoration: none;
-    transform: translateY(-2px); /* 軽い浮き上がり効果 */
+  background-color: #e08a7a;
+  text-decoration: none;
+  transform: translateY(-2px);
 }
 
-/* カードデザイン */
 .card-container {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-    gap: 20px;
-    margin-top: 20px;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 20px;
+  margin-top: 20px;
 }
 
 .card {
-    background: #fff;
-    border: 1px solid #eee8d5;
-    border-radius: 8px;
-    box-shadow: 0 2px 5px rgba(0,0,0,0.05);
-    transition: transform 0.2s, box-shadow 0.2s;
-    position: relative; /* .card-link の基準 */
+  background: #fff;
+  border: 1px solid #eee8d5;
+  border-radius: 8px;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+  transition: transform 0.2s, box-shadow 0.2s;
+  position: relative;
 }
 
 .card:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+  transform: translateY(-5px);
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
 }
 
 .card-link {
-    display: block; /* カード全体をリンクにする */
-    padding: 20px; /* カードのパディング */
-    text-decoration: none; /* 下線を消す */
-    color: inherit; /* 親要素の色を継承 */
-    height: 100%; /* カードの高さいっぱい */
-    box-sizing: border-box; /* パディングを幅に含める */
+  display: block;
+  padding: 20px;
+  text-decoration: none;
+  color: inherit;
+  height: 100%;
+  box-sizing: border-box;
 }
 
 .card-link:hover {
-    text-decoration: none; /* ホバー時の下線も消す */
+  text-decoration: none;
 }
 
 .card h4 {
-    margin-top: 0;
-    margin-bottom: 10px;
-    display: flex; /* タイトルとタグを横並びにする */
-    align-items: center; /* 垂直方向中央揃え */
-}
-
-.card h4 a {
-    color: #b58900; /* タイトルリンクの色 */
-    text-decoration: none; /* タイトルリンクの下線も消す */
-}
-
-.card h4 a:hover {
-    text-decoration: underline; /* ホバー時のみ下線 */
+  margin-top: 0;
+  margin-bottom: 10px;
 }
 
 .card p {
-    font-size: 0.9em;
-    color: #586e75;
+  font-size: 0.9em;
+  color: #586e75;
 }
 
 .category-tag {
-    display: inline-block;
-    background-color: #2aa198; /* 補色でアクセント */
-    color: #fff;
-    padding: 2px 8px; /* パディングを小さく */
-    border-radius: 12px;
-    font-size: 0.75em; /* フォントサイズを小さく */
-    margin-bottom: 5px; /* マージンを調整 */
-    min-width: 60px; /* 幅を揃える */
-    text-align: center;
-    vertical-align: middle; /* 垂直方向の位置調整 */
+  display: inline-block;
+  background-color: #2aa198;
+  color: #fff;
+  padding: 2px 8px;
+  border-radius: 12px;
+  font-size: 0.75em;
+  margin-bottom: 5px;
+  min-width: 60px;
+  text-align: center;
+  vertical-align: middle;
 }
 
-/* フッター */
 footer {
-    text-align: center;
-    margin-top: 30px;
-    padding-top: 20px;
-    border-top: 1px solid #eee8d5;
-    color: #93a1a1;
+  text-align: center;
+  margin-top: 30px;
+  padding-top: 20px;
+  border-top: 1px solid #eee8d5;
+  color: #93a1a1;
 }
 
 /* レスポンシブデザイン */
 @media (max-width: 768px) {
-    body {
-        padding: 10px;
-    }
+  body {
+    padding: 15px 10px;
+  }
 
-    .container {
-        padding: 15px;
-    }
+  .container {
+    padding: 20px 15px;
+  }
 
-    h1 {
-        font-size: 2em;
-    }
+  h1 {
+    font-size: 1.8em;
+  }
 
-    nav ul {
-        flex-direction: column;
-        gap: 10px;
-    }
+  h1 i {
+    margin-right: 10px;
+  }
 
-    .cta-button {
-        padding: 10px 20px;
-    }
+  h2 {
+    font-size: 1.4em;
+    margin-top: 30px;
+  }
 
-    .card-container {
-        grid-template-columns: 1fr; /* 1列表示 */
-    }
+  h3 {
+    font-size: 1.2em;
+    margin-top: 20px;
+  }
+
+  p, ul, li {
+    font-size: 1em;
+    line-height: 1.7;
+  }
+
+  .reading {
+    font-size: 1em;
+  }
+
+  .demo-section {
+    padding: 25px 15px;
+  }
+
+  .demo-section p {
+    font-size: 1.1em;
+  }
+
+  .demo-button {
+    width: 100%;
+    padding: 12px 15px;
+    font-size: 1.1em;
+  }
+
+  #demo-message {
+    font-size: 1.3em;
+  }
+
+  summary {
+    font-size: 1em;
+    padding: 12px 15px;
+  }
+
+  .code-example {
+    padding: 15px;
+  }
+
+  .code-example code {
+    font-size: 0.9em;
+  }
+
+  .comparison-table th,
+  .comparison-table td {
+    padding: 10px 15px;
+    font-size: 0.95em;
+  }
+
+  .footer-nav a {
+    margin: 0 10px;
+  }
+
+  nav ul {
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .cta-button {
+    padding: 10px 20px;
+  }
+
+  .card-container {
+    grid-template-columns: 1fr;
+  }
 }

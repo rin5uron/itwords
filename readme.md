@@ -32,9 +32,56 @@ ITパスポートの勉強中に、「用語の意味はわかるけど、**実�
 
 ---
 
-## サイト仕様（予定）
-[サイト仕様書](docs/spec.md)
+## 📚 収録用語一覧
 
+### プログラミング・データ構造
+- [API](/terms/api/) - ソフトウェア間で機能を共有する仕組み
+- [JSON](/terms/json/) - 軽量なデータ交換フォーマット
+- [スタック](/terms/stack/) - 後入れ先出し（LIFO）のデータ構造 🎮 体験デモあり
+- [キュー](/terms/queue/) - 先入れ先出し（FIFO）のデータ構造 🎮 体験デモあり
+- [JavaScript](/terms/javascript/) - Webページに動きを付けるプログラミング言語
+
+### Web技術
+- [HTML](/terms/html/) - Webページの構造を作るマークアップ言語
+- [CSS](/terms/css/) - Webページの見た目を整えるスタイルシート言語
+- [ローカルストレージ](/terms/localstorage/) - ブラウザにデータを保存する仕組み 🎮 体験デモあり
+
+### UI/UX
+- [フールプルーフ](/terms/foolproof/) - 誤操作を防ぐ設計思想 🎮 体験デモあり
+
+---
+
+## 🗂️ ドキュメント
+
+### プロジェクト管理
+- [フェーズ2: AdSense対応計画](docs/process/phase2-adsense.md)
+- [Next.js移行計画](docs/process/adsense-nextjs-migration-plan.md)
+- [プロセスログ](docs/process/processlog.md)
+
+### コンセプト・仕様
+- [ビジョン](docs/process/vision.md) - サイトのコンセプトと目標
+- [サイト仕様書](docs/spec/spec.md)
+
+### SEO
+- [SEO対策](docs/seo/seo.md)
+- [SEOチェック](docs/seo/seo_check.md)
+
+---
+
+## 🛠️ 技術スタック
+
+### フロントエンド
+- **Next.js 15** (App Router)
+- **TypeScript**
+- **React 18**
+
+### ホスティング・デプロイ
+- **Vercel** (https://itwords.jp)
+- **カスタムドメイン**: itwords.jp
+
+### スタイリング
+- グローバルCSS（体験デモ、コードハイライト対応）
+- レスポンシブデザイン
 
 ---
 
@@ -76,4 +123,43 @@ ITパスポートの勉強中に、「用語の意味はわかるけど、**実�
 > 💡 **このリポジトリは公開学習＆試行錯誤の場です。暖かく見守っていただけたら嬉しいです。**
 
 
-最終更新：2025年7月20日
+---
+
+## 📂 プロジェクト構造
+
+```
+itwords/
+├── itwords-nextjs/          # Next.js アプリケーション
+│   ├── app/
+│   │   ├── page.tsx         # ホームページ
+│   │   ├── globals.css      # グローバルスタイル
+│   │   ├── layout.tsx       # レイアウト
+│   │   ├── privacy/         # プライバシーポリシー
+│   │   ├── terms/           # 利用規約
+│   │   └── terms/           # 用語ページ
+│   │       ├── api/
+│   │       ├── css/
+│   │       ├── foolproof/
+│   │       ├── html/
+│   │       ├── javascript/
+│   │       ├── json/
+│   │       ├── localstorage/
+│   │       ├── queue/
+│   │       └── stack/
+│   ├── components/          # Reactコンポーネント
+│   │   ├── StackDemo.tsx
+│   │   ├── QueueDemo.tsx
+│   │   ├── LocalStorageDemo.tsx
+│   │   ├── JsonDemo.tsx
+│   │   └── FoolProofDemo.tsx
+│   └── public/              # 静的ファイル
+├── docs/                    # ドキュメント
+│   ├── process/             # プロジェクト管理
+│   ├── seo/                 # SEO関連
+│   └── spec/                # 仕様書
+└── terms/                   # オリジナルHTML（phase1バックアップ）
+```
+
+---
+
+最終更新：2026年1月6日
