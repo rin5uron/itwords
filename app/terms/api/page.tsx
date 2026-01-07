@@ -1,34 +1,50 @@
-'use client'
-
 import Link from 'next/link'
-import { useState } from 'react'
+import { Metadata } from 'next'
+import APIDemo from './APIDemo'
+import StructuredData from '@/app/components/StructuredData'
+
+export const metadata: Metadata = {
+  title: 'APIとは？初心者向けにわかりやすく解説【実践デモ付き】 | IT用語辞典',
+  description: 'API（Application Programming Interface）を初心者向けに解説。レストランの例えでわかりやすく説明し、実際にGitHub APIを動かすデモで体験できます。REST API、エンドポイント、リクエスト/レスポンスの基本も学べます。',
+  keywords: ['API', 'API とは', 'API わかりやすく', 'REST API', '初心者', 'プログラミング', 'Web開発', 'GitHub API', 'エンドポイント'],
+  openGraph: {
+    title: 'APIとは？初心者向けにわかりやすく解説【実践デモ付き】',
+    description: 'レストランの例えでAPIをわかりやすく解説。実際にGitHub APIを動かすデモで体験しながら学べます。',
+    type: 'article',
+  },
+}
 
 export default function APIPage() {
-  const [apiLoading, setApiLoading] = useState(false)
-  const [apiData, setApiData] = useState<any>(null)
-  const [apiError, setApiError] = useState('')
-
-  const fetchGitHubUser = async () => {
-    setApiLoading(true)
-    setApiError('')
-    setApiData(null)
-
-    try {
-      const response = await fetch('https://api.github.com/users/github')
-      if (!response.ok) {
-        throw new Error(`HTTP Error: ${response.status}`)
-      }
-      const data = await response.json()
-      setApiData(data)
-    } catch (error) {
-      setApiError(error instanceof Error ? error.message : 'エラーが発生しました')
-    } finally {
-      setApiLoading(false)
-    }
-  }
+  const faqs = [
+    {
+      question: 'APIとは何ですか？',
+      answer: 'API（Application Programming Interface）とは、ソフトウェアやWebサービスの機能を外部から利用するための窓口です。レストランのウェイターのように、利用者のリクエストを受け取り、サービス側に伝え、結果を返す役割を果たします。',
+    },
+    {
+      question: 'REST APIとは何ですか？',
+      answer: 'REST APIは、Webサービスで広く利用されるAPIの設計原則の一つです。HTTPメソッド（GET, POST, PUT, DELETEなど）とURLを使ってリソースを操作するシンプルで分かりやすい設計が特徴です。',
+    },
+    {
+      question: 'APIのエンドポイントとは何ですか？',
+      answer: 'エンドポイントとは、APIのどの窓口に話しかけるかを指定するURLです。例えば、GitHub APIでユーザー情報を取得する窓口、Issueを操作する窓口など、機能ごとに異なるURLが用意されています。',
+    },
+    {
+      question: 'APIの認証とは何ですか？',
+      answer: 'APIの認証とは、誰がリクエストしているのかを証明するための仕組みです。誰でも自由に操作できては困る機能には、APIキーやトークンといった身分証明書が必要になります。',
+    },
+  ]
 
   return (
     <div className="container">
+      <StructuredData type="FAQPage" faqs={faqs} />
+      <StructuredData
+        type="Article"
+        title="APIとは？初心者向けにわかりやすく解説"
+        description="API（Application Programming Interface）を初心者向けに解説。レストランの例えでわかりやすく説明し、実際にGitHub APIを動かすデモで体験できます。"
+        datePublished="2024-01-01"
+        dateModified="2024-01-07"
+      />
+
       <header>
         <h1><i className="fas fa-link"></i> API</h1>
         <p className="reading">エーピーアイ / Application Programming Interface</p>
@@ -175,69 +191,7 @@ curl -X POST \\
             ボタンをクリックして、実際にGitHub APIからユーザー情報を取得してみましょう！
           </p>
 
-          <div style={{
-            border: '2px solid #007bff',
-            borderRadius: '8px',
-            padding: '20px',
-            marginTop: '20px',
-            backgroundColor: '#f8f9fa'
-          }}>
-            <h3>GitHub APIを呼び出す</h3>
-            <p>GitHubの公式アカウント情報を取得します</p>
-
-            <button
-              onClick={fetchGitHubUser}
-              disabled={apiLoading}
-              style={{
-                marginTop: '10px',
-                padding: '10px 20px',
-                fontSize: '16px',
-                backgroundColor: apiLoading ? '#6c757d' : '#007bff',
-                color: '#fff',
-                border: 'none',
-                borderRadius: '5px',
-                cursor: apiLoading ? 'not-allowed' : 'pointer',
-              }}
-            >
-              {apiLoading ? '読み込み中...' : 'APIを呼び出す'}
-            </button>
-
-            {apiError && (
-              <div style={{
-                marginTop: '15px',
-                padding: '15px',
-                backgroundColor: '#f8d7da',
-                border: '1px solid #f5c6cb',
-                borderRadius: '5px',
-                color: '#721c24'
-              }}>
-                エラー: {apiError}
-              </div>
-            )}
-
-            {apiData && (
-              <div style={{
-                marginTop: '15px',
-                padding: '15px',
-                backgroundColor: '#fff',
-                border: '1px solid #dee2e6',
-                borderRadius: '5px'
-              }}>
-                <h4>取得したデータ</h4>
-                <div style={{ marginTop: '10px' }}>
-                  <p><strong>ユーザー名:</strong> {apiData.login}</p>
-                  <p><strong>名前:</strong> {apiData.name}</p>
-                  <p><strong>公開リポジトリ数:</strong> {apiData.public_repos}</p>
-                  <p><strong>フォロワー数:</strong> {apiData.followers}</p>
-                  <p><strong>プロフィールURL:</strong> <a href={apiData.html_url} target="_blank" rel="noopener noreferrer">{apiData.html_url}</a></p>
-                </div>
-              </div>
-            )}
-
-            <p style={{ marginTop: '15px', fontSize: '14px', color: '#6c757d' }}>
-              💡 このデモでは、<code>https://api.github.com/users/github</code> にGETリクエストを送信し、GitHubアカウントの情報を取得しています。
-            </p>
-          </div>
+          <APIDemo />
         </section>
 
         <section className="term-comparison">

@@ -2,10 +2,15 @@ import Link from 'next/link'
 import type { Metadata } from 'next'
 
 export const metadata: Metadata = {
-  title: 'IT用語辞典 - 見て、触って、学べる実践型IT用語辞典',
+  title: 'IT用語辞典 - 初心者向け実践型IT用語辞典【体験デモ付き】',
   description:
-    'ただ読むだけじゃない。デモを通じて、IT技術の「なぜ？」が直感的にわかります。初心者向けのやさしい解説で、楽しく学習しましょう。',
-  keywords: 'IT用語,プログラミング,初心者,体験デモ,学習,辞典',
+    'APIやJSON、フレームワークなどのIT用語を初心者向けに解説。実際に動くデモで体験しながら学べるIT用語辞典。プログラミング学習、Web開発の基礎知識を楽しく習得できます。',
+  keywords: ['IT用語', 'IT用語辞典', 'プログラミング 初心者', 'わかりやすく', '体験デモ', 'API', 'JSON', 'Web開発', '学習', 'フレームワーク', 'プログラミング学習'],
+  openGraph: {
+    title: 'IT用語辞典 - 初心者向け実践型IT用語辞典',
+    description: 'APIやJSONなどのIT用語を体験デモで学べる初心者向けIT用語辞典',
+    type: 'website',
+  },
 }
 
 export default function Home() {
