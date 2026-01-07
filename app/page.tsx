@@ -40,6 +40,15 @@ export default function Home() {
         <section className="hero">
           <h2>見て、触って、学べるIT用語辞典</h2>
           <p>ただ読むだけじゃない。デモを通じて、IT技術の「なぜ？」が直感的にわかります。</p>
+          <p className="hero-description">
+            <Link href="/terms/api">API</Link>、<Link href="/terms/json">JSON</Link>、
+            <Link href="/terms/http">HTTP/HTTPS</Link>、<Link href="/terms/cookie">Cookie</Link>、
+            <Link href="/terms/framework">フレームワーク</Link>、<Link href="/terms/github">GitHub</Link>など、
+            Webプログラミングに必要なIT用語を初心者にもわかりやすく解説。
+            <Link href="/terms/html">HTML</Link>、<Link href="/terms/css">CSS</Link>、
+            <Link href="/terms/javascript">JavaScript</Link>の基礎から、
+            <Link href="/terms/vercel">Vercel</Link>や<Link href="/terms/npm">npm</Link>などの開発ツールまで幅広くカバーしています。
+          </p>
           <div className="cta-buttons">
             <Link href="#new" className="cta-button">
               用語を探す
