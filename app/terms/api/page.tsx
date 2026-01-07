@@ -6,8 +6,8 @@ import TermHeader from '@/app/components/TermHeader'
 
 export const metadata: Metadata = {
   title: 'APIとは？初心者向けにわかりやすく解説【実践デモ付き】 | 実践型IT用語辞典',
-  description: 'API（Application Programming Interface）を初心者向けに解説。レストランの例えでわかりやすく説明し、実際にGitHub APIを動かすデモで体験できます。REST API、エンドポイント、リクエスト/レスポンスの基本も学べます。',
-  keywords: ['API', 'API とは', 'API わかりやすく', 'REST API', '初心者', 'プログラミング', 'Web開発', 'GitHub API', 'エンドポイント'],
+  description: 'APIとは何か、初心者向けにわかりやすく解説。Application Programming Interfaceの基本をレストランの例えで理解し、実際にGitHub APIを動かすデモで体験できます。REST API、エンドポイント、リクエスト/レスポンスの基本も学べるプログラミング初心者向けIT用語解説。',
+  keywords: ['API', 'API とは', 'API わかりやすく', 'API 初心者', 'REST API', 'Application Programming Interface', 'プログラミング 初心者', 'Web開発', 'GitHub API', 'エンドポイント', 'IT用語 わかりやすく'],
   openGraph: {
     title: 'APIとは？初心者向けにわかりやすく解説【実践デモ付き】',
     description: 'レストランの例えでAPIをわかりやすく解説。実際にGitHub APIを動かすデモで体験しながら学べます。',

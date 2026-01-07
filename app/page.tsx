@@ -2,13 +2,29 @@ import Link from 'next/link'
 import type { Metadata } from 'next'
 
 export const metadata: Metadata = {
-  title: '実践型IT用語辞典 - 見て、触って、学べる初心者向けIT用語辞典【体験デモ付き】',
+  title: '実践型IT用語辞典 - IT用語をわかりやすく解説【初心者向け体験デモ付き】',
   description:
-    'APIやJSON、フレームワークなどのIT用語を初心者向けに解説。実際に動くデモで体験しながら学べるIT用語辞典。プログラミング学習、Web開発の基礎知識を楽しく習得できます。',
-  keywords: ['IT用語', 'IT用語辞典', '実践型IT用語辞典', 'プログラミング 初心者', 'わかりやすく', '体験デモ', 'API', 'JSON', 'Web開発', '学習', 'フレームワーク', 'プログラミング学習'],
+    'IT用語を初心者向けにわかりやすく解説する実践型IT用語辞典。API、JSON、フレームワークなどのIT用語を体験デモで学べます。プログラミング初心者でも理解できる解説で、Web開発の基礎知識を習得できます。',
+  keywords: [
+    'IT用語',
+    'IT用語辞典',
+    '実践型IT用語辞典',
+    'IT用語 わかりやすく',
+    'IT用語 初心者',
+    'IT用語 とは',
+    'プログラミング 初心者',
+    '体験デモ',
+    'API',
+    'JSON',
+    'Web開発',
+    'フレームワーク',
+    'プログラミング学習',
+    'IT 勉強',
+    'エンジニア 初心者'
+  ],
   openGraph: {
-    title: '実践型IT用語辞典 - 見て、触って、学べる',
-    description: 'APIやJSONなどのIT用語を体験デモで学べる初心者向けIT用語辞典',
+    title: '実践型IT用語辞典 - IT用語をわかりやすく解説',
+    description: 'IT用語を初心者向けにわかりやすく解説。APIやJSONなどを体験デモで学べる実践型IT用語辞典',
     type: 'website',
   },
 }
@@ -35,8 +51,8 @@ export default function Home() {
 
       <main>
         <section className="hero">
-          <h2>見て、触って、学べるIT用語辞典</h2>
-          <p>ただ読むだけじゃない。デモを通じて、IT技術の「なぜ？」が直感的にわかります。</p>
+          <h2>IT用語をわかりやすく解説する実践型辞典</h2>
+          <p>プログラミング初心者でも理解できる、わかりやすいIT用語解説。デモを通じて、IT技術の「なぜ？」が直感的にわかります。</p>
           <p className="hero-description">
             <Link href="/terms/api">API</Link>、<Link href="/terms/json">JSON</Link>、
             <Link href="/terms/http">HTTP/HTTPS</Link>、<Link href="/terms/cookie">Cookie</Link>、
@@ -180,9 +196,12 @@ export default function Home() {
         <section id="about">
           <h3>制作の背景と意図</h3>
           <p>
-            このIT用語辞典は、「見て、触って、学べる」をコンセプトに、初心者が直感的にIT技術を理解できることを目指しています。
+            この実践型IT用語辞典は、「見て、触って、学べる」をコンセプトに、プログラミング初心者が直感的にIT技術を理解できることを目指しています。
             <br />
-            従来の辞典のように説明を読むだけでなく、実際に動かせるデモを通じて「なぜそうなるのか」を体験できます。
+            「IT用語 わかりやすく」「IT用語 初心者」といった検索をする方々に向けて、従来の辞典のように説明を読むだけでなく、実際に動かせる体験デモを通じて「なぜそうなるのか」を体験できるIT用語解説サイトです。
+          </p>
+          <p>
+            各用語ページでは「〇〇 とは」という基本的な定義から始まり、初心者でも分かりやすい解説と実践的なデモで、エンジニアを目指す方のIT学習をサポートします。
           </p>
         </section>
       </main>

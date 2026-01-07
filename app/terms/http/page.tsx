@@ -6,7 +6,7 @@ import StructuredData from '@/app/components/StructuredData'
 export const metadata: Metadata = {
   title: 'HTTP/HTTPSとは？初心者向けにわかりやすく解説【実践デモ付き】 | 実践型IT用語辞典',
   description: 'HTTP/HTTPSの基礎から違い、仕組み、HTTPメソッド、ステータスコードまで初心者にもわかりやすく解説。GETやPOSTなどのメソッドを実際に体験できるデモ付き。Webサイトの通信の仕組みを理解しよう。',
-  keywords: ['HTTP', 'HTTPS', 'HTTP とは', 'HTTP HTTPS 違い', 'HTTPメソッド', 'HTTPステータスコード', '初心者', 'わかりやすく', 'GET', 'POST', 'SSL', 'TLS'],
+  keywords: ['HTTP', 'HTTPS', 'HTTP とは', 'HTTP わかりやすく', 'HTTP 初心者', 'HTTP HTTPS 違い', 'HTTPメソッド', 'HTTPステータスコード', 'GET', 'POST', 'SSL', 'TLS', 'IT用語 わかりやすく', 'プログラミング 初心者'],
   openGraph: {
     title: 'HTTP/HTTPSとは？初心者向けにわかりやすく解説【実践デモ付き】',
     description: 'HTTP/HTTPSの基礎から違い、仕組み、HTTPメソッド、ステータスコードまで初心者にもわかりやすく解説。',
