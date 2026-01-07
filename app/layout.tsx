@@ -1,6 +1,6 @@
 import type { Metadata } from 'next'
 import './globals.css'
-import Script from 'next/script'
+import GoogleAnalytics from './components/GoogleAnalytics'
 
 export const metadata: Metadata = {
   title: 'IT用語辞典 - 見て、触って、学べる実践型IT用語辞典',
@@ -29,22 +29,7 @@ export default function RootLayout({
   return (
     <html lang="ja">
       <body>
-        {GA_ID && (
-          <>
-            <Script
-              src={`https://www.googletagmanager.com/gtag/js?id=${GA_ID}`}
-              strategy="afterInteractive"
-            />
-            <Script id="google-analytics" strategy="afterInteractive">
-              {`
-                window.dataLayer = window.dataLayer || [];
-                function gtag(){dataLayer.push(arguments);}
-                gtag('js', new Date());
-                gtag('config', '${GA_ID}');
-              `}
-            </Script>
-          </>
-        )}
+        {GA_ID && <GoogleAnalytics GA_ID={GA_ID} />}
         {children}
       </body>
     </html>
