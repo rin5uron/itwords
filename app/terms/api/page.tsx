@@ -2,9 +2,10 @@ import Link from 'next/link'
 import { Metadata } from 'next'
 import APIDemo from './APIDemo'
 import StructuredData from '@/app/components/StructuredData'
+import TermHeader from '@/app/components/TermHeader'
 
 export const metadata: Metadata = {
-  title: 'APIとは？初心者向けにわかりやすく解説【実践デモ付き】 | IT用語辞典',
+  title: 'APIとは？初心者向けにわかりやすく解説【実践デモ付き】 | 実践型IT用語辞典',
   description: 'API（Application Programming Interface）を初心者向けに解説。レストランの例えでわかりやすく説明し、実際にGitHub APIを動かすデモで体験できます。REST API、エンドポイント、リクエスト/レスポンスの基本も学べます。',
   keywords: ['API', 'API とは', 'API わかりやすく', 'REST API', '初心者', 'プログラミング', 'Web開発', 'GitHub API', 'エンドポイント'],
   openGraph: {
@@ -45,10 +46,11 @@ export default function APIPage() {
         dateModified="2024-01-07"
       />
 
-      <header>
-        <h1><i className="fas fa-link"></i> API</h1>
-        <p className="reading">エーピーアイ / Application Programming Interface</p>
-      </header>
+      <TermHeader
+        termName="API"
+        reading="エーピーアイ / Application Programming Interface"
+        icon="fas fa-link"
+      />
 
       <main>
         <section>

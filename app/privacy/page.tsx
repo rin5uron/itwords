@@ -2,7 +2,7 @@ import Link from 'next/link'
 import type { Metadata } from 'next'
 
 export const metadata: Metadata = {
-  title: 'プライバシーポリシー | IT用語辞典',
+  title: 'プライバシーポリシー | 実践型IT用語辞典',
   description: 'IT用語辞典のプライバシーポリシーです。個人情報の取り扱い、Cookieの使用、Google Analytics、アドセンスに関する情報を掲載しています。',
 }
 

@@ -4,7 +4,7 @@ import GitHubDemo from './GitHubDemo'
 import StructuredData from '@/app/components/StructuredData'
 
 export const metadata: Metadata = {
-  title: 'GitHubとは？初心者向けにわかりやすく解説【実践デモ付き】 | IT用語辞典',
+  title: 'GitHubとは？初心者向けにわかりやすく解説【実践デモ付き】 | 実践型IT用語辞典',
   description: 'GitHubとは、ソースコードをバージョン管理し、世界中の開発者と共有・協力できるプラットフォームです。Git、リポジトリ、コミット、プッシュなどの基本用語から実践的な使い方まで、初心者にもわかりやすく解説します。',
   keywords: ['GitHub', 'GitHub とは', 'GitHub 使い方', 'GitHub 初心者', 'Git', 'バージョン管理', 'リポジトリ', 'コミット', 'プッシュ', 'プルリクエスト', 'わかりやすく'],
   openGraph: {

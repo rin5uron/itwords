@@ -2,7 +2,7 @@ import Link from 'next/link'
 import type { Metadata } from 'next'
 
 export const metadata: Metadata = {
-  title: '利用規約 | IT用語辞典',
+  title: '利用規約 | 実践型IT用語辞典',
   description: 'IT用語辞典の利用規約です。サイトの利用条件、免責事項、著作権について掲載しています。',
 }
 

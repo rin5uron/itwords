@@ -4,7 +4,7 @@ import JsonDemo from '@/components/JsonDemo'
 import StructuredData from '@/app/components/StructuredData'
 
 export const metadata: Metadata = {
-  title: 'JSONとは？初心者向けにわかりやすく解説【実践デモ付き】 | IT用語辞典',
+  title: 'JSONとは？初心者向けにわかりやすく解説【実践デモ付き】 | 実践型IT用語辞典',
   description: 'JSON（JavaScript Object Notation）を初心者向けに解説。Web APIやデータ保存で使われる軽量データ交換フォーマットを、実際に編集できるデモで体験しながら学べます。基本構造、使い方、JavaScriptでの実装例も紹介。',
   keywords: ['JSON', 'JSON とは', 'JSON わかりやすく', 'JavaScript Object Notation', 'データ形式', 'Web API', '初心者', 'プログラミング'],
   openGraph: {

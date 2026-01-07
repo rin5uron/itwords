@@ -4,7 +4,7 @@ import JavaScriptDemo from '@/app/components/JavaScriptDemo'
 import StructuredData from '@/app/components/StructuredData'
 
 export const metadata: Metadata = {
-  title: 'JavaScriptとは？初心者向けにわかりやすく解説【実践デモ付き】 | IT用語辞典',
+  title: 'JavaScriptとは？初心者向けにわかりやすく解説【実践デモ付き】 | 実践型IT用語辞典',
   description: 'JavaScriptはWebページに動きとインタラクションを追加するプログラミング言語です。ボタンクリック処理、フォーム検証、アニメーションなど、ユーザー操作に応じた動的機能を実現。基本構文からES6、フレームワークまで初心者向けに解説します。',
   keywords: ['JavaScript', 'JavaScript とは', 'JavaScript 初心者', 'JavaScript 基礎', 'JavaScript わかりやすく', 'JS', 'プログラミング言語', 'Webプログラミング', 'フロントエンド'],
   openGraph: {

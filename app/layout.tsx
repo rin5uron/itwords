@@ -3,18 +3,18 @@ import './globals.css'
 import GoogleAnalytics from './components/GoogleAnalytics'
 
 export const metadata: Metadata = {
-  title: 'IT用語辞典 - 見て、触って、学べる実践型IT用語辞典',
+  title: '実践型IT用語辞典 - 見て、触って、学べる初心者向けIT用語辞典',
   description: '初心者向けIT用語辞典。APIやJSON、フレームワークなどのIT用語を実際に動くデモで体験しながら学べます。わかりやすい解説と体験型コンテンツで、プログラミング学習を加速。',
-  keywords: ['IT用語', 'プログラミング', '初心者', 'わかりやすく', '体験デモ', 'API', 'JSON', 'フレームワーク', 'Web開発', '学習'],
+  keywords: ['IT用語', '実践型IT用語辞典', 'プログラミング', '初心者', 'わかりやすく', '体験デモ', 'API', 'JSON', 'フレームワーク', 'Web開発', '学習'],
   openGraph: {
-    title: 'IT用語辞典 - 見て、触って、学べる実践型IT用語辞典',
+    title: '実践型IT用語辞典 - 見て、触って、学べる',
     description: '初心者向けIT用語辞典。APIやJSON、フレームワークなどのIT用語を実際に動くデモで体験しながら学べます。',
     type: 'website',
     locale: 'ja_JP',
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'IT用語辞典 - 見て、触って、学べる',
+    title: '実践型IT用語辞典 - 見て、触って、学べる',
     description: '初心者向けIT用語辞典。実際に動くデモで体験しながら学べます。',
   },
 }

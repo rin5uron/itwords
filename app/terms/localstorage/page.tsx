@@ -4,7 +4,7 @@ import LocalStorageDemo from '@/components/LocalStorageDemo'
 import StructuredData from '@/app/components/StructuredData'
 
 export const metadata: Metadata = {
-  title: 'ローカルストレージとは？初心者向けにわかりやすく解説【実践デモ付き】 | IT用語辞典',
+  title: 'ローカルストレージとは？初心者向けにわかりやすく解説【実践デモ付き】 | 実践型IT用語辞典',
   description: 'ローカルストレージ（localStorage）は、ブラウザにデータを保存できる仕組みです。ページを閉じても情報が残り、JavaScriptから簡単にアクセス可能。使い方や注意点を実践デモで初心者にもわかりやすく解説します。',
   keywords: ['ローカルストレージ', 'localStorage', 'Web Storage', 'JavaScript', 'ブラウザ', 'データ保存', '初心者', 'わかりやすく', 'localStorage とは'],
   openGraph: {

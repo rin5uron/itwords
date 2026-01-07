@@ -4,7 +4,7 @@ import FoolProofDemo from '@/components/FoolProofDemo'
 import StructuredData from '@/app/components/StructuredData'
 
 export const metadata: Metadata = {
-  title: 'フールプルーフとは？初心者向けにわかりやすく解説【実践デモ付き】 | IT用語辞典',
+  title: 'フールプルーフとは？初心者向けにわかりやすく解説【実践デモ付き】 | 実践型IT用語辞典',
   description: 'フールプルーフ（Fool Proof）は、誤操作や誤入力を未然に防ぐ設計思想です。削除確認ダイアログ、入力制限、ボタンの色分けなど具体例と実践デモで、ユーザーが間違えにくいシステムを作る考え方を初心者にもわかりやすく解説します。',
   keywords: ['フールプルーフ', 'Fool Proof', 'UI/UX', '誤操作防止', '設計思想', '初心者', 'わかりやすく', 'フールプルーフ とは', 'バリデーション'],
   openGraph: {

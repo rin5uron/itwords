@@ -2,12 +2,12 @@ import Link from 'next/link'
 import type { Metadata } from 'next'
 
 export const metadata: Metadata = {
-  title: 'IT用語辞典 - 初心者向け実践型IT用語辞典【体験デモ付き】',
+  title: '実践型IT用語辞典 - 見て、触って、学べる初心者向けIT用語辞典【体験デモ付き】',
   description:
     'APIやJSON、フレームワークなどのIT用語を初心者向けに解説。実際に動くデモで体験しながら学べるIT用語辞典。プログラミング学習、Web開発の基礎知識を楽しく習得できます。',
-  keywords: ['IT用語', 'IT用語辞典', 'プログラミング 初心者', 'わかりやすく', '体験デモ', 'API', 'JSON', 'Web開発', '学習', 'フレームワーク', 'プログラミング学習'],
+  keywords: ['IT用語', 'IT用語辞典', '実践型IT用語辞典', 'プログラミング 初心者', 'わかりやすく', '体験デモ', 'API', 'JSON', 'Web開発', '学習', 'フレームワーク', 'プログラミング学習'],
   openGraph: {
-    title: 'IT用語辞典 - 初心者向け実践型IT用語辞典',
+    title: '実践型IT用語辞典 - 見て、触って、学べる',
     description: 'APIやJSONなどのIT用語を体験デモで学べる初心者向けIT用語辞典',
     type: 'website',
   },
@@ -17,14 +17,11 @@ export default function Home() {
   return (
     <div className="container">
       <header>
-        <h1>IT用語辞典</h1>
+        <h1>実践型IT用語辞典</h1>
         <nav>
           <ul>
             <li>
               <Link href="#popular">人気用語</Link>
-            </li>
-            <li>
-              <Link href="#demo">体験デモ</Link>
             </li>
             <li>
               <Link href="#new">新着用語</Link>
@@ -52,9 +49,6 @@ export default function Home() {
           <div className="cta-buttons">
             <Link href="#new" className="cta-button">
               用語を探す
-            </Link>
-            <Link href="#demo" className="cta-button">
-              体験デモを見る
             </Link>
           </div>
         </section>
@@ -136,62 +130,6 @@ export default function Home() {
           </div>
         </section>
 
-        <section id="demo">
-          <h3>体験デモ</h3>
-          <p>以下の用語ページで実際に動かせるデモを体験できます：</p>
-          <div className="card-container">
-            <div className="card" data-category="programming">
-              <Link href="/terms/stack" className="card-link">
-                <span className="category-tag">開発</span>
-                <h4>スタック構造の体験</h4>
-                <p>Push/Popボタンでスタックの動きを実際に体験できます。</p>
-              </Link>
-            </div>
-            <div className="card" data-category="programming">
-              <Link href="/terms/queue" className="card-link">
-                <span className="category-tag">開発</span>
-                <h4>キュー構造の体験</h4>
-                <p>Enqueue/Dequeueボタンでキューの動きを実際に体験できます。</p>
-              </Link>
-            </div>
-            <div className="card" data-category="web">
-              <Link href="/terms/localstorage" className="card-link">
-                <span className="category-tag">Web</span>
-                <h4>ローカルストレージの体験</h4>
-                <p>データ保存とページリロード後も残ることを体験できます。</p>
-              </Link>
-            </div>
-            <div className="card" data-category="web">
-              <Link href="/terms/json" className="card-link">
-                <span className="category-tag">データ</span>
-                <h4>JSONデータ構造の体験</h4>
-                <p>実際のJSONデータを見て、構造を理解できます。</p>
-              </Link>
-            </div>
-            <div className="card" data-category="web">
-              <Link href="/terms/foolproof" className="card-link">
-                <span className="category-tag">UX</span>
-                <h4>フールプルーフの体験</h4>
-                <p>二段階確認ダイアログで誤操作防止の仕組みを体験できます。</p>
-              </Link>
-            </div>
-            <div className="card" data-category="web">
-              <Link href="/terms/api" className="card-link">
-                <span className="category-tag">Web</span>
-                <h4>APIの仕組み</h4>
-                <p>GitHub APIを使った実践的な例を学べます。</p>
-              </Link>
-            </div>
-            <div className="card" data-category="programming">
-              <Link href="/terms/framework" className="card-link">
-                <span className="category-tag">開発</span>
-                <h4>Frameworkを選ぶ</h4>
-                <p>人気のフレームワークを選んで、それぞれの特徴を比較できます。</p>
-              </Link>
-            </div>
-          </div>
-        </section>
-
         <section id="web-basics">
           <h3>Web開発の基礎</h3>
           <div className="card-container">
@@ -253,6 +191,8 @@ export default function Home() {
         <Link href="/privacy">プライバシーポリシー</Link>
         {' | '}
         <Link href="/terms">利用規約</Link>
+        {' | '}
+        <Link href="/contact">お問い合わせ</Link>
         <p>&copy; 2024 実践型IT用語辞典</p>
       </footer>
     </div>
