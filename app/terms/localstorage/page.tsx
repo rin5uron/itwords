@@ -1,16 +1,61 @@
 import Link from 'next/link'
 import type { Metadata } from 'next'
 import LocalStorageDemo from '@/components/LocalStorageDemo'
+import StructuredData from '@/app/components/StructuredData'
 
 export const metadata: Metadata = {
-  title: 'ローカルストレージ（localStorage）とは？ブラウザにデータを保存する仕組みを初心者向けに解説 | IT用語辞典',
-  description: 'ローカルストレージは、ブラウザに小さなデータを保存しておける場所です。JavaScriptからアクセスでき、ページを閉じても情報が残る仕組みを初心者にもわかりやすく解説します。',
-  keywords: 'localStorage,ローカルストレージ,Web Storage,JavaScript,ブラウザ,データ保存,初心者',
+  title: 'ローカルストレージとは？初心者向けにわかりやすく解説【実践デモ付き】 | IT用語辞典',
+  description: 'ローカルストレージ（localStorage）は、ブラウザにデータを保存できる仕組みです。ページを閉じても情報が残り、JavaScriptから簡単にアクセス可能。使い方や注意点を実践デモで初心者にもわかりやすく解説します。',
+  keywords: ['ローカルストレージ', 'localStorage', 'Web Storage', 'JavaScript', 'ブラウザ', 'データ保存', '初心者', 'わかりやすく', 'localStorage とは'],
+  openGraph: {
+    title: 'ローカルストレージとは？初心者向けにわかりやすく解説【実践デモ付き】',
+    description: 'ローカルストレージ（localStorage）は、ブラウザにデータを保存できる仕組みです。ページを閉じても情報が残り、JavaScriptから簡単にアクセス可能。',
+    type: 'article',
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'ローカルストレージとは？初心者向けにわかりやすく解説【実践デモ付き】',
+    description: 'ローカルストレージ（localStorage）は、ブラウザにデータを保存できる仕組みです。ページを閉じても情報が残り、JavaScriptから簡単にアクセス可能。',
+  },
 }
 
 export default function LocalStoragePage() {
+  const faqs = [
+    {
+      question: 'ローカルストレージ（localStorage）とは何ですか？',
+      answer: 'ローカルストレージとは、ブラウザに小さなデータを保存しておける場所のことです。JavaScriptからアクセスでき、ページを閉じても情報が残るのが特徴です。'
+    },
+    {
+      question: 'ローカルストレージとCookieの違いは何ですか？',
+      answer: 'ローカルストレージはブラウザ内だけに保存され、サーバーに送られませんが、Cookieは毎回サーバーに送信されます。また、ローカルストレージの方が保存容量が大きく（約5-10MB）、有効期限がありません。'
+    },
+    {
+      question: 'ローカルストレージに保存できるデータ型は何ですか？',
+      answer: 'ローカルストレージは文字列しか保存できません。オブジェクトや配列を保存したい場合は、JSON.stringify()で文字列に変換してから保存し、JSON.parse()で元に戻します。'
+    },
+    {
+      question: 'ローカルストレージとセッションストレージの違いは？',
+      answer: 'ローカルストレージはブラウザを閉じても永続的にデータが残りますが、セッションストレージはタブを閉じるとデータが消えます。一時的なデータにはセッションストレージを使います。'
+    },
+    {
+      question: 'ローカルストレージのデータを削除する方法は？',
+      answer: 'localStorage.removeItem("キー名")で特定のデータを削除、localStorage.clear()で全てのデータを削除できます。また、ブラウザの設定からも削除可能です。'
+    }
+  ]
+
   return (
     <div className="container">
+      <StructuredData
+        type="FAQPage"
+        faqs={faqs}
+      />
+      <StructuredData
+        type="Article"
+        title="ローカルストレージとは？初心者向けにわかりやすく解説【実践デモ付き】"
+        description="ローカルストレージ（localStorage）は、ブラウザにデータを保存できる仕組みです。ページを閉じても情報が残り、JavaScriptから簡単にアクセス可能。使い方や注意点を実践デモで初心者にもわかりやすく解説します。"
+        datePublished="2024-01-07"
+        dateModified="2026-01-07"
+      />
       <header>
         <h1>
           <i className="fas fa-database"></i> ローカルストレージ

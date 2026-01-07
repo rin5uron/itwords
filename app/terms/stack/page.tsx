@@ -1,16 +1,61 @@
 import Link from 'next/link'
 import type { Metadata } from 'next'
 import StackDemo from '@/components/StackDemo'
+import StructuredData from '@/app/components/StructuredData'
 
 export const metadata: Metadata = {
-  title: 'スタック構造とは？LIFO（後入れ先出し）のデータ構造を初心者向けに解説 | IT用語辞典',
-  description: '最後に入れたものが最初に出てくるデータ構造「スタック」について、LIFO（Last In, First Out）の仕組みを身近な例とgit stashで分かりやすく解説します。',
-  keywords: 'スタック,LIFO,データ構造,git stash,プログラミング,初心者',
+  title: 'スタック構造とは？初心者向けにわかりやすく解説【実践デモ付き】 | IT用語辞典',
+  description: 'スタック構造（Stack）は、最後に入れたものが最初に出てくるLIFO（後入れ先出し）のデータ構造です。お皿の積み重ねやブラウザの戻るボタンなど身近な例から、git stashの実践的な使い方まで、初心者にもわかりやすく解説します。',
+  keywords: ['スタック', 'Stack', 'LIFO', '後入れ先出し', 'データ構造', 'git stash', 'プログラミング', '初心者', 'わかりやすく', 'スタック構造 とは'],
+  openGraph: {
+    title: 'スタック構造とは？初心者向けにわかりやすく解説【実践デモ付き】',
+    description: 'スタック構造（Stack）は、最後に入れたものが最初に出てくるLIFO（後入れ先出し）のデータ構造です。お皿の積み重ねやブラウザの戻るボタンなど身近な例から実践まで解説。',
+    type: 'article',
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'スタック構造とは？初心者向けにわかりやすく解説【実践デモ付き】',
+    description: 'スタック構造（Stack）は、最後に入れたものが最初に出てくるLIFO（後入れ先出し）のデータ構造です。お皿の積み重ねやブラウザの戻るボタンなど身近な例から実践まで解説。',
+  },
 }
 
 export default function StackPage() {
+  const faqs = [
+    {
+      question: 'スタック構造とは何ですか？',
+      answer: 'スタック構造とは、最後に入れたものが最初に出てくるLIFO（Last In, First Out）のデータ構造です。お皿を積み重ねるように、上に積んだものから取り出していく仕組みです。'
+    },
+    {
+      question: 'LIFOとは何ですか？',
+      answer: 'LIFOは「Last In, First Out」の略で、「後入れ先出し」を意味します。最後に追加したデータが最初に取り出される仕組みで、スタック構造の基本原則です。'
+    },
+    {
+      question: 'スタック構造は実際にどこで使われていますか？',
+      answer: 'スタック構造は、ブラウザの戻るボタン、テキストエディタのUndo機能、プログラムの関数呼び出し、git stashなど、様々な場面で使われています。'
+    },
+    {
+      question: 'pushとpopとは何ですか？',
+      answer: 'pushはスタックの上に新しいデータを積む操作、popはスタックの一番上からデータを取り出す操作です。この2つがスタック構造の基本的な操作です。'
+    },
+    {
+      question: 'git stashとスタック構造はどう関係していますか？',
+      answer: 'git stashはスタック構造を使って作業内容を一時保存します。stash pushで作業を積み、stash popで最後に積んだ作業を取り出すことができます。'
+    }
+  ]
+
   return (
     <div className="container">
+      <StructuredData
+        type="FAQPage"
+        faqs={faqs}
+      />
+      <StructuredData
+        type="Article"
+        title="スタック構造とは？初心者向けにわかりやすく解説【実践デモ付き】"
+        description="スタック構造（Stack）は、最後に入れたものが最初に出てくるLIFO（後入れ先出し）のデータ構造です。お皿の積み重ねやブラウザの戻るボタンなど身近な例から、git stashの実践的な使い方まで、初心者にもわかりやすく解説します。"
+        datePublished="2024-01-07"
+        dateModified="2026-01-07"
+      />
       <header>
         <h1>
           <i className="fas fa-layer-group" style={{ color: '#8abdea' }}></i> スタック構造

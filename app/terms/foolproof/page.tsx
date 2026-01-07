@@ -1,16 +1,61 @@
 import Link from 'next/link'
 import type { Metadata } from 'next'
 import FoolProofDemo from '@/components/FoolProofDemo'
+import StructuredData from '@/app/components/StructuredData'
 
 export const metadata: Metadata = {
-  title: 'フールプルーフとは？間違いを防ぐ設計思想を初心者向けに解説 | IT用語辞典',
-  description: 'フールプルーフ（Fool Proof）は、誤操作や誤入力を未然に防ぐ設計思想です。ユーザーが間違えにくいシステムを作るための考え方を、具体例を交えて初心者にもわかりやすく解説します。',
-  keywords: 'フールプルーフ,Fool Proof,UI/UX,誤操作防止,設計思想,初心者',
+  title: 'フールプルーフとは？初心者向けにわかりやすく解説【実践デモ付き】 | IT用語辞典',
+  description: 'フールプルーフ（Fool Proof）は、誤操作や誤入力を未然に防ぐ設計思想です。削除確認ダイアログ、入力制限、ボタンの色分けなど具体例と実践デモで、ユーザーが間違えにくいシステムを作る考え方を初心者にもわかりやすく解説します。',
+  keywords: ['フールプルーフ', 'Fool Proof', 'UI/UX', '誤操作防止', '設計思想', '初心者', 'わかりやすく', 'フールプルーフ とは', 'バリデーション'],
+  openGraph: {
+    title: 'フールプルーフとは？初心者向けにわかりやすく解説【実践デモ付き】',
+    description: 'フールプルーフ（Fool Proof）は、誤操作や誤入力を未然に防ぐ設計思想です。削除確認ダイアログ、入力制限など具体例で解説。',
+    type: 'article',
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'フールプルーフとは？初心者向けにわかりやすく解説【実践デモ付き】',
+    description: 'フールプルーフ（Fool Proof）は、誤操作や誤入力を未然に防ぐ設計思想です。削除確認ダイアログ、入力制限など具体例で解説。',
+  },
 }
 
 export default function FoolProofPage() {
+  const faqs = [
+    {
+      question: 'フールプルーフとは何ですか？',
+      answer: 'フールプルーフとは、ユーザーの誤操作や誤入力を未然に防ぐための設計思想です。人間は誰でもミスをするという前提に立ち、間違えにくいシステムを作ることを目指します。'
+    },
+    {
+      question: 'フールプルーフの具体例を教えてください',
+      answer: '削除前の確認ダイアログ、メールアドレス形式のバリデーション、危険なボタンの色分け（削除は赤など）、USBケーブルの向き（逆向きに挿せない）などが代表的な例です。'
+    },
+    {
+      question: 'フールプルーフとフェイルセーフの違いは？',
+      answer: 'フールプルーフは誤操作を未然に防ぐ設計、フェイルセーフは故障や異常が発生した際に安全な状態になる設計です。目的が異なる2つの設計思想です。'
+    },
+    {
+      question: 'Webサイトでフールプルーフを実装するには？',
+      answer: 'JavaScriptのconfirm()関数で確認ダイアログを表示したり、input要素のtype属性で入力制限をかけたり、必須項目をrequiredで指定するなどの方法があります。'
+    },
+    {
+      question: 'なぜフールプルーフが重要なのですか？',
+      answer: 'ユーザーの誤操作によるデータ損失やトラブルを防ぎ、ユーザーエクスペリエンスを向上させることができます。特に重要な操作ほど、フールプルーフの実装が必要です。'
+    }
+  ]
+
   return (
     <div className="container">
+      <StructuredData
+        type="FAQPage"
+        faqs={faqs}
+      />
+      <StructuredData
+        type="Article"
+        title="フールプルーフとは？初心者向けにわかりやすく解説【実践デモ付き】"
+        description="フールプルーフ（Fool Proof）は、誤操作や誤入力を未然に防ぐ設計思想です。削除確認ダイアログ、入力制限、ボタンの色分けなど具体例と実践デモで、ユーザーが間違えにくいシステムを作る考え方を初心者にもわかりやすく解説します。"
+        datePublished="2024-01-07"
+        dateModified="2026-01-07"
+      />
       <header>
         <h1>
           <i className="fas fa-shield-alt"></i> フールプルーフ

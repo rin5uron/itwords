@@ -1,20 +1,58 @@
-'use client'
-
 import Link from 'next/link'
-import { useState } from 'react'
+import { Metadata } from 'next'
+import HTTPDemo from '@/app/components/HTTPDemo'
+import StructuredData from '@/app/components/StructuredData'
+
+export const metadata: Metadata = {
+  title: 'HTTP/HTTPSとは？初心者向けにわかりやすく解説【実践デモ付き】 | IT用語辞典',
+  description: 'HTTP/HTTPSの基礎から違い、仕組み、HTTPメソッド、ステータスコードまで初心者にもわかりやすく解説。GETやPOSTなどのメソッドを実際に体験できるデモ付き。Webサイトの通信の仕組みを理解しよう。',
+  keywords: ['HTTP', 'HTTPS', 'HTTP とは', 'HTTP HTTPS 違い', 'HTTPメソッド', 'HTTPステータスコード', '初心者', 'わかりやすく', 'GET', 'POST', 'SSL', 'TLS'],
+  openGraph: {
+    title: 'HTTP/HTTPSとは？初心者向けにわかりやすく解説【実践デモ付き】',
+    description: 'HTTP/HTTPSの基礎から違い、仕組み、HTTPメソッド、ステータスコードまで初心者にもわかりやすく解説。',
+    type: 'article',
+    url: 'https://itwords.vercel.app/terms/http',
+  },
+}
+
+const httpFAQs = [
+  {
+    question: 'HTTPとHTTPSの違いは何ですか？',
+    answer: 'HTTPは通信内容が暗号化されていない通信規約で、HTTPSは通信内容が暗号化された安全な通信規約です。HTTPSはSSL/TLSという技術を使って通信を暗号化し、第三者による盗聴や改ざんを防ぎます。現代のWebサイトではセキュリティとプライバシー保護のため、HTTPSが標準となっています。'
+  },
+  {
+    question: 'HTTPメソッドとは何ですか？',
+    answer: 'HTTPメソッドとは、クライアントがサーバーに対して「何をしたいか」を伝えるための命令の種類です。主なメソッドには、データを取得するGET、データを送信するPOST、データを更新するPUT、データを削除するDELETEがあります。Webページを閲覧するときは主にGETメソッドが使われます。'
+  },
+  {
+    question: 'HTTPステータスコード404は何を意味しますか？',
+    answer: 'HTTPステータスコード404は「Not Found（見つかりません）」を意味し、リクエストされたページやリソースがサーバー上に存在しないことを示します。URLの入力ミス、ページの削除、リンク切れなどが原因で発生します。サーバーは正常に動作していますが、指定されたリソースが見つからない状態です。'
+  },
+  {
+    question: 'SSL/TLSとは何ですか？',
+    answer: 'SSL（Secure Sockets Layer）とTLS（Transport Layer Security）は、インターネット通信を暗号化するための技術です。正確にはSSLは古い規格でTLSが新しい規格ですが、現在でも「SSL証明書」「SSL化」のように「SSL」という言葉が広く使われています。これらの技術により、HTTPSでは通信内容が暗号化され、第三者による盗聴や改ざんから保護されます。'
+  },
+  {
+    question: 'HTTPSを使うメリットは何ですか？',
+    answer: 'HTTPSを使う主なメリットは、通信内容の暗号化によるセキュリティ向上、ユーザーの信頼獲得、SEO効果の向上です。特にログイン情報やクレジットカード情報などの重要なデータをやり取りする場合、HTTPSは必須です。また、Googleは検索ランキングでHTTPSサイトを優遇しており、ブラウザもHTTPサイトには警告を表示するようになっています。'
+  }
+]
 
 export default function HTTPPage() {
-  const [selectedMethod, setSelectedMethod] = useState('')
-
-  const httpMethods = [
-    { name: 'GET', description: 'データを取得する', example: 'Webページを表示したり、検索結果を取得したりします。データは変更されません。', color: '#28a745' },
-    { name: 'POST', description: 'データを送信する', example: 'フォームを送信したり、ログイン情報を送ったり、新しいデータを作成します。', color: '#007bff' },
-    { name: 'PUT', description: 'データを更新する', example: '既存のデータを完全に置き換えます。プロフィール情報の更新などに使われます。', color: '#ffc107' },
-    { name: 'DELETE', description: 'データを削除する', example: '投稿を削除したり、アカウントを削除したりします。', color: '#dc3545' }
-  ]
-
   return (
     <div className="container">
+      <StructuredData
+        type="FAQPage"
+        faqs={httpFAQs}
+      />
+      <StructuredData
+        type="Article"
+        title="HTTP/HTTPSとは？初心者向けにわかりやすく解説【実践デモ付き】"
+        description="HTTP/HTTPSの基礎から違い、仕組み、HTTPメソッド、ステータスコードまで初心者にもわかりやすく解説。"
+        datePublished="2024-01-01"
+        dateModified="2026-01-07"
+      />
+
       <header>
         <h1><i className="fas fa-exchange-alt"></i> HTTP/HTTPS</h1>
         <p className="reading">エイチティーティーピー / エイチティーティーピーエス</p>
@@ -259,63 +297,7 @@ export default function HTTPPage() {
           <p>
             それぞれのHTTPメソッドをクリックして、使い方と用途を確認してみましょう！
           </p>
-
-          <div style={{
-            border: '2px solid #007bff',
-            borderRadius: '8px',
-            padding: '20px',
-            marginTop: '20px',
-            backgroundColor: '#f8f9fa'
-          }}>
-            <h3>HTTPメソッドを選択</h3>
-            <div style={{ display: 'flex', gap: '10px', flexWrap: 'wrap', marginTop: '15px' }}>
-              {httpMethods.map((method) => (
-                <button
-                  key={method.name}
-                  onClick={() => setSelectedMethod(method.name)}
-                  style={{
-                    padding: '10px 20px',
-                    fontSize: '16px',
-                    backgroundColor: selectedMethod === method.name ? method.color : '#fff',
-                    color: selectedMethod === method.name ? '#fff' : method.color,
-                    border: `2px solid ${method.color}`,
-                    borderRadius: '5px',
-                    cursor: 'pointer',
-                    transition: 'all 0.3s',
-                    fontWeight: 'bold'
-                  }}
-                >
-                  {method.name}
-                </button>
-              ))}
-            </div>
-
-            {selectedMethod && (
-              <div style={{
-                marginTop: '20px',
-                padding: '15px',
-                backgroundColor: '#fff',
-                borderRadius: '5px',
-                border: '1px solid #dee2e6'
-              }}>
-                <h4 style={{ color: httpMethods.find(m => m.name === selectedMethod)?.color }}>
-                  {selectedMethod}メソッド
-                </h4>
-                <p><strong>用途:</strong> {httpMethods.find(m => m.name === selectedMethod)?.description}</p>
-                <p><strong>具体例:</strong> {httpMethods.find(m => m.name === selectedMethod)?.example}</p>
-              </div>
-            )}
-
-            {!selectedMethod && (
-              <p style={{ marginTop: '15px', color: '#6c757d' }}>
-                ↑ HTTPメソッドを選択してください
-              </p>
-            )}
-
-            <p style={{ marginTop: '15px', fontSize: '14px', color: '#6c757d' }}>
-              💡 ヒント：一般的なWebサイト閲覧では主にGETメソッドが使われ、フォーム送信ではPOSTメソッドが使われます。
-            </p>
-          </div>
+          <HTTPDemo />
         </section>
 
         <section className="term-comparison">

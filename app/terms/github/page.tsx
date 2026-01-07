@@ -1,22 +1,58 @@
-'use client'
-
 import Link from 'next/link'
-import { useState } from 'react'
+import { Metadata } from 'next'
+import GitHubDemo from './GitHubDemo'
+import StructuredData from '@/app/components/StructuredData'
+
+export const metadata: Metadata = {
+  title: 'GitHubとは？初心者向けにわかりやすく解説【実践デモ付き】 | IT用語辞典',
+  description: 'GitHubとは、ソースコードをバージョン管理し、世界中の開発者と共有・協力できるプラットフォームです。Git、リポジトリ、コミット、プッシュなどの基本用語から実践的な使い方まで、初心者にもわかりやすく解説します。',
+  keywords: ['GitHub', 'GitHub とは', 'GitHub 使い方', 'GitHub 初心者', 'Git', 'バージョン管理', 'リポジトリ', 'コミット', 'プッシュ', 'プルリクエスト', 'わかりやすく'],
+  openGraph: {
+    title: 'GitHubとは？初心者向けにわかりやすく解説【実践デモ付き】',
+    description: 'GitHubの基本から実践的な使い方まで、初心者にもわかりやすく解説。Gitコマンドの学習デモ付き。',
+    type: 'article',
+    url: 'https://itwords.vercel.app/terms/github',
+  },
+}
 
 export default function GitHubPage() {
-  const [selectedCommand, setSelectedCommand] = useState('')
-
-  const gitCommands = [
-    { name: 'git clone', description: 'リポジトリを複製する', explanation: 'GitHubからリポジトリをダウンロード（クローン）して、ローカル環境にコピーします。', example: 'git clone https://github.com/username/repo.git', color: '#28a745' },
-    { name: 'git add', description: '変更をステージングに追加', explanation: '変更したファイルをコミット対象として登録します。', example: 'git add .', color: '#007bff' },
-    { name: 'git commit', description: '変更を記録する', explanation: 'ステージングエリアの変更を履歴として記録します。', example: 'git commit -m "機能を追加"', color: '#ffc107' },
-    { name: 'git push', description: 'GitHubにアップロード', explanation: 'ローカルの変更をGitHubリポジトリにアップロードします。', example: 'git push origin main', color: '#dc3545' },
-    { name: 'git pull', description: '最新の変更を取得', explanation: 'GitHub上の最新の変更をローカルにダウンロードして統合します。', example: 'git pull origin main', color: '#17a2b8' },
-    { name: 'git status', description: '状態を確認する', explanation: '現在の変更状況やブランチの状態を確認します。', example: 'git status', color: '#6c757d' }
+  const faqs = [
+    {
+      question: 'GitHubとGitの違いは何ですか？',
+      answer: 'Gitはバージョン管理システム（ソフトウェア）で、あなたのパソコン上で動作します。一方、GitHubはGitを使ったホスティングサービス（Webサービス）で、クラウド上でコードを保存・共有できます。Gitという道具を使って、GitHubという場所にコードを保存・共有するイメージです。'
+    },
+    {
+      question: 'GitHubは無料で使えますか？',
+      answer: 'はい、GitHubは無料プランがあり、個人開発者やオープンソースプロジェクトは無料で利用できます。プライベートリポジトリも無制限に作成可能です。高度な機能が必要な場合は有料プラン（GitHub Pro、GitHub Team、GitHub Enterprise）もあります。'
+    },
+    {
+      question: 'GitHubの始め方を教えてください',
+      answer: '1. GitHubのWebサイト（github.com）でアカウントを作成します。2. Gitをパソコンにインストールします。3. GitHubで「New repository」をクリックしてリポジトリを作成します。4. ローカルでコードを書いて、git add、git commit、git pushコマンドでGitHubにアップロードします。'
+    },
+    {
+      question: 'プルリクエストとは何ですか？',
+      answer: 'プルリクエスト（Pull Request、PR）は、「この変更を本番に反映してください」とお願いする機能です。自分が開発した機能や修正を他の開発者にレビューしてもらい、承認されたらメインブランチにマージ（統合）されます。チーム開発では必須の機能です。'
+    },
+    {
+      question: 'GitHubのプロフィールは就職・転職で見られますか？',
+      answer: 'はい、多くの企業の採用担当者がGitHubのプロフィールを見て技術力を判断します。特にContribution Graph（緑の芝生）や公開リポジトリの品質、オープンソースへの貢献度などが評価されます。GitHubのプロフィールは開発者の「ポートフォリオ」として機能します。'
+    }
   ]
 
   return (
     <div className="container">
+      <StructuredData
+        type="FAQPage"
+        faqs={faqs}
+      />
+      <StructuredData
+        type="Article"
+        title="GitHubとは？初心者向けにわかりやすく解説"
+        description="GitHubは、ソースコードをバージョン管理し、世界中の開発者と共有・協力できるプラットフォームです。"
+        datePublished="2024-01-01"
+        dateModified={new Date().toISOString().split('T')[0]}
+      />
+
       <header>
         <h1><i className="fab fa-github"></i> GitHub</h1>
         <p className="reading">ギットハブ</p>
@@ -356,82 +392,36 @@ node_modules/
             よく使うGitコマンドを選んで、使い方と説明を確認してみましょう！
           </p>
 
-          <div style={{
-            border: '2px solid #007bff',
-            borderRadius: '8px',
-            padding: '20px',
-            marginTop: '20px',
-            backgroundColor: '#f8f9fa'
-          }}>
-            <h3>Gitコマンドを選択</h3>
-            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(150px, 1fr))', gap: '10px', marginTop: '15px' }}>
-              {gitCommands.map((cmd) => (
-                <button
-                  key={cmd.name}
-                  onClick={() => setSelectedCommand(cmd.name)}
-                  style={{
-                    padding: '12px 15px',
-                    fontSize: '14px',
-                    backgroundColor: selectedCommand === cmd.name ? cmd.color : '#fff',
-                    color: selectedCommand === cmd.name ? '#fff' : cmd.color,
-                    border: `2px solid ${cmd.color}`,
-                    borderRadius: '5px',
-                    cursor: 'pointer',
-                    transition: 'all 0.3s',
-                    fontWeight: 'bold',
-                    fontFamily: 'monospace'
-                  }}
-                >
-                  {cmd.name}
-                </button>
-              ))}
-            </div>
+          <GitHubDemo />
+        </section>
 
-            {selectedCommand && (
-              <div style={{
-                marginTop: '20px',
-                padding: '20px',
-                backgroundColor: '#fff',
-                borderRadius: '8px',
-                border: `2px solid ${gitCommands.find(c => c.name === selectedCommand)?.color}`
-              }}>
-                <h4 style={{
-                  color: gitCommands.find(c => c.name === selectedCommand)?.color,
-                  fontFamily: 'monospace',
-                  fontSize: '20px',
-                  marginBottom: '10px'
-                }}>
-                  {selectedCommand}
-                </h4>
-                <p style={{ marginBottom: '10px' }}>
-                  <strong>用途:</strong> {gitCommands.find(c => c.name === selectedCommand)?.description}
-                </p>
-                <p style={{ marginBottom: '15px' }}>
-                  <strong>説明:</strong> {gitCommands.find(c => c.name === selectedCommand)?.explanation}
-                </p>
-                <div style={{
-                  backgroundColor: '#282c34',
-                  color: '#abb2bf',
-                  padding: '15px',
-                  borderRadius: '5px',
-                  fontFamily: 'monospace',
-                  fontSize: '14px'
-                }}>
-                  $ {gitCommands.find(c => c.name === selectedCommand)?.example}
-                </div>
-              </div>
-            )}
+        <section>
+          <h2>よくある質問（FAQ）</h2>
 
-            {!selectedCommand && (
-              <p style={{ marginTop: '15px', color: '#6c757d' }}>
-                ↑ コマンドを選択してください
-              </p>
-            )}
+          <h3>Q1. GitHubとGitの違いは何ですか？</h3>
+          <p>
+            Gitはバージョン管理システム（ソフトウェア）で、あなたのパソコン上で動作します。一方、GitHubはGitを使ったホスティングサービス（Webサービス）で、クラウド上でコードを保存・共有できます。
+          </p>
 
-            <p style={{ marginTop: '15px', fontSize: '14px', color: '#6c757d' }}>
-              💡 基本的な流れ：<code>git add</code> → <code>git commit</code> → <code>git push</code> でGitHubに変更を反映できます！
-            </p>
-          </div>
+          <h3>Q2. GitHubは無料で使えますか？</h3>
+          <p>
+            はい、GitHubは無料プランがあり、個人開発者やオープンソースプロジェクトは無料で利用できます。プライベートリポジトリも無制限に作成可能です。
+          </p>
+
+          <h3>Q3. GitHubの始め方を教えてください</h3>
+          <p>
+            1. GitHubのWebサイト（github.com）でアカウントを作成します。2. Gitをパソコンにインストールします。3. GitHubで「New repository」をクリックしてリポジトリを作成します。4. ローカルでコードを書いて、git add、git commit、git pushコマンドでGitHubにアップロードします。
+          </p>
+
+          <h3>Q4. プルリクエストとは何ですか？</h3>
+          <p>
+            プルリクエスト（Pull Request、PR）は、「この変更を本番に反映してください」とお願いする機能です。自分が開発した機能や修正を他の開発者にレビューしてもらい、承認されたらメインブランチにマージ（統合）されます。
+          </p>
+
+          <h3>Q5. GitHubのプロフィールは就職・転職で見られますか？</h3>
+          <p>
+            はい、多くの企業の採用担当者がGitHubのプロフィールを見て技術力を判断します。特にContribution Graph（緑の芝生）や公開リポジトリの品質、オープンソースへの貢献度などが評価されます。
+          </p>
         </section>
 
         <section className="term-comparison">

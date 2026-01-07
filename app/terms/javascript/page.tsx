@@ -1,37 +1,55 @@
-'use client'
-
 import Link from 'next/link'
-import { useState } from 'react'
+import { Metadata } from 'next'
+import JavaScriptDemo from '@/app/components/JavaScriptDemo'
+import StructuredData from '@/app/components/StructuredData'
+
+export const metadata: Metadata = {
+  title: 'JavaScriptとは？初心者向けにわかりやすく解説【実践デモ付き】 | IT用語辞典',
+  description: 'JavaScriptはWebページに動きとインタラクションを追加するプログラミング言語です。ボタンクリック処理、フォーム検証、アニメーションなど、ユーザー操作に応じた動的機能を実現。基本構文からES6、フレームワークまで初心者向けに解説します。',
+  keywords: ['JavaScript', 'JavaScript とは', 'JavaScript 初心者', 'JavaScript 基礎', 'JavaScript わかりやすく', 'JS', 'プログラミング言語', 'Webプログラミング', 'フロントエンド'],
+  openGraph: {
+    title: 'JavaScriptとは？初心者向けにわかりやすく解説【実践デモ付き】',
+    description: 'JavaScriptの基礎から実践まで、初心者にもわかりやすく解説。実際にコードを書いて試せるデモ付き。',
+    type: 'article',
+    url: 'https://itwords.jp/terms/javascript',
+  },
+}
+
+const faqs = [
+  {
+    question: 'JavaScriptとは何ですか？',
+    answer: 'JavaScriptは、Webページに動きとインタラクションを追加するプログラミング言語です。ボタンのクリック処理、フォームの入力チェック、アニメーション、データの取得など、ユーザーの操作に応じた動的な機能を実現します。世界で最も広く使われているプログラミング言語の一つです。'
+  },
+  {
+    question: 'JavaScriptとJavaの違いは何ですか？',
+    answer: '名前は似ていますが、JavaScriptとJavaは全く別の言語です。JavaScriptは主にブラウザで動くスクリプト言語で、Webページの動的な機能を担当します。一方、JavaはサーバーサイドやAndroidアプリなど幅広く使われるコンパイル言語です。'
+  },
+  {
+    question: 'JavaScriptの基本的な使い方を教えてください',
+    answer: 'JavaScriptは変数の宣言（let, const）、関数の定義（function）、イベントリスナー（addEventListener）などの基本構文から始めます。HTMLファイルに<script>タグで記述するか、外部ファイル（.js）として読み込みます。console.log()を使えば結果を確認できます。'
+  },
+  {
+    question: 'ES6とは何ですか？',
+    answer: 'ES6（ECMAScript 2015）はJavaScriptの大きなアップデート版です。アロー関数（=>）、テンプレートリテラル、分割代入、クラス構文など、コードをより簡潔に書ける機能が多数追加されました。現在ではES6の機能が標準的に使われています。'
+  },
+  {
+    question: 'JavaScriptの学習におすすめの方法は？',
+    answer: '基本構文を学んだら、実際に手を動かして小さなプロジェクトを作るのが効果的です。ボタンクリックで色が変わる、簡単な計算機、ToDoリストなど、身近な機能から始めましょう。ブラウザのコンソールで試しながら学ぶのもおすすめです。'
+  }
+]
 
 export default function JavaScriptPage() {
-  const [jsCode, setJsCode] = useState('// コードを書いてみましょう！\nconst greeting = "こんにちは！";\nconsole.log(greeting);')
-  const [jsOutput, setJsOutput] = useState('')
-
-  const runJavaScript = () => {
-    try {
-      // console.logをキャプチャ
-      const logs: string[] = []
-      const originalLog = console.log
-      console.log = (...args) => {
-        logs.push(args.map(arg => String(arg)).join(' '))
-      }
-
-      // コードを実行
-      // eslint-disable-next-line no-eval
-      eval(jsCode)
-
-      // console.logを元に戻す
-      console.log = originalLog
-
-      // 結果を表示
-      setJsOutput(logs.length > 0 ? logs.join('\n') : '出力がありません')
-    } catch (error) {
-      setJsOutput(`エラー: ${error instanceof Error ? error.message : String(error)}`)
-    }
-  }
-
   return (
     <div className="container">
+      <StructuredData type="FAQPage" faqs={faqs} />
+      <StructuredData
+        type="Article"
+        title="JavaScriptとは？初心者向けにわかりやすく解説"
+        description="JavaScriptの基礎から実践まで、初心者にもわかりやすく解説"
+        datePublished="2024-01-01"
+        dateModified="2026-01-07"
+      />
+
       <header>
         <h1><i className="fas fa-code-branch"></i> JavaScript</h1>
         <p className="reading">ジャバスクリプト / JS</p>
@@ -185,70 +203,7 @@ const moreNumbers = [...numbers, 4, 5];  // [1, 2, 3, 4, 5]`}</code></pre>
           <p>
             下のエディタでJavaScriptコードを入力して、実行ボタンを押してみましょう！
           </p>
-
-          <div style={{
-            border: '2px solid #007bff',
-            borderRadius: '8px',
-            padding: '20px',
-            marginTop: '20px',
-            backgroundColor: '#f8f9fa'
-          }}>
-            <h3>コードを書いてみよう</h3>
-            <textarea
-              value={jsCode}
-              onChange={(e) => setJsCode(e.target.value)}
-              style={{
-                width: '100%',
-                minHeight: '150px',
-                padding: '10px',
-                fontFamily: 'monospace',
-                fontSize: '14px',
-                border: '1px solid #dee2e6',
-                borderRadius: '5px',
-                marginTop: '10px'
-              }}
-              placeholder="JavaScriptコードを入力してください"
-            />
-
-            <button
-              onClick={runJavaScript}
-              style={{
-                marginTop: '10px',
-                padding: '10px 20px',
-                fontSize: '16px',
-                backgroundColor: '#28a745',
-                color: '#fff',
-                border: 'none',
-                borderRadius: '5px',
-                cursor: 'pointer',
-              }}
-            >
-              実行
-            </button>
-
-            <h3 style={{ marginTop: '20px' }}>実行結果</h3>
-            <div
-              style={{
-                border: '1px solid #dee2e6',
-                borderRadius: '5px',
-                padding: '15px',
-                backgroundColor: '#fff',
-                marginTop: '10px',
-                minHeight: '80px',
-                fontFamily: 'monospace',
-                whiteSpace: 'pre-wrap'
-              }}
-            >
-              {jsOutput || 'ここに実行結果が表示されます'}
-            </div>
-
-            <p style={{ marginTop: '15px', fontSize: '14px', color: '#6c757d' }}>
-              💡 試してみよう：<br />
-              • <code>console.log("Hello")</code> でメッセージを出力<br />
-              • <code>const x = 5 + 3; console.log(x);</code> で計算結果を表示<br />
-              • <code>alert("こんにちは")</code> でアラートを表示
-            </p>
-          </div>
+          <JavaScriptDemo />
         </section>
 
         <section className="term-comparison">
@@ -277,6 +232,30 @@ const moreNumbers = [...numbers, 4, 5];  // [1, 2, 3, 4, 5]`}</code></pre>
               </tbody>
             </table>
           </div>
+        </section>
+
+        <section>
+          <h2>よくある質問</h2>
+          <details>
+            <summary><strong>JavaScriptとは何ですか？</strong></summary>
+            <p>{faqs[0].answer}</p>
+          </details>
+          <details>
+            <summary><strong>JavaScriptとJavaの違いは何ですか？</strong></summary>
+            <p>{faqs[1].answer}</p>
+          </details>
+          <details>
+            <summary><strong>JavaScriptの基本的な使い方を教えてください</strong></summary>
+            <p>{faqs[2].answer}</p>
+          </details>
+          <details>
+            <summary><strong>ES6とは何ですか？</strong></summary>
+            <p>{faqs[3].answer}</p>
+          </details>
+          <details>
+            <summary><strong>JavaScriptの学習におすすめの方法は？</strong></summary>
+            <p>{faqs[4].answer}</p>
+          </details>
         </section>
       </main>
 

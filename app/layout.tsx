@@ -28,7 +28,7 @@ export default function RootLayout({
 
   return (
     <html lang="ja">
-      <head>
+      <body>
         {GA_ID && (
           <>
             <Script
@@ -45,8 +45,8 @@ export default function RootLayout({
             </Script>
           </>
         )}
-      </head>
-      <body>{children}</body>
+        {children}
+      </body>
     </html>
   )
 }

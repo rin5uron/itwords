@@ -1,16 +1,61 @@
 import Link from 'next/link'
 import type { Metadata } from 'next'
 import QueueDemo from '@/components/QueueDemo'
+import StructuredData from '@/app/components/StructuredData'
 
 export const metadata: Metadata = {
-  title: 'キュー（Queue）とは？FIFO（先入れ先出し）のデータ構造を初心者向けに解説 | IT用語辞典',
-  description: '先に入れたものが先に出ていく「キュー構造」について、FIFOの原則や具体的な使われ方を、インタラクティブなデモを通じて分かりやすく解説します。',
-  keywords: 'キュー,Queue,FIFO,データ構造,プログラミング,JavaScript,初心者',
+  title: 'キュー（Queue）とは？初心者向けにわかりやすく解説【実践デモ付き】 | IT用語辞典',
+  description: 'キュー（Queue）は、先に入れたものが先に出ていくFIFO（先入れ先出し）のデータ構造です。レジの行列のように順番通りに処理される仕組みを、身近な例とインタラクティブなデモで初心者にもわかりやすく解説します。',
+  keywords: ['キュー', 'Queue', 'FIFO', '先入れ先出し', 'データ構造', 'プログラミング', 'JavaScript', '初心者', 'わかりやすく', 'キュー とは'],
+  openGraph: {
+    title: 'キュー（Queue）とは？初心者向けにわかりやすく解説【実践デモ付き】',
+    description: 'キュー（Queue）は、先に入れたものが先に出ていくFIFO（先入れ先出し）のデータ構造です。レジの行列のように順番通りに処理される仕組みを解説。',
+    type: 'article',
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'キュー（Queue）とは？初心者向けにわかりやすく解説【実践デモ付き】',
+    description: 'キュー（Queue）は、先に入れたものが先に出ていくFIFO（先入れ先出し）のデータ構造です。レジの行列のように順番通りに処理される仕組みを解説。',
+  },
 }
 
 export default function QueuePage() {
+  const faqs = [
+    {
+      question: 'キュー（Queue）とは何ですか？',
+      answer: 'キューとは、先に入れたものが先に出ていくFIFO（First In, First Out）のデータ構造です。レジの行列のように、並んだ順番通りに処理される仕組みです。'
+    },
+    {
+      question: 'FIFOとは何ですか？',
+      answer: 'FIFOは「First In, First Out」の略で、「先入れ先出し」を意味します。最初に追加したデータが最初に取り出される仕組みで、キュー構造の基本原則です。'
+    },
+    {
+      question: 'キューは実際にどこで使われていますか？',
+      answer: 'キューは、印刷ジョブの管理、タスク処理の待機列、メッセージキュー、BFS（幅優先探索）アルゴリズムなど、順番が重要な場面で広く使われています。'
+    },
+    {
+      question: 'EnqueueとDequeueとは何ですか？',
+      answer: 'Enqueue（エンキュー）は列の末尾にデータを追加する操作、Dequeue（デキュー）は列の先頭からデータを取り出す操作です。この2つがキュー構造の基本的な操作です。'
+    },
+    {
+      question: 'キューとスタックの違いは何ですか？',
+      answer: 'キューはFIFO（先入れ先出し）で先に入れたものが先に出ますが、スタックはLIFO（後入れ先出し）で後に入れたものが先に出ます。用途や動作が全く異なるデータ構造です。'
+    }
+  ]
+
   return (
     <div className="container">
+      <StructuredData
+        type="FAQPage"
+        faqs={faqs}
+      />
+      <StructuredData
+        type="Article"
+        title="キュー（Queue）とは？初心者向けにわかりやすく解説【実践デモ付き】"
+        description="キュー（Queue）は、先に入れたものが先に出ていくFIFO（先入れ先出し）のデータ構造です。レジの行列のように順番通りに処理される仕組みを、身近な例とインタラクティブなデモで初心者にもわかりやすく解説します。"
+        datePublished="2024-01-07"
+        dateModified="2026-01-07"
+      />
       <header>
         <h1>
           <i className="fas fa-users" style={{ color: '#82c9a0' }}></i> キュー (Queue)

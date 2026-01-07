@@ -1,16 +1,49 @@
 import Link from 'next/link'
 import type { Metadata } from 'next'
 import JsonDemo from '@/components/JsonDemo'
+import StructuredData from '@/app/components/StructuredData'
 
 export const metadata: Metadata = {
-  title: 'JSON（ジェイソン）とは？軽量データ交換フォーマットを初心者向けに解説 | IT用語辞典',
-  description: 'JSON（JavaScript Object Notation）は、人間が読みやすく機械が処理しやすいデータ交換フォーマットです。Web APIやデータ保存で広く使われるJSONの基本を初心者にもわかりやすく解説します。',
-  keywords: 'JSON,JavaScript Object Notation,データ形式,Web API,初心者,基礎',
+  title: 'JSONとは？初心者向けにわかりやすく解説【実践デモ付き】 | IT用語辞典',
+  description: 'JSON（JavaScript Object Notation）を初心者向けに解説。Web APIやデータ保存で使われる軽量データ交換フォーマットを、実際に編集できるデモで体験しながら学べます。基本構造、使い方、JavaScriptでの実装例も紹介。',
+  keywords: ['JSON', 'JSON とは', 'JSON わかりやすく', 'JavaScript Object Notation', 'データ形式', 'Web API', '初心者', 'プログラミング'],
+  openGraph: {
+    title: 'JSONとは？初心者向けにわかりやすく解説【実践デモ付き】',
+    description: 'JSONを初心者向けに解説。実際に編集できるデモで体験しながら学べます。',
+    type: 'article',
+  },
 }
 
 export default function JsonPage() {
+  const faqs = [
+    {
+      question: 'JSONとは何ですか？',
+      answer: 'JSON（JavaScript Object Notation）は、軽量で人間にも読みやすいデータ交換フォーマットです。キー（名前）と値のペアでデータを表現し、Web APIのレスポンスや設定ファイルなど幅広く利用されています。',
+    },
+    {
+      question: 'JSONはどこで使われていますか？',
+      answer: 'JSONは、Web APIのリクエスト・レスポンス、設定ファイル（package.jsonなど）、データベースのデータ保存、サーバーとクライアント間のデータ交換など、あらゆる場面で使われています。',
+    },
+    {
+      question: 'JSONとXMLの違いは何ですか？',
+      answer: 'JSONはXMLより軽量でシンプルです。XMLはタグで構造を表現しますが、JSONはキーと値のペアで表現します。JSONの方が読みやすく、データサイズも小さいため、Web開発では主流になっています。',
+    },
+    {
+      question: 'JavaScriptでJSONを扱うにはどうすればいいですか？',
+      answer: 'JavaScriptでは、JSON.parse()でJSON文字列をオブジェクトに変換し、JSON.stringify()でオブジェクトをJSON文字列に変換できます。これにより、データの送受信や保存が簡単に行えます。',
+    },
+  ]
+
   return (
     <div className="container">
+      <StructuredData type="FAQPage" faqs={faqs} />
+      <StructuredData
+        type="Article"
+        title="JSONとは？初心者向けにわかりやすく解説"
+        description="JSON（JavaScript Object Notation）を初心者向けに解説。Web APIやデータ保存で使われる軽量データ交換フォーマットを体験しながら学べます。"
+        datePublished="2024-01-01"
+        dateModified="2024-01-07"
+      />
       <header>
         <h1>
           <i className="fas fa-brackets-curly"></i> JSON
