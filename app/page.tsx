@@ -33,7 +33,7 @@ export const metadata: Metadata = {
 export default function Home() {
   return (
     <div className="container">
-      <header>
+      <header className="site-header">
         <h1>実践型IT用語辞典</h1>
         <nav>
           <ul>
@@ -58,13 +58,10 @@ export default function Home() {
           <h2>IT用語をわかりやすく解説する実践型辞典</h2>
           <p>プログラミング初心者でも理解できる、わかりやすいIT用語解説。デモを通じて、IT技術の「なぜ？」が直感的にわかります。</p>
           <p className="hero-description">
-            <Link href="/terms/api">API</Link>、<Link href="/terms/json">JSON</Link>、
-            <Link href="/terms/http">HTTP/HTTPS</Link>、<Link href="/terms/cookie">Cookie</Link>、
-            <Link href="/terms/framework">フレームワーク</Link>、<Link href="/terms/github">GitHub</Link>など、
+            API、JSON、HTTP/HTTPS、Cookie、フレームワーク、GitHubなど、
             Webプログラミングに必要なIT用語を初心者にもわかりやすく解説。
-            <Link href="/terms/html">HTML</Link>、<Link href="/terms/css">CSS</Link>、
-            <Link href="/terms/javascript">JavaScript</Link>の基礎から、
-            <Link href="/terms/vercel">Vercel</Link>や<Link href="/terms/npm">npm</Link>などの開発ツールまで幅広くカバーしています。
+            HTML、CSS、JavaScriptの基礎から、
+            Vercelやnpmなどの開発ツールまで幅広くカバーしています。
           </p>
           <div className="cta-buttons">
             <Link href="#search" className="cta-button">
@@ -221,7 +218,7 @@ export default function Home() {
         <Link href="/terms">利用規約</Link>
         {' | '}
         <Link href="/contact">お問い合わせ</Link>
-        <p>&copy; 2024 実践型IT用語辞典</p>
+        <p>&copy; 2026 実践型IT用語辞典</p>
       </footer>
     </div>
   )

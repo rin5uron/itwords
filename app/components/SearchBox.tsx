@@ -62,9 +62,12 @@ export default function SearchBox() {
             border: '2px solid #ddd',
             borderRadius: '8px',
             outline: 'none',
-            transition: 'border-color 0.3s'
+            transition: 'border-color 0.3s',
+            boxSizing: 'border-box',
+            overflow: 'hidden',
+            textOverflow: 'ellipsis'
           }}
-          onFocus={(e) => e.target.style.borderColor = '#007bff'}
+          onFocus={(e) => e.target.style.borderColor = '#ea9b8a'}
           onBlur={(e) => e.target.style.borderColor = '#ddd'}
         />
         <span style={{

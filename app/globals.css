@@ -261,19 +261,51 @@ blockquote {
 }
 
 /* トップページ用追加スタイル */
-nav ul {
-  list-style: none;
-  padding: 15px 0;
+.site-header {
   display: flex;
-  justify-content: center;
-  gap: 25px;
+  align-items: center;
+  justify-content: space-between;
+  gap: 30px;
   flex-wrap: wrap;
-  border-top: 1px solid #eee8d5;
+  margin-bottom: 30px;
+  padding-bottom: 20px;
   border-bottom: 1px solid #eee8d5;
 }
 
+.site-header h1 {
+  margin: 0;
+  border-bottom: none;
+  padding-bottom: 0;
+  font-size: 2.2em;
+}
+
+nav ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  gap: 25px;
+  flex-wrap: wrap;
+}
+
+nav ul li {
+  margin: 0;
+}
+
+nav ul li a {
+  color: #ea9b8a;
+  text-decoration: none;
+  font-weight: 500;
+  transition: color 0.3s ease;
+}
+
+nav ul li a:hover {
+  color: #e08a7a;
+  text-decoration: underline;
+}
+
 .hero {
-  text-align: center;
+  text-align: left;
   padding: 20px 0;
 }
 
@@ -447,9 +479,20 @@ footer {
     margin: 0 10px;
   }
 
+  .site-header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 15px;
+  }
+
+  .site-header h1 {
+    font-size: 1.8em;
+  }
+
   nav ul {
     flex-direction: column;
     gap: 10px;
+    width: 100%;
   }
 
   .cta-button {
