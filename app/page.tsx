@@ -1,5 +1,6 @@
 import Link from 'next/link'
 import type { Metadata } from 'next'
+import SearchBox from './components/SearchBox'
 
 export const metadata: Metadata = {
   title: '実践型IT用語辞典 - IT用語をわかりやすく解説【初心者向け体験デモ付き】',
@@ -37,6 +38,9 @@ export default function Home() {
         <nav>
           <ul>
             <li>
+              <Link href="#search">用語検索</Link>
+            </li>
+            <li>
               <Link href="#popular">人気用語</Link>
             </li>
             <li>
@@ -63,10 +67,15 @@ export default function Home() {
             <Link href="/terms/vercel">Vercel</Link>や<Link href="/terms/npm">npm</Link>などの開発ツールまで幅広くカバーしています。
           </p>
           <div className="cta-buttons">
-            <Link href="#new" className="cta-button">
-              用語を探す
+            <Link href="#search" className="cta-button">
+              用語を検索
             </Link>
           </div>
+        </section>
+
+        <section id="search">
+          <h3>用語を検索</h3>
+          <SearchBox />
         </section>
 
         <section id="new">

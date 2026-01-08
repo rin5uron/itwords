@@ -1,5 +1,6 @@
 import Link from 'next/link'
 import type { Metadata } from 'next'
+import ContactForm from './ContactForm'
 
 export const metadata: Metadata = {
   title: 'お問い合わせ | 実践型IT用語辞典',
@@ -19,26 +20,10 @@ export default function ContactPage() {
           <p>
             実践型IT用語辞典をご利用いただきありがとうございます。
             <br />
-            サイトに関するご質問、ご意見、ご要望などがございましたら、以下のメールアドレスまでお気軽にお問い合わせください。
+            サイトに関するご質問、ご意見、ご要望などがございましたら、下記のフォームよりお気軽にお問い合わせください。
           </p>
 
-          <div style={{
-            padding: '20px',
-            backgroundColor: '#f5f5f5',
-            borderRadius: '8px',
-            margin: '20px 0'
-          }}>
-            <p style={{ margin: '0', fontSize: '16px' }}>
-              <strong>お問い合わせ先メールアドレス：</strong>
-              <br />
-              <a
-                href="mailto:contact@example.com"
-                style={{ color: '#007bff', textDecoration: 'none' }}
-              >
-                contact@example.com
-              </a>
-            </p>
-          </div>
+          <ContactForm />
 
           <h2>お問い合わせの際のお願い</h2>
           <ul>
