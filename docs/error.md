@@ -1,5 +1,56 @@
 # エラーログ
 
+## 2026-01-09: Vercelでwwwサブドメインを削除したため、URLをwwwなしに統一
+
+### 変更内容
+Vercelのドメイン設定でwwwサブドメインを削除したため、正規URLが`https://itwords.jp`（wwwなし）に変更されました。それに伴い、以下のファイルを修正してURLを統一しました。
+
+### 修正したファイル
+
+1. **`app/robots.ts`**
+   ```diff
+   - sitemap: 'https://www.itwords.jp/sitemap.xml',
+   + sitemap: 'https://itwords.jp/sitemap.xml',
+   ```
+
+2. **`app/sitemap.ts`**
+   ```diff
+   - const baseUrl = 'https://www.itwords.jp'
+   + const baseUrl = 'https://itwords.jp'
+   ```
+
+3. **`app/layout.tsx`**
+   ```diff
+   - metadataBase: new URL('https://www.itwords.jp'),
+   - url: 'https://www.itwords.jp',
+   - canonical: 'https://www.itwords.jp',
+   + metadataBase: new URL('https://itwords.jp'),
+   + url: 'https://itwords.jp',
+   + canonical: 'https://itwords.jp',
+   ```
+
+### 次のステップ
+- Google Search Consoleで`https://itwords.jp`（wwwなし）を登録していることを確認
+- デプロイ後にsitemap.xmlとrobots.txtが正しく生成されているか確認
+
+### 検証方法
+デプロイ完了後（1-2分後）に以下のコマンドで確認:
+
+```bash
+# robots.txt の sitemap URL を確認
+curl -s https://itwords.jp/robots.txt | grep Sitemap
+# 期待される出力: Sitemap: https://itwords.jp/sitemap.xml
+
+# sitemap.xml の URL を確認
+curl -s https://itwords.jp/sitemap.xml | grep -o '<loc>https://[^<]*</loc>' | head -3
+# 期待される出力: <loc>https://itwords.jp</loc>
+```
+
+### ステータス
+✅ **修正完了** - デプロイ完了後に検証が必要
+
+---
+
 ## 2026-01-09: インデックス登録されない問題（URL不一致）
 
 ### 問題の概要
