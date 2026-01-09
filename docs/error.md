@@ -1,5 +1,122 @@
 # エラーログ
 
+## 2026-01-09: インデックス登録されない問題（URL不一致）
+
+### 問題の概要
+Google Search Console でインデックス登録されない問題が発生。原因調査の結果、sitemap.xml と robots.txt の URL が実際のサイト URL（www あり）と不一致であることが判明。
+
+### エラー詳細
+
+#### 症状
+- Google Search Console でインデックス登録されない
+- sitemap.xml が正しく認識されていない可能性
+- robots.txt の sitemap の URL が実際のサイト URL と異なる
+
+#### 調査結果
+
+1. **URL の不一致** ❌
+   - 実際のサイト URL: `https://www.itwords.jp`（www あり）
+   - `robots.ts` の sitemap URL: `https://itwords.jp/sitemap.xml`（www なし）
+   - `sitemap.ts` の baseUrl: `https://itwords.jp`（www なし）
+   - `https://itwords.jp` は `https://www.itwords.jp` に 307 リダイレクトされている
+
+2. **メタデータの設定不足** ❌
+   - `layout.tsx` に `metadataBase` が設定されていない
+   - 正規 URL（canonical URL）が明確に指定されていない
+
+#### エラー確認コマンド
+
+```bash
+# robots.txt の確認
+curl -s https://www.itwords.jp/robots.txt
+# 結果: Sitemap: https://itwords.jp/sitemap.xml（www なし）
+
+# sitemap.xml の確認
+curl -s https://www.itwords.jp/sitemap.xml | head -5
+# 結果: <loc>https://itwords.jp</loc>（www なし）
+
+# リダイレクトの確認
+curl -I https://itwords.jp/
+# 結果: location: https://www.itwords.jp/（307 リダイレクト）
+```
+
+### 原因
+Google Search Console で `https://www.itwords.jp`（www あり）を登録している場合、sitemap.xml が `https://itwords.jp`（www なし）を指していると、URL の不一致によりインデックス登録が正しく行われない可能性がある。
+
+### 解決方法
+
+#### 実施した修正
+
+1. **`app/robots.ts` の修正**
+   ```diff
+   - sitemap: 'https://itwords.jp/sitemap.xml',
+   + sitemap: 'https://www.itwords.jp/sitemap.xml',
+   ```
+
+2. **`app/sitemap.ts` の修正**
+   ```diff
+   - const baseUrl = 'https://itwords.jp'
+   + const baseUrl = 'https://www.itwords.jp'
+   ```
+
+3. **`app/layout.tsx` の修正**
+   - `metadataBase` を追加して正規 URL を明確化
+   - `openGraph.url` を追加
+   - `alternates.canonical` を追加
+
+#### 修正後のコード
+
+**`app/layout.tsx`**:
+```typescript
+export const metadata: Metadata = {
+  metadataBase: new URL('https://www.itwords.jp'),  // 追加
+  // ... 既存の設定 ...
+  openGraph: {
+    // ... 既存の設定 ...
+    url: 'https://www.itwords.jp',  // 追加
+  },
+  // ... 既存の設定 ...
+  alternates: {
+    canonical: 'https://www.itwords.jp',  // 追加
+  },
+}
+```
+
+### 検証方法
+
+デプロイ完了後（1-2分後）に以下のコマンドで確認:
+
+```bash
+# robots.txt の sitemap URL を確認
+curl -s https://www.itwords.jp/robots.txt | grep Sitemap
+# 期待される出力: Sitemap: https://www.itwords.jp/sitemap.xml
+
+# sitemap.xml の URL を確認
+curl -s https://www.itwords.jp/sitemap.xml | grep -o '<loc>https://[^<]*</loc>' | head -3
+# 期待される出力: <loc>https://www.itwords.jp</loc>
+```
+
+### 参考情報
+
+#### URL の正規化について
+- Google Search Console では、www ありと www なしは別のプロパティとして扱われる
+- sitemap.xml の URL は、Google Search Console で登録している URL と一致させる必要がある
+- `metadataBase` を設定することで、相対 URL が自動的に絶対 URL に変換される
+
+#### 関連ファイル
+- `/Users/rin5uron/github-local/personal/itwords/app/robots.ts`
+- `/Users/rin5uron/github-local/personal/itwords/app/sitemap.ts`
+- `/Users/rin5uron/github-local/personal/itwords/app/layout.tsx`
+
+#### 関連リソース
+- Next.js metadataBase: https://nextjs.org/docs/app/api-reference/functions/generate-metadata#metadatabase
+- Google Search Console ガイド: https://support.google.com/webmasters/answer/7552505
+
+### ステータス
+✅ **修正完了** - デプロイ完了後に検証が必要
+
+---
+
 ## 2026-01-09: Google Analytics インデックス登録問題
 
 ### 問題の概要
