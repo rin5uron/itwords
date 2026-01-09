@@ -6,6 +6,6 @@ export default function robots(): MetadataRoute.Robots {
       userAgent: '*',
       allow: '/',
     },
-    sitemap: 'https://itwords.jp/sitemap.xml',
+    sitemap: 'https://www.itwords.jp/sitemap.xml',
   }
 }
