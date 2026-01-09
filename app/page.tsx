@@ -33,23 +33,25 @@ export default function Home() {
   return (
     <div className="container">
       <header className="site-header">
-        <h1>実践型IT用語辞典</h1>
+        <div className="header-top">
+          <h1>実践型IT用語辞典</h1>
+          <nav>
+            <ul>
+              <li>
+                <Link href="#popular">人気用語</Link>
+              </li>
+              <li>
+                <Link href="#new">新着用語</Link>
+              </li>
+              <li>
+                <Link href="#about">制作背景</Link>
+              </li>
+            </ul>
+          </nav>
+        </div>
         <p className="site-description">
           IT用語を初心者向けにわかりやすく解説する実践型IT用語辞典。API、JSON、フレームワークなどのIT用語を体験デモで学べます。プログラミング初心者でも理解できる解説で、Web開発の基礎知識を習得できます。
         </p>
-        <nav>
-          <ul>
-            <li>
-              <Link href="#popular">人気用語</Link>
-            </li>
-            <li>
-              <Link href="#new">新着用語</Link>
-            </li>
-            <li>
-              <Link href="#about">制作背景</Link>
-            </li>
-          </ul>
-        </nav>
       </header>
 
       <main>
