@@ -53,17 +53,6 @@ export default function Home() {
       </header>
 
       <main>
-        <section className="hero">
-          <h2>IT用語をわかりやすく解説する実践型辞典</h2>
-          <p>プログラミング初心者でも理解できる、わかりやすいIT用語解説。デモを通じて、IT技術の「なぜ？」が直感的にわかります。</p>
-          <p className="hero-description">
-            API、JSON、HTTP/HTTPS、Cookie、フレームワーク、GitHubなど、
-            Webプログラミングに必要なIT用語を初心者にもわかりやすく解説。
-            HTML、CSS、JavaScriptの基礎から、
-            Vercelやnpmなどの開発ツールまで幅広くカバーしています。
-          </p>
-        </section>
-
         <section id="new">
           <h3>新着用語</h3>
           <div className="card-container">
