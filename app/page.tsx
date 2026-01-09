@@ -1,6 +1,5 @@
 import Link from 'next/link'
 import type { Metadata } from 'next'
-import SearchBox from './components/SearchBox'
 
 export const metadata: Metadata = {
   title: '実践型IT用語辞典 - IT用語をわかりやすく解説【初心者向け体験デモ付き】',
@@ -33,11 +32,11 @@ export const metadata: Metadata = {
 export default function Home() {
   return (
     <div className="container">
-      <div className="search-top">
-        <SearchBox />
-      </div>
       <header className="site-header">
         <h1>実践型IT用語辞典</h1>
+        <p className="site-description">
+          IT用語を初心者向けにわかりやすく解説する実践型IT用語辞典。API、JSON、フレームワークなどのIT用語を体験デモで学べます。プログラミング初心者でも理解できる解説で、Web開発の基礎知識を習得できます。
+        </p>
         <nav>
           <ul>
             <li>
@@ -63,42 +62,30 @@ export default function Home() {
             HTML、CSS、JavaScriptの基礎から、
             Vercelやnpmなどの開発ツールまで幅広くカバーしています。
           </p>
-          <div className="cta-buttons">
-            <Link href="#search" className="cta-button">
-              用語を検索
-            </Link>
-          </div>
-        </section>
-
-        <section id="search">
-          <h3>用語を検索</h3>
-          <p>上記の検索窓から用語を検索できます。</p>
         </section>
 
         <section id="new">
           <h3>新着用語</h3>
           <div className="card-container">
+            <div className="card" data-category="security">
+              <Link href="/terms/zero-day" className="card-link">
+                <span className="category-tag">セキュリティ</span>
+                <h4>ゼロデイ攻撃</h4>
+                <p>脆弱性が発見されてから修正される前に行われる危険なサイバー攻撃です。</p>
+              </Link>
+            </div>
+            <div className="card" data-category="security">
+              <Link href="/terms/aes" className="card-link">
+                <span className="category-tag">セキュリティ</span>
+                <h4>AES</h4>
+                <p>現代で最も広く使われている暗号化規格の一つです。</p>
+              </Link>
+            </div>
             <div className="card" data-category="web">
               <Link href="/terms/foolproof" className="card-link">
                 <span className="category-tag">Web</span>
                 <h4>フールプルーフ</h4>
                 <p>ユーザーの誤操作を防ぐための設計原則です。</p>
-              </Link>
-            </div>
-            <div className="card" data-category="programming">
-              <Link href="/terms/stack" className="card-link">
-                <span className="category-tag">開発</span>
-                <h4>スタック</h4>
-                <p>後入れ先出し（LIFO）のデータ構造です。</p>
-              </Link>
-            </div>
-            <div className="card" data-category="programming">
-              <Link href="/terms/queue" className="card-link">
-                <span className="category-tag">開発</span>
-                <h4>キュー</h4>
-                <p>
-                  データを一時的に保持する線形データ構造の一つで、先入れ先出し（FIFO）の原則で動作します。
-                </p>
               </Link>
             </div>
           </div>
