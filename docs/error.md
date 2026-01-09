@@ -1,6 +1,16 @@
 # エラーログ
 
-## 2026-01-09: Vercelでwwwサブドメインを削除したため、URLをwwwなしに統一
+## 2026-01-09: 1日の作業まとめ
+
+### 時系列の流れ
+
+1. **午前**: インデックス登録されない問題を発見・修正（wwwありに統一）
+2. **午後**: Google Analyticsが本番環境で読み込まれない問題を発見・修正
+3. **夕方**: Vercelでwwwサブドメインを削除し、wwwなしに統一
+
+---
+
+## 2026-01-09（夕方）: Vercelでwwwサブドメインを削除したため、URLをwwwなしに統一
 
 ### 変更内容
 Vercelのドメイン設定でwwwサブドメインを削除したため、正規URLが`https://itwords.jp`（wwwなし）に変更されました。それに伴い、以下のファイルを修正してURLを統一しました。
@@ -51,10 +61,124 @@ curl -s https://itwords.jp/sitemap.xml | grep -o '<loc>https://[^<]*</loc>' | he
 
 ---
 
-## 2026-01-09: インデックス登録されない問題（URL不一致）
+## 2026-01-09（午後）: Google Analytics が本番環境で読み込まれない問題
+
+### 問題の概要
+Google Analytics のスクリプトタグが本番環境（`https://itwords.jp`）で読み込まれていないことが判明。
+
+### エラー詳細
+
+#### 症状
+- Google Analytics のトラッキングが機能していない
+- 本番サイトの HTML ソースに gtag スクリプトが出力されていない
+- `GA_ID="G-BEWDYZKGLH"` は JSON データとして埋め込まれているが、実際の `<script>` タグが存在しない
+
+#### 調査結果
+
+1. **環境変数は正しく設定されている** ✅
+   - Vercel の環境変数 `NEXT_PUBLIC_GA_ID=G-BEWDYZKGLH` は設定済み
+   - HTML に `GA_ID="G-BEWDYZKGLH"` が JSON データとして埋め込まれている
+
+2. **Next.js Script コンポーネントの問題** ❌
+   - `app/components/GoogleAnalytics.tsx` で `strategy="lazyOnload"` を使用していた
+   - Next.js 15 の App Router でこの strategy が期待通りに動作していない可能性
+   - React Server Components のハイドレーション時にスクリプトが出力されない
+
+#### エラー確認コマンド
+
+```bash
+# 本番サイトの HTML ソースを確認
+curl -s https://itwords.jp/ | grep "googletagmanager"
+# 結果: スクリプトタグが見つからない
+
+# GA_ID が埋め込まれているか確認
+curl -s https://itwords.jp/ | grep -o "G-BEWDYZKGLH" | wc -l
+# 結果: 1（JSON データ内にのみ存在）
+
+# gtag 関数の存在確認
+curl -s https://itwords.jp/ | grep -E "(gtag|dataLayer)"
+# 結果: 見つからない
+```
+
+### 原因
+Next.js 15 の App Router で `next/script` の `strategy="lazyOnload"` が正しく動作せず、Server Components のレンダリング時にスクリプトタグが出力されない問題。
+
+### 解決方法
+
+#### 実施した修正
+`app/components/GoogleAnalytics.tsx` のコード変更:
+
+```diff
+- strategy="lazyOnload"
++ strategy="afterInteractive"
+```
+
+#### 修正後のコード
+```typescript
+'use client'
+
+import Script from 'next/script'
+
+export default function GoogleAnalytics({ GA_ID }: { GA_ID: string }) {
+  return (
+    <>
+      <Script
+        src={`https://www.googletagmanager.com/gtag/js?id=${GA_ID}`}
+        strategy="afterInteractive"  // 変更点
+      />
+      <Script id="google-analytics" strategy="afterInteractive">  // 変更点
+        {`
+          window.dataLayer = window.dataLayer || [];
+          function gtag(){dataLayer.push(arguments);}
+          gtag('js', new Date());
+          gtag('config', '${GA_ID}');
+        `}
+      </Script>
+    </>
+  )
+}
+```
+
+### 検証方法
+
+デプロイ完了後（1-2分後）に以下のコマンドで確認:
+
+```bash
+# Google Analytics スクリプトが読み込まれているか確認
+curl -s https://itwords.jp/ | grep "googletagmanager"
+
+# 期待される出力:
+# <script src="https://www.googletagmanager.com/gtag/js?id=G-BEWDYZKGLH"></script>
+```
+
+### 参考情報
+
+#### Next.js Script の strategy オプション
+- `beforeInteractive`: ページがインタラクティブになる前に読み込み（最優先）
+- `afterInteractive`: ページがインタラクティブになった後に読み込み（推奨）
+- `lazyOnload`: ブラウザのアイドル時に遅延読み込み
+- `worker`: Web Worker で読み込み（実験的機能）
+
+#### 関連ファイル
+- `/Users/rin5uron/github-local/personal/itwords/app/components/GoogleAnalytics.tsx`
+- `/Users/rin5uron/github-local/personal/itwords/app/layout.tsx`
+
+#### 関連リソース
+- Next.js Script コンポーネント: https://nextjs.org/docs/app/api-reference/components/script
+- Google Analytics 4 設定: https://support.google.com/analytics/answer/9304153
+- Vercel 環境変数設定: https://vercel.com/docs/concepts/projects/environment-variables
+
+### ステータス
+✅ **修正完了** - デプロイ完了後に検証が必要
+
+---
+
+## 2026-01-09（午前）: インデックス登録されない問題（URL不一致）
 
 ### 問題の概要
 Google Search Console でインデックス登録されない問題が発生。原因調査の結果、sitemap.xml と robots.txt の URL が実際のサイト URL（www あり）と不一致であることが判明。
+
+**注意**: この問題は、後にVercelでwwwサブドメインを削除したため、現在はwwwなしに統一されています。
 
 ### エラー詳細
 
@@ -63,40 +187,22 @@ Google Search Console でインデックス登録されない問題が発生。�
 - sitemap.xml が正しく認識されていない可能性
 - robots.txt の sitemap の URL が実際のサイト URL と異なる
 
-#### 調査結果
+#### 調査結果（当時の状況）
 
 1. **URL の不一致** ❌
    - 実際のサイト URL: `https://www.itwords.jp`（www あり）
    - `robots.ts` の sitemap URL: `https://itwords.jp/sitemap.xml`（www なし）
    - `sitemap.ts` の baseUrl: `https://itwords.jp`（www なし）
-   - `https://itwords.jp` は `https://www.itwords.jp` に 307 リダイレクトされている
+   - `https://itwords.jp` は `https://www.itwords.jp` に 307 リダイレクトされていた
 
 2. **メタデータの設定不足** ❌
    - `layout.tsx` に `metadataBase` が設定されていない
    - 正規 URL（canonical URL）が明確に指定されていない
 
-#### エラー確認コマンド
-
-```bash
-# robots.txt の確認
-curl -s https://www.itwords.jp/robots.txt
-# 結果: Sitemap: https://itwords.jp/sitemap.xml（www なし）
-
-# sitemap.xml の確認
-curl -s https://www.itwords.jp/sitemap.xml | head -5
-# 結果: <loc>https://itwords.jp</loc>（www なし）
-
-# リダイレクトの確認
-curl -I https://itwords.jp/
-# 結果: location: https://www.itwords.jp/（307 リダイレクト）
-```
-
 ### 原因
 Google Search Console で `https://www.itwords.jp`（www あり）を登録している場合、sitemap.xml が `https://itwords.jp`（www なし）を指していると、URL の不一致によりインデックス登録が正しく行われない可能性がある。
 
-### 解決方法
-
-#### 実施した修正
+### 解決方法（当時実施した修正）
 
 1. **`app/robots.ts` の修正**
    ```diff
@@ -115,37 +221,9 @@ Google Search Console で `https://www.itwords.jp`（www あり）を登録し�
    - `openGraph.url` を追加
    - `alternates.canonical` を追加
 
-#### 修正後のコード
-
-**`app/layout.tsx`**:
-```typescript
-export const metadata: Metadata = {
-  metadataBase: new URL('https://www.itwords.jp'),  // 追加
-  // ... 既存の設定 ...
-  openGraph: {
-    // ... 既存の設定 ...
-    url: 'https://www.itwords.jp',  // 追加
-  },
-  // ... 既存の設定 ...
-  alternates: {
-    canonical: 'https://www.itwords.jp',  // 追加
-  },
-}
-```
-
-### 検証方法
-
-デプロイ完了後（1-2分後）に以下のコマンドで確認:
-
-```bash
-# robots.txt の sitemap URL を確認
-curl -s https://www.itwords.jp/robots.txt | grep Sitemap
-# 期待される出力: Sitemap: https://www.itwords.jp/sitemap.xml
-
-# sitemap.xml の URL を確認
-curl -s https://www.itwords.jp/sitemap.xml | grep -o '<loc>https://[^<]*</loc>' | head -3
-# 期待される出力: <loc>https://www.itwords.jp</loc>
-```
+### その後
+- 夕方にVercelでwwwサブドメインを削除したため、再度wwwなしに統一されました
+- 現在は `https://itwords.jp`（wwwなし）が正規URLです
 
 ### 参考情報
 
@@ -164,11 +242,7 @@ curl -s https://www.itwords.jp/sitemap.xml | grep -o '<loc>https://[^<]*</loc>' 
 - Google Search Console ガイド: https://support.google.com/webmasters/answer/7552505
 
 ### ステータス
-✅ **修正完了** - デプロイ完了後に検証が必要
-
----
-
-## 2026-01-09: Google Analytics インデックス登録問題
+✅ **修正完了** - その後、Vercelでwwwを削除したため、現在はwwwなしに統一済み
 
 ### 問題の概要
 Google Search Console でインデックス登録されない問題が発生。原因調査の結果、Google Analytics のスクリプトタグが本番環境で読み込まれていないことが判明。

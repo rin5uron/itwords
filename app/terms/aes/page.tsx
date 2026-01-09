@@ -2,6 +2,7 @@ import Link from 'next/link'
 import { Metadata } from 'next'
 import StructuredData from '@/app/components/StructuredData'
 import TermHeader from '@/app/components/TermHeader'
+import AESDemo from '@/components/AESDemo'
 
 export const metadata: Metadata = {
   title: 'AES（Advanced Encryption Standard）とは？初心者向けにわかりやすく解説 | 実践型IT用語辞典',
@@ -106,6 +107,17 @@ export default function AESPage() {
               実装が容易です。
             </li>
           </ul>
+        </section>
+
+        <section>
+          <h2>体験してみよう：AES暗号化</h2>
+          <p>
+            実際のAESアルゴリズムは複雑ですが、ここでは「鍵を使ってデータを暗号化・復号化する」という概念を体験できます。
+            <br />
+            <strong>💡 ポイント：</strong> 同じ鍵を使わないと復号化できません。これが「共通鍵暗号方式」の基本です。
+          </p>
+
+          <AESDemo />
         </section>
 
         <section>

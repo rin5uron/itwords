@@ -1,6 +1,7 @@
 import type { Metadata } from 'next'
 import './globals.css'
 import GoogleAnalytics from './components/GoogleAnalytics'
+import GoogleAdSense from './components/GoogleAdSense'
 
 export const metadata: Metadata = {
   metadataBase: new URL('https://itwords.jp'),
@@ -43,11 +44,13 @@ export default function RootLayout({
   children: React.ReactNode
 }) {
   const GA_ID = process.env.NEXT_PUBLIC_GA_ID
+  const AD_CLIENT_ID = process.env.NEXT_PUBLIC_ADSENSE_ID
 
   return (
     <html lang="ja">
       <body>
         {GA_ID && <GoogleAnalytics GA_ID={GA_ID} />}
+        {AD_CLIENT_ID && <GoogleAdSense adClientId={AD_CLIENT_ID} />}
         {children}
       </body>
     </html>
