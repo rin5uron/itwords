@@ -70,16 +70,15 @@ export default function SearchBox() {
           onFocus={(e) => e.target.style.borderColor = '#ea9b8a'}
           onBlur={(e) => e.target.style.borderColor = '#ddd'}
         />
-        <span style={{
+        <i className="fas fa-search" style={{
           position: 'absolute',
           right: '15px',
           top: '50%',
           transform: 'translateY(-50%)',
-          fontSize: '18px',
-          color: '#999'
-        }}>
-          🔍
-        </span>
+          fontSize: '16px',
+          color: '#999',
+          pointerEvents: 'none'
+        }}></i>
       </div>
 
       {searchTerm && (

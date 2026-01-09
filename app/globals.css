@@ -1,5 +1,8 @@
 /* 完全な用語ページスタイル - 体験デモ対応 */
 
+/* Font Awesome CDN */
+@import url('https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css');
+
 body {
   font-family: 'Noto Sans JP', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
   line-height: 1.8;
@@ -260,6 +263,13 @@ blockquote {
   font-size: 0.95em;
 }
 
+/* 検索窓最上部配置 */
+.search-top {
+  margin-bottom: 30px;
+  padding: 20px 0;
+  border-bottom: 1px solid #eee8d5;
+}
+
 /* トップページ用追加スタイル */
 .site-header {
   display: flex;
@@ -268,15 +278,23 @@ blockquote {
   gap: 30px;
   flex-wrap: wrap;
   margin-bottom: 30px;
-  padding-bottom: 20px;
+  padding: 20px 0;
   border-bottom: 1px solid #eee8d5;
 }
 
 .site-header h1 {
-  margin: 0;
-  border-bottom: none;
-  padding-bottom: 0;
+  margin: 0 !important;
+  border-bottom: none !important;
+  padding-bottom: 0 !important;
   font-size: 2.2em;
+  display: block !important;
+  flex: 0 0 auto;
+}
+
+.site-header nav {
+  flex: 1 1 auto;
+  display: flex;
+  justify-content: flex-end;
 }
 
 nav ul {
@@ -284,8 +302,9 @@ nav ul {
   padding: 0;
   margin: 0;
   display: flex;
-  gap: 25px;
+  gap: 30px;
   flex-wrap: wrap;
+  align-items: center;
 }
 
 nav ul li {
@@ -296,12 +315,16 @@ nav ul li a {
   color: #ea9b8a;
   text-decoration: none;
   font-weight: 500;
-  transition: color 0.3s ease;
+  font-size: 1em;
+  padding: 8px 0;
+  transition: color 0.3s ease, border-bottom 0.3s ease;
+  border-bottom: 2px solid transparent;
 }
 
 nav ul li a:hover {
   color: #e08a7a;
-  text-decoration: underline;
+  border-bottom: 2px solid #e08a7a;
+  text-decoration: none;
 }
 
 .hero {
@@ -401,6 +424,54 @@ footer {
   color: #93a1a1;
 }
 
+footer a {
+  color: #ea9b8a;
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+footer a:hover {
+  color: #e08a7a;
+  text-decoration: underline;
+}
+
+/* PC表示時のヘッダーデザイン改善 */
+@media (min-width: 769px) {
+  .site-header {
+    padding: 25px 0;
+  }
+
+  .site-header h1 {
+    font-size: 2.4em;
+    font-weight: 700;
+    color: #4a4a4a;
+  }
+
+  nav ul {
+    gap: 35px;
+  }
+
+  nav ul li a {
+    font-size: 1.05em;
+    position: relative;
+  }
+
+  nav ul li a::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background-color: #e08a7a;
+    transition: width 0.3s ease;
+  }
+
+  nav ul li a:hover::after {
+    width: 100%;
+  }
+}
+
 /* レスポンシブデザイン */
 @media (max-width: 768px) {
   body {
@@ -483,16 +554,27 @@ footer {
     flex-direction: column;
     align-items: flex-start;
     gap: 15px;
+    padding: 15px 0;
   }
 
   .site-header h1 {
     font-size: 1.8em;
   }
 
+  .site-header nav {
+    width: 100%;
+    justify-content: flex-start;
+  }
+
   nav ul {
     flex-direction: column;
     gap: 10px;
     width: 100%;
+  }
+
+  nav ul li a {
+    display: block;
+    padding: 10px 0;
   }
 
   .cta-button {

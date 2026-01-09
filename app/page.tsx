@@ -33,13 +33,13 @@ export const metadata: Metadata = {
 export default function Home() {
   return (
     <div className="container">
+      <div className="search-top">
+        <SearchBox />
+      </div>
       <header className="site-header">
         <h1>実践型IT用語辞典</h1>
         <nav>
           <ul>
-            <li>
-              <Link href="#search">用語検索</Link>
-            </li>
             <li>
               <Link href="#popular">人気用語</Link>
             </li>
@@ -72,7 +72,7 @@ export default function Home() {
 
         <section id="search">
           <h3>用語を検索</h3>
-          <SearchBox />
+          <p>上記の検索窓から用語を検索できます。</p>
         </section>
 
         <section id="new">
@@ -218,7 +218,7 @@ export default function Home() {
         <Link href="/terms">利用規約</Link>
         {' | '}
         <Link href="/contact">お問い合わせ</Link>
-        <p>&copy; 2026 実践型IT用語辞典</p>
+        <p>&copy; 2026 itwords - 実践型IT用語辞典</p>
       </footer>
     </div>
   )

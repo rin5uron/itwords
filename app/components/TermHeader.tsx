@@ -22,16 +22,15 @@ export default function TermHeader({ termName, reading, icon }: TermHeaderProps)
           gap: '10px'
         }}>
           <div style={{ fontSize: '14px', color: '#666' }}>
-            <Link href="/" style={{ color: '#007bff', textDecoration: 'none' }}>
+            <Link href="/" style={{ color: '#ea9b8a', textDecoration: 'none' }}>
               TOP
             </Link>
             <span style={{ margin: '0 8px', color: '#999' }}>›</span>
-            <span>{termName}</span>
-          </div>
-          <div style={{ display: 'flex', gap: '15px', fontSize: '14px' }}>
-            <Link href="/" style={{ color: '#007bff', textDecoration: 'none' }}>
-              用語一覧へ
+            <Link href="/" style={{ color: '#ea9b8a', textDecoration: 'none' }}>
+              用語一覧
             </Link>
+            <span style={{ margin: '0 8px', color: '#999' }}>›</span>
+            <span>{termName}</span>
           </div>
         </div>
       </nav>

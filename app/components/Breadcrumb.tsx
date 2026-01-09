@@ -25,7 +25,7 @@ export default function Breadcrumb({ items }: BreadcrumbProps) {
         {items.map((item, index) => (
           <li key={index} style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
             {item.href ? (
-              <Link href={item.href} style={{ color: '#007bff', textDecoration: 'none' }}>
+              <Link href={item.href} style={{ color: '#ea9b8a', textDecoration: 'none' }}>
                 {item.label}
               </Link>
             ) : (
