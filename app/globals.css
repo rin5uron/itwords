@@ -618,3 +618,65 @@ footer a:hover {
     grid-template-columns: 1fr;
   }
 }
+
+/* === 追加したスタイル === */
+
+/* Search Form Styles */
+.search-container {
+  margin: 2rem 0 1rem;
+}
+.search-container form {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  max-width: 600px;
+  margin: 0 auto;
+  border-radius: 50px;
+  border: 1px solid #ddd;
+  overflow: hidden;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+}
+.search-input {
+  width: 100%;
+  padding: 12px 20px;
+  font-size: 16px;
+  border: none;
+  outline: none;
+  background: #fff;
+  color: #333;
+}
+.search-button {
+  padding: 12px 25px;
+  font-size: 16px;
+  border: none;
+  background-color: #14b8a6;
+  color: white;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+.search-button:hover {
+  background-color: #0d9488;
+}
+
+/* Footer Layout Styles */
+.site-footer-layout {
+  text-align: center;
+  padding: 2rem 1rem;
+  margin-top: 4rem;
+  border-top: 1px solid #eaeaea;
+  font-size: 0.9rem;
+  color: #666;
+}
+.site-footer-layout a {
+  color: #14b8a6;
+  text-decoration: none;
+  margin: 0 10px;
+}
+.site-footer-layout a:hover {
+  text-decoration: underline;
+  color: #0d9488;
+}
+.site-footer-layout p {
+  margin-top: 1rem;
+  margin-bottom: 0;
+}

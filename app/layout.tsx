@@ -2,6 +2,7 @@ import type { Metadata } from 'next'
 import './globals.css'
 import GoogleAnalytics from './components/GoogleAnalytics'
 import GoogleAdSense from './components/GoogleAdSense'
+import Link from 'next/link'
 
 export const metadata: Metadata = {
   metadataBase: new URL('https://itwords.jp'),
@@ -52,6 +53,14 @@ export default function RootLayout({
         {GA_ID && <GoogleAnalytics GA_ID={GA_ID} />}
         {AD_CLIENT_ID && <GoogleAdSense adClientId={AD_CLIENT_ID} />}
         {children}
+        <footer className="site-footer-layout">
+          <Link href="/privacy">プライバシーポリシー</Link>
+          {' | '}
+          <Link href="/terms">利用規約</Link>
+          {' | '}
+          <Link href="/contact">お問い合わせ</Link>
+          <p>&copy; 2026 itwords - 実践型IT用語辞典</p>
+        </footer>
       </body>
     </html>
   )

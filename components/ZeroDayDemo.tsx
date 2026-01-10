@@ -107,24 +107,22 @@ export default function ZeroDayDemo() {
   }
 
   return (
-    <div className="demo-section" style={{ marginTop: '30px' }}>
+    <div className="demo-section" style={{ marginTop: '20px' }}>
       <div style={{ 
         backgroundColor: '#f9f9f9', 
-        padding: '20px', 
+        padding: '15px', 
         borderRadius: '10px',
         border: '2px solid #ddd',
         marginBottom: '20px'
       }}>
-        <h3 style={{ marginTop: 0, marginBottom: '15px' }}>
+        <h3 style={{ marginTop: 0, marginBottom: '10px', fontSize: '18px' }}>
           🎮 ゼロデイ攻撃のタイムラインを体験しよう
         </h3>
-        <p style={{ marginBottom: '20px', color: '#666' }}>
-          あなたは攻撃者の視点で、ゼロデイ攻撃の流れを体験できます。
-          <br />
+        <p style={{ marginBottom: '12px', color: '#666', fontSize: '14px' }}>
           「次のステップ」ボタンを押して、攻撃の進行を確認してみましょう。
         </p>
 
-        <div style={{ marginBottom: '20px' }}>
+        <div style={{ marginBottom: '12px', maxHeight: '400px', overflowY: 'auto' }}>
           {timeline.map((step, index) => {
             const status = getStepStatus(index)
             const isActive = status === 'active'
@@ -134,8 +132,8 @@ export default function ZeroDayDemo() {
               <div
                 key={step.id}
                 style={{
-                  marginBottom: '15px',
-                  padding: '15px',
+                  marginBottom: '10px',
+                  padding: '10px',
                   borderRadius: '8px',
                   border: `2px solid ${isActive ? getRoleColor(step.role) : '#ddd'}`,
                   backgroundColor: isActive ? `${getRoleColor(step.role)}15` : isCompleted ? '#f0f0f0' : '#fff',
@@ -143,25 +141,26 @@ export default function ZeroDayDemo() {
                   transition: 'all 0.3s ease'
                 }}
               >
-                <div style={{ display: 'flex', alignItems: 'center', marginBottom: '8px' }}>
-                  <span style={{ fontSize: '24px', marginRight: '10px' }}>
+                <div style={{ display: 'flex', alignItems: 'center', marginBottom: '5px' }}>
+                  <span style={{ fontSize: '20px', marginRight: '8px' }}>
                     {getRoleIcon(step.role)}
                   </span>
                   <h4 style={{ 
                     margin: 0, 
                     color: isActive ? getRoleColor(step.role) : '#333',
-                    fontWeight: isActive ? 'bold' : 'normal'
+                    fontWeight: isActive ? 'bold' : 'normal',
+                    fontSize: '15px'
                   }}>
                     {step.title}
                     {isCompleted && ' ✓'}
-                    {isActive && ' → 進行中'}
+                    {isActive && ' →'}
                   </h4>
                 </div>
                 <p style={{ 
                   margin: 0, 
                   color: '#666',
-                  fontSize: '14px',
-                  lineHeight: '1.6'
+                  fontSize: '13px',
+                  lineHeight: '1.5'
                 }}>
                   {step.description}
                 </p>
@@ -172,14 +171,14 @@ export default function ZeroDayDemo() {
 
         {isAttacking && (
           <div style={{
-            padding: '20px',
+            padding: '12px',
             backgroundColor: '#fff3cd',
             border: '2px solid #ffc107',
             borderRadius: '8px',
-            marginBottom: '20px',
+            marginBottom: '12px',
             textAlign: 'center'
           }}>
-            <p style={{ margin: 0, fontSize: '18px', fontWeight: 'bold', color: '#856404' }}>
+            <p style={{ margin: 0, fontSize: '14px', fontWeight: 'bold', color: '#856404' }}>
               ⚠️ 攻撃を実行中...
             </p>
           </div>
@@ -187,25 +186,20 @@ export default function ZeroDayDemo() {
 
         {attackResult && (
           <div style={{
-            padding: '20px',
+            padding: '12px',
             backgroundColor: '#f8d7da',
             border: '2px solid #dc3545',
             borderRadius: '8px',
-            marginBottom: '20px',
+            marginBottom: '12px',
             textAlign: 'center'
           }}>
-            <p style={{ margin: 0, fontSize: '18px', fontWeight: 'bold', color: '#721c24' }}>
+            <p style={{ margin: 0, fontSize: '14px', fontWeight: 'bold', color: '#721c24' }}>
               ❌ {attackResult}
-            </p>
-            <p style={{ margin: '10px 0 0 0', fontSize: '14px', color: '#721c24' }}>
-              開発者が脆弱性に気づく前に、攻撃が成功してしまいました。
-              <br />
-              これが「ゼロデイ攻撃」の恐ろしさです。
             </p>
           </div>
         )}
 
-        <div style={{ display: 'flex', gap: '10px', justifyContent: 'center' }}>
+        <div style={{ display: 'flex', gap: '8px', justifyContent: 'center' }}>
           <button
             className="demo-button"
             onClick={handleNextStep}
@@ -213,11 +207,11 @@ export default function ZeroDayDemo() {
             style={{
               backgroundColor: currentStep >= timeline.length - 1 ? '#ccc' : '#8abdea',
               color: 'white',
-              padding: '12px 24px',
+              padding: '8px 16px',
               border: 'none',
               borderRadius: '5px',
               cursor: currentStep >= timeline.length - 1 ? 'not-allowed' : 'pointer',
-              fontSize: '16px',
+              fontSize: '14px',
               fontWeight: 'bold'
             }}
           >
@@ -229,34 +223,17 @@ export default function ZeroDayDemo() {
             style={{
               backgroundColor: '#6c757d',
               color: 'white',
-              padding: '12px 24px',
+              padding: '8px 16px',
               border: 'none',
               borderRadius: '5px',
               cursor: 'pointer',
-              fontSize: '16px',
+              fontSize: '14px',
               fontWeight: 'bold'
             }}
           >
             リセット
           </button>
         </div>
-
-        {currentStep >= timeline.length - 1 && (
-          <div style={{
-            marginTop: '20px',
-            padding: '15px',
-            backgroundColor: '#d1ecf1',
-            border: '2px solid #bee5eb',
-            borderRadius: '8px'
-          }}>
-            <p style={{ margin: 0, fontSize: '14px', color: '#0c5460' }}>
-              <strong>💡 ポイント：</strong>
-              ゼロデイ攻撃では、脆弱性が発見されてから修正パッチが提供されるまでの時間が「ゼロ日」、
-              つまり対策する時間が全くない状態で攻撃が行われます。
-              これが「ゼロデイ」という名前の由来です。
-            </p>
-          </div>
-        )}
       </div>
     </div>
   )

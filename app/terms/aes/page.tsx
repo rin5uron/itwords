@@ -56,63 +56,21 @@ export default function AESPage() {
         <section>
           <h2>概要</h2>
           <p>
-            <strong>AES</strong>（Advanced Encryption Standard）とは、
-            <strong>現代で最も広く使われている暗号化規格の一つ</strong>です。
+            <strong>AES</strong>（Advanced Encryption Standard）とは、<strong>現代で最も広く使われている暗号化規格</strong>です。
+            データを第三者に読み取られないように変換する「共通鍵暗号方式」で、<strong>同じ鍵を使って暗号化・復号化</strong>します。
           </p>
-
           <p>
-            データを第三者に読み取られないように変換する「暗号化」の技術で、
-            <strong>共通鍵暗号方式</strong>（対称鍵暗号方式）に分類されます。
-          </p>
-
-          <p>
-            例えば、あなたが友人に秘密のメッセージを送りたいとします。
-            そのまま送ると、途中で誰かに読まれてしまう可能性があります。
-            そこで、<strong>特別な「鍵」を使ってメッセージを暗号化</strong>（意味不明な文字列に変換）し、
-            友人は同じ鍵を使って暗号を解いて元のメッセージを読む、という仕組みです。
-          </p>
-
-          <p>
-            AESは<strong>米国政府が2001年に標準として採用</strong>した暗号化規格で、
-            高いセキュリティ性能と高速な処理が特徴です。
+            例えば、鍵を使ってメッセージを暗号化し、同じ鍵で復号化する仕組みです。
+            <strong>米国政府が2001年に標準として採用</strong>し、高いセキュリティと高速な処理が特徴です。
           </p>
         </section>
 
         <section>
           <h2>共通鍵暗号方式とは？</h2>
           <p>
-            AESは<strong>共通鍵暗号方式</strong>（対称鍵暗号方式）と呼ばれる方式です。
-            <strong>暗号化と復号化に同じ鍵を使う</strong>のが特徴で、まるで同じ合鍵を持っている二人だけが開けられる金庫のようなイメージです。
+            AESは<strong>共通鍵暗号方式</strong>で、<strong>暗号化と復号化に同じ鍵を使う</strong>のが特徴です。
+            同じ合鍵を持っている二人だけが開けられる金庫のようなイメージです。
           </p>
-
-          <div className="comparison-table">
-            <table>
-              <thead>
-                <tr>
-                  <th>項目</th>
-                  <th>共通鍵暗号（AES）</th>
-                  <th>公開鍵暗号（RSA）</th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr>
-                  <td>鍵の種類</td>
-                  <td>暗号化と復号化に同じ鍵を使用</td>
-                  <td>暗号化と復号化に異なる鍵を使用</td>
-                </tr>
-                <tr>
-                  <td>処理速度</td>
-                  <td>高速</td>
-                  <td>低速</td>
-                </tr>
-                <tr>
-                  <td>用途</td>
-                  <td>大量データの暗号化</td>
-                  <td>鍵交換、デジタル署名</td>
-                </tr>
-              </tbody>
-            </table>
-          </div>
         </section>
 
         <section>
@@ -126,87 +84,15 @@ export default function AESPage() {
 
         <section>
           <h2>AES-128とAES-256の違い</h2>
-          <p>
-            AESには、使用する鍵の長さに応じて3つのバリエーションがあります。
-          </p>
-
-          <div className="comparison-table">
-            <table>
-              <thead>
-                <tr>
-                  <th>種類</th>
-                  <th>鍵長</th>
-                  <th>用途</th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr>
-                  <td><strong>AES-128</strong></td>
-                  <td>128ビット</td>
-                  <td>一般的な用途に最適（十分なセキュリティ）</td>
-                </tr>
-                <tr>
-                  <td><strong>AES-256</strong></td>
-                  <td>256ビット</td>
-                  <td>最高レベルのセキュリティが必要な用途</td>
-                </tr>
-              </tbody>
-            </table>
-          </div>
+          <ul>
+            <li><strong>AES-128</strong>：128ビットの鍵。一般的な用途に最適</li>
+            <li><strong>AES-256</strong>：256ビットの鍵。最高レベルのセキュリティが必要な用途</li>
+          </ul>
         </section>
 
         <section>
           <h2>AESの実用例</h2>
-          <p>AESは私たちの日常生活の様々な場面で使われています。</p>
-
-          <ul>
-            <li><strong>Wi-Fi通信</strong>：WPA2/WPA3で通信を暗号化</li>
-            <li><strong>HTTPS通信</strong>：Webサイトとブラウザ間の通信を暗号化</li>
-            <li><strong>ファイル・ディスクの暗号化</strong>：FileVault、BitLockerなど</li>
-            <li><strong>VPN通信</strong>：IPsec、OpenVPNなど</li>
-            <li><strong>メッセージングアプリ</strong>：WhatsApp、Signal、iMessageなど</li>
-            <li><strong>パスワード管理ツール</strong>：1Password、LastPassなど</li>
-          </ul>
-        </section>
-
-        <section className="term-comparison">
-          <h2>関連用語</h2>
-          <div className="comparison-table">
-            <table>
-              <thead>
-                <tr>
-                  <th>用語</th>
-                  <th>説明</th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr>
-                  <td className="term-name">暗号化（Encryption）</td>
-                  <td>データを第三者に読み取られないように変換する技術</td>
-                </tr>
-                <tr>
-                  <td className="term-name">復号化（Decryption）</td>
-                  <td>暗号化されたデータを元に戻すこと</td>
-                </tr>
-                <tr>
-                  <td className="term-name">RSA</td>
-                  <td>公開鍵暗号方式の代表的なアルゴリズム</td>
-                </tr>
-                <tr>
-                  <td className="term-name">SHA-256</td>
-                  <td>ハッシュ関数の一種（暗号化ではなく一方向変換）</td>
-                </tr>
-                <tr>
-                  <td className="term-name">TLS/SSL</td>
-                  <td>HTTPS通信で使用される暗号化プロトコル（AESを使用）</td>
-                </tr>
-                <tr>
-                  <td><Link href="/terms/zero-day" className="term-name">ゼロデイ攻撃</Link></td>
-                  <td>脆弱性が修正される前に行われるサイバー攻撃</td>
-                </tr>
-              </tbody>
-            </table>
-          </div>
+          <p>Wi-Fi通信（WPA2/WPA3）、HTTPS通信、ファイル暗号化、VPN、メッセージングアプリなど、幅広く使用されています。</p>
         </section>
 
       </main>

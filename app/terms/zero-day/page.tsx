@@ -61,13 +61,8 @@ export default function ZeroDayPage() {
         <section>
           <h2>概要</h2>
           <p>
-            <strong>ゼロデイ攻撃</strong>（Zero-day Attack）とは、
-            <strong>ソフトウェアの脆弱性が発見されてから修正パッチが提供される前（対策日数がゼロの状態）に行われるサイバー攻撃</strong>のことです。
-          </p>
-
-          <p>
-            「ゼロデイ」という名前は、脆弱性が公開されてから修正パッチが提供されるまでの日数が
-            <strong>「ゼロ日（0日）」</strong>、つまり<strong>対策する時間が全くない状態</strong>で攻撃が行われることに由来します。
+            <strong>ゼロデイ攻撃</strong>（Zero-day Attack）とは、<strong>脆弱性が発見されてから修正パッチが提供される前（対策日数がゼロ）に行われるサイバー攻撃</strong>です。
+            「ゼロデイ」は、対策する時間が全くない状態で攻撃が行われることに由来します。
           </p>
         </section>
 
@@ -92,52 +87,11 @@ export default function ZeroDayPage() {
 
         <section>
           <h2>ゼロデイ攻撃への対策</h2>
-          <p>
-            ゼロデイ攻撃を完全に防ぐことは困難ですが、以下の対策でリスクを軽減できます。
-          </p>
-
           <ul>
             <li><strong>ソフトウェアの定期的な更新</strong>：OSやアプリケーションを常に最新の状態に保つ</li>
             <li><strong>セキュリティソフトの導入</strong>：最新のセキュリティソフトを導入し、定義ファイルを常に更新</li>
-            <li><strong>多層防御の実施</strong>：ファイアウォール、IDS/IPSなど、複数のセキュリティ対策を組み合わせる</li>
             <li><strong>不審なリンクやファイルを開かない</strong>：信頼できないWebサイトを訪問しない</li>
           </ul>
-        </section>
-
-        <section className="term-comparison">
-          <h2>関連用語</h2>
-          <div className="comparison-table">
-            <table>
-              <thead>
-                <tr>
-                  <th>用語</th>
-                  <th>説明</th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr>
-                  <td className="term-name">脆弱性（Vulnerability）</td>
-                  <td>ソフトウェアやシステムのセキュリティ上の欠陥</td>
-                </tr>
-                <tr>
-                  <td className="term-name">エクスプロイト（Exploit）</td>
-                  <td>脆弱性を悪用するための攻撃コードやツール</td>
-                </tr>
-                <tr>
-                  <td className="term-name">セキュリティパッチ</td>
-                  <td>脆弱性を修正するための更新プログラム</td>
-                </tr>
-                <tr>
-                  <td className="term-name">マルウェア</td>
-                  <td>悪意のあるソフトウェアの総称</td>
-                </tr>
-                <tr>
-                  <td className="term-name">ランサムウェア</td>
-                  <td>データを暗号化して身代金を要求するマルウェア</td>
-                </tr>
-              </tbody>
-            </table>
-          </div>
         </section>
 
       </main>
