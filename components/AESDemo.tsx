@@ -10,25 +10,35 @@ export default function AESDemo() {
   const [key, setKey] = useState('mySecretKey123')
 
   // 簡易的な暗号化（実際のAESではないが、概念を理解するためのデモ）
+  // 日本語対応の簡易暗号化
   const encrypt = () => {
     if (!originalText) {
       alert('暗号化するテキストを入力してください')
       return
     }
     
-    // 簡易的な暗号化（実際のAESアルゴリズムではない）
-    // 実際のAESは複雑なため、ここでは概念を理解するための簡易版
-    const encrypted = btoa(originalText + '|' + key)
-      .split('')
-      .reverse()
-      .join('')
-      .replace(/[A-Za-z]/g, (char) => {
-        return String.fromCharCode(char.charCodeAt(0) + 3)
-      })
-    
-    setEncryptedText(encrypted)
-    setIsEncrypted(true)
-    setDecryptedText('')
+    try {
+      // テキストと鍵を結合してBase64エンコード
+      const combined = `${originalText}|${key}`
+      const encoded = btoa(unescape(encodeURIComponent(combined)))
+      
+      // 文字列を逆順にして、各文字をシフト
+      const reversed = encoded.split('').reverse().join('')
+      const shifted = reversed.split('').map((char, index) => {
+        const code = char.charCodeAt(0)
+        // ASCII文字のみシフト（日本語はそのまま）
+        if (code >= 32 && code <= 126) {
+          return String.fromCharCode(((code - 32 + 3) % 95) + 32)
+        }
+        return char
+      }).join('')
+      
+      setEncryptedText(shifted)
+      setIsEncrypted(true)
+      setDecryptedText('')
+    } catch (error) {
+      alert('暗号化に失敗しました')
+    }
   }
 
   const decrypt = () => {
@@ -38,18 +48,28 @@ export default function AESDemo() {
     }
     
     try {
-      // 簡易的な復号化
-      const reversed = encryptedText
-        .replace(/[A-Za-z]/g, (char) => {
-          return String.fromCharCode(char.charCodeAt(0) - 3)
-        })
-        .split('')
-        .reverse()
-        .join('')
+      // シフトを元に戻す
+      const unshifted = encryptedText.split('').map((char) => {
+        const code = char.charCodeAt(0)
+        if (code >= 32 && code <= 126) {
+          return String.fromCharCode(((code - 32 - 3 + 95) % 95) + 32)
+        }
+        return char
+      }).join('')
       
-      const decoded = atob(reversed)
+      // 逆順に戻す
+      const reversed = unshifted.split('').reverse().join('')
+      
+      // Base64デコード
+      const decoded = decodeURIComponent(escape(atob(reversed)))
       const parts = decoded.split('|')
-      setDecryptedText(parts[0])
+      
+      // 鍵が一致するか確認
+      if (parts[1] === key) {
+        setDecryptedText(parts[0])
+      } else {
+        setDecryptedText('復号化に失敗しました（鍵が間違っている可能性があります）')
+      }
     } catch (error) {
       setDecryptedText('復号化に失敗しました（鍵が間違っている可能性があります）')
     }
@@ -245,4 +265,5 @@ export default function AESDemo() {
     </div>
   )
 }
+
 
