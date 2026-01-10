@@ -92,15 +92,15 @@ export default function AESDemo() {
         border: '2px solid #ddd',
         marginBottom: '20px'
       }}>
-        <h3 style={{ marginTop: 0, marginBottom: '10px', fontSize: '18px' }}>
+        <h3 style={{ marginTop: 0, marginBottom: '12px', fontSize: '18px', fontWeight: 'bold', color: '#333' }}>
           🔐 AES暗号化を体験してみよう
         </h3>
-        <p style={{ marginBottom: '15px', color: '#666', fontSize: '14px' }}>
+        <p style={{ marginBottom: '15px', color: '#555', fontSize: '14px', fontWeight: '500' }}>
           <strong>💡 ポイント：</strong> 同じ鍵を使わないと復号化できません。
         </p>
 
         <div style={{ marginBottom: '12px' }}>
-          <label style={{ display: 'block', marginBottom: '5px', fontWeight: 'bold', fontSize: '14px' }}>
+          <label style={{ display: 'block', marginBottom: '5px', fontWeight: 'bold', fontSize: '14px', color: '#222' }}>
             鍵（Key）:
           </label>
           <input
@@ -120,7 +120,7 @@ export default function AESDemo() {
         </div>
 
         <div style={{ marginBottom: '12px' }}>
-          <label style={{ display: 'block', marginBottom: '5px', fontWeight: 'bold', fontSize: '14px' }}>
+          <label style={{ display: 'block', marginBottom: '5px', fontWeight: 'bold', fontSize: '14px', color: '#222' }}>
             元のテキスト（平文）:
           </label>
           <input
@@ -199,7 +199,7 @@ export default function AESDemo() {
 
         {isEncrypted && (
           <div style={{ marginBottom: '12px' }}>
-            <label style={{ display: 'block', marginBottom: '5px', fontWeight: 'bold', fontSize: '14px' }}>
+            <label style={{ display: 'block', marginBottom: '5px', fontWeight: 'bold', fontSize: '14px', color: '#222' }}>
               暗号化されたテキスト:
             </label>
             <div style={{
@@ -208,11 +208,13 @@ export default function AESDemo() {
               border: '2px solid #8abdea',
               borderRadius: '5px',
               backgroundColor: '#e7f3ff',
-              fontSize: '12px',
+              fontSize: '13px',
               wordBreak: 'break-all',
               fontFamily: 'monospace',
               maxHeight: '80px',
-              overflowY: 'auto'
+              overflowY: 'auto',
+              color: '#333',
+              fontWeight: '500'
             }}>
               {encryptedText || '（暗号化されていません）'}
             </div>
@@ -221,7 +223,7 @@ export default function AESDemo() {
 
         {decryptedText && (
           <div style={{ marginBottom: '12px' }}>
-            <label style={{ display: 'block', marginBottom: '5px', fontWeight: 'bold', fontSize: '14px' }}>
+            <label style={{ display: 'block', marginBottom: '5px', fontWeight: 'bold', fontSize: '14px', color: '#222' }}>
               復号化されたテキスト:
             </label>
             <div style={{
@@ -231,7 +233,9 @@ export default function AESDemo() {
               borderRadius: '5px',
               backgroundColor: '#e7f5e7',
               fontSize: '14px',
-              wordBreak: 'break-all'
+              wordBreak: 'break-all',
+              color: '#222',
+              fontWeight: '500'
             }}>
               {decryptedText}
             </div>

@@ -115,12 +115,9 @@ export default function ZeroDayDemo() {
         border: '2px solid #ddd',
         marginBottom: '20px'
       }}>
-        <h3 style={{ marginTop: 0, marginBottom: '10px', fontSize: '18px' }}>
+        <h3 style={{ marginTop: 0, marginBottom: '12px', fontSize: '18px', fontWeight: 'bold', color: '#333' }}>
           🎮 ゼロデイ攻撃のタイムラインを体験しよう
         </h3>
-        <p style={{ marginBottom: '12px', color: '#666', fontSize: '14px' }}>
-          「次のステップ」ボタンを押して、攻撃の進行を確認してみましょう。
-        </p>
 
         <div style={{ marginBottom: '12px', maxHeight: '400px', overflowY: 'auto' }}>
           {timeline.map((step, index) => {
@@ -133,23 +130,24 @@ export default function ZeroDayDemo() {
                 key={step.id}
                 style={{
                   marginBottom: '10px',
-                  padding: '10px',
+                  padding: '12px',
                   borderRadius: '8px',
                   border: `2px solid ${isActive ? getRoleColor(step.role) : '#ddd'}`,
-                  backgroundColor: isActive ? `${getRoleColor(step.role)}15` : isCompleted ? '#f0f0f0' : '#fff',
-                  opacity: status === 'pending' ? 0.5 : 1,
-                  transition: 'all 0.3s ease'
+                  backgroundColor: isActive ? `${getRoleColor(step.role)}20` : isCompleted ? '#f5f5f5' : '#fff',
+                  opacity: status === 'pending' ? 0.6 : 1,
+                  transition: 'all 0.3s ease',
+                  boxShadow: isActive ? `0 2px 4px ${getRoleColor(step.role)}30` : 'none'
                 }}
               >
-                <div style={{ display: 'flex', alignItems: 'center', marginBottom: '5px' }}>
+                <div style={{ display: 'flex', alignItems: 'center', marginBottom: '6px' }}>
                   <span style={{ fontSize: '20px', marginRight: '8px' }}>
                     {getRoleIcon(step.role)}
                   </span>
                   <h4 style={{ 
                     margin: 0, 
-                    color: isActive ? getRoleColor(step.role) : '#333',
-                    fontWeight: isActive ? 'bold' : 'normal',
-                    fontSize: '15px'
+                    color: isActive ? getRoleColor(step.role) : '#222',
+                    fontWeight: isActive ? 'bold' : '600',
+                    fontSize: '16px'
                   }}>
                     {step.title}
                     {isCompleted && ' ✓'}
@@ -158,9 +156,10 @@ export default function ZeroDayDemo() {
                 </div>
                 <p style={{ 
                   margin: 0, 
-                  color: '#666',
-                  fontSize: '13px',
-                  lineHeight: '1.5'
+                  color: isActive ? '#444' : '#555',
+                  fontSize: '14px',
+                  lineHeight: '1.6',
+                  fontWeight: isActive ? '500' : 'normal'
                 }}>
                   {step.description}
                 </p>
@@ -178,7 +177,7 @@ export default function ZeroDayDemo() {
             marginBottom: '12px',
             textAlign: 'center'
           }}>
-            <p style={{ margin: 0, fontSize: '14px', fontWeight: 'bold', color: '#856404' }}>
+            <p style={{ margin: 0, fontSize: '15px', fontWeight: 'bold', color: '#856404' }}>
               ⚠️ 攻撃を実行中...
             </p>
           </div>
@@ -193,7 +192,7 @@ export default function ZeroDayDemo() {
             marginBottom: '12px',
             textAlign: 'center'
           }}>
-            <p style={{ margin: 0, fontSize: '14px', fontWeight: 'bold', color: '#721c24' }}>
+            <p style={{ margin: 0, fontSize: '15px', fontWeight: 'bold', color: '#721c24' }}>
               ❌ {attackResult}
             </p>
           </div>
