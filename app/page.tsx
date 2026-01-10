@@ -53,9 +53,8 @@ export default function Home() {
           このサイトは、現役のWeb開発者が運営する「見て、触って、学べる」をコンセプトにしたIT用語辞典です。プログラミング学習を始めたばかりの方や、IT業界で働く非エンジニアの方を対象に、専門用語を分かりやすく解説します。特に、APIやJSONといった抽象的な概念は、実際に動かせる体験デモを通じて「なぜそうなるのか」を直感的に理解できます。Web開発の基礎知識を確実に習得し、あなたの学習やキャリアアップを力強くサポートします。
         </p>
         <div className="search-container">
-          <form action="https://www.google.com/search" method="get" target="_blank" rel="noopener noreferrer">
-            <input type="hidden" name="q" value="site:itwords.jp" />
-            <input type="search" name="q" className="search-input" placeholder="サイト内を検索..." />
+          <form action="/search" method="get">
+            <input type="search" name="q" className="search-input" placeholder="サイト内を検索..." required />
             <button type="submit" className="search-button">検索</button>
           </form>
         </div>

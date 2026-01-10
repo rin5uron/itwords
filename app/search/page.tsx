@@ -1,0 +1,71 @@
+'use client'
+
+import { useSearchParams } from 'next/navigation'
+import { useEffect, useState } from 'react'
+import Link from 'next/link'
+
+interface Term {
+  title: string;
+  description: string;
+  path: string;
+}
+
+export default function SearchPage() {
+  const searchParams = useSearchParams()
+  const query = searchParams.get('q')
+  const [results, setResults] = useState<Term[]>([])
+  const [loading, setLoading] = useState(true)
+
+  useEffect(() => {
+    if (query) {
+      fetch('/search-index.json')
+        .then(res => res.json())
+        .then((data: Term[]) => {
+          const filteredResults = data.filter(term =>
+            term.title.toLowerCase().includes(query.toLowerCase()) ||
+            term.description.toLowerCase().includes(query.toLowerCase())
+          )
+          setResults(filteredResults)
+          setLoading(false)
+        })
+    } else {
+      setLoading(false)
+    }
+  }, [query])
+
+  return (
+    <div className="container">
+      <header className="site-header">
+        <h1>検索結果</h1>
+      </header>
+      <main>
+        {loading ? (
+          <p>検索中...</p>
+        ) : query ? (
+          <>
+            <p>「{query}」の検索結果: {results.length}件</p>
+            {results.length > 0 ? (
+              <div className="card-container">
+                {results.map(term => (
+                  <div className="card" key={term.path}>
+                    <Link href={term.path} className="card-link">
+                      <h4>{term.title}</h4>
+                      <p>{term.description}</p>
+                    </Link>
+                  </div>
+                ))}
+              </div>
+            ) : (
+              <p>該当する用語は見つかりませんでした。</p>
+            )}
+          </>
+        ) : (
+          <p>検索キーワードを入力してください。</p>
+        )}
+        <div style={{ marginTop: '2rem', textAlign: 'center' }}>
+            <Link href="/">トップページに戻る</Link>
+        </div>
+      </main>
+    </div>
+  )
+}

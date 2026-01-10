@@ -32,39 +32,101 @@ ITパスポートの勉強中に、「用語の意味はわかるけど、**実�
 
 ---
 
-## 📚 収録用語一覧
+### ✍️ 新規用語の追加・運用ワークフロー
 
-### プログラミング・データ構造
-- [API](/terms/api/) - ソフトウェア間で機能を共有する仕組み
-- [JSON](/terms/json/) - 軽量なデータ交換フォーマット
-- [スタック](/terms/stack/) - 後入れ先出し（LIFO）のデータ構造 🎮 体験デモあり
-- [キュー](/terms/queue/) - 先入れ先出し（FIFO）のデータ構造 🎮 体験デモあり
-- [JavaScript](/terms/javascript/) - Webページに動きを付けるプログラミング言語
+新しい用語ページを作成し、公開、評価するまでの一連の流れです。
 
-### Web技術
-- [HTML](/terms/html/) - Webページの構造を作るマークアップ言語
-- [CSS](/terms/css/) - Webページの見た目を整えるスタイルシート言語
-- [ローカルストレージ](/terms/localstorage/) - ブラウザにデータを保存する仕組み 🎮 体験デモあり
+---
 
-### UI/UX
-- [フールプルーフ](/terms/foolproof/) - 誤操作を防ぐ設計思想 🎮 体験デモあり
+#### **Step 1: 計画 (Plan)**
+
+1.  **キーワード選定**:
+    作成する用語のメインターゲットとなるキーワードを決めます。
+
+2.  **SEO要件確認**:
+    [SEOチェックシート](docs/templates/checklists/seo-check-sheet.md) を開き、「基本SEO」や「コンテンツSEO」の項目に目を通し、作成する記事で満たすべき要件を事前に確認します。
+
+---
+
+#### **Step 2: 実装 (Do)**
+
+1.  **ディレクトリ作成**:
+    `app/terms/` 内に、新しい用語名のディレクトリを作成します (例: `app/terms/new-term/`)。
+
+2.  **ページ作成**:
+    作成したディレクトリ内に `page.tsx` を作成し、記事の内容と `metadata` (title, description) を記述します。
+
+3.  **検索インデックス更新**:
+    **【重要】** ターミナルで以下のコマンドを実行し、サイト内検索のインデックスを更新します。
+    ```bash
+    npm run build-index
+    ```
+
+4.  **動作確認**:
+    ローカル環境 (`npm run dev`) で新しい用語がサイトに追加され、検索対象に含まれていることを確認してください。
+
+---
+
+#### **Step 3: 評価 (Check & Act)**
+
+1.  **検索順位の確認**:
+    ページを公開後、数日経ったら、Step 1で選定したキーワードでGoogle検索（シークレットモード推奨）し、検索順位を確認します。
+
+2.  **結果の記録**:
+    [SEOキーワード追跡シート](docs/templates/checklists/seo-keyword-tracking-sheet.md) を開き、確認した順位やクリック数などを記録します。以下のフォーマットをコピーして使うと便利です。
+
+    **記録用テンプレート:**
+    ```
+    | YYYY-MM-DD | 新規キーワード | [順位] | - | - | [クリック数] | [インプレッション数] | [CTR] | /terms/new-term | [メモ] |
+    ```
+
+3.  **分析と改善**:
+    記録したデータを元に、順位が低い場合はリライト（記事の修正）やメタデータの見直しを検討します。`seo-check-sheet.md` の「改善アクション」セクションも活用してください。
 
 ---
 
 ## 🗂️ ドキュメント
 
+### 📋 サイト作成テンプレート（重要）⭐
+
+**新しいサイトを作成する際は、まずこちらを確認してください：**
+
+#### 🎯 クイックスタート（5分）
+1. **[クイックスタートガイド](docs/templates/QUICK_START.md)** を読む
+2. **[プロジェクトテンプレートREADME](docs/templates/PROJECT_TEMPLATE_README.md)** で全体像を把握
+3. **[サイト作成チェックリスト](docs/templates/checklists/site-creation-checklist.md)** で要件を確認
+4. テンプレートファイルをコピーして実装
+
+#### 🤖 生成AIでサイトを作成する場合
+1. **[生成AI向けプロンプトテンプレート](docs/templates/AI_PROMPT_TEMPLATE.md)** のプロンプトを使用
+2. テンプレートファイルを参照させる
+3. チェックリストで確認
+
+#### 📄 テンプレートファイル一覧
+- [テンプレート一覧](docs/templates/README.md) - すべてのテンプレートファイル
+- [レイアウトテンプレート](docs/templates/layout-template.tsx) - ルートレイアウト（メタデータ、AdSense、GA）
+- [ページテンプレート](docs/templates/page-template.tsx) - コンテンツページ（SEO対策含む）
+- [プライバシーポリシーテンプレート](docs/templates/privacy-template.tsx) - AdSense記載必須
+- [利用規約テンプレート](docs/templates/terms-template.tsx)
+- [お問い合わせテンプレート](docs/templates/contact-template.tsx)
+- [robots.txtテンプレート](docs/templates/robots-template.ts)
+- [sitemap.xmlテンプレート](docs/templates/sitemap-template.ts)
+- [コンポーネントテンプレート](docs/templates/components/) - GoogleAnalytics, GoogleAdSense, StructuredData
+
 ### プロジェクト管理
-- [フェーズ2: AdSense対応計画](docs/process/phase2-adsense.md)
-- [Next.js移行計画](docs/process/adsense-nextjs-migration-plan.md)
+- [フェーズ2: AdSense対応計画](docs/phases/phase2-adsense.md)
 - [プロセスログ](docs/process/processlog.md)
 
 ### コンセプト・仕様
-- [ビジョン](docs/process/vision.md) - サイトのコンセプトと目標
-- [サイト仕様書](docs/spec/spec.md)
+- [ビジョン](docs/vision.md) - サイトのコンセプトと目標
+- [サイト仕様書](docs/spec.md)
 
-### SEO
-- [SEO対策](docs/seo/seo.md)
-- [SEOチェック](docs/seo/seo_check.md)
+### SEO・AdSense
+- [SEO対策ロードマップ](docs/phases/seo-roadmap.md)
+- [SEOチェックシート](docs/templates/checklists/seo-check-sheet.md) - 定期的なSEO確認
+- [SEOキーワード追跡シート](docs/templates/checklists/seo-keyword-tracking-sheet.md) - キーワード別順位記録
+- [AdSense申請ガイド](docs/adsense-application-guide.md)
+- [AdSense要件チェック](docs/adsense-requirement-check.md)
 
 ---
 

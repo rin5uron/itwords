@@ -1,211 +1,95 @@
-# 実践型IT用語辞典テンプレート
+# テンプレートファイル一覧
 
-このディレクトリには、IT用語解説ページを量産するためのテンプレートファイルが格納されています。
-
----
-
-## ファイル構成
-
-```
-templates/
-├── README.md           ← このファイル（使い方説明）
-└── term-page/
-    ├── template.html   ← HTMLテンプレート（変数置換対応）
-    ├── sample.md       ← Markdownテンプレート（記入例付き）
-    └── rules.md        ← 用語ページ生成の詳細ルール
-```
-
-**📝 重要**: CSSファイルは `itwords/styles.css` を使用します（テンプレートディレクトリにはCSSファイルはありません）
+このディレクトリには、AdSense要件とSEO対策を網羅したNext.jsサイト作成用のテンプレートファイルが含まれています。
 
 ---
 
-## 使い方
+## 📋 テンプレートファイル
 
-### 自動生成コマンド
-以下のコマンドで完全自動生成：
+### 基本ファイル
 
-```
-「[用語名]のページを作成して」
+1. **`PROJECT_TEMPLATE_README.md`**
+   - プロジェクトテンプレートの全体像
+   - AdSense要件とSEO対策の実装方法
+   - セットアップ手順
 
-必要情報:
-- 用語名: API
-- 読み方: エーピーアイ
-- カテゴリ: 基礎知識・開発
-- 難易度: 初級
-- デモ内容: API呼び出しデモ
-- 関連用語: REST API, JSON, HTTP
-```
+2. **`AI_PROMPT_TEMPLATE.md`**
+   - 生成AI向けプロンプトテンプレート
+   - サイト作成時のプロンプト例
 
-### 手動作成方法
-1. `sample.md`をコピーして新しい用語名で.mdファイルを作成
-2. 内容を記入
-3. 「○○.mdから用語ページ生成して」で変換
+3. **`checklists/site-creation-checklist.md`**
+   - サイト作成時の詳細チェックリスト
+   - 必須確認項目
 
----
+### コードテンプレート
 
-## 変数一覧
+#### レイアウト・設定
 
-`template.html`で使用される変数と対応するMarkdown項目：
+- **`layout-template.tsx`** - ルートレイアウト（メタデータ、AdSense、GA設定）
+- **`robots-template.ts`** - robots.txt生成
+- **`sitemap-template.ts`** - sitemap.xml生成
 
-### 基本情報
-| 変数名 | 説明 | Markdown対応箇所 |
-|--------|------|------------------|
-| `{{term_name}}` | 用語名 | `# 用語名` |
-| `{{reading}}` | 読み方 | `読み方: よみかた` |
-| `{{icon_class}}` | Font Awesomeアイコン | `アイコン: fas fa-example-icon` |
-| `{{description}}` | 概要・説明 | `## 概要` |
-| `{{points}}` | ポイントリスト | `## ポイント` |
+#### 必須ページ
 
-### デモ関連
-| 変数名 | 説明 | Markdown対応箇所 |
-|--------|------|------------------|
-| `{{demo_content}}` | デモ説明文 | `### デモ説明` |
-| `{{demo_title}}` | デモタイトル | `### デモタイトル` |
-| `{{demo_button_text}}` | ボタンテキスト | `### ボタンテキスト` |
-| `{{demo_function}}` | デモ関数名 | `### デモ処理名` |
+- **`privacy-template.tsx`** - プライバシーポリシー（AdSense記載必須）
+- **`terms-template.tsx`** - 利用規約
+- **`contact-template.tsx`** - お問い合わせページ
 
-### コード関連 
-| 変数名 | 説明 | Markdown対応箇所 |
-|--------|------|------------------|
-| `{{code_language}}` | プログラミング言語 | `### 言語` |
-| `{{code_language_class}}` | Prism.js用言語クラス | `### 言語クラス` |
-| `{{code_description}}` | コード説明 | `### 説明` |
-| `{{sample_code}}` | サンプルコード | `### サンプルコード` |
-| `{{javascript_code}}` | JavaScript処理 | `### JavaScript処理` |
-| `{{full_html_code}}` | 完全なHTMLコード | 自動生成 |
+#### コンテンツページ
 
-### 関連用語
-| 変数名 | 説明 | Markdown対応箇所 |
-|--------|------|------------------|
-| `{{related_comparison_table}}` | 関連用語・比較テーブル | `## 関連用語・比較` |
+- **`page-template.tsx`** - コンテンツページのテンプレート（SEO対策含む）
 
-### YAML Front Matter関連変数
+#### コンポーネント
 
-| 変数名 | 説明 | YAML Front Matter対応箇所 |
-|--------|------|---------------------------|
-| `{{meta_title}}` | ページタイトル | `title: "用語名 - IT用語辞典"` |
-| `{{meta_description}}` | メタディスクリプション | `description: "概要説明文"` |
-| `{{meta_keywords}}` | SEOキーワード | `keywords: ["キーワード1", "キーワード2"]` |
-| `{{category}}` | カテゴリ分類 | `category: "設計・UX"` |
-| `{{difficulty_badge}}` | 難易度バッジ | `difficulty: "初級|中級|上級"` |
-| `{{reading_time}}` | 読了時間表示 | `reading_time: "5分"` |
-| `{{author}}` | 著者情報 | `author: "IT用語辞典"` |
-| `{{creation_date}}` | 作成日 | `date: "YYYY-MM-DD"` |
-| `{{url_slug}}` | URLスラッグ | `slug: "url-slug"` |
-| `{{canonical_url}}` | 正規URL | `canonical_url: "https://example.com/slug"` |
-| `{{featured_image}}` | アイキャッチ画像 | `featured_image: "https://example.com/image.jpg"` |
-| `{{ga_measurement_id}}` | Google Analytics測定ID | `ga_measurement_id: "G-XXXXXXXXXX"` |
-| `{{gtm_container_id}}` | Google Tag Managerコンテナ | `gtm_container_id: "GTM-XXXXXXX"` |
+- **`components/GoogleAnalytics-template.tsx`** - Google Analyticsコンポーネント
+- **`components/GoogleAdSense-template.tsx`** - Google AdSenseコンポーネント
+- **`components/StructuredData-template.tsx`** - 構造化データコンポーネント
 
 ---
 
-## 新機能
+## 🚀 使い方
 
-### ✨ シンタックスハイライト対応
-- **Prism.js**自動読み込み
-- **VS Code Tomorrow**テーマ適用
-- **言語自動検出**機能
+### 1. 新しいサイトを作成する場合
 
-### ✨ 改善されたデモシステム
-- より詳細なデモ制御変数
-- 統一されたデモUI
-- エラーハンドリング強化
+1. **`PROJECT_TEMPLATE_README.md`**を読む
+2. **`checklists/site-creation-checklist.md`**を参照
+3. テンプレートファイルをコピーして実装
 
-### ✨ SEO最適化
-- 完全なOpen Graph対応
-- JSON-LD構造化データ
-- Google Analytics/Tag Manager統合
+### 2. 生成AIにサイトを作成させる場合
+
+1. **`AI_PROMPT_TEMPLATE.md`**のプロンプトを使用
+2. テンプレートファイルを参照させる
+3. チェックリストで確認
 
 ---
 
-## 文体・表現ルール
+## ✅ 必須要件
 
-### 基本方針
-- **対象読者**: 見習いエンジニア、IT用語を学習中の初心者
-- **文体**: 普通の説明文（丁寧語は使用しない）
-- **表現**: 小学生でも理解できる分かりやすい言葉遣い
+すべてのテンプレートは、以下の要件を満たしています：
 
-### 絵文字使用ポリシー
-- **基本原則**: デフォルトでは絵文字を使用しない
-- **許可**: Font Awesome等の外部アイコンライブラリのみ
-- **禁止**: 装飾絵文字の使用
-- **例外**: ユーザーが明示的に指定した場合のみ
+### AdSense要件
 
----
+- ✅ プライバシーポリシー（AdSense記載含む）
+- ✅ 利用規約
+- ✅ お問い合わせページ
+- ✅ コンテンツ10ページ以上（各500文字以上）
 
-## カスタマイズ
+### SEO要件
 
-### CSSの調整
-`styles.css`を編集してデザインを調整できます：
-- カラーテーマの変更
-- フォントサイズの調整
-- レスポンシブデザインの改善
-
-### HTMLテンプレートの拡張
-`template.html`に新しいセクションや機能を追加できます：
-- 新しい変数の追加
-- セクションの順序変更
-- 追加のJavaScript機能
+- ✅ メタデータ（title, description, keywords）
+- ✅ Open Graph、Twitter Card
+- ✅ 構造化データ（JSON-LD）
+- ✅ robots.txt、sitemap.xml
+- ✅ canonical URL
 
 ---
 
-## Tips
+## 📝 注意事項
 
-### Font Awesomeアイコンの選び方
-- セキュリティ関連: `fas fa-shield-alt`, `fas fa-lock`
-- データベース関連: `fas fa-database`, `fas fa-server`  
-- ネットワーク関連: `fas fa-network-wired`, `fas fa-wifi`
-- 開発ツール関連: `fas fa-code`, `fas fa-terminal`
-
-### デモアイデア
-- ボタンクリックでの動作確認
-- フォーム入力のバリデーション
-- APIコールのシミュレーション
-- データ変換の可視化
-
-### Prism.js言語クラス対応表
-| 言語名 | クラス名 |
-|--------|----------|
-| JavaScript | `language-javascript` |
-| HTML | `language-html` |
-| CSS | `language-css` |
-| Python | `language-python` |
-| Java | `language-java` |
-| JSON | `language-json` |
+- テンプレート内の`[サイト名]`、`[ドメイン名]`などのプレースホルダーは、実際の値に置き換えてください
+- 各テンプレートは最小限の実装例です。プロジェクトに応じてカスタマイズしてください
+- チェックリストを必ず確認して、すべての項目を実装してください
 
 ---
 
-## 詳細仕様
-
-### 生成ルール詳細
-`rules.md`に詳細な生成ルールが記載されています：
-- コマンドトリガー仕様
-- 変数置換処理の詳細
-- エラーハンドリング方法
-- 品質チェック項目
-
-### 参考例
-既存の用語ページ：
-- `itwords/drafts/api/api.html` - API用語の実装例
-- このテンプレートの元となった完成形
-
----
-
-## 更新履歴
-
-- **2025-07-23**: 大幅アップデート
-  - Prism.jsシンタックスハイライト追加
-  - デモシステム変数の詳細化
-  - CSSファイル名統一（styles.css）
-  - 自動生成システム完成
-
-- **2025-07-20**: 初回作成・更新
-  - HTMLテンプレート、CSS、Markdownサンプルを作成
-  - 変数置換システムの構築
-  - 使い方ドキュメントの整備
-  - 文体ルール・絵文字ポリシーの策定
-  - 生成ルール詳細の文書化
-
----
-
-**最終更新**: 2025年7月23日 
+**最終更新**: 2026年1月9日
