@@ -15,7 +15,7 @@ export const metadata: Metadata = {
     type: 'article',
     images: [
       {
-        url: '/images/terms/aes-hero.png',
+        url: '/images/terms/aes-hero.jpg',
         width: 1200,
         height: 630,
         alt: 'AES暗号化のイメージ - 共通鍵暗号方式',
@@ -26,7 +26,7 @@ export const metadata: Metadata = {
     card: 'summary_large_image',
     title: 'AES（Advanced Encryption Standard）とは？初心者向けにわかりやすく解説',
     description: 'AESの仕組みと使い方をわかりやすく解説。現代の暗号化技術の基本を学べます。',
-    images: ['/images/terms/aes-hero.png'],
+    images: ['/images/terms/aes-hero.jpg'],
   },
 }
 
@@ -77,7 +77,7 @@ export default function AESPage() {
         maxHeight: '300px'
       }}>
         <Image
-          src="/images/terms/aes-hero.png"
+          src="/images/terms/aes-hero.jpg"
           alt="AES暗号化のイメージ - 共通鍵暗号方式"
           width={1200}
           height={630}

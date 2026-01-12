@@ -15,7 +15,7 @@ export const metadata: Metadata = {
     type: 'article',
     images: [
       {
-        url: '/images/terms/zero-day-hero.png',
+        url: '/images/terms/zero-day-hero.jpg',
         width: 1200,
         height: 630,
         alt: 'ゼロデイ攻撃のイメージ - Day 0の脆弱性を狙うサイバー攻撃',
@@ -26,7 +26,7 @@ export const metadata: Metadata = {
     card: 'summary_large_image',
     title: 'ゼロデイ攻撃とは？初心者向けにわかりやすく解説【実践デモ付き】',
     description: 'ゼロデイ攻撃の仕組みと対策を実践デモで体験。攻撃者の視点でタイムラインを確認できます。',
-    images: ['/images/terms/zero-day-hero.png'],
+    images: ['/images/terms/zero-day-hero.jpg'],
   },
 }
 
@@ -77,7 +77,7 @@ export default function ZeroDayPage() {
         maxHeight: '300px'
       }}>
         <Image
-          src="/images/terms/zero-day-hero.png"
+          src="/images/terms/zero-day-hero.jpg"
           alt="ゼロデイ攻撃のイメージ - Day 0の脆弱性を狙うサイバー攻撃"
           width={1200}
           height={630}
