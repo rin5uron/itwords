@@ -1,4 +1,5 @@
 import Link from 'next/link'
+import Image from 'next/image'
 import { Metadata } from 'next'
 import StructuredData from '@/app/components/StructuredData'
 import TermHeader from '@/app/components/TermHeader'
@@ -12,6 +13,20 @@ export const metadata: Metadata = {
     title: 'AES（Advanced Encryption Standard）とは？初心者向けにわかりやすく解説',
     description: 'AESの仕組みと使い方をわかりやすく解説。現代の暗号化技術の基本を学べます。',
     type: 'article',
+    images: [
+      {
+        url: '/images/terms/aes-hero.png',
+        width: 1200,
+        height: 630,
+        alt: 'AES暗号化のイメージ - 共通鍵暗号方式',
+      },
+    ],
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'AES（Advanced Encryption Standard）とは？初心者向けにわかりやすく解説',
+    description: 'AESの仕組みと使い方をわかりやすく解説。現代の暗号化技術の基本を学べます。',
+    images: ['/images/terms/aes-hero.png'],
   },
 }
 
@@ -51,6 +66,31 @@ export default function AESPage() {
         reading="エーイーエス / Advanced Encryption Standard"
         icon="fas fa-lock"
       />
+
+      <div style={{
+        width: '100%',
+        maxWidth: '900px',
+        margin: '2rem auto',
+        borderRadius: '12px',
+        overflow: 'hidden',
+        boxShadow: '0 4px 12px rgba(0,0,0,0.1)',
+        maxHeight: '300px'
+      }}>
+        <Image
+          src="/images/terms/aes-hero.png"
+          alt="AES暗号化のイメージ - 共通鍵暗号方式"
+          width={1200}
+          height={630}
+          priority
+          style={{
+            width: '100%',
+            height: '100%',
+            objectFit: 'cover',
+            objectPosition: 'center',
+            display: 'block'
+          }}
+        />
+      </div>
 
       <main>
         <section>
