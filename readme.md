@@ -81,6 +81,25 @@ This workflow is initiated when the Human requests a periodic SEO check (e.g., "
 
 ---
 
+## 📂 Project Structure
+
+### Documentation
+- **`docs/`**: Project documentation
+  - **`docs/ideas/`**: Planning and ideation documents
+    - `infrastructure-terms-plan.md`: Plan for DNS, Server, Hosting, Domain, IP Address pages with relationship mapping
+  - **`docs/templates/`**: Templates for content creation
+    - `page-template.tsx`: Template for term pages
+    - `checklists/`: SEO and tracking templates
+  - **`docs/image-generation-*.md`**: Image generation workflows and rules
+
+### Pages
+- **`app/terms/`**: Term definition pages
+  - Each term has its own directory (e.g., `app/terms/api/`)
+  - Each directory contains a `page.tsx` file
+  - Hero images stored in `public/images/terms/`
+
+---
+
 ### WORKFLOW: Generate Hero Image for Term Page
 
 This workflow is initiated when the Human requests image generation (e.g., "画像生成して", "Generate an image for [term]").

@@ -396,20 +396,32 @@ DATABASE_URL=postgresql://...`}</code></pre>
               </thead>
               <tbody>
                 <tr>
+                  <td><Link href="/terms/hosting-service" className="term-name">ホスティングサービス</Link></td>
+                  <td>Vercelはサーバーレス型のホスティングサービス</td>
+                </tr>
+                <tr>
+                  <td><Link href="/terms/server" className="term-name">サーバー</Link></td>
+                  <td>Vercelはサーバーレスで動作し、サーバー管理が不要</td>
+                </tr>
+                <tr>
+                  <td><Link href="/terms/domain" className="term-name">ドメイン</Link></td>
+                  <td>カスタムドメインを簡単に設定できる</td>
+                </tr>
+                <tr>
+                  <td><Link href="/terms/dns" className="term-name">DNS</Link></td>
+                  <td>VercelはDNS設定を自動化してくれる</td>
+                </tr>
+                <tr>
+                  <td><Link href="/terms/ip-address" className="term-name">IPアドレス</Link></td>
+                  <td>VercelがIPアドレスを自動管理</td>
+                </tr>
+                <tr>
                   <td><Link href="/terms/github" className="term-name">GitHub</Link></td>
                   <td>Vercelと連携してソースコードを管理</td>
                 </tr>
                 <tr>
                   <td><Link href="/terms/framework" className="term-name">Framework</Link></td>
                   <td>VercelはNext.jsなどのフレームワークに最適化</td>
-                </tr>
-                <tr>
-                  <td>CDN</td>
-                  <td>Vercelが使う高速配信ネットワーク</td>
-                </tr>
-                <tr>
-                  <td>サーバーレス</td>
-                  <td>Vercelが採用するインフラ構成</td>
                 </tr>
               </tbody>
             </table>
