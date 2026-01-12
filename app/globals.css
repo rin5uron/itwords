@@ -596,18 +596,35 @@ footer a:hover {
 
   .site-header nav {
     width: 100%;
-    justify-content: flex-start;
+    justify-content: center;
   }
 
   nav ul {
-    flex-direction: column;
-    gap: 10px;
+    flex-direction: row;
+    gap: 8px;
     width: 100%;
+    justify-content: center;
+  }
+
+  nav ul li {
+    flex: 1;
+    max-width: 120px;
   }
 
   nav ul li a {
     display: block;
-    padding: 10px 0;
+    padding: 10px 12px;
+    text-align: center;
+    background-color: #f0fdf4;
+    border: 1px solid #14b8a6;
+    border-radius: 20px;
+    font-size: 0.9em;
+    white-space: nowrap;
+  }
+
+  nav ul li a:hover {
+    background-color: #ccfbf1;
+    border-bottom: 1px solid #14b8a6;
   }
 
   .cta-button {

@@ -6,6 +6,7 @@ import Link from 'next/link'
 
 interface Term {
   title: string;
+  keywords: string[];
   description: string;
   path: string;
 }
@@ -21,10 +22,22 @@ function SearchResults() {
       fetch('/search-index.json')
         .then(res => res.json())
         .then((data: Term[]) => {
-          const filteredResults = data.filter(term =>
-            term.title.toLowerCase().includes(query.toLowerCase()) ||
-            term.description.toLowerCase().includes(query.toLowerCase())
-          )
+          // 検索クエリを小文字に変換
+          const normalizedQuery = query.toLowerCase()
+
+          const filteredResults = data.filter(term => {
+            // タイトルと説明文を小文字にして検索
+            const titleMatch = term.title.toLowerCase().includes(normalizedQuery)
+            const descMatch = term.description.toLowerCase().includes(normalizedQuery)
+
+            // キーワード配列も小文字にして検索
+            const keywordMatch = term.keywords.some(keyword =>
+              keyword.toLowerCase().includes(normalizedQuery)
+            )
+
+            return titleMatch || descMatch || keywordMatch
+          })
+
           setResults(filteredResults)
           setLoading(false)
         })

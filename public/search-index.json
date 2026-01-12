@@ -1,17 +1,110 @@
 [
   {
-    "title": "JavaScriptとは？初心者向けにわかりやすく解説【実践デモ付き】 | 実践型IT用語辞典",
-    "description": "JavaScriptはWebページに動きとインタラクションを追加するプログラミング言語です。ボタンクリック処理、フォーム検証、アニメーションなど、ユーザー操作に応じた動的機能を実現。基本構文からES6、フレームワークまで初心者向けに解説します。",
+    "title": "ゼロデイ攻撃",
+    "keywords": ["ゼロデイ", "ぜろでい", "ゼロデー", "zero-day", "zeroday", "0day", "攻撃", "こうげき", "脆弱性", "ぜいじゃくせい", "セキュリティ"],
+    "description": "脆弱性が発見されてから修正パッチが提供される前（対策日数がゼロ）に行われるサイバー攻撃です。",
+    "path": "/terms/zero-day"
+  },
+  {
+    "title": "AES",
+    "keywords": ["AES", "えーいーえす", "エーイーエス", "暗号化", "あんごうか", "共通鍵", "きょうつうかぎ", "Advanced Encryption Standard"],
+    "description": "現代で最も広く使われている暗号化規格です。データを第三者に読み取られないように変換する共通鍵暗号方式の一種です。",
+    "path": "/terms/aes"
+  },
+  {
+    "title": "API",
+    "keywords": ["API", "えーぴーあい", "エーピーアイ", "アプリケーションプログラミングインターフェース", "Application Programming Interface"],
+    "description": "ソフトウェアやプログラムの機能を共有する仕組みのことです。",
+    "path": "/terms/api"
+  },
+  {
+    "title": "Cookie",
+    "keywords": ["Cookie", "クッキー", "くっきー", "HTTP Cookie", "Web Cookie", "ブラウザ", "セッション"],
+    "description": "Webサイトがブラウザに保存する小さなデータファイルです。",
+    "path": "/terms/cookie"
+  },
+  {
+    "title": "CSS",
+    "keywords": ["CSS", "しーえすえす", "シーエスエス", "スタイルシート", "Cascading Style Sheets", "デザイン"],
+    "description": "Webページの見た目を整えるスタイルシート言語です。",
+    "path": "/terms/css"
+  },
+  {
+    "title": "フールプルーフ",
+    "keywords": ["フールプルーフ", "ふーるぷるーふ", "Fool Proof", "誤操作防止", "UI", "UX", "ユーザビリティ"],
+    "description": "ユーザーの誤操作を防ぐための設計原則です。",
+    "path": "/terms/foolproof"
+  },
+  {
+    "title": "Framework",
+    "keywords": ["Framework", "フレームワーク", "ふれーむわーく", "開発", "ライブラリ", "React", "Vue", "Angular"],
+    "description": "アプリケーション開発のための土台となる枠組みです。",
+    "path": "/terms/framework"
+  },
+  {
+    "title": "GitHub",
+    "keywords": ["GitHub", "ギットハブ", "ぎっとはぶ", "Git", "バージョン管理", "ソースコード", "リポジトリ"],
+    "description": "ソースコードをバージョン管理し、世界中の開発者と共有できるプラットフォームです。",
+    "path": "/terms/github"
+  },
+  {
+    "title": "HTML",
+    "keywords": ["HTML", "えいちてぃーえむえる", "エイチティーエムエル", "マークアップ", "HyperText Markup Language", "Web"],
+    "description": "Webページの構造を作るマークアップ言語です。",
+    "path": "/terms/html"
+  },
+  {
+    "title": "HTTP/HTTPS",
+    "keywords": ["HTTP", "HTTPS", "えいちてぃーてぃーぴー", "エイチティーティーピー", "通信", "プロトコル", "HyperText Transfer Protocol", "SSL", "TLS"],
+    "description": "Webブラウザとサーバー間でデータをやり取りするための通信規約です。",
+    "path": "/terms/http"
+  },
+  {
+    "title": "JavaScript",
+    "keywords": ["JavaScript", "ジャバスクリプト", "じゃばすくりぷと", "JS", "プログラミング言語", "ECMAScript"],
+    "description": "Webページに動きを付けるプログラミング言語です。",
     "path": "/terms/javascript"
   },
   {
-    "title": "JSONとは？初心者向けにわかりやすく解説【実践デモ付き】 | 実践型IT用語辞典",
-    "description": "JSONとは何か、初心者向けにわかりやすく解説。JavaScript Object Notationの基本から、Web APIやデータ保存で使われる軽量データ交換フォーマットまで、実際に編集できるデモで体験しながら学べます。プログラミング初心者向けIT用語解説。",
+    "title": "JSON",
+    "keywords": ["JSON", "ジェイソン", "じぇいそん", "JavaScript Object Notation", "データ形式", "API"],
+    "description": "JavaScriptのオブジェクト記法をベースにした軽量なデータ交換フォーマットです。",
     "path": "/terms/json"
   },
   {
-    "title": "ローカルストレージとは？初心者向けにわかりやすく解説【実践デモ付き】 | 実践型IT用語辞典",
-    "description": "ローカルストレージ（localStorage）は、ブラウザにデータを保存できる仕組みです。ページを閉じても情報が残り、JavaScriptから簡単にアクセス可能。使い方や注意点を実践デモで初心者にもわかりやすく解説します。",
+    "title": "LocalStorage",
+    "keywords": ["LocalStorage", "ローカルストレージ", "ろーかるすとれーじ", "ブラウザストレージ", "Web Storage", "保存"],
+    "description": "ブラウザにデータを保存できる仕組みです。ページを閉じても情報が残ります。",
     "path": "/terms/localstorage"
+  },
+  {
+    "title": "npm",
+    "keywords": ["npm", "えぬぴーえむ", "エヌピーエム", "Node Package Manager", "パッケージ", "ノード"],
+    "description": "JavaScriptのパッケージを管理するツールです。",
+    "path": "/terms/npm"
+  },
+  {
+    "title": "Queue",
+    "keywords": ["Queue", "キュー", "きゅー", "待ち行列", "FIFO", "データ構造"],
+    "description": "先に入れたデータが先に出てくるデータ構造です（先入れ先出し）。",
+    "path": "/terms/queue"
+  },
+  {
+    "title": "Stack",
+    "keywords": ["Stack", "スタック", "すたっく", "LIFO", "データ構造", "後入れ先出し"],
+    "description": "最後に入れたデータが最初に出てくるデータ構造です（後入れ先出し）。",
+    "path": "/terms/stack"
+  },
+  {
+    "title": "Vercel",
+    "keywords": ["Vercel", "ヴァーセル", "ばーせる", "ホスティング", "デプロイ", "Next.js", "Netlify"],
+    "description": "Webサイトを簡単に公開できるホスティングサービスです。",
+    "path": "/terms/vercel"
+  },
+  {
+    "title": "Webhook",
+    "keywords": ["Webhook", "ウェブフック", "うぇぶふっく", "API", "通知", "イベント駆動"],
+    "description": "特定のイベントが発生したときに、自動的に通知を送る仕組みです。",
+    "path": "/terms/webhook"
   }
 ]
