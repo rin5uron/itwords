@@ -24,14 +24,33 @@ function findTermPages(dir) {
 function extractMetadata(filePath) {
     try {
         const content = fs.readFileSync(filePath, 'utf-8');
-        
-        const metadataBlockMatch = content.match(/export const metadata: Metadata = \{([\s\S]*?)\};/);
-        if (!metadataBlockMatch) return null;
 
-        const metadataBlock = metadataBlockMatch[1];
-        
-        const titleMatch = metadataBlock.match(/title:\s*['"]([^'"]+)['"]/);
-        const descriptionMatch = metadataBlock.match(/description:\s*['"]([^'"]+)['"]/);
+        // Try to extract metadata export first
+        const metadataBlockMatch = content.match(/export const metadata: Metadata = \{([\s\S]*?)\};/);
+
+        let titleMatch, descriptionMatch;
+
+        if (metadataBlockMatch) {
+            const metadataBlock = metadataBlockMatch[1];
+            titleMatch = metadataBlock.match(/title:\s*['"]([^'"]+)['"]/);
+            descriptionMatch = metadataBlock.match(/description:\s*['"]([^'"]+)['"]/);
+        } else {
+            // For 'use client' pages, try to extract from TermHeader and first <p> tag
+            const termHeaderMatch = content.match(/termName=["']([^"']+)["']/);
+            const firstPMatch = content.match(/<p>\s*<strong>([^<]+)<\/strong>[^<]*とは[^<]*<strong>([^<]+)<\/strong>/);
+
+            if (termHeaderMatch) {
+                const termName = termHeaderMatch[1];
+                let description = '';
+
+                if (firstPMatch) {
+                    description = `${firstPMatch[1]}とは${firstPMatch[2]}`;
+                }
+
+                titleMatch = [null, `${termName}とは？初心者向けにわかりやすく解説 | 実践型IT用語辞典`];
+                descriptionMatch = [null, description || `${termName}について、初心者向けにわかりやすく解説します。`];
+            }
+        }
 
         if (titleMatch && descriptionMatch) {
             const appDir = path.join(process.cwd(), 'app');
