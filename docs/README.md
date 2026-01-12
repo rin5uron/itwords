@@ -55,6 +55,14 @@ docs/
 | ディレクトリ | 内容 | 用途 |
 |------------|------|------|
 | **templates/term-page/** | 用語ページの自動生成テンプレート | 新しい用語ページを作成する時 |
+| **templates/checklists/** | SEO・サイト作成のチェックリスト | 品質確認・SEO施策の実施時 |
+
+### 🖼️ 画像生成ルール
+
+| ファイル | 内容 | 用途 |
+|---------|------|------|
+| **image-generation-dalle3-rules.md** | DALL-E 3用画像生成プロジェクトルール | 用語ページのヒーロー画像を生成する時 |
+| **image-generation-claude-workflow.md** | Claude用画像生成ワークフロー | AI Agentが画像実装を支援する時 |
 
 ---
 
@@ -80,10 +88,12 @@ docs/
 ## 📌 Tips
 
 - **新しい用語を作成したい** → `templates/term-page/README.md` を参照
+- **用語ページの画像を生成したい** → `image-generation-dalle3-rules.md` を参照
+- **AI Agentに画像実装を依頼したい** → 「画像生成して」と指示（自動で `image-generation-claude-workflow.md` を参照）
 - **SEO対策を実装したい** → `phases/seo-roadmap.md` の優先順位を確認
 - **過去のエラー解決法を探したい** → `error.md` を検索
 - **サイトの方向性を再確認したい** → `vision.md` を読み直す
 
 ---
 
-**最終更新**: 2026-01-09
+**最終更新**: 2026-01-11

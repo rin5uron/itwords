@@ -1,218 +1,168 @@
-# 実践型IT用語辞典｜読んで、試して、理解する
+# AI Agent Runbook for `itwords` Project
 
-
-「読んで終わり」じゃなく、「動かして理解する」ための IT用語辞典です。  
-ITパスポートや基本情報技術者試験でよく出る用語を、**実際に手を動かして体験しながら学べる**ようにまとめています。
+**This document is a runbook for a Generative AI agent to manage and extend the `itwords` project.**
 
 ---
 
-## 🪄 制作の背景と意図
+## 📜 Core Principles
 
-この辞典は、**エンジニア見習いの私が“自分のつまづき”から生まれたプロジェクト**です。
-
-プログラミングを学び始めて100日目。  
-ITパスポートの勉強中に、「用語の意味はわかるけど、**実感として理解できない**」というモヤモヤをたくさん抱えました。
-
-> たとえば「IPアドレスとは」「SQLとは」って言われても、  
-> 実際に見たり、書いたり、動かしてみないと、**なんだか腑に落ちない。**
-
-そう感じた私は、  
-**「だったら、自分がつまづいた言葉を“実践付き”でまとめていこう！」**と決めました。
-
-このサイトは、自分の学びを可視化する記録であり、  
-同じように悩んだ誰かが、**“わかる”を体験できる場所**でありたいです。
+1.  **Clarity and Confirmation**: Before executing file modifications or potentially destructive commands, state your plan and ask for confirmation.
+2.  **Adherence to Structure**: Follow the existing project structure, conventions, and coding style. Use existing templates where available.
+3.  **Human-in-the-Loop**: For tasks requiring subjective judgment or access to external private data (e.g., Google Analytics, Search Console), you must prompt the Human for the necessary information.
+4.  **Tool Usage**: Use the available tools (`read_file`, `write_file`, `run_shell_command`, etc.) to interact with the file system. Do not hallucinate file contents.
 
 ---
 
-## 🌟 この辞典の特長
+## ⚙️ Workflows
 
-- 📘 **用語ごとに専用ページあり**：1ページ1テーマのシンプル構成
-- 🧪 **コード実行や体験要素**あり：JavaScriptやAPIで、見て・触れて・わかる！
-- 🔍 **SEO対応済み**：検索から各用語ページにダイレクトアクセス可能
+This section details the standard operating procedures for managing this project.
 
----
+### WORKFLOW: Add New Term
 
-### ✍️ 新規用語の追加・運用ワークフロー
+This workflow is initiated when the Human requests the creation of a new term page (e.g., "Create a page for the term 'Cache'").
 
-新しい用語ページを作成し、公開、評価するまでの一連の流れです。
+#### **PHASE 1: PLAN (Requires Human Input)**
 
----
+1.  **Receive Request**: Acknowledge the request from the Human.
+2.  **Clarify Keyword**: If the primary target keyword is not specified or is ambiguous, ask the Human for clarification. (e.g., "What is the primary keyword for this term?").
+3.  **Load Context**: Read the following file to understand the project's SEO best practices:
+    - `docs/templates/checklists/seo-check-sheet.md`
 
-#### **Step 1: 計画 (Plan)**
+#### **PHASE 2: DO (AI Execution)**
 
-1.  **キーワード選定**:
-    作成する用語のメインターゲットとなるキーワードを決めます。
-
-2.  **SEO要件確認**:
-    [SEOチェックシート](docs/templates/checklists/seo-check-sheet.md) を開き、「基本SEO」や「コンテンツSEO」の項目に目を通し、作成する記事で満たすべき要件を事前に確認します。
-
----
-
-#### **Step 2: 実装 (Do)**
-
-1.  **ディレクトリ作成**:
-    `app/terms/` 内に、新しい用語名のディレクトリを作成します (例: `app/terms/new-term/`)。
-
-2.  **ページ作成**:
-    作成したディレクトリ内に `page.tsx` を作成し、記事の内容と `metadata` (title, description) を記述します。
-
-3.  **検索インデックス更新**:
-    **【重要】** ターミナルで以下のコマンドを実行し、サイト内検索のインデックスを更新します。
+1.  **Create Directory**: Create a new directory for the term within `app/terms/`. The directory name should be the term in kebab-case (e.g., `app/terms/cache-memory/`).
+2.  **Create Page File**: Create a `page.tsx` file inside the new directory. Use the contents of `docs/templates/page-template.tsx` as a structural reference.
+3.  **Populate Metadata**: Based on the primary keyword and the loaded SEO context, populate the `metadata` object within `page.tsx`. Ensure `title` and `description` are unique and optimized.
+4.  **Write Placeholder Content**: Add basic placeholder content and structure to the article body.
+5.  **Request Human Review**: Present the path to the created file to the Human. State that the basic structure is complete and ask the Human to review and add the main article content.
+6.  **Update Search Index**: After the Human confirms that the content has been added, execute the `build-index` command to update the site's search index.
     ```bash
     npm run build-index
     ```
+7.  **Verify and Confirm**: Verify the command was successful and confirm completion to the Human.
 
-4.  **動作確認**:
-    ローカル環境 (`npm run dev`) で新しい用語がサイトに追加され、検索対象に含まれていることを確認してください。
+#### **PHASE 3: CHECK (AI-Human Interaction)**
 
----
+1.  **Initiate Check**: This phase is initiated by a Human prompt (e.g., "Check SEO for the term 'Cache'"). This should be done a few days after the page is published and indexed.
+2.  **Preliminary Search**: Use the `google_web_search` tool with the primary keyword to get an estimated, public search ranking.
+3.  **Prompt Human for Data**: Request precise data from Google Search Console. Use the following prompt format:
+    > "To accurately track performance, please provide the following from Google Search Console for the keyword **'[keyword]'**:
+    > - Current Rank:
+    > - Clicks:
+    > - Impressions:
+    > - CTR (%):"
 
-#### **Step 3: 評価 (Check & Act)**
+#### **PHASE 4: ACT (AI Execution)**
 
-1.  **検索順位の確認**:
-    ページを公開後、数日経ったら、Step 1で選定したキーワードでGoogle検索（シークレットモード推奨）し、検索順位を確認します。
-
-2.  **結果の記録**:
-    [SEOキーワード追跡シート](docs/templates/checklists/seo-keyword-tracking-sheet.md) を開き、確認した順位やクリック数などを記録します。以下のフォーマットをコピーして使うと便利です。
-
-    **記録用テンプレート:**
-    ```
-    | YYYY-MM-DD | 新規キーワード | [順位] | - | - | [クリック数] | [インプレッション数] | [CTR] | /terms/new-term | [メモ] |
-    ```
-
-3.  **分析と改善**:
-    記録したデータを元に、順位が低い場合はリライト（記事の修正）やメタデータの見直しを検討します。`seo-check-sheet.md` の「改善アクション」セクションも活用してください。
+1.  **Receive Data**: Await the data from the Human.
+2.  **Read Tracking Sheet**: Read the contents of `docs/templates/checklists/seo-keyword-tracking-sheet.md`.
+3.  **Append Record**: Append the new data as a new row in the appropriate table within the tracking sheet. Use the Markdown table format.
+4.  **Confirm Completion**: Inform the Human that the SEO tracking data has been recorded.
 
 ---
 
-## 🗂️ ドキュメント
+### WORKFLOW: Periodic SEO Review
 
-### 📋 サイト作成テンプレート（重要）⭐
+This workflow is initiated when the Human requests a periodic SEO check (e.g., "SEチェックする", "Perform an SEO check").
 
-**新しいサイトを作成する際は、まずこちらを確認してください：**
-
-#### 🎯 クイックスタート（5分）
-1. **[クイックスタートガイド](docs/templates/QUICK_START.md)** を読む
-2. **[プロジェクトテンプレートREADME](docs/templates/PROJECT_TEMPLATE_README.md)** で全体像を把握
-3. **[サイト作成チェックリスト](docs/templates/checklists/site-creation-checklist.md)** で要件を確認
-4. テンプレートファイルをコピーして実装
-
-#### 🤖 生成AIでサイトを作成する場合
-1. **[生成AI向けプロンプトテンプレート](docs/templates/AI_PROMPT_TEMPLATE.md)** のプロンプトを使用
-2. テンプレートファイルを参照させる
-3. チェックリストで確認
-
-#### 📄 テンプレートファイル一覧
-- [テンプレート一覧](docs/templates/README.md) - すべてのテンプレートファイル
-- [レイアウトテンプレート](docs/templates/layout-template.tsx) - ルートレイアウト（メタデータ、AdSense、GA）
-- [ページテンプレート](docs/templates/page-template.tsx) - コンテンツページ（SEO対策含む）
-- [プライバシーポリシーテンプレート](docs/templates/privacy-template.tsx) - AdSense記載必須
-- [利用規約テンプレート](docs/templates/terms-template.tsx)
-- [お問い合わせテンプレート](docs/templates/contact-template.tsx)
-- [robots.txtテンプレート](docs/templates/robots-template.ts)
-- [sitemap.xmlテンプレート](docs/templates/sitemap-template.ts)
-- [コンポーネントテンプレート](docs/templates/components/) - GoogleAnalytics, GoogleAdSense, StructuredData
-
-### プロジェクト管理
-- [フェーズ2: AdSense対応計画](docs/phases/phase2-adsense.md)
-- [プロセスログ](docs/process/processlog.md)
-
-### コンセプト・仕様
-- [ビジョン](docs/vision.md) - サイトのコンセプトと目標
-- [サイト仕様書](docs/spec.md)
-
-### SEO・AdSense
-- [SEO対策ロードマップ](docs/phases/seo-roadmap.md)
-- [SEOチェックシート](docs/templates/checklists/seo-check-sheet.md) - 定期的なSEO確認
-- [SEOキーワード追跡シート](docs/templates/checklists/seo-keyword-tracking-sheet.md) - キーワード別順位記録
-- [AdSense申請ガイド](docs/adsense-application-guide.md)
-- [AdSense要件チェック](docs/adsense-requirement-check.md)
+1.  **Acknowledge Request**: Acknowledge the SEO check request.
+2.  **Load Context**: Read the following files to gather all necessary information:
+    - `docs/templates/checklists/seo-check-sheet.md`
+    - `docs/templates/checklists/seo-keyword-tracking-sheet.md`
+3.  **Analyze Data**:
+    - Summarize the current performance based on the `seo-keyword-tracking-sheet.md`. Identify:
+        - Top 3 performing keywords (by clicks or rank).
+        - Any keywords that have significantly dropped in rank.
+        - Keywords with high impressions but low CTR.
+4.  **Generate Suggestions**:
+    - Based on the analysis and the best practices from `seo-check-sheet.md`, generate 1-3 concrete, actionable suggestions for improvement.
+    - **Example Suggestion**: "The keyword 'API とは' has high impressions but a low CTR of [X]%. According to the SEO checklist, improving the `description` metadata can increase clicks. I suggest updating the description for `/terms/api/page.tsx` to be more compelling."
+5.  **Present Findings**: Report the summary of the analysis and the actionable suggestions to the Human.
 
 ---
 
-## 🛠️ 技術スタック
+### WORKFLOW: Generate Hero Image for Term Page
 
-### フロントエンド
-- **Next.js 15** (App Router)
-- **TypeScript**
-- **React 18**
+This workflow is initiated when the Human requests image generation (e.g., "画像生成して", "Generate an image for [term]").
 
-### ホスティング・デプロイ
-- **Vercel** (https://itwords.jp)
-- **カスタムドメイン**: itwords.jp
+#### **PHASE 1: LOAD RULES**
 
-### スタイリング
-- グローバルCSS（体験デモ、コードハイライト対応）
-- レスポンシブデザイン
+1. **Read Image Generation Workflow**: Load the workflow rules:
+   - `docs/image-generation-claude-workflow.md`
+2. **Read DALL-E 3 Rules**: Load the DALL-E 3 project rules:
+   - `docs/image-generation-dalle3-rules.md`
+
+#### **PHASE 2: UNDERSTAND THE TERM**
+
+1. **Read Term Page**: Read `app/terms/{term-name}/page.tsx` to understand the concept
+2. **Confirm Understanding**: Ask the Human to confirm your understanding of the term
+
+#### **PHASE 3: PROPOSE SYMBOLS**
+
+1. **Generate Symbol Proposal**: Propose 3 visual symbols that represent the term
+2. **Suggest Color Scheme**: Propose base color (blue tones) and accent colors
+3. **Describe Atmosphere**: Suggest the mood/tone of the image
+4. **Request Approval**: Wait for Human confirmation or feedback
+
+#### **PHASE 4: CREATE DALL-E 3 PROMPT**
+
+1. **Generate Prompt**: Using the template from `image-generation-dalle3-rules.md`, create a detailed DALL-E 3 prompt
+2. **Include Required Elements**:
+   - Size: 1792x1024px
+   - Main character: Japanese woman, 20s, brown shoulder-length hair, casual white/pastel clothing, laptop
+   - Background: Blue gradient, simple, digital theme
+   - Symbols: Maximum 3, as approved
+   - Style: Anime/manga style, soft lighting, professional but approachable
+   - Prohibition: NO text, NO letters, NO words
+3. **Present Prompt**: Show the complete prompt to the Human with a checklist
+
+#### **PHASE 5: AWAIT IMAGE GENERATION**
+
+1. **Instruct Human**: Ask the Human to:
+   - Generate the image using DALL-E 3
+   - Save to `images/{term-name}-hero.png`
+   - Confirm when ready
+
+#### **PHASE 6: IMPLEMENT IMAGE**
+
+1. **Copy to Public**: Copy image from `images/` to `public/images/terms/`
+2. **Update Page File**: Modify `app/terms/{term-name}/page.tsx`:
+   - Add `import Image from 'next/image'`
+   - Add OGP metadata with image
+   - Add hero image component after TermHeader
+3. **Use Standard Styling**:
+   ```tsx
+   <div style={{
+     width: '100%',
+     maxWidth: '900px',
+     margin: '2rem auto',
+     borderRadius: '12px',
+     overflow: 'hidden',
+     boxShadow: '0 4px 12px rgba(0,0,0,0.1)',
+     maxHeight: '300px'
+   }}>
+     <Image
+       src="/images/terms/{term-name}-hero.png"
+       alt="{term description}"
+       width={1200}
+       height={630}
+       priority
+       style={{
+         width: '100%',
+         height: '100%',
+         objectFit: 'cover',
+         objectPosition: 'center',
+         display: 'block'
+       }}
+     />
+   </div>
+   ```
+4. **Confirm Completion**: Inform the Human that implementation is complete and provide the local dev URL
+
+#### **SPECIAL CASES**
+
+- **Multiple Characters**: Remind the Human that only the main character (brown-haired woman) should have a visible face. Others must be back-facing or silhouettes.
+- **Complex Diagrams**: Suggest simplification to max 3 symbols/icons
+- **Text Requests**: Firmly state that NO text is allowed due to DALL-E 3 limitations
 
 ---
-
-
-## 🧠 対象読者
-
-- ITパスポート／基本情報の受験者
-- ITに興味があるけど、用語の意味がわからず困っている人
-- ただ読むだけじゃなく「納得して覚えたい」人
-- つまづきを“自分の教材”に変えたい学習者
-
----
-
-## 🧑‍💻 作者について
-
-> エンジニア見習い（学習開始100日〜）  
-> HTML / CSS / JavaScript を中心に勉強中。  
-> 「ワクワクを形にする」ことを目指して、日々コードを書いています。  
-> この辞典は、自分の学びの集積であり、他の誰かへのプレゼントのようなものです。
-
----
-
-## 📫 コンタクト・応援
-
-- 用語リクエストは `/form/request.html` からお気軽にどうぞ
-- X（旧Twitter）で更新報告予定 → `#実践型IT用語辞典` で検索！
-
----
-
-> 💡 **このリポジトリは公開学習＆試行錯誤の場です。暖かく見守っていただけたら嬉しいです。**
-
-
----
-
-## 📂 プロジェクト構造
-
-```
-itwords/
-├── itwords-nextjs/          # Next.js アプリケーション
-│   ├── app/
-│   │   ├── page.tsx         # ホームページ
-│   │   ├── globals.css      # グローバルスタイル
-│   │   ├── layout.tsx       # レイアウト
-│   │   ├── privacy/         # プライバシーポリシー
-│   │   ├── terms/           # 利用規約
-│   │   └── terms/           # 用語ページ
-│   │       ├── api/
-│   │       ├── css/
-│   │       ├── foolproof/
-│   │       ├── html/
-│   │       ├── javascript/
-│   │       ├── json/
-│   │       ├── localstorage/
-│   │       ├── queue/
-│   │       └── stack/
-│   ├── components/          # Reactコンポーネント
-│   │   ├── StackDemo.tsx
-│   │   ├── QueueDemo.tsx
-│   │   ├── LocalStorageDemo.tsx
-│   │   ├── JsonDemo.tsx
-│   │   └── FoolProofDemo.tsx
-│   └── public/              # 静的ファイル
-├── docs/                    # ドキュメント
-│   ├── process/             # プロジェクト管理
-│   ├── seo/                 # SEO関連
-│   └── spec/                # 仕様書
-└── terms/                   # オリジナルHTML（phase1バックアップ）
-```
-
----
-
-最終更新：2026年1月6日
