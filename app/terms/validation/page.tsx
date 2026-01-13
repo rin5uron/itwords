@@ -1,9 +1,11 @@
+'use client'
+
 import Link from 'next/link'
-import type { Metadata } from 'next'
 import StructuredData from '@/app/components/StructuredData'
 import TermHeader from '@/app/components/TermHeader'
+import ValidationDemo from '@/components/ValidationDemo'
 
-export const metadata: Metadata = {
+const metadata = {
   title: 'バリデーションとは？初心者向けにわかりやすく解説【実装例付き】 | 実践型IT用語辞典',
   description: 'バリデーション（Validation）とは、入力データが正しいかをチェックする仕組みです。メールアドレス、パスワード、電話番号など、フォーム入力のエラーを防ぐ具体的な実装方法を初心者にもわかりやすく解説します。',
   keywords: ['バリデーション', 'Validation', '入力チェック', 'フォーム', 'バリデーション とは', '初心者', 'わかりやすく', 'HTML5', 'JavaScript', 'フールプルーフ'],
@@ -23,19 +25,27 @@ export default function ValidationPage() {
   const faqs = [
     {
       question: 'バリデーションとは何ですか？',
-      answer: 'バリデーション（Validation）とは、入力されたデータが正しい形式・内容かをチェックする仕組みです。「検証」「妥当性確認」とも呼ばれ、ユーザーの入力ミスやシステムエラーを未然に防ぐために使われます。'
+      answer: 'バリデーション（Validation）とは、入力されたデータが正しい形式・内容かをチェックする仕組みです。「検証」「妥当性確認」とも呼ばれ、ユーザーの入力ミスやシステムエラーを未然に防ぐために使われます。メールアドレス、パスワード、電話番号など、様々な項目で使用されます。'
     },
     {
       question: 'バリデーションとフールプルーフの違いは？',
-      answer: 'フールプルーフは「誤操作を防ぐ設計思想」という広い概念で、バリデーションはその具体的な実装手段の1つです。フールプルーフを実現する方法として、バリデーション、確認ダイアログ、ボタンの色分けなどがあります。'
+      answer: 'フールプルーフは「誤操作を防ぐ設計思想」という広い概念で、バリデーションはその具体的な実装手段の1つです。フールプルーフを実現する方法として、バリデーション、確認ダイアログ、ボタンの色分けなどがあります。バリデーションはフールプルーフを実装するための代表的な技術です。'
     },
     {
       question: 'クライアントサイドとサーバーサイドのバリデーションの違いは？',
-      answer: 'クライアントサイドバリデーションはブラウザ上で即座にチェックし、ユーザー体験を向上させます。サーバーサイドバリデーションはサーバーで厳密にチェックし、セキュリティを確保します。両方を組み合わせることが推奨されます。'
+      answer: 'クライアントサイドバリデーションはブラウザ上で即座にチェックし、ユーザー体験を向上させます。HTML5のrequired属性やJavaScriptで実装します。サーバーサイドバリデーションはサーバーで厳密にチェックし、セキュリティを確保します。クライアント側のチェックを回避した悪意ある入力を防ぐため、必ず両方を実装してください。'
+    },
+    {
+      question: 'リアルタイムバリデーションとは？',
+      answer: 'リアルタイムバリデーションとは、ユーザーが入力している最中やフォーカスを外した瞬間にバリデーションを実行する方法です。送信ボタンを押す前にエラーを検出できるため、ユーザー体験が大幅に向上します。ただし、重い処理（API呼び出しなど）は debounce（遅延実行）を使ってパフォーマンスを最適化する必要があります。'
+    },
+    {
+      question: 'バリデーションでよくある失敗は？',
+      answer: '主な失敗例は、①クライアントサイドのみでバリデーション（セキュリティリスク）、②曖昧なエラーメッセージ（ユーザーが修正方法が分からない）、③パスワードバリデーションが厳しすぎる（離脱率が上がる）、④送信後にまとめてエラー表示（ユーザーストレス）、⑤正規表現のミス（先頭と末尾のチェック忘れ）などです。'
     },
     {
       question: 'バリデーションはどこで使われますか？',
-      answer: '会員登録フォーム、ログインフォーム、問い合わせフォーム、決済画面、データベース入力など、ユーザーがデータを入力するあらゆる場面で使用されます。'
+      answer: '会員登録フォーム、ログインフォーム、問い合わせフォーム、決済画面、データベース入力、ECサイトの商品注文、予約フォーム、アンケートなど、ユーザーがデータを入力するあらゆる場面で使用されます。特に個人情報や決済情報を扱う場面では必須です。'
     }
   ]
 
@@ -113,6 +123,21 @@ export default function ValidationPage() {
 
           <p>
             <strong>💡 ベストプラクティス</strong>：クライアントとサーバーの<strong>両方</strong>でバリデーションを実装します。
+          </p>
+        </section>
+
+        <section>
+          <h2>体験してみよう：リアルタイムバリデーション</h2>
+          <p>
+            実際にフォームに入力して、バリデーションがどのように動作するか体験してみましょう。
+            入力中にリアルタイムでエラーチェックが実行されます。
+          </p>
+
+          <ValidationDemo />
+
+          <p style={{ marginTop: '1rem', color: '#666', fontSize: '14px' }}>
+            💡 <strong>ポイント</strong>：正しい入力には緑色のチェックマーク、エラーには赤色の警告が表示されます。
+            これが<Link href="/terms/foolproof" style={{ color: '#007bff', textDecoration: 'underline' }}>フールプルーフ</Link>（誤操作防止）の実装例です。
           </p>
         </section>
 
@@ -262,7 +287,86 @@ document.querySelector('form').addEventListener('submit', (e) => {
         </section>
 
         <section>
+          <h2>よくある失敗例とその対策</h2>
+          <p>
+            バリデーション実装で陥りがちな失敗例と、その対策方法を紹介します。
+          </p>
+
+          <h3>❌ 失敗例1: クライアントサイドのみでバリデーション</h3>
+          <div className="code-example" style={{
+            backgroundColor: '#fff3cd',
+            border: '1px solid #ffc107',
+            padding: '1rem',
+            borderRadius: '4px',
+            marginBottom: '1rem'
+          }}>
+            <p style={{ marginTop: 0 }}><strong>問題点</strong>：ブラウザの開発者ツールでJavaScriptを無効化すると、バリデーションが回避される</p>
+            <p style={{ marginBottom: 0 }}><strong>対策</strong>：<strong>必ずサーバーサイドでも検証</strong>する。クライアントは「ユーザー体験向上」、サーバーは「セキュリティ」と役割を分ける</p>
+          </div>
+
+          <h3>❌ 失敗例2: 曖昧なエラーメッセージ</h3>
+          <div className="code-example" style={{
+            backgroundColor: '#fff3cd',
+            border: '1px solid #ffc107',
+            padding: '1rem',
+            borderRadius: '4px',
+            marginBottom: '1rem'
+          }}>
+            <p style={{ marginTop: 0 }}><strong>悪い例</strong>：「エラーが発生しました」「入力が正しくありません」</p>
+            <p style={{ marginBottom: 0 }}><strong>良い例</strong>：「メールアドレスに@が含まれていません」「パスワードは8文字以上にしてください」</p>
+          </div>
+
+          <h3>❌ 失敗例3: パスワードバリデーションが厳しすぎる</h3>
+          <div className="code-example" style={{
+            backgroundColor: '#fff3cd',
+            border: '1px solid #ffc107',
+            padding: '1rem',
+            borderRadius: '4px',
+            marginBottom: '1rem'
+          }}>
+            <p style={{ marginTop: 0 }}><strong>問題点</strong>：「大文字・小文字・数字・記号を全て含む12文字以上」など、厳しすぎるとユーザーが離脱</p>
+            <p style={{ marginBottom: 0 }}><strong>対策</strong>：<strong>8文字以上+英数字</strong>程度に留める。または、強度メーター（弱い/普通/強い）を表示</p>
+          </div>
+
+          <h3>❌ 失敗例4: 送信後にまとめてエラー表示</h3>
+          <div className="code-example" style={{
+            backgroundColor: '#fff3cd',
+            border: '1px solid #ffc107',
+            padding: '1rem',
+            borderRadius: '4px',
+            marginBottom: '1rem'
+          }}>
+            <p style={{ marginTop: 0 }}><strong>問題点</strong>：全部入力してから「5箇所エラーです」と言われるとストレス</p>
+            <p style={{ marginBottom: 0 }}><strong>対策</strong>：<strong>リアルタイムバリデーション</strong>で、入力直後にエラーを表示</p>
+          </div>
+
+          <h3>❌ 失敗例5: 正規表現のミス</h3>
+          <details>
+            <summary>よくある正規表現の間違いを見る</summary>
+            <div className="code-example">
+              <pre>
+                <code className="language-javascript">{`// ❌ 悪い例：先頭と末尾のチェックがない
+const badPattern = /@/;
+// "abc@def@ghi" もマッチしてしまう
+
+// ✅ 良い例：^と$で囲む
+const goodPattern = /^[^\\s@]+@[^\\s@]+\\.[^\\s@]+$/;
+
+// ❌ 悪い例：数字のみのチェックが甘い
+const badNumber = /[0-9]+/;
+// "abc123def" もマッチしてしまう
+
+// ✅ 良い例：^と$で囲む
+const goodNumber = /^[0-9]+$/;`}</code>
+              </pre>
+            </div>
+          </details>
+        </section>
+
+        <section>
           <h2>バリデーションのベストプラクティス</h2>
+
+          <h3>✅ 実装時のチェックリスト</h3>
           <ul>
             <li>
               <strong>リアルタイムフィードバック</strong>：入力中・フォーカスを外した瞬間にチェック
@@ -279,7 +383,182 @@ document.querySelector('form').addEventListener('submit', (e) => {
             <li>
               <strong>ポジティブフィードバック</strong>：正しい入力には緑のチェックマークを表示
             </li>
+            <li>
+              <strong>アクセシビリティ</strong>：エラーメッセージをスクリーンリーダーでも読めるように（aria-invalid、aria-describedby）
+            </li>
           </ul>
+
+          <h3>🚀 パフォーマンス最適化</h3>
+          <p>
+            リアルタイムバリデーションは便利ですが、<strong>入力のたびに処理が実行される</strong>ため、
+            重い処理（API呼び出しなど）は<strong>debounce（遅延実行）</strong>を使います。
+          </p>
+          <details>
+            <summary>debounceの実装例を見る (JavaScript)</summary>
+            <div className="code-example">
+              <pre>
+                <code className="language-javascript">{`function debounce(func, wait) {
+  let timeout;
+  return function(...args) {
+    clearTimeout(timeout);
+    timeout = setTimeout(() => func.apply(this, args), wait);
+  };
+}
+
+// 使用例：500ms後に実行
+const validateWithDebounce = debounce((value) => {
+  // 重い処理（API呼び出しなど）
+  console.log('バリデーション実行:', value);
+}, 500);
+
+input.addEventListener('input', (e) => {
+  validateWithDebounce(e.target.value);
+});`}</code>
+              </pre>
+            </div>
+          </details>
+        </section>
+
+        <section>
+          <h2>実務でよく使うバリデーション実装</h2>
+
+          <h3>1. クレジットカード番号のバリデーション（Luhnアルゴリズム）</h3>
+          <p>
+            クレジットカード番号は単なる数字チェックではなく、<strong>Luhnアルゴリズム</strong>という
+            チェックサム検証を使います。
+          </p>
+          <details>
+            <summary>Luhnアルゴリズムの実装を見る (JavaScript)</summary>
+            <div className="code-example">
+              <pre>
+                <code className="language-javascript">{`function validateCreditCard(cardNumber) {
+  // ハイフンやスペースを削除
+  const digits = cardNumber.replace(/[^0-9]/g, '');
+
+  // 13〜19桁でないとエラー
+  if (digits.length < 13 || digits.length > 19) {
+    return false;
+  }
+
+  // Luhnアルゴリズム
+  let sum = 0;
+  let isEven = false;
+
+  for (let i = digits.length - 1; i >= 0; i--) {
+    let digit = parseInt(digits[i]);
+
+    if (isEven) {
+      digit *= 2;
+      if (digit > 9) {
+        digit -= 9;
+      }
+    }
+
+    sum += digit;
+    isEven = !isEven;
+  }
+
+  return sum % 10 === 0;
+}
+
+// テスト
+console.log(validateCreditCard('4111-1111-1111-1111')); // true
+console.log(validateCreditCard('1234-5678-9012-3456')); // false`}</code>
+              </pre>
+            </div>
+          </details>
+
+          <h3>2. 郵便番号から住所を自動入力</h3>
+          <p>
+            日本の郵便番号（7桁）をバリデーションし、APIで住所を取得して自動入力する実装です。
+          </p>
+          <details>
+            <summary>郵便番号バリデーション+自動入力の実装を見る (JavaScript)</summary>
+            <div className="code-example">
+              <pre>
+                <code className="language-javascript">{`async function validateAndFillAddress(postalCode) {
+  // 郵便番号のバリデーション（7桁の数字）
+  const pattern = /^[0-9]{7}$/;
+  const cleanedCode = postalCode.replace(/-/g, '');
+
+  if (!pattern.test(cleanedCode)) {
+    return {
+      valid: false,
+      message: '郵便番号は7桁の数字で入力してください'
+    };
+  }
+
+  try {
+    // 郵便番号APIで住所を取得
+    const response = await fetch(
+      \`https://zipcloud.ibsnet.co.jp/api/search?zipcode=\${cleanedCode}\`
+    );
+    const data = await response.json();
+
+    if (data.results) {
+      const address = data.results[0];
+      return {
+        valid: true,
+        prefecture: address.address1,
+        city: address.address2,
+        town: address.address3
+      };
+    } else {
+      return {
+        valid: false,
+        message: '該当する住所が見つかりませんでした'
+      };
+    }
+  } catch (error) {
+    return {
+      valid: false,
+      message: '住所の取得に失敗しました'
+    };
+  }
+}`}</code>
+              </pre>
+            </div>
+          </details>
+
+          <h3>3. パスワード強度メーター</h3>
+          <p>
+            厳しいバリデーションルールの代わりに、<strong>パスワード強度を視覚化</strong>する方法です。
+          </p>
+          <details>
+            <summary>パスワード強度メーターの実装を見る (JavaScript)</summary>
+            <div className="code-example">
+              <pre>
+                <code className="language-javascript">{`function calculatePasswordStrength(password) {
+  let strength = 0;
+
+  // 長さによる加点
+  if (password.length >= 8) strength += 1;
+  if (password.length >= 12) strength += 1;
+  if (password.length >= 16) strength += 1;
+
+  // 文字種による加点
+  if (/[a-z]/.test(password)) strength += 1;  // 小文字
+  if (/[A-Z]/.test(password)) strength += 1;  // 大文字
+  if (/[0-9]/.test(password)) strength += 1;  // 数字
+  if (/[^a-zA-Z0-9]/.test(password)) strength += 1;  // 記号
+
+  // 強度を判定
+  if (strength <= 2) return { level: 'weak', label: '弱い', color: '#dc3545' };
+  if (strength <= 5) return { level: 'medium', label: '普通', color: '#ffc107' };
+  return { level: 'strong', label: '強い', color: '#28a745' };
+}
+
+// 使用例
+const password = 'MyP@ssw0rd';
+const result = calculatePasswordStrength(password);
+console.log(\`パスワード強度: \${result.label}\`);
+// 強度バーを表示
+document.getElementById('strength-bar').style.width =
+  \`\${(result.strength / 7) * 100}%\`;
+document.getElementById('strength-bar').style.backgroundColor = result.color;`}</code>
+              </pre>
+            </div>
+          </details>
         </section>
 
         <section className="term-comparison">
@@ -344,6 +623,45 @@ document.querySelector('form').addEventListener('submit', (e) => {
                   </td>
                   <td>
                     <strong>カスタムバリデーション</strong>を実装できる
+                  </td>
+                </tr>
+                <tr>
+                  <td>
+                    <Link href="/terms/cookie" style={{ color: '#007bff', textDecoration: 'underline' }}>
+                      <span className="term-name">Cookie</span>
+                    </Link>
+                  </td>
+                  <td>
+                    ブラウザにデータを保存する仕組み
+                  </td>
+                  <td>
+                    <strong>入力データの一時保存</strong>に使える
+                  </td>
+                </tr>
+                <tr>
+                  <td>
+                    <Link href="/terms/localstorage" style={{ color: '#007bff', textDecoration: 'underline' }}>
+                      <span className="term-name">LocalStorage</span>
+                    </Link>
+                  </td>
+                  <td>
+                    ブラウザにデータを永続保存
+                  </td>
+                  <td>
+                    <strong>フォーム入力の下書き保存</strong>に使える
+                  </td>
+                </tr>
+                <tr>
+                  <td>
+                    <Link href="/terms/api" style={{ color: '#007bff', textDecoration: 'underline' }}>
+                      <span className="term-name">API</span>
+                    </Link>
+                  </td>
+                  <td>
+                    外部サービスとの連携窓口
+                  </td>
+                  <td>
+                    <strong>郵便番号APIでの住所バリデーション</strong>など
                   </td>
                 </tr>
               </tbody>
