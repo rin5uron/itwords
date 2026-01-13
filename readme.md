@@ -100,6 +100,104 @@ This workflow is initiated when the Human requests a periodic SEO check (e.g., "
 
 ---
 
+### WORKFLOW: SEO Keyword Strategy Enhancement
+
+This workflow is initiated when the Human requests SEO improvement (e.g., "SEO強化したい", "SEO 1位を取りたい").
+
+#### **PHASE 1: LOAD STRATEGY**
+
+1. **Read SEO Strategy Document**: Load the current keyword strategy and tracking sheet:
+   - `docs/seo-keyword-strategy.md`
+2. **Identify Target Keywords**: Review the priority list and identify which keyword(s) to focus on.
+
+#### **PHASE 2: ANALYZE CURRENT STATE**
+
+1. **Review Target Page**: Read the current page content (`app/terms/{term-name}/page.tsx`)
+2. **Check Current Metrics**: If available, review:
+   - Current search ranking
+   - Click-through rate
+   - Impressions
+   - Content word count
+3. **Competitive Analysis**: Perform web searches to understand:
+   - What competitors are ranking for
+   - Content gaps in current page
+   - Unique value proposition opportunities
+
+#### **PHASE 3: PLAN ENHANCEMENTS**
+
+Based on the SEO checklist in `docs/seo-keyword-strategy.md`, create an enhancement plan that includes:
+
+1. **Content Expansion**:
+   - Add more real-life examples (target: 5+)
+   - Expand explanations (target: 3000+ words for #1 ranking)
+   - Add comparison tables
+   - Include code examples or interactive demos
+
+2. **Technical SEO**:
+   - Ensure metadata is optimized
+   - Add/update hero image
+   - Implement structured data (Article + FAQ)
+   - Add internal links (3+ related pages)
+
+3. **User Experience**:
+   - Add interactive demos
+   - Include visual diagrams
+   - Improve readability
+
+#### **PHASE 4: IMPLEMENT ENHANCEMENTS**
+
+1. **Update Content**: Edit the page with planned enhancements
+2. **Add Images**: If hero image is needed:
+   - Propose image concept to Human
+   - Wait for Human to generate/provide image
+   - Implement image in page
+3. **Update Metadata**: Ensure all SEO metadata is optimized
+4. **Add Internal Links**: Link to/from related pages
+5. **Update Search Index**: Run `npm run build-index`
+
+#### **PHASE 5: TRACK & VERIFY**
+
+1. **Update Strategy Document**: Record the enhancement in `docs/seo-keyword-strategy.md`:
+   - Update "最終更新日" (last updated date)
+   - Change status to appropriate value
+   - Add notes about what was improved
+
+2. **Commit Changes**: Create a commit with clear description of SEO improvements
+
+3. **Set Reminder**: Inform Human to check rankings in 2-4 weeks
+
+#### **EXAMPLE ENHANCEMENT FLOW**
+
+**User**: "SEO強化したい"
+
+**Assistant Actions**:
+1. Read `docs/seo-keyword-strategy.md`
+2. Identify top priority keyword (e.g., "フールプルーフ とは")
+3. Read current page `/app/terms/foolproof/page.tsx`
+4. Perform competitive analysis via web search
+5. Propose enhancement plan:
+   - Add 10 real-life examples
+   - Expand from 200 to 500+ lines
+   - Add 3 interactive demos
+   - Add comparison table (フールプルーフ vs フェイルセーフ)
+   - Add hero image
+6. Implement all enhancements
+7. Update `docs/seo-keyword-strategy.md`
+8. Commit and push changes
+
+#### **KEY METRICS FOR SUCCESS**
+
+For achieving #1 ranking:
+- Word count: 3000+ characters (Japanese)
+- Real-life examples: 5+
+- Interactive demos: 1+
+- Images/diagrams: 3+
+- Internal links: 3+
+- FAQ structured data: 3-5 questions
+- Code examples: At least 1 working example
+
+---
+
 ### WORKFLOW: Generate Hero Image for Term Page
 
 This workflow is initiated when the Human requests image generation (e.g., "画像生成して", "Generate an image for [term]").

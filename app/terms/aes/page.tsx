@@ -58,7 +58,7 @@ export default function AESPage() {
         title="AES（Advanced Encryption Standard）とは？初心者向けにわかりやすく解説"
         description="AES（Advanced Encryption Standard）を初心者向けに解説。共通鍵暗号方式の仕組み、AES-128とAES-256の違い、実際の使用例を学べます。"
         datePublished="2024-01-09"
-        dateModified="2024-01-09"
+        dateModified="2026-01-13"
       />
 
       <TermHeader
@@ -132,7 +132,91 @@ export default function AESPage() {
 
         <section>
           <h2>AESの実用例</h2>
-          <p>Wi-Fi通信（WPA2/WPA3）、HTTPS通信、ファイル暗号化、VPN、メッセージングアプリなど、幅広く使用されています。</p>
+          <p>AESは私たちの身近なところで、毎日のように使われています：</p>
+          <ul>
+            <li>
+              <strong>Wi-Fi通信</strong>：WPA2/WPA3規格でAESを使用。自宅や職場のWi-Fiで通信が保護されています
+            </li>
+            <li>
+              <strong>HTTPS通信</strong>：Webサイトとの通信を暗号化。URLが「https://」で始まるサイトで使われています
+            </li>
+            <li>
+              <strong>ファイル暗号化</strong>：MacのFileVault、WindowsのBitLockerなど、ディスク全体を暗号化
+            </li>
+            <li>
+              <strong>VPN通信</strong>：リモートワークでの安全な通信に必須
+            </li>
+            <li>
+              <strong>メッセージングアプリ</strong>：WhatsApp、Signal、LINEなどのエンドツーエンド暗号化
+            </li>
+            <li>
+              <strong>オンラインバンキング</strong>：取引情報の保護に使用
+            </li>
+            <li>
+              <strong>パスワードマネージャー</strong>：1Password、LastPassなどでパスワードを安全に保存
+            </li>
+          </ul>
+        </section>
+
+        <section>
+          <h2>AESのセキュリティ：本当に安全？</h2>
+          <p>
+            AESは<strong>非常に高いセキュリティ</strong>を持ち、現時点で<strong>現実的な時間内に解読することは不可能</strong>とされています。
+          </p>
+          <p>
+            例えば、AES-256を総当たり攻撃で破ろうとした場合、
+            <strong>スーパーコンピュータを使っても数十億年かかる</strong>と言われています。
+          </p>
+          <p>
+            ただし、AES自体は安全でも、<strong>鍵の管理が不適切</strong>だったり、
+            <strong>古い暗号化モード（ECBなど）</strong>を使うと脆弱性が生じる可能性があります。
+          </p>
+        </section>
+
+        <section className="term-comparison">
+          <h2>関連用語</h2>
+          <div className="comparison-table">
+            <table>
+              <thead>
+                <tr>
+                  <th>用語名</th>
+                  <th>説明</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>
+                    <Link href="/terms/zero-day" style={{ color: '#007bff', textDecoration: 'underline' }}>
+                      <span className="term-name">ゼロデイ攻撃</span>
+                    </Link>
+                  </td>
+                  <td>
+                    暗号化されていないシステムを狙うサイバー攻撃。AESで通信を保護することで防御できます
+                  </td>
+                </tr>
+                <tr>
+                  <td>
+                    <Link href="/terms/api" style={{ color: '#007bff', textDecoration: 'underline' }}>
+                      <span className="term-name">API</span>
+                    </Link>
+                  </td>
+                  <td>
+                    API通信でもAESによる暗号化が使われ、データを安全にやり取りします
+                  </td>
+                </tr>
+                <tr>
+                  <td>
+                    <Link href="/terms/http" style={{ color: '#007bff', textDecoration: 'underline' }}>
+                      <span className="term-name">HTTP</span>
+                    </Link>
+                  </td>
+                  <td>
+                    HTTPSではAESを使って通信を暗号化し、盗聴や改ざんを防ぎます
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
         </section>
 
       </main>

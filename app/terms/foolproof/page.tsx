@@ -617,7 +617,9 @@ function FileManager() {
                 </tr>
                 <tr>
                   <td>
-                    <span className="term-name">ポカヨケ</span>
+                    <Link href="/terms/poka-yoke" style={{ color: '#007bff', textDecoration: 'underline' }}>
+                      <span className="term-name">ポカヨケ</span>
+                    </Link>
                   </td>
                   <td>
                     製造業における<strong>ヒューマンエラー防止</strong>の仕組み（フールプルーフの製造現場版）
@@ -625,10 +627,12 @@ function FileManager() {
                 </tr>
                 <tr>
                   <td>
-                    <span className="term-name">バリデーション</span>
+                    <Link href="/terms/validation" style={{ color: '#007bff', textDecoration: 'underline' }}>
+                      <span className="term-name">バリデーション</span>
+                    </Link>
                   </td>
                   <td>
-                    入力されたデータが<strong>正しいかチェック</strong>する仕組み
+                    入力されたデータが<strong>正しいかチェック</strong>する仕組み（フールプルーフの実装手段）
                   </td>
                 </tr>
                 <tr>
