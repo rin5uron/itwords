@@ -64,6 +64,20 @@ export default function Home() {
         <section id="new">
           <h3>新着用語</h3>
           <div className="card-container">
+            <div className="card" data-category="web">
+              <Link href="/terms/validation" className="card-link">
+                <span className="category-tag">Web</span>
+                <h4>バリデーション</h4>
+                <p>入力データが正しいかをチェックする仕組みです。実践デモで学べます。</p>
+              </Link>
+            </div>
+            <div className="card" data-category="web">
+              <Link href="/terms/poka-yoke" className="card-link">
+                <span className="category-tag">Web</span>
+                <h4>ポカヨケ</h4>
+                <p>製造業から生まれた「うっかりミス」を防ぐ設計手法です。</p>
+              </Link>
+            </div>
             <div className="card" data-category="security">
               <Link href="/terms/zero-day" className="card-link">
                 <span className="category-tag">セキュリティ</span>
@@ -83,6 +97,13 @@ export default function Home() {
                 <span className="category-tag">Web</span>
                 <h4>フールプルーフ</h4>
                 <p>ユーザーの誤操作を防ぐための設計原則です。</p>
+              </Link>
+            </div>
+            <div className="card" data-category="web">
+              <Link href="/terms/localstorage" className="card-link">
+                <span className="category-tag">Web</span>
+                <h4>ローカルストレージ</h4>
+                <p>ブラウザにデータを保存できる仕組みです。実践デモ付き。</p>
               </Link>
             </div>
           </div>

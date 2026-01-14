@@ -19,35 +19,35 @@ export default function ZeroDayDemo() {
     {
       id: 0,
       title: '脆弱性を発見',
-      description: '攻撃者がソフトウェアのセキュリティ上の欠陥を発見しました。この時点では、開発者も一般ユーザーもその脆弱性の存在を知りません。',
+      description: '攻撃者だけが知っている。開発者も誰も気づいていない。',
       role: 'attacker',
       status: 'pending'
     },
     {
       id: 1,
       title: '攻撃コードを作成',
-      description: '攻撃者は発見した脆弱性を悪用するための攻撃コード（エクスプロイト）を作成します。',
+      description: '脆弱性を悪用する攻撃コード（エクスプロイト）を準備。',
       role: 'attacker',
       status: 'pending'
     },
     {
       id: 2,
-      title: '攻撃を実行',
-      description: '開発者が脆弱性に気づく前、または気づいても修正パッチを公開する前に、攻撃を実行します。',
+      title: '攻撃を実行 → Day 0',
+      description: 'パッチが存在しない状態で攻撃。防御は不可能。',
       role: 'attacker',
       status: 'pending'
     },
     {
       id: 3,
       title: '開発者が気づく',
-      description: '攻撃が発覚し、開発者が脆弱性を認識します。しかし、既に攻撃を受けてしまったシステムには手遅れです。',
+      description: '攻撃が発覚。でも既に手遅れ…',
       role: 'developer',
       status: 'pending'
     },
     {
       id: 4,
-      title: 'パッチを開発・公開',
-      description: '開発者が修正パッチを開発し、公開します。しかし、攻撃を受けたシステムには既に被害が発生しています。',
+      title: 'パッチを公開 → Day 1',
+      description: '修正パッチを公開。でも被害は既に発生している。',
       role: 'developer',
       status: 'pending'
     }
