@@ -5,17 +5,8 @@ import { useState } from 'react'
 import { Metadata } from 'next'
 import StructuredData from '@/app/components/StructuredData'
 import TermHeader from '@/app/components/TermHeader'
-import CSSToggleDemo from '@/components/CSSToggleDemo'
-
-// Note: メタデータはServer Componentでのみ使えるため、別ファイルに分離が必要
-// 今回は一旦コメントアウトして、後で対応
-/*
-export const metadata: Metadata = {
-  title: 'CSSとは？HTMLとの違いから書き方まで初心者向けに解説【体験デモ付き】 | 実践型IT用語辞典',
-  description: 'CSS（シーエスエス）とは何か？HTMLとの違い、役割、書き方を初心者向けにわかりやすく解説。CSSをON/OFFして見た目の変化を体験できるデモ付き。Cascading Style Sheetsの意味も解説。',
-  keywords: ['CSS', 'CSS とは', 'CSS 初心者', 'HTML CSS 違い', 'スタイルシート', 'Cascading Style Sheets', 'CSS 書き方', 'IT用語 わかりやすく'],
-}
-*/
+import HTMLCSSFilesDemo from '@/components/HTMLCSSFilesDemo'
+import CSSStepByStepDemo from '@/components/CSSStepByStepDemo'
 
 export default function CSSPage() {
   const [cssCode, setCssCode] = useState('color: blue;\nfont-size: 24px;\nfont-weight: bold;')
@@ -27,10 +18,6 @@ export default function CSSPage() {
       answer: 'CSS（Cascading Style Sheets）とは、Webページの見た目を整えるための言語です。HTMLが「何を表示するか（構造）」を決めるのに対し、CSSは「どう表示するか（デザイン）」を決めます。',
     },
     {
-      question: 'CSSがないとどうなる？',
-      answer: 'CSSがないと、文字は全て黒色、背景は白色、レイアウトはバラバラになります。色も装飾もない、非常にシンプルな見た目になります。',
-    },
-    {
       question: 'CSSとHTMLの違いは何ですか？',
       answer: 'HTMLは「構造（何が書いてあるか）」を担当し、CSSは「見た目（どう見せるか）」を担当します。例えるなら、HTMLはノートに文章を書くこと、CSSは色ペンやマーカーで装飾することです。',
     },
@@ -40,7 +27,11 @@ export default function CSSPage() {
     },
     {
       question: 'classとidの違いは？',
-      answer: 'classは同じスタイルを複数の要素に適用するときに使います。idは1つだけの要素に適用するときに使います。classは「.」、idは「#」で指定します。',
+      answer: 'classは同じスタイルを複数の要素に適用するときに使います（.で指定）。idは1つだけの要素に適用するときに使います（#で指定）。一般的にはclassを使う方が推奨されます。',
+    },
+    {
+      question: 'style属性はいつ使う？',
+      answer: 'style属性は、ピンポイントでその要素だけにスタイルを適用したいときに使います。ただし、管理が大変になるため、基本的には外部CSSファイルを使うことが推奨されます。',
     },
   ]
 
@@ -85,15 +76,6 @@ export default function CSSPage() {
         </section>
 
         <section>
-          <h2>⚡ まず体験してみよう：CSSのON/OFF</h2>
-          <p>
-            CSSがある世界とない世界を比べてみましょう👇
-          </p>
-
-          <CSSToggleDemo />
-        </section>
-
-        <section>
           <h2>HTMLとCSSの関係</h2>
           <p>
             HTMLとCSSは、それぞれ異なる役割を持っています：
@@ -111,6 +93,41 @@ export default function CSSPage() {
           <p>
             👉 HTMLだけだとシンプルすぎ、CSSを加えると見やすくなる！
           </p>
+        </section>
+
+        <section>
+          <h2>⚡ HTML と CSS の分離を体験してみよう</h2>
+          <p>
+            実際のファイル構成を見てみましょう👇
+          </p>
+
+          <HTMLCSSFilesDemo />
+
+          <CSSStepByStepDemo />
+        </section>
+
+        <section>
+          <h2>CSSの基本ルール（3要素）</h2>
+          <p>
+            CSSは<strong>「セレクタ」「プロパティ」「値」</strong>の3つで構成されます：
+          </p>
+          <div className="code-example">
+            <pre><code className="language-css">{`セレクタ {
+  プロパティ: 値;
+}
+
+/* 例 */
+p {
+  color: red;
+  font-size: 20px;
+}`}</code></pre>
+          </div>
+          <p>これはこういう意味👇</p>
+          <ul>
+            <li><strong>セレクタ（p）</strong> → どこに？（pタグ全部）</li>
+            <li><strong>プロパティ（color）</strong> → なにを？（文字の色）</li>
+            <li><strong>値（red）</strong> → どうする？（赤にする）</li>
+          </ul>
         </section>
 
         <section>
@@ -134,27 +151,12 @@ export default function CSSPage() {
           </div>
           <p>⚠️ そのページだけに適用される</p>
 
-          <h3>③ style属性（緊急用）</h3>
+          <h3>③ style属性（ピンポイント用）</h3>
           <div className="code-example">
-            <pre><code className="language-html">{`<p style="color: red;">文字</p>`}</code></pre>
+            <pre><code className="language-html">{`<p style="color: red;">この文字だけ赤くする</p>`}</code></pre>
           </div>
-          <p>⚠️ 管理が大変、おすすめしない</p>
-        </section>
-
-        <section>
-          <h2>CSSの基本ルール</h2>
-          <div className="code-example">
-            <pre><code className="language-css">{`p {
-  color: red;
-  font-size: 20px;
-}`}</code></pre>
-          </div>
-          <p>これはこういう意味👇</p>
-          <ul>
-            <li><strong>p</strong> → どれに？（pタグ全部）</li>
-            <li><strong>color</strong> → なにを？（文字の色）</li>
-            <li><strong>red</strong> → どうする？（赤にする）</li>
-          </ul>
+          <p>⚠️ <strong>その要素だけにスタイルを適用したいとき</strong>に使います。</p>
+          <p>⚠️ 全体で管理したいなら外部ファイル（①）を使いましょう。</p>
         </section>
 
         <section>
@@ -297,36 +299,6 @@ export default function CSSPage() {
             <li><strong>アニメーション</strong>: <code>@keyframes</code>で動きのある表現</li>
             <li><strong>Flexbox・Grid</strong>: 柔軟なレイアウトシステム</li>
           </ul>
-        </section>
-
-        <section>
-          <h2>レスポンシブデザイン</h2>
-          <p>メディアクエリを使うことで、画面サイズに応じたデザインを実現できます：</p>
-          <details>
-            <summary><strong>サンプルコード</strong>を見る</summary>
-            <div className="code-example">
-              <pre><code className="language-css">{`/* スマホ向け（デフォルト） */
-.container {
-    width: 100%;
-    padding: 10px;
-}
-
-/* タブレット以上 */
-@media (min-width: 768px) {
-    .container {
-        width: 750px;
-        padding: 20px;
-    }
-}
-
-/* PC向け */
-@media (min-width: 1024px) {
-    .container {
-        width: 1000px;
-    }
-}`}</code></pre>
-            </div>
-          </details>
         </section>
 
         <section className="term-comparison">
