@@ -289,61 +289,51 @@ document.querySelector('form').addEventListener('submit', (e) => {
         <section>
           <h2>よくある失敗例とその対策</h2>
           <p>
-            バリデーション実装で陥りがちな失敗例と、その対策方法を紹介します。
+            バリデーション実装で陥りがちな失敗例と、その対策方法を表で整理しました。
           </p>
 
-          <h3>❌ 失敗例1: クライアントサイドのみでバリデーション</h3>
-          <div className="code-example" style={{
-            backgroundColor: '#fff3cd',
-            border: '1px solid #ffc107',
-            padding: '1rem',
-            borderRadius: '4px',
-            marginBottom: '1rem'
-          }}>
-            <p style={{ marginTop: 0 }}><strong>問題点</strong>：ブラウザの開発者ツールでJavaScriptを無効化すると、バリデーションが回避される</p>
-            <p style={{ marginBottom: 0 }}><strong>対策</strong>：<strong>必ずサーバーサイドでも検証</strong>する。クライアントは「ユーザー体験向上」、サーバーは「セキュリティ」と役割を分ける</p>
+          <div className="comparison-table">
+            <table>
+              <thead>
+                <tr>
+                  <th style={{ width: '25%' }}>失敗例</th>
+                  <th style={{ width: '35%' }}>問題点</th>
+                  <th style={{ width: '40%' }}>対策</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td><strong>❌ クライアントサイドのみ</strong></td>
+                  <td>JavaScriptを無効化するとバリデーションが回避される</td>
+                  <td><strong>必ずサーバーサイドでも検証</strong><br />クライアント=体験向上、サーバー=セキュリティ</td>
+                </tr>
+                <tr>
+                  <td><strong>❌ 曖昧なエラーメッセージ</strong></td>
+                  <td>「エラーが発生しました」では修正方法が分からない</td>
+                  <td><strong>具体的に指摘</strong><br />例：「メールアドレスに@が含まれていません」</td>
+                </tr>
+                <tr>
+                  <td><strong>❌ パスワードが厳しすぎる</strong></td>
+                  <td>「大文字・小文字・数字・記号・12文字以上」で離脱率が上がる</td>
+                  <td><strong>8文字以上+英数字</strong>程度に留める<br />または強度メーターを表示</td>
+                </tr>
+                <tr>
+                  <td><strong>❌ 送信後にまとめて表示</strong></td>
+                  <td>全部入力してから「5箇所エラー」と言われるとストレス</td>
+                  <td><strong>リアルタイムバリデーション</strong>で入力直後に表示</td>
+                </tr>
+                <tr>
+                  <td><strong>❌ 正規表現のミス</strong></td>
+                  <td>先頭(^)と末尾($)のチェックがないと部分一致で通る</td>
+                  <td><strong>^と$で囲む</strong><br />例：<code>/^[0-9]+$/</code></td>
+                </tr>
+              </tbody>
+            </table>
           </div>
 
-          <h3>❌ 失敗例2: 曖昧なエラーメッセージ</h3>
-          <div className="code-example" style={{
-            backgroundColor: '#fff3cd',
-            border: '1px solid #ffc107',
-            padding: '1rem',
-            borderRadius: '4px',
-            marginBottom: '1rem'
-          }}>
-            <p style={{ marginTop: 0 }}><strong>悪い例</strong>：「エラーが発生しました」「入力が正しくありません」</p>
-            <p style={{ marginBottom: 0 }}><strong>良い例</strong>：「メールアドレスに@が含まれていません」「パスワードは8文字以上にしてください」</p>
-          </div>
-
-          <h3>❌ 失敗例3: パスワードバリデーションが厳しすぎる</h3>
-          <div className="code-example" style={{
-            backgroundColor: '#fff3cd',
-            border: '1px solid #ffc107',
-            padding: '1rem',
-            borderRadius: '4px',
-            marginBottom: '1rem'
-          }}>
-            <p style={{ marginTop: 0 }}><strong>問題点</strong>：「大文字・小文字・数字・記号を全て含む12文字以上」など、厳しすぎるとユーザーが離脱</p>
-            <p style={{ marginBottom: 0 }}><strong>対策</strong>：<strong>8文字以上+英数字</strong>程度に留める。または、強度メーター（弱い/普通/強い）を表示</p>
-          </div>
-
-          <h3>❌ 失敗例4: 送信後にまとめてエラー表示</h3>
-          <div className="code-example" style={{
-            backgroundColor: '#fff3cd',
-            border: '1px solid #ffc107',
-            padding: '1rem',
-            borderRadius: '4px',
-            marginBottom: '1rem'
-          }}>
-            <p style={{ marginTop: 0 }}><strong>問題点</strong>：全部入力してから「5箇所エラーです」と言われるとストレス</p>
-            <p style={{ marginBottom: 0 }}><strong>対策</strong>：<strong>リアルタイムバリデーション</strong>で、入力直後にエラーを表示</p>
-          </div>
-
-          <h3>❌ 失敗例5: 正規表現のミス</h3>
-          <details>
-            <summary>よくある正規表現の間違いを見る</summary>
-            <div className="code-example">
+          <details style={{ marginTop: '1.5rem' }}>
+            <summary style={{ cursor: 'pointer', fontWeight: 'bold' }}>正規表現の具体例を見る</summary>
+            <div className="code-example" style={{ marginTop: '1rem' }}>
               <pre>
                 <code className="language-javascript">{`// ❌ 悪い例：先頭と末尾のチェックがない
 const badPattern = /@/;

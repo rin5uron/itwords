@@ -1,4 +1,5 @@
 import Link from 'next/link'
+import Image from 'next/image'
 import { Metadata } from 'next'
 import StructuredData from '@/app/components/StructuredData'
 import TermHeader from '@/app/components/TermHeader'
@@ -12,11 +13,20 @@ export const metadata: Metadata = {
     title: 'ホワイトハッカーとは？仕事内容を体験デモで学ぶ',
     description: '善意のハッカー「ホワイトハッカー」の仕事を実践デモで体験。脆弱性診断の流れを学べます。',
     type: 'article',
+    images: [
+      {
+        url: '/images/terms/D259C20E-0772-4D3F-B6BF-4DA01517CECB.jpg',
+        width: 1200,
+        height: 630,
+        alt: 'ホワイトハッカーとブラックハッカーの対比 - サイバーセキュリティにおける防御と攻撃',
+      },
+    ],
   },
   twitter: {
     card: 'summary_large_image',
     title: 'ホワイトハッカーとは？仕事内容を体験デモで学ぶ',
     description: '善意のハッカー「ホワイトハッカー」の仕事を実践デモで体験。脆弱性診断の流れを学べます。',
+    images: ['/images/terms/D259C20E-0772-4D3F-B6BF-4DA01517CECB.jpg'],
   },
 }
 
@@ -56,6 +66,31 @@ export default function WhiteHatHackerPage() {
         reading="ホワイトハッカー / White Hat Hacker"
         icon="fas fa-user-shield"
       />
+
+      <div style={{
+        width: '100%',
+        maxWidth: '900px',
+        margin: '2rem auto',
+        borderRadius: '12px',
+        overflow: 'hidden',
+        boxShadow: '0 4px 12px rgba(0,0,0,0.1)',
+        maxHeight: '300px'
+      }}>
+        <Image
+          src="/images/terms/D259C20E-0772-4D3F-B6BF-4DA01517CECB.jpg"
+          alt="ホワイトハッカーとブラックハッカーの対比 - サイバーセキュリティにおける防御と攻撃"
+          width={1200}
+          height={630}
+          priority
+          style={{
+            width: '100%',
+            height: '100%',
+            objectFit: 'cover',
+            objectPosition: 'center',
+            display: 'block'
+          }}
+        />
+      </div>
 
       <main>
         <section>
