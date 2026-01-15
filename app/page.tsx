@@ -64,6 +64,27 @@ export default function Home() {
         <section id="new">
           <h3>新着用語</h3>
           <div className="card-container">
+            <div className="card" data-category="security">
+              <Link href="/terms/exploit" className="card-link">
+                <span className="category-tag">セキュリティ</span>
+                <h4>エクスプロイト</h4>
+                <p>脆弱性を悪用する攻撃コード。実際の攻撃シミュレーションで学べます。</p>
+              </Link>
+            </div>
+            <div className="card" data-category="security">
+              <Link href="/terms/white-hat-hacker" className="card-link">
+                <span className="category-tag">セキュリティ</span>
+                <h4>ホワイトハッカー</h4>
+                <p>善意のハッカー。脆弱性診断の仕事を体験デモで学べます。</p>
+              </Link>
+            </div>
+            <div className="card" data-category="security">
+              <Link href="/terms/cve" className="card-link">
+                <span className="category-tag">セキュリティ</span>
+                <h4>CVE</h4>
+                <p>脆弱性識別番号。ニュースで見る「CVE-2024-xxxxx」の意味とは？</p>
+              </Link>
+            </div>
             <div className="card" data-category="web">
               <Link href="/terms/validation" className="card-link">
                 <span className="category-tag">Web</span>
@@ -83,27 +104,6 @@ export default function Home() {
                 <span className="category-tag">セキュリティ</span>
                 <h4>ゼロデイ攻撃</h4>
                 <p>脆弱性が発見されてから修正される前に行われる危険なサイバー攻撃です。</p>
-              </Link>
-            </div>
-            <div className="card" data-category="security">
-              <Link href="/terms/aes" className="card-link">
-                <span className="category-tag">セキュリティ</span>
-                <h4>AES</h4>
-                <p>現代で最も広く使われている暗号化規格の一つです。</p>
-              </Link>
-            </div>
-            <div className="card" data-category="web">
-              <Link href="/terms/foolproof" className="card-link">
-                <span className="category-tag">Web</span>
-                <h4>フールプルーフ</h4>
-                <p>ユーザーの誤操作を防ぐための設計原則です。</p>
-              </Link>
-            </div>
-            <div className="card" data-category="web">
-              <Link href="/terms/localstorage" className="card-link">
-                <span className="category-tag">Web</span>
-                <h4>ローカルストレージ</h4>
-                <p>ブラウザにデータを保存できる仕組みです。実践デモ付き。</p>
               </Link>
             </div>
           </div>
