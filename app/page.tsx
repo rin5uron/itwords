@@ -44,6 +44,9 @@ export default function Home() {
                 <Link href="#new">新着用語</Link>
               </li>
               <li>
+                <Link href="#all-terms">すべての用語</Link>
+              </li>
+              <li>
                 <Link href="#about">制作背景</Link>
               </li>
             </ul>
@@ -61,6 +64,54 @@ export default function Home() {
       </header>
 
       <main>
+        <section id="popular">
+          <h3>人気の用語</h3>
+          <div className="card-container">
+            <div className="card" data-category="security">
+              <Link href="/terms/zero-day" className="card-link">
+                <span className="category-tag">セキュリティ</span>
+                <h4>ゼロデイ攻撃</h4>
+                <p>脆弱性が発見されてから修正される前に行われる危険なサイバー攻撃です。</p>
+              </Link>
+            </div>
+            <div className="card" data-category="security">
+              <Link href="/terms/aes" className="card-link">
+                <span className="category-tag">セキュリティ</span>
+                <h4>AES</h4>
+                <p>現代で最も広く使われている暗号化規格の一つです。</p>
+              </Link>
+            </div>
+            <div className="card" data-category="web">
+              <Link href="/terms/localstorage" className="card-link">
+                <span className="category-tag">Web</span>
+                <h4>ローカルストレージ</h4>
+                <p>ブラウザにデータを保存できる仕組みです。実践デモ付き。</p>
+              </Link>
+            </div>
+            <div className="card" data-category="web">
+              <Link href="/terms/api" className="card-link">
+                <span className="category-tag">Web</span>
+                <h4>API</h4>
+                <p>ソフトウェアやプログラムの機能を共有する仕組みのことです。</p>
+              </Link>
+            </div>
+            <div className="card" data-category="web">
+              <Link href="/terms/json" className="card-link">
+                <span className="category-tag">データ</span>
+                <h4>JSON</h4>
+                <p>JavaScriptのオブジェクト記法をベースにした軽量なデータ交換フォーマットです。</p>
+              </Link>
+            </div>
+            <div className="card" data-category="web">
+              <Link href="/terms/css" className="card-link">
+                <span className="category-tag">Web</span>
+                <h4>CSS</h4>
+                <p>Webページの見た目を整えるためのスタイルシート言語です。</p>
+              </Link>
+            </div>
+          </div>
+        </section>
+
         <section id="new">
           <h3>新着用語</h3>
           <div className="card-container">
@@ -99,31 +150,24 @@ export default function Home() {
                 <p>製造業から生まれた「うっかりミス」を防ぐ設計手法です。</p>
               </Link>
             </div>
-            <div className="card" data-category="security">
-              <Link href="/terms/zero-day" className="card-link">
-                <span className="category-tag">セキュリティ</span>
-                <h4>ゼロデイ攻撃</h4>
-                <p>脆弱性が発見されてから修正される前に行われる危険なサイバー攻撃です。</p>
+            <div className="card" data-category="web">
+              <Link href="/terms/foolproof" className="card-link">
+                <span className="category-tag">Web</span>
+                <h4>フールプルーフ</h4>
+                <p>ユーザーの誤操作を防ぐための設計原則です。</p>
               </Link>
             </div>
           </div>
         </section>
 
-        <section id="popular">
-          <h3>人気の用語</h3>
+        <section id="all-terms">
+          <h3>すべての用語</h3>
           <div className="card-container">
             <div className="card" data-category="web">
-              <Link href="/terms/api" className="card-link">
+              <Link href="/terms/html" className="card-link">
                 <span className="category-tag">Web</span>
-                <h4>API</h4>
-                <p>ソフトウェアやプログラムの機能を共有する仕組みのことです。</p>
-              </Link>
-            </div>
-            <div className="card" data-category="web">
-              <Link href="/terms/json" className="card-link">
-                <span className="category-tag">データ</span>
-                <h4>JSON</h4>
-                <p>JavaScriptのオブジェクト記法をベースにした軽量なデータ交換フォーマットです。</p>
+                <h4>HTML</h4>
+                <p>Webページの構造を作るマークアップ言語です。</p>
               </Link>
             </div>
             <div className="card" data-category="web">
@@ -131,6 +175,13 @@ export default function Home() {
                 <span className="category-tag">Web</span>
                 <h4>HTTP/HTTPS</h4>
                 <p>Webブラウザとサーバー間でデータをやり取りするための通信規約です。</p>
+              </Link>
+            </div>
+            <div className="card" data-category="web">
+              <Link href="/terms/javascript" className="card-link">
+                <span className="category-tag">Web</span>
+                <h4>JavaScript</h4>
+                <p>Webページに動きを付けるプログラミング言語です。</p>
               </Link>
             </div>
             <div className="card" data-category="web">
@@ -154,39 +205,6 @@ export default function Home() {
                 <p>ソースコードをバージョン管理し、世界中の開発者と共有できるプラットフォームです。</p>
               </Link>
             </div>
-          </div>
-        </section>
-
-        <section id="web-basics">
-          <h3>Web開発の基礎</h3>
-          <div className="card-container">
-            <div className="card" data-category="web">
-              <Link href="/terms/html" className="card-link">
-                <span className="category-tag">Web</span>
-                <h4>HTML</h4>
-                <p>Webページの構造を作るマークアップ言語です。</p>
-              </Link>
-            </div>
-            <div className="card" data-category="web">
-              <Link href="/terms/css" className="card-link">
-                <span className="category-tag">Web</span>
-                <h4>CSS</h4>
-                <p>Webページの見た目を整えるスタイルシート言語です。</p>
-              </Link>
-            </div>
-            <div className="card" data-category="web">
-              <Link href="/terms/javascript" className="card-link">
-                <span className="category-tag">Web</span>
-                <h4>JavaScript</h4>
-                <p>Webページに動きを付けるプログラミング言語です。</p>
-              </Link>
-            </div>
-          </div>
-        </section>
-
-        <section id="dev-tools">
-          <h3>開発ツール</h3>
-          <div className="card-container">
             <div className="card" data-category="tools">
               <Link href="/terms/npm" className="card-link">
                 <span className="category-tag">ツール</span>
@@ -199,6 +217,62 @@ export default function Home() {
                 <span className="category-tag">ツール</span>
                 <h4>Vercel</h4>
                 <p>Webサイトを簡単に公開できるホスティングサービスです。</p>
+              </Link>
+            </div>
+            <div className="card" data-category="web">
+              <Link href="/terms/webhook" className="card-link">
+                <span className="category-tag">Web</span>
+                <h4>Webhook</h4>
+                <p>イベント発生時に自動でデータを送信する仕組みです。</p>
+              </Link>
+            </div>
+            <div className="card" data-category="data">
+              <Link href="/terms/queue" className="card-link">
+                <span className="category-tag">データ</span>
+                <h4>Queue（キュー）</h4>
+                <p>先入れ先出し（FIFO）のデータ構造です。</p>
+              </Link>
+            </div>
+            <div className="card" data-category="data">
+              <Link href="/terms/stack" className="card-link">
+                <span className="category-tag">データ</span>
+                <h4>Stack（スタック）</h4>
+                <p>後入れ先出し（LIFO）のデータ構造です。</p>
+              </Link>
+            </div>
+            <div className="card" data-category="infrastructure">
+              <Link href="/terms/server" className="card-link">
+                <span className="category-tag">インフラ</span>
+                <h4>サーバー</h4>
+                <p>データやサービスを提供するコンピューターです。</p>
+              </Link>
+            </div>
+            <div className="card" data-category="infrastructure">
+              <Link href="/terms/ip-address" className="card-link">
+                <span className="category-tag">インフラ</span>
+                <h4>IPアドレス</h4>
+                <p>ネットワーク上の機器を識別する番号です。</p>
+              </Link>
+            </div>
+            <div className="card" data-category="infrastructure">
+              <Link href="/terms/domain" className="card-link">
+                <span className="category-tag">インフラ</span>
+                <h4>ドメイン</h4>
+                <p>Webサイトの住所となる文字列です。</p>
+              </Link>
+            </div>
+            <div className="card" data-category="infrastructure">
+              <Link href="/terms/dns" className="card-link">
+                <span className="category-tag">インフラ</span>
+                <h4>DNS</h4>
+                <p>ドメイン名をIPアドレスに変換する仕組みです。</p>
+              </Link>
+            </div>
+            <div className="card" data-category="infrastructure">
+              <Link href="/terms/hosting-service" className="card-link">
+                <span className="category-tag">インフラ</span>
+                <h4>ホスティングサービス</h4>
+                <p>Webサイトを公開するためのサーバーを提供するサービスです。</p>
               </Link>
             </div>
           </div>
