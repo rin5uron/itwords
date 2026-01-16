@@ -84,6 +84,13 @@ export default function CSSStepByStepDemo() {
     return code ? `.card {\n${code}\n}` : '/* スタイルなし */'
   }
 
+  const getHTMLCode = () => {
+    return `<div class="card">
+  <h2>こんにちは</h2>
+  <p>これはカードです</p>
+</div>`
+  }
+
   return (
     <div style={{ marginTop: '20px' }}>
       <div style={{
@@ -144,29 +151,96 @@ export default function CSSStepByStepDemo() {
           </button>
         </div>
 
+        {/* HTMLとCSSコード */}
+        <div style={{
+          display: 'grid',
+          gridTemplateColumns: '1fr 1fr',
+          gap: '15px',
+          marginBottom: '15px'
+        }}>
+          {/* HTMLコード */}
+          <div>
+            <div style={{
+              backgroundColor: '#fff3cd',
+              padding: '8px 12px',
+              borderRadius: '5px 5px 0 0',
+              border: '2px solid #ffc107',
+              borderBottom: 'none',
+              fontWeight: 'bold',
+              fontSize: '14px',
+              color: '#856404'
+            }}>
+              📄 HTML
+            </div>
+            <pre style={{
+              backgroundColor: '#2d2d2d',
+              color: '#f8f8f2',
+              padding: '15px',
+              borderRadius: '0 0 5px 5px',
+              border: '2px solid #ffc107',
+              margin: 0,
+              fontSize: '13px',
+              lineHeight: '1.6',
+              fontFamily: 'Consolas, Monaco, monospace',
+              whiteSpace: 'pre-wrap'
+            }}>
+              {getHTMLCode()}
+            </pre>
+          </div>
+
+          {/* CSSコード */}
+          <div>
+            <div style={{
+              backgroundColor: '#d1ecf1',
+              padding: '8px 12px',
+              borderRadius: '5px 5px 0 0',
+              border: '2px solid #17a2b8',
+              borderBottom: 'none',
+              fontWeight: 'bold',
+              fontSize: '14px',
+              color: '#0c5460'
+            }}>
+              🎨 CSS
+            </div>
+            <pre style={{
+              backgroundColor: '#2d2d2d',
+              color: '#f8f8f2',
+              padding: '15px',
+              borderRadius: '0 0 5px 5px',
+              border: '2px solid #17a2b8',
+              margin: 0,
+              fontSize: '13px',
+              lineHeight: '1.6',
+              fontFamily: 'Consolas, Monaco, monospace',
+              whiteSpace: 'pre-wrap'
+            }}>
+              {getAppliedCSSCode()}
+            </pre>
+          </div>
+        </div>
+
         {/* プレビュー */}
         <div style={{
-          backgroundColor: '#fff',
-          border: '2px solid #28a745',
+          backgroundColor: '#f8f9fa',
+          border: '2px solid #ddd',
           borderRadius: '8px',
           padding: '15px',
           marginBottom: '15px'
         }}>
           <div style={{
-            backgroundColor: '#d4edda',
+            backgroundColor: '#e9ecef',
             padding: '8px 12px',
             borderRadius: '5px',
-            border: '1px solid #28a745',
             marginBottom: '15px',
             fontWeight: 'bold',
             fontSize: '14px',
-            color: '#155724'
+            color: '#495057'
           }}>
-            ✨ プレビュー（HTML）
+            ✨ プレビュー
           </div>
 
           <div style={{
-            backgroundColor: '#f8f9fa',
+            backgroundColor: '#fff',
             padding: '20px',
             borderRadius: '5px',
             display: 'flex',
@@ -182,36 +256,6 @@ export default function CSSStepByStepDemo() {
               <p style={{ margin: 0, fontSize: '14px' }}>これはカードです</p>
             </div>
           </div>
-        </div>
-
-        {/* 適用されたCSSコード */}
-        <div style={{
-          backgroundColor: '#2d2d2d',
-          color: '#f8f8f2',
-          padding: '15px',
-          borderRadius: '8px',
-          marginBottom: '15px',
-          fontFamily: 'Consolas, Monaco, monospace',
-          fontSize: '13px',
-          lineHeight: '1.6',
-          position: 'relative'
-        }}>
-          <div style={{
-            position: 'absolute',
-            top: '10px',
-            right: '10px',
-            backgroundColor: '#17a2b8',
-            color: 'white',
-            padding: '4px 8px',
-            borderRadius: '3px',
-            fontSize: '11px',
-            fontWeight: 'bold'
-          }}>
-            CSS
-          </div>
-          <pre style={{ margin: 0, whiteSpace: 'pre-wrap' }}>
-            {getAppliedCSSCode()}
-          </pre>
         </div>
 
         {/* 説明エリア */}
