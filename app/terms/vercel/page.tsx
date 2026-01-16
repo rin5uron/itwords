@@ -2,8 +2,28 @@
 
 import Link from 'next/link'
 import { useState } from 'react'
+import StructuredData from '@/app/components/StructuredData'
 
 export default function VercelPage() {
+  const faqs = [
+    {
+      question: 'Vercelの読み方は？',
+      answer: 'Vercelは「ヴァーセル」と読みます。「バーセル」と読まれることもありますが、公式の発音は「ヴァーセル」です。',
+    },
+    {
+      question: 'Vercelは無料で使える？',
+      answer: 'はい、個人プロジェクトなら無料プラン（Hobby）で十分使えます。無制限のWebサイト、100GB/月の帯域幅、自動HTTPS、カスタムドメイン対応などが含まれます。',
+    },
+    {
+      question: 'VercelとNetlifyの違いは？',
+      answer: 'Vercelはフロントエンド全般に対応し、特にNext.jsに最適化されています。Netlifyは静的サイトに特化し、フォーム機能が充実しています。どちらも無料プランがありますが、Next.jsを使うならVercelが最適です。',
+    },
+    {
+      question: 'Vercelでデプロイにかかる時間は？',
+      answer: '小〜中規模のプロジェクトなら、数秒〜数分でデプロイが完了します。GitHubにpushすると自動的にビルド・デプロイが始まります。',
+    },
+  ]
+
   const [currentStep, setCurrentStep] = useState(0)
 
   const deploymentSteps = [
@@ -26,6 +46,15 @@ export default function VercelPage() {
 
   return (
     <div className="container">
+      <StructuredData type="FAQPage" faqs={faqs} />
+      <StructuredData
+        type="Article"
+        title="Vercel（ヴァーセル）とは？読み方から使い方まで初心者向けに解説"
+        description="Vercel（ヴァーセル）を初心者向けに解説。読み方、特徴、使い方、料金プランをデプロイステップのデモ付きで学べます。"
+        datePublished="2024-01-09"
+        dateModified="2026-01-16"
+      />
+
       <header>
         <h1><i className="fas fa-server"></i> Vercel</h1>
         <p className="reading">ヴァーセル</p>
@@ -182,6 +211,14 @@ export default function VercelPage() {
             <strong>💡 ポイント：</strong>
             個人の学習や趣味のプロジェクトなら、無料プランで十分です。
             このサイトも無料プランで運用しています！
+          </p>
+
+          <p className="note">
+            <strong>⚠️ 注意：</strong>
+            Vercelの料金プランは変更されることがあります。
+            最新の情報は<a href="https://vercel.com/pricing" target="_blank" rel="noopener noreferrer">公式サイト</a>で確認してください。
+            <br />
+            <small>（最終更新：2026年1月16日）</small>
           </p>
         </section>
 
