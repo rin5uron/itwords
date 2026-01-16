@@ -4,6 +4,7 @@ import Link from 'next/link'
 import StructuredData from '@/app/components/StructuredData'
 import TermHeader from '@/app/components/TermHeader'
 import ValidationDemo from '@/components/ValidationDemo'
+import TableOfContents from '@/app/components/TableOfContents'
 
 const metadata = {
   title: 'バリデーションとは？初心者向けにわかりやすく解説【実装例付き】 | 実践型IT用語辞典',
@@ -65,6 +66,8 @@ export default function ValidationPage() {
         reading="ばりでーしょん / Validation"
         icon="fas fa-check-circle"
       />
+
+      <TableOfContents />
 
       <main>
         <section>

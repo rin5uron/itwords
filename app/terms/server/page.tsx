@@ -6,6 +6,7 @@ import { useState } from 'react'
 import { Metadata } from 'next'
 import StructuredData from '@/app/components/StructuredData'
 import TermHeader from '@/app/components/TermHeader'
+import TableOfContents from '@/app/components/TableOfContents'
 
 export default function ServerPage() {
   const [currentStep, setCurrentStep] = useState(0)
@@ -63,6 +64,8 @@ export default function ServerPage() {
         reading="サーバー / Server"
         icon="fas fa-server"
       />
+
+      <TableOfContents />
 
       <div style={{
         width: '100%',

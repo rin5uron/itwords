@@ -2,6 +2,7 @@
 
 import Link from 'next/link'
 import { useState, useEffect } from 'react'
+import TableOfContents from '@/app/components/TableOfContents'
 
 export default function CookiePage() {
   const [cookieName, setCookieName] = useState('myTestCookie')
@@ -45,6 +46,8 @@ export default function CookiePage() {
         <h1><i className="fas fa-cookie-bite"></i> Cookie</h1>
         <p className="reading">クッキー</p>
       </header>
+
+      <TableOfContents />
 
       <main>
         <section>

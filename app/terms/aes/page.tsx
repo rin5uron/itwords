@@ -4,6 +4,7 @@ import { Metadata } from 'next'
 import StructuredData from '@/app/components/StructuredData'
 import TermHeader from '@/app/components/TermHeader'
 import AESDemo from '@/components/AESDemo'
+import TableOfContents from '@/app/components/TableOfContents'
 
 export const metadata: Metadata = {
   title: 'AES（Advanced Encryption Standard）とは？初心者向けにわかりやすく解説 | 実践型IT用語辞典',
@@ -82,6 +83,8 @@ export default function AESPage() {
         reading="エーイーエス / Advanced Encryption Standard"
         icon="fas fa-lock"
       />
+
+      <TableOfContents />
 
       <div style={{
         width: '100%',

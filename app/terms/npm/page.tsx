@@ -3,6 +3,7 @@
 import Link from 'next/link'
 import { useState } from 'react'
 import StructuredData from '@/app/components/StructuredData'
+import TableOfContents from '@/app/components/TableOfContents'
 
 export default function NpmPage() {
   const faqs = [
@@ -141,6 +142,8 @@ export default function NpmPage() {
         <h1><i className="fab fa-npm"></i> npm</h1>
         <p className="reading">エヌピーエム / Node Package Manager</p>
       </header>
+
+      <TableOfContents />
 
       <main>
         <section>

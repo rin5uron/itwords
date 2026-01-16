@@ -2,6 +2,7 @@ import Link from 'next/link'
 import type { Metadata } from 'next'
 import FoolProofDemo from '@/components/FoolProofDemo'
 import StructuredData from '@/app/components/StructuredData'
+import TableOfContents from '@/app/components/TableOfContents'
 
 export const metadata: Metadata = {
   title: 'フールプルーフとは？初心者向けにわかりやすく解説【実践デモ付き】 | 実践型IT用語辞典',
@@ -66,6 +67,8 @@ export default function FoolProofPage() {
         </h1>
         <p className="reading">ふーるぷるーふ / Fool Proof</p>
       </header>
+
+      <TableOfContents />
 
       <main>
         <section>

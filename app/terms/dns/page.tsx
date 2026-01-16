@@ -5,6 +5,7 @@ import Image from 'next/image'
 import { useState } from 'react'
 import StructuredData from '@/app/components/StructuredData'
 import TermHeader from '@/app/components/TermHeader'
+import TableOfContents from '@/app/components/TableOfContents'
 
 export default function DNSPage() {
   const [currentStep, setCurrentStep] = useState(0)
@@ -64,6 +65,8 @@ export default function DNSPage() {
         reading="ディーエヌエス / Domain Name System"
         icon="fas fa-book"
       />
+
+      <TableOfContents />
 
       <div style={{
         width: '100%',

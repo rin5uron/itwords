@@ -1,7 +1,9 @@
 import Link from 'next/link'
 import { Metadata } from 'next'
 import GitHubDemo from './GitHubDemo'
+import GitFlowDemo from './GitFlowDemo'
 import StructuredData from '@/app/components/StructuredData'
+import TableOfContents from '@/app/components/TableOfContents'
 
 export const metadata: Metadata = {
   title: 'GitHubとは？初心者向けにわかりやすく解説【実践デモ付き】 | 実践型IT用語辞典',
@@ -61,6 +63,8 @@ export default function GitHubPage() {
         <h1><i className="fab fa-github"></i> GitHub</h1>
         <p className="reading">ギットハブ</p>
       </header>
+
+      <TableOfContents />
 
       <main>
         <section>
@@ -218,6 +222,153 @@ git push origin main`}</code></pre>
           </div>
 
           <p>これで、あなたのコードがGitHub上に公開されます！</p>
+        </section>
+
+        <section>
+          <h2>Gitフローとプルリクエスト</h2>
+          <p>
+            チーム開発では、<strong>「Gitフロー」</strong>という開発の流れに従います。
+            これにより、複数人が同時に開発しても混乱せず、品質を保ちながら開発できます。
+          </p>
+
+          <h3>なぜGitフローが必要なのか？</h3>
+          <p>
+            もし全員が直接<code>main</code>ブランチに変更を加えたら、
+            どうなるでしょうか？
+          </p>
+          <ul>
+            <li>❌ <strong>動かないコード</strong>が本番に混入する</li>
+            <li>❌ <strong>他人の変更</strong>と衝突して壊れる</li>
+            <li>❌ <strong>誰の変更が原因</strong>でバグったか分からない</li>
+          </ul>
+
+          <p>
+            Gitフローを使えば、これらの問題を防げます！
+          </p>
+
+          <h3>基本的なGitフローの流れ</h3>
+          <ol>
+            <li>
+              <strong>mainブランチ（本番）</strong>: 常に動作する安定版のコード
+            </li>
+            <li>
+              <strong>ブランチを作成</strong>: 新機能開発用に<code>feature/login</code>などの名前でブランチを切る
+            </li>
+            <li>
+              <strong>開発＆コミット</strong>: ブランチ上で自由に開発・コミット
+            </li>
+            <li>
+              <strong>プッシュ</strong>: GitHubにブランチをアップロード
+            </li>
+            <li>
+              <strong>プルリクエスト（PR）作成</strong>: 「mainに統合してください」とお願い
+            </li>
+            <li>
+              <strong>コードレビュー</strong>: チームメンバーがコードを確認・承認
+            </li>
+            <li>
+              <strong>マージ</strong>: 問題なければmainブランチに統合される
+            </li>
+          </ol>
+
+          <GitFlowDemo />
+
+          <h3>プルリクエスト（PR）とは？</h3>
+          <p>
+            プルリクエストは、<strong>「この変更をmainに取り込んでください」とお願いする機能</strong>です。
+            単なる統合ではなく、<strong>レビューのプロセス</strong>が含まれます。
+          </p>
+
+          <h4>PRのメリット</h4>
+          <ul>
+            <li>✅ <strong>コードレビュー</strong>: 他の開発者が確認できる</li>
+            <li>✅ <strong>議論の場</strong>: コメントで「ここはこうした方が良い」と提案</li>
+            <li>✅ <strong>履歴が残る</strong>: なぜこの変更をしたのか記録される</li>
+            <li>✅ <strong>テスト自動化</strong>: PR作成時に自動テストを走らせられる</li>
+          </ul>
+
+          <h4>PRの作り方</h4>
+          <ol>
+            <li>GitHubのリポジトリページで「Pull requests」タブをクリック</li>
+            <li>「New pull request」をクリック</li>
+            <li>統合したいブランチ（例：<code>feature/login</code>）を選択</li>
+            <li>変更内容を説明するタイトルと本文を書く</li>
+            <li>「Create pull request」をクリック</li>
+          </ol>
+
+          <div className="code-example">
+            <pre><code>{`# PRのタイトル例
+feat: ユーザーログイン機能を追加
+
+# PRの説明例
+## 変更内容
+- ログインフォームのUI実装
+- JWT認証の実装
+- ログインAPIエンドポイント追加
+
+## テスト
+- [x] ログイン成功時のテスト
+- [x] ログイン失敗時のエラーハンドリング
+
+## スクリーンショット
+（画像を貼る）
+
+## 関連Issue
+Closes #123`}</code></pre>
+          </div>
+
+          <h4>コードレビューのポイント</h4>
+          <p>
+            PRを見る側（レビュアー）も重要な役割です：
+          </p>
+          <ul>
+            <li>🔍 <strong>ロジックは正しいか</strong>: バグがないか確認</li>
+            <li>🔍 <strong>読みやすいか</strong>: 他の人が理解できるコードか</li>
+            <li>🔍 <strong>テストはあるか</strong>: 動作確認ができるか</li>
+            <li>🔍 <strong>セキュリティリスクはないか</strong>: 脆弱性がないか</li>
+          </ul>
+
+          <p className="note">
+            <strong>💡 ポイント：</strong>
+            PRは「マージするかしないか」だけでなく、<strong>チームの学びの場</strong>でもあります。
+            新しいやり方を共有したり、ベストプラクティスを議論したりできます。
+          </p>
+
+          <h3>よくあるブランチ戦略</h3>
+
+          <div className="comparison-table">
+            <table>
+              <thead>
+                <tr>
+                  <th>戦略</th>
+                  <th>説明</th>
+                  <th>向いている規模</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td><strong>GitHub Flow</strong></td>
+                  <td>mainから直接featureブランチを切り、PRでマージ</td>
+                  <td>小〜中規模、頻繁デプロイ</td>
+                </tr>
+                <tr>
+                  <td><strong>Git Flow</strong></td>
+                  <td>main、develop、feature、releaseなど複数ブランチを使う</td>
+                  <td>大規模、リリースサイクルが明確</td>
+                </tr>
+                <tr>
+                  <td><strong>Trunk-based</strong></td>
+                  <td>mainブランチに直接コミット、短命なブランチのみ</td>
+                  <td>超高速開発、CI/CD完備</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+
+          <p>
+            初心者やスタートアップには<strong>GitHub Flow</strong>がおすすめです。
+            シンプルで理解しやすく、それでいて十分強力です。
+          </p>
         </section>
 
         <section>

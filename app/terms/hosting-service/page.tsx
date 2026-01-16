@@ -5,6 +5,7 @@ import { useState } from 'react'
 import { Metadata } from 'next'
 import StructuredData from '@/app/components/StructuredData'
 import TermHeader from '@/app/components/TermHeader'
+import TableOfContents from '@/app/components/TableOfContents'
 
 export default function HostingServicePage() {
   const [selectedType, setSelectedType] = useState<'shared' | 'vps' | 'cloud' | 'serverless'>('shared')
@@ -87,6 +88,8 @@ export default function HostingServicePage() {
         reading="ホスティングサービス / Hosting Service"
         icon="fas fa-cloud"
       />
+
+      <TableOfContents />
 
       <main>
         <section>

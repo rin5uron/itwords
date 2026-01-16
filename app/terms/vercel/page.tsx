@@ -3,6 +3,7 @@
 import Link from 'next/link'
 import { useState } from 'react'
 import StructuredData from '@/app/components/StructuredData'
+import TableOfContents from '@/app/components/TableOfContents'
 
 export default function VercelPage() {
   const faqs = [
@@ -59,6 +60,8 @@ export default function VercelPage() {
         <h1><i className="fas fa-server"></i> Vercel</h1>
         <p className="reading">ヴァーセル</p>
       </header>
+
+      <TableOfContents />
 
       <main>
         <section>
