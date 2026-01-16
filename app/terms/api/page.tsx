@@ -18,6 +18,10 @@ export const metadata: Metadata = {
 export default function APIPage() {
   const faqs = [
     {
+      question: 'APIの読み方は？',
+      answer: 'APIは「エーピーアイ」と読みます。まれに「アピ」や「エイピーアイ」と読まれることもありますが、一般的には「エーピーアイ」が標準です。Application Programming Interfaceの頭文字を取った略語です。',
+    },
+    {
       question: 'APIとは何ですか？',
       answer: 'API（Application Programming Interface）とは、ソフトウェアやWebサービスの機能を外部から利用するための窓口です。レストランのウェイターのように、利用者のリクエストを受け取り、サービス側に伝え、結果を返す役割を果たします。',
     },
@@ -43,7 +47,7 @@ export default function APIPage() {
         title="APIとは？初心者向けにわかりやすく解説"
         description="API（Application Programming Interface）を初心者向けに解説。レストランの例えでわかりやすく説明し、実際にGitHub APIを動かすデモで体験できます。"
         datePublished="2024-01-01"
-        dateModified="2024-01-07"
+        dateModified="2026-01-16"
       />
 
       <TermHeader

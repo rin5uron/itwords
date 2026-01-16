@@ -18,6 +18,10 @@ export const metadata: Metadata = {
 export default function GitHubPage() {
   const faqs = [
     {
+      question: 'GitHubの読み方は？',
+      answer: 'GitHubは「ギットハブ」と読みます。「ギット」+「ハブ」の組み合わせで、「ジットハブ」や「ギフハブ」ではありません。英語圏でも「ギットハブ」と発音されます。'
+    },
+    {
       question: 'GitHubとGitの違いは何ですか？',
       answer: 'Gitはバージョン管理システム（ソフトウェア）で、あなたのパソコン上で動作します。一方、GitHubはGitを使ったホスティングサービス（Webサービス）で、クラウド上でコードを保存・共有できます。Gitという道具を使って、GitHubという場所にコードを保存・共有するイメージです。'
     },
@@ -50,7 +54,7 @@ export default function GitHubPage() {
         title="GitHubとは？初心者向けにわかりやすく解説"
         description="GitHubは、ソースコードをバージョン管理し、世界中の開発者と共有・協力できるプラットフォームです。"
         datePublished="2024-01-01"
-        dateModified={new Date().toISOString().split('T')[0]}
+        dateModified="2026-01-16"
       />
 
       <header>

@@ -2,8 +2,28 @@
 
 import Link from 'next/link'
 import { useState } from 'react'
+import StructuredData from '@/app/components/StructuredData'
 
 export default function NpmPage() {
+  const faqs = [
+    {
+      question: 'npmの読み方は？',
+      answer: 'npmは「エヌピーエム」と読みます。Node Package Managerの略で、1文字ずつ「エヌ・ピー・エム」と発音します。「ヌプム」や「エンプム」とは読みません。',
+    },
+    {
+      question: 'npmとは何ですか？',
+      answer: 'npm（Node Package Manager）とは、JavaScriptのパッケージ（ライブラリ）を管理するツールです。世界中の開発者が作った200万以上のパッケージを簡単にインストール・管理できます。',
+    },
+    {
+      question: 'npmとyarnの違いは？',
+      answer: 'yarnはnpmの代替パッケージマネージャーで、より高速で安定したインストールを目指して開発されました。基本的な機能は同じですが、yarnの方が並列ダウンロードやキャッシュ機能が優れています。',
+    },
+    {
+      question: 'npm installとnpm ciの違いは？',
+      answer: 'npm installはpackage.jsonから依存関係を解決してインストールします。npm ciはpackage-lock.jsonを厳密に再現するため、CIや本番環境で使われます。npm ciの方が高速で確実です。',
+    },
+  ]
+
   const [selectedCommand, setSelectedCommand] = useState('')
   const [output, setOutput] = useState<string[]>([])
 
@@ -108,6 +128,15 @@ export default function NpmPage() {
 
   return (
     <div className="container">
+      <StructuredData type="FAQPage" faqs={faqs} />
+      <StructuredData
+        type="Article"
+        title="npm（エヌピーエム）とは？読み方・使い方を初心者向けに解説"
+        description="npm（エヌピーエム）を初心者向けに解説。読み方、使い方、主要コマンドを実践デモ付きで学べます。"
+        datePublished="2024-01-01"
+        dateModified="2026-01-16"
+      />
+
       <header>
         <h1><i className="fab fa-npm"></i> npm</h1>
         <p className="reading">エヌピーエム / Node Package Manager</p>

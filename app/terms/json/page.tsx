@@ -17,6 +17,10 @@ export const metadata: Metadata = {
 export default function JsonPage() {
   const faqs = [
     {
+      question: 'JSONの読み方は？',
+      answer: 'JSONは「ジェイソン」と読みます。JavaScript Object Notationの略で、「ジェーソン」や「ジェイエスオーエヌ」ではなく「ジェイソン」が一般的です。英語圏では「Jason（人名のジェイソン）」と同じ発音です。',
+    },
+    {
       question: 'JSONとは何ですか？',
       answer: 'JSON（JavaScript Object Notation）は、軽量で人間にも読みやすいデータ交換フォーマットです。キー（名前）と値のペアでデータを表現し、Web APIのレスポンスや設定ファイルなど幅広く利用されています。',
     },
@@ -42,7 +46,7 @@ export default function JsonPage() {
         title="JSONとは？初心者向けにわかりやすく解説"
         description="JSON（JavaScript Object Notation）を初心者向けに解説。Web APIやデータ保存で使われる軽量データ交換フォーマットを体験しながら学べます。"
         datePublished="2024-01-01"
-        dateModified="2024-01-07"
+        dateModified="2026-01-16"
       />
       <header>
         <h1>
