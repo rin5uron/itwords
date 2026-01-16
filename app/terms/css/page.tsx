@@ -5,8 +5,8 @@ import { useState } from 'react'
 import { Metadata } from 'next'
 import StructuredData from '@/app/components/StructuredData'
 import TermHeader from '@/app/components/TermHeader'
-import HTMLCSSFilesDemo from '@/components/HTMLCSSFilesDemo'
 import CSSStepByStepDemo from '@/components/CSSStepByStepDemo'
+import CSSWritingMethodsDemo from '@/components/CSSWritingMethodsDemo'
 
 export default function CSSPage() {
   const [cssCode, setCssCode] = useState('color: blue;\nfont-size: 24px;\nfont-weight: bold;')
@@ -96,12 +96,10 @@ export default function CSSPage() {
         </section>
 
         <section>
-          <h2>⚡ HTML と CSS の分離を体験してみよう</h2>
+          <h2>⚡ CSSを体験してみよう</h2>
           <p>
-            実際のファイル構成を見てみましょう👇
+            ボタンを押してCSSの効果を確認しましょう👇
           </p>
-
-          <HTMLCSSFilesDemo />
 
           <CSSStepByStepDemo />
         </section>
@@ -132,31 +130,11 @@ p {
 
         <section>
           <h2>CSSの3つの書き方</h2>
+          <p>
+            CSSには3つの書き方があります。ファイルの数や使い方の違いを見てみましょう👇
+          </p>
 
-          <h3>① 外部ファイル（一番おすすめ！）</h3>
-          <div className="code-example">
-            <pre><code className="language-html">{`<link rel="stylesheet" href="style.css">`}</code></pre>
-          </div>
-          <ul>
-            <li>✅ 複数ページで使い回せる</li>
-            <li>✅ 管理しやすい</li>
-            <li>✅ プロも使う方法</li>
-          </ul>
-
-          <h3>② &lt;style&gt;タグ（テスト用）</h3>
-          <div className="code-example">
-            <pre><code className="language-html">{`<style>
-  p { color: blue; }
-</style>`}</code></pre>
-          </div>
-          <p>⚠️ そのページだけに適用される</p>
-
-          <h3>③ style属性（ピンポイント用）</h3>
-          <div className="code-example">
-            <pre><code className="language-html">{`<p style="color: red;">この文字だけ赤くする</p>`}</code></pre>
-          </div>
-          <p>⚠️ <strong>その要素だけにスタイルを適用したいとき</strong>に使います。</p>
-          <p>⚠️ 全体で管理したいなら外部ファイル（①）を使いましょう。</p>
+          <CSSWritingMethodsDemo />
         </section>
 
         <section>
@@ -210,7 +188,8 @@ p {
         <section>
           <h2>実際にやってみよう：CSSスタイルエディタ</h2>
           <p>
-            下のエディタでCSSを編集して、テキストのスタイルをリアルタイムで変更できます！
+            下のエディタでCSSを編集して、テキストのスタイルをリアルタイムで変更できます！<br />
+            💡 上の「プロパティ」と「書き方」の項目を参考に書いてみてね
           </p>
 
           <div style={{
