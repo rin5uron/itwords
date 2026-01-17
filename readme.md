@@ -1,8 +1,12 @@
-# AI Agent Runbook for `itwords` Project
+# 実践型IT用語辞典 - itwords
 
-**This document is a runbook for a Generative AI agent to manage and extend the `itwords` project.**
+**このドキュメントは、AI（ClaudeやCursor）がこのプロジェクトを管理・拡張するためのガイドです。**
+
+<br />
 
 ---
+
+<br />
 
 ## 🎯 このサイトの本質
 
@@ -22,12 +26,26 @@
 - 自分が理解するまでのプロセスを言語化できる
 
 ### 🚀 Skill（どう届けるか）
-**SEOフレームワークを通して、みんなの元に伝える**
-- 伝わりやすい記事を書く（日々学びと改善）
-- 検索で見つけてもらえる構造を作る
-- データを見ながら、読者が求める内容に磨き上げる
+**学びながら、技術で届ける**
+
+1. **SEO** - 検索で見つけてもらえる構造を作る
+   - キーワード戦略、メタデータ最適化
+   - データを見ながら改善
+
+2. **Next.js** - サイト運営を通して学ぶ（学習中）
+   - 実装しながら理解を深める
+   - 毎日5分の小課題で継続
+
+3. **デザイン** - わかりやすさと親しみやすさを追求（学習中）
+   - 余白、配色、タイポグラフィ
+   - 実践を通して感覚を磨く
+
+<br />
+<br />
 
 ---
+
+<br />
 
 ## 🚀 毎日の作業
 
@@ -45,287 +63,102 @@
 
 **詳細**: [毎日の作業ルーチン](./docs/DAILY-ROUTINE.md)
 
----
-
-## 📜 Core Principles
-
-1.  **Clarity and Confirmation**: Before executing file modifications or potentially destructive commands, state your plan and ask for confirmation.
-2.  **Adherence to Structure**: Follow the existing project structure, conventions, and coding style. Use existing templates where available.
-3.  **Human-in-the-Loop**: For tasks requiring subjective judgment or access to external private data (e.g., Google Analytics, Search Console), you must prompt the Human for the necessary information.
-4.  **Tool Usage**: Use the available tools (`read_file`, `write_file`, `run_shell_command`, etc.) to interact with the file system. Do not hallucinate file contents.
+<br />
+<br />
 
 ---
 
-## ⚙️ Workflows
+<br />
 
-This section details the standard operating procedures for managing this project.
+## 📜 基本原則
 
-### WORKFLOW: Add New Term
+1. **明確化と確認**: ファイル変更や破壊的コマンドの実行前に、計画を伝えて確認を求める
+2. **構造への準拠**: 既存のプロジェクト構造、規約、コーディングスタイルに従う。テンプレートがあれば使用する
+3. **人間との連携**: 主観的判断や外部の非公開データ（Google Analytics、Search Console）が必要な場合は、必ず人間に情報提供を求める
+4. **ツールの使用**: ファイルシステムとのやり取りには利用可能なツールを使用する。ファイル内容を推測しない
 
-This workflow is initiated when the Human requests the creation of a new term page (e.g., "Create a page for the term 'Cache'").
-
-#### **PHASE 1: PLAN (Requires Human Input)**
-
-1.  **Receive Request**: Acknowledge the request from the Human.
-2.  **Clarify Keyword**: If the primary target keyword is not specified or is ambiguous, ask the Human for clarification. (e.g., "What is the primary keyword for this term?").
-3.  **Load Context**: Read the following file to understand the project's SEO best practices:
-    - `docs/templates/checklists/seo-check-sheet.md`
-
-#### **PHASE 2: DO (AI Execution)**
-
-1.  **Create Directory**: Create a new directory for the term within `app/terms/`. The directory name should be the term in kebab-case (e.g., `app/terms/cache-memory/`).
-2.  **Create Page File**: Create a `page.tsx` file inside the new directory. Use the contents of `docs/templates/page-template.tsx` as a structural reference.
-3.  **Populate Metadata**: Based on the primary keyword and the loaded SEO context, populate the `metadata` object within `page.tsx`. Ensure `title` and `description` are unique and optimized.
-4.  **Write Placeholder Content**: Add basic placeholder content and structure to the article body.
-5.  **Request Human Review**: Present the path to the created file to the Human. State that the basic structure is complete and ask the Human to review and add the main article content.
-6.  **Update Search Index**: After the Human confirms that the content has been added, execute the `build-index` command to update the site's search index.
-    ```bash
-    npm run build-index
-    ```
-7.  **Verify and Confirm**: Verify the command was successful and confirm completion to the Human.
-
-#### **PHASE 3: CHECK (AI-Human Interaction)**
-
-1.  **Initiate Check**: This phase is initiated by a Human prompt (e.g., "Check SEO for the term 'Cache'"). This should be done a few days after the page is published and indexed.
-2.  **Preliminary Search**: Use the `google_web_search` tool with the primary keyword to get an estimated, public search ranking.
-3.  **Prompt Human for Data**: Request precise data from Google Search Console. Use the following prompt format:
-    > "To accurately track performance, please provide the following from Google Search Console for the keyword **'[keyword]'**:
-    > - Current Rank:
-    > - Clicks:
-    > - Impressions:
-    > - CTR (%):"
-
-#### **PHASE 4: ACT (AI Execution)**
-
-1.  **Receive Data**: Await the data from the Human.
-2.  **Read Tracking Sheet**: Read the contents of `docs/templates/checklists/seo-keyword-tracking-sheet.md`.
-3.  **Append Record**: Append the new data as a new row in the appropriate table within the tracking sheet. Use the Markdown table format.
-4.  **Confirm Completion**: Inform the Human that the SEO tracking data has been recorded.
+<br />
+<br />
 
 ---
 
-### WORKFLOW: Periodic SEO Review
+<br />
 
-This workflow is initiated when the Human requests a periodic SEO check (e.g., "SEチェックする", "Perform an SEO check").
+## ⚙️ ワークフロー
 
-1.  **Acknowledge Request**: Acknowledge the SEO check request.
-2.  **Load Context**: Read the following files to gather all necessary information:
-    - `docs/templates/checklists/seo-check-sheet.md`
-    - `docs/templates/checklists/seo-keyword-tracking-sheet.md`
-3.  **Analyze Data**:
-    - Summarize the current performance based on the `seo-keyword-tracking-sheet.md`. Identify:
-        - Top 3 performing keywords (by clicks or rank).
-        - Any keywords that have significantly dropped in rank.
-        - Keywords with high impressions but low CTR.
-4.  **Generate Suggestions**:
-    - Based on the analysis and the best practices from `seo-check-sheet.md`, generate 1-3 concrete, actionable suggestions for improvement.
-    - **Example Suggestion**: "The keyword 'API とは' has high impressions but a low CTR of [X]%. According to the SEO checklist, improving the `description` metadata can increase clicks. I suggest updating the description for `/terms/api/page.tsx` to be more compelling."
-5.  **Present Findings**: Report the summary of the analysis and the actionable suggestions to the Human.
+### WORKFLOW: 新規用語ページ追加
 
----
+人間が新しい用語ページの作成を依頼した場合（例：「Cacheという用語のページを作成して」）
 
-## 📂 Project Structure
+#### **PHASE 1: 計画（人間とのやり取りが必要）**
 
-### Documentation
-- **`docs/`**: Project documentation
-  - **`docs/ideas/`**: Planning and ideation documents
-    - `infrastructure-terms-plan.md`: Plan for DNS, Server, Hosting, Domain, IP Address pages with relationship mapping
-  - **`docs/templates/`**: Templates for content creation
-    - `page-template.tsx`: Template for term pages
-    - `checklists/`: SEO and tracking templates
-  - **`docs/image-generation-*.md`**: Image generation workflows and rules
+1. **リクエスト確認**: 人間からのリクエストを確認
+2. **キーワード明確化**: 主要キーワードが不明確な場合は質問する
+3. **コンテキスト読み込み**: SEOベストプラクティスを理解するため以下を読む
+   - `docs/templates/checklists/seo-check-sheet.md`
 
-### Pages
-- **`app/terms/`**: Term definition pages
-  - Each term has its own directory (e.g., `app/terms/api/`)
-  - Each directory contains a `page.tsx` file
-  - Hero images stored in `public/images/terms/`
+#### **PHASE 2: 実行（AI実行）**
 
----
-
-### WORKFLOW: SEO Keyword Strategy Enhancement
-
-This workflow is initiated when the Human requests SEO improvement (e.g., "SEO強化したい", "SEO 1位を取りたい").
-
-#### **PHASE 1: LOAD STRATEGY**
-
-1. **Read SEO Strategy Document**: Load the current keyword strategy and tracking sheet:
-   - `docs/seo-keyword-strategy.md`
-2. **Identify Target Keywords**: Review the priority list and identify which keyword(s) to focus on.
-
-#### **PHASE 2: ANALYZE CURRENT STATE**
-
-1. **Review Target Page**: Read the current page content (`app/terms/{term-name}/page.tsx`)
-2. **Check Current Metrics**: If available, review:
-   - Current search ranking
-   - Click-through rate
-   - Impressions
-   - Content word count
-3. **Competitive Analysis**: Perform web searches to understand:
-   - What competitors are ranking for
-   - Content gaps in current page
-   - Unique value proposition opportunities
-
-#### **PHASE 3: PLAN ENHANCEMENTS**
-
-Based on the SEO checklist in `docs/seo-keyword-strategy.md`, create an enhancement plan that includes:
-
-1. **Content Expansion**:
-   - Add more real-life examples (target: 5+)
-   - Expand explanations (target: 3000+ words for #1 ranking)
-   - Add comparison tables
-   - Include code examples or interactive demos
-
-2. **Technical SEO**:
-   - Ensure metadata is optimized
-   - Add/update hero image
-   - Implement structured data (Article + FAQ)
-   - Add internal links (3+ related pages)
-
-3. **User Experience**:
-   - Add interactive demos
-   - Include visual diagrams
-   - Improve readability
-
-#### **PHASE 4: IMPLEMENT ENHANCEMENTS**
-
-1. **Update Content**: Edit the page with planned enhancements
-2. **Add Images**: If hero image is needed:
-   - Propose image concept to Human
-   - Wait for Human to generate/provide image
-   - Implement image in page
-3. **Update Metadata**: Ensure all SEO metadata is optimized
-4. **Add Internal Links**: Link to/from related pages
-5. **Update Search Index**: Run `npm run build-index`
-
-#### **PHASE 5: TRACK & VERIFY**
-
-1. **Update Strategy Document**: Record the enhancement in `docs/seo-keyword-strategy.md`:
-   - Update "最終更新日" (last updated date)
-   - Change status to appropriate value
-   - Add notes about what was improved
-
-2. **Commit Changes**: Create a commit with clear description of SEO improvements
-
-3. **Set Reminder**: Inform Human to check rankings in 2-4 weeks
-
-#### **EXAMPLE ENHANCEMENT FLOW**
-
-**User**: "SEO強化したい"
-
-**Assistant Actions**:
-1. Read `docs/seo-keyword-strategy.md`
-2. Identify top priority keyword (e.g., "フールプルーフ とは")
-3. Read current page `/app/terms/foolproof/page.tsx`
-4. Perform competitive analysis via web search
-5. Propose enhancement plan:
-   - Add 10 real-life examples
-   - Expand from 200 to 500+ lines
-   - Add 3 interactive demos
-   - Add comparison table (フールプルーフ vs フェイルセーフ)
-   - Add hero image
-6. Implement all enhancements
-7. Update `docs/seo-keyword-strategy.md`
-8. Commit and push changes
-
-#### **KEY METRICS FOR SUCCESS**
-
-For achieving #1 ranking:
-- Word count: 3000+ characters (Japanese)
-- Real-life examples: 5+
-- Interactive demos: 1+
-- Images/diagrams: 3+
-- Internal links: 3+
-- FAQ structured data: 3-5 questions
-- Code examples: At least 1 working example
-
----
-
-### WORKFLOW: Generate Hero Image for Term Page
-
-This workflow is initiated when the Human requests image generation (e.g., "画像生成して", "Generate an image for [term]").
-
-#### **PHASE 1: LOAD RULES**
-
-1. **Read Image Generation Workflow**: Load the workflow rules:
-   - `docs/image-generation-claude-workflow.md`
-2. **Read DALL-E 3 Rules**: Load the DALL-E 3 project rules:
-   - `docs/image-generation-dalle3-rules.md`
-
-#### **PHASE 2: UNDERSTAND THE TERM**
-
-1. **Read Term Page**: Read `app/terms/{term-name}/page.tsx` to understand the concept
-2. **Confirm Understanding**: Ask the Human to confirm your understanding of the term
-
-#### **PHASE 3: PROPOSE SYMBOLS**
-
-1. **Generate Symbol Proposal**: Propose 3 visual symbols that represent the term
-2. **Suggest Color Scheme**: Propose base color (blue tones) and accent colors
-3. **Describe Atmosphere**: Suggest the mood/tone of the image
-4. **Request Approval**: Wait for Human confirmation or feedback
-
-#### **PHASE 4: CREATE DALL-E 3 PROMPT**
-
-1. **Generate Prompt**: Using the template from `image-generation-dalle3-rules.md`, create a detailed DALL-E 3 prompt
-2. **Include Required Elements**:
-   - Size: 1792x1024px
-   - Main character: Japanese woman, 20s, brown shoulder-length hair, casual white/pastel clothing, laptop
-   - Background: Blue gradient, simple, digital theme
-   - Symbols: Maximum 3, as approved
-   - Style: Anime/manga style, soft lighting, professional but approachable
-   - Prohibition: NO text, NO letters, NO words
-3. **Present Prompt**: Show the complete prompt to the Human with a checklist
-
-#### **PHASE 5: AWAIT IMAGE GENERATION**
-
-1. **Instruct Human**: Ask the Human to:
-   - Generate the image using DALL-E 3
-   - Save to `images/{term-name}-hero.png`
-   - Confirm when ready
-
-#### **PHASE 6: IMPLEMENT IMAGE**
-
-1. **Copy to Public**: Copy image from `images/` to `public/images/terms/`
-2. **Update Page File**: Modify `app/terms/{term-name}/page.tsx`:
-   - Add `import Image from 'next/image'`
-   - Add OGP metadata with image
-   - Add hero image component after TermHeader
-3. **Use Standard Styling**:
-   ```tsx
-   <div style={{
-     width: '100%',
-     maxWidth: '900px',
-     margin: '2rem auto',
-     borderRadius: '12px',
-     overflow: 'hidden',
-     boxShadow: '0 4px 12px rgba(0,0,0,0.1)',
-     maxHeight: '300px'
-   }}>
-     <Image
-       src="/images/terms/{term-name}-hero.png"
-       alt="{term description}"
-       width={1200}
-       height={630}
-       priority
-       style={{
-         width: '100%',
-         height: '100%',
-         objectFit: 'cover',
-         objectPosition: 'center',
-         display: 'block'
-       }}
-     />
-   </div>
+1. **ディレクトリ作成**: `app/terms/`内に新ディレクトリを作成（kebab-case、例：`app/terms/cache-memory/`）
+2. **ページファイル作成**: 新ディレクトリ内に`page.tsx`を作成。`docs/templates/page-template.tsx`を参考にする
+3. **メタデータ入力**: 主要キーワードとSEOコンテキストに基づいて`page.tsx`の`metadata`オブジェクトを入力。`title`と`description`をユニークに最適化
+4. **プレースホルダーコンテンツ**: 基本的なプレースホルダーコンテンツと構造を追加
+5. **人間にレビュー依頼**: 作成したファイルのパスを提示。基本構造が完成したことを伝え、本文コンテンツ追加のレビューを依頼
+6. **検索インデックス更新**: 人間がコンテンツ追加を確認したら、検索インデックスを更新
+   ```bash
+   npm run build-index
    ```
-4. **Confirm Completion**: Inform the Human that implementation is complete and provide the local dev URL
+7. **確認と完了報告**: コマンド成功を確認し、人間に完了を報告
 
-#### **SPECIAL CASES**
+<br />
 
-- **Multiple Characters**: Remind the Human that only the main character (brown-haired woman) should have a visible face. Others must be back-facing or silhouettes.
-- **Complex Diagrams**: Suggest simplification to max 3 symbols/icons
-- **Text Requests**: Firmly state that NO text is allowed due to DALL-E 3 limitations
+#### **PHASE 3: SEOチェック（AI-人間連携）**
+
+1. **チェック開始**: 人間からのプロンプト（例：「Cacheという用語のSEOチェックをして」）で開始。ページ公開・インデックス後数日後に実施
+2. **予備検索**: `google_web_search`ツールで主要キーワードを検索し、公開検索ランキングを推定
+3. **人間にデータ依頼**: Google Search Consoleから正確なデータを要求
+   > 「正確にパフォーマンスを追跡するため、Google Search Consoleからキーワード **'[keyword]'** の以下のデータを提供してください：
+   > - 現在のランク:
+   > - クリック数:
+   > - インプレッション数:
+   > - CTR (%):"
+
+<br />
+
+#### **PHASE 4: データ記録（AI実行）**
+
+1. **データ受信**: 人間からのデータを待つ
+2. **トラッキングシート読み込み**: `docs/templates/checklists/seo-keyword-tracking-sheet.md`を読む
+3. **レコード追記**: 新データをMarkdownテーブル形式で適切なテーブルに新行として追記
+4. **完了確認**: SEOトラッキングデータが記録されたことを人間に通知
+
+<br />
+<br />
 
 ---
+
+<br />
+
+## 📂 プロジェクト構造
+
+### ドキュメント
+- **`docs/`**: プロジェクトドキュメント
+  - **`docs/ideas/`**: 計画・アイデアドキュメント
+  - **`docs/templates/`**: コンテンツ作成テンプレート
+  - **`docs/image-generation-*.md`**: 画像生成ワークフローとルール
+
+### ページ
+- **`app/terms/`**: 用語定義ページ
+  - 各用語は独自のディレクトリ（例：`app/terms/api/`）
+  - 各ディレクトリに`page.tsx`を含む
+  - ヒーロー画像は`public/images/terms/`に保存
+
+<br />
+<br />
+
+---
+
+<br />
 
 ## 📚 全ドキュメント一覧
 
@@ -361,4 +194,9 @@ This workflow is initiated when the Human requests image generation (e.g., "画�
 ### ログ・記録
 - [プロセスログ](./docs/process-log.md) - 実装・修正の履歴
 
+<br />
+<br />
+
 ---
+
+**最終更新**: 2026-01-17
