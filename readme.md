@@ -4,6 +4,49 @@
 
 ---
 
+## 🎯 このサイトの本質
+
+### 💡 Will（やりたいこと・使命）
+**門外漢でアレルギーだった人間が、IT業界の楽しさを伝える**
+- ゼロからIT世界に入った経験を活かす
+- 勉強している人や小中高生に「諦めないでほしい」と希望を届ける
+
+### 🎯 Need（社会のニーズ）
+**文字と難しい言葉だらけの世界で、本当に初心者向けの教材が少ない**
+- Wikipedia的な難解な説明しかない
+- 小学生や中学生でも理解できる教材がほとんどない
+
+### ⚙️ Can（あなたができること）
+**学んだIT知識を、わかりやすくアウトプットする**
+- 門外漢だった視点で「本当につまずくポイント」が分かる
+- 自分が理解するまでのプロセスを言語化できる
+
+### 🚀 Skill（どう届けるか）
+**SEOフレームワークを通して、みんなの元に伝える**
+- 伝わりやすい記事を書く（日々学びと改善）
+- 検索で見つけてもらえる構造を作る
+- データを見ながら、読者が求める内容に磨き上げる
+
+---
+
+## 🚀 毎日の作業
+
+### 30分チャレンジを開始
+
+```
+今日の作業を開始します
+```
+
+このコマンドで以下が自動実行されます：
+1. **データ分析（5分）** - Search Console/Analytics確認、Issue提案
+2. **用語ページ改善（10分）** - 既存用語ページ1本を改善
+3. **新規用語ページ（10分）** - 新しい用語ページを1本作成
+4. **Next.js課題（5分）** - 学習項目を1つ実装
+
+**詳細**: [毎日の作業ルーチン](./docs/DAILY-ROUTINE.md)
+
+---
+
 ## 📜 Core Principles
 
 1.  **Clarity and Confirmation**: Before executing file modifications or potentially destructive commands, state your plan and ask for confirmation.
@@ -281,5 +324,41 @@ This workflow is initiated when the Human requests image generation (e.g., "画�
 - **Multiple Characters**: Remind the Human that only the main character (brown-haired woman) should have a visible face. Others must be back-facing or silhouettes.
 - **Complex Diagrams**: Suggest simplification to max 3 symbols/icons
 - **Text Requests**: Firmly state that NO text is allowed due to DALL-E 3 limitations
+
+---
+
+## 📚 全ドキュメント一覧
+
+### 運用・ワークフロー
+- [毎日の作業ルーチン](./docs/DAILY-ROUTINE.md) - 30分チャレンジの詳細
+- [画像生成ワークフロー](./docs/image-generation-claude-workflow.md) - AI補助による画像生成手順
+- [DALL-E 3ルール](./docs/image-generation-dalle3-rules.md) - 画像生成プロジェクトルール
+
+### プロジェクト概要
+- [ビジョン](./docs/vision.md) - サイトのコンセプト・ペルソナ
+- [技術仕様](./docs/spec.md) - ディレクトリ構成・CSS設計
+- [エラーログ](./docs/error.md) - トラブルシューティング履歴
+
+### SEO・収益化
+- [SEOキーワード戦略](./docs/seo-keyword-strategy.md) - キーワード優先度とトラッキング
+- [全ページSEO戦略](./docs/all-pages-seo-strategy.md) - ページ別SEO対策
+- [AdSense申請ガイド](./docs/adsense-application-guide.md) - 収益化準備
+- [AdSense要件チェック](./docs/adsense-requirement-check.md) - 申請前チェックリスト
+
+### 学習管理
+- [Next.js学習進捗](./docs/learning/nextjs-progress.md) - 学習項目と進捗状況
+
+### テンプレート
+- [用語ページテンプレート](./docs/templates/page-template.tsx) - 新規ページ作成時の雛形
+- [SEOチェックシート](./docs/templates/checklists/seo-check-sheet.md) - SEO品質確認
+- [SEOトラッキングシート](./docs/templates/checklists/seo-keyword-tracking-sheet.md) - キーワード追跡
+
+### フェーズ管理
+- [コンテンツフェーズ](./docs/phases/content-phase.md) - 用語ページ作成進捗
+- [SEOロードマップ](./docs/phases/seo-roadmap.md) - SEO施策の段階的実装
+- [AdSenseフェーズ](./docs/phases/phase2-adsense.md) - 収益化計画
+
+### ログ・記録
+- [プロセスログ](./docs/process-log.md) - 実装・修正の履歴
 
 ---
