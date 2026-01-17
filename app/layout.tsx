@@ -28,6 +28,14 @@ export const metadata: Metadata = {
     type: 'website',
     locale: 'ja_JP',
     url: 'https://itwords.jp',
+    images: [
+      {
+        url: 'https://itwords.jp/icon.png',
+        width: 1200,
+        height: 630,
+        alt: 'IT用語辞典',
+      },
+    ],
   },
   twitter: {
     card: 'summary_large_image',
@@ -36,6 +44,17 @@ export const metadata: Metadata = {
   },
   alternates: {
     canonical: 'https://itwords.jp',
+  },
+  icons: {
+    icon: [
+      { url: '/icon.png', sizes: '32x32', type: 'image/png' },
+      { url: '/icon.png', sizes: '96x96', type: 'image/png' },
+      { url: '/icon.png', sizes: '192x192', type: 'image/png' },
+    ],
+    apple: [
+      { url: '/icon.png', sizes: '180x180', type: 'image/png' },
+    ],
+    shortcut: '/icon.ico',
   },
 }
 

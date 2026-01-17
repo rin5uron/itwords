@@ -2,6 +2,8 @@ import Link from 'next/link'
 import type { Metadata } from 'next'
 import LocalStorageDemo from '@/components/LocalStorageDemo'
 import StructuredData from '@/app/components/StructuredData'
+import TermHeader from '@/app/components/TermHeader'
+import FAQAccordion from '@/app/components/FAQAccordion'
 
 export const metadata: Metadata = {
   title: 'ローカルストレージとは？初心者向けにわかりやすく解説【実践デモ付き】 | 実践型IT用語辞典',
@@ -76,12 +78,11 @@ export default function LocalStoragePage() {
         datePublished="2024-01-07"
         dateModified="2026-01-07"
       />
-      <header>
-        <h1>
-          <i className="fas fa-database"></i> ローカルストレージ
-        </h1>
-        <p className="reading">ろーかるすとれーじ / localStorage</p>
-      </header>
+      <TermHeader
+        termName="ローカルストレージ"
+        reading="ろーかるすとれーじ / localStorage"
+        icon="fas fa-database"
+      />
 
       <main>
         <section>
@@ -92,6 +93,15 @@ export default function LocalStoragePage() {
             JavaScriptからアクセスできて、
             <strong>ページを閉じても情報が残る</strong>のが特徴。
           </p>
+
+          {/* 体験デモを概要の直下に配置 */}
+          <div style={{ marginTop: '30px', marginBottom: '30px' }}>
+            <h3>ローカルストレージの仕組みを体験してみよう</h3>
+            <p>
+              下のデモでローカルストレージの動作を体験できます。実際に手を動かすことで、「ページを閉じてもデータが残る」仕組みが理解しやすくなります。
+            </p>
+            <LocalStorageDemo />
+          </div>
         </section>
 
         <section>
@@ -109,35 +119,6 @@ export default function LocalStoragePage() {
           </ul>
         </section>
 
-        <section>
-          <h2>体験してみよう</h2>
-          <p>
-            下のデモでローカルストレージの動作を体験できます。実際に手を動かすことで、「ページを閉じてもデータが残る」仕組みが理解しやすくなります。
-          </p>
-
-          <h3>デモの使い方</h3>
-          <ol>
-            <li><strong>名前とメールアドレスを入力</strong>: 好きな情報を入力してください</li>
-            <li><strong>「保存」ボタンをクリック</strong>: ローカルストレージにデータが保存されます</li>
-            <li><strong>ページを更新（F5キーまたは再読み込み）</strong>: 入力した情報が残っていることを確認</li>
-            <li><strong>「削除」ボタンをクリック</strong>: ローカルストレージからデータが消えます</li>
-          </ol>
-
-          <p>
-            <strong>ポイント</strong>: ローカルストレージに保存されたデータは、ブラウザを閉じても、
-            PCを再起動しても残り続けます。手動で削除するか、ブラウザのキャッシュをクリアしない限り永続的に保存されます。
-          </p>
-
-          <LocalStorageDemo />
-
-          <h3>デモから学べること</h3>
-          <ul>
-            <li>保存したデータがページ更新後も残ること</li>
-            <li>裏側でJSONに変換して保存されていること</li>
-            <li>削除操作で簡単にデータを消せること</li>
-            <li>ローカルストレージはブラウザごと、ドメインごとに独立していること</li>
-          </ul>
-        </section>
 
         <section>
           <h2>日常生活でのローカルストレージの例</h2>
@@ -253,12 +234,9 @@ console.log(savedUser.name); // "山田"`}</code>
             </table>
           </div>
         </section>
-      </main>
 
-      <footer className="footer-nav">
-        <Link href="/">トップページに戻る</Link>
-        <p>&copy; 2026 itwords - 実践型IT用語辞典</p>
-      </footer>
+        <FAQAccordion faqs={faqs} />
+      </main>
     </div>
   )
 }

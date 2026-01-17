@@ -4,6 +4,8 @@ import Link from 'next/link'
 import { useState } from 'react'
 import StructuredData from '@/app/components/StructuredData'
 import TableOfContents from '@/app/components/TableOfContents'
+import TermHeader from '@/app/components/TermHeader'
+import FAQAccordion from '@/app/components/FAQAccordion'
 
 export default function NpmPage() {
   const faqs = [
@@ -137,11 +139,11 @@ export default function NpmPage() {
         datePublished="2024-01-01"
         dateModified="2026-01-16"
       />
-
-      <header>
-        <h1><i className="fab fa-npm"></i> npm</h1>
-        <p className="reading">エヌピーエム / Node Package Manager</p>
-      </header>
+      <TermHeader
+        termName="npm"
+        reading="エヌピーエム / Node Package Manager"
+        icon="fab fa-npm"
+      />
 
       <TableOfContents />
 
@@ -163,6 +165,91 @@ export default function NpmPage() {
             npmは、そういった<strong>便利なパッケージを簡単にインストール・管理できる仕組み</strong>を提供してくれます。
             コマンド一つで、世界中の開発者が作った200万以上のパッケージを利用できるのです。
           </p>
+
+          {/* 体験デモを概要の直下に配置 */}
+          <div style={{ marginTop: '30px', marginBottom: '30px' }}>
+            <h3>npmコマンドを体験してみよう</h3>
+            <p>
+              よく使うnpmコマンドを選んで、実行結果を確認できます。
+              実際に手を動かすことで、npmの動作が理解しやすくなります。
+            </p>
+            <div style={{
+              border: '2px solid #007bff',
+              borderRadius: '8px',
+              padding: '20px',
+              marginTop: '20px',
+              backgroundColor: '#f8f9fa'
+            }}>
+              <h3>コマンドを選択して実行</h3>
+              <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(180px, 1fr))', gap: '10px', marginTop: '15px' }}>
+                {npmCommands.map((cmd) => (
+                  <button
+                    key={cmd.name}
+                    onClick={() => runCommand(cmd)}
+                    style={{
+                      padding: '12px 15px',
+                      fontSize: '13px',
+                      backgroundColor: selectedCommand === cmd.name ? cmd.color : '#fff',
+                      color: selectedCommand === cmd.name ? '#fff' : cmd.color,
+                      border: `2px solid ${cmd.color}`,
+                      borderRadius: '5px',
+                      cursor: 'pointer',
+                      transition: 'all 0.3s',
+                      fontWeight: 'bold',
+                      fontFamily: 'monospace',
+                      textAlign: 'left'
+                    }}
+                  >
+                    <div style={{ fontSize: '14px', marginBottom: '5px' }}>{cmd.name}</div>
+                    <div style={{
+                      fontSize: '11px',
+                      opacity: selectedCommand === cmd.name ? 0.9 : 0.7,
+                      fontFamily: 'sans-serif',
+                      fontWeight: 'normal'
+                    }}>
+                      {cmd.description}
+                    </div>
+                  </button>
+                ))}
+              </div>
+
+              <div style={{
+                marginTop: '20px',
+                backgroundColor: '#282c34',
+                color: '#abb2bf',
+                padding: '20px',
+                borderRadius: '8px',
+                fontFamily: 'monospace',
+                fontSize: '14px',
+                minHeight: '200px',
+                maxHeight: '400px',
+                overflow: 'auto'
+              }}>
+                {output.length === 0 ? (
+                  <div style={{ color: '#6c757d' }}>
+                    $ ターミナル待機中...<br />
+                    <br />
+                    ↑ コマンドを選択して実行してください
+                  </div>
+                ) : (
+                  output.map((line, index) => (
+                    <div key={index} style={{ marginBottom: '4px' }}>
+                      {line}
+                    </div>
+                  ))
+                )}
+                {output.length > 0 && output.length === npmCommands.find(c => c.name === selectedCommand)?.output.length && (
+                  <div style={{ marginTop: '10px', color: '#28a745' }}>
+                    $<span style={{ animation: 'blink 1s infinite' }}>_</span>
+                  </div>
+                )}
+              </div>
+
+              <p style={{ marginTop: '15px', fontSize: '14px', color: '#6c757d' }}>
+                💡 これらのコマンドは実際の開発でよく使われます。コマンドを選ぶと、ターミナルでの実行結果をシミュレートします！
+              </p>
+            </div>
+          </div>
         </section>
 
         <section>
@@ -482,90 +569,6 @@ const today = format(new Date(), 'yyyy-MM-dd')`}</code></pre>
           </div>
         </section>
 
-        <section>
-          <h2>実際にやってみよう：npmコマンド実行シミュレーター</h2>
-          <p>
-            よく使うnpmコマンドを選んで、実行結果を確認してみましょう！
-          </p>
-
-          <div style={{
-            border: '2px solid #007bff',
-            borderRadius: '8px',
-            padding: '20px',
-            marginTop: '20px',
-            backgroundColor: '#f8f9fa'
-          }}>
-            <h3>コマンドを選択して実行</h3>
-            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(180px, 1fr))', gap: '10px', marginTop: '15px' }}>
-              {npmCommands.map((cmd) => (
-                <button
-                  key={cmd.name}
-                  onClick={() => runCommand(cmd)}
-                  style={{
-                    padding: '12px 15px',
-                    fontSize: '13px',
-                    backgroundColor: selectedCommand === cmd.name ? cmd.color : '#fff',
-                    color: selectedCommand === cmd.name ? '#fff' : cmd.color,
-                    border: `2px solid ${cmd.color}`,
-                    borderRadius: '5px',
-                    cursor: 'pointer',
-                    transition: 'all 0.3s',
-                    fontWeight: 'bold',
-                    fontFamily: 'monospace',
-                    textAlign: 'left'
-                  }}
-                >
-                  <div style={{ fontSize: '14px', marginBottom: '5px' }}>{cmd.name}</div>
-                  <div style={{
-                    fontSize: '11px',
-                    opacity: selectedCommand === cmd.name ? 0.9 : 0.7,
-                    fontFamily: 'sans-serif',
-                    fontWeight: 'normal'
-                  }}>
-                    {cmd.description}
-                  </div>
-                </button>
-              ))}
-            </div>
-
-            <div style={{
-              marginTop: '20px',
-              backgroundColor: '#282c34',
-              color: '#abb2bf',
-              padding: '20px',
-              borderRadius: '8px',
-              fontFamily: 'monospace',
-              fontSize: '14px',
-              minHeight: '200px',
-              maxHeight: '400px',
-              overflow: 'auto'
-            }}>
-              {output.length === 0 ? (
-                <div style={{ color: '#6c757d' }}>
-                  $ ターミナル待機中...<br />
-                  <br />
-                  ↑ コマンドを選択して実行してください
-                </div>
-              ) : (
-                output.map((line, index) => (
-                  <div key={index} style={{ marginBottom: '4px' }}>
-                    {line}
-                  </div>
-                ))
-              )}
-              {output.length > 0 && output.length === npmCommands.find(c => c.name === selectedCommand)?.output.length && (
-                <div style={{ marginTop: '10px', color: '#28a745' }}>
-                  $<span style={{ animation: 'blink 1s infinite' }}>_</span>
-                </div>
-              )}
-            </div>
-
-            <p style={{ marginTop: '15px', fontSize: '14px', color: '#6c757d' }}>
-              💡 これらのコマンドは実際の開発でよく使われます。コマンドを選ぶと、ターミナルでの実行結果をシミュレートします！
-            </p>
-          </div>
-        </section>
-
         <section className="term-comparison">
           <h2>関連用語</h2>
           <div className="comparison-table">
@@ -597,12 +600,9 @@ const today = format(new Date(), 'yyyy-MM-dd')`}</code></pre>
             </table>
           </div>
         </section>
-      </main>
 
-      <footer className="footer-nav">
-        <Link href="/">トップページに戻る</Link>
-        <p>&copy; 2026 itwords - 実践型IT用語辞典</p>
-      </footer>
+        <FAQAccordion faqs={faqs} />
+      </main>
     </div>
   )
 }

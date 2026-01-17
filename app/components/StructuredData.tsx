@@ -39,6 +39,18 @@ export default function StructuredData({ type, title, description, faqs, datePub
       author: {
         '@type': 'Organization',
         name: 'IT用語辞典',
+        logo: {
+          '@type': 'ImageObject',
+          url: 'https://itwords.jp/icon.png',
+        },
+      },
+      publisher: {
+        '@type': 'Organization',
+        name: 'IT用語辞典',
+        logo: {
+          '@type': 'ImageObject',
+          url: 'https://itwords.jp/icon.png',
+        },
       },
     }
   } else if (type === 'WebSite') {
@@ -47,10 +59,18 @@ export default function StructuredData({ type, title, description, faqs, datePub
       '@type': 'WebSite',
       name: 'IT用語辞典',
       description: '見て、触って、学べる実践型のIT用語辞典',
-      url: 'https://itwords.vercel.app',
+      url: 'https://itwords.jp',
+      publisher: {
+        '@type': 'Organization',
+        name: 'IT用語辞典',
+        logo: {
+          '@type': 'ImageObject',
+          url: 'https://itwords.jp/icon.png',
+        },
+      },
       potentialAction: {
         '@type': 'SearchAction',
-        target: 'https://itwords.vercel.app/search?q={search_term_string}',
+        target: 'https://itwords.jp/search?q={search_term_string}',
         'query-input': 'required name=search_term_string',
       },
     }

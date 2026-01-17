@@ -3,6 +3,8 @@ import type { Metadata } from 'next'
 import FoolProofDemo from '@/components/FoolProofDemo'
 import StructuredData from '@/app/components/StructuredData'
 import TableOfContents from '@/app/components/TableOfContents'
+import TermHeader from '@/app/components/TermHeader'
+import FAQAccordion from '@/app/components/FAQAccordion'
 
 export const metadata: Metadata = {
   title: 'フールプルーフとは？初心者向けにわかりやすく解説【実践デモ付き】 | 実践型IT用語辞典',
@@ -61,12 +63,11 @@ export default function FoolProofPage() {
         datePublished="2024-01-07"
         dateModified="2026-01-12"
       />
-      <header>
-        <h1>
-          <i className="fas fa-shield-alt"></i> フールプルーフ
-        </h1>
-        <p className="reading">ふーるぷるーふ / Fool Proof</p>
-      </header>
+      <TermHeader
+        termName="フールプルーフ"
+        reading="ふーるぷるーふ / Fool Proof"
+        icon="fas fa-shield-alt"
+      />
 
       <TableOfContents />
 
@@ -243,14 +244,6 @@ export default function FoolProofPage() {
           </ul>
         </section>
 
-        <section>
-          <h2>体験してみよう</h2>
-          <p>
-            実際に「削除」ボタンを押して、二段階の確認ダイアログがどのように誤操作を防ぐか体験してみましょう。
-          </p>
-
-          <FoolProofDemo />
-        </section>
 
         <section>
           <h2>Web開発でフールプルーフを実装する方法</h2>
@@ -650,12 +643,9 @@ function FileManager() {
             </table>
           </div>
         </section>
-      </main>
 
-      <footer className="footer-nav">
-        <Link href="/">トップページに戻る</Link>
-        <p>&copy; 2026 itwords - 実践型IT用語辞典</p>
-      </footer>
+        <FAQAccordion faqs={faqs} />
+      </main>
     </div>
   )
 }

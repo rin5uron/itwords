@@ -2,6 +2,8 @@ import Link from 'next/link'
 import type { Metadata } from 'next'
 import StackDemo from '@/components/StackDemo'
 import StructuredData from '@/app/components/StructuredData'
+import TermHeader from '@/app/components/TermHeader'
+import FAQAccordion from '@/app/components/FAQAccordion'
 
 export const metadata: Metadata = {
   title: 'スタック構造とは？初心者向けにわかりやすく解説【実践デモ付き】 | 実践型IT用語辞典',
@@ -56,12 +58,11 @@ export default function StackPage() {
         datePublished="2024-01-07"
         dateModified="2026-01-07"
       />
-      <header>
-        <h1>
-          <i className="fas fa-layer-group" style={{ color: '#8abdea' }}></i> スタック構造
-        </h1>
-        <p className="reading">すたっくこうぞう / Stack (LIFO)</p>
-      </header>
+      <TermHeader
+        termName="スタック構造"
+        reading="すたっくこうぞう / Stack (LIFO)"
+        icon="fas fa-layer-group"
+      />
 
       <main>
         <section>
@@ -71,6 +72,16 @@ export default function StackPage() {
             <br />
             <strong>後入れ先だし</strong>、「<strong>LIFO（Last In, First Out）</strong>」とも呼ばれる。
           </p>
+
+          {/* 体験デモを概要の直下に配置 */}
+          <div style={{ marginTop: '30px', marginBottom: '30px' }}>
+            <h3>スタック構造の仕組みを体験してみよう</h3>
+            <p>
+              下のボタンを押して、スタックの「後入れ先出し」を体験できます。
+              実際に手を動かすことで、スタック構造の動作が理解しやすくなります。
+            </p>
+            <StackDemo />
+          </div>
         </section>
 
         <section>
@@ -99,17 +110,6 @@ export default function StackPage() {
           </ol>
         </section>
 
-        <section>
-          <h2>体験してみよう②【実務編】</h2>
-          <p>下のボタンを押して、スタックの「後入れ先出し」を体験してみよう！</p>
-          <p>
-            <strong>Push（プッシュ）</strong>でデータを追加し、
-            <br />
-            <strong>Pop（ポップ）</strong>でスタックから一番上のデータを取り出せるよ。
-          </p>
-
-          <StackDemo />
-        </section>
 
         <section>
           <h2>git stashで実践してみよう</h2>
@@ -240,12 +240,9 @@ Changes not staged for commit:
           <br />
           シンプルだけど、Undo・履歴・メモリ処理などいろんな場面で大活躍！
         </div>
-      </main>
 
-      <footer className="footer-nav">
-        <Link href="/">トップページに戻る</Link>
-        <p>&copy; 2026 itwords - 実践型IT用語辞典</p>
-      </footer>
+        <FAQAccordion faqs={faqs} />
+      </main>
     </div>
   )
 }

@@ -2,6 +2,27 @@
 
 import Link from 'next/link'
 import { useState } from 'react'
+import TermHeader from '@/app/components/TermHeader'
+import FAQAccordion from '@/app/components/FAQAccordion'
+
+const faqs = [
+  {
+    question: 'フレームワークとは何ですか？',
+    answer: 'フレームワーク（Framework）とは、アプリケーション開発のための土台となる枠組みです。よく使う機能やルールがあらかじめ用意されているため、効率的にアプリケーションを作ることができます。',
+  },
+  {
+    question: 'フレームワークとライブラリの違いは？',
+    answer: 'ライブラリはあなたが呼び出すもの、フレームワークはあなたのコードを呼び出すものです。ライブラリは必要な部分だけ使えますが、フレームワークは決まったルールに従う必要があります。',
+  },
+  {
+    question: 'フレームワークを使うメリットは？',
+    answer: '開発速度の向上、コードの品質向上、セキュリティ対策の組み込み、チーム開発の効率化、保守性の向上などが挙げられます。',
+  },
+  {
+    question: '代表的なフレームワークを教えてください',
+    answer: 'Web開発ではReact、Next.js、Vue.js、Angular、バックエンドではExpress、Django、Ruby on Rails、Laravelなどが代表的です。',
+  },
+]
 
 export default function FrameworkPage() {
   const [selectedFramework, setSelectedFramework] = useState<string>('')
@@ -20,10 +41,11 @@ export default function FrameworkPage() {
 
   return (
     <div className="container">
-      <header>
-        <h1><i className="fas fa-cube"></i> Framework</h1>
-        <p className="reading">フレームワーク</p>
-      </header>
+      <TermHeader
+        termName="Framework"
+        reading="フレームワーク"
+        icon="fas fa-cube"
+      />
 
       <main>
         <section>
@@ -45,6 +67,59 @@ export default function FrameworkPage() {
             開発者は、よく使う機能やルールがあらかじめ用意されているため、
             <strong>効率的にアプリケーションを作る</strong>ことができるのです。
           </p>
+
+          {/* 体験デモを概要の直下に配置 */}
+          <div style={{ marginTop: '30px', marginBottom: '30px' }}>
+            <h3>フレームワークの仕組みを体験してみよう</h3>
+            <p>
+              下のデモで、それぞれのフレームワークを使うとどのようなコードになるか確認できます。
+              実際に手を動かすことで、フレームワークの動作が理解しやすくなります。
+            </p>
+            <div style={{
+              border: '2px solid #007bff',
+              borderRadius: '8px',
+              padding: '20px',
+              marginTop: '20px',
+              backgroundColor: '#f8f9fa'
+            }}>
+              <h3>フレームワークを選択</h3>
+              <div style={{ display: 'flex', gap: '10px', marginTop: '15px', flexWrap: 'wrap' }}>
+                {frameworks.map((framework) => (
+                  <button
+                    key={framework.name}
+                    onClick={() => handleFrameworkSelect(framework)}
+                    style={{
+                      padding: '12px 20px',
+                      fontSize: '14px',
+                      backgroundColor: selectedFramework === framework.name ? '#007bff' : '#fff',
+                      color: selectedFramework === framework.name ? '#fff' : '#007bff',
+                      border: '2px solid #007bff',
+                      borderRadius: '5px',
+                      cursor: 'pointer',
+                      fontWeight: 'bold'
+                    }}
+                  >
+                    {framework.name}
+                  </button>
+                ))}
+              </div>
+
+              {displayText && (
+                <div style={{
+                  marginTop: '20px',
+                  padding: '15px',
+                  backgroundColor: '#fff',
+                  border: '1px solid #dee2e6',
+                  borderRadius: '5px',
+                  fontFamily: 'monospace',
+                  fontSize: '14px',
+                  whiteSpace: 'pre-wrap'
+                }}>
+                  {displayText}
+                </div>
+              )}
+            </div>
+          </div>
         </section>
 
         <section>

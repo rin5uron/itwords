@@ -1,51 +1,51 @@
 'use client'
 
 import Link from 'next/link'
-import { useState, useEffect } from 'react'
 import TableOfContents from '@/app/components/TableOfContents'
+import TermHeader from '@/app/components/TermHeader'
+import CookieDemo from '@/app/components/CookieDemo'
+import StructuredData from '@/app/components/StructuredData'
+import FAQAccordion from '@/app/components/FAQAccordion'
+
+const faqs = [
+  {
+    question: 'Cookieとは何ですか？',
+    answer: 'Cookie（クッキー）とは、Webサイトがあなたのブラウザに保存する小さなデータファイルです。ログイン状態の保持、ショッピングカートの中身の記憶、言語設定の保存など、ユーザーの利便性を向上させるために使われます。',
+  },
+  {
+    question: 'CookieとLocalStorageの違いは何ですか？',
+    answer: 'Cookieはサーバーとブラウザの間で自動的にやり取りされる小さなデータで、主にログイン状態の保持に使われます。LocalStorageはブラウザにのみ保存される大きなデータで、主にアプリケーションの設定やキャッシュに使われます。',
+  },
+  {
+    question: 'Cookieは削除できますか？',
+    answer: 'はい、Cookieは削除できます。ブラウザの設定画面から個別に削除することも、全てのCookieを一括削除することも可能です。ただし、Cookieを削除するとログイン状態が解除されたり、サイトの設定がリセットされたりします。',
+  },
+  {
+    question: 'サードパーティCookieとは何ですか？',
+    answer: 'サードパーティCookieは、訪問しているサイト以外の第三者が発行するCookieです。主に広告のトラッキングや複数サイトをまたいだ行動分析に使われますが、プライバシー上の懸念があるため、多くのブラウザが制限や廃止の方向に進んでいます。',
+  },
+  {
+    question: 'Cookieの有効期限はどのくらいですか？',
+    answer: 'Cookieの有効期限は、セッションCookie（ブラウザを閉じるまで）と永続Cookie（指定された期限まで、数日〜数年）の2種類があります。Webサイト側で有効期限を設定でき、期限が切れると自動的に削除されます。',
+  },
+]
 
 export default function CookiePage() {
-  const [cookieName, setCookieName] = useState('myTestCookie')
-  const [cookieValue, setCookieValue] = useState('こんにちは')
-  const [savedCookie, setSavedCookie] = useState('')
-  const [message, setMessage] = useState('')
-
-  // Cookieを設定
-  const setCookie = () => {
-    document.cookie = `${cookieName}=${cookieValue}; max-age=3600; path=/`
-    setMessage(`Cookieを保存しました: ${cookieName}=${cookieValue}`)
-    setTimeout(() => setMessage(''), 3000)
-  }
-
-  // Cookieを取得
-  const getCookie = () => {
-    const cookies = document.cookie.split('; ')
-    const cookie = cookies.find(c => c.startsWith(cookieName + '='))
-    if (cookie) {
-      const value = cookie.split('=')[1]
-      setSavedCookie(value)
-      setMessage(`Cookieを取得しました: ${value}`)
-    } else {
-      setSavedCookie('')
-      setMessage(`Cookieが見つかりませんでした`)
-    }
-    setTimeout(() => setMessage(''), 3000)
-  }
-
-  // Cookieを削除
-  const deleteCookie = () => {
-    document.cookie = `${cookieName}=; max-age=0; path=/`
-    setSavedCookie('')
-    setMessage(`Cookieを削除しました: ${cookieName}`)
-    setTimeout(() => setMessage(''), 3000)
-  }
-
   return (
     <div className="container">
-      <header>
-        <h1><i className="fas fa-cookie-bite"></i> Cookie</h1>
-        <p className="reading">クッキー</p>
-      </header>
+      <StructuredData type="FAQPage" faqs={faqs} />
+      <StructuredData
+        type="Article"
+        title="Cookieとは？初心者向けにわかりやすく解説"
+        description="Cookie（クッキー）を初心者向けに解説。Webサイトがブラウザに保存する小さなデータファイルの仕組みを体験しながら学べます。"
+        datePublished="2024-01-01"
+        dateModified="2026-01-16"
+      />
+      <TermHeader
+        termName="Cookie"
+        reading="クッキー"
+        icon="fas fa-cookie-bite"
+      />
 
       <TableOfContents />
 
@@ -67,6 +67,16 @@ export default function CookiePage() {
             Webサイトは、あなたが次回訪問したときに「前回はログインしていたな」
             「カートにこの商品を入れていたな」と思い出すことができるのです。
           </p>
+
+          {/* 体験デモを概要の直下に配置 */}
+          <div style={{ marginTop: '30px', marginBottom: '30px' }}>
+            <h3>Cookieの仕組みを体験してみよう</h3>
+            <p>
+              下のデモでCookieを実際に保存・取得・削除して、仕組みを確認できます。
+              実際に手を動かすことで、Cookieの動作が理解しやすくなります。
+            </p>
+            <CookieDemo />
+          </div>
         </section>
 
         <section>
@@ -269,134 +279,6 @@ export default function CookiePage() {
           </ul>
         </section>
 
-        <section>
-          <h2>実際にやってみよう：Cookie設定・取得デモ</h2>
-          <p>
-            ブラウザにCookieを保存して、取得・削除を体験してみましょう！
-          </p>
-
-          <div style={{
-            border: '2px solid #007bff',
-            borderRadius: '8px',
-            padding: '20px',
-            marginTop: '20px',
-            backgroundColor: '#f8f9fa'
-          }}>
-            <h3>Cookieを操作する</h3>
-
-            <div style={{ marginTop: '15px' }}>
-              <label style={{ display: 'block', marginBottom: '5px', fontWeight: 'bold' }}>
-                Cookie名:
-              </label>
-              <input
-                type="text"
-                value={cookieName}
-                onChange={(e) => setCookieName(e.target.value)}
-                style={{
-                  width: '100%',
-                  padding: '8px',
-                  fontSize: '14px',
-                  border: '1px solid #dee2e6',
-                  borderRadius: '5px'
-                }}
-              />
-            </div>
-
-            <div style={{ marginTop: '15px' }}>
-              <label style={{ display: 'block', marginBottom: '5px', fontWeight: 'bold' }}>
-                Cookie値:
-              </label>
-              <input
-                type="text"
-                value={cookieValue}
-                onChange={(e) => setCookieValue(e.target.value)}
-                style={{
-                  width: '100%',
-                  padding: '8px',
-                  fontSize: '14px',
-                  border: '1px solid #dee2e6',
-                  borderRadius: '5px'
-                }}
-              />
-            </div>
-
-            <div style={{ display: 'flex', gap: '10px', marginTop: '15px', flexWrap: 'wrap' }}>
-              <button
-                onClick={setCookie}
-                style={{
-                  padding: '10px 20px',
-                  fontSize: '16px',
-                  backgroundColor: '#28a745',
-                  color: '#fff',
-                  border: 'none',
-                  borderRadius: '5px',
-                  cursor: 'pointer',
-                }}
-              >
-                保存
-              </button>
-              <button
-                onClick={getCookie}
-                style={{
-                  padding: '10px 20px',
-                  fontSize: '16px',
-                  backgroundColor: '#007bff',
-                  color: '#fff',
-                  border: 'none',
-                  borderRadius: '5px',
-                  cursor: 'pointer',
-                }}
-              >
-                取得
-              </button>
-              <button
-                onClick={deleteCookie}
-                style={{
-                  padding: '10px 20px',
-                  fontSize: '16px',
-                  backgroundColor: '#dc3545',
-                  color: '#fff',
-                  border: 'none',
-                  borderRadius: '5px',
-                  cursor: 'pointer',
-                }}
-              >
-                削除
-              </button>
-            </div>
-
-            {message && (
-              <div style={{
-                marginTop: '15px',
-                padding: '10px',
-                backgroundColor: '#d4edda',
-                border: '1px solid #c3e6cb',
-                borderRadius: '5px',
-                color: '#155724'
-              }}>
-                {message}
-              </div>
-            )}
-
-            {savedCookie && (
-              <div style={{
-                marginTop: '15px',
-                padding: '15px',
-                backgroundColor: '#fff',
-                border: '1px solid #dee2e6',
-                borderRadius: '5px'
-              }}>
-                <h4>保存されている値</h4>
-                <p style={{ fontFamily: 'monospace', fontSize: '16px' }}>{savedCookie}</p>
-              </div>
-            )}
-
-            <p style={{ marginTop: '15px', fontSize: '14px', color: '#6c757d' }}>
-              💡 このデモでは、ブラウザにCookieを保存します。保存したCookieは1時間後に自動的に削除されます。
-            </p>
-          </div>
-        </section>
-
         <section className="term-comparison">
           <h2>関連用語</h2>
           <div className="comparison-table">
@@ -424,12 +306,9 @@ export default function CookiePage() {
             </table>
           </div>
         </section>
-      </main>
 
-      <footer className="footer-nav">
-        <Link href="/">トップページに戻る</Link>
-        <p>&copy; 2026 itwords - 実践型IT用語辞典</p>
-      </footer>
+        <FAQAccordion faqs={faqs} />
+      </main>
     </div>
   )
 }

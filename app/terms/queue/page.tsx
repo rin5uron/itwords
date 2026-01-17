@@ -2,6 +2,8 @@ import Link from 'next/link'
 import type { Metadata } from 'next'
 import QueueDemo from '@/components/QueueDemo'
 import StructuredData from '@/app/components/StructuredData'
+import TermHeader from '@/app/components/TermHeader'
+import FAQAccordion from '@/app/components/FAQAccordion'
 
 export const metadata: Metadata = {
   title: 'キュー（Queue）とは？初心者向けにわかりやすく解説【実践デモ付き】 | 実践型IT用語辞典',
@@ -76,12 +78,11 @@ export default function QueuePage() {
         datePublished="2024-01-07"
         dateModified="2026-01-07"
       />
-      <header>
-        <h1>
-          <i className="fas fa-users" style={{ color: '#82c9a0' }}></i> キュー (Queue)
-        </h1>
-        <p className="reading">きゅー / Queue (FIFO)</p>
-      </header>
+      <TermHeader
+        termName="キュー (Queue)"
+        reading="きゅー / Queue (FIFO)"
+        icon="fas fa-users"
+      />
 
       <main>
         <section>
@@ -91,6 +92,15 @@ export default function QueuePage() {
             <strong>FIFO (First In, First Out)</strong>
             」とも呼ばれます。レジの行列のように、並んだ順番通りに処理されるのが特徴です。
           </p>
+
+          {/* 体験デモを概要の直下に配置 */}
+          <div style={{ marginTop: '30px', marginBottom: '30px' }}>
+            <h3>キューの仕組みを体験してみよう</h3>
+            <p>
+              下のデモでキューの動きを体験できます。実際に手を動かすことで、「先入れ先出し」の仕組みが理解しやすくなります。
+            </p>
+            <QueueDemo />
+          </div>
         </section>
 
         <section>
@@ -108,34 +118,6 @@ export default function QueuePage() {
           </ul>
         </section>
 
-        <section>
-          <h2>実際に体験してみよう</h2>
-          <p>
-            下のデモでキューの動きを体験できます。実際に手を動かすことで、「先入れ先出し」の仕組みが理解しやすくなります。
-          </p>
-
-          <h3>デモの使い方</h3>
-          <ol>
-            <li><strong>「Enqueue」ボタンをクリック</strong>: 列の末尾（右側）に人を追加します</li>
-            <li><strong>「Dequeue」ボタンをクリック</strong>: 列の先頭（左側）から人が退出します</li>
-            <li><strong>何度か繰り返す</strong>: 先に追加した人が先に出ていくことを確認しましょう</li>
-          </ol>
-
-          <p>
-            <strong>ポイント</strong>: 後から追加した人（右側）は、先に追加した人（左側）が全員出るまで退出できません。
-            これがキューの「先入れ先出し」の原則です。
-          </p>
-
-          <QueueDemo />
-
-          <h3>デモから学べること</h3>
-          <ul>
-            <li>Enqueueで追加した順番が保たれること</li>
-            <li>Dequeueで先頭から順番に取り出されること</li>
-            <li>途中の人を飛ばして取り出すことはできないこと</li>
-            <li>キューが空の状態でDequeueしても何も起こらないこと</li>
-          </ul>
-        </section>
 
         <section>
           <h2>日常生活でのキューの例</h2>
@@ -249,12 +231,9 @@ console.log(firstTask); // "タスク1"`}</code>
             </table>
           </div>
         </section>
-      </main>
 
-      <footer className="footer-nav">
-        <Link href="/">トップページに戻る</Link>
-        <p>&copy; 2026 itwords - 実践型IT用語辞典</p>
-      </footer>
+        <FAQAccordion faqs={faqs} />
+      </main>
     </div>
   )
 }

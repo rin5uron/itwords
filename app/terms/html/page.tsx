@@ -1,17 +1,37 @@
 'use client'
 
 import Link from 'next/link'
-import { useState } from 'react'
+import TermHeader from '@/app/components/TermHeader'
+import HTMLDemo from './HTMLDemo'
+import FAQAccordion from '@/app/components/FAQAccordion'
+
+const faqs = [
+  {
+    question: 'HTMLとは何ですか？',
+    answer: 'HTML（HyperText Markup Language）は、Webページの構造を作るための言語です。文章に「ここは見出し」「ここは段落」「ここはリンク」といった意味を付けることで、ブラウザがそれを理解し、適切に表示します。',
+  },
+  {
+    question: 'HTMLとCSS、JavaScriptの違いは何ですか？',
+    answer: 'HTMLは構造（骨組み）、CSSは見た目（デザイン）、JavaScriptは動き（インタラクション）を担当します。例えるなら、HTMLは家の骨組み、CSSは壁紙や塗装、JavaScriptは自動ドアやエレベーターのような役割です。',
+  },
+  {
+    question: 'HTMLの基本的な書き方を教えてください',
+    answer: 'HTMLはタグを使って構造を定義します。例えば、<h1>見出し</h1>で見出し、<p>段落</p>で段落、<a href="URL">リンク</a>でリンクを作成できます。基本的な構造は<!DOCTYPE html>、<html>、<head>、<body>のタグで構成されます。',
+  },
+  {
+    question: 'HTML5とは何ですか？',
+    answer: 'HTML5は、HTMLの最新バージョンで、2014年に正式に勧告されました。動画や音声を簡単に埋め込める<video>や<audio>タグ、より意味のある構造を表現できる<header>、<footer>、<article>などのタグが追加されました。',
+  },
+]
 
 export default function HTMLPage() {
-  const [htmlCode, setHtmlCode] = useState('<h1>こんにちは！</h1>\n<p>これはHTMLで書かれた段落です。</p>')
-  const [previewKey, setPreviewKey] = useState(0)
   return (
     <div className="container">
-      <header>
-        <h1><i className="fas fa-code"></i> HTML</h1>
-        <p className="reading">エイチティーエムエル / HyperText Markup Language</p>
-      </header>
+      <TermHeader
+        termName="HTML"
+        reading="エイチティーエムエル / HyperText Markup Language"
+        icon="fas fa-code"
+      />
 
       <main>
         <section>
@@ -20,6 +40,16 @@ export default function HTMLPage() {
             <strong>HTML</strong>（HyperText Markup Language）は、Webページの<strong>構造</strong>を作るための言語です。
             文章に「ここは見出し」「ここは段落」「ここはリンク」といった意味を付けることで、ブラウザがそれを理解し、適切に表示します。
           </p>
+
+          {/* 体験デモを概要の直下に配置 */}
+          <div style={{ marginTop: '30px', marginBottom: '30px' }}>
+            <h3>HTMLの仕組みを体験してみよう</h3>
+            <p>
+              下のエディタでHTMLコードを編集して、リアルタイムでプレビューを確認できます。
+              実際に手を動かすことで、HTMLの動作が理解しやすくなります。
+            </p>
+            <HTMLDemo />
+          </div>
         </section>
 
         <section>
@@ -134,62 +164,6 @@ export default function HTMLPage() {
           </p>
         </section>
 
-        <section>
-          <h2>実際にやってみよう：HTMLコードエディタ</h2>
-          <p>
-            下のエディタでHTMLコードを編集して、リアルタイムでプレビューを確認できます！
-          </p>
-
-          <div style={{
-            border: '2px solid #007bff',
-            borderRadius: '8px',
-            padding: '20px',
-            marginTop: '20px',
-            backgroundColor: '#f8f9fa'
-          }}>
-            <h3>HTMLを書いてみよう</h3>
-            <textarea
-              value={htmlCode}
-              onChange={(e) => {
-                setHtmlCode(e.target.value)
-                setPreviewKey(prev => prev + 1)
-              }}
-              style={{
-                width: '100%',
-                minHeight: '150px',
-                padding: '10px',
-                fontFamily: 'monospace',
-                fontSize: '14px',
-                border: '1px solid #dee2e6',
-                borderRadius: '5px',
-                marginTop: '10px'
-              }}
-              placeholder="HTMLコードを入力してください"
-            />
-
-            <h3 style={{ marginTop: '20px' }}>プレビュー</h3>
-            <div
-              key={previewKey}
-              style={{
-                border: '1px solid #dee2e6',
-                borderRadius: '5px',
-                padding: '15px',
-                backgroundColor: '#fff',
-                marginTop: '10px',
-                minHeight: '100px'
-              }}
-              dangerouslySetInnerHTML={{ __html: htmlCode }}
-            />
-
-            <p style={{ marginTop: '15px', fontSize: '14px', color: '#6c757d' }}>
-              💡 試してみよう：<br />
-              • <code>&lt;h2&gt;見出し&lt;/h2&gt;</code> で見出しを追加<br />
-              • <code>&lt;strong&gt;太字&lt;/strong&gt;</code> で文字を太くする<br />
-              • <code>&lt;a href=&quot;https://example.com&quot;&gt;リンク&lt;/a&gt;</code> でリンクを作成
-            </p>
-          </div>
-        </section>
-
         <section className="term-comparison">
           <h2>関連用語</h2>
           <div className="comparison-table">
@@ -217,12 +191,9 @@ export default function HTMLPage() {
             </table>
           </div>
         </section>
-      </main>
 
-      <footer className="footer-nav">
-        <Link href="/">トップページに戻る</Link>
-        <p>&copy; 2026 itwords - 実践型IT用語辞典</p>
-      </footer>
+        <FAQAccordion faqs={faqs} />
+      </main>
     </div>
   )
 }

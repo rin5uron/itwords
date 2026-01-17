@@ -2,6 +2,8 @@ import Link from 'next/link'
 import { Metadata } from 'next'
 import JavaScriptDemo from '@/app/components/JavaScriptDemo'
 import StructuredData from '@/app/components/StructuredData'
+import TermHeader from '@/app/components/TermHeader'
+import FAQAccordion from '@/app/components/FAQAccordion'
 
 export const metadata: Metadata = {
   title: 'JavaScriptとは？初心者向けにわかりやすく解説【実践デモ付き】 | 実践型IT用語辞典',
@@ -49,11 +51,11 @@ export default function JavaScriptPage() {
         datePublished="2024-01-01"
         dateModified="2026-01-07"
       />
-
-      <header>
-        <h1><i className="fas fa-code-branch"></i> JavaScript</h1>
-        <p className="reading">ジャバスクリプト / JS</p>
-      </header>
+      <TermHeader
+        termName="JavaScript"
+        reading="ジャバスクリプト / JS"
+        icon="fas fa-code-branch"
+      />
 
       <main>
         <section>
@@ -62,6 +64,16 @@ export default function JavaScriptPage() {
             <strong>JavaScript</strong>（略してJS）は、Webページに<strong>動き</strong>と<strong>インタラクション</strong>を追加するプログラミング言語です。
             ボタンをクリックしたときの処理、フォームの入力チェック、アニメーション、データの取得など、ユーザーの操作に応じた動的な機能を実現します。
           </p>
+
+          {/* 体験デモを概要の直下に配置 */}
+          <div style={{ marginTop: '30px', marginBottom: '30px' }}>
+            <h3>JavaScriptの仕組みを体験してみよう</h3>
+            <p>
+              下のエディタでJavaScriptコードを入力して、実行ボタンを押してみましょう！
+              実際に手を動かすことで、JavaScriptの動作が理解しやすくなります。
+            </p>
+            <JavaScriptDemo />
+          </div>
         </section>
 
         <section>
@@ -198,14 +210,6 @@ const moreNumbers = [...numbers, 4, 5];  // [1, 2, 3, 4, 5]`}</code></pre>
           </ul>
         </section>
 
-        <section>
-          <h2>実際にやってみよう：JavaScriptコードエディタ</h2>
-          <p>
-            下のエディタでJavaScriptコードを入力して、実行ボタンを押してみましょう！
-          </p>
-          <JavaScriptDemo />
-        </section>
-
         <section className="term-comparison">
           <h2>関連用語</h2>
           <div className="comparison-table">
@@ -234,35 +238,8 @@ const moreNumbers = [...numbers, 4, 5];  // [1, 2, 3, 4, 5]`}</code></pre>
           </div>
         </section>
 
-        <section>
-          <h2>よくある質問</h2>
-          <details>
-            <summary><strong>JavaScriptとは何ですか？</strong></summary>
-            <p>{faqs[0].answer}</p>
-          </details>
-          <details>
-            <summary><strong>JavaScriptとJavaの違いは何ですか？</strong></summary>
-            <p>{faqs[1].answer}</p>
-          </details>
-          <details>
-            <summary><strong>JavaScriptの基本的な使い方を教えてください</strong></summary>
-            <p>{faqs[2].answer}</p>
-          </details>
-          <details>
-            <summary><strong>ES6とは何ですか？</strong></summary>
-            <p>{faqs[3].answer}</p>
-          </details>
-          <details>
-            <summary><strong>JavaScriptの学習におすすめの方法は？</strong></summary>
-            <p>{faqs[4].answer}</p>
-          </details>
-        </section>
+        <FAQAccordion faqs={faqs} />
       </main>
-
-      <footer className="footer-nav">
-        <Link href="/">トップページに戻る</Link>
-        <p>&copy; 2026 itwords - 実践型IT用語辞典</p>
-      </footer>
     </div>
   )
 }

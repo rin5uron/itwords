@@ -2,6 +2,8 @@ import Link from 'next/link'
 import { Metadata } from 'next'
 import HTTPDemo from '@/app/components/HTTPDemo'
 import StructuredData from '@/app/components/StructuredData'
+import TermHeader from '@/app/components/TermHeader'
+import FAQAccordion from '@/app/components/FAQAccordion'
 
 export const metadata: Metadata = {
   title: 'HTTP/HTTPS（エイチティーティーピー）とは？読み方・違いを初心者向けに解説 | 実践型IT用語辞典',
@@ -56,12 +58,11 @@ export default function HTTPPage() {
         datePublished="2024-01-01"
         dateModified="2026-01-16"
       />
-
-      <header>
-        <h1><i className="fas fa-exchange-alt"></i> HTTP/HTTPS</h1>
-        <p className="reading">エイチティーティーピー / エイチティーティーピーエス</p>
-        <p className="reading">HyperText Transfer Protocol / HTTP Secure</p>
-      </header>
+      <TermHeader
+        termName="HTTP/HTTPS"
+        reading="エイチティーティーピー / エイチティーティーピーエス"
+        icon="fas fa-exchange-alt"
+      />
 
       <main>
         <section>
@@ -81,6 +82,16 @@ export default function HTTPPage() {
             <strong>HTTPS</strong>は、HTTPに<strong>「S（Secure）」</strong>が付いたもので、
             通信内容を暗号化して安全にやり取りできるようにしたバージョンです。
           </p>
+
+          {/* 体験デモを概要の直下に配置 */}
+          <div style={{ marginTop: '30px', marginBottom: '30px' }}>
+            <h3>HTTPメソッドを体験してみよう</h3>
+            <p>
+              下のデモでそれぞれのHTTPメソッドをクリックして、使い方と用途を確認できます。
+              実際に手を動かすことで、HTTPの動作が理解しやすくなります。
+            </p>
+            <HTTPDemo />
+          </div>
         </section>
 
         <section>
@@ -296,14 +307,6 @@ export default function HTTPPage() {
           </p>
         </section>
 
-        <section>
-          <h2>実際にやってみよう：HTTPメソッド選択デモ</h2>
-          <p>
-            それぞれのHTTPメソッドをクリックして、使い方と用途を確認してみましょう！
-          </p>
-          <HTTPDemo />
-        </section>
-
         <section className="term-comparison">
           <h2>関連用語</h2>
           <div className="comparison-table">
@@ -331,12 +334,9 @@ export default function HTTPPage() {
             </table>
           </div>
         </section>
-      </main>
 
-      <footer className="footer-nav">
-        <Link href="/">トップページに戻る</Link>
-        <p>&copy; 2026 itwords - 実践型IT用語辞典</p>
-      </footer>
+        <FAQAccordion faqs={httpFAQs} />
+      </main>
     </div>
   )
 }
