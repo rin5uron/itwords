@@ -5,6 +5,7 @@ import StructuredData from '@/app/components/StructuredData'
 import TermHeader from '@/app/components/TermHeader'
 import AESDemo from '@/components/AESDemo'
 import TableOfContents from '@/app/components/TableOfContents'
+import FAQAccordion from '@/app/components/FAQAccordion'
 
 export const metadata: Metadata = {
   title: 'AES（Advanced Encryption Standard）とは？初心者向けにわかりやすく解説 | 実践型IT用語辞典',
@@ -698,34 +699,7 @@ async function decryptData(ciphertext, key, iv) {
           </ul>
         </section>
 
-        <section>
-          <h2>よくある質問（FAQ）</h2>
-          <div className="faq-section">
-            {faqs.map((faq, index) => (
-              <details key={index} style={{ marginBottom: '1rem' }}>
-                <summary style={{
-                  cursor: 'pointer',
-                  fontWeight: 'bold',
-                  padding: '1rem',
-                  backgroundColor: '#f8f9fa',
-                  borderRadius: '4px',
-                  fontSize: '16px'
-                }}>
-                  {faq.question}
-                </summary>
-                <div style={{
-                  padding: '1rem',
-                  backgroundColor: '#fff',
-                  border: '1px solid #e9ecef',
-                  borderTop: 'none',
-                  borderRadius: '0 0 4px 4px'
-                }}>
-                  <p>{faq.answer}</p>
-                </div>
-              </details>
-            ))}
-          </div>
-        </section>
+        <FAQAccordion faqs={faqs} />
 
         <section className="term-comparison">
           <h2>関連用語</h2>

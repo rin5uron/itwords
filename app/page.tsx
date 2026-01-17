@@ -176,6 +176,9 @@ export default function Home() {
 
         <section id="all-terms">
           <h3>すべての用語</h3>
+
+          {/* Web */}
+          <h4 style={{ marginTop: '40px', marginBottom: '20px', color: '#2c3e50', borderBottom: '2px solid #14b8a6', paddingBottom: '10px' }}>Web</h4>
           <div className="card-container">
             <div className="card" data-category="web">
               <Link href="/terms/html" className="card-link">
@@ -185,10 +188,10 @@ export default function Home() {
               </Link>
             </div>
             <div className="card" data-category="web">
-              <Link href="/terms/http" className="card-link">
+              <Link href="/terms/css" className="card-link">
                 <span className="category-tag">Web</span>
-                <h4>HTTP/HTTPS</h4>
-                <p>Webブラウザとサーバー間でデータをやり取りするための通信規約です。</p>
+                <h4>CSS</h4>
+                <p>Webページの見た目を整えるためのスタイルシート言語です。</p>
               </Link>
             </div>
             <div className="card" data-category="web">
@@ -199,12 +202,139 @@ export default function Home() {
               </Link>
             </div>
             <div className="card" data-category="web">
+              <Link href="/terms/http" className="card-link">
+                <span className="category-tag">Web</span>
+                <h4>HTTP/HTTPS</h4>
+                <p>Webブラウザとサーバー間でデータをやり取りするための通信規約です。</p>
+              </Link>
+            </div>
+            <div className="card" data-category="web">
+              <Link href="/terms/api" className="card-link">
+                <span className="category-tag">Web</span>
+                <h4>API</h4>
+                <p>ソフトウェアやプログラムの機能を共有する仕組みのことです。</p>
+              </Link>
+            </div>
+            <div className="card" data-category="web">
               <Link href="/terms/cookie" className="card-link">
                 <span className="category-tag">Web</span>
                 <h4>Cookie</h4>
                 <p>Webサイトがブラウザに保存する小さなデータファイルです。</p>
               </Link>
             </div>
+            <div className="card" data-category="web">
+              <Link href="/terms/webhook" className="card-link">
+                <span className="category-tag">Web</span>
+                <h4>Webhook</h4>
+                <p>イベント発生時に自動でデータを送信する仕組みです。</p>
+              </Link>
+            </div>
+            <div className="card" data-category="web">
+              <Link href="/terms/localstorage" className="card-link">
+                <span className="category-tag">Web</span>
+                <h4>ローカルストレージ</h4>
+                <p>ブラウザにデータを保存できる仕組みです。実践デモ付き。</p>
+              </Link>
+            </div>
+            <div className="card" data-category="web">
+              <Link href="/terms/validation" className="card-link">
+                <span className="category-tag">Web</span>
+                <h4>バリデーション</h4>
+                <p>入力データが正しいかをチェックする仕組みです。実践デモで学べます。</p>
+              </Link>
+            </div>
+            <div className="card" data-category="web">
+              <Link href="/terms/foolproof" className="card-link">
+                <span className="category-tag">Web</span>
+                <h4>フールプルーフ</h4>
+                <p>ユーザーの誤操作を防ぐための設計原則です。</p>
+              </Link>
+            </div>
+            <div className="card" data-category="web">
+              <Link href="/terms/poka-yoke" className="card-link">
+                <span className="category-tag">Web</span>
+                <h4>ポカヨケ</h4>
+                <p>製造業から生まれた「うっかりミス」を防ぐ設計手法です。</p>
+              </Link>
+            </div>
+          </div>
+
+          {/* セキュリティ */}
+          <h4 style={{ marginTop: '40px', marginBottom: '20px', color: '#2c3e50', borderBottom: '2px solid #14b8a6', paddingBottom: '10px' }}>セキュリティ</h4>
+          <div className="card-container">
+            <div className="card" data-category="security">
+              <Link href="/terms/zero-day" className="card-link">
+                <span className="category-tag">セキュリティ</span>
+                <h4>ゼロデイ攻撃</h4>
+                <p>脆弱性が発見されてから修正される前に行われる危険なサイバー攻撃です。</p>
+              </Link>
+            </div>
+            <div className="card" data-category="security">
+              <Link href="/terms/aes" className="card-link">
+                <span className="category-tag">セキュリティ</span>
+                <h4>AES</h4>
+                <p>現代で最も広く使われている暗号化規格の一つです。</p>
+              </Link>
+            </div>
+            <div className="card" data-category="security">
+              <Link href="/terms/exploit" className="card-link">
+                <span className="category-tag">セキュリティ</span>
+                <h4>エクスプロイト</h4>
+                <p>脆弱性を悪用する攻撃コード。実際の攻撃シミュレーションで学べます。</p>
+              </Link>
+            </div>
+            <div className="card" data-category="security">
+              <Link href="/terms/white-hat-hacker" className="card-link">
+                <span className="category-tag">セキュリティ</span>
+                <h4>ホワイトハッカー</h4>
+                <p>善意のハッカー。脆弱性診断の仕事を体験デモで学べます。</p>
+              </Link>
+            </div>
+            <div className="card" data-category="security">
+              <Link href="/terms/cve" className="card-link">
+                <span className="category-tag">セキュリティ</span>
+                <h4>CVE</h4>
+                <p>脆弱性識別番号。ニュースで見る「CVE-2024-xxxxx」の意味とは？</p>
+              </Link>
+            </div>
+          </div>
+
+          {/* データ */}
+          <h4 style={{ marginTop: '40px', marginBottom: '20px', color: '#2c3e50', borderBottom: '2px solid #14b8a6', paddingBottom: '10px' }}>データ</h4>
+          <div className="card-container">
+            <div className="card" data-category="data">
+              <Link href="/terms/json" className="card-link">
+                <span className="category-tag">データ</span>
+                <h4>JSON</h4>
+                <p>JavaScriptのオブジェクト記法をベースにした軽量なデータ交換フォーマットです。</p>
+              </Link>
+            </div>
+            <div className="card" data-category="data">
+              <Link href="/terms/queue" className="card-link">
+                <span className="category-tag">データ</span>
+                <h4>Queue（キュー）</h4>
+                <p>先入れ先出し（FIFO）のデータ構造です。</p>
+              </Link>
+            </div>
+            <div className="card" data-category="data">
+              <Link href="/terms/stack" className="card-link">
+                <span className="category-tag">データ</span>
+                <h4>Stack（スタック）</h4>
+                <p>後入れ先出し（LIFO）のデータ構造です。</p>
+              </Link>
+            </div>
+            <div className="card" data-category="data">
+              <Link href="/terms/sql" className="card-link">
+                <span className="category-tag">データベース</span>
+                <h4>SQL</h4>
+                <p>データベースを操作する言語。SELECT、INSERT、UPDATEを体験デモで学べます。</p>
+              </Link>
+            </div>
+          </div>
+
+          {/* 開発・プログラミング */}
+          <h4 style={{ marginTop: '40px', marginBottom: '20px', color: '#2c3e50', borderBottom: '2px solid #14b8a6', paddingBottom: '10px' }}>開発・プログラミング</h4>
+          <div className="card-container">
             <div className="card" data-category="programming">
               <Link href="/terms/framework" className="card-link">
                 <span className="category-tag">開発</span>
@@ -212,6 +342,18 @@ export default function Home() {
                 <p>アプリケーション開発のための土台となる枠組みです。</p>
               </Link>
             </div>
+            <div className="card" data-category="programming">
+              <Link href="/terms/cli-gui" className="card-link">
+                <span className="category-tag">プログラミング</span>
+                <h4>CLI / GUI</h4>
+                <p>黒い画面（CLI）とボタン（GUI）の違い。昔のPCはCLIだけだった歴史も。</p>
+              </Link>
+            </div>
+          </div>
+
+          {/* ツール */}
+          <h4 style={{ marginTop: '40px', marginBottom: '20px', color: '#2c3e50', borderBottom: '2px solid #14b8a6', paddingBottom: '10px' }}>ツール</h4>
+          <div className="card-container">
             <div className="card" data-category="tools">
               <Link href="/terms/github" className="card-link">
                 <span className="category-tag">ツール</span>
@@ -233,27 +375,11 @@ export default function Home() {
                 <p>Webサイトを簡単に公開できるホスティングサービスです。</p>
               </Link>
             </div>
-            <div className="card" data-category="web">
-              <Link href="/terms/webhook" className="card-link">
-                <span className="category-tag">Web</span>
-                <h4>Webhook</h4>
-                <p>イベント発生時に自動でデータを送信する仕組みです。</p>
-              </Link>
-            </div>
-            <div className="card" data-category="data">
-              <Link href="/terms/queue" className="card-link">
-                <span className="category-tag">データ</span>
-                <h4>Queue（キュー）</h4>
-                <p>先入れ先出し（FIFO）のデータ構造です。</p>
-              </Link>
-            </div>
-            <div className="card" data-category="data">
-              <Link href="/terms/stack" className="card-link">
-                <span className="category-tag">データ</span>
-                <h4>Stack（スタック）</h4>
-                <p>後入れ先出し（LIFO）のデータ構造です。</p>
-              </Link>
-            </div>
+          </div>
+
+          {/* インフラ */}
+          <h4 style={{ marginTop: '40px', marginBottom: '20px', color: '#2c3e50', borderBottom: '2px solid #14b8a6', paddingBottom: '10px' }}>インフラ</h4>
+          <div className="card-container">
             <div className="card" data-category="infrastructure">
               <Link href="/terms/server" className="card-link">
                 <span className="category-tag">インフラ</span>

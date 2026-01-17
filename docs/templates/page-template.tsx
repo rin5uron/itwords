@@ -4,6 +4,9 @@
 import Link from 'next/link'
 import { Metadata } from 'next'
 import StructuredData from '@/app/components/StructuredData'
+import TermHeader from '@/app/components/TermHeader'
+import TableOfContents from '@/app/components/TableOfContents'
+import FAQAccordion from '@/app/components/FAQAccordion'
 
 // メタデータ（SEO対策）
 export const metadata: Metadata = {
@@ -55,11 +58,14 @@ export default function ContentPage() {
         dateModified="2026-01-01"
       />
 
-      <header>
-        <h1>[ページタイトル]</h1>
-        {/* サブタイトルや読み方がある場合 */}
-        {/* <p className="reading">[読み方] / [英語表記]</p> */}
-      </header>
+      <TermHeader
+        termName="[用語名]"
+        reading="[読み方] / [英語表記]"
+        icon="fas fa-[アイコン名]"
+      />
+
+      {/* 目次（h2が4つ以上ある場合に自動表示） */}
+      <TableOfContents />
 
       <main>
         <section>
@@ -89,6 +95,9 @@ export default function ContentPage() {
           <p>[デモの説明]</p>
           <[DemoComponent] />
         </section> */}
+
+        {/* FAQセクション（FAQがある場合） */}
+        <FAQAccordion faqs={faqs} />
 
         {/* 関連用語セクション（任意） */}
         <section className="term-comparison">

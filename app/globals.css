@@ -698,6 +698,45 @@ footer a:hover {
   margin-bottom: 0;
 }
 
+/* 目次（Table of Contents）スタイル */
+.table-of-contents {
+  background-color: #f8f9fa;
+  border: 1px solid #dee2e6;
+  border-radius: 6px;
+  padding: 16px;
+  margin-bottom: 24px;
+  margin-top: 20px;
+}
+
+.table-of-contents ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  text-align: left;
+}
+
+.table-of-contents li {
+  text-align: left;
+  width: 100%;
+  margin-bottom: 0;
+}
+
+.table-of-contents a {
+  color: #495057;
+  text-decoration: none;
+  display: block;
+  text-align: left;
+  width: 100%;
+}
+
+.table-of-contents a:hover {
+  color: #14b8a6;
+  text-decoration: underline;
+}
+
 /* FAQアコーディオンスタイル */
 .faq-section {
   margin-top: 50px;

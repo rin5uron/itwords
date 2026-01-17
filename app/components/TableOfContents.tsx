@@ -50,35 +50,15 @@ export default function TableOfContents({ minHeadings = 4 }: TableOfContentsProp
   }
 
   return (
-    <nav style={{
-      backgroundColor: '#f8f9fa',
-      border: '1px solid #dee2e6',
-      borderRadius: '6px',
-      padding: '16px',
-      marginBottom: '24px',
-      marginTop: '20px'
-    }}>
-      <ul style={{
-        listStyle: 'none',
-        padding: 0,
-        margin: 0,
-        display: 'flex',
-        flexDirection: 'column',
-        gap: '6px'
-      }}>
+    <nav className="table-of-contents">
+      <ul>
         {headings.map((heading, index) => (
-          <li key={heading.id} style={{ textAlign: 'left' }}>
+          <li key={heading.id}>
             <a
               href={`#${heading.id}`}
               onClick={(e) => {
                 e.preventDefault()
                 scrollToSection(heading.id)
-              }}
-              style={{
-                color: '#495057',
-                textDecoration: 'none',
-                display: 'block',
-                textAlign: 'left'
               }}
             >
               {index + 1}. {heading.title}

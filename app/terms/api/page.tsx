@@ -95,28 +95,14 @@ export default function APIPage() {
       />
 
       {/* コンパクト目次 */}
-      <nav style={{
-        backgroundColor: '#f8f9fa',
-        border: '1px solid #dee2e6',
-        borderRadius: '6px',
-        padding: '16px',
-        marginBottom: '24px',
-        marginTop: '20px'
-      }}>
-        <ul style={{
-          listStyle: 'none',
-          padding: 0,
-          margin: 0,
-          display: 'flex',
-          flexDirection: 'column',
-          gap: '6px'
-        }}>
-          <li><a href="#overview" style={{ color: '#495057', textDecoration: 'none', display: 'block', textAlign: 'left' }}>1. 概要</a></li>
-          <li><a href="#demo" style={{ color: '#495057', textDecoration: 'none', display: 'block', textAlign: 'left' }}>2. 体験デモ：APIを呼んでみる</a></li>
-          <li><a href="#examples" style={{ color: '#495057', textDecoration: 'none', display: 'block', textAlign: 'left' }}>3. このAPIはどこで使われている？</a></li>
-          <li><a href="#mechanism" style={{ color: '#495057', textDecoration: 'none', display: 'block', textAlign: 'left' }}>4. APIの仕組みを超かんたんに言うと</a></li>
-          <li><a href="#terms" style={{ color: '#495057', textDecoration: 'none', display: 'block', textAlign: 'left' }}>5. APIの基本用語</a></li>
-          <li><a href="#summary" style={{ color: '#495057', textDecoration: 'none', display: 'block', textAlign: 'left' }}>6. まとめ：APIは何ができるのか</a></li>
+      <nav className="table-of-contents">
+        <ul>
+          <li><a href="#overview">1. 概要</a></li>
+          <li><a href="#demo">2. 体験デモ：APIを呼んでみる</a></li>
+          <li><a href="#examples">3. このAPIはどこで使われている？</a></li>
+          <li><a href="#mechanism">4. APIの仕組みを超かんたんに言うと</a></li>
+          <li><a href="#terms">5. APIの基本用語</a></li>
+          <li><a href="#summary">6. まとめ：APIは何ができるのか</a></li>
         </ul>
       </nav>
 
