@@ -6,12 +6,12 @@ import StructuredData from '@/app/components/StructuredData'
 import TableOfContents from '@/app/components/TableOfContents'
 
 export const metadata: Metadata = {
-  title: 'GitHubとは？初心者向けにわかりやすく解説【実践デモ付き】 | 実践型IT用語辞典',
-  description: 'GitHubとは、ソースコードをバージョン管理し、世界中の開発者と共有・協力できるプラットフォームです。Git、リポジトリ、コミット、プッシュなどの基本用語から実践的な使い方まで、初心者にもわかりやすく解説します。',
-  keywords: ['GitHub', 'GitHub とは', 'GitHub 使い方', 'GitHub 初心者', 'Git', 'バージョン管理', 'リポジトリ', 'コミット', 'プッシュ', 'プルリクエスト', 'わかりやすく'],
+  title: 'GitHubとは？使い方・プルリクエストの流れを3分で理解【初心者向け】 | 実践型IT用語辞典',
+  description: 'GitHub初心者向けに、使い方・プルリクエスト・Gitフローを3分で解説。リポジトリ、コミット、プッシュの基本からチーム開発の流れまで、実践デモ付きでわかりやすく説明します。今日から使えるGitHub入門ガイド。',
+  keywords: ['GitHub', 'GitHub とは', 'GitHub 使い方', 'GitHub 初心者', 'プルリクエスト', 'Gitフロー', 'Git', 'バージョン管理', 'リポジトリ', 'コミット', 'プッシュ', 'わかりやすく'],
   openGraph: {
-    title: 'GitHubとは？初心者向けにわかりやすく解説【実践デモ付き】',
-    description: 'GitHubの基本から実践的な使い方まで、初心者にもわかりやすく解説。Gitコマンドの学習デモ付き。',
+    title: 'GitHubとは？使い方・プルリクエストの流れを3分で理解【初心者向け】',
+    description: 'GitHub初心者向けに、使い方・プルリクエスト・Gitフローを3分で解説。今日から使えるGitHub入門ガイド。',
     type: 'article',
     url: 'https://itwords.vercel.app/terms/github',
   },
