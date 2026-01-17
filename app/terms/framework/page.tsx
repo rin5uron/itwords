@@ -234,72 +234,6 @@ export default function FrameworkPage() {
         </section>
 
         <section>
-          <h2>体験デモ：フレームワークを使ってみよう</h2>
-          <p>
-            異なるフレームワークを選んで、それぞれの特徴とコード例を見てみましょう。
-          </p>
-
-          <div style={{
-            border: '2px solid #007bff',
-            borderRadius: '8px',
-            padding: '20px',
-            marginTop: '20px',
-            backgroundColor: '#f8f9fa'
-          }}>
-            <h3>フレームワークを選択</h3>
-            <div style={{ display: 'flex', gap: '10px', flexWrap: 'wrap', marginTop: '15px' }}>
-              {frameworks.map((fw) => (
-                <button
-                  key={fw.name}
-                  onClick={() => handleFrameworkSelect(fw)}
-                  style={{
-                    padding: '10px 20px',
-                    fontSize: '16px',
-                    backgroundColor: selectedFramework === fw.name ? '#007bff' : '#fff',
-                    color: selectedFramework === fw.name ? '#fff' : '#007bff',
-                    border: '2px solid #007bff',
-                    borderRadius: '5px',
-                    cursor: 'pointer',
-                    transition: 'all 0.3s',
-                  }}
-                >
-                  {fw.name}
-                </button>
-              ))}
-            </div>
-
-            {selectedFramework && (
-              <div style={{
-                marginTop: '20px',
-                padding: '15px',
-                backgroundColor: '#fff',
-                borderRadius: '5px',
-                border: '1px solid #dee2e6'
-              }}>
-                <h4>{selectedFramework}</h4>
-                <p>{frameworks.find(f => f.name === selectedFramework)?.description}</p>
-                <pre style={{
-                  backgroundColor: '#282c34',
-                  color: '#abb2bf',
-                  padding: '15px',
-                  borderRadius: '5px',
-                  overflow: 'auto',
-                  whiteSpace: 'pre-wrap'
-                }}>
-                  <code>{frameworks.find(f => f.name === selectedFramework)?.code}</code>
-                </pre>
-              </div>
-            )}
-
-            {!selectedFramework && (
-              <p style={{ marginTop: '15px', color: '#6c757d' }}>
-                ↑ フレームワークを選択してください
-              </p>
-            )}
-          </div>
-        </section>
-
-        <section>
           <h2>フレームワークを使うメリット・デメリット</h2>
 
           <h3>メリット</h3>
@@ -377,12 +311,9 @@ export default function FrameworkPage() {
             </table>
           </div>
         </section>
-      </main>
 
-      <footer className="footer-nav">
-        <Link href="/">トップページに戻る</Link>
-        <p>&copy; 2026 itwords - 実践型IT用語辞典</p>
-      </footer>
+        <FAQAccordion faqs={faqs} />
+      </main>
     </div>
   )
 }

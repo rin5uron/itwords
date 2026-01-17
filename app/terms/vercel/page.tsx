@@ -4,6 +4,8 @@ import Link from 'next/link'
 import { useState } from 'react'
 import StructuredData from '@/app/components/StructuredData'
 import TableOfContents from '@/app/components/TableOfContents'
+import TermHeader from '@/app/components/TermHeader'
+import FAQAccordion from '@/app/components/FAQAccordion'
 
 export default function VercelPage() {
   const faqs = [
@@ -55,11 +57,11 @@ export default function VercelPage() {
         datePublished="2024-01-09"
         dateModified="2026-01-16"
       />
-
-      <header>
-        <h1><i className="fas fa-server"></i> Vercel</h1>
-        <p className="reading">ヴァーセル</p>
-      </header>
+      <TermHeader
+        termName="Vercel"
+        reading="ヴァーセル"
+        icon="fas fa-server"
+      />
 
       <TableOfContents />
 
@@ -87,6 +89,91 @@ export default function VercelPage() {
             <strong>💡 このサイトもVercelで動いています！</strong>
             <code>https://itwords.jp</code> は、Vercelを使って公開されています。
           </p>
+
+          {/* 体験デモを概要の直下に配置 */}
+          <div style={{ marginTop: '30px', marginBottom: '30px' }}>
+            <h3>Vercelのデプロイフローを体験してみよう</h3>
+            <p>
+              下のデモでVercelのデプロイフローを確認できます。
+              実際に手を動かすことで、Vercelの動作が理解しやすくなります。
+            </p>
+            <div style={{
+              border: '2px solid #007bff',
+              borderRadius: '8px',
+              padding: '20px',
+              marginTop: '20px',
+              backgroundColor: '#f8f9fa'
+            }}>
+              <h3>デプロイステップ</h3>
+              <div style={{ marginTop: '20px' }}>
+                {deploymentSteps.map((step, index) => (
+                  <div
+                    key={index}
+                    style={{
+                      display: 'flex',
+                      alignItems: 'center',
+                      marginBottom: '15px',
+                      opacity: index <= currentStep ? 1 : 0.5,
+                      transition: 'opacity 0.3s'
+                    }}
+                  >
+                    <div style={{
+                      width: '40px',
+                      height: '40px',
+                      borderRadius: '50%',
+                      backgroundColor: index <= currentStep ? step.color : '#ccc',
+                      color: '#fff',
+                      display: 'flex',
+                      alignItems: 'center',
+                      justifyContent: 'center',
+                      fontSize: '20px',
+                      marginRight: '15px',
+                      fontWeight: 'bold'
+                    }}>
+                      {index <= currentStep ? step.icon : '○'}
+                    </div>
+                    <div>
+                      <h4 style={{ margin: 0, color: index <= currentStep ? step.color : '#999' }}>
+                        {step.title}
+                      </h4>
+                      <p style={{ margin: '5px 0 0 0', color: '#666' }}>{step.description}</p>
+                    </div>
+                  </div>
+                ))}
+              </div>
+              <div style={{ display: 'flex', gap: '10px', marginTop: '20px' }}>
+                <button
+                  onClick={nextStep}
+                  disabled={currentStep >= deploymentSteps.length - 1}
+                  style={{
+                    padding: '10px 20px',
+                    fontSize: '16px',
+                    backgroundColor: currentStep >= deploymentSteps.length - 1 ? '#ccc' : '#007bff',
+                    color: '#fff',
+                    border: 'none',
+                    borderRadius: '5px',
+                    cursor: currentStep >= deploymentSteps.length - 1 ? 'not-allowed' : 'pointer'
+                  }}
+                >
+                  {currentStep >= deploymentSteps.length - 1 ? '完了' : '次のステップ'}
+                </button>
+                <button
+                  onClick={resetSteps}
+                  style={{
+                    padding: '10px 20px',
+                    fontSize: '16px',
+                    backgroundColor: '#6c757d',
+                    color: '#fff',
+                    border: 'none',
+                    borderRadius: '5px',
+                    cursor: 'pointer'
+                  }}
+                >
+                  リセット
+                </button>
+              </div>
+            </div>
+          </div>
         </section>
 
         <section>
