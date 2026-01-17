@@ -2,6 +2,27 @@
 
 import Link from 'next/link'
 import { useState } from 'react'
+import TermHeader from '@/app/components/TermHeader'
+import FAQAccordion from '@/app/components/FAQAccordion'
+
+const faqs = [
+  {
+    question: 'Webhookとは何ですか？',
+    answer: 'Webhook（ウェブフック）とは、あるイベントが発生したときに、自動的にHTTPリクエストを送信する仕組みです。GitHubにコードをpushしたら自動的にビルドサーバーに通知が送られたり、ECサイトで注文が入ったら在庫管理システムに自動で連絡が行ったりします。',
+  },
+  {
+    question: 'WebhookとAPIの違いは？',
+    answer: 'APIはクライアントから要求するプル型で、必要なときに都度リクエストします。Webhookはサーバーから自動送信するプッシュ型で、イベント発生時に自動送信されます。APIは「電話をかけて聞く」、Webhookは「着信があったら自動で通知が来る」という感じです。',
+  },
+  {
+    question: 'Webhookはどこで使われていますか？',
+    answer: 'GitHubのpush通知、決済完了時の通知、ECサイトの注文通知、Slackへの通知、CI/CDパイプラインのトリガーなど、様々な場面で使われています。',
+  },
+  {
+    question: 'Webhookのセキュリティはどう確保しますか？',
+    answer: 'Webhookのセキュリティは、署名検証、HTTPSの使用、認証トークンの使用、IPアドレスのホワイトリストなどで確保します。特に署名検証は重要で、送信元が正しいことを確認できます。',
+  },
+]
 
 export default function WebhookPage() {
   const [selectedEvent, setSelectedEvent] = useState('')
@@ -57,10 +78,11 @@ export default function WebhookPage() {
 
   return (
     <div className="container">
-      <header>
-        <h1><i className="fas fa-webhook"></i> Webhook</h1>
-        <p className="reading">ウェブフック</p>
-      </header>
+      <TermHeader
+        termName="Webhook"
+        reading="ウェブフック"
+        icon="fas fa-webhook"
+      />
 
       <main>
         <section>
@@ -81,6 +103,65 @@ export default function WebhookPage() {
             いちいち確認の電話をかけてくるのではなく、自動的にSMSで通知が来ますよね。
             Webhookは、まさにこの「自動通知」をプログラム間で実現する技術です。
           </p>
+
+          {/* 体験デモを概要の直下に配置 */}
+          <div style={{ marginTop: '30px', marginBottom: '30px' }}>
+            <h3>Webhookの仕組みを体験してみよう</h3>
+            <p>
+              下のデモで、Webhookがどのように動作するか確認できます。
+              実際に手を動かすことで、Webhookの動作が理解しやすくなります。
+            </p>
+            <div style={{
+              border: '2px solid #007bff',
+              borderRadius: '8px',
+              padding: '20px',
+              marginTop: '20px',
+              backgroundColor: '#f8f9fa'
+            }}>
+              <h3>イベントを選択してWebhookを送信</h3>
+              <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(200px, 1fr))', gap: '10px', marginTop: '15px' }}>
+                {webhookEvents.map((event) => (
+                  <button
+                    key={event.name}
+                    onClick={() => triggerWebhook(event)}
+                    style={{
+                      padding: '15px',
+                      fontSize: '14px',
+                      backgroundColor: selectedEvent === event.name ? event.color : '#fff',
+                      color: selectedEvent === event.name ? '#fff' : event.color,
+                      border: `2px solid ${event.color}`,
+                      borderRadius: '5px',
+                      cursor: 'pointer',
+                      textAlign: 'left'
+                    }}
+                  >
+                    <div style={{ fontWeight: 'bold', marginBottom: '5px' }}>{event.name}</div>
+                    <div style={{ fontSize: '12px', opacity: 0.9 }}>{event.description}</div>
+                  </button>
+                ))}
+              </div>
+
+              {webhookLog.length > 0 && (
+                <div style={{
+                  marginTop: '20px',
+                  backgroundColor: '#282c34',
+                  color: '#abb2bf',
+                  padding: '20px',
+                  borderRadius: '8px',
+                  fontFamily: 'monospace',
+                  fontSize: '14px',
+                  maxHeight: '400px',
+                  overflow: 'auto'
+                }}>
+                  {webhookLog.map((log, index) => (
+                    <div key={index} style={{ marginBottom: '8px' }}>
+                      {log}
+                    </div>
+                  ))}
+                </div>
+              )}
+            </div>
+          </div>
         </section>
 
         <section>
@@ -236,56 +317,6 @@ export default function WebhookPage() {
           </p>
         </section>
 
-        <section>
-          <h2>実際にやってみよう：Webhookシミュレーター</h2>
-          <p>
-            様々なイベントを選択して、Webhookがどのように動作するか確認してみましょう！
-          </p>
-
-          <div style={{
-            border: '2px solid #007bff',
-            borderRadius: '8px',
-            padding: '20px',
-            marginTop: '20px',
-            backgroundColor: '#f8f9fa'
-          }}>
-            <h3>イベントを発生させる</h3>
-            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(200px, 1fr))', gap: '10px', marginTop: '15px' }}>
-              {webhookEvents.map((event) => (
-                <button
-                  key={event.name}
-                  onClick={() => triggerWebhook(event)}
-                  style={{
-                    padding: '15px',
-                    fontSize: '14px',
-                    backgroundColor: selectedEvent === event.name ? event.color : '#fff',
-                    color: selectedEvent === event.name ? '#fff' : event.color,
-                    border: `2px solid ${event.color}`,
-                    borderRadius: '8px',
-                    cursor: 'pointer',
-                    transition: 'all 0.3s',
-                    textAlign: 'left'
-                  }}
-                >
-                  <div style={{ fontWeight: 'bold', marginBottom: '5px' }}>{event.name}</div>
-                  <div style={{ fontSize: '12px', opacity: 0.9 }}>{event.description}</div>
-                </button>
-              ))}
-            </div>
-
-            <div style={{
-              marginTop: '20px',
-              backgroundColor: '#282c34',
-              color: '#abb2bf',
-              padding: '20px',
-              borderRadius: '8px',
-              fontFamily: 'monospace',
-              fontSize: '13px',
-              minHeight: '250px',
-              maxHeight: '400px',
-              overflow: 'auto'
-            }}>
-              <div style={{ color: '#61afef', marginBottom: '10px' }}>📡 Webhookログ</div>
               {webhookLog.length === 0 ? (
                 <div style={{ color: '#6c757d' }}>
                   イベント待機中...<br />
@@ -356,12 +387,9 @@ export default function WebhookPage() {
             </table>
           </div>
         </section>
-      </main>
 
-      <footer className="footer-nav">
-        <Link href="/">トップページに戻る</Link>
-        <p>&copy; 2026 itwords - 実践型IT用語辞典</p>
-      </footer>
+        <FAQAccordion faqs={faqs} />
+      </main>
     </div>
   )
 }

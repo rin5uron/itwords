@@ -400,117 +400,6 @@ DATABASE_URL=postgresql://...`}</code></pre>
           </ul>
         </section>
 
-        <section>
-          <h2>実際にやってみよう：デプロイステップ可視化</h2>
-          <p>
-            Vercelでのデプロイがどのように進むか、ステップごとに確認してみましょう！
-          </p>
-
-          <div style={{
-            border: '2px solid #007bff',
-            borderRadius: '8px',
-            padding: '20px',
-            marginTop: '20px',
-            backgroundColor: '#f8f9fa'
-          }}>
-            <h3>デプロイの流れ</h3>
-
-            <div style={{ marginTop: '20px' }}>
-              {deploymentSteps.map((step, index) => (
-                <div
-                  key={index}
-                  style={{
-                    display: 'flex',
-                    alignItems: 'center',
-                    marginBottom: '15px',
-                    padding: '15px',
-                    backgroundColor: index <= currentStep ? '#fff' : '#e9ecef',
-                    border: `2px solid ${index === currentStep ? step.color : '#dee2e6'}`,
-                    borderRadius: '8px',
-                    opacity: index <= currentStep ? 1 : 0.5,
-                    transition: 'all 0.3s'
-                  }}
-                >
-                  <div style={{
-                    fontSize: '32px',
-                    marginRight: '15px',
-                    minWidth: '40px',
-                    textAlign: 'center'
-                  }}>
-                    {step.icon}
-                  </div>
-                  <div style={{ flex: 1 }}>
-                    <h4 style={{ margin: '0 0 5px 0', color: index <= currentStep ? step.color : '#6c757d' }}>
-                      {step.title}
-                    </h4>
-                    <p style={{ margin: 0, fontSize: '14px' }}>{step.description}</p>
-                  </div>
-                  {index === currentStep && (
-                    <div style={{
-                      padding: '5px 15px',
-                      backgroundColor: step.color,
-                      color: '#fff',
-                      borderRadius: '20px',
-                      fontSize: '12px',
-                      fontWeight: 'bold'
-                    }}>
-                      実行中
-                    </div>
-                  )}
-                  {index < currentStep && (
-                    <div style={{
-                      padding: '5px 15px',
-                      backgroundColor: '#28a745',
-                      color: '#fff',
-                      borderRadius: '20px',
-                      fontSize: '12px',
-                      fontWeight: 'bold'
-                    }}>
-                      完了
-                    </div>
-                  )}
-                </div>
-              ))}
-            </div>
-
-            <div style={{ display: 'flex', gap: '10px', marginTop: '20px' }}>
-              <button
-                onClick={nextStep}
-                disabled={currentStep === deploymentSteps.length - 1}
-                style={{
-                  padding: '10px 20px',
-                  fontSize: '16px',
-                  backgroundColor: currentStep === deploymentSteps.length - 1 ? '#6c757d' : '#007bff',
-                  color: '#fff',
-                  border: 'none',
-                  borderRadius: '5px',
-                  cursor: currentStep === deploymentSteps.length - 1 ? 'not-allowed' : 'pointer',
-                }}
-              >
-                次のステップ
-              </button>
-              <button
-                onClick={resetSteps}
-                style={{
-                  padding: '10px 20px',
-                  fontSize: '16px',
-                  backgroundColor: '#6c757d',
-                  color: '#fff',
-                  border: 'none',
-                  borderRadius: '5px',
-                  cursor: 'pointer',
-                }}
-              >
-                リセット
-              </button>
-            </div>
-
-            <p style={{ marginTop: '15px', fontSize: '14px', color: '#6c757d' }}>
-              💡 実際のデプロイでは、これらのステップが数秒〜数分で自動的に実行されます！
-            </p>
-          </div>
-        </section>
-
         <section className="term-comparison">
           <h2>関連用語</h2>
           <div className="comparison-table">
@@ -554,12 +443,9 @@ DATABASE_URL=postgresql://...`}</code></pre>
             </table>
           </div>
         </section>
-      </main>
 
-      <footer className="footer-nav">
-        <Link href="/">トップページに戻る</Link>
-        <p>&copy; 2026 itwords - 実践型IT用語辞典</p>
-      </footer>
+        <FAQAccordion faqs={faqs} />
+      </main>
     </div>
   )
 }
