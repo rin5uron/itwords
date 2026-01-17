@@ -67,7 +67,7 @@ export default function TableOfContents({ minHeadings = 4 }: TableOfContentsProp
         gap: '6px'
       }}>
         {headings.map((heading, index) => (
-          <li key={heading.id}>
+          <li key={heading.id} style={{ textAlign: 'left' }}>
             <a
               href={`#${heading.id}`}
               onClick={(e) => {
@@ -76,7 +76,9 @@ export default function TableOfContents({ minHeadings = 4 }: TableOfContentsProp
               }}
               style={{
                 color: '#495057',
-                textDecoration: 'none'
+                textDecoration: 'none',
+                display: 'block',
+                textAlign: 'left'
               }}
             >
               {index + 1}. {heading.title}
