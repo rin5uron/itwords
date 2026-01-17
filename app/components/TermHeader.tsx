@@ -15,7 +15,7 @@ export default function TermHeader({ termName, reading, icon }: TermHeaderProps)
         <div className="breadcrumb-container">
           <Link href="/" className="breadcrumb-link">TOP</Link>
           <span className="breadcrumb-separator">›</span>
-          <Link href="/#all-terms" className="breadcrumb-link">用語一覧</Link>
+          <Link href="/#search" className="breadcrumb-link">用語一覧</Link>
           <span className="breadcrumb-separator">›</span>
           <span className="breadcrumb-current">{termName}</span>
         </div>

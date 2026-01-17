@@ -1,6 +1,7 @@
 import Link from 'next/link'
 import type { Metadata } from 'next'
 import SiteHeader from './components/SiteHeader'
+import SearchAutocomplete from './components/SearchAutocomplete'
 
 export const metadata: Metadata = {
   title: '実践型IT用語辞典 - IT用語をわかりやすく解説【初心者向け体験デモ付き】',
@@ -108,46 +109,16 @@ export default function Home() {
                 <p>脆弱性を悪用する攻撃コード。実際の攻撃シミュレーションで学べます。</p>
               </Link>
             </div>
-            <div className="card" data-category="security">
-              <Link href="/terms/white-hat-hacker" className="card-link">
-                <span className="category-tag">セキュリティ</span>
-                <h4>ホワイトハッカー</h4>
-                <p>善意のハッカー。脆弱性診断の仕事を体験デモで学べます。</p>
-              </Link>
-            </div>
-            <div className="card" data-category="security">
-              <Link href="/terms/cve" className="card-link">
-                <span className="category-tag">セキュリティ</span>
-                <h4>CVE</h4>
-                <p>脆弱性識別番号。ニュースで見る「CVE-2024-xxxxx」の意味とは？</p>
-              </Link>
-            </div>
-            <div className="card" data-category="web">
-              <Link href="/terms/validation" className="card-link">
-                <span className="category-tag">Web</span>
-                <h4>バリデーション</h4>
-                <p>入力データが正しいかをチェックする仕組みです。実践デモで学べます。</p>
-              </Link>
-            </div>
-            <div className="card" data-category="web">
-              <Link href="/terms/poka-yoke" className="card-link">
-                <span className="category-tag">Web</span>
-                <h4>ポカヨケ</h4>
-                <p>製造業から生まれた「うっかりミス」を防ぐ設計手法です。</p>
-              </Link>
-            </div>
-            <div className="card" data-category="web">
-              <Link href="/terms/foolproof" className="card-link">
-                <span className="category-tag">Web</span>
-                <h4>フールプルーフ</h4>
-                <p>ユーザーの誤操作を防ぐための設計原則です。</p>
-              </Link>
-            </div>
           </div>
         </section>
 
         <section id="all-terms">
           <h3>すべての用語</h3>
+          
+          {/* 検索窓 */}
+          <div className="search-container" style={{ marginTop: '20px', marginBottom: '30px' }}>
+            <SearchAutocomplete />
+          </div>
 
           {/* Web */}
           <h4 style={{ marginTop: '40px', marginBottom: '20px', color: '#2c3e50', borderBottom: '2px solid #14b8a6', paddingBottom: '10px' }}>Web</h4>

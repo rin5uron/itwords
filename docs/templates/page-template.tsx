@@ -1,5 +1,10 @@
 // app/[content]/page.tsx テンプレート
 // コンテンツページのテンプレート（SEO対策と構造化データを含む）
+//
+// トップページ表示ルール:
+// - 新着用語: 3つまで表示する
+// - 人気用語: 適宜更新（6つ程度）
+// - すべての用語: カテゴリ別に整理して表示
 
 import Link from 'next/link'
 import { Metadata } from 'next'
