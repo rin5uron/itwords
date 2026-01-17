@@ -4,6 +4,8 @@ import GitHubDemo from './GitHubDemo'
 import GitFlowDemo from './GitFlowDemo'
 import StructuredData from '@/app/components/StructuredData'
 import TableOfContents from '@/app/components/TableOfContents'
+import TermHeader from '@/app/components/TermHeader'
+import FAQAccordion from '@/app/components/FAQAccordion'
 
 export const metadata: Metadata = {
   title: 'GitHubとは？使い方・プルリクエストの流れを3分で理解【初心者向け】 | 実践型IT用語辞典',
@@ -59,10 +61,11 @@ export default function GitHubPage() {
         dateModified="2026-01-16"
       />
 
-      <header>
-        <h1><i className="fab fa-github"></i> GitHub</h1>
-        <p className="reading">ギットハブ</p>
-      </header>
+      <TermHeader
+        termName="GitHub"
+        reading="ギットハブ"
+        icon="fab fa-github"
+      />
 
       <TableOfContents />
 
@@ -135,6 +138,16 @@ export default function GitHubPage() {
             つまり、<strong>Git</strong>という道具を使って、
             <strong>GitHub</strong>という場所にコードを保存・共有するイメージです。
           </p>
+
+          {/* Git と GitHub の違いの下にデモを追加 */}
+          <div style={{ marginTop: '30px', marginBottom: '30px' }}>
+            <h3>GitHubの全体の流れを理解する</h3>
+            <p>
+              以下のデモで、GitHubでよく使われる概念（リポジトリ、コミット、プッシュ、プル、ブランチ）の流れを体験できます。
+              「何をしているサービスなのか」が一目で分かります。
+            </p>
+            <GitFlowDemo />
+          </div>
         </section>
 
         <section>
@@ -379,17 +392,41 @@ Closes #123`}</code></pre>
             バグ報告や機能要望を管理する掲示板のようなものです。
             タスク管理にも使えます。
           </p>
+          <p>
+            <strong>イメージ：</strong> プロジェクトの「ToDoリスト」や「問題管理ボード」のようなものです。
+            チームメンバーが「この機能を追加したい」「このバグを直したい」と書き込むと、
+            他のメンバーが対応できます。
+          </p>
+          <p>
+            <a href="https://docs.github.com/ja/issues" target="_blank" rel="noopener noreferrer" style={{ color: '#14b8a6', textDecoration: 'underline' }}>
+              詳しくはGitHub公式ドキュメント →
+            </a>
+          </p>
 
           <h3>GitHub Actions</h3>
           <p>
             コードをpushしたときに自動的にテストを実行したり、
             <Link href="/terms/vercel">Vercel</Link>にデプロイしたりできる自動化機能です。
           </p>
+          <p>
+            <strong>イメージ：</strong> 「コードをpushしたら、自動的にテストを走らせて、問題なければ本番環境にデプロイする」
+            という一連の流れを自動化できます。手動でやっていた作業を、GitHubが自動でやってくれます。
+          </p>
+          <p>
+            <a href="https://docs.github.com/ja/actions" target="_blank" rel="noopener noreferrer" style={{ color: '#14b8a6', textDecoration: 'underline' }}>
+              詳しくはGitHub公式ドキュメント →
+            </a>
+          </p>
 
           <h3>GitHub Pages</h3>
           <p>
             静的なWebサイトを無料でホスティングできる機能です。
             ポートフォリオサイトやドキュメントの公開に便利です。
+          </p>
+          <p>
+            <a href="https://docs.github.com/ja/pages" target="_blank" rel="noopener noreferrer" style={{ color: '#14b8a6', textDecoration: 'underline' }}>
+              詳しくはGitHub公式ドキュメント →
+            </a>
           </p>
 
           <h3>README.md</h3>
@@ -446,14 +483,22 @@ npm run dev
             GitHubのプロフィールは、開発者の<strong>「ポートフォリオ」</strong>になります。
           </p>
 
-          <h3>緑の芝生（Contribution Graph）</h3>
+          <h3>緑の芝生（Contribution Graph）と「草を生やす」</h3>
           <p>
             プロフィールに表示される緑色のマス目は、あなたの活動履歴を示します。
             毎日コミットすると、緑のマスが増えていきます。
           </p>
+          <p>
+            <strong>「草を生やす」</strong>とは、GitHubのContribution Graph（緑の芝生）に緑色のマスを増やすことを指すスラングです。
+            毎日コミットをすると、その日のマスが緑色になり、まるで「草が生える」ように見えることから、この表現が生まれました。
+          </p>
+          <p>
+            開発者コミュニティでは「今日も草を生やした！」「草が途切れないように頑張る」など、継続的な開発活動を表現する言葉として使われています。
+          </p>
           <p className="note">
             <strong>💡 就職・転職でも注目される！</strong>
             企業の採用担当者は、GitHubのプロフィールを見て技術力を判断することもあります。
+            特にContribution Graph（緑の芝生）が充実していると、継続的に開発活動をしていることが分かり、評価されやすくなります。
           </p>
         </section>
 
@@ -550,34 +595,7 @@ node_modules/
           <GitHubDemo />
         </section>
 
-        <section>
-          <h2>よくある質問（FAQ）</h2>
-
-          <h3>Q1. GitHubとGitの違いは何ですか？</h3>
-          <p>
-            Gitはバージョン管理システム（ソフトウェア）で、あなたのパソコン上で動作します。一方、GitHubはGitを使ったホスティングサービス（Webサービス）で、クラウド上でコードを保存・共有できます。
-          </p>
-
-          <h3>Q2. GitHubは無料で使えますか？</h3>
-          <p>
-            はい、GitHubは無料プランがあり、個人開発者やオープンソースプロジェクトは無料で利用できます。プライベートリポジトリも無制限に作成可能です。
-          </p>
-
-          <h3>Q3. GitHubの始め方を教えてください</h3>
-          <p>
-            1. GitHubのWebサイト（github.com）でアカウントを作成します。2. Gitをパソコンにインストールします。3. GitHubで「New repository」をクリックしてリポジトリを作成します。4. ローカルでコードを書いて、git add、git commit、git pushコマンドでGitHubにアップロードします。
-          </p>
-
-          <h3>Q4. プルリクエストとは何ですか？</h3>
-          <p>
-            プルリクエスト（Pull Request、PR）は、「この変更を本番に反映してください」とお願いする機能です。自分が開発した機能や修正を他の開発者にレビューしてもらい、承認されたらメインブランチにマージ（統合）されます。
-          </p>
-
-          <h3>Q5. GitHubのプロフィールは就職・転職で見られますか？</h3>
-          <p>
-            はい、多くの企業の採用担当者がGitHubのプロフィールを見て技術力を判断します。特にContribution Graph（緑の芝生）や公開リポジトリの品質、オープンソースへの貢献度などが評価されます。
-          </p>
-        </section>
+        <FAQAccordion faqs={faqs} />
 
         <section className="term-comparison">
           <h2>関連用語</h2>

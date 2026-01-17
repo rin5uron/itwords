@@ -105,6 +105,15 @@ export default function ContentPage() {
         <FAQAccordion faqs={faqs} />
 
         {/* 関連用語セクション（任意） */}
+        {/* 
+          重要：関連用語セクションは必ず以下の形式で統一すること
+          - section要素に className="term-comparison" を付与
+          - div要素に className="comparison-table" を付与
+          - table要素を使用（ul/li形式は使用しない）
+          - 用語名には className="term-name" を付与
+          - リンク可能な用語は Link コンポーネントで囲む
+          - 最低3行以上（対象用語を含む）を推奨
+        */}
         <section className="term-comparison">
           <h2>関連用語</h2>
           <div className="comparison-table">
@@ -117,12 +126,26 @@ export default function ContentPage() {
               </thead>
               <tbody>
                 <tr>
-                  <td className="term-name">[関連用語1]</td>
+                  <td>
+                    <Link href="/terms/[用語1]" className="term-name">
+                      [関連用語1]
+                    </Link>
+                  </td>
                   <td>[説明1]</td>
                 </tr>
                 <tr>
-                  <td className="term-name">[関連用語2]</td>
+                  <td>
+                    <Link href="/terms/[用語2]" className="term-name">
+                      [関連用語2]
+                    </Link>
+                  </td>
                   <td>[説明2]</td>
+                </tr>
+                <tr>
+                  <td>
+                    <span className="term-name">[関連用語3（リンクなし）]</span>
+                  </td>
+                  <td>[説明3]</td>
                 </tr>
               </tbody>
             </table>

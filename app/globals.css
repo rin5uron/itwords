@@ -869,14 +869,8 @@ footer a:hover {
 .table-of-contents a {
   color: #495057;
   text-decoration: none;
-  display: block;
+  display: inline-block;
   text-align: left;
-  width: 100%;
-}
-
-.table-of-contents a:hover {
-  color: #14b8a6;
-  text-decoration: underline;
 }
 
 /* FAQアコーディオンスタイル */

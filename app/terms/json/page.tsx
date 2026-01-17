@@ -2,6 +2,9 @@ import Link from 'next/link'
 import type { Metadata } from 'next'
 import JsonDemo from '@/components/JsonDemo'
 import StructuredData from '@/app/components/StructuredData'
+import TermHeader from '@/app/components/TermHeader'
+import TableOfContents from '@/app/components/TableOfContents'
+import FAQAccordion from '@/app/components/FAQAccordion'
 
 export const metadata: Metadata = {
   title: 'JSONとは？初心者向けにわかりやすく解説【実践デモ付き】 | 実践型IT用語辞典',
@@ -68,12 +71,13 @@ export default function JsonPage() {
         datePublished="2024-01-01"
         dateModified="2026-01-16"
       />
-      <header>
-        <h1>
-          <i className="fas fa-brackets-curly"></i> JSON
-        </h1>
-        <p className="reading">ジェイソン / JavaScript Object Notation</p>
-      </header>
+      <TermHeader
+        termName="JSON"
+        reading="ジェイソン / JavaScript Object Notation"
+        icon="fas fa-brackets-curly"
+      />
+
+      <TableOfContents />
 
       <main>
         <section>
@@ -83,6 +87,16 @@ export default function JsonPage() {
             <strong>データ交換フォーマット</strong>です。
             Web APIやデータ保存など、あらゆる場面で使われる標準的なデータ形式で、キー（名前）と値のペアでデータを表現します。
           </p>
+
+          {/* 体験デモを概要の直下に配置 */}
+          <div style={{ marginTop: '30px', marginBottom: '30px' }}>
+            <h3>JSONの仕組みを体験してみよう</h3>
+            <p>
+              下のデモでJSONデータを実際に編集して、リアルタイムで構造を確認できます。
+              実際に手を動かすことで、JSONの仕組みが理解しやすくなります。
+            </p>
+            <JsonDemo />
+          </div>
         </section>
 
         <section>
@@ -128,7 +142,49 @@ export default function JsonPage() {
         </section>
 
         <section>
-          <h2>日常生活でのJSONの例</h2>
+          <h2>JSONとCSVの比較：JSONの方が簡単で軽い</h2>
+          <p>
+            JSONは、CSV（カンマ区切り値）などの従来のデータ形式と比べて、<strong>シンプルで軽量</strong>です。
+            比較してみましょう。
+          </p>
+
+          <div className="comparison-table" style={{ marginTop: '20px', marginBottom: '20px' }}>
+            <table>
+              <thead>
+                <tr>
+                  <th>形式</th>
+                  <th>特徴</th>
+                  <th>例</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td><strong>CSV</strong></td>
+                  <td>カンマで区切るだけのシンプルな形式。ただし、構造が複雑になると読みにくい</td>
+                  <td><code>名前,年齢,都市<br />田中,25,東京<br />佐藤,30,大阪</code></td>
+                </tr>
+                <tr>
+                  <td><strong>JSON</strong></td>
+                  <td>キーと値のペアで構造化。人間も読みやすく、機械も処理しやすい</td>
+                  <td><code>&#123;"name": "田中", "age": 25, "city": "東京"&#125;</code></td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+
+          <p>
+            <strong>JSONのメリット：</strong>
+          </p>
+          <ul>
+            <li>構造が明確で、ネスト（入れ子）も表現できる</li>
+            <li>データサイズが小さい（軽い）</li>
+            <li>人間が読んで理解しやすい</li>
+            <li>JavaScriptで直接扱える</li>
+          </ul>
+        </section>
+
+        <section>
+          <h2>日常生活でのJSONの例（実際のコード）</h2>
           <p>
             JSONは私たちが毎日使っているWebサービスやアプリの裏側で、データのやり取りに使われています。
             目には見えませんが、JSONがなければ今のインターネットは成り立ちません。
@@ -140,6 +196,24 @@ export default function JsonPage() {
             投稿の文章、投稿者の名前、いいね数、コメントなどが、すべてJSONで構造化されて送られてきます。
             ブラウザやアプリがそのJSONを解析して、見やすい画面に表示しているのです。
           </p>
+          <div className="code-example" style={{ marginTop: '15px' }}>
+            <pre>
+              <code className="language-json">{`{
+  "postId": "12345",
+  "author": {
+    "name": "田中太郎",
+    "username": "@tanaka"
+  },
+  "content": "今日は良い天気です！",
+  "likes": 42,
+  "comments": [
+    {"user": "佐藤", "text": "いいね！"},
+    {"user": "鈴木", "text": "同感です"}
+  ],
+  "timestamp": "2026-01-17T10:30:00Z"
+}`}</code>
+            </pre>
+          </div>
 
           <h3>2. 天気予報アプリ</h3>
           <p>
@@ -147,6 +221,20 @@ export default function JsonPage() {
             「東京」「晴れ」「25度」「湿度60%」といった情報が、キーと値のペアで返されます。
             アプリはそれを解析して、天気アイコンや気温を画面に表示します。
           </p>
+          <div className="code-example" style={{ marginTop: '15px' }}>
+            <pre>
+              <code className="language-json">{`{
+  "location": "東京",
+  "weather": "晴れ",
+  "temperature": 25,
+  "humidity": 60,
+  "forecast": [
+    {"date": "2026-01-18", "weather": "曇り", "temp": 23},
+    {"date": "2026-01-19", "weather": "雨", "temp": 20}
+  ]
+}`}</code>
+            </pre>
+          </div>
 
           <h3>3. オンラインショッピングサイト</h3>
           <p>
@@ -154,6 +242,18 @@ export default function JsonPage() {
             商品名、価格、在庫状況、レビュー評価などが、すべてJSONで構造化されています。
             カートに商品を追加する時も、JSON形式でサーバーにデータを送信しています。
           </p>
+          <div className="code-example" style={{ marginTop: '15px' }}>
+            <pre>
+              <code className="language-json">{`{
+  "productId": "P001",
+  "name": "ノートパソコン",
+  "price": 99800,
+  "inStock": true,
+  "rating": 4.5,
+  "reviews": 128
+}`}</code>
+            </pre>
+          </div>
 
           <h3>4. package.json（Node.jsの設定ファイル）</h3>
           <p>
@@ -170,69 +270,8 @@ export default function JsonPage() {
           </p>
         </section>
 
-        <section>
-          <h2>体験してみよう</h2>
-          <p>
-            下のデモでJSONデータを実際に編集して、リアルタイムで構造を確認できます。
-            実際に手を動かすことで、JSONの仕組みが理解しやすくなります。
-          </p>
 
-          <h3>デモの使い方</h3>
-          <ol>
-            <li><strong>JSONデータを編集</strong>: 左側のエディタで名前や年齢を自由に変更してみましょう</li>
-            <li><strong>リアルタイムで反映</strong>: 右側のプレビューが自動的に更新されます</li>
-            <li><strong>エラーを体験</strong>: わざと間違った書き方をすると、エラーメッセージが表示されます</li>
-          </ol>
-
-          <p>
-            <strong>ポイント</strong>: JSONでは、文字列はダブルクォート（"）で囲む必要があります。
-            シングルクォート（'）を使うとエラーになるので注意しましょう。
-          </p>
-
-          <JsonDemo />
-
-          <h3>デモから学べること</h3>
-          <ul>
-            <li>キーと値のペア構造</li>
-            <li>ネスト（入れ子）構造の理解</li>
-            <li>配列の表現方法</li>
-            <li>正しい書き方とエラーの違い</li>
-          </ul>
-        </section>
-
-        <section>
-          <h2>JavaScriptで実践してみよう</h2>
-          <p>
-            JavaScriptの<code>JSON.parse()</code>と<code>JSON.stringify()</code>
-            を使うと、JSONデータを簡単に操作できます。以下のサンプルコードで、その実装方法を確認してみましょう。
-          </p>
-
-          <details>
-            <summary>サンプルコードを見る (JavaScript)</summary>
-            <div className="code-example">
-              <pre>
-                <code className="language-javascript">{`// JSONデータの例
-const jsonData = {
-  "name": "田中太郎",
-  "age": 25,
-  "hobbies": ["読書", "映画鑑賞", "プログラミング"],
-  "address": {
-    "city": "東京",
-    "prefecture": "東京都"
-  }
-};
-
-// オブジェクトをJSON文字列に変換
-const jsonString = JSON.stringify(jsonData, null, 2);
-console.log("JSON文字列:", jsonString);
-
-// JSON文字列をオブジェクトに変換
-const parsedData = JSON.parse(jsonString);
-console.log("パースされたデータ:", parsedData.name); // "田中太郎"`}</code>
-              </pre>
-            </div>
-          </details>
-        </section>
+        <FAQAccordion faqs={faqs} />
 
         <section className="term-comparison">
           <h2>関連用語</h2>
@@ -272,11 +311,6 @@ console.log("パースされたデータ:", parsedData.name); // "田中太郎"`
           </div>
         </section>
       </main>
-
-      <footer className="footer-nav">
-        <Link href="/">トップページに戻る</Link>
-        <p>&copy; 2026 itwords - 実践型IT用語辞典</p>
-      </footer>
     </div>
   )
 }
