@@ -1,5 +1,6 @@
 import Link from 'next/link'
 import type { Metadata } from 'next'
+import SiteHeader from './components/SiteHeader'
 
 export const metadata: Metadata = {
   title: '実践型IT用語辞典 - IT用語をわかりやすく解説【初心者向け体験デモ付き】',
@@ -32,36 +33,7 @@ export const metadata: Metadata = {
 export default function Home() {
   return (
     <div className="container">
-      <header className="site-header">
-        <div className="header-top">
-          <h1>実践型IT用語辞典</h1>
-          <nav>
-            <ul>
-              <li>
-                <Link href="#popular">人気用語</Link>
-              </li>
-              <li>
-                <Link href="#new">新着用語</Link>
-              </li>
-              <li>
-                <Link href="#all-terms">すべての用語</Link>
-              </li>
-              <li>
-                <Link href="#about">制作背景</Link>
-              </li>
-            </ul>
-          </nav>
-        </div>
-        <p className="site-description">
-          このサイトは、現役のWeb開発者が運営する「見て、触って、学べる」をコンセプトにしたIT用語辞典です。プログラミング学習を始めたばかりの方や、IT業界で働く非エンジニアの方を対象に、専門用語を分かりやすく解説します。特に、APIやJSONといった抽象的な概念は、実際に動かせる体験デモを通じて「なぜそうなるのか」を直感的に理解できます。Web開発の基礎知識を確実に習得し、あなたの学習やキャリアアップを力強くサポートします。
-        </p>
-        <div className="search-container">
-          <form action="/search" method="get">
-            <input type="search" name="q" className="search-input" placeholder="サイト内を検索..." required />
-            <button type="submit" className="search-button">検索</button>
-          </form>
-        </div>
-      </header>
+      <SiteHeader showNav={true} />
 
       <main>
         <section id="popular">

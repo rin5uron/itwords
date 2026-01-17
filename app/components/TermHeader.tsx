@@ -1,4 +1,5 @@
 import Link from 'next/link'
+import SiteHeader from './SiteHeader'
 
 interface TermHeaderProps {
   termName: string
@@ -9,29 +10,14 @@ interface TermHeaderProps {
 export default function TermHeader({ termName, reading, icon }: TermHeaderProps) {
   return (
     <>
-      <nav style={{
-        padding: '10px 0',
-        borderBottom: '1px solid #e0e0e0',
-        marginBottom: '20px'
-      }}>
-        <div style={{
-          display: 'flex',
-          justifyContent: 'space-between',
-          alignItems: 'center',
-          flexWrap: 'wrap',
-          gap: '10px'
-        }}>
-          <div style={{ fontSize: '14px', color: '#666' }}>
-            <Link href="/" style={{ color: '#ea9b8a', textDecoration: 'none' }}>
-              TOP
-            </Link>
-            <span style={{ margin: '0 8px', color: '#999' }}>›</span>
-            <Link href="/" style={{ color: '#ea9b8a', textDecoration: 'none' }}>
-              用語一覧
-            </Link>
-            <span style={{ margin: '0 8px', color: '#999' }}>›</span>
-            <span>{termName}</span>
-          </div>
+      <SiteHeader showNav={false} />
+      <nav className="breadcrumb-nav">
+        <div className="breadcrumb-container">
+          <Link href="/" className="breadcrumb-link">TOP</Link>
+          <span className="breadcrumb-separator">›</span>
+          <Link href="/#all-terms" className="breadcrumb-link">用語一覧</Link>
+          <span className="breadcrumb-separator">›</span>
+          <span className="breadcrumb-current">{termName}</span>
         </div>
       </nav>
 
