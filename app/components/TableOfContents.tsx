@@ -13,7 +13,6 @@ type TableOfContentsProps = {
 
 export default function TableOfContents({ minHeadings = 4 }: TableOfContentsProps) {
   const [headings, setHeadings] = useState<TocItem[]>([])
-  const [activeId, setActiveId] = useState<string>('')
 
   useEffect(() => {
     // ページ内のh2タグを全て取得
@@ -34,24 +33,6 @@ export default function TableOfContents({ minHeadings = 4 }: TableOfContentsProp
     if (items.length >= minHeadings) {
       setHeadings(items)
     }
-
-    // スクロール位置に応じてアクティブな見出しをハイライト
-    const handleScroll = () => {
-      const scrollY = window.scrollY + 100
-
-      for (let i = items.length - 1; i >= 0; i--) {
-        const element = document.getElementById(items[i].id)
-        if (element && element.offsetTop <= scrollY) {
-          setActiveId(items[i].id)
-          break
-        }
-      }
-    }
-
-    window.addEventListener('scroll', handleScroll)
-    handleScroll() // 初期位置を設定
-
-    return () => window.removeEventListener('scroll', handleScroll)
   }, [minHeadings])
 
   // 見出しが少ない場合は何も表示しない
@@ -71,74 +52,38 @@ export default function TableOfContents({ minHeadings = 4 }: TableOfContentsProp
   return (
     <nav style={{
       backgroundColor: '#f8f9fa',
-      border: '2px solid #dee2e6',
-      borderRadius: '8px',
-      padding: '20px',
-      marginBottom: '30px',
+      border: '1px solid #dee2e6',
+      borderRadius: '6px',
+      padding: '16px',
+      marginBottom: '24px',
       marginTop: '20px'
     }}>
-      <h3 style={{
-        margin: '0 0 15px 0',
-        fontSize: '16px',
-        fontWeight: 'bold',
-        color: '#495057',
-        display: 'flex',
-        alignItems: 'center',
-        gap: '8px'
-      }}>
-        📖 この記事でわかること
-      </h3>
-
       <ul style={{
         listStyle: 'none',
         padding: 0,
         margin: 0,
         display: 'flex',
         flexDirection: 'column',
-        gap: '8px'
+        gap: '6px'
       }}>
-        {headings.map((heading) => (
+        {headings.map((heading, index) => (
           <li key={heading.id}>
-            <button
-              onClick={() => scrollToSection(heading.id)}
+            <a
+              href={`#${heading.id}`}
+              onClick={(e) => {
+                e.preventDefault()
+                scrollToSection(heading.id)
+              }}
               style={{
-                width: '100%',
-                textAlign: 'left',
-                padding: '8px 12px',
-                backgroundColor: activeId === heading.id ? '#007bff' : 'transparent',
-                color: activeId === heading.id ? '#fff' : '#495057',
-                border: 'none',
-                borderRadius: '4px',
-                cursor: 'pointer',
-                fontSize: '14px',
-                transition: 'all 0.2s ease',
-                fontWeight: activeId === heading.id ? 'bold' : 'normal'
-              }}
-              onMouseEnter={(e) => {
-                if (activeId !== heading.id) {
-                  e.currentTarget.style.backgroundColor = '#e9ecef'
-                }
-              }}
-              onMouseLeave={(e) => {
-                if (activeId !== heading.id) {
-                  e.currentTarget.style.backgroundColor = 'transparent'
-                }
+                color: '#495057',
+                textDecoration: 'none'
               }}
             >
-              {heading.title}
-            </button>
+              {index + 1}. {heading.title}
+            </a>
           </li>
         ))}
       </ul>
-
-      <p style={{
-        margin: '15px 0 0 0',
-        fontSize: '12px',
-        color: '#6c757d',
-        fontStyle: 'italic'
-      }}>
-        💡 クリックで各セクションにジャンプできます
-      </p>
     </nav>
   )
 }
