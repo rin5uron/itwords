@@ -4,7 +4,6 @@ import Link from 'next/link'
 import { useState } from 'react'
 import StructuredData from '@/app/components/StructuredData'
 import TermHeader from '@/app/components/TermHeader'
-import TableOfContents from '@/app/components/TableOfContents'
 
 export default function APIPage() {
   const [weatherLoading, setWeatherLoading] = useState(false)
@@ -40,7 +39,6 @@ export default function APIPage() {
   const fetchWeather = async () => {
     setWeatherLoading(true)
     try {
-      // Open-Meteo API（認証不要の天気API）
       const response = await fetch(
         'https://api.open-meteo.com/v1/forecast?latitude=35.6762&longitude=139.6503&current_weather=true'
       )
@@ -96,58 +94,68 @@ export default function APIPage() {
         icon="fas fa-link"
       />
 
-      <TableOfContents />
+      {/* コンパクト目次 */}
+      <nav style={{
+        backgroundColor: '#f8f9fa',
+        border: '1px solid #dee2e6',
+        borderRadius: '6px',
+        padding: '16px',
+        marginBottom: '24px',
+        marginTop: '20px'
+      }}>
+        <ul style={{
+          listStyle: 'none',
+          padding: 0,
+          margin: 0,
+          display: 'flex',
+          flexDirection: 'column',
+          gap: '6px'
+        }}>
+          <li><a href="#overview" style={{ color: '#495057', textDecoration: 'none' }}>1. 概要</a></li>
+          <li><a href="#demo" style={{ color: '#495057', textDecoration: 'none' }}>2. 体験デモ：APIを呼んでみる</a></li>
+          <li><a href="#examples" style={{ color: '#495057', textDecoration: 'none' }}>3. このAPIはどこで使われている？</a></li>
+          <li><a href="#mechanism" style={{ color: '#495057', textDecoration: 'none' }}>4. APIの仕組みを超かんたんに言うと</a></li>
+          <li><a href="#terms" style={{ color: '#495057', textDecoration: 'none' }}>5. APIの基本用語</a></li>
+          <li><a href="#summary" style={{ color: '#495057', textDecoration: 'none' }}>6. まとめ：APIは何ができるのか</a></li>
+        </ul>
+      </nav>
 
       <main>
-        <section>
+        <section id="overview">
           <h2>概要</h2>
-          <div style={{
-            backgroundColor: '#e3f2fd',
-            border: '2px solid #2196f3',
-            borderRadius: '8px',
-            padding: '20px',
-            marginBottom: '20px'
-          }}>
-            <p style={{ fontSize: '18px', fontWeight: 'bold', margin: '0 0 10px 0', color: '#1565c0' }}>
-              🎯 APIとは何か？（超シンプルに）
-            </p>
-            <ul style={{ fontSize: '16px', lineHeight: '1.8', marginBottom: 0 }}>
-              <li><strong>外部のサービスと機能をやり取りするための仕組み</strong></li>
-              <li><strong>自分で全部作らず、他のサービスの機能を「呼び出して使う」ことができる</strong></li>
-            </ul>
-          </div>
-
           <p>
-            例えば、あなたが天気予報アプリを作りたいとします。
-            でも、気象データを自分で集めるのは大変ですよね。
+            <strong>API</strong>とは、<strong>他のサービスの機能やデータを呼び出して使う仕組み</strong>です。
           </p>
-
           <p>
-            そんな時、<strong>天気APIを使えば、「今日の東京の天気は？」とお願いするだけで、
-            気温や天気のデータを返してくれます</strong>。
-            これがAPIです！
+            Webサイトやアプリは、多くのAPIを組み合わせて作られています。
+            自分で全部作らなくても、他のサービスが提供する機能を「お願いして使う」ことができます。
           </p>
         </section>
 
-        <section>
-          <h2>実際にやってみよう！API体験デモ</h2>
+        <section id="demo">
+          <h2>体験デモ：APIを実際に呼んでみる</h2>
           <p>
-            百聞は一見にしかず。実際にAPIを呼び出して、結果を見てみましょう！
+            実際にAPIを呼び出して、結果を見てみましょう。ボタンを押すだけで、外部サービスからデータが返ってきます。
           </p>
 
           {/* デモ①：天気API */}
           <div style={{
             backgroundColor: '#fff',
-            border: '2px solid #4caf50',
-            borderRadius: '10px',
+            border: '1px solid #4caf50',
+            borderRadius: '8px',
             padding: '20px',
-            marginBottom: '30px'
+            marginBottom: '24px'
           }}>
-            <h3 style={{ marginTop: 0, color: '#2e7d32', display: 'flex', alignItems: 'center', gap: '8px' }}>
-              <span style={{ fontSize: '24px' }}>🌤️</span>
+            <h3 style={{ marginTop: 0, color: '#2e7d32' }}>
+              <i className="fas fa-cloud-sun" style={{ marginRight: '8px' }}></i>
               デモ① お天気API
             </h3>
-            <p>東京の現在の天気と気温を取得してみましょう。</p>
+            <p style={{ marginBottom: '12px' }}>
+              <strong>使用API：</strong> Open-Meteo API（<a href="https://openweathermap.org/api" target="_blank" rel="noopener noreferrer">https://openweathermap.org/api</a>）
+            </p>
+            <p style={{ marginBottom: '12px' }}>
+              <strong>体験内容：</strong> 都市名を送ると、現在の天気・気温が返ってくる
+            </p>
 
             <button
               onClick={fetchWeather}
@@ -164,7 +172,7 @@ export default function APIPage() {
                 marginBottom: '15px'
               }}
             >
-              {weatherLoading ? '取得中...' : '東京の天気を取得 🌍'}
+              {weatherLoading ? '取得中...' : '東京の天気を取得'}
             </button>
 
             {weatherData && !weatherData.error && (
@@ -175,61 +183,48 @@ export default function APIPage() {
                 borderLeft: '4px solid #4caf50'
               }}>
                 <p style={{ margin: '0 0 8px 0', fontSize: '16px' }}>
-                  <strong>📍 東京の現在の天気</strong>
+                  <strong>東京の現在の天気</strong>
                 </p>
                 <p style={{ margin: '0 0 5px 0' }}>
-                  🌡️ 気温：<strong>{weatherData.temperature}°C</strong>
+                  気温：<strong>{weatherData.temperature}°C</strong>
                 </p>
-                <p style={{ margin: '0 0 5px 0' }}>
-                  💨 風速：<strong>{weatherData.windspeed} km/h</strong>
-                </p>
-                <p style={{ margin: 0, fontSize: '14px', color: '#666', marginTop: '10px' }}>
-                  💡 これが「API」です！ボタンを押すだけで、リアルタイムの気象データを取得できました。
+                <p style={{ margin: 0 }}>
+                  風速：<strong>{weatherData.windspeed} km/h</strong>
                 </p>
               </div>
             )}
 
-            <details style={{ marginTop: '15px' }}>
-              <summary style={{ cursor: 'pointer', fontWeight: 'bold', color: '#2e7d32' }}>
-                🔍 どうやって動いているの？
-              </summary>
-              <div style={{ marginTop: '10px', fontSize: '14px', lineHeight: '1.6' }}>
-                <p><strong>使用API：</strong> Open-Meteo API（無料の天気API）</p>
-                <p><strong>エンドポイント：</strong></p>
-                <code style={{ backgroundColor: '#f5f5f5', padding: '5px', borderRadius: '3px', display: 'block', fontSize: '13px' }}>
-                  https://api.open-meteo.com/v1/forecast?latitude=35.6762&longitude=139.6503&current_weather=true
-                </code>
-                <p style={{ marginTop: '10px' }}>
-                  このURLに「東京の緯度経度」を指定してリクエストを送ると、JSON形式で天気データが返ってきます。
-                </p>
+            {weatherData?.error && (
+              <div style={{
+                backgroundColor: '#ffebee',
+                padding: '15px',
+                borderRadius: '5px',
+                borderLeft: '4px solid #f44336',
+                color: '#c62828'
+              }}>
+                {weatherData.error}
               </div>
-            </details>
-
-            <p style={{
-              marginTop: '15px',
-              padding: '10px',
-              backgroundColor: '#fff3e0',
-              borderRadius: '5px',
-              fontSize: '14px',
-              color: '#e65100'
-            }}>
-              <strong>🎨 用途イメージ：</strong> 天気アプリ、お出かけ提案サイト、洗濯おすすめ表示など
-            </p>
+            )}
           </div>
 
           {/* デモ②：名言API */}
           <div style={{
             backgroundColor: '#fff',
-            border: '2px solid #9c27b0',
-            borderRadius: '10px',
+            border: '1px solid #9c27b0',
+            borderRadius: '8px',
             padding: '20px',
-            marginBottom: '30px'
+            marginBottom: '24px'
           }}>
-            <h3 style={{ marginTop: 0, color: '#7b1fa2', display: 'flex', alignItems: 'center', gap: '8px' }}>
-              <span style={{ fontSize: '24px' }}>💬</span>
-              デモ② 名言・ランダムメッセージAPI
+            <h3 style={{ marginTop: 0, color: '#7b1fa2' }}>
+              <i className="fas fa-quote-left" style={{ marginRight: '8px' }}></i>
+              デモ② ランダム名言・メッセージAPI
             </h3>
-            <p>アクセスするたびにランダムな英語の名言が返ってきます。</p>
+            <p style={{ marginBottom: '12px' }}>
+              <strong>使用API：</strong> Quotable API（<a href="https://github.com/lukePeavey/quotable" target="_blank" rel="noopener noreferrer">https://github.com/lukePeavey/quotable</a>）
+            </p>
+            <p style={{ marginBottom: '12px' }}>
+              <strong>体験内容：</strong> アクセスするたびにランダムな一言が返る
+            </p>
 
             <button
               onClick={fetchQuote}
@@ -246,7 +241,7 @@ export default function APIPage() {
                 marginBottom: '15px'
               }}
             >
-              {quoteLoading ? '取得中...' : '今日の名言を取得 ✨'}
+              {quoteLoading ? '取得中...' : '今日の名言を取得'}
             </button>
 
             {quoteData && !quoteData.error && (
@@ -262,53 +257,40 @@ export default function APIPage() {
                 <p style={{ margin: 0, fontSize: '14px', color: '#666', textAlign: 'right' }}>
                   — {quoteData.author}
                 </p>
-                <p style={{ margin: 0, fontSize: '14px', color: '#666', marginTop: '10px' }}>
-                  💡 同じAPIでも、呼び出すたびに違う結果が返ってきます！
-                </p>
               </div>
             )}
 
-            <details style={{ marginTop: '15px' }}>
-              <summary style={{ cursor: 'pointer', fontWeight: 'bold', color: '#7b1fa2' }}>
-                🔍 どうやって動いているの？
-              </summary>
-              <div style={{ marginTop: '10px', fontSize: '14px', lineHeight: '1.6' }}>
-                <p><strong>使用API：</strong> Quotable API（無料の名言API）</p>
-                <p><strong>エンドポイント：</strong></p>
-                <code style={{ backgroundColor: '#f5f5f5', padding: '5px', borderRadius: '3px', display: 'block', fontSize: '13px' }}>
-                  https://api.quotable.io/random
-                </code>
-                <p style={{ marginTop: '10px' }}>
-                  このURLにアクセスするたびに、ランダムな名言がJSON形式で返ってきます。
-                </p>
+            {quoteData?.error && (
+              <div style={{
+                backgroundColor: '#ffebee',
+                padding: '15px',
+                borderRadius: '5px',
+                borderLeft: '4px solid #f44336',
+                color: '#c62828'
+              }}>
+                {quoteData.error}
               </div>
-            </details>
-
-            <p style={{
-              marginTop: '15px',
-              padding: '10px',
-              backgroundColor: '#fff3e0',
-              borderRadius: '5px',
-              fontSize: '14px',
-              color: '#e65100'
-            }}>
-              <strong>🎨 用途イメージ：</strong> 朝の一言表示、モチベーションアプリ、LINEボット、日替わりメッセージなど
-            </p>
+            )}
           </div>
 
           {/* デモ③：猫画像API */}
           <div style={{
             backgroundColor: '#fff',
-            border: '2px solid #ff9800',
-            borderRadius: '10px',
+            border: '1px solid #ff9800',
+            borderRadius: '8px',
             padding: '20px',
-            marginBottom: '30px'
+            marginBottom: '24px'
           }}>
-            <h3 style={{ marginTop: 0, color: '#e65100', display: 'flex', alignItems: 'center', gap: '8px' }}>
-              <span style={{ fontSize: '24px' }}>🐱</span>
-              デモ③ 猫画像API（エンタメ系）
+            <h3 style={{ marginTop: 0, color: '#e65100' }}>
+              <i className="fas fa-image" style={{ marginRight: '8px' }}></i>
+              デモ③ 画像API（猫・犬など）
             </h3>
-            <p>アクセスするとランダムな猫の画像URLが返ってきます。</p>
+            <p style={{ marginBottom: '12px' }}>
+              <strong>使用API：</strong> The Cat API（<a href="https://thecatapi.com/" target="_blank" rel="noopener noreferrer">https://thecatapi.com/</a>）
+            </p>
+            <p style={{ marginBottom: '12px' }}>
+              <strong>体験内容：</strong> アクセスするとランダムな画像URLが返る
+            </p>
 
             <button
               onClick={fetchCat}
@@ -325,7 +307,7 @@ export default function APIPage() {
                 marginBottom: '15px'
               }}
             >
-              {catLoading ? '取得中...' : 'ランダムな猫を表示 🐾'}
+              {catLoading ? '取得中...' : 'ランダムな猫を表示'}
             </button>
 
             {catImage && (
@@ -346,69 +328,52 @@ export default function APIPage() {
                   }}
                 />
                 <p style={{ margin: 0, fontSize: '14px', color: '#666' }}>
-                  💡 画像のURL自体がAPIから返ってきています。ボタンを押すたびに違う猫が表示されます！
+                  画像のURL自体がAPIから返ってきています。ボタンを押すたびに違う猫が表示されます。
                 </p>
               </div>
             )}
-
-            <details style={{ marginTop: '15px' }}>
-              <summary style={{ cursor: 'pointer', fontWeight: 'bold', color: '#e65100' }}>
-                🔍 どうやって動いているの？
-              </summary>
-              <div style={{ marginTop: '10px', fontSize: '14px', lineHeight: '1.6' }}>
-                <p><strong>使用API：</strong> The Cat API（無料の猫画像API）</p>
-                <p><strong>エンドポイント：</strong></p>
-                <code style={{ backgroundColor: '#f5f5f5', padding: '5px', borderRadius: '3px', display: 'block', fontSize: '13px' }}>
-                  https://api.thecatapi.com/v1/images/search
-                </code>
-                <p style={{ marginTop: '10px' }}>
-                  このURLにアクセスすると、ランダムな猫の画像URLがJSON形式で返ってきます。
-                </p>
-              </div>
-            </details>
-
-            <p style={{
-              marginTop: '15px',
-              padding: '10px',
-              backgroundColor: '#e3f2fd',
-              borderRadius: '5px',
-              fontSize: '14px',
-              color: '#0277bd'
-            }}>
-              <strong>🎨 用途イメージ：</strong> 癒し系アプリ、ペット紹介サイト、ランダム画像表示、SNSボットなど
-            </p>
-          </div>
-
-          <div style={{
-            backgroundColor: '#f0f8ff',
-            border: '2px solid #2196f3',
-            borderRadius: '8px',
-            padding: '20px',
-            marginTop: '30px'
-          }}>
-            <h4 style={{ marginTop: 0, color: '#1565c0' }}>🎯 デモから分かること</h4>
-            <ul style={{ lineHeight: '1.8' }}>
-              <li>APIは「ボタンを押すだけ」で外部サービスのデータを取得できる</li>
-              <li>同じAPIでも呼び出すたびに違う結果が返ってくることがある</li>
-              <li>天気、名言、画像など、様々な種類のAPIがある</li>
-              <li>自分でデータを用意しなくても、APIを使えば高機能なサービスが作れる</li>
-            </ul>
           </div>
         </section>
 
-        <section>
-          <h2>レストランの例え（仕組みの理解）</h2>
+        <section id="examples">
+          <h2>このAPIは実際のWebサイトでどう使われている？</h2>
+
+          <h3>お天気APIの実例</h3>
+          <ul>
+            <li>天気アプリ</li>
+            <li>お出かけ提案サイト</li>
+            <li>洗濯・服装アドバイス表示</li>
+          </ul>
+          <p style={{ fontSize: '14px', color: '#666', marginTop: '8px' }}>
+            トップページを読み込むと、現在地の天気を自動表示する機能などで使われています。
+          </p>
+
+          <h3>名言APIの実例</h3>
+          <ul>
+            <li>朝の一言表示サイト</li>
+            <li>モチベーションアプリ</li>
+            <li>LINEボット</li>
+          </ul>
+          <p style={{ fontSize: '14px', color: '#666', marginTop: '8px' }}>
+            ページを開くたびに、今日の一言が表示される機能などで使われています。
+          </p>
+
+          <h3>画像APIの実例</h3>
+          <ul>
+            <li>ブログの癒し要素</li>
+            <li>SNS自動投稿</li>
+            <li>デモ用コンテンツ</li>
+          </ul>
+          <p style={{ fontSize: '14px', color: '#666', marginTop: '8px' }}>
+            ページを更新するたびに、画像がランダムで切り替わる機能などで使われています。
+          </p>
+        </section>
+
+        <section id="mechanism">
+          <h2>APIの仕組みを超かんたんに言うと（レストラン例）</h2>
           <p>
             APIの仕組みを、レストランに例えて理解しましょう。
           </p>
-
-          <p>
-            あなたが客席から厨房に直接「この肉を焼いてくれ」と頼むことはできません。
-            代わりに、「ウェイター」に注文を伝えますよね。
-            ウェイターはあなたの注文（リクエスト）を厨房に伝え、完成した料理（レスポンス）をあなたの元へ運んできます。
-          </p>
-
-          <p>この<strong>「ウェイター」の役割を果たすのがAPI</strong>です。</p>
 
           <div className="comparison-table">
             <table>
@@ -420,8 +385,8 @@ export default function APIPage() {
               </thead>
               <tbody>
                 <tr>
-                  <td>あなた（客）</td>
-                  <td>APIを利用する開発者やプログラム</td>
+                  <td>お客さん</td>
+                  <td>ブラウザ / アプリ</td>
                 </tr>
                 <tr>
                   <td>ウェイター</td>
@@ -429,166 +394,80 @@ export default function APIPage() {
                 </tr>
                 <tr>
                   <td>厨房</td>
-                  <td>連携したいサービス（Twitter、Google Map、GitHubなど）</td>
-                </tr>
-                <tr>
-                  <td>注文</td>
-                  <td>リクエスト（「ツイートして」「地図を見せて」）</td>
+                  <td>外部サービス</td>
                 </tr>
                 <tr>
                   <td>料理</td>
-                  <td>レスポンス（投稿結果、地図データ）</td>
+                  <td>返ってくるデータ</td>
                 </tr>
               </tbody>
             </table>
           </div>
 
           <p>
-            APIがあるおかげで、私たちはサービスの内部構造（厨房の中）を知らなくても、
-            決められたルール（メニューと注文方法）に従うだけで、その機能を利用できるのです。
+            <strong>流れ：</strong>
+          </p>
+          <ol>
+            <li>お客さんが注文する（リクエスト）</li>
+            <li>ウェイターが厨房に伝える（API）</li>
+            <li>厨房が料理を作る（処理・データ生成）</li>
+            <li>ウェイターが料理を運ぶ（レスポンス）</li>
+          </ol>
+
+          <p>
+            → <strong>APIは「間に立ってやり取りする役割」</strong>です。
           </p>
         </section>
 
-        <section>
-          <h2>APIの基本用語</h2>
-
-          <h3>エンドポイント（Endpoint）</h3>
-          <p>
-            「どの窓口に話しかけるか」を指定するURLです。
-          </p>
-          <div className="code-example">
-            <pre><code>{`例：
-天気API → https://api.open-meteo.com/v1/forecast
-名言API → https://api.quotable.io/random
-猫API  → https://api.thecatapi.com/v1/images/search`}</code></pre>
-          </div>
-
-          <h3>リクエスト（Request）</h3>
-          <p>APIに対して「何をしてほしいか」を伝える情報です。</p>
-          <ul>
-            <li><strong>メソッド</strong>: <code>GET</code>（情報取得）、<code>POST</code>（新規作成）、<code>PUT</code>（更新）、<code>DELETE</code>（削除）</li>
-            <li><strong>ヘッダー</strong>: 認証情報やデータの形式など</li>
-            <li><strong>ボディ</strong>: <code>POST</code>や<code>PUT</code>で送信する具体的な内容（JSON形式など）</li>
-          </ul>
-
-          <h3>レスポンス（Response）</h3>
-          <p>
-            リクエストの結果としてAPIから返ってくる情報です。
-            成功したか失敗したかを示すステータスコード（200, 404など）や、要求したデータがJSON形式で含まれています。
-          </p>
-
-          <h3>認証（Authentication）</h3>
-          <p>
-            「誰がリクエストしているのか」を証明するための仕組みです。
-            今回のデモは認証不要のAPIでしたが、TwitterやGitHubのAPIは認証が必要です。
-          </p>
-        </section>
-
-        <section>
-          <h2>実際のWebサイトでの使われ方</h2>
-
-          <h3>① ログイン機能</h3>
-          <p>
-            「Googleでログイン」「GitHubでログイン」ボタンを見たことはありませんか？
-            これらは<strong>認証API</strong>を使っています。
-          </p>
-          <ul>
-            <li>自分でユーザー管理システムを作らなくていい</li>
-            <li>ユーザーも新しくパスワードを覚えなくていい</li>
-          </ul>
-
-          <h3>② 地図表示</h3>
-          <p>
-            Webサイトに埋め込まれている地図は、ほとんどが<strong>Google Maps API</strong>です。
-          </p>
-          <ul>
-            <li>住所を渡すと、その場所の地図を表示してくれる</li>
-            <li>ルート検索もAPIで実現</li>
-          </ul>
-
-          <h3>③ 決済</h3>
-          <p>
-            ECサイトのクレジットカード決済は、<strong>決済サービスのAPI</strong>を使っています。
-          </p>
-          <ul>
-            <li>Stripe、PayPalなどの決済API</li>
-            <li>自分でカード情報を扱わないので安全</li>
-          </ul>
-
-          <h3>④ SNS連携</h3>
-          <p>
-            「この記事をツイート」ボタンは、<strong>Twitter API</strong>を使っています。
-          </p>
-          <ul>
-            <li>ユーザーのタイムラインに投稿</li>
-            <li>いいね、リツイートなどもAPI経由</li>
-          </ul>
-        </section>
-
-        <section>
-          <h2>REST APIとは？</h2>
-          <p>
-            <strong>REST API</strong>は、Webサービスで広く利用されるAPIの設計原則です。
-            HTTPメソッド（GET, POSTなど）とURLを使ってリソースを操作するシンプルで分かりやすい設計が特徴です。
-          </p>
+        <section id="terms">
+          <h2>APIの基本用語（最低限）</h2>
 
           <div className="comparison-table">
             <table>
               <thead>
                 <tr>
-                  <th>HTTPメソッド</th>
-                  <th>用途</th>
-                  <th>例</th>
+                  <th>用語</th>
+                  <th>説明</th>
                 </tr>
               </thead>
               <tbody>
                 <tr>
-                  <td><code>GET</code></td>
-                  <td>データの取得</td>
-                  <td>天気情報を取得、ユーザー情報を取得</td>
+                  <td><strong>リクエスト</strong></td>
+                  <td>APIへのお願い</td>
                 </tr>
                 <tr>
-                  <td><code>POST</code></td>
-                  <td>新規作成</td>
-                  <td>新しい投稿を作成、ユーザー登録</td>
+                  <td><strong>レスポンス</strong></td>
+                  <td>返ってくる結果</td>
                 </tr>
                 <tr>
-                  <td><code>PUT</code></td>
-                  <td>更新</td>
-                  <td>プロフィールを更新</td>
+                  <td><strong>エンドポイント</strong></td>
+                  <td>お願い先のURL</td>
                 </tr>
                 <tr>
-                  <td><code>DELETE</code></td>
-                  <td>削除</td>
-                  <td>投稿を削除</td>
+                  <td><strong>HTTPメソッド</strong></td>
+                  <td>頼み方（GET / POSTなど）</td>
+                </tr>
+                <tr>
+                  <td><strong>JSON</strong></td>
+                  <td>データの形式</td>
+                </tr>
+                <tr>
+                  <td><strong>APIキー</strong></td>
+                  <td>利用者を識別するための鍵</td>
                 </tr>
               </tbody>
             </table>
           </div>
-
-          <p>
-            今回のデモで使った3つのAPI（天気、名言、猫画像）は、すべて<code>GET</code>メソッドでデータを取得しています。
-          </p>
         </section>
 
-        <section>
-          <h2>初心者向けまとめ</h2>
+        <section id="summary">
+          <h2>まとめ：APIは何ができるのか</h2>
 
-          <div style={{
-            backgroundColor: '#fff3e0',
-            border: '2px solid #ff9800',
-            borderRadius: '8px',
-            padding: '20px'
-          }}>
-            <h3 style={{ marginTop: 0, color: '#e65100' }}>🎓 覚えておきたいポイント</h3>
-            <ul style={{ lineHeight: '1.8' }}>
-              <li><strong>APIは「魔法」ではなく「お願いの仕組み」</strong></li>
-              <li><strong>使えるAPIを知る＝作れるサービスが増える</strong></li>
-              <li><strong>まずは「呼び出して結果を見る」だけでOK</strong></li>
-              <li>認証が必要なAPIと不要なAPIがある</li>
-              <li>ほとんどのWebサービスは複数のAPIを組み合わせて作られている</li>
-            </ul>
-          </div>
+          <ul style={{ lineHeight: '1.8' }}>
+            <li><strong>APIは「他人の機能を借りる仕組み」</strong></li>
+            <li><strong>APIを知ると作れるWebサービスが一気に増える</strong></li>
+            <li><strong>まずは「呼ぶ → 返ってくる」を体験すればOK</strong></li>
+          </ul>
 
           <p style={{ marginTop: '20px' }}>
             このページのデモで、APIの「呼び出して結果が返ってくる」という基本を体験できました。
@@ -620,7 +499,7 @@ export default function APIPage() {
                   <td>GitHub APIを使ってリポジトリやIssueを操作できる</td>
                 </tr>
                 <tr>
-                  <td>Webhook</td>
+                  <td><Link href="/terms/webhook" className="term-name">Webhook</Link></td>
                   <td>特定のイベントが発生した際に自動的にHTTPリクエストを送信する仕組み</td>
                 </tr>
               </tbody>

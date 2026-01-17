@@ -115,6 +115,20 @@ export default function Home() {
         <section id="new">
           <h3>新着用語</h3>
           <div className="card-container">
+            <div className="card" data-category="programming">
+              <Link href="/terms/cli-gui" className="card-link">
+                <span className="category-tag">プログラミング</span>
+                <h4>CLI / GUI</h4>
+                <p>黒い画面（CLI）とボタン（GUI）の違い。昔のPCはCLIだけだった歴史も。</p>
+              </Link>
+            </div>
+            <div className="card" data-category="programming">
+              <Link href="/terms/sql" className="card-link">
+                <span className="category-tag">データベース</span>
+                <h4>SQL</h4>
+                <p>データベースを操作する言語。SELECT、INSERT、UPDATEを体験デモで学べます。</p>
+              </Link>
+            </div>
             <div className="card" data-category="security">
               <Link href="/terms/exploit" className="card-link">
                 <span className="category-tag">セキュリティ</span>
