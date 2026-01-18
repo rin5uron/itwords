@@ -162,6 +162,11 @@ export default function HTMLPage() {
             動画や音声を簡単に埋め込める<code>&lt;video&gt;</code>や<code>&lt;audio&gt;</code>タグ、
             より意味のある構造を表現できる<code>&lt;header&gt;</code>、<code>&lt;footer&gt;</code>、<code>&lt;article&gt;</code>などのタグが追加されました。
           </p>
+
+          <p>
+            詳しくは<a href="https://developer.mozilla.org/ja/docs/Web/HTML" target="_blank" rel="noopener noreferrer">MDN Web Docs - HTML</a>や
+            <a href="https://html.spec.whatwg.org/multipage/" target="_blank" rel="noopener noreferrer">WHATWG HTML Living Standard</a>で確認できます。
+          </p>
         </section>
 
         <section className="term-comparison">

@@ -567,6 +567,10 @@ npm install react-icons
 import { format } from 'date-fns'
 const today = format(new Date(), 'yyyy-MM-dd')`}</code></pre>
           </div>
+
+          <p>
+            詳しくは<a href="https://docs.npmjs.com/" target="_blank" rel="noopener noreferrer">npm公式ドキュメント</a>で確認できます。
+          </p>
         </section>
 
         <section className="term-comparison">

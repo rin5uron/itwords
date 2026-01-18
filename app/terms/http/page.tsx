@@ -289,6 +289,11 @@ export default function HTTPPage() {
             この仕組みにより、たとえ通信途中で誰かがデータを盗み見ても、
             暗号化されているため内容を読むことができません。
           </p>
+
+          <p>
+            詳しくは<a href="https://developer.mozilla.org/ja/docs/Web/HTTP" target="_blank" rel="noopener noreferrer">MDN Web Docs - HTTP</a>や
+            <a href="https://developer.mozilla.org/ja/docs/Glossary/HTTPS" target="_blank" rel="noopener noreferrer">MDN Web Docs - HTTPS</a>で確認できます。
+          </p>
         </section>
 
         <section>

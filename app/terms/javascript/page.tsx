@@ -208,6 +208,11 @@ const moreNumbers = [...numbers, 4, 5];  // [1, 2, 3, 4, 5]`}</code></pre>
             <li><strong>Angular</strong>: Googleが開発した大規模アプリ向けフレームワーク</li>
             <li><strong>Next.js</strong>: Reactベースのフルスタックフレームワーク</li>
           </ul>
+
+          <p>
+            詳しくは<a href="https://developer.mozilla.org/ja/docs/Web/JavaScript" target="_blank" rel="noopener noreferrer">MDN Web Docs - JavaScript</a>や
+            <a href="https://tc39.es/ecma262/" target="_blank" rel="noopener noreferrer">ECMAScript公式仕様</a>で確認できます。
+          </p>
         </section>
 
         <section className="term-comparison">

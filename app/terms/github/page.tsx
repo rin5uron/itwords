@@ -749,6 +749,11 @@ MIT`}</code></pre>
             <li><strong>コンフリクト：</strong> 複数人で同じファイルを編集すると衝突が起きる</li>
             <li><strong>公開リスク：</strong> Publicリポジトリは誰でも見られる（APIキーなどに注意）</li>
           </ul>
+
+          <p>
+            詳しくは<a href="https://docs.github.com/ja" target="_blank" rel="noopener noreferrer">GitHub公式ドキュメント</a>や
+            <a href="https://git-scm.com/doc" target="_blank" rel="noopener noreferrer">Git公式ドキュメント</a>で確認できます。
+          </p>
         </section>
 
         <section>

@@ -278,6 +278,11 @@ p {
             <li><strong>アニメーション</strong>: <code>@keyframes</code>で動きのある表現</li>
             <li><strong>Flexbox・Grid</strong>: 柔軟なレイアウトシステム</li>
           </ul>
+
+          <p>
+            詳しくは<a href="https://developer.mozilla.org/ja/docs/Web/CSS" target="_blank" rel="noopener noreferrer">MDN Web Docs - CSS</a>や
+            <a href="https://www.w3.org/Style/CSS/" target="_blank" rel="noopener noreferrer">W3C CSS公式仕様</a>で確認できます。
+          </p>
         </section>
 
         <section className="term-comparison">
