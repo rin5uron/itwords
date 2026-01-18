@@ -134,10 +134,10 @@ export default function NpmPage() {
       <StructuredData type="FAQPage" faqs={faqs} />
       <StructuredData
         type="Article"
-        title="npm（エヌピーエム）とは？読み方・使い方を初心者向けに解説"
-        description="npm（エヌピーエム）を初心者向けに解説。読み方、使い方、主要コマンドを実践デモ付きで学べます。"
+        title="npmとは？小学生でもわかる【コマンド実行デモ付き】"
+        description="JavaScriptのパッケージ管理ツールnpmを3分で理解。「npm install」「npm run」の意味を実行デモで体験。Reactも簡単インストール。"
         datePublished="2024-01-01"
-        dateModified="2026-01-16"
+        dateModified="2026-01-18"
       />
       <TermHeader
         termName="npm"

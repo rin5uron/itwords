@@ -8,12 +8,12 @@ import TermHeader from '@/app/components/TermHeader'
 import FAQAccordion from '@/app/components/FAQAccordion'
 
 export const metadata: Metadata = {
-  title: 'GitHubとは？使い方・プルリクエストの流れを3分で理解【初心者向け】 | 実践型IT用語辞典',
-  description: 'GitHub初心者向けに、使い方・プルリクエスト・Gitフローを3分で解説。リポジトリ、コミット、プッシュの基本からチーム開発の流れまで、実践デモ付きでわかりやすく説明します。今日から使えるGitHub入門ガイド。',
+  title: 'GitHubとは？小学生でもわかる【結局何に使うの？が分かる】',
+  description: '「結局GitHubって何？」を3分で解決。コードの保存場所？チーム開発ツール？イメージが明確になるデモ付き解説。',
   keywords: ['GitHub', 'GitHub とは', 'GitHub 使い方', 'GitHub 初心者', 'プルリクエスト', 'Gitフロー', 'Git', 'バージョン管理', 'リポジトリ', 'コミット', 'プッシュ', 'わかりやすく'],
   openGraph: {
-    title: 'GitHubとは？使い方・プルリクエストの流れを3分で理解【初心者向け】',
-    description: 'GitHub初心者向けに、使い方・プルリクエスト・Gitフローを3分で解説。今日から使えるGitHub入門ガイド。',
+    title: 'GitHubとは？小学生でもわかる【結局何に使うの？が分かる】',
+    description: '「結局GitHubって何？」を3分で解決。コードの保存場所？チーム開発ツール？イメージが明確になります。',
     type: 'article',
     url: 'https://itwords.vercel.app/terms/github',
   },

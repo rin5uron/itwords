@@ -8,12 +8,12 @@ import TableOfContents from '@/app/components/TableOfContents'
 import FAQAccordion from '@/app/components/FAQAccordion'
 
 export const metadata: Metadata = {
-  title: 'AES（Advanced Encryption Standard）とは？初心者向けにわかりやすく解説 | 実践型IT用語辞典',
-  description: 'AES（Advanced Encryption Standard）とは何か、初心者向けにわかりやすく解説。暗号化の仕組み、AES-128・AES-256の違い、実用例を具体的に学べます。共通鍵暗号方式の基本も理解できるプログラミング初心者向けIT用語解説。',
+  title: 'AES暗号化とは？小学生でもわかる【動かして学べるデモ付き】',
+  description: 'Wi-FiやLINEで使われるAES暗号化を、動かしながら理解。「128と256の違いは？」「どこで使われてる？」をデモ付きで解説。3分で読めます。',
   keywords: ['AES', 'AES とは', '暗号化', 'Advanced Encryption Standard', 'AES-128', 'AES-256', '共通鍵暗号', 'セキュリティ', 'IT用語 わかりやすく', 'プログラミング 初心者'],
   openGraph: {
-    title: 'AES（Advanced Encryption Standard）とは？初心者向けにわかりやすく解説',
-    description: 'AESの仕組みと使い方をわかりやすく解説。現代の暗号化技術の基本を学べます。',
+    title: 'AES暗号化とは？小学生でもわかる【動かして学べるデモ付き】',
+    description: 'Wi-FiやLINEで使われるAES暗号化を、動かしながら理解。3分で読めます。',
     type: 'article',
     images: [
       {
@@ -26,8 +26,8 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'AES（Advanced Encryption Standard）とは？初心者向けにわかりやすく解説',
-    description: 'AESの仕組みと使い方をわかりやすく解説。現代の暗号化技術の基本を学べます。',
+    title: 'AES暗号化とは？小学生でもわかる【動かして学べるデモ付き】',
+    description: 'Wi-FiやLINEで使われるAES暗号化を、動かしながら理解。3分で読めます。',
     images: ['/images/terms/aes-hero.jpg'],
   },
 }

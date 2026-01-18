@@ -6,12 +6,12 @@ import TermHeader from '@/app/components/TermHeader'
 import ZeroDayDemo from '@/components/ZeroDayDemo'
 
 export const metadata: Metadata = {
-  title: 'ゼロデイ攻撃とは？名前の由来から対策まで完全解説【実践デモ付き】 | 実践型IT用語辞典',
-  description: 'ゼロデイ攻撃の名前の由来とは？なぜ「0日」と呼ばれるのか、防御が不可能な理由、今すぐできる対策を攻撃者の視点で体験できる実践デモで学べます。初心者にもわかりやすく解説。',
+  title: 'ゼロデイ攻撃とは？「0日」の意味と防御法【攻撃者の視点で体験】',
+  description: 'なぜ「ゼロデイ」？防御が不可能な理由を攻撃シミュレーションで体験。LINEやiPhoneも狙われた実例から学ぶセキュリティ対策。3分で読めます。',
   keywords: ['ゼロデイ攻撃', 'Zero-day', 'ゼロデイ とは', 'ゼロデイ 由来', 'ゼロデイ攻撃 由来', 'セキュリティ', '脆弱性', 'サイバー攻撃', 'セキュリティパッチ', 'IT用語 わかりやすく', 'プログラミング 初心者', '体験デモ'],
   openGraph: {
-    title: 'ゼロデイ攻撃とは？名前の由来から対策まで完全解説【実践デモ付き】',
-    description: 'ゼロデイ攻撃の名前の由来とは？防御が不可能な理由と対策を攻撃者の視点で体験できます。',
+    title: 'ゼロデイ攻撃とは？「0日」の意味と防御法【攻撃者の視点で体験】',
+    description: 'なぜ「ゼロデイ」？防御が不可能な理由を攻撃シミュレーションで体験。実例から学ぶセキュリティ対策。',
     type: 'article',
     images: [
       {
@@ -24,8 +24,8 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'ゼロデイ攻撃とは？名前の由来から対策まで完全解説【実践デモ付き】',
-    description: 'ゼロデイ攻撃の名前の由来とは？防御が不可能な理由と対策を攻撃者の視点で体験できます。',
+    title: 'ゼロデイ攻撃とは？「0日」の意味と防御法【攻撃者の視点で体験】',
+    description: 'なぜ「ゼロデイ」？防御が不可能な理由を攻撃シミュレーションで体験。実例から学ぶセキュリティ対策。',
     images: ['/images/terms/zero-day-hero.jpg'],
   },
 }
