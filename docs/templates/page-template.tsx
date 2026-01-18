@@ -119,7 +119,19 @@ export default function ContentPage() {
         <section>
           <h2>[セクションタイトル]</h2>
           <p>[セクションの内容]</p>
-          
+
+          {/*
+            【重要】公式リンクの追加（AdSense要件・E-E-A-T対策）
+            - 公式ドキュメント、MDN、Wikipediaなどの信頼できるソースへリンク
+            - 文章内に自然に埋め込む
+            - 個人ブログや競合サイトへのリンクは避ける
+
+            例：
+            <p>
+              詳しくは<a href="https://example.com/official-docs" target="_blank" rel="noopener noreferrer">公式ドキュメント</a>で確認できます。
+            </p>
+          */}
+
           {/* リストや表がある場合 */}
           {/* <ul>
             <li>[項目1]</li>

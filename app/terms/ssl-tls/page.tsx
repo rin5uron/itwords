@@ -230,6 +230,11 @@ export default function SslTlsPage() {
             SSL/TLS証明書があれば、ブラウザは「このサイトは本物のAmazonではありません」と警告を出してくれます。
           </p>
 
+          <p>
+            詳しくは<a href="https://letsencrypt.org/ja/" target="_blank" rel="noopener noreferrer">Let&apos;s Encrypt公式サイト</a>や
+            <a href="https://developer.mozilla.org/ja/docs/Web/Security/Transport_Layer_Security" target="_blank" rel="noopener noreferrer">MDN Web Docs - TLS</a>で確認できます。
+          </p>
+
           <h3>証明書の種類</h3>
           <div className="comparison-table">
             <table>

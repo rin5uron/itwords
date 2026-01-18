@@ -275,7 +275,8 @@ export default function RepositoryPage() {
         <section>
           <h2>GitHubでリポジトリを作る方法</h2>
           <p>
-            <Link href="/terms/github">GitHub</Link>でリポジトリを作るのは簡単です：
+            <Link href="/terms/github">GitHub</Link>でリポジトリを作るのは簡単です。
+            詳しい手順は<a href="https://docs.github.com/ja/repositories/creating-and-managing-repositories" target="_blank" rel="noopener noreferrer">GitHub公式ドキュメント</a>でも確認できます：
           </p>
 
           <ol>
