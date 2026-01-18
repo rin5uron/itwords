@@ -4,6 +4,7 @@ import Link from 'next/link'
 import { useState } from 'react'
 import StructuredData from '@/app/components/StructuredData'
 import TermHeader from '@/app/components/TermHeader'
+import AdSenseUnit from '@/app/components/AdSenseUnit'
 
 export default function APIPage() {
   const [weatherLoading, setWeatherLoading] = useState(false)
