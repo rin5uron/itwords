@@ -94,6 +94,14 @@ export default function GitHubPage() {
             GitHubは2008年に誕生し、2018年にMicrosoftに買収されました。
             現在、世界中で1億人以上の開発者が利用しています。
           </p>
+
+          <p className="note" style={{ marginTop: '15px' }}>
+            <strong>🐙 Octocat（オクトキャット）について：</strong>
+            GitHubのマスコットキャラクターが「Octocat（オクトキャット）」です。
+            タコと猫を組み合わせたキャラクターで、GitHubのロゴやアイコンとして使われています。
+            開発者コミュニティでは、Octocatの様々なバリエーション（忍者、スーパーヒーロー、宇宙飛行士など）が作られており、
+            GitHubの公式サイトやイベントでも見ることができます。
+          </p>
         </section>
 
         <section>
@@ -138,16 +146,31 @@ export default function GitHubPage() {
             つまり、<strong>Git</strong>という道具を使って、
             <strong>GitHub</strong>という場所にコードを保存・共有するイメージです。
           </p>
+        </section>
 
-          {/* Git と GitHub の違いの下にデモを追加 */}
-          <div style={{ marginTop: '30px', marginBottom: '30px' }}>
-            <h3>GitHubの全体の流れを理解する</h3>
-            <p>
-              以下のデモで、GitHubでよく使われる概念（リポジトリ、コミット、プッシュ、プル、ブランチ）の流れを体験できます。
-              「何をしているサービスなのか」が一目で分かります。
-            </p>
-            <GitFlowDemo />
-          </div>
+        <section>
+          <h2>実際にやってみよう：Gitコマンド学習デモ</h2>
+          <p>
+            まずは実際に触ってみましょう！よく使うGitコマンドを選んで、使い方と説明を確認してみましょう！
+          </p>
+          <p>
+            <strong>このデモで分かること：</strong>
+          </p>
+          <ul>
+            <li>GitHubでよく使うコマンドの意味</li>
+            <li>リポジトリ、コミット、プッシュ、プル、ブランチの流れ</li>
+            <li>GitHubというサービスが何をしているのか</li>
+          </ul>
+          <GitHubDemo />
+        </section>
+
+        <section>
+          <h2>GitHubの全体の流れを理解する</h2>
+          <p>
+            以下のデモで、GitHubでよく使われる概念（リポジトリ、コミット、プッシュ、プル、ブランチ）の流れを体験できます。
+            「何をしているサービスなのか」が一目で分かります。
+          </p>
+          <GitFlowDemo />
         </section>
 
         <section>
@@ -397,6 +420,11 @@ Closes #123`}</code></pre>
             チームメンバーが「この機能を追加したい」「このバグを直したい」と書き込むと、
             他のメンバーが対応できます。
           </p>
+          <p className="note" style={{ marginTop: '10px' }}>
+            <strong>💡 補足：</strong>
+            Issuesでは、ラベルを付けて分類したり、マイルストーンを設定して進捗を管理したりできます。
+            画像やスクリーンショットを添付して、問題を視覚的に説明することもできます。
+          </p>
           <p>
             <a href="https://docs.github.com/ja/issues" target="_blank" rel="noopener noreferrer" style={{ color: '#14b8a6', textDecoration: 'underline' }}>
               詳しくはGitHub公式ドキュメント →
@@ -411,6 +439,11 @@ Closes #123`}</code></pre>
           <p>
             <strong>イメージ：</strong> 「コードをpushしたら、自動的にテストを走らせて、問題なければ本番環境にデプロイする」
             という一連の流れを自動化できます。手動でやっていた作業を、GitHubが自動でやってくれます。
+          </p>
+          <p className="note" style={{ marginTop: '10px' }}>
+            <strong>💡 補足：</strong>
+            GitHub Actionsでは、ワークフローをYAMLファイルで定義します。
+            例えば「プルリクエストが作成されたら自動テストを実行」「mainブランチにマージされたら本番環境にデプロイ」といった設定ができます。
           </p>
           <p>
             <a href="https://docs.github.com/ja/actions" target="_blank" rel="noopener noreferrer" style={{ color: '#14b8a6', textDecoration: 'underline' }}>
@@ -434,22 +467,57 @@ Closes #123`}</code></pre>
             リポジトリの「顔」となるファイルです。
             プロジェクトの説明、使い方、インストール方法などを書きます。
           </p>
+          <p className="note" style={{ marginTop: '10px' }}>
+            <strong>💡 ポイント：</strong>
+            READMEは、プロジェクトを見た人が最初に読むファイルです。
+            分かりやすく書くことで、他の開発者がプロジェクトに参加しやすくなります。
+          </p>
+          <p>
+            <strong>実在のREADME例：</strong>
+            このサイト（IT用語辞典）のREADMEも、GitHubで公開されています。
+            実際のプロジェクトでは、こんな感じで書かれています：
+          </p>
           <div className="code-example">
-            <pre><code>{`# プロジェクト名
+            <pre><code>{`# 実践型IT用語辞典
 
 ## 概要
-このプロジェクトは...
+見習いエンジニアやIT初心者向けの、実践的なIT用語辞典サイトです。
+「見て、触って、学べる」をコンセプトに、実際に動かせる体験デモを通じて
+専門用語を分かりやすく解説します。
 
-## インストール
+## 技術スタック
+- Next.js 14 (App Router)
+- TypeScript
+- React
+
+## セットアップ
 \`\`\`
+# 依存関係のインストール
 npm install
+
+# 開発サーバーを起動
+npm run dev
 \`\`\`
 
 ## 使い方
-\`\`\`
-npm run dev
-\`\`\``}</code></pre>
+1. 用語ページで専門用語を検索
+2. 体験デモで実際に動かして理解
+3. コード例を見て実装方法を学ぶ
+
+## ライセンス
+MIT`}</code></pre>
           </div>
+          <p style={{ marginTop: '15px' }}>
+            <strong>READMEに書くべき内容：</strong>
+          </p>
+          <ul>
+            <li>プロジェクトの目的と概要</li>
+            <li>インストール方法</li>
+            <li>使い方や実行方法</li>
+            <li>技術スタック（使っている技術）</li>
+            <li>貢献方法（他の人が参加する方法）</li>
+            <li>ライセンス情報</li>
+          </ul>
         </section>
 
         <section>
@@ -586,14 +654,6 @@ node_modules/
           </p>
         </section>
 
-        <section>
-          <h2>実際にやってみよう：Gitコマンド学習デモ</h2>
-          <p>
-            よく使うGitコマンドを選んで、使い方と説明を確認してみましょう！
-          </p>
-
-          <GitHubDemo />
-        </section>
 
         <FAQAccordion faqs={faqs} />
 

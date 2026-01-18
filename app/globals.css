@@ -800,12 +800,6 @@ footer a:hover {
   color: inherit;
 }
 
-.site-title-link:hover {
-  text-decoration: none;
-  color: #14b8a6;
-  transition: color 0.3s ease;
-}
-
 /* ヘッダーナビゲーション（パンくずリスト）スタイル */
 .breadcrumb-nav {
   padding: 10px 0;

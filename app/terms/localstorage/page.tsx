@@ -93,15 +93,60 @@ export default function LocalStoragePage() {
             JavaScriptからアクセスできて、
             <strong>ページを閉じても情報が残る</strong>のが特徴。
           </p>
+        </section>
 
-          {/* 体験デモを概要の直下に配置 */}
-          <div style={{ marginTop: '30px', marginBottom: '30px' }}>
-            <h3>ローカルストレージの仕組みを体験してみよう</h3>
-            <p>
-              下のデモでローカルストレージの動作を体験できます。実際に手を動かすことで、「ページを閉じてもデータが残る」仕組みが理解しやすくなります。
-            </p>
-            <LocalStorageDemo />
+        <section>
+          <h2>比べてみよう：JavaScript、JSON、ローカルストレージ</h2>
+          <p>
+            ローカルストレージを理解するために、まずJavaScriptとJSONとの違いを見てみましょう。
+          </p>
+
+          <div className="comparison-table">
+            <table>
+              <thead>
+                <tr>
+                  <th>方法</th>
+                  <th>データの保存場所</th>
+                  <th>ページを閉じたら</th>
+                  <th>特徴</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td><strong>JavaScript変数</strong></td>
+                  <td>メモリ（一時的）</td>
+                  <td>消える</td>
+                  <td>プログラム実行中だけ有効</td>
+                </tr>
+                <tr>
+                  <td><strong>JSONファイル</strong></td>
+                  <td>サーバーやファイル</td>
+                  <td>残る（サーバーに保存）</td>
+                  <td>サーバーが必要、重い</td>
+                </tr>
+                <tr>
+                  <td><strong>ローカルストレージ</strong></td>
+                  <td>ブラウザ内</td>
+                  <td>残る</td>
+                  <td>軽い、シンプル、ブラウザだけで完結</td>
+                </tr>
+              </tbody>
+            </table>
           </div>
+
+          <p className="note" style={{ marginTop: '20px' }}>
+            <strong>💡 ポイント：</strong>
+            ローカルストレージは、JSONのように軽くてシンプルで、しかもブラウザだけで完結します。
+            サーバーを経由しないので、高速に動作するのが特徴です。
+          </p>
+        </section>
+
+        <section>
+          <h2>体験してみよう</h2>
+          <p>
+            下のデモでローカルストレージの動作を体験できます。実際に手を動かすことで、「ページを閉じてもデータが残る」仕組みが理解しやすくなります。
+          </p>
+          <LocalStorageDemo />
         </section>
 
         <section>
@@ -160,45 +205,86 @@ export default function LocalStoragePage() {
         </section>
 
         <section>
-          <h2>コードで実装してみよう</h2>
+          <h2>コードで実装してみよう：フォームの下書き保存</h2>
           <p>
-            実際のアプリでローカルストレージを使う時は、こんなコードを書きます。
-            下のコードを見ると、<strong>どのようにデータを保存・取得するか</strong>が分かります。
+            さっき説明した「フォームの下書き保存」の例を、そのままコードで実装してみましょう。
+            問い合わせフォームで入力中にブラウザを閉じても、再度開くと入力内容が残っている機能です。
           </p>
           <p>
-            <strong>このコードで分かること</strong>:
+            <strong>このコードで実装していること</strong>:
           </p>
           <ul>
-            <li>オブジェクトをJSON文字列に変換して保存する方法</li>
-            <li><code>JSON.stringify()</code>と<code>JSON.parse()</code>の使い方</li>
-            <li>ページをまたいでデータを保持できる仕組み</li>
-            <li>実際のフォーム保存機能に応用できる</li>
+            <li>フォームに入力した内容をローカルストレージに保存</li>
+            <li>ページを再読み込みしても、保存した内容を自動で復元</li>
+            <li>送信ボタンを押したら、ローカルストレージから削除</li>
           </ul>
-          <p>
-            「体験してみよう」の裏側では、このように
-            <Link href="/terms/json">JSON</Link>
-            を利用してオブジェクトを文字列に変換しています。<code>JSON.stringify()</code>
-            で保存し、<code>JSON.parse()</code>で元に戻すのがポイントです。
-          </p>
 
           <details>
-            <summary>サンプルコードを見る (JavaScript)</summary>
+            <summary>
+              フォームの下書き保存を実装 <strong>(JavaScript)</strong>
+            </summary>
             <div className="code-example">
               <pre>
-                <code className="language-javascript">{`// ユーザーオブジェクトを作成
-const user = { name: '山田', age: 30 };
+                <code className="language-javascript">{`// HTMLのフォーム要素を取得
+const nameInput = document.getElementById('name');
+const emailInput = document.getElementById('email');
+const messageInput = document.getElementById('message');
 
-// オブジェクトをJSON文字列に変換して保存
-localStorage.setItem('userData', JSON.stringify(user));
+// ページ読み込み時に、保存された下書きを復元
+window.addEventListener('load', () => {
+  const savedDraft = localStorage.getItem('contactDraft');
+  if (savedDraft) {
+    const draft = JSON.parse(savedDraft);
+    nameInput.value = draft.name || '';
+    emailInput.value = draft.email || '';
+    messageInput.value = draft.message || '';
+    console.log('下書きを復元しました');
+  }
+});
 
-// JSON文字列を取得してオブジェクトに変換
-const jsonData = localStorage.getItem('userData');
-const savedUser = JSON.parse(jsonData);
+// 入力内容をリアルタイムで保存（入力するたびに保存）
+nameInput.addEventListener('input', () => {
+  const draft = {
+    name: nameInput.value,
+    email: emailInput.value,
+    message: messageInput.value
+  };
+  localStorage.setItem('contactDraft', JSON.stringify(draft));
+});
 
-console.log(savedUser.name); // "山田"`}</code>
+emailInput.addEventListener('input', () => {
+  const draft = {
+    name: nameInput.value,
+    email: emailInput.value,
+    message: messageInput.value
+  };
+  localStorage.setItem('contactDraft', JSON.stringify(draft));
+});
+
+messageInput.addEventListener('input', () => {
+  const draft = {
+    name: nameInput.value,
+    email: emailInput.value,
+    message: messageInput.value
+  };
+  localStorage.setItem('contactDraft', JSON.stringify(draft));
+});
+
+// フォーム送信時に下書きを削除
+document.getElementById('contactForm').addEventListener('submit', () => {
+  localStorage.removeItem('contactDraft');
+  console.log('送信完了。下書きを削除しました');
+});`}</code>
               </pre>
             </div>
           </details>
+
+          <p className="note" style={{ marginTop: '20px' }}>
+            <strong>💡 ポイント：</strong>
+            このコードは、さっき説明した「フォームの下書き保存」の仕組みをそのまま実装しています。
+            入力内容を<Link href="/terms/json">JSON</Link>形式でローカルストレージに保存し、
+            ページを再読み込みしたときに自動で復元します。
+          </p>
         </section>
 
         <section className="term-comparison">

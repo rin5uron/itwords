@@ -87,16 +87,66 @@ export default function JsonPage() {
             <strong>データ交換フォーマット</strong>です。
             Web APIやデータ保存など、あらゆる場面で使われる標準的なデータ形式で、キー（名前）と値のペアでデータを表現します。
           </p>
+        </section>
 
-          {/* 体験デモを概要の直下に配置 */}
-          <div style={{ marginTop: '30px', marginBottom: '30px' }}>
-            <h3>JSONの仕組みを体験してみよう</h3>
-            <p>
-              下のデモでJSONデータを実際に編集して、リアルタイムで構造を確認できます。
-              実際に手を動かすことで、JSONの仕組みが理解しやすくなります。
-            </p>
-            <JsonDemo />
+        <section>
+          <h2>比べてみよう：JavaScript、CSV、JSON</h2>
+          <p>
+            JSONを理解するために、まずJavaScriptとCSVとの違いを見てみましょう。
+            JSONは、JavaScriptのように構造化できて、CSVのように軽量という、両方の良いところを備えています。
+          </p>
+
+          <div className="comparison-table">
+            <table>
+              <thead>
+                <tr>
+                  <th>形式</th>
+                  <th>データの表現方法</th>
+                  <th>読みやすさ</th>
+                  <th>データサイズ</th>
+                  <th>特徴</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td><strong>JavaScript</strong></td>
+                  <td><code>const user = &#123;name: "田中", age: 25&#125;</code></td>
+                  <td>読みやすい</td>
+                  <td>重い（プログラム全体）</td>
+                  <td>プログラム内で使う</td>
+                </tr>
+                <tr>
+                  <td><strong>CSV</strong></td>
+                  <td><code>名前,年齢<br />田中,25<br />佐藤,30</code></td>
+                  <td>シンプルだが構造が複雑になると読みにくい</td>
+                  <td>軽い</td>
+                  <td>表形式のデータ向き</td>
+                </tr>
+                <tr>
+                  <td><strong>JSON</strong></td>
+                  <td><code>&#123;"name": "田中", "age": 25&#125;</code></td>
+                  <td>読みやすい（構造が明確）</td>
+                  <td>軽い</td>
+                  <td>軽量、シンプル、人間にも読みやすい</td>
+                </tr>
+              </tbody>
+            </table>
           </div>
+
+          <p className="note" style={{ marginTop: '20px' }}>
+            <strong>💡 ポイント：</strong>
+            JSONは、JavaScriptのように構造化できて、CSVのように軽量です。
+            しかも人間にも読みやすいので、データの交換フォーマットとして最適です。
+          </p>
+        </section>
+
+        <section>
+          <h2>体験してみよう</h2>
+          <p>
+            下のデモでJSONデータを実際に編集して、リアルタイムで構造を確認できます。
+            実際に手を動かすことで、JSONの仕組みが理解しやすくなります。
+          </p>
+          <JsonDemo />
         </section>
 
         <section>

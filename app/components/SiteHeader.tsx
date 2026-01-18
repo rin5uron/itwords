@@ -9,11 +9,13 @@ export default function SiteHeader({ showNav = false }: SiteHeaderProps) {
   return (
     <header className="site-header">
       <div className="header-top">
-        <h1>
-          <Link href="/" className="site-title-link">
-            実践型IT用語辞典
-          </Link>
-        </h1>
+        {showNav && (
+          <h1>
+            <Link href="/" className="site-title-link">
+              実践型IT用語辞典
+            </Link>
+          </h1>
+        )}
         {showNav && (
           <nav>
             <ul>

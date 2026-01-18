@@ -159,42 +159,61 @@ export default function QueuePage() {
         <section>
           <h2>コードで実装してみよう</h2>
           <p>
-            実際のプログラムでキューを使う時は、こんなコードを書きます。
-            下のコードを見ると、<strong>どのようにデータを追加・取り出しするか</strong>が分かります。
+            さっきの「レジの行列」の例を、そのままコードで実装してみましょう。
+            コンビニのレジに並ぶ人を、キューを使って管理するコードです。
           </p>
           <p>
-            <strong>このコードで分かること</strong>:
+            <strong>このコードで実装していること</strong>:
           </p>
           <ul>
-            <li>JavaScriptの配列を使ってキューを実装できる</li>
-            <li><code>push()</code>で末尾に追加、<code>shift()</code>で先頭から取り出し</li>
-            <li>実際のアプリでタスク管理などに使える</li>
+            <li>レジに並ぶ人をキューで管理する</li>
+            <li>新しい人が来たら列の後ろに追加（Enqueue）</li>
+            <li>会計が終わった人を列の先頭から取り出す（Dequeue）</li>
+            <li>先に並んだ人から順番に会計する仕組み</li>
           </ul>
-          <p>
-            JavaScriptの配列を使えば、<code>push</code>で追加し、<code>shift</code>
-            で取り出すことで簡単に「先入れ先出し」のキューを実装できます。
-          </p>
 
           <details>
             <summary>
-              サンプルコードを見る <strong>(JavaScript)</strong>
+              レジの行列をコードで実装 <strong>(JavaScript)</strong>
             </summary>
             <div className="code-example">
               <pre>
-                <code className="language-javascript">{`// 配列を使った簡単なキュー
-const queue = [];
+                <code className="language-javascript">{`// コンビニのレジに並ぶ人を管理するキュー
+const registerQueue = [];
 
-// Enqueue: 後ろに追加
-queue.push('タスク1');
-queue.push('タスク2');
+// お客さんが来たら列の後ろに並ぶ（Enqueue）
+registerQueue.push('田中さん');
+registerQueue.push('佐藤さん');
+registerQueue.push('鈴木さん');
 
-// Dequeue: 先頭から取り出し
-const firstTask = queue.shift();
+console.log('現在の列:', registerQueue);
+// 出力: ['田中さん', '佐藤さん', '鈴木さん']
 
-console.log(firstTask); // "タスク1"`}</code>
+// 会計が終わった人を列の先頭から取り出す（Dequeue）
+const servedCustomer = registerQueue.shift();
+console.log('会計終了:', servedCustomer); // "田中さん"
+
+console.log('残りの列:', registerQueue);
+// 出力: ['佐藤さん', '鈴木さん']
+
+// また新しいお客さんが来たら...
+registerQueue.push('山田さん');
+console.log('新しい列:', registerQueue);
+// 出力: ['佐藤さん', '鈴木さん', '山田さん']
+
+// 次の会計
+const nextCustomer = registerQueue.shift();
+console.log('次の会計:', nextCustomer); // "佐藤さん"
+// → 先に並んでいた佐藤さんが先に会計できる`}</code>
               </pre>
             </div>
           </details>
+
+          <p className="note" style={{ marginTop: '20px' }}>
+            <strong>💡 ポイント：</strong>
+            このコードは、さっき説明した「レジの行列」の仕組みをそのまま実装しています。
+            先に並んだ人（先に追加したデータ）から順番に処理されるのが、キューの特徴です。
+          </p>
         </section>
 
         <section className="term-comparison">
