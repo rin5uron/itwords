@@ -90,62 +90,7 @@ export default function JsonPage() {
         </section>
 
         <section>
-          <h2>比べてみよう：JavaScript、CSV、JSON</h2>
-          <p>
-            JSONを理解するために、まずJavaScriptとCSVとの違いを見てみましょう。
-            JSONは、JavaScriptのように構造化できて、CSVのように軽量という、両方の良いところを備えています。
-          </p>
-
-          <div className="comparison-table">
-            <table>
-              <thead>
-                <tr>
-                  <th>形式</th>
-                  <th>データの表現方法</th>
-                  <th>読みやすさ</th>
-                  <th>データサイズ</th>
-                  <th>特徴</th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr>
-                  <td><strong>JavaScript</strong></td>
-                  <td><code>const user = &#123;name: "田中", age: 25&#125;</code></td>
-                  <td>読みやすい</td>
-                  <td>重い（プログラム全体）</td>
-                  <td>プログラム内で使う</td>
-                </tr>
-                <tr>
-                  <td><strong>CSV</strong></td>
-                  <td><code>名前,年齢<br />田中,25<br />佐藤,30</code></td>
-                  <td>シンプルだが構造が複雑になると読みにくい</td>
-                  <td>軽い</td>
-                  <td>表形式のデータ向き</td>
-                </tr>
-                <tr>
-                  <td><strong>JSON</strong></td>
-                  <td><code>&#123;"name": "田中", "age": 25&#125;</code></td>
-                  <td>読みやすい（構造が明確）</td>
-                  <td>軽い</td>
-                  <td>軽量、シンプル、人間にも読みやすい</td>
-                </tr>
-              </tbody>
-            </table>
-          </div>
-
-          <p className="note" style={{ marginTop: '20px' }}>
-            <strong>💡 ポイント：</strong>
-            JSONは、JavaScriptのように構造化できて、CSVのように軽量です。
-            しかも人間にも読みやすいので、データの交換フォーマットとして最適です。
-          </p>
-        </section>
-
-        <section>
-          <h2>体験してみよう</h2>
-          <p>
-            下のデモでJSONデータを実際に編集して、リアルタイムで構造を確認できます。
-            実際に手を動かすことで、JSONの仕組みが理解しやすくなります。
-          </p>
+          <h2>体験してみよう：JSONの特徴を比較で理解</h2>
           <JsonDemo />
         </section>
 
@@ -192,63 +137,42 @@ export default function JsonPage() {
         </section>
 
         <section>
-          <h2>JSONとCSVの比較：JSONの方が簡単で軽い</h2>
-          <p>
-            JSONは、CSV（カンマ区切り値）などの従来のデータ形式と比べて、<strong>シンプルで軽量</strong>です。
-            比較してみましょう。
-          </p>
-
-          <div className="comparison-table" style={{ marginTop: '20px', marginBottom: '20px' }}>
-            <table>
-              <thead>
-                <tr>
-                  <th>形式</th>
-                  <th>特徴</th>
-                  <th>例</th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr>
-                  <td><strong>CSV</strong></td>
-                  <td>カンマで区切るだけのシンプルな形式。ただし、構造が複雑になると読みにくい</td>
-                  <td><code>名前,年齢,都市<br />田中,25,東京<br />佐藤,30,大阪</code></td>
-                </tr>
-                <tr>
-                  <td><strong>JSON</strong></td>
-                  <td>キーと値のペアで構造化。人間も読みやすく、機械も処理しやすい</td>
-                  <td><code>&#123;"name": "田中", "age": 25, "city": "東京"&#125;</code></td>
-                </tr>
-              </tbody>
-            </table>
-          </div>
-
-          <p>
-            <strong>JSONのメリット：</strong>
-          </p>
-          <ul>
-            <li>構造が明確で、ネスト（入れ子）も表現できる</li>
-            <li>データサイズが小さい（軽い）</li>
-            <li>人間が読んで理解しやすい</li>
-            <li>JavaScriptで直接扱える</li>
-          </ul>
-        </section>
-
-        <section>
-          <h2>日常生活でのJSONの例（実際のコード）</h2>
+          <h2>日常生活でのJSONの例</h2>
           <p>
             JSONは私たちが毎日使っているWebサービスやアプリの裏側で、データのやり取りに使われています。
             目には見えませんが、JSONがなければ今のインターネットは成り立ちません。
           </p>
 
-          <h3>1. TwitterやInstagramの投稿データ</h3>
-          <p>
-            SNSで投稿を表示する時、裏側ではサーバーがJSON形式でデータを返しています。
-            投稿の文章、投稿者の名前、いいね数、コメントなどが、すべてJSONで構造化されて送られてきます。
-            ブラウザやアプリがそのJSONを解析して、見やすい画面に表示しているのです。
-          </p>
-          <div className="code-example" style={{ marginTop: '15px' }}>
-            <pre>
-              <code className="language-json">{`{
+          <div className="faq-accordion" style={{ marginTop: '20px' }}>
+            <div className="faq-item">
+              <details style={{ marginBottom: '15px' }}>
+                <summary style={{
+                  padding: '15px',
+                  backgroundColor: '#f9f9f9',
+                  border: '1px solid #ddd',
+                  borderRadius: '5px',
+                  cursor: 'pointer',
+                  fontWeight: 'bold',
+                  fontSize: '16px',
+                  listStyle: 'none'
+                }}>
+                  <span style={{ marginRight: '10px' }}>1. TwitterやInstagramの投稿データ</span>
+                </summary>
+                <div style={{
+                  padding: '15px',
+                  backgroundColor: '#fff',
+                  border: '1px solid #ddd',
+                  borderTop: 'none',
+                  borderRadius: '0 0 5px 5px'
+                }}>
+                  <p>
+                    SNSで投稿を表示する時、裏側ではサーバーがJSON形式でデータを返しています。
+                    投稿の文章、投稿者の名前、いいね数、コメントなどが、すべてJSONで構造化されて送られてきます。
+                    ブラウザやアプリがそのJSONを解析して、見やすい画面に表示しているのです。
+                  </p>
+                  <div className="code-example" style={{ marginTop: '15px' }}>
+                    <pre>
+                      <code className="language-json">{`{
   "postId": "12345",
   "author": {
     "name": "田中太郎",
@@ -262,18 +186,41 @@ export default function JsonPage() {
   ],
   "timestamp": "2026-01-17T10:30:00Z"
 }`}</code>
-            </pre>
-          </div>
+                    </pre>
+                  </div>
+                </div>
+              </details>
+            </div>
 
-          <h3>2. 天気予報アプリ</h3>
-          <p>
-            天気予報アプリは、気象APIからJSON形式で天気データを受け取ります。
-            「東京」「晴れ」「25度」「湿度60%」といった情報が、キーと値のペアで返されます。
-            アプリはそれを解析して、天気アイコンや気温を画面に表示します。
-          </p>
-          <div className="code-example" style={{ marginTop: '15px' }}>
-            <pre>
-              <code className="language-json">{`{
+            <div className="faq-item">
+              <details style={{ marginBottom: '15px' }}>
+                <summary style={{
+                  padding: '15px',
+                  backgroundColor: '#f9f9f9',
+                  border: '1px solid #ddd',
+                  borderRadius: '5px',
+                  cursor: 'pointer',
+                  fontWeight: 'bold',
+                  fontSize: '16px',
+                  listStyle: 'none'
+                }}>
+                  <span style={{ marginRight: '10px' }}>2. 天気予報アプリ</span>
+                </summary>
+                <div style={{
+                  padding: '15px',
+                  backgroundColor: '#fff',
+                  border: '1px solid #ddd',
+                  borderTop: 'none',
+                  borderRadius: '0 0 5px 5px'
+                }}>
+                  <p>
+                    天気予報アプリは、気象APIからJSON形式で天気データを受け取ります。
+                    「東京」「晴れ」「25度」「湿度60%」といった情報が、キーと値のペアで返されます。
+                    アプリはそれを解析して、天気アイコンや気温を画面に表示します。
+                  </p>
+                  <div className="code-example" style={{ marginTop: '15px' }}>
+                    <pre>
+                      <code className="language-json">{`{
   "location": "東京",
   "weather": "晴れ",
   "temperature": 25,
@@ -283,18 +230,41 @@ export default function JsonPage() {
     {"date": "2026-01-19", "weather": "雨", "temp": 20}
   ]
 }`}</code>
-            </pre>
-          </div>
+                    </pre>
+                  </div>
+                </div>
+              </details>
+            </div>
 
-          <h3>3. オンラインショッピングサイト</h3>
-          <p>
-            Amazonや楽天で商品を検索すると、サーバーから商品情報がJSON形式で返されます。
-            商品名、価格、在庫状況、レビュー評価などが、すべてJSONで構造化されています。
-            カートに商品を追加する時も、JSON形式でサーバーにデータを送信しています。
-          </p>
-          <div className="code-example" style={{ marginTop: '15px' }}>
-            <pre>
-              <code className="language-json">{`{
+            <div className="faq-item">
+              <details style={{ marginBottom: '15px' }}>
+                <summary style={{
+                  padding: '15px',
+                  backgroundColor: '#f9f9f9',
+                  border: '1px solid #ddd',
+                  borderRadius: '5px',
+                  cursor: 'pointer',
+                  fontWeight: 'bold',
+                  fontSize: '16px',
+                  listStyle: 'none'
+                }}>
+                  <span style={{ marginRight: '10px' }}>3. オンラインショッピングサイト</span>
+                </summary>
+                <div style={{
+                  padding: '15px',
+                  backgroundColor: '#fff',
+                  border: '1px solid #ddd',
+                  borderTop: 'none',
+                  borderRadius: '0 0 5px 5px'
+                }}>
+                  <p>
+                    Amazonや楽天で商品を検索すると、サーバーから商品情報がJSON形式で返されます。
+                    商品名、価格、在庫状況、レビュー評価などが、すべてJSONで構造化されています。
+                    カートに商品を追加する時も、JSON形式でサーバーにデータを送信しています。
+                  </p>
+                  <div className="code-example" style={{ marginTop: '15px' }}>
+                    <pre>
+                      <code className="language-json">{`{
   "productId": "P001",
   "name": "ノートパソコン",
   "price": 99800,
@@ -302,22 +272,72 @@ export default function JsonPage() {
   "rating": 4.5,
   "reviews": 128
 }`}</code>
-            </pre>
+                    </pre>
+                  </div>
+                </div>
+              </details>
+            </div>
+
+            <div className="faq-item">
+              <details style={{ marginBottom: '15px' }}>
+                <summary style={{
+                  padding: '15px',
+                  backgroundColor: '#f9f9f9',
+                  border: '1px solid #ddd',
+                  borderRadius: '5px',
+                  cursor: 'pointer',
+                  fontWeight: 'bold',
+                  fontSize: '16px',
+                  listStyle: 'none'
+                }}>
+                  <span style={{ marginRight: '10px' }}>4. package.json（Node.jsの設定ファイル）</span>
+                </summary>
+                <div style={{
+                  padding: '15px',
+                  backgroundColor: '#fff',
+                  border: '1px solid #ddd',
+                  borderTop: 'none',
+                  borderRadius: '0 0 5px 5px'
+                }}>
+                  <p>
+                    プログラミングでは、プロジェクトの設定をJSONファイルで管理することが多いです。
+                    Node.jsのpackage.jsonには、プロジェクト名、バージョン、依存パッケージなどが記載されており、
+                    JSONの構造のおかげで機械が自動的に読み取って処理できます。
+                  </p>
+                </div>
+              </details>
+            </div>
+
+            <div className="faq-item">
+              <details style={{ marginBottom: '15px' }}>
+                <summary style={{
+                  padding: '15px',
+                  backgroundColor: '#f9f9f9',
+                  border: '1px solid #ddd',
+                  borderRadius: '5px',
+                  cursor: 'pointer',
+                  fontWeight: 'bold',
+                  fontSize: '16px',
+                  listStyle: 'none'
+                }}>
+                  <span style={{ marginRight: '10px' }}>5. Google Maps API</span>
+                </summary>
+                <div style={{
+                  padding: '15px',
+                  backgroundColor: '#fff',
+                  border: '1px solid #ddd',
+                  borderTop: 'none',
+                  borderRadius: '0 0 5px 5px'
+                }}>
+                  <p>
+                    地図アプリで住所を検索すると、Google Maps APIがJSON形式で位置情報を返します。
+                    緯度・経度、住所、周辺施設などの情報が、構造化されたJSONで提供され、
+                    アプリがそれを解析して地図上にピンを表示します。
+                  </p>
+                </div>
+              </details>
+            </div>
           </div>
-
-          <h3>4. package.json（Node.jsの設定ファイル）</h3>
-          <p>
-            プログラミングでは、プロジェクトの設定をJSONファイルで管理することが多いです。
-            Node.jsのpackage.jsonには、プロジェクト名、バージョン、依存パッケージなどが記載されており、
-            JSONの構造のおかげで機械が自動的に読み取って処理できます。
-          </p>
-
-          <h3>5. Google Maps API</h3>
-          <p>
-            地図アプリで住所を検索すると、Google Maps APIがJSON形式で位置情報を返します。
-            緯度・経度、住所、周辺施設などの情報が、構造化されたJSONで提供され、
-            アプリがそれを解析して地図上にピンを表示します。
-          </p>
         </section>
 
 
@@ -361,6 +381,11 @@ export default function JsonPage() {
           </div>
         </section>
       </main>
+
+      <footer className="footer-nav">
+        <Link href="/">トップページに戻る</Link>
+        <p>&copy; 2026 itwords - 実践型IT用語辞典</p>
+      </footer>
     </div>
   )
 }

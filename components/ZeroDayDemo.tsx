@@ -2,237 +2,162 @@
 
 import { useState } from 'react'
 
-type TimelineStep = {
-  id: number
-  title: string
-  description: string
-  role: 'attacker' | 'developer' | 'system'
-  status: 'pending' | 'active' | 'completed'
-}
-
 export default function ZeroDayDemo() {
-  const [currentStep, setCurrentStep] = useState(0)
-  const [isAttacking, setIsAttacking] = useState(false)
-  const [attackResult, setAttackResult] = useState<string>('')
+  const [isStarted, setIsStarted] = useState(false)
+  const [showResult, setShowResult] = useState(false)
 
-  const timeline: TimelineStep[] = [
-    {
-      id: 0,
-      title: '脆弱性を発見',
-      description: '攻撃者だけが知っている。開発者も誰も気づいていない。',
-      role: 'attacker',
-      status: 'pending'
-    },
-    {
-      id: 1,
-      title: '攻撃コードを作成',
-      description: '脆弱性を悪用する攻撃コード（エクスプロイト）を準備。',
-      role: 'attacker',
-      status: 'pending'
-    },
-    {
-      id: 2,
-      title: '攻撃を実行 → Day 0',
-      description: 'パッチが存在しない状態で攻撃。防御は不可能。',
-      role: 'attacker',
-      status: 'pending'
-    },
-    {
-      id: 3,
-      title: '開発者が気づく',
-      description: '攻撃が発覚。でも既に手遅れ…',
-      role: 'developer',
-      status: 'pending'
-    },
-    {
-      id: 4,
-      title: 'パッチを公開 → Day 1',
-      description: '修正パッチを公開。でも被害は既に発生している。',
-      role: 'developer',
-      status: 'pending'
-    }
-  ]
-
-  const handleNextStep = () => {
-    if (currentStep < timeline.length - 1) {
-      setCurrentStep(currentStep + 1)
-      
-      // 攻撃実行のステップで特別な処理
-      if (currentStep === 1) {
-        setIsAttacking(true)
-        setTimeout(() => {
-          setAttackResult('攻撃成功！システムに侵入されました。')
-          setIsAttacking(false)
-        }, 2000)
-      }
-    }
+  const handleStart = () => {
+    setIsStarted(true)
+    setTimeout(() => {
+      setShowResult(true)
+    }, 1500)
   }
 
   const handleReset = () => {
-    setCurrentStep(0)
-    setIsAttacking(false)
-    setAttackResult('')
-  }
-
-  const getStepStatus = (stepId: number): 'pending' | 'active' | 'completed' => {
-    if (stepId < currentStep) return 'completed'
-    if (stepId === currentStep) return 'active'
-    return 'pending'
-  }
-
-  const getRoleColor = (role: string) => {
-    switch (role) {
-      case 'attacker':
-        return '#ea9b8a' // 赤系（攻撃者）
-      case 'developer':
-        return '#8abdea' // 青系（開発者）
-      case 'system':
-        return '#82c9a0' // 緑系（システム）
-      default:
-        return '#ddd'
-    }
-  }
-
-  const getRoleIcon = (role: string) => {
-    switch (role) {
-      case 'attacker':
-        return '👤'
-      case 'developer':
-        return '👨‍💻'
-      case 'system':
-        return '🖥️'
-      default:
-        return '📌'
-    }
+    setIsStarted(false)
+    setShowResult(false)
   }
 
   return (
     <div className="demo-section" style={{ marginTop: '20px' }}>
       <div style={{ 
         backgroundColor: '#f9f9f9', 
-        padding: '15px', 
+        padding: '20px', 
         borderRadius: '10px',
         border: '2px solid #ddd',
         marginBottom: '20px'
       }}>
-        <h3 style={{ marginTop: 0, marginBottom: '12px', fontSize: '18px', fontWeight: 'bold', color: '#333' }}>
-          🎮 ゼロデイ攻撃のタイムラインを体験しよう
+        <h3 style={{ marginTop: 0, marginBottom: '20px', fontSize: '18px', fontWeight: 'bold', color: '#333', textAlign: 'center' }}>
+          ゼロデイ攻撃の流れを体験しよう
         </h3>
 
-        <div style={{ marginBottom: '12px', maxHeight: '400px', overflowY: 'auto' }}>
-          {timeline.map((step, index) => {
-            const status = getStepStatus(index)
-            const isActive = status === 'active'
-            const isCompleted = status === 'completed'
-            
-            return (
-              <div
-                key={step.id}
-                style={{
-                  marginBottom: '10px',
-                  padding: '12px',
-                  borderRadius: '8px',
-                  border: `2px solid ${isActive ? getRoleColor(step.role) : '#ddd'}`,
-                  backgroundColor: isActive ? `${getRoleColor(step.role)}20` : isCompleted ? '#f5f5f5' : '#fff',
-                  opacity: status === 'pending' ? 0.6 : 1,
-                  transition: 'all 0.3s ease',
-                  boxShadow: isActive ? `0 2px 4px ${getRoleColor(step.role)}30` : 'none'
-                }}
-              >
-                <div style={{ display: 'flex', alignItems: 'center', marginBottom: '6px' }}>
-                  <span style={{ fontSize: '20px', marginRight: '8px' }}>
-                    {getRoleIcon(step.role)}
-                  </span>
-                  <h4 style={{ 
-                    margin: 0, 
-                    color: isActive ? getRoleColor(step.role) : '#222',
-                    fontWeight: isActive ? 'bold' : '600',
-                    fontSize: '16px'
-                  }}>
-                    {step.title}
-                    {isCompleted && ' ✓'}
-                    {isActive && ' →'}
-                  </h4>
-                </div>
-                <p style={{ 
-                  margin: 0, 
-                  color: isActive ? '#444' : '#555',
-                  fontSize: '14px',
-                  lineHeight: '1.6',
-                  fontWeight: isActive ? '500' : 'normal'
-                }}>
-                  {step.description}
-                </p>
+        {!isStarted ? (
+          <div style={{ textAlign: 'center' }}>
+            <div style={{
+              display: 'flex',
+              justifyContent: 'space-between',
+              alignItems: 'center',
+              marginBottom: '20px',
+              padding: '15px',
+              backgroundColor: '#fff',
+              borderRadius: '8px',
+              border: '1px solid #ddd'
+            }}>
+              <div style={{ flex: 1, textAlign: 'center' }}>
+                <div style={{ fontSize: '24px', marginBottom: '8px' }}>👤</div>
+                <div style={{ fontSize: '14px', fontWeight: 'bold', color: '#ea9b8a' }}>攻撃者</div>
+                <div style={{ fontSize: '12px', color: '#666', marginTop: '5px' }}>脆弱性を発見</div>
               </div>
-            )
-          })}
-        </div>
-
-        {isAttacking && (
-          <div style={{
-            padding: '12px',
-            backgroundColor: '#fff3cd',
-            border: '2px solid #ffc107',
-            borderRadius: '8px',
-            marginBottom: '12px',
-            textAlign: 'center'
-          }}>
-            <p style={{ margin: 0, fontSize: '15px', fontWeight: 'bold', color: '#856404' }}>
-              ⚠️ 攻撃を実行中...
-            </p>
+              <div style={{ fontSize: '20px', color: '#999', margin: '0 10px' }}>→</div>
+              <div style={{ flex: 1, textAlign: 'center', opacity: 0.5 }}>
+                <div style={{ fontSize: '24px', marginBottom: '8px' }}>🛡️</div>
+                <div style={{ fontSize: '14px', fontWeight: 'bold', color: '#8abdea' }}>防御側</div>
+                <div style={{ fontSize: '12px', color: '#666', marginTop: '5px' }}>まだ気づいていない</div>
+              </div>
+            </div>
+            <button
+              className="demo-button"
+              onClick={handleStart}
+              style={{
+                backgroundColor: '#ea9b8a',
+                color: 'white',
+                padding: '12px 24px',
+                border: 'none',
+                borderRadius: '5px',
+                cursor: 'pointer',
+                fontSize: '16px',
+                fontWeight: 'bold'
+              }}
+            >
+              攻撃シミュレーションを開始
+            </button>
+          </div>
+        ) : (
+          <div>
+            {!showResult ? (
+              <div style={{ textAlign: 'center', padding: '20px' }}>
+                <div style={{
+                  display: 'flex',
+                  justifyContent: 'space-between',
+                  alignItems: 'center',
+                  marginBottom: '20px',
+                  padding: '15px',
+                  backgroundColor: '#fff',
+                  borderRadius: '8px',
+                  border: '2px solid #ea9b8a'
+                }}>
+                  <div style={{ flex: 1, textAlign: 'center' }}>
+                    <div style={{ fontSize: '24px', marginBottom: '8px' }}>👤</div>
+                    <div style={{ fontSize: '14px', fontWeight: 'bold', color: '#ea9b8a' }}>攻撃者</div>
+                    <div style={{ fontSize: '12px', color: '#666', marginTop: '5px' }}>攻撃を実行中...</div>
+                  </div>
+                  <div style={{ fontSize: '20px', color: '#ea9b8a', margin: '0 10px', animation: 'pulse 1s infinite' }}>⚡</div>
+                  <div style={{ flex: 1, textAlign: 'center', opacity: 0.5 }}>
+                    <div style={{ fontSize: '24px', marginBottom: '8px' }}>🛡️</div>
+                    <div style={{ fontSize: '14px', fontWeight: 'bold', color: '#8abdea' }}>防御側</div>
+                    <div style={{ fontSize: '12px', color: '#666', marginTop: '5px' }}>パッチなし（Day 0）</div>
+                  </div>
+                </div>
+                <p style={{ fontSize: '14px', color: '#666' }}>攻撃が進行中...</p>
+              </div>
+            ) : (
+              <div>
+                <div style={{
+                  display: 'flex',
+                  justifyContent: 'space-between',
+                  alignItems: 'center',
+                  marginBottom: '20px',
+                  padding: '15px',
+                  backgroundColor: '#f8d7da',
+                  borderRadius: '8px',
+                  border: '2px solid #dc3545'
+                }}>
+                  <div style={{ flex: 1, textAlign: 'center' }}>
+                    <div style={{ fontSize: '24px', marginBottom: '8px' }}>👤</div>
+                    <div style={{ fontSize: '14px', fontWeight: 'bold', color: '#ea9b8a' }}>攻撃者</div>
+                    <div style={{ fontSize: '12px', color: '#666', marginTop: '5px' }}>攻撃成功 ✓</div>
+                  </div>
+                  <div style={{ fontSize: '20px', color: '#dc3545', margin: '0 10px' }}>→</div>
+                  <div style={{ flex: 1, textAlign: 'center' }}>
+                    <div style={{ fontSize: '24px', marginBottom: '8px' }}>🛡️</div>
+                    <div style={{ fontSize: '14px', fontWeight: 'bold', color: '#8abdea' }}>防御側</div>
+                    <div style={{ fontSize: '12px', color: '#666', marginTop: '5px' }}>パッチ公開（Day 1以降）</div>
+                  </div>
+                </div>
+                <div style={{
+                  padding: '15px',
+                  backgroundColor: '#fff3cd',
+                  border: '2px solid #ffc107',
+                  borderRadius: '8px',
+                  marginBottom: '15px',
+                  textAlign: 'center'
+                }}>
+                  <p style={{ margin: 0, fontSize: '14px', fontWeight: 'bold', color: '#856404' }}>
+                    ❌ 攻撃成功！パッチが存在しない状態（Day 0）で攻撃され、防御不可能でした
+                  </p>
+                </div>
+                <div style={{ textAlign: 'center' }}>
+                  <button
+                    className="demo-button"
+                    onClick={handleReset}
+                    style={{
+                      backgroundColor: '#6c757d',
+                      color: 'white',
+                      padding: '10px 20px',
+                      border: 'none',
+                      borderRadius: '5px',
+                      cursor: 'pointer',
+                      fontSize: '14px',
+                      fontWeight: 'bold'
+                    }}
+                  >
+                    もう一度体験する
+                  </button>
+                </div>
+              </div>
+            )}
           </div>
         )}
-
-        {attackResult && (
-          <div style={{
-            padding: '12px',
-            backgroundColor: '#f8d7da',
-            border: '2px solid #dc3545',
-            borderRadius: '8px',
-            marginBottom: '12px',
-            textAlign: 'center'
-          }}>
-            <p style={{ margin: 0, fontSize: '15px', fontWeight: 'bold', color: '#721c24' }}>
-              ❌ {attackResult}
-            </p>
-          </div>
-        )}
-
-        <div style={{ display: 'flex', gap: '8px', justifyContent: 'center' }}>
-          <button
-            className="demo-button"
-            onClick={handleNextStep}
-            disabled={currentStep >= timeline.length - 1}
-            style={{
-              backgroundColor: currentStep >= timeline.length - 1 ? '#ccc' : '#8abdea',
-              color: 'white',
-              padding: '8px 16px',
-              border: 'none',
-              borderRadius: '5px',
-              cursor: currentStep >= timeline.length - 1 ? 'not-allowed' : 'pointer',
-              fontSize: '14px',
-              fontWeight: 'bold'
-            }}
-          >
-            {currentStep >= timeline.length - 1 ? '完了' : '次のステップ'}
-          </button>
-          <button
-            className="demo-button"
-            onClick={handleReset}
-            style={{
-              backgroundColor: '#6c757d',
-              color: 'white',
-              padding: '8px 16px',
-              border: 'none',
-              borderRadius: '5px',
-              cursor: 'pointer',
-              fontSize: '14px',
-              fontWeight: 'bold'
-            }}
-          >
-            リセット
-          </button>
-        </div>
       </div>
     </div>
   )

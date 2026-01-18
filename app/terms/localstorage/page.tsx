@@ -1,6 +1,7 @@
 import Link from 'next/link'
 import type { Metadata } from 'next'
 import LocalStorageDemo from '@/components/LocalStorageDemo'
+import LocalStorageComparisonDemo from '@/components/LocalStorageComparisonDemo'
 import StructuredData from '@/app/components/StructuredData'
 import TermHeader from '@/app/components/TermHeader'
 import FAQAccordion from '@/app/components/FAQAccordion'
@@ -98,10 +99,13 @@ export default function LocalStoragePage() {
         <section>
           <h2>比べてみよう：JavaScript、JSON、ローカルストレージ</h2>
           <p>
-            ローカルストレージを理解するために、まずJavaScriptとJSONとの違いを見てみましょう。
+            ローカルストレージを理解するために、まずJavaScriptとJSONとの違いを体験してみましょう。
+            同じデータを3つの方法で保存して、違いを実感できます。
           </p>
 
-          <div className="comparison-table">
+          <LocalStorageComparisonDemo />
+
+          <div className="comparison-table" style={{ marginTop: '30px' }}>
             <table>
               <thead>
                 <tr>
@@ -142,14 +146,6 @@ export default function LocalStoragePage() {
         </section>
 
         <section>
-          <h2>体験してみよう</h2>
-          <p>
-            下のデモでローカルストレージの動作を体験できます。実際に手を動かすことで、「ページを閉じてもデータが残る」仕組みが理解しやすくなります。
-          </p>
-          <LocalStorageDemo />
-        </section>
-
-        <section>
           <h2>ポイント</h2>
           <ul>
             <li>ブラウザ内に保存される（サーバーには送られない）</li>
@@ -163,7 +159,6 @@ export default function LocalStoragePage() {
             </li>
           </ul>
         </section>
-
 
         <section>
           <h2>日常生活でのローカルストレージの例</h2>
@@ -190,6 +185,8 @@ export default function LocalStoragePage() {
             Googleフォームや問い合わせフォームで入力中に誤ってブラウザを閉じてしまっても、再度開くと入力内容が残っていることがあります。
             これはローカルストレージに自動で下書きを保存しているためで、データの消失を防ぐ重要な仕組みです。
           </p>
+
+          <LocalStorageDemo />
 
           <h3>4. 言語設定の記憶</h3>
           <p>
@@ -323,6 +320,11 @@ document.getElementById('contactForm').addEventListener('submit', () => {
 
         <FAQAccordion faqs={faqs} />
       </main>
+
+      <footer className="footer-nav">
+        <Link href="/">トップページに戻る</Link>
+        <p>&copy; 2026 itwords - 実践型IT用語辞典</p>
+      </footer>
     </div>
   )
 }

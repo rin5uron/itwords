@@ -95,13 +95,94 @@ export default function GitHubPage() {
             現在、世界中で1億人以上の開発者が利用しています。
           </p>
 
-          <p className="note" style={{ marginTop: '15px' }}>
-            <strong>🐙 Octocat（オクトキャット）について：</strong>
-            GitHubのマスコットキャラクターが「Octocat（オクトキャット）」です。
-            タコと猫を組み合わせたキャラクターで、GitHubのロゴやアイコンとして使われています。
-            開発者コミュニティでは、Octocatの様々なバリエーション（忍者、スーパーヒーロー、宇宙飛行士など）が作られており、
-            GitHubの公式サイトやイベントでも見ることができます。
-          </p>
+          <div style={{ marginTop: '20px', marginBottom: '20px' }}>
+            <h3 style={{ marginBottom: '15px' }}>🐙 Octocat（オクトキャット）について</h3>
+            <p>
+              GitHubのマスコットキャラクターが「Octocat（オクトキャット）」です。
+              タコと猫を組み合わせたキャラクターで、GitHubのロゴやアイコンとして使われています。
+              開発者コミュニティでは、Octocatの様々なバリエーション（忍者、スーパーヒーロー、宇宙飛行士など）が作られており、
+              GitHubの公式サイトやイベントでも見ることができます。
+            </p>
+            <div style={{
+              display: 'flex',
+              gap: '15px',
+              flexWrap: 'wrap',
+              marginTop: '15px',
+              padding: '15px',
+              backgroundColor: '#f9f9f9',
+              borderRadius: '8px'
+            }}>
+              <div style={{ textAlign: 'center', flex: '1', minWidth: '150px' }}>
+                <div style={{
+                  width: '100px',
+                  height: '100px',
+                  margin: '0 auto 10px',
+                  backgroundColor: '#24292e',
+                  borderRadius: '50%',
+                  display: 'flex',
+                  alignItems: 'center',
+                  justifyContent: 'center',
+                  fontSize: '50px'
+                }}>
+                  🐙
+                </div>
+                <p style={{ margin: 0, fontSize: '14px', fontWeight: 'bold' }}>基本のOctocat</p>
+              </div>
+              <div style={{ textAlign: 'center', flex: '1', minWidth: '150px' }}>
+                <div style={{
+                  width: '100px',
+                  height: '100px',
+                  margin: '0 auto 10px',
+                  backgroundColor: '#24292e',
+                  borderRadius: '50%',
+                  display: 'flex',
+                  alignItems: 'center',
+                  justifyContent: 'center',
+                  fontSize: '50px'
+                }}>
+                  🥷
+                </div>
+                <p style={{ margin: 0, fontSize: '14px', fontWeight: 'bold' }}>忍者Octocat</p>
+              </div>
+              <div style={{ textAlign: 'center', flex: '1', minWidth: '150px' }}>
+                <div style={{
+                  width: '100px',
+                  height: '100px',
+                  margin: '0 auto 10px',
+                  backgroundColor: '#24292e',
+                  borderRadius: '50%',
+                  display: 'flex',
+                  alignItems: 'center',
+                  justifyContent: 'center',
+                  fontSize: '50px'
+                }}>
+                  🚀
+                </div>
+                <p style={{ margin: 0, fontSize: '14px', fontWeight: 'bold' }}>宇宙飛行士Octocat</p>
+              </div>
+              <div style={{ textAlign: 'center', flex: '1', minWidth: '150px' }}>
+                <div style={{
+                  width: '100px',
+                  height: '100px',
+                  margin: '0 auto 10px',
+                  backgroundColor: '#24292e',
+                  borderRadius: '50%',
+                  display: 'flex',
+                  alignItems: 'center',
+                  justifyContent: 'center',
+                  fontSize: '50px'
+                }}>
+                  🦸
+                </div>
+                <p style={{ margin: 0, fontSize: '14px', fontWeight: 'bold' }}>スーパーヒーローOctocat</p>
+              </div>
+            </div>
+            <p style={{ marginTop: '15px', fontSize: '14px', color: '#666' }}>
+              <strong>💡 補足：</strong>
+              OctocatはGitHubの公式マスコットで、開発者コミュニティで親しまれています。
+              様々なバリエーションが<a href="https://octodex.github.com/" target="_blank" rel="noopener noreferrer" style={{ color: '#14b8a6', textDecoration: 'underline' }}>Octodex</a>で公開されています。
+            </p>
+          </div>
         </section>
 
         <section>
@@ -261,13 +342,13 @@ git push origin main`}</code></pre>
         </section>
 
         <section>
-          <h2>Gitフローとプルリクエスト</h2>
+          <h2>プルリクエスト（Pull Request）とは？</h2>
           <p>
-            チーム開発では、<strong>「Gitフロー」</strong>という開発の流れに従います。
-            これにより、複数人が同時に開発しても混乱せず、品質を保ちながら開発できます。
+            プルリクエストは、<strong>「この変更をmainに取り込んでください」とお願いする機能</strong>です。
+            単なる統合ではなく、<strong>レビューのプロセス</strong>が含まれます。
           </p>
 
-          <h3>なぜGitフローが必要なのか？</h3>
+          <h3>なぜプルリクエストが必要なのか？</h3>
           <p>
             もし全員が直接<code>main</code>ブランチに変更を加えたら、
             どうなるでしょうか？
@@ -279,14 +360,11 @@ git push origin main`}</code></pre>
           </ul>
 
           <p>
-            Gitフローを使えば、これらの問題を防げます！
+            プルリクエストを使えば、これらの問題を防げます！
           </p>
 
-          <h3>基本的なGitフローの流れ</h3>
+          <h3>プルリクエストの基本的な流れ</h3>
           <ol>
-            <li>
-              <strong>mainブランチ（本番）</strong>: 常に動作する安定版のコード
-            </li>
             <li>
               <strong>ブランチを作成</strong>: 新機能開発用に<code>feature/login</code>などの名前でブランチを切る
             </li>
@@ -307,7 +385,10 @@ git push origin main`}</code></pre>
             </li>
           </ol>
 
-          <GitFlowDemo />
+          <p style={{ marginTop: '20px' }}>
+            <strong>💡 補足：</strong>
+            プルリクエストの流れを視覚的に理解したい場合は、下の「GitHubの全体の流れを理解する」デモを参照してください。
+          </p>
 
           <h3>プルリクエスト（PR）とは？</h3>
           <p>
@@ -420,6 +501,22 @@ Closes #123`}</code></pre>
             チームメンバーが「この機能を追加したい」「このバグを直したい」と書き込むと、
             他のメンバーが対応できます。
           </p>
+          <div style={{
+            marginTop: '15px',
+            marginBottom: '15px',
+            padding: '15px',
+            backgroundColor: '#f9f9f9',
+            borderRadius: '8px',
+            border: '1px solid #ddd'
+          }}>
+            <p style={{ margin: 0, fontSize: '14px', color: '#666' }}>
+              <strong>📋 Issuesの画面イメージ：</strong>
+              <br />
+              GitHubのリポジトリページで「Issues」タブを開くと、バグ報告や機能要望が一覧で表示されます。
+              各Issueにはタイトル、説明、ラベル、担当者、マイルストーンなどの情報が表示され、
+              コメントで議論を進めることができます。
+            </p>
+          </div>
           <p className="note" style={{ marginTop: '10px' }}>
             <strong>💡 補足：</strong>
             Issuesでは、ラベルを付けて分類したり、マイルストーンを設定して進捗を管理したりできます。
@@ -440,6 +537,22 @@ Closes #123`}</code></pre>
             <strong>イメージ：</strong> 「コードをpushしたら、自動的にテストを走らせて、問題なければ本番環境にデプロイする」
             という一連の流れを自動化できます。手動でやっていた作業を、GitHubが自動でやってくれます。
           </p>
+          <div style={{
+            marginTop: '15px',
+            marginBottom: '15px',
+            padding: '15px',
+            backgroundColor: '#f9f9f9',
+            borderRadius: '8px',
+            border: '1px solid #ddd'
+          }}>
+            <p style={{ margin: 0, fontSize: '14px', color: '#666' }}>
+              <strong>⚙️ GitHub Actionsの画面イメージ：</strong>
+              <br />
+              GitHubのリポジトリページで「Actions」タブを開くと、自動化されたワークフローの実行履歴が表示されます。
+              各ワークフローの実行状況（成功・失敗）が緑や赤のマークで表示され、
+              クリックすると詳細なログを確認できます。
+            </p>
+          </div>
           <p className="note" style={{ marginTop: '10px' }}>
             <strong>💡 補足：</strong>
             GitHub Actionsでは、ワークフローをYAMLファイルで定義します。
@@ -467,6 +580,22 @@ Closes #123`}</code></pre>
             リポジトリの「顔」となるファイルです。
             プロジェクトの説明、使い方、インストール方法などを書きます。
           </p>
+          <div style={{
+            marginTop: '15px',
+            marginBottom: '15px',
+            padding: '15px',
+            backgroundColor: '#f9f9f9',
+            borderRadius: '8px',
+            border: '1px solid #ddd'
+          }}>
+            <p style={{ margin: 0, fontSize: '14px', color: '#666' }}>
+              <strong>📝 READMEの画面イメージ：</strong>
+              <br />
+              GitHubのリポジトリページを開くと、一番上にREADME.mdの内容が表示されます。
+              プロジェクトの概要、インストール方法、使い方などが分かりやすく書かれていると、
+              他の開発者がプロジェクトを理解しやすくなります。
+            </p>
+          </div>
           <p className="note" style={{ marginTop: '10px' }}>
             <strong>💡 ポイント：</strong>
             READMEは、プロジェクトを見た人が最初に読むファイルです。
