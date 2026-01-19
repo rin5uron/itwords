@@ -3,6 +3,7 @@ import { Metadata } from 'next'
 import HTTPDemo from '@/app/components/HTTPDemo'
 import StructuredData from '@/app/components/StructuredData'
 import TermHeader from '@/app/components/TermHeader'
+import PageSummary from '@/app/components/PageSummary'
 import FAQAccordion from '@/app/components/FAQAccordion'
 
 export const metadata: Metadata = {
@@ -70,23 +71,14 @@ export default function HTTPPage() {
         <section>
           <h2>概要</h2>
 
-          <div style={{
-            padding: '15px',
-            backgroundColor: '#e6f7f5',
-            borderRadius: '8px',
-            marginBottom: '20px',
-            borderLeft: '4px solid #14b8a6'
-          }}>
-            <p style={{ margin: 0, fontSize: '16px', fontWeight: 'bold', color: '#0d9488' }}>
-              📚 このページで分かること
-            </p>
-            <ul style={{ marginTop: '10px', marginBottom: 0 }}>
-              <li>HTTPとHTTPSの違い</li>
-              <li>HTTPメソッド（GET、POST等）の使い方</li>
-              <li>ステータスコード（200、404等）の意味</li>
-              <li>SSL/TLSによる暗号化の仕組み</li>
-            </ul>
-          </div>
+          <PageSummary
+            items={[
+              'HTTPとHTTPSの違い',
+              'HTTPメソッド（GET、POST等）の使い方',
+              'ステータスコード（200、404等）の意味',
+              'SSL/TLSによる暗号化の仕組み'
+            ]}
+          />
 
           <p>
             <strong>HTTP</strong>（HyperText Transfer Protocol）とは、

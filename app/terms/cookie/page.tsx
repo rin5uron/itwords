@@ -5,6 +5,7 @@ import TableOfContents from '@/app/components/TableOfContents'
 import TermHeader from '@/app/components/TermHeader'
 import CookieDemo from '@/app/components/CookieDemo'
 import StructuredData from '@/app/components/StructuredData'
+import PageSummary from '@/app/components/PageSummary'
 import FAQAccordion from '@/app/components/FAQAccordion'
 
 const faqs = [
@@ -55,23 +56,14 @@ export default function CookiePage() {
         <section>
           <h2>概要</h2>
 
-          <div style={{
-            padding: '15px',
-            backgroundColor: '#e6f7f5',
-            borderRadius: '8px',
-            marginBottom: '20px',
-            borderLeft: '4px solid #14b8a6'
-          }}>
-            <p style={{ margin: 0, fontSize: '16px', fontWeight: 'bold', color: '#0d9488' }}>
-              📚 このページで分かること
-            </p>
-            <ul style={{ marginTop: '10px', marginBottom: 0 }}>
-              <li>Cookieとは何か？何に使われる？</li>
-              <li>体験デモでCookieの動作を確認</li>
-              <li>LocalStorageやSessionStorageとの違い</li>
-              <li>セキュリティとプライバシー対策</li>
-            </ul>
-          </div>
+          <PageSummary
+            items={[
+              'Cookieとは何か？何に使われる？',
+              '体験デモでCookieの動作を確認',
+              'LocalStorageやSessionStorageとの違い',
+              'セキュリティとプライバシー対策'
+            ]}
+          />
 
           <p>
             <strong>Cookie（クッキー）</strong>とは、

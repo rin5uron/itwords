@@ -5,6 +5,7 @@ import { useState } from 'react'
 import StructuredData from '@/app/components/StructuredData'
 import TableOfContents from '@/app/components/TableOfContents'
 import TermHeader from '@/app/components/TermHeader'
+import PageSummary from '@/app/components/PageSummary'
 import FAQAccordion from '@/app/components/FAQAccordion'
 
 export default function VercelPage() {
@@ -71,23 +72,14 @@ export default function VercelPage() {
         <section>
           <h2>概要</h2>
 
-          <div style={{
-            padding: '15px',
-            backgroundColor: '#e6f7f5',
-            borderRadius: '8px',
-            marginBottom: '20px',
-            borderLeft: '4px solid #14b8a6'
-          }}>
-            <p style={{ margin: 0, fontSize: '16px', fontWeight: 'bold', color: '#0d9488' }}>
-              📚 このページで分かること
-            </p>
-            <ul style={{ marginTop: '10px', marginBottom: 0 }}>
-              <li>Vercelとは何か？読み方は？</li>
-              <li>GitHubと連携した自動デプロイの仕組み</li>
-              <li>Next.jsとの相性が抜群な理由</li>
-              <li>無料プランでできること</li>
-            </ul>
-          </div>
+          <PageSummary
+            items={[
+              'Vercelとは何か？読み方は？',
+              'GitHubと連携した自動デプロイの仕組み',
+              'Next.jsとの相性が抜群な理由',
+              '無料プランでできること'
+            ]}
+          />
 
           <p>
             <strong>Vercel</strong>とは、

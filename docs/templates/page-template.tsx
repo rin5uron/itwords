@@ -121,6 +121,7 @@ import { Metadata } from 'next'
 import StructuredData from '@/app/components/StructuredData'
 import TermHeader from '@/app/components/TermHeader'
 import TableOfContents from '@/app/components/TableOfContents'
+import PageSummary from '@/app/components/PageSummary'
 import FAQAccordion from '@/app/components/FAQAccordion'
 
 // メタデータ（SEO対策）
@@ -302,24 +303,16 @@ export default function ContentPage() {
             - UX効果：ユーザーが期待値を持って読み進められる
             - githubページで効果実証済み
             - 4つのポイントを箇条書きで明示
+            - PageSummaryコンポーネントを使用（2026-01-19改善）
           */}
-          <div style={{
-            padding: '15px',
-            backgroundColor: '#e6f7f5',
-            borderRadius: '8px',
-            marginBottom: '20px',
-            borderLeft: '4px solid #14b8a6'
-          }}>
-            <p style={{ margin: 0, fontSize: '16px', fontWeight: 'bold', color: '#0d9488' }}>
-              📚 このページで分かること
-            </p>
-            <ul style={{ marginTop: '10px', marginBottom: 0 }}>
-              <li>[ポイント1：用語の基本的な意味]</li>
-              <li>[ポイント2：日常での使われ方や実例]</li>
-              <li>[ポイント3：デモや体験できる内容]</li>
-              <li>[ポイント4：関連知識や応用]</li>
-            </ul>
-          </div>
+          <PageSummary
+            items={[
+              '[ポイント1：用語の基本的な意味]',
+              '[ポイント2：日常での使われ方や実例]',
+              '[ポイント3：デモや体験できる内容]',
+              '[ポイント4：関連知識や応用]'
+            ]}
+          />
 
           <p>
             <strong>[用語名]</strong>とは、<strong>[簡潔な説明]</strong>です。
