@@ -578,6 +578,29 @@ footer a:hover {
     line-height: 1.5 !important;
   }
 
+  /* ページサマリーと目次のレスポンシブ対応 */
+  .page-summary,
+  .table-of-contents {
+    padding: 15px;
+    margin-bottom: 20px;
+  }
+
+  .page-summary-header,
+  .table-of-contents-header {
+    font-size: 16px;
+  }
+
+  .page-summary-list li,
+  .table-of-contents a {
+    font-size: 14px;
+  }
+
+  .toc-number {
+    min-width: 24px;
+    height: 24px;
+    font-size: 12px;
+  }
+
   .demo-section {
     padding: 25px 15px;
   }

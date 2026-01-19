@@ -5,6 +5,7 @@ import GitFlowDemo from './GitFlowDemo'
 import StructuredData from '@/app/components/StructuredData'
 import TableOfContents from '@/app/components/TableOfContents'
 import TermHeader from '@/app/components/TermHeader'
+import PageSummary from '@/app/components/PageSummary'
 import FAQAccordion from '@/app/components/FAQAccordion'
 
 export const metadata: Metadata = {
@@ -75,23 +76,14 @@ export default function GitHubPage() {
         <section>
           <h2>概要</h2>
 
-          <div style={{
-            padding: '15px',
-            backgroundColor: '#e6f7f5',
-            borderRadius: '8px',
-            marginBottom: '20px',
-            borderLeft: '4px solid #14b8a6'
-          }}>
-            <p style={{ margin: 0, fontSize: '16px', fontWeight: 'bold', color: '#0d9488' }}>
-              📚 このページで分かること
-            </p>
-            <ul style={{ marginTop: '10px', marginBottom: 0 }}>
-              <li>GitHubとは何か？何に使うのか？</li>
-              <li>GitとGitHubの違い</li>
-              <li>実際のGitコマンドの使い方（デモ付き）</li>
-              <li>プルリクエストやブランチの仕組み</li>
-            </ul>
-          </div>
+          <PageSummary
+            items={[
+              'GitHubとは何か？何に使うのか？',
+              'GitとGitHubの違い',
+              '実際のGitコマンドの使い方（デモ付き）',
+              'プルリクエストやブランチの仕組み'
+            ]}
+          />
 
           <p>
             <strong>GitHub</strong>とは、
