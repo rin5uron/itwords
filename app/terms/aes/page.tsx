@@ -85,12 +85,26 @@ export default function AESPage() {
         icon="fas fa-lock"
       />
 
-      <TableOfContents />
+      {/* 作成日・更新日（目立たないデザイン） */}
+      <div style={{
+        display: 'flex',
+        gap: '15px',
+        fontSize: '13px',
+        color: '#999',
+        marginTop: '10px',
+        marginBottom: '20px',
+        paddingBottom: '15px',
+        borderBottom: '1px solid #eee'
+      }}>
+        <span>作成日: 2024-01-09</span>
+        <span>更新日: 2026-01-19</span>
+      </div>
 
+      {/* ヒーロー画像（タイトルの下に配置） */}
       <div style={{
         width: '100%',
         maxWidth: '900px',
-        margin: '2rem auto',
+        margin: '0 auto 2rem auto',
         borderRadius: '12px',
         overflow: 'hidden',
         boxShadow: '0 4px 12px rgba(0,0,0,0.1)',
@@ -111,6 +125,8 @@ export default function AESPage() {
           }}
         />
       </div>
+
+      <TableOfContents />
 
       <main>
         <section>

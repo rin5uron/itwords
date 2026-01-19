@@ -67,6 +67,21 @@ export default function GitHubPage() {
         icon="fab fa-github"
       />
 
+      {/* 作成日・更新日（目立たないデザイン） */}
+      <div style={{
+        display: 'flex',
+        gap: '15px',
+        fontSize: '13px',
+        color: '#999',
+        marginTop: '10px',
+        marginBottom: '20px',
+        paddingBottom: '15px',
+        borderBottom: '1px solid #eee'
+      }}>
+        <span>作成日: 2024-01-01</span>
+        <span>更新日: 2026-01-19</span>
+      </div>
+
       <TableOfContents />
 
       <main>

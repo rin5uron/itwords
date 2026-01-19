@@ -237,6 +237,47 @@ export default function ContentPage() {
         icon="fas fa-[アイコン名]"
       />
 
+      {/* 作成日・更新日（目立たないデザイン） */}
+      <div style={{
+        display: 'flex',
+        gap: '15px',
+        fontSize: '13px',
+        color: '#999',
+        marginTop: '10px',
+        marginBottom: '20px',
+        paddingBottom: '15px',
+        borderBottom: '1px solid #eee'
+      }}>
+        <span>作成日: YYYY-MM-DD</span>
+        <span>更新日: YYYY-MM-DD</span>
+      </div>
+
+      {/* ヒーロー画像（タイトルの下に配置・任意） */}
+      {/* <div style={{
+        width: '100%',
+        maxWidth: '900px',
+        margin: '0 auto 2rem auto',
+        borderRadius: '12px',
+        overflow: 'hidden',
+        boxShadow: '0 4px 12px rgba(0,0,0,0.1)',
+        maxHeight: '300px'
+      }}>
+        <Image
+          src="/images/terms/[用語名]-hero.jpg"
+          alt="[用語名]のイメージ"
+          width={1200}
+          height={630}
+          priority
+          style={{
+            width: '100%',
+            height: '100%',
+            objectFit: 'cover',
+            objectPosition: 'center',
+            display: 'block'
+          }}
+        />
+      </div> */}
+
       {/* 目次（h2が4つ以上ある場合に自動表示） */}
       <TableOfContents />
 
