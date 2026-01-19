@@ -4,6 +4,7 @@ import Link from 'next/link'
 import { useState } from 'react'
 import TermHeader from '@/app/components/TermHeader'
 import FAQAccordion from '@/app/components/FAQAccordion'
+import StructuredData from '@/app/components/StructuredData'
 
 const faqs = [
   {
@@ -78,6 +79,15 @@ export default function WebhookPage() {
 
   return (
     <div className="container">
+      <StructuredData type="FAQPage" faqs={faqs} />
+      <StructuredData
+        type="Article"
+        title="Webhookとは？初心者向けにわかりやすく解説"
+        description="Webhookとは？イベントデモで仕組みを今すぐ体験。APIとの違い、GitHubやSlackでの使い方、セキュリティ対策まで初心者向けに解説します。"
+        datePublished="2024-01-10"
+        dateModified="2026-01-19"
+      />
+
       <TermHeader
         termName="Webhook"
         reading="ウェブフック"
@@ -87,15 +97,41 @@ export default function WebhookPage() {
       <main>
         <section>
           <h2>概要</h2>
+
+          <div style={{
+            padding: '15px',
+            backgroundColor: '#e6f7f5',
+            borderRadius: '8px',
+            marginBottom: '20px',
+            borderLeft: '4px solid #14b8a6'
+          }}>
+            <p style={{ margin: 0, fontSize: '16px', fontWeight: 'bold', color: '#0d9488' }}>
+              📚 このページで分かること
+            </p>
+            <ul style={{ marginTop: '10px', marginBottom: 0 }}>
+              <li>Webhookとは何か？APIとの違いは？</li>
+              <li>イベントデモで実際に体験</li>
+              <li>GitHubやSlackでの実際の使い方</li>
+              <li>セキュリティ対策と実装方法</li>
+            </ul>
+          </div>
+
           <p>
             <strong>Webhook</strong>（ウェブフック）とは、
             <strong>「あるイベントが発生したときに、自動的にHTTPリクエストを送信する仕組み」</strong>です。
           </p>
 
           <p>
-            例えば、GitHubにコードをpushしたら自動的にビルドサーバーに通知が送られたり、
+            例えば、<Link href="/terms/github">GitHub</Link>にコードをpushしたら自動的にビルドサーバーに通知が送られたり、
             ECサイトで注文が入ったら在庫管理システムに自動で連絡が行ったりします。
             これがWebhookの仕組みです。
+          </p>
+
+          <p>
+            Webhookは<Link href="/terms/api">API</Link>と組み合わせて使われることが多く、
+            <Link href="/terms/json">JSON</Link>形式でデータをやり取りします。
+            <Link href="/terms/http">HTTP</Link> POSTリクエストで自動通知を実現する、
+            現代のWeb開発に欠かせない技術です。
           </p>
 
           <p>

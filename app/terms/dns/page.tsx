@@ -55,9 +55,9 @@ export default function DNSPage() {
       <StructuredData
         type="Article"
         title="DNSとは？初心者向けにわかりやすく解説"
-        description="DNSの仕組みと役割を初心者向けに解説。ドメイン名をIPアドレスに変換するプロセスを実践デモで体験できます。"
+        description="DNSとは？ステップデモで名前解決の仕組みを今すぐ体験。ドメイン名からIPアドレス変換、DNSレコード、設定方法まで初心者向けに解説します。"
         datePublished="2026-01-12"
-        dateModified="2026-01-12"
+        dateModified="2026-01-19"
       />
 
       <TermHeader

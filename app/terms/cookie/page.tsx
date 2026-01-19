@@ -37,9 +37,9 @@ export default function CookiePage() {
       <StructuredData
         type="Article"
         title="Cookieとは？初心者向けにわかりやすく解説"
-        description="Cookie（クッキー）を初心者向けに解説。Webサイトがブラウザに保存する小さなデータファイルの仕組みを体験しながら学べます。"
+        description="Cookieとは？体験デモで仕組みを今すぐ理解。ログイン状態の保持、LocalStorageとの違い、セキュリティ対策まで初心者向けに解説します。"
         datePublished="2024-01-01"
-        dateModified="2026-01-16"
+        dateModified="2026-01-19"
       />
       <TermHeader
         termName="Cookie"
@@ -52,6 +52,25 @@ export default function CookiePage() {
       <main>
         <section>
           <h2>概要</h2>
+
+          <div style={{
+            padding: '15px',
+            backgroundColor: '#e6f7f5',
+            borderRadius: '8px',
+            marginBottom: '20px',
+            borderLeft: '4px solid #14b8a6'
+          }}>
+            <p style={{ margin: 0, fontSize: '16px', fontWeight: 'bold', color: '#0d9488' }}>
+              📚 このページで分かること
+            </p>
+            <ul style={{ marginTop: '10px', marginBottom: 0 }}>
+              <li>Cookieとは何か？何に使われる？</li>
+              <li>体験デモでCookieの動作を確認</li>
+              <li>LocalStorageやSessionStorageとの違い</li>
+              <li>セキュリティとプライバシー対策</li>
+            </ul>
+          </div>
+
           <p>
             <strong>Cookie（クッキー）</strong>とは、
             <strong>「Webサイトがあなたのブラウザに保存する小さなデータファイル」</strong>です。
@@ -66,6 +85,12 @@ export default function CookiePage() {
           <p>
             Webサイトは、あなたが次回訪問したときに「前回はログインしていたな」
             「カートにこの商品を入れていたな」と思い出すことができるのです。
+          </p>
+
+          <p>
+            Cookieは<Link href="/terms/http">HTTP</Link>通信の一部として自動的にサーバーに送信され、
+            <Link href="/terms/localstorage">LocalStorage</Link>とは異なり、
+            サーバー側でも情報を読み取ることができます。
           </p>
 
           {/* 体験デモを概要の直下に配置 */}
