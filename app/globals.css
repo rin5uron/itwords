@@ -77,10 +77,25 @@ code {
   font-size: 0.9em;
 }
 
+header {
+  position: relative;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  flex-wrap: wrap;
+  gap: 15px;
+}
+
+header h1 {
+  flex: 1;
+  min-width: 0;
+}
+
 .reading {
   font-size: 1.1em;
   margin-top: 10px;
   color: #666;
+  width: 100%;
 }
 
 /* 体験デモセクション */
@@ -531,6 +546,21 @@ footer a:hover {
 
   .reading {
     font-size: 1em;
+  }
+
+  header {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  /* スマホでは作成日・更新日を下に配置 */
+  .date-info {
+    position: static !important;
+    margin-top: 10px;
+    width: 100%;
+    justify-content: flex-start !important;
+    height: auto !important;
+    line-height: 1.5 !important;
   }
 
   .demo-section {

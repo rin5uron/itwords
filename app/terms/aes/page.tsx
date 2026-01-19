@@ -79,25 +79,31 @@ export default function AESPage() {
         dateModified="2026-01-19"
       />
 
-      <TermHeader
-        termName="AES"
-        reading="エーイーエス / Advanced Encryption Standard"
-        icon="fas fa-lock"
-      />
+      <div style={{ position: 'relative' }}>
+        <TermHeader
+          termName="AES"
+          reading="エーイーエス / Advanced Encryption Standard"
+          icon="fas fa-lock"
+        />
 
-      {/* 作成日・更新日（目立たないデザイン） */}
-      <div style={{
-        display: 'flex',
-        gap: '15px',
-        fontSize: '13px',
-        color: '#999',
-        marginTop: '10px',
-        marginBottom: '20px',
-        paddingBottom: '15px',
-        borderBottom: '1px solid #eee'
-      }}>
-        <span>作成日: 2024-01-09</span>
-        <span>更新日: 2026-01-19</span>
+        {/* 作成日・更新日（タイトルと同じラインで右寄せ） */}
+        <div className="date-info" style={{
+          position: 'absolute',
+          top: '0',
+          right: '0',
+          display: 'flex',
+          gap: '15px',
+          fontSize: '14px',
+          color: '#666',
+          alignItems: 'center',
+          height: '2.2em',
+          flexWrap: 'wrap',
+          justifyContent: 'flex-end',
+          lineHeight: '2.2em'
+        }}>
+          <span>作成日: 2024-01-09</span>
+          <span>更新日: 2026-01-19</span>
+        </div>
       </div>
 
       {/* ヒーロー画像（タイトルの下に配置） */}
