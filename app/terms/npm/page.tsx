@@ -185,6 +185,12 @@ export default function NpmPage() {
             コマンド一つで、世界中の開発者が作った200万以上のパッケージを利用できるのです。
           </p>
 
+          <p className="note">
+            <strong>💡 豆知識：</strong>
+            npmは2010年にIsaac Z. Schlueterによって開発され、現在はMicrosoftの子会社であるGitHub社が運営しています。
+            Node.jsに標準搭載されているため、Node.jsをインストールすれば自動的にnpmも使えるようになります。
+          </p>
+
           {/* 体験デモを概要の直下に配置 */}
           <div style={{ marginTop: '30px', marginBottom: '30px' }}>
             <h3>npmコマンドを体験してみよう</h3>
@@ -290,11 +296,14 @@ npm install date-fns`}</code></pre>
           <p>
             「このプロジェクトは、Reactのバージョン18.2.0を使っている」といった情報を、
             <code>package.json</code>というファイルに記録します。
+            これにより、チームメンバー全員が同じ環境で開発できるようになります。
           </p>
 
           <h3>3. スクリプトの実行</h3>
           <p>
             開発サーバーの起動、ビルド、テストなど、よく使うコマンドを登録して実行できます。
+            <Link href="/terms/vercel">Vercel</Link>などのホスティングサービスにデプロイする際も、
+            npmスクリプトが自動実行されます。
           </p>
           <div className="code-example">
             <pre><code>{`# 開発サーバー起動
@@ -588,7 +597,34 @@ const today = format(new Date(), 'yyyy-MM-dd')`}</code></pre>
           </div>
 
           <p>
-            詳しくは<a href="https://docs.npmjs.com/" target="_blank" rel="noopener noreferrer">npm公式ドキュメント</a>で確認できます。
+            詳しくは<a href="https://docs.npmjs.com/" target="_blank" rel="noopener noreferrer">npm公式ドキュメント</a>や
+            <a href="https://nodejs.org/" target="_blank" rel="noopener noreferrer">Node.js公式サイト</a>で確認できます。
+          </p>
+        </section>
+
+        <section>
+          <h2>npmを使うメリット・デメリット</h2>
+
+          <h3>メリット</h3>
+          <ul>
+            <li><strong>豊富なパッケージ：</strong> 200万以上のパッケージから選べる</li>
+            <li><strong>標準搭載：</strong> Node.jsに標準で含まれているため追加インストール不要</li>
+            <li><strong>依存関係の自動解決：</strong> パッケージが必要とする他のパッケージも自動インストール</li>
+            <li><strong>バージョン管理：</strong> セマンティックバージョニングで安全に更新</li>
+            <li><strong>広く使われている：</strong> 情報が豊富で問題解決しやすい</li>
+          </ul>
+
+          <h3>デメリット</h3>
+          <ul>
+            <li><strong>node_modulesが巨大：</strong> 数百MB〜数GBになることも</li>
+            <li><strong>インストールが遅い場合がある：</strong> yarnやpnpmの方が高速</li>
+            <li><strong>セキュリティリスク：</strong> 悪意のあるパッケージが混入する可能性</li>
+          </ul>
+
+          <p className="note">
+            <strong>💡 セキュリティ対策：</strong>
+            パッケージをインストールする前に、週間ダウンロード数、GitHubスター数、最終更新日を確認しましょう。
+            また、<code>npm audit</code>コマンドで脆弱性をチェックできます。
           </p>
         </section>
 

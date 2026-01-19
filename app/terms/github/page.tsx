@@ -56,9 +56,9 @@ export default function GitHubPage() {
       <StructuredData
         type="Article"
         title="GitHubとは？初心者向けにわかりやすく解説"
-        description="GitHubは、ソースコードをバージョン管理し、世界中の開発者と共有・協力できるプラットフォームです。"
+        description="GitHubとは？図解とデモで使い方と仕組みを今すぐ理解。コード保存・共有・チーム開発ができるプラットフォームを初心者向けに解説。プルリクエストやGitフローも学べます。"
         datePublished="2024-01-01"
-        dateModified="2026-01-16"
+        dateModified="2026-01-19"
       />
 
       <TermHeader

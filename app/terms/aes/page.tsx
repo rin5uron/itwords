@@ -142,6 +142,13 @@ export default function AESPage() {
             例えば、鍵を使ってメッセージを暗号化し、同じ鍵で復号化する仕組みです。
             <strong>米国政府が2001年に標準として採用</strong>し、高いセキュリティと高速な処理が特徴です。
           </p>
+
+          <p>
+            AESは私たちの身近なところで使われています。
+            Wi-FiのWPA2/WPA3、<Link href="/terms/http">HTTPS</Link>通信、
+            <Link href="/terms/api">API</Link>の暗号化など、
+            インターネットのセキュリティを支える重要な技術です。
+          </p>
         </section>
 
         <section>
@@ -191,8 +198,15 @@ export default function AESPage() {
           </div>
 
           <p>
-            このデメリットを補うため、実際のHTTPS通信では<strong>RSA（公開鍵暗号）とAESを組み合わせて</strong>使います。
+            このデメリットを補うため、実際の<Link href="/terms/http">HTTPS</Link>通信では<strong>RSA（公開鍵暗号）とAESを組み合わせて</strong>使います。
             RSAで共通鍵を安全に交換し、その後の通信はAESで高速に暗号化します。
+            この組み合わせにより、鍵配送問題を解決しながら高速な暗号化通信を実現しています。
+          </p>
+
+          <p className="note">
+            <strong>💡 実際の通信例：</strong>
+            あなたが今このページを見ているときも、AESが使われています。
+            ブラウザのアドレスバーに鍵マークが表示されていれば、AESで暗号化された安全な通信（HTTPS）が行われている証拠です。
           </p>
         </section>
 
@@ -462,6 +476,7 @@ export default function AESPage() {
           <h2>JavaScriptでAESを実装する方法</h2>
           <p>
             実際にWeb開発でAESを使う場合は、<strong>crypto-jsライブラリ</strong>を使うのが一般的です。
+            <Link href="/terms/npm">npm</Link>で簡単にインストールできます。
           </p>
 
           <details>
@@ -716,6 +731,32 @@ async function decryptData(ciphertext, key, iv) {
               <strong>AES-256</strong>を選ぶ（金融・医療など重要データ）
             </li>
           </ul>
+
+          <p>
+            詳しくは<a href="https://developer.mozilla.org/en-US/docs/Web/API/SubtleCrypto" target="_blank" rel="noopener noreferrer">MDN Web Crypto API</a>や
+            <a href="https://csrc.nist.gov/publications/detail/fips/197/final" target="_blank" rel="noopener noreferrer">NIST AES標準仕様書</a>で確認できます。
+          </p>
+        </section>
+
+        <section>
+          <h2>AESとゼロデイ攻撃</h2>
+          <p>
+            AESは非常に強固な暗号化方式ですが、<Link href="/terms/zero-day">ゼロデイ攻撃</Link>のような脅威からシステムを守るためには、
+            暗号化だけでなく多層的なセキュリティ対策が必要です。
+          </p>
+
+          <h3>AESだけでは防げない攻撃</h3>
+          <ul>
+            <li><strong>マルウェア感染：</strong> 暗号化前のデータを盗まれる</li>
+            <li><strong>中間者攻撃：</strong> 鍵交換時に盗聴される</li>
+            <li><strong>ソーシャルエンジニアリング：</strong> ユーザーを騙して鍵を入手</li>
+            <li><strong>ゼロデイ脆弱性：</strong> 暗号化実装のバグを突かれる</li>
+          </ul>
+
+          <p>
+            そのため、AES暗号化に加えて、定期的なセキュリティアップデート、
+            ファイアウォール、侵入検知システム（IDS）などを組み合わせることが重要です。
+          </p>
         </section>
 
         <FAQAccordion faqs={faqs} />

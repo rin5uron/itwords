@@ -317,30 +317,6 @@ export default function WebhookPage() {
           </p>
         </section>
 
-              {webhookLog.length === 0 ? (
-                <div style={{ color: '#6c757d' }}>
-                  イベント待機中...<br />
-                  <br />
-                  ↑ イベントを選択してWebhookを発火させてください
-                </div>
-              ) : (
-                webhookLog.map((log, index) => (
-                  <div key={index} style={{
-                    marginBottom: '5px',
-                    color: log.includes('✓') ? '#98c379' : '#abb2bf'
-                  }}>
-                    {log}
-                  </div>
-                ))
-              )}
-            </div>
-
-            <p style={{ marginTop: '15px', fontSize: '14px', color: '#6c757d' }}>
-              💡 実際のWebhookでは、イベントが発生すると即座にHTTP POSTリクエストが送信され、受信側のサーバーで自動処理が実行されます。
-            </p>
-          </div>
-        </section>
-
         <section>
           <h2>Webhookの設定方法（GitHub例）</h2>
           <p>GitHubでWebhookを設定する手順：</p>
