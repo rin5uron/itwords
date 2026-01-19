@@ -64,6 +64,8 @@ export default function DNSPage() {
         termName="DNS"
         reading="ディーエヌエス / Domain Name System"
         icon="fas fa-book"
+        dateCreated="2026-01-12"
+        dateModified="2026-01-19"
       />
 
       <TableOfContents />

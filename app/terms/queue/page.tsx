@@ -82,6 +82,8 @@ export default function QueuePage() {
         termName="キュー (Queue)"
         reading="きゅー / Queue (FIFO)"
         icon="fas fa-users"
+        dateCreated="2024-01-07"
+        dateModified="2026-01-07"
       />
 
       <main>

@@ -54,6 +54,8 @@ export default function PokaYokePage() {
         termName="ポカヨケ"
         reading="ぽかよけ / Poka-Yoke"
         icon="fas fa-tools"
+        dateCreated="2026-01-13"
+        dateModified="2026-01-13"
       />
 
       <main>

@@ -89,6 +89,8 @@ export default function ZeroDayPage() {
         termName="ゼロデイ攻撃"
         reading="ゼロデイこうげき / Zero-day Attack"
         icon="fas fa-shield-alt"
+        dateCreated="2024-01-09"
+        dateModified="2026-01-14"
       />
 
       <div style={{

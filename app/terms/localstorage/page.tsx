@@ -83,6 +83,8 @@ export default function LocalStoragePage() {
         termName="ローカルストレージ"
         reading="ろーかるすとれーじ / localStorage"
         icon="fas fa-database"
+        dateCreated="2024-01-07"
+        dateModified="2026-01-07"
       />
 
       <main>

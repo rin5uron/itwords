@@ -139,32 +139,13 @@ export default function NpmPage() {
         datePublished="2024-01-01"
         dateModified="2026-01-19"
       />
-      <div style={{ position: 'relative' }}>
-        <TermHeader
-          termName="npm"
-          reading="エヌピーエム / Node Package Manager"
-          icon="fab fa-npm"
-        />
-
-        {/* 作成日・更新日（タイトルと同じラインで右寄せ） */}
-        <div className="date-info" style={{
-          position: 'absolute',
-          top: '0',
-          right: '0',
-          display: 'flex',
-          gap: '15px',
-          fontSize: '14px',
-          color: '#666',
-          alignItems: 'center',
-          height: '2.2em',
-          flexWrap: 'wrap',
-          justifyContent: 'flex-end',
-          lineHeight: '2.2em'
-        }}>
-          <span>作成日: 2024-01-01</span>
-          <span>更新日: 2026-01-19</span>
-        </div>
-      </div>
+      <TermHeader
+        termName="npm"
+        reading="エヌピーエム / Node Package Manager"
+        icon="fab fa-npm"
+        dateCreated="2024-01-01"
+        dateModified="2026-01-19"
+      />
 
       <TableOfContents />
 

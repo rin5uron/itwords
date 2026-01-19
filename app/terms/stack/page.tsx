@@ -62,6 +62,8 @@ export default function StackPage() {
         termName="スタック構造"
         reading="すたっくこうぞう / Stack (LIFO)"
         icon="fas fa-layer-group"
+        dateCreated="2024-01-07"
+        dateModified="2026-01-07"
       />
 
       <main>

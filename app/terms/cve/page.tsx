@@ -55,6 +55,8 @@ export default function CVEPage() {
         termName="CVE"
         reading="シーブイイー / Common Vulnerabilities and Exposures"
         icon="fas fa-fingerprint"
+        dateCreated="2026-01-14"
+        dateModified="2026-01-14"
       />
 
       <main>

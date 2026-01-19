@@ -87,6 +87,8 @@ export default function HostingServicePage() {
         termName="ホスティングサービス"
         reading="ホスティングサービス / Hosting Service"
         icon="fas fa-cloud"
+        dateCreated="2026-01-12"
+        dateModified="2026-01-12"
       />
 
       <TableOfContents />

@@ -82,6 +82,8 @@ export default function SQLPage() {
         termName="SQL"
         reading="エスキューエル / シークェル / Structured Query Language"
         icon="fas fa-database"
+        dateCreated="2026-01-16"
+        dateModified="2026-01-16"
       />
 
       <TableOfContents />

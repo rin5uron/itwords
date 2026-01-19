@@ -49,6 +49,8 @@ export default function IPAddressPage() {
         termName="IPアドレス"
         reading="アイピーアドレス / IP Address"
         icon="fas fa-network-wired"
+        dateCreated="2026-01-12"
+        dateModified="2026-01-12"
       />
 
       <main>

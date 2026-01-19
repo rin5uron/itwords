@@ -92,6 +92,8 @@ export default function WebhookPage() {
         termName="Webhook"
         reading="ウェブフック"
         icon="fas fa-webhook"
+        dateCreated="2024-01-10"
+        dateModified="2026-01-19"
       />
 
       <main>

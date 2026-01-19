@@ -5,9 +5,11 @@ interface TermHeaderProps {
   termName: string
   reading?: string
   icon?: string
+  dateCreated?: string
+  dateModified?: string
 }
 
-export default function TermHeader({ termName, reading, icon }: TermHeaderProps) {
+export default function TermHeader({ termName, reading, icon, dateCreated, dateModified }: TermHeaderProps) {
   return (
     <>
       <SiteHeader showNav={false} />
@@ -25,6 +27,19 @@ export default function TermHeader({ termName, reading, icon }: TermHeaderProps)
         <h1>
           {icon && <i className={icon}></i>} {termName}
         </h1>
+        {(dateCreated || dateModified) && (
+          <div className="date-info" style={{
+            display: 'flex',
+            gap: '15px',
+            fontSize: '14px',
+            color: '#666',
+            alignItems: 'center',
+            flexWrap: 'wrap'
+          }}>
+            {dateCreated && <span>作成日: {dateCreated}</span>}
+            {dateModified && <span>更新日: {dateModified}</span>}
+          </div>
+        )}
         {reading && <p className="reading">{reading}</p>}
       </header>
     </>

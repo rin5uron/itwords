@@ -63,6 +63,8 @@ export default function ServerPage() {
         termName="サーバー"
         reading="サーバー / Server"
         icon="fas fa-server"
+        dateCreated="2026-01-12"
+        dateModified="2026-01-12"
       />
 
       <TableOfContents />

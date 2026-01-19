@@ -65,6 +65,8 @@ export default function ValidationPage() {
         termName="バリデーション"
         reading="ばりでーしょん / Validation"
         icon="fas fa-check-circle"
+        dateCreated="2026-01-13"
+        dateModified="2026-01-13"
       />
 
       <TableOfContents />

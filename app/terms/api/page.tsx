@@ -93,6 +93,8 @@ export default function APIPage() {
         termName="API"
         reading="エーピーアイ / Application Programming Interface"
         icon="fas fa-link"
+        dateCreated="2024-01-01"
+        dateModified="2026-01-17"
       />
 
       {/* コンパクト目次 */}

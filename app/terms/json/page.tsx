@@ -75,6 +75,8 @@ export default function JsonPage() {
         termName="JSON"
         reading="ジェイソン / JavaScript Object Notation"
         icon="fas fa-brackets-curly"
+        dateCreated="2024-01-01"
+        dateModified="2026-01-16"
       />
 
       <TableOfContents />

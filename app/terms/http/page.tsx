@@ -62,6 +62,8 @@ export default function HTTPPage() {
         termName="HTTP/HTTPS"
         reading="エイチティーティーピー / エイチティーティーピーエス"
         icon="fas fa-exchange-alt"
+        dateCreated="2024-01-01"
+        dateModified="2026-01-16"
       />
 
       <main>

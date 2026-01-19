@@ -60,6 +60,8 @@ export default function RepositoryPage() {
         termName="リポジトリ"
         reading="Repository / レポジトリ"
         icon="fas fa-folder-open"
+        dateCreated="2026-01-18"
+        dateModified="2026-01-18"
       />
 
       <TableOfContents />

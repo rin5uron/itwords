@@ -67,6 +67,8 @@ export default function FoolProofPage() {
         termName="フールプルーフ"
         reading="ふーるぷるーふ / Fool Proof"
         icon="fas fa-shield-alt"
+        dateCreated="2024-01-07"
+        dateModified="2026-01-12"
       />
 
       <TableOfContents />

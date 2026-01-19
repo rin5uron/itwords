@@ -50,6 +50,8 @@ export default function CSSPage() {
         termName="CSS"
         reading="シーエスエス / Cascading Style Sheets"
         icon="fas fa-paint-brush"
+        dateCreated="2024-01-09"
+        dateModified="2026-01-15"
       />
 
       <main>

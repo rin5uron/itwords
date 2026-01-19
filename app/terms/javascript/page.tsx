@@ -55,6 +55,8 @@ export default function JavaScriptPage() {
         termName="JavaScript"
         reading="ジャバスクリプト / JS"
         icon="fas fa-code-branch"
+        dateCreated="2024-01-01"
+        dateModified="2026-01-07"
       />
 
       <main>

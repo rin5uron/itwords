@@ -61,6 +61,8 @@ export default function VercelPage() {
         termName="Vercel"
         reading="ヴァーセル"
         icon="fas fa-server"
+        dateCreated="2024-01-09"
+        dateModified="2026-01-16"
       />
 
       <TableOfContents />

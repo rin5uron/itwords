@@ -65,6 +65,8 @@ export default function WhiteHatHackerPage() {
         termName="ホワイトハッカー"
         reading="ホワイトハッカー / White Hat Hacker"
         icon="fas fa-user-shield"
+        dateCreated="2026-01-14"
+        dateModified="2026-01-14"
       />
 
       <div style={{

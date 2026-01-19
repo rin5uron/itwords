@@ -45,6 +45,8 @@ export default function CookiePage() {
         termName="Cookie"
         reading="クッキー"
         icon="fas fa-cookie-bite"
+        dateCreated="2024-01-01"
+        dateModified="2026-01-19"
       />
 
       <TableOfContents />

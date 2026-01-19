@@ -95,6 +95,8 @@ export default function CLIGUIPage() {
         termName="CLI / GUI"
         reading="シーエルアイ / ジーユーアイ"
         icon="fas fa-terminal"
+        dateCreated="2026-01-17"
+        dateModified="2026-01-17"
       />
 
       <TableOfContents />

@@ -60,6 +60,8 @@ export default function BootstrapPage() {
         termName="Bootstrap"
         reading="ブートストラップ"
         icon="fab fa-bootstrap"
+        dateCreated="2026-01-18"
+        dateModified="2026-01-18"
       />
 
       <TableOfContents />

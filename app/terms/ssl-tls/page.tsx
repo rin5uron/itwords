@@ -56,6 +56,8 @@ export default function SslTlsPage() {
         termName="SSL/TLS"
         reading="エスエスエル / ティーエルエス"
         icon="fas fa-lock"
+        dateCreated="2026-01-18"
+        dateModified="2026-01-18"
       />
 
       <TableOfContents />

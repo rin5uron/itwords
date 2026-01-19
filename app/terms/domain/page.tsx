@@ -49,6 +49,8 @@ export default function DomainPage() {
         termName="ドメイン"
         reading="ドメイン / Domain"
         icon="fas fa-globe"
+        dateCreated="2026-01-12"
+        dateModified="2026-01-12"
       />
 
       <main>

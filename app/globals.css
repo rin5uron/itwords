@@ -81,14 +81,29 @@ header {
   position: relative;
   display: flex;
   justify-content: space-between;
-  align-items: flex-start;
+  align-items: center;
   flex-wrap: wrap;
   gap: 15px;
+  border-bottom: 2px solid #14b8a6;
+  padding-bottom: 0.5em;
 }
 
 header h1 {
   flex: 1;
   min-width: 0;
+  border-bottom: none;
+  padding-bottom: 0;
+  margin: 0;
+}
+
+/* 作成日・更新日をheaderタグ内に配置（タイトルと同じ行） */
+header .date-info {
+  display: flex;
+  gap: 15px;
+  font-size: 14px;
+  color: #666;
+  align-items: center;
+  flex-wrap: wrap;
 }
 
 .reading {
@@ -865,13 +880,83 @@ footer a:hover {
 }
 
 /* 目次（Table of Contents）スタイル */
+/* ページサマリー（このページで分かること） */
+.page-summary {
+  background: linear-gradient(135deg, #e6f7f5 0%, #f0fdf4 100%);
+  border-left: 4px solid #14b8a6;
+  border-radius: 8px;
+  padding: clamp(15px, 3vw, 20px);
+  margin-bottom: clamp(20px, 4vw, 30px);
+  margin-top: clamp(15px, 3vw, 20px);
+  box-shadow: 0 2px 8px rgba(20, 184, 166, 0.1);
+}
+
+.page-summary-header {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 12px;
+  font-size: clamp(15px, 3.5vw, 18px);
+  font-weight: 700;
+  color: #0d9488;
+}
+
+.page-summary-header i {
+  font-size: clamp(16px, 3.5vw, 20px);
+  color: #14b8a6;
+}
+
+.page-summary-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.page-summary-list li {
+  position: relative;
+  padding-left: 24px;
+  font-size: clamp(14px, 3vw, 16px);
+  line-height: 1.6;
+  color: #2c3e50;
+}
+
+.page-summary-list li::before {
+  content: '✓';
+  position: absolute;
+  left: 0;
+  color: #14b8a6;
+  font-weight: bold;
+  font-size: clamp(14px, 3vw, 16px);
+}
+
+/* 目次（Table of Contents） */
 .table-of-contents {
-  background-color: #f8f9fa;
-  border: 1px solid #dee2e6;
-  border-radius: 6px;
-  padding: 16px;
-  margin-bottom: 24px;
-  margin-top: 20px;
+  background: linear-gradient(135deg, #f8f9fa 0%, #ffffff 100%);
+  border: 1px solid #e0e0e0;
+  border-left: 4px solid #14b8a6;
+  border-radius: 8px;
+  padding: clamp(16px, 3vw, 20px);
+  margin-bottom: clamp(20px, 4vw, 30px);
+  margin-top: clamp(15px, 3vw, 20px);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+}
+
+.table-of-contents-header {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 12px;
+  font-size: clamp(15px, 3.5vw, 18px);
+  font-weight: 700;
+  color: #2c3e50;
+}
+
+.table-of-contents-header i {
+  font-size: clamp(16px, 3.5vw, 20px);
+  color: #14b8a6;
 }
 
 .table-of-contents ul {
@@ -880,21 +965,55 @@ footer a:hover {
   margin: 0;
   display: flex;
   flex-direction: column;
-  gap: 6px;
-  text-align: left;
+  gap: 8px;
 }
 
 .table-of-contents li {
-  text-align: left;
   width: 100%;
   margin-bottom: 0;
 }
 
 .table-of-contents a {
+  display: flex;
+  align-items: center;
+  gap: 12px;
   color: #495057;
   text-decoration: none;
-  display: inline-block;
-  text-align: left;
+  padding: 10px 12px;
+  border-radius: 6px;
+  transition: all 0.2s ease;
+  font-size: clamp(14px, 3vw, 16px);
+  line-height: 1.5;
+}
+
+.table-of-contents a:hover {
+  background-color: #e6f7f5;
+  color: #0d9488;
+  transform: translateX(4px);
+}
+
+.table-of-contents a:active {
+  transform: translateX(2px);
+}
+
+.toc-number {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 28px;
+  height: 28px;
+  background-color: #14b8a6;
+  color: white;
+  border-radius: 50%;
+  font-size: clamp(12px, 2.5vw, 14px);
+  font-weight: 600;
+  flex-shrink: 0;
+}
+
+.toc-title {
+  flex: 1;
+  word-wrap: break-word;
+  overflow-wrap: break-word;
 }
 
 /* FAQアコーディオンスタイル */
