@@ -7,11 +7,11 @@ import FAQAccordion from '@/app/components/FAQAccordion'
 
 export const metadata: Metadata = {
   title: 'HTTP/HTTPS（エイチティーティーピー）とは？読み方・違いを初心者向けに解説 | 実践型IT用語辞典',
-  description: 'HTTP/HTTPS（エイチティーティーピー/エイチティーティーピーエス）を初心者向けに解説。読み方、違い、仕組み、HTTPメソッド、ステータスコードを実践デモ付きで学べます。',
+  description: 'HTTP/HTTPSとは？実践デモで違いと仕組みを今すぐ理解。読み方、HTTPメソッド、ステータスコード、SSL/TLSまで初心者向けに解説します。',
   keywords: ['HTTP', 'HTTPS', 'HTTP とは', 'HTTP わかりやすく', 'HTTP 初心者', 'HTTP HTTPS 違い', 'HTTPメソッド', 'HTTPステータスコード', 'GET', 'POST', 'SSL', 'TLS', 'IT用語 わかりやすく', 'プログラミング 初心者'],
   openGraph: {
     title: 'HTTP/HTTPSとは？初心者向けにわかりやすく解説【実践デモ付き】',
-    description: 'HTTP/HTTPSの基礎から違い、仕組み、HTTPメソッド、ステータスコードまで初心者にもわかりやすく解説。',
+    description: 'HTTP/HTTPSとは？実践デモで違いと仕組みを今すぐ理解。読み方、HTTPメソッド、ステータスコード、SSL/TLSまで初心者向けに解説します。',
     type: 'article',
     url: 'https://itwords.vercel.app/terms/http',
   },
@@ -67,6 +67,25 @@ export default function HTTPPage() {
       <main>
         <section>
           <h2>概要</h2>
+
+          <div style={{
+            padding: '15px',
+            backgroundColor: '#e6f7f5',
+            borderRadius: '8px',
+            marginBottom: '20px',
+            borderLeft: '4px solid #14b8a6'
+          }}>
+            <p style={{ margin: 0, fontSize: '16px', fontWeight: 'bold', color: '#0d9488' }}>
+              📚 このページで分かること
+            </p>
+            <ul style={{ marginTop: '10px', marginBottom: 0 }}>
+              <li>HTTPとHTTPSの違い</li>
+              <li>HTTPメソッド（GET、POST等）の使い方</li>
+              <li>ステータスコード（200、404等）の意味</li>
+              <li>SSL/TLSによる暗号化の仕組み</li>
+            </ul>
+          </div>
+
           <p>
             <strong>HTTP</strong>（HyperText Transfer Protocol）とは、
             <strong>「Webブラウザとサーバーの間でデータをやり取りするためのルール（通信規約）」</strong>です。

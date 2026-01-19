@@ -53,7 +53,7 @@ export default function VercelPage() {
       <StructuredData
         type="Article"
         title="Vercel（ヴァーセル）とは？読み方から使い方まで初心者向けに解説"
-        description="Vercel（ヴァーセル）を初心者向けに解説。読み方、特徴、使い方、料金プランをデプロイステップのデモ付きで学べます。"
+        description="Vercelとは？デプロイデモで使い方を今すぐ体験。読み方、Next.jsとの相性、無料プラン、GitHubとの自動連携まで初心者向けに解説します。"
         datePublished="2024-01-09"
         dateModified="2026-01-16"
       />
@@ -68,6 +68,25 @@ export default function VercelPage() {
       <main>
         <section>
           <h2>概要</h2>
+
+          <div style={{
+            padding: '15px',
+            backgroundColor: '#e6f7f5',
+            borderRadius: '8px',
+            marginBottom: '20px',
+            borderLeft: '4px solid #14b8a6'
+          }}>
+            <p style={{ margin: 0, fontSize: '16px', fontWeight: 'bold', color: '#0d9488' }}>
+              📚 このページで分かること
+            </p>
+            <ul style={{ marginTop: '10px', marginBottom: 0 }}>
+              <li>Vercelとは何か？読み方は？</li>
+              <li>GitHubと連携した自動デプロイの仕組み</li>
+              <li>Next.jsとの相性が抜群な理由</li>
+              <li>無料プランでできること</li>
+            </ul>
+          </div>
+
           <p>
             <strong>Vercel</strong>とは、
             <strong>「Webサイトやアプリを簡単に公開できるホスティングサービス」</strong>です。

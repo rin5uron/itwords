@@ -154,7 +154,7 @@ export default function CSSStepByStepDemo() {
         {/* HTMLとCSSコード */}
         <div style={{
           display: 'grid',
-          gridTemplateColumns: '1fr 1fr',
+          gridTemplateColumns: 'repeat(auto-fit, minmax(250px, 1fr))',
           gap: '15px',
           marginBottom: '15px'
         }}>
@@ -263,10 +263,13 @@ export default function CSSStepByStepDemo() {
           <div style={{
             backgroundColor: '#d1ecf1',
             border: '2px solid #17a2b8',
-            padding: '12px',
+            padding: 'clamp(10px, 2.5vw, 12px)',
             borderRadius: '5px',
-            fontSize: '14px',
-            color: '#0c5460'
+            fontSize: 'clamp(13px, 3.2vw, 14px)',
+            color: '#0c5460',
+            maxWidth: '100%',
+            wordWrap: 'break-word',
+            overflowWrap: 'break-word'
           }}>
             <strong>📝 適用中のスタイル：</strong>
             <ul style={{ margin: '8px 0 0 0', paddingLeft: '20px' }}>
@@ -283,11 +286,14 @@ export default function CSSStepByStepDemo() {
           <div style={{
             backgroundColor: '#fff3cd',
             border: '2px solid #ffc107',
-            padding: '12px',
+            padding: 'clamp(10px, 2.5vw, 12px)',
             borderRadius: '5px',
-            fontSize: '14px',
+            fontSize: 'clamp(13px, 3.2vw, 14px)',
             color: '#856404',
-            textAlign: 'center'
+            textAlign: 'center',
+            maxWidth: '100%',
+            wordWrap: 'break-word',
+            overflowWrap: 'break-word'
           }}>
             👆 ボタンを押してCSSを適用してみましょう！
           </div>

@@ -8,17 +8,17 @@ import FAQAccordion from '@/app/components/FAQAccordion'
 
 export const metadata: Metadata = {
   title: 'フールプルーフとは？初心者向けにわかりやすく解説【実践デモ付き】 | 実践型IT用語辞典',
-  description: 'フールプルーフ（Fool Proof）は、誤操作や誤入力を未然に防ぐ設計思想です。削除確認ダイアログ、入力制限、ボタンの色分けなど具体例と実践デモで、ユーザーが間違えにくいシステムを作る考え方を初心者にもわかりやすく解説します。製造業のポカヨケとの関係、フェイルセーフとの違いも詳しく説明。',
+  description: 'フールプルーフとは？実践デモで誤操作防止の仕組みを体験。削除確認ダイアログ、入力制限、ポカヨケとの関係、フェイルセーフとの違いまで初心者向けに解説します。',
   keywords: ['フールプルーフ', 'Fool Proof', 'UI/UX', '誤操作防止', '設計思想', '初心者', 'わかりやすく', 'フールプルーフ とは', 'バリデーション', 'ポカヨケ', 'フェイルセーフ', '品質管理'],
   openGraph: {
     title: 'フールプルーフとは？初心者向けにわかりやすく解説【実践デモ付き】',
-    description: 'フールプルーフ（Fool Proof）は、誤操作や誤入力を未然に防ぐ設計思想です。削除確認ダイアログ、入力制限など具体例で解説。',
+    description: 'フールプルーフとは？実践デモで誤操作防止の仕組みを体験。削除確認ダイアログ、入力制限、ポカヨケとの関係、フェイルセーフとの違いまで初心者向けに解説します。',
     type: 'article',
   },
   twitter: {
     card: 'summary_large_image',
     title: 'フールプルーフとは？初心者向けにわかりやすく解説【実践デモ付き】',
-    description: 'フールプルーフ（Fool Proof）は、誤操作や誤入力を未然に防ぐ設計思想です。削除確認ダイアログ、入力制限など具体例で解説。',
+    description: 'フールプルーフとは？実践デモで誤操作防止の仕組みを体験。削除確認ダイアログ、入力制限、ポカヨケとの関係、フェイルセーフとの違いまで初心者向けに解説します。',
   },
 }
 
@@ -74,6 +74,25 @@ export default function FoolProofPage() {
       <main>
         <section>
           <h2>概要</h2>
+
+          <div style={{
+            padding: '15px',
+            backgroundColor: '#e6f7f5',
+            borderRadius: '8px',
+            marginBottom: '20px',
+            borderLeft: '4px solid #14b8a6'
+          }}>
+            <p style={{ margin: 0, fontSize: '16px', fontWeight: 'bold', color: '#0d9488' }}>
+              📚 このページで分かること
+            </p>
+            <ul style={{ marginTop: '10px', marginBottom: 0 }}>
+              <li>フールプルーフとは何か？</li>
+              <li>身近な例（洗濯機、ATM、USB等）</li>
+              <li>Web開発での実装方法（コード付き）</li>
+              <li>ポカヨケ、フェイルセーフとの違い</li>
+            </ul>
+          </div>
+
           <p>
             <strong>フールプルーフ</strong>（Fool Proof）とは、ユーザーの誤操作や誤入力を
             <strong>未然に防ぐ</strong>ための設計思想のこと。

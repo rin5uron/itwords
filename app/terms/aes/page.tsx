@@ -8,12 +8,12 @@ import TableOfContents from '@/app/components/TableOfContents'
 import FAQAccordion from '@/app/components/FAQAccordion'
 
 export const metadata: Metadata = {
-  title: 'AES暗号化とは？小学生でもわかる【動かして学べるデモ付き】',
-  description: 'Wi-FiやLINEで使われるAES暗号化を、動かしながら理解。「128と256の違いは？」「どこで使われてる？」をデモ付きで解説。3分で読めます。',
-  keywords: ['AES', 'AES とは', '暗号化', 'Advanced Encryption Standard', 'AES-128', 'AES-256', '共通鍵暗号', 'セキュリティ', 'IT用語 わかりやすく', 'プログラミング 初心者'],
+  title: 'AESとは？小学生でもわかる【動かして学べるデモ付き】',
+  description: 'AESとは？暗号化デモで仕組みを今すぐ体験。Wi-FiやHTTPSで使われる暗号化、128と256の違い、実装方法まで初心者向けに解説します。',
+  keywords: ['AES', 'AES とは', '暗号化', 'Advanced Encryption Standard', 'AES-128', 'AES-256', '共通鍵暗号', 'セキュリティ', 'IT用語 わかりやすく', 'プログラミング 初心者', 'AES デモ', 'AES 実装'],
   openGraph: {
-    title: 'AES暗号化とは？小学生でもわかる【動かして学べるデモ付き】',
-    description: 'Wi-FiやLINEで使われるAES暗号化を、動かしながら理解。3分で読めます。',
+    title: 'AESとは？小学生でもわかる【動かして学べるデモ付き】',
+    description: 'AESとは？暗号化デモで仕組みを今すぐ体験。Wi-FiやHTTPSで使われる暗号化、128と256の違い、実装方法まで初心者向けに解説します。',
     type: 'article',
     images: [
       {
@@ -26,8 +26,8 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'AES暗号化とは？小学生でもわかる【動かして学べるデモ付き】',
-    description: 'Wi-FiやLINEで使われるAES暗号化を、動かしながら理解。3分で読めます。',
+    title: 'AESとは？小学生でもわかる【動かして学べるデモ付き】',
+    description: 'AESとは？暗号化デモで仕組みを今すぐ体験。Wi-FiやHTTPSで使われる暗号化、128と256の違い、実装方法まで初心者向けに解説します。',
     images: ['/images/terms/aes-hero.jpg'],
   },
 }
@@ -73,10 +73,10 @@ export default function AESPage() {
       <StructuredData type="FAQPage" faqs={faqs} />
       <StructuredData
         type="Article"
-        title="AES（Advanced Encryption Standard）とは？初心者向けにわかりやすく解説"
-        description="AES（Advanced Encryption Standard）を初心者向けに解説。共通鍵暗号方式の仕組み、AES-128とAES-256の違い、実際の使用例を学べます。"
+        title="AESとは？初心者向けにわかりやすく解説"
+        description="AESとは？暗号化デモで仕組みを今すぐ体験。Wi-FiやHTTPSで使われる暗号化、128と256の違い、実装方法まで初心者向けに解説します。"
         datePublished="2024-01-09"
-        dateModified="2026-01-13"
+        dateModified="2026-01-19"
       />
 
       <TermHeader
@@ -115,6 +115,25 @@ export default function AESPage() {
       <main>
         <section>
           <h2>概要</h2>
+
+          <div style={{
+            padding: '15px',
+            backgroundColor: '#e6f7f5',
+            borderRadius: '8px',
+            marginBottom: '20px',
+            borderLeft: '4px solid #14b8a6'
+          }}>
+            <p style={{ margin: 0, fontSize: '16px', fontWeight: 'bold', color: '#0d9488' }}>
+              📚 このページで分かること
+            </p>
+            <ul style={{ marginTop: '10px', marginBottom: 0 }}>
+              <li>AESとは何か？暗号化の仕組み</li>
+              <li>暗号化デモで実際に体験</li>
+              <li>AES-128と256の違いと選び方</li>
+              <li>JavaScriptでの実装方法</li>
+            </ul>
+          </div>
+
           <p>
             <strong>AES</strong>（Advanced Encryption Standard）とは、<strong>現代で最も広く使われている暗号化規格</strong>です。
             データを第三者に読み取られないように変換する「共通鍵暗号方式」で、<strong>同じ鍵を使って暗号化・復号化</strong>します。

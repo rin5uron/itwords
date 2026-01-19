@@ -135,9 +135,9 @@ export default function NpmPage() {
       <StructuredData
         type="Article"
         title="npmとは？小学生でもわかる【コマンド実行デモ付き】"
-        description="JavaScriptのパッケージ管理ツールnpmを3分で理解。「npm install」「npm run」の意味を実行デモで体験。Reactも簡単インストール。"
+        description="npmとは？コマンドデモで使い方を今すぐ体験。「npm install」「npm run」の意味、package.jsonの役割、node_modulesの仕組みまで初心者向けに解説します。"
         datePublished="2024-01-01"
-        dateModified="2026-01-18"
+        dateModified="2026-01-19"
       />
       <TermHeader
         termName="npm"
@@ -150,6 +150,25 @@ export default function NpmPage() {
       <main>
         <section>
           <h2>概要</h2>
+
+          <div style={{
+            padding: '15px',
+            backgroundColor: '#e6f7f5',
+            borderRadius: '8px',
+            marginBottom: '20px',
+            borderLeft: '4px solid #14b8a6'
+          }}>
+            <p style={{ margin: 0, fontSize: '16px', fontWeight: 'bold', color: '#0d9488' }}>
+              📚 このページで分かること
+            </p>
+            <ul style={{ marginTop: '10px', marginBottom: 0 }}>
+              <li>npmとは何か？何に使うのか</li>
+              <li>npm installやnpm runの実行デモ</li>
+              <li>package.jsonとnode_modulesの役割</li>
+              <li>yarnやpnpmとの違い</li>
+            </ul>
+          </div>
+
           <p>
             <strong>npm</strong>（Node Package Manager）とは、
             <strong>「JavaScriptのパッケージ（ライブラリ）を管理するツール」</strong>です。

@@ -9,11 +9,11 @@ import FAQAccordion from '@/app/components/FAQAccordion'
 
 export const metadata: Metadata = {
   title: 'GitHubとは？小学生でもわかる【結局何に使うの？が分かる】',
-  description: '「結局GitHubって何？」を3分で解決。コードの保存場所？チーム開発ツール？イメージが明確になるデモ付き解説。',
+  description: 'GitHubとは？図解とデモで使い方と仕組みを今すぐ理解。コード保存・共有・チーム開発ができるプラットフォームを初心者向けに解説。プルリクエストやGitフローも学べます。',
   keywords: ['GitHub', 'GitHub とは', 'GitHub 使い方', 'GitHub 初心者', 'プルリクエスト', 'Gitフロー', 'Git', 'バージョン管理', 'リポジトリ', 'コミット', 'プッシュ', 'わかりやすく'],
   openGraph: {
     title: 'GitHubとは？小学生でもわかる【結局何に使うの？が分かる】',
-    description: '「結局GitHubって何？」を3分で解決。コードの保存場所？チーム開発ツール？イメージが明確になります。',
+    description: 'GitHubとは？図解とデモで使い方と仕組みを今すぐ理解。コード保存・共有・チーム開発ができるプラットフォームを初心者向けに解説。',
     type: 'article',
     url: 'https://itwords.vercel.app/terms/github',
   },
@@ -72,6 +72,25 @@ export default function GitHubPage() {
       <main>
         <section>
           <h2>概要</h2>
+
+          <div style={{
+            padding: '15px',
+            backgroundColor: '#e6f7f5',
+            borderRadius: '8px',
+            marginBottom: '20px',
+            borderLeft: '4px solid #14b8a6'
+          }}>
+            <p style={{ margin: 0, fontSize: '16px', fontWeight: 'bold', color: '#0d9488' }}>
+              📚 このページで分かること
+            </p>
+            <ul style={{ marginTop: '10px', marginBottom: 0 }}>
+              <li>GitHubとは何か？何に使うのか？</li>
+              <li>GitとGitHubの違い</li>
+              <li>実際のGitコマンドの使い方（デモ付き）</li>
+              <li>プルリクエストやブランチの仕組み</li>
+            </ul>
+          </div>
+
           <p>
             <strong>GitHub</strong>とは、
             <strong>「ソースコードをバージョン管理し、世界中の開発者と共有・協力できるプラットフォーム」</strong>です。

@@ -195,9 +195,11 @@ p {
           <div style={{
             border: '2px solid #007bff',
             borderRadius: '8px',
-            padding: '20px',
+            padding: 'clamp(15px, 3vw, 20px)',
             marginTop: '20px',
-            backgroundColor: '#f8f9fa'
+            backgroundColor: '#f8f9fa',
+            maxWidth: '100%',
+            overflowX: 'auto'
           }}>
             <h3>テキストを編集</h3>
             <input
@@ -206,11 +208,12 @@ p {
               onChange={(e) => setTextContent(e.target.value)}
               style={{
                 width: '100%',
-                padding: '10px',
-                fontSize: '16px',
+                padding: 'clamp(8px, 2vw, 10px)',
+                fontSize: 'clamp(14px, 3.5vw, 16px)',
                 border: '1px solid #dee2e6',
                 borderRadius: '5px',
-                marginTop: '10px'
+                marginTop: '10px',
+                boxSizing: 'border-box'
               }}
             />
 
@@ -221,12 +224,13 @@ p {
               style={{
                 width: '100%',
                 minHeight: '120px',
-                padding: '10px',
+                padding: 'clamp(8px, 2vw, 10px)',
                 fontFamily: 'monospace',
-                fontSize: '14px',
+                fontSize: 'clamp(12px, 3vw, 14px)',
                 border: '1px solid #dee2e6',
                 borderRadius: '5px',
-                marginTop: '10px'
+                marginTop: '10px',
+                boxSizing: 'border-box'
               }}
               placeholder="CSSプロパティを入力（セレクタ不要）"
             />
@@ -236,10 +240,12 @@ p {
               style={{
                 border: '1px solid #dee2e6',
                 borderRadius: '5px',
-                padding: '30px',
+                padding: 'clamp(20px, 5vw, 30px)',
                 backgroundColor: '#fff',
                 marginTop: '10px',
-                textAlign: 'center'
+                textAlign: 'center',
+                maxWidth: '100%',
+                overflowX: 'auto'
               }}
             >
               <div style={
@@ -256,7 +262,14 @@ p {
               </div>
             </div>
 
-            <p style={{ marginTop: '15px', fontSize: '14px', color: '#6c757d' }}>
+            <p style={{ 
+              marginTop: '15px', 
+              fontSize: 'clamp(13px, 3.2vw, 14px)', 
+              color: '#6c757d',
+              maxWidth: '100%',
+              wordWrap: 'break-word',
+              overflowWrap: 'break-word'
+            }}>
               💡 試してみよう：<br />
               • <code>color: red;</code> で文字色を赤に<br />
               • <code>font-size: 48px;</code> で文字を大きく<br />
