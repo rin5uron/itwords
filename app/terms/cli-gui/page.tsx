@@ -223,7 +223,7 @@ export default function CLIGUIPage() {
           <ul>
             <li>Windows の「コマンドプロンプト」「PowerShell」</li>
             <li>Mac/Linux の「ターミナル」</li>
-            <li><Link href="/terms/git">Git</Link> コマンド（<code>git commit</code>、<code>git push</code> など）</li>
+            <li><Link href="/terms/github">Git</Link> コマンド（<code>git commit</code>、<code>git push</code> など）</li>
             <li><Link href="/terms/npm">npm</Link> コマンド（<code>npm install</code> など）</li>
             <li>サーバー操作（SSH接続）</li>
           </ul>
@@ -448,7 +448,7 @@ export default function CLIGUIPage() {
               </li>
               <li>
                 <strong>CLI を少しずつ触る</strong><br />
-                <Link href="/terms/git">Git</Link>、<Link href="/terms/npm">npm</Link> などのコマンドを使ってみる
+                <Link href="/terms/github">Git</Link>、<Link href="/terms/npm">npm</Link> などのコマンドを使ってみる
               </li>
               <li>
                 <strong>CLI に慣れる</strong><br />
@@ -481,7 +481,7 @@ export default function CLIGUIPage() {
             <li>同じ作業を何度も繰り返す</li>
             <li>大量のファイルを一括処理</li>
             <li>サーバーをリモート操作</li>
-            <li><Link href="/terms/git">Git</Link> でバージョン管理</li>
+            <li><Link href="/terms/github">Git</Link> でバージョン管理</li>
             <li><Link href="/terms/npm">npm</Link> でパッケージ管理</li>
             <li>作業を自動化したい</li>
           </ul>
@@ -536,7 +536,7 @@ export default function CLIGUIPage() {
               </thead>
               <tbody>
                 <tr>
-                  <td><Link href="/terms/git" className="term-name">Git</Link></td>
+                  <td><Link href="/terms/github" className="term-name">Git</Link></td>
                   <td>CLI でバージョン管理を行うツール</td>
                 </tr>
                 <tr>

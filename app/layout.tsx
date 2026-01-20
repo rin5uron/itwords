@@ -75,7 +75,7 @@ export default function RootLayout({
         <footer className="site-footer-layout">
           <Link href="/privacy">プライバシーポリシー</Link>
           {' | '}
-          <Link href="/terms">利用規約</Link>
+          <Link href="/terms-of-service">利用規約</Link>
           {' | '}
           <Link href="/contact">お問い合わせ</Link>
           <p>&copy; 2026 itwords - 実践型IT用語辞典</p>
