@@ -1,108 +1,61 @@
 import Link from 'next/link'
+import fs from 'fs'
+import path from 'path'
 import type { Metadata } from 'next'
+import SiteHeader from '@/app/components/SiteHeader'
+import SearchAutocomplete from '@/app/components/SearchAutocomplete'
 
 export const metadata: Metadata = {
-  title: '利用規約 | 実践型IT用語辞典',
-  description: 'IT用語辞典の利用規約です。サイトの利用条件、免責事項、著作権について掲載しています。',
+  title: '用語一覧 | 実践型IT用語辞典',
+  description: '実践型IT用語辞典の用語一覧。API、JSON、GitHub、DNSなどIT用語を一覧から探せます。',
 }
 
-export default function TermsOfService() {
+type TermItem = { title: string; description: string; path: string }
+
+function getTerms(): TermItem[] {
+  try {
+    const indexPath = path.join(process.cwd(), 'public', 'search-index.json')
+    const raw = fs.readFileSync(indexPath, 'utf-8')
+    return JSON.parse(raw)
+  } catch {
+    return []
+  }
+}
+
+function shortTitle(title: string): string {
+  const s = title.split('|')[0].trim()
+  const m = s.match(/^(.+?)(とは|を|の|とは？)/)
+  return (m ? m[1] : s.slice(0, 42)).trim()
+}
+
+export default function TermsListPage() {
+  const terms = getTerms()
+
   return (
     <div className="container">
+      <SiteHeader showNav={true} />
+
       <header>
-        <h1>利用規約</h1>
+        <h1>用語一覧</h1>
+        <p>IT用語を一覧から探したり、検索したりできます。</p>
       </header>
 
       <main>
         <section>
-          <p>この利用規約（以下「本規約」）は、IT用語辞典（以下「当サイト」）が提供するサービスの利用条件を定めるものです。ユーザーの皆様には、本規約に同意の上、当サイトをご利用いただくものとします。</p>
-        </section>
+          <div className="search-container" style={{ marginBottom: '2rem' }}>
+            <SearchAutocomplete />
+          </div>
 
-        <section>
-          <h2>第1条（適用）</h2>
-          <ol>
-            <li>本規約は、ユーザーと当サイトとの間の当サイトの利用に関わる一切の関係に適用されるものとします。</li>
-            <li>当サイトが当サイト上で掲載する利用に関するルール等は、本規約の一部を構成するものとします。</li>
-          </ol>
-        </section>
-
-        <section>
-          <h2>第2条（利用登録）</h2>
-          <p>当サイトは、現時点ではユーザー登録を必要としないサービスを提供しています。将来的にユーザー登録機能を追加する場合は、別途利用規約を設けます。</p>
-        </section>
-
-        <section>
-          <h2>第3条（禁止事項）</h2>
-          <p>ユーザーは、当サイトの利用にあたり、以下の行為をしてはなりません：</p>
-          <ul>
-            <li>法令または公序良俗に違反する行為</li>
-            <li>犯罪行為に関連する行為</li>
-            <li>当サイトのサーバーまたはネットワークの機能を破壊したり、妨害したりする行為</li>
-            <li>当サイトのサービスの運営を妨害するおそれのある行為</li>
-            <li>他のユーザーに関する個人情報等を収集または蓄積する行為</li>
-            <li>不正アクセスをし、またはこれを試みる行為</li>
-            <li>他のユーザーに成りすます行為</li>
-            <li>当サイトが許諾しない方法で当サイトのサービスに関連して営利を目的とする行為</li>
-            <li>当サイト、他のユーザー、またはその他第三者に不利益、損害、不快感を与える行為</li>
-            <li>その他、当サイトが不適切と判断する行為</li>
-          </ul>
-        </section>
-
-        <section>
-          <h2>第4条（本サービスの提供の停止等）</h2>
-          <p>当サイトは、以下のいずれかの事由があると判断した場合、ユーザーに事前に通知することなく本サービスの全部または一部の提供を停止または中断することができるものとします：</p>
-          <ul>
-            <li>本サービスにかかるコンピュータシステムの保守点検または更新を行う場合</li>
-            <li>地震、落雷、火災、停電または天災などの不可抗力により、本サービスの提供が困難となった場合</li>
-            <li>コンピュータまたは通信回線等が事故により停止した場合</li>
-            <li>その他、当サイトが本サービスの提供が困難と判断した場合</li>
-          </ul>
-        </section>
-
-        <section>
-          <h2>第5条（著作権）</h2>
-          <ol>
-            <li>当サイト上に掲載されるコンテンツ（テキスト、画像、デモプログラム等）の著作権は、当サイトまたは権利者に帰属します。</li>
-            <li>ユーザーは、当サイトが提供するコンテンツを、個人的な学習目的に限り利用することができます。</li>
-            <li>ユーザーは、当サイトの事前の許可なく、コンテンツを複製、転載、配布、販売等の行為を行ってはなりません。</li>
-          </ol>
-        </section>
-
-        <section>
-          <h2>第6条（免責事項）</h2>
-          <ol>
-            <li>当サイトは、本サービスに関して、その完全性、正確性、確実性、有用性等いかなる保証もいたしません。</li>
-            <li>当サイトは、本サービスに起因してユーザーに生じたあらゆる損害について、一切の責任を負いません。</li>
-            <li>当サイト上に掲載されるコンテンツは、一般的な情報提供を目的としており、専門的なアドバイスを意図したものではありません。</li>
-            <li>当サイトのコンテンツを利用したことによる損害について、当サイトは一切の責任を負いません。</li>
-          </ol>
-        </section>
-
-        <section>
-          <h2>第7条（サービス内容の変更等）</h2>
-          <p>当サイトは、ユーザーに通知することなく、本サービスの内容を変更し、または本サービスの提供を中止することができるものとし、これによってユーザーに生じた損害について一切の責任を負いません。</p>
-        </section>
-
-        <section>
-          <h2>第8条（利用規約の変更）</h2>
-          <p>当サイトは、必要と判断した場合には、ユーザーに通知することなくいつでも本規約を変更することができるものとします。変更後の利用規約は、当サイトに掲載した時点で効力を生じるものとします。</p>
-        </section>
-
-        <section>
-          <h2>第9条（個人情報の取扱い）</h2>
-          <p>当サイトは、本サービスの利用によって取得する個人情報については、<Link href="/privacy">プライバシーポリシー</Link>に従い適切に取り扱うものとします。</p>
-        </section>
-
-        <section>
-          <h2>第10条（準拠法・裁判管轄）</h2>
-          <ol>
-            <li>本規約の解釈にあたっては、日本法を準拠法とします。</li>
-            <li>本サービスに関して紛争が生じた場合には、当サイトの所在地を管轄する裁判所を専属的合意管轄とします。</li>
-          </ol>
-        </section>
-
-        <section>
-          <p><strong>制定日：2026年1月6日</strong></p>
+          <div className="card-container">
+            {terms.map(({ title, description, path: p }) => (
+              <div key={p} className="card">
+                <Link href={p} className="card-link">
+                  <h4>{shortTitle(title)}</h4>
+                  <p>{description}</p>
+                </Link>
+              </div>
+            ))}
+          </div>
         </section>
       </main>
 

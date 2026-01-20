@@ -68,12 +68,10 @@ export default function DNSPage() {
         dateModified="2026-01-19"
       />
 
-      <TableOfContents />
-
       <div style={{
         width: '100%',
         maxWidth: '900px',
-        margin: '2rem auto',
+        margin: '0 auto 2rem auto',
         borderRadius: '12px',
         overflow: 'hidden',
         boxShadow: '0 4px 12px rgba(0,0,0,0.1)',
@@ -94,6 +92,8 @@ export default function DNSPage() {
           }}
         />
       </div>
+
+      <TableOfContents />
 
       <main>
         <section>
