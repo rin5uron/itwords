@@ -98,6 +98,25 @@ export default function DNSPage() {
       <main>
         <section>
           <h2>概要</h2>
+
+          <div style={{
+            padding: '15px',
+            backgroundColor: '#e6f7f5',
+            borderRadius: '8px',
+            marginBottom: '20px',
+            borderLeft: '4px solid #14b8a6'
+          }}>
+            <p style={{ margin: 0, fontSize: '16px', fontWeight: 'bold', color: '#0d9488' }}>
+              📚 このページで分かること
+            </p>
+            <ul style={{ marginTop: '10px', marginBottom: 0 }}>
+              <li>DNSとは何か？なぜ必要なのか</li>
+              <li>ステップデモで名前解決の流れを体験</li>
+              <li>DNSレコードの種類と役割</li>
+              <li>DNS設定方法と実践的な使い方</li>
+            </ul>
+          </div>
+
           <p>
             <strong>DNS</strong>（Domain Name System）とは、
             <strong>「インターネットの電話帳」</strong>です。
@@ -125,6 +144,13 @@ github.com → DNS解決 → 140.82.121.4`}</code></pre>
           <p>
             DNSがないと、私たちは数字の羅列（IPアドレス）を覚えて入力しなければなりません。
             DNSのおかげで、覚えやすいドメイン名を使ってインターネットを利用できるのです。
+          </p>
+
+          <p>
+            DNSは<Link href="/terms/http">HTTP</Link>通信の前段階で動作し、
+            Webサイトへのアクセスを支える重要なインフラです。
+            ドメイン名をIPアドレスに変換することで、
+            私たちは簡単にインターネットを利用できます。
           </p>
         </section>
 

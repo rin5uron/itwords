@@ -1,7 +1,6 @@
 import Link from 'next/link'
 import { Metadata } from 'next'
 import GitHubDemo from './GitHubDemo'
-import GitFlowDemo from './GitFlowDemo'
 import StructuredData from '@/app/components/StructuredData'
 import TableOfContents from '@/app/components/TableOfContents'
 import TermHeader from '@/app/components/TermHeader'
@@ -10,8 +9,8 @@ import FAQAccordion from '@/app/components/FAQAccordion'
 
 export const metadata: Metadata = {
   title: 'GitHubとは？小学生でもわかる【結局何に使うの？が分かる】',
-  description: 'GitHubとは？図解とデモで使い方と仕組みを今すぐ理解。コード保存・共有・チーム開発ができるプラットフォームを初心者向けに解説。プルリクエストやGitフローも学べます。',
-  keywords: ['GitHub', 'GitHub とは', 'GitHub 使い方', 'GitHub 初心者', 'プルリクエスト', 'Gitフロー', 'Git', 'バージョン管理', 'リポジトリ', 'コミット', 'プッシュ', 'わかりやすく'],
+  description: 'GitHubとは？図解とデモで使い方と仕組みを今すぐ理解。コード保存・共有・チーム開発ができるプラットフォームを初心者向けに解説。',
+  keywords: ['GitHub', 'GitHub とは', 'GitHub 使い方', 'GitHub 初心者', 'Git', 'バージョン管理', 'リポジトリ', 'コミット', 'プッシュ', 'わかりやすく'],
   openGraph: {
     title: 'GitHubとは？小学生でもわかる【結局何に使うの？が分かる】',
     description: 'GitHubとは？図解とデモで使い方と仕組みを今すぐ理解。コード保存・共有・チーム開発ができるプラットフォームを初心者向けに解説。',
@@ -40,7 +39,7 @@ export default function GitHubPage() {
     },
     {
       question: 'プルリクエストとは何ですか？',
-      answer: 'プルリクエスト（Pull Request、PR）は、「この変更を本番に反映してください」とお願いする機能です。自分が開発した機能や修正を他の開発者にレビューしてもらい、承認されたらメインブランチにマージ（統合）されます。チーム開発では必須の機能です。'
+      answer: 'プルリクエスト（Pull Request、PR）は、「この変更を本番に反映してください」とお願いする機能です。自分が開発した機能や修正を他の開発者にレビューしてもらい、承認されたらメインブランチにマージ（統合）されます。チーム開発では必須の機能です。詳しくは「GitHubワークフロー」のページをご覧ください。'
     },
     {
       question: 'GitHubのプロフィールは就職・転職で見られますか？',
@@ -57,7 +56,7 @@ export default function GitHubPage() {
       <StructuredData
         type="Article"
         title="GitHubとは？初心者向けにわかりやすく解説"
-        description="GitHubとは？図解とデモで使い方と仕組みを今すぐ理解。コード保存・共有・チーム開発ができるプラットフォームを初心者向けに解説。プルリクエストやGitフローも学べます。"
+        description="GitHubとは？図解とデモで使い方と仕組みを今すぐ理解。コード保存・共有・チーム開発ができるプラットフォームを初心者向けに解説。"
         datePublished="2024-01-01"
         dateModified="2026-01-19"
       />
@@ -81,7 +80,7 @@ export default function GitHubPage() {
               'GitHubとは何か？何に使うのか？',
               'GitとGitHubの違い',
               '実際のGitコマンドの使い方（デモ付き）',
-              'プルリクエストやブランチの仕組み'
+              'GitHubの便利な機能（Issues、Actions、Pagesなど）'
             ]}
           />
 
@@ -259,15 +258,6 @@ export default function GitHubPage() {
         </section>
 
         <section>
-          <h2>GitHubの全体の流れを理解する</h2>
-          <p>
-            以下のデモで、GitHubでよく使われる概念（リポジトリ、コミット、プッシュ、プル、ブランチ）の流れを体験できます。
-            「何をしているサービスなのか」が一目で分かります。
-          </p>
-          <GitFlowDemo />
-        </section>
-
-        <section>
           <h2>GitHubの基本用語</h2>
 
           <h3>リポジトリ（Repository）</h3>
@@ -316,6 +306,12 @@ export default function GitHubPage() {
             「この変更を本番に反映してください」とお願いする機能です。
             レビューを経てからマージ（統合）されます。
           </p>
+          <p>
+            <strong>💡 詳しく学ぶ：</strong>
+            <Link href="/terms/github-workflow" style={{ color: '#14b8a6', textDecoration: 'underline' }}>
+              プルリクエストとブランチ戦略について詳しく →
+            </Link>
+          </p>
         </section>
 
         <section>
@@ -355,149 +351,15 @@ git push origin main`}</code></pre>
         </section>
 
         <section>
-          <h2>プルリクエスト（Pull Request）とは？</h2>
+          <h2>チーム開発とワークフロー</h2>
           <p>
-            プルリクエストは、<strong>「この変更をmainに取り込んでください」とお願いする機能</strong>です。
-            単なる統合ではなく、<strong>レビューのプロセス</strong>が含まれます。
+            GitHubを使ったチーム開発では、<strong>プルリクエスト</strong>や<strong>ブランチ戦略</strong>が重要になります。
           </p>
-
-          <h3>なぜプルリクエストが必要なのか？</h3>
           <p>
-            もし全員が直接<code>main</code>ブランチに変更を加えたら、
-            どうなるでしょうか？
-          </p>
-          <ul>
-            <li>❌ <strong>動かないコード</strong>が本番に混入する</li>
-            <li>❌ <strong>他人の変更</strong>と衝突して壊れる</li>
-            <li>❌ <strong>誰の変更が原因</strong>でバグったか分からない</li>
-          </ul>
-
-          <p>
-            プルリクエストを使えば、これらの問題を防げます！
-          </p>
-
-          <h3>プルリクエストの基本的な流れ</h3>
-          <ol>
-            <li>
-              <strong>ブランチを作成</strong>: 新機能開発用に<code>feature/login</code>などの名前でブランチを切る
-            </li>
-            <li>
-              <strong>開発＆コミット</strong>: ブランチ上で自由に開発・コミット
-            </li>
-            <li>
-              <strong>プッシュ</strong>: GitHubにブランチをアップロード
-            </li>
-            <li>
-              <strong>プルリクエスト（PR）作成</strong>: 「mainに統合してください」とお願い
-            </li>
-            <li>
-              <strong>コードレビュー</strong>: チームメンバーがコードを確認・承認
-            </li>
-            <li>
-              <strong>マージ</strong>: 問題なければmainブランチに統合される
-            </li>
-          </ol>
-
-          <p style={{ marginTop: '20px' }}>
-            <strong>💡 補足：</strong>
-            プルリクエストの流れを視覚的に理解したい場合は、下の「GitHubの全体の流れを理解する」デモを参照してください。
-          </p>
-
-          <h3>プルリクエスト（PR）とは？</h3>
-          <p>
-            プルリクエストは、<strong>「この変更をmainに取り込んでください」とお願いする機能</strong>です。
-            単なる統合ではなく、<strong>レビューのプロセス</strong>が含まれます。
-          </p>
-
-          <h4>PRのメリット</h4>
-          <ul>
-            <li>✅ <strong>コードレビュー</strong>: 他の開発者が確認できる</li>
-            <li>✅ <strong>議論の場</strong>: コメントで「ここはこうした方が良い」と提案</li>
-            <li>✅ <strong>履歴が残る</strong>: なぜこの変更をしたのか記録される</li>
-            <li>✅ <strong>テスト自動化</strong>: PR作成時に自動テストを走らせられる</li>
-          </ul>
-
-          <h4>PRの作り方</h4>
-          <ol>
-            <li>GitHubのリポジトリページで「Pull requests」タブをクリック</li>
-            <li>「New pull request」をクリック</li>
-            <li>統合したいブランチ（例：<code>feature/login</code>）を選択</li>
-            <li>変更内容を説明するタイトルと本文を書く</li>
-            <li>「Create pull request」をクリック</li>
-          </ol>
-
-          <div className="code-example">
-            <pre><code>{`# PRのタイトル例
-feat: ユーザーログイン機能を追加
-
-# PRの説明例
-## 変更内容
-- ログインフォームのUI実装
-- JWT認証の実装
-- ログインAPIエンドポイント追加
-
-## テスト
-- [x] ログイン成功時のテスト
-- [x] ログイン失敗時のエラーハンドリング
-
-## スクリーンショット
-（画像を貼る）
-
-## 関連Issue
-Closes #123`}</code></pre>
-          </div>
-
-          <h4>コードレビューのポイント</h4>
-          <p>
-            PRを見る側（レビュアー）も重要な役割です：
-          </p>
-          <ul>
-            <li>🔍 <strong>ロジックは正しいか</strong>: バグがないか確認</li>
-            <li>🔍 <strong>読みやすいか</strong>: 他の人が理解できるコードか</li>
-            <li>🔍 <strong>テストはあるか</strong>: 動作確認ができるか</li>
-            <li>🔍 <strong>セキュリティリスクはないか</strong>: 脆弱性がないか</li>
-          </ul>
-
-          <p className="note">
-            <strong>💡 ポイント：</strong>
-            PRは「マージするかしないか」だけでなく、<strong>チームの学びの場</strong>でもあります。
-            新しいやり方を共有したり、ベストプラクティスを議論したりできます。
-          </p>
-
-          <h3>よくあるブランチ戦略</h3>
-
-          <div className="comparison-table">
-            <table>
-              <thead>
-                <tr>
-                  <th>戦略</th>
-                  <th>説明</th>
-                  <th>向いている規模</th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr>
-                  <td><strong>GitHub Flow</strong></td>
-                  <td>mainから直接featureブランチを切り、PRでマージ</td>
-                  <td>小〜中規模、頻繁デプロイ</td>
-                </tr>
-                <tr>
-                  <td><strong>Git Flow</strong></td>
-                  <td>main、develop、feature、releaseなど複数ブランチを使う</td>
-                  <td>大規模、リリースサイクルが明確</td>
-                </tr>
-                <tr>
-                  <td><strong>Trunk-based</strong></td>
-                  <td>mainブランチに直接コミット、短命なブランチのみ</td>
-                  <td>超高速開発、CI/CD完備</td>
-                </tr>
-              </tbody>
-            </table>
-          </div>
-
-          <p>
-            初心者やスタートアップには<strong>GitHub Flow</strong>がおすすめです。
-            シンプルで理解しやすく、それでいて十分強力です。
+            <strong>💡 詳しく学ぶ：</strong>
+            <Link href="/terms/github-workflow" style={{ color: '#14b8a6', textDecoration: 'underline' }}>
+              GitHubワークフロー（プルリクエストとブランチ戦略）について詳しく →
+            </Link>
           </p>
         </section>
 
@@ -822,6 +684,10 @@ node_modules/
                 <tr>
                   <td><Link href="/terms/api" className="term-name">API</Link></td>
                   <td>GitHub APIを使ってプログラムから操作できる</td>
+                </tr>
+                <tr>
+                  <td><Link href="/terms/github-workflow" className="term-name">GitHubワークフロー</Link></td>
+                  <td>プルリクエストとブランチ戦略について</td>
                 </tr>
                 <tr>
                   <td>Git</td>
