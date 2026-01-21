@@ -127,19 +127,21 @@ export default function ZeroDayPage() {
 
           <div style={{
             padding: '15px',
-            backgroundColor: '#e6f7f5',
+            backgroundColor: '#f9f7ef',
             borderRadius: '8px',
-            marginBottom: '20px',
-            borderLeft: '4px solid #14b8a6'
+            marginBottom: '30px',
+            borderLeft: '4px solid #ea9b8a',
+            boxShadow: '0 2px 8px rgba(0,0,0,0.05)',
+            padding: '20px'
           }}>
-            <p style={{ margin: 0, fontSize: '16px', fontWeight: 'bold', color: '#0d9488' }}>
-              📚 このページで分かること
+            <p style={{ margin: 0, fontSize: '16px', fontWeight: 'bold', color: '#333', marginBottom: '12px' }}>
+              このページで分かること
             </p>
-            <ul style={{ marginTop: '10px', marginBottom: 0 }}>
-              <li>ゼロデイ攻撃とは何か？なぜ「0日」なのか</li>
-              <li>攻撃シミュレーションで体験する脅威の実態</li>
-              <li>実際にあった攻撃事例（Stuxnet、WannaCry等）</li>
-              <li>個人でできる防御対策</li>
+            <ul style={{ marginTop: 0, marginBottom: 0, paddingLeft: '20px' }}>
+              <li style={{ marginBottom: '8px' }}>ゼロデイ攻撃とは何か？なぜ「0日」なのか</li>
+              <li style={{ marginBottom: '8px' }}>攻撃シミュレーションで体験する脅威の実態</li>
+              <li style={{ marginBottom: '8px' }}>実際にあった攻撃事例（Stuxnet、WannaCry等）</li>
+              <li style={{ marginBottom: '8px' }}>個人でできる防御対策</li>
             </ul>
           </div>
 

@@ -155,19 +155,21 @@ export default function NpmPage() {
 
           <div style={{
             padding: '15px',
-            backgroundColor: '#e6f7f5',
+            backgroundColor: '#f9f7ef',
             borderRadius: '8px',
-            marginBottom: '20px',
-            borderLeft: '4px solid #14b8a6'
+            marginBottom: '30px',
+            borderLeft: '4px solid #ea9b8a',
+            boxShadow: '0 2px 8px rgba(0,0,0,0.05)',
+            padding: '20px'
           }}>
-            <p style={{ margin: 0, fontSize: '16px', fontWeight: 'bold', color: '#0d9488' }}>
-              📚 このページで分かること
+            <p style={{ margin: 0, fontSize: '16px', fontWeight: 'bold', color: '#333', marginBottom: '12px' }}>
+              このページで分かること
             </p>
-            <ul style={{ marginTop: '10px', marginBottom: 0 }}>
-              <li>npmとは何か？何に使うのか</li>
-              <li>npm installやnpm runの実行デモ</li>
-              <li>package.jsonとnode_modulesの役割</li>
-              <li>yarnやpnpmとの違い</li>
+            <ul style={{ marginTop: 0, marginBottom: 0, paddingLeft: '20px' }}>
+              <li style={{ marginBottom: '8px' }}>npmとは何か？何に使うのか</li>
+              <li style={{ marginBottom: '8px' }}>npm installやnpm runの実行デモ</li>
+              <li style={{ marginBottom: '8px' }}>package.jsonとnode_modulesの役割</li>
+              <li style={{ marginBottom: '8px' }}>yarnやpnpmとの違い</li>
             </ul>
           </div>
 

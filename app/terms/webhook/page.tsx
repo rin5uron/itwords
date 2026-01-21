@@ -102,19 +102,21 @@ export default function WebhookPage() {
 
           <div style={{
             padding: '15px',
-            backgroundColor: '#e6f7f5',
+            backgroundColor: '#f9f7ef',
             borderRadius: '8px',
-            marginBottom: '20px',
-            borderLeft: '4px solid #14b8a6'
+            marginBottom: '30px',
+            borderLeft: '4px solid #ea9b8a',
+            boxShadow: '0 2px 8px rgba(0,0,0,0.05)',
+            padding: '20px'
           }}>
-            <p style={{ margin: 0, fontSize: '16px', fontWeight: 'bold', color: '#0d9488' }}>
-              📚 このページで分かること
+            <p style={{ margin: 0, fontSize: '16px', fontWeight: 'bold', color: '#333', marginBottom: '12px' }}>
+              このページで分かること
             </p>
-            <ul style={{ marginTop: '10px', marginBottom: 0 }}>
-              <li>Webhookとは何か？APIとの違いは？</li>
-              <li>イベントデモで実際に体験</li>
-              <li>GitHubやSlackでの実際の使い方</li>
-              <li>セキュリティ対策と実装方法</li>
+            <ul style={{ marginTop: 0, marginBottom: 0, paddingLeft: '20px' }}>
+              <li style={{ marginBottom: '8px' }}>Webhookとは何か？APIとの違いは？</li>
+              <li style={{ marginBottom: '8px' }}>イベントデモで実際に体験</li>
+              <li style={{ marginBottom: '8px' }}>GitHubやSlackでの実際の使い方</li>
+              <li style={{ marginBottom: '8px' }}>セキュリティ対策と実装方法</li>
             </ul>
           </div>
 

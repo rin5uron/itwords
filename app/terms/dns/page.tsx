@@ -71,7 +71,7 @@ export default function DNSPage() {
       <div style={{
         width: '100%',
         maxWidth: '900px',
-        margin: '0 auto 2rem auto',
+        margin: '2rem auto',
         borderRadius: '12px',
         overflow: 'hidden',
         boxShadow: '0 4px 12px rgba(0,0,0,0.1)',
@@ -112,20 +112,21 @@ export default function DNSPage() {
 
         {/* このページで分かること（一番上） */}
         <div style={{
-          padding: '15px',
-          backgroundColor: '#e6f7f5',
+          padding: '20px',
+          backgroundColor: '#f9f7ef',
           borderRadius: '8px',
           marginBottom: '30px',
-          borderLeft: '4px solid #14b8a6'
+          borderLeft: '4px solid #ea9b8a',
+          boxShadow: '0 2px 8px rgba(0,0,0,0.05)'
         }}>
-          <p style={{ margin: 0, fontSize: '16px', fontWeight: 'bold', color: '#0d9488' }}>
-            📚 このページで分かること
+          <p style={{ margin: 0, fontSize: '16px', fontWeight: 'bold', color: '#333', marginBottom: '12px' }}>
+            このページで分かること
           </p>
-          <ul style={{ marginTop: '10px', marginBottom: 0 }}>
-            <li>DNSとは何か？なぜ必要なのか</li>
-            <li>ステップデモで名前解決の流れを体験</li>
-            <li>DNSレコードの種類と役割</li>
-            <li>DNS設定方法と実践的な使い方</li>
+          <ul style={{ marginTop: 0, marginBottom: 0, paddingLeft: '20px' }}>
+            <li style={{ marginBottom: '8px' }}>DNSとは何か？なぜ必要なのか</li>
+            <li style={{ marginBottom: '8px' }}>ステップデモで名前解決の流れを体験</li>
+            <li style={{ marginBottom: '8px' }}>DNSレコードの種類と役割</li>
+            <li style={{ marginBottom: '8px' }}>DNS設定方法と実践的な使い方</li>
           </ul>
         </div>
 

@@ -135,20 +135,21 @@ export default function AESPage() {
 
         {/* このページで分かること（一番上） */}
         <div style={{
-          padding: '15px',
-          backgroundColor: '#e6f7f5',
+          padding: '20px',
+          backgroundColor: '#f9f7ef',
           borderRadius: '8px',
           marginBottom: '30px',
-          borderLeft: '4px solid #14b8a6'
+          borderLeft: '4px solid #ea9b8a',
+          boxShadow: '0 2px 8px rgba(0,0,0,0.05)'
         }}>
-          <p style={{ margin: 0, fontSize: '16px', fontWeight: 'bold', color: '#0d9488' }}>
-            📚 このページで分かること
+          <p style={{ margin: 0, fontSize: '16px', fontWeight: 'bold', color: '#333', marginBottom: '12px' }}>
+            このページで分かること
           </p>
-          <ul style={{ marginTop: '10px', marginBottom: 0 }}>
-            <li>AESとは何か？暗号化の仕組み</li>
-            <li>暗号化デモで実際に体験</li>
-            <li>AES-128と256の違いと選び方</li>
-            <li>JavaScriptでの実装方法</li>
+          <ul style={{ marginTop: 0, marginBottom: 0, paddingLeft: '20px' }}>
+            <li style={{ marginBottom: '8px' }}>AESとは何か？暗号化の仕組み</li>
+            <li style={{ marginBottom: '8px' }}>暗号化デモで実際に体験</li>
+            <li style={{ marginBottom: '8px' }}>AES-128と256の違いと選び方</li>
+            <li style={{ marginBottom: '8px' }}>JavaScriptでの実装方法</li>
           </ul>
         </div>
 
