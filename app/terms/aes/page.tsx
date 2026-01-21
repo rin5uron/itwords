@@ -113,29 +113,44 @@ export default function AESPage() {
         />
       </div>
 
-      <TableOfContents />
-
       <main>
+        {/* 更新日（概要の上） */}
+        <div className="date-info" style={{
+          display: 'flex',
+          gap: '15px',
+          fontSize: '14px',
+          color: '#666',
+          alignItems: 'center',
+          flexWrap: 'wrap',
+          marginBottom: '20px',
+          paddingBottom: '15px',
+          borderBottom: '1px solid #e0e0e0'
+        }}>
+          <span>作成日: 2024-01-09</span>
+          <span>更新日: 2026-01-19</span>
+        </div>
+
+        {/* このページで分かること（一番上） */}
+        <div style={{
+          padding: '15px',
+          backgroundColor: '#e6f7f5',
+          borderRadius: '8px',
+          marginBottom: '30px',
+          borderLeft: '4px solid #14b8a6'
+        }}>
+          <p style={{ margin: 0, fontSize: '16px', fontWeight: 'bold', color: '#0d9488' }}>
+            📚 このページで分かること
+          </p>
+          <ul style={{ marginTop: '10px', marginBottom: 0 }}>
+            <li>AESとは何か？暗号化の仕組み</li>
+            <li>暗号化デモで実際に体験</li>
+            <li>AES-128と256の違いと選び方</li>
+            <li>JavaScriptでの実装方法</li>
+          </ul>
+        </div>
+
         <section>
           <h2>概要</h2>
-
-          <div style={{
-            padding: '15px',
-            backgroundColor: '#e6f7f5',
-            borderRadius: '8px',
-            marginBottom: '20px',
-            borderLeft: '4px solid #14b8a6'
-          }}>
-            <p style={{ margin: 0, fontSize: '16px', fontWeight: 'bold', color: '#0d9488' }}>
-              📚 このページで分かること
-            </p>
-            <ul style={{ marginTop: '10px', marginBottom: 0 }}>
-              <li>AESとは何か？暗号化の仕組み</li>
-              <li>暗号化デモで実際に体験</li>
-              <li>AES-128と256の違いと選び方</li>
-              <li>JavaScriptでの実装方法</li>
-            </ul>
-          </div>
 
           <p>
             <strong>AES</strong>（Advanced Encryption Standard）とは、<strong>現代で最も広く使われている暗号化規格</strong>です。
@@ -810,6 +825,8 @@ async function decryptData(ciphertext, key, iv) {
           </div>
         </section>
 
+        {/* 目次（mainの最後） */}
+        <TableOfContents />
       </main>
 
       <footer className="footer-nav">

@@ -93,29 +93,44 @@ export default function DNSPage() {
         />
       </div>
 
-      <TableOfContents />
-
       <main>
+        {/* 更新日（概要の上） */}
+        <div className="date-info" style={{
+          display: 'flex',
+          gap: '15px',
+          fontSize: '14px',
+          color: '#666',
+          alignItems: 'center',
+          flexWrap: 'wrap',
+          marginBottom: '20px',
+          paddingBottom: '15px',
+          borderBottom: '1px solid #e0e0e0'
+        }}>
+          <span>作成日: 2026-01-12</span>
+          <span>更新日: 2026-01-19</span>
+        </div>
+
+        {/* このページで分かること（一番上） */}
+        <div style={{
+          padding: '15px',
+          backgroundColor: '#e6f7f5',
+          borderRadius: '8px',
+          marginBottom: '30px',
+          borderLeft: '4px solid #14b8a6'
+        }}>
+          <p style={{ margin: 0, fontSize: '16px', fontWeight: 'bold', color: '#0d9488' }}>
+            📚 このページで分かること
+          </p>
+          <ul style={{ marginTop: '10px', marginBottom: 0 }}>
+            <li>DNSとは何か？なぜ必要なのか</li>
+            <li>ステップデモで名前解決の流れを体験</li>
+            <li>DNSレコードの種類と役割</li>
+            <li>DNS設定方法と実践的な使い方</li>
+          </ul>
+        </div>
+
         <section>
           <h2>概要</h2>
-
-          <div style={{
-            padding: '15px',
-            backgroundColor: '#e6f7f5',
-            borderRadius: '8px',
-            marginBottom: '20px',
-            borderLeft: '4px solid #14b8a6'
-          }}>
-            <p style={{ margin: 0, fontSize: '16px', fontWeight: 'bold', color: '#0d9488' }}>
-              📚 このページで分かること
-            </p>
-            <ul style={{ marginTop: '10px', marginBottom: 0 }}>
-              <li>DNSとは何か？なぜ必要なのか</li>
-              <li>ステップデモで名前解決の流れを体験</li>
-              <li>DNSレコードの種類と役割</li>
-              <li>DNS設定方法と実践的な使い方</li>
-            </ul>
-          </div>
 
           <p>
             <strong>DNS</strong>（Domain Name System）とは、
@@ -492,6 +507,9 @@ github.com → DNS解決 → 140.82.121.4`}</code></pre>
             </table>
           </div>
         </section>
+
+        {/* 目次（mainの最後） */}
+        <TableOfContents />
       </main>
 
       <footer className="footer-nav">

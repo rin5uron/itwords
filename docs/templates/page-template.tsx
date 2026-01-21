@@ -232,34 +232,15 @@ export default function ContentPage() {
         ]}
       /> */}
 
-      {/* 作成日・更新日（タイトルと同じラインで右寄せ） */}
-      <div style={{ position: 'relative' }}>
-        <TermHeader
-          termName="[用語名]"
-          reading="[読み方] / [英語表記]"
-          icon="fas fa-[アイコン名]"
-        />
+      <TermHeader
+        termName="[用語名]"
+        reading="[読み方] / [英語表記]"
+        icon="fas fa-[アイコン名]"
+        dateCreated="[作成日]"
+        dateModified="[更新日]"
+      />
 
-        <div className="date-info" style={{
-          position: 'absolute',
-          top: '0',
-          right: '0',
-          display: 'flex',
-          gap: '15px',
-          fontSize: '14px',
-          color: '#666',
-          alignItems: 'center',
-          height: '2.2em',
-          flexWrap: 'wrap',
-          justifyContent: 'flex-end',
-          lineHeight: '2.2em'
-        }}>
-          <span>作成日: YYYY-MM-DD</span>
-          <span>更新日: YYYY-MM-DD</span>
-        </div>
-      </div>
-
-      {/* ヒーロー画像（タイトルの下に配置・任意） */}
+      {/* ヒーロー画像（任意・目次の上に配置） */}
       {/* <div style={{
         width: '100%',
         maxWidth: '900px',
@@ -285,32 +266,47 @@ export default function ContentPage() {
         />
       </div> */}
 
-      {/* 目次（h2が4つ以上ある場合に自動表示） */}
-      <TableOfContents />
-
       <main>
+        {/* 更新日（概要の上） */}
+        <div className="date-info" style={{
+          display: 'flex',
+          gap: '15px',
+          fontSize: '14px',
+          color: '#666',
+          alignItems: 'center',
+          flexWrap: 'wrap',
+          marginBottom: '20px',
+          paddingBottom: '15px',
+          borderBottom: '1px solid #e0e0e0'
+        }}>
+          <span>作成日: [作成日]</span>
+          <span>更新日: [更新日]</span>
+        </div>
+
+        {/* このページで分かること（一番上） */}
+        <div style={{
+          padding: '15px',
+          backgroundColor: '#e6f7f5',
+          borderRadius: '8px',
+          marginBottom: '30px',
+          borderLeft: '4px solid #14b8a6'
+        }}>
+          <p style={{ margin: 0, fontSize: '16px', fontWeight: 'bold', color: '#0d9488' }}>
+            📚 このページで分かること
+          </p>
+          <ul style={{ marginTop: '10px', marginBottom: 0 }}>
+            <li>[ポイント1：用語の基本的な意味]</li>
+            <li>[ポイント2：日常での使われ方や実例]</li>
+            <li>[ポイント3：デモや体験できる内容]</li>
+            <li>[ポイント4：関連知識や応用]</li>
+          </ul>
+        </div>
+
         {/* ============================================
             【セクション1】概要
             ============================================ */}
         <section>
           <h2>概要</h2>
-
-          {/*
-            ============================================
-            【重要】「このページで分かること」ボックス（2026-01-19追加）
-            ============================================
-            - SEO効果：直帰率低下、滞在時間向上
-            - UX効果：ユーザーが期待値を持って読み進められる
-            - githubページで効果実証済み
-            - 4つのポイントを箇条書きで明示
-            - PageSummaryコンポーネントを使用（2026-01-19改善）
-          */}
-          <PageSummary
-            items={[
-              '[ポイント1：用語の基本的な意味]',
-              '[ポイント2：日常での使われ方や実例]',
-              '[ポイント3：デモや体験できる内容]',
-              '[ポイント4：関連知識や応用]'
             ]}
           />
 
@@ -1026,6 +1022,9 @@ console.log('残りの列:', registerQueue);
 
         {/* FAQセクション（FAQがある場合） */}
         <FAQAccordion faqs={faqs} />
+
+        {/* 目次（mainの最後） */}
+        <TableOfContents />
       </main>
 
       <footer className="footer-nav">

@@ -576,6 +576,18 @@ footer a:hover {
     justify-content: flex-start !important;
     height: auto !important;
     line-height: 1.5 !important;
+    font-size: 13px !important;
+    gap: 10px !important;
+  }
+
+  /* 目次のスマホ対応（タブレット以下） */
+  .table-of-contents {
+    padding: 14px;
+  }
+
+  .table-of-contents a {
+    padding: 9px 11px;
+    gap: 10px;
   }
 
   /* ページサマリーと目次のレスポンシブ対応 */
@@ -1131,5 +1143,34 @@ footer a:hover {
 
   .faq-answer {
     padding: 16px;
+  }
+
+  /* 目次のスマホ対応 */
+  .table-of-contents {
+    padding: 12px;
+    margin-bottom: 20px;
+    margin-top: 20px;
+  }
+
+  .table-of-contents-header {
+    font-size: 16px;
+    margin-bottom: 10px;
+  }
+
+  .table-of-contents a {
+    padding: 8px 10px;
+    gap: 8px;
+    font-size: 14px;
+  }
+
+  .toc-number {
+    min-width: 24px;
+    height: 24px;
+    font-size: 12px;
+  }
+
+  .toc-title {
+    font-size: 14px;
+    line-height: 1.4;
   }
 }
