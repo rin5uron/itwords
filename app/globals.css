@@ -86,6 +86,7 @@ header {
   gap: 15px;
   border-bottom: 2px solid #14b8a6;
   padding-bottom: 0.5em;
+  margin-bottom: 2rem;
 }
 
 header h1 {

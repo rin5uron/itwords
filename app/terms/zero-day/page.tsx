@@ -99,7 +99,7 @@ export default function ZeroDayPage() {
       <div style={{
         width: '100%',
         maxWidth: '900px',
-        margin: '2rem auto',
+        margin: '0 auto 2rem auto',
         borderRadius: '12px',
         overflow: 'hidden',
         boxShadow: '0 4px 12px rgba(0,0,0,0.1)',
@@ -122,6 +122,22 @@ export default function ZeroDayPage() {
       </div>
 
       <main>
+        {/* 更新日（概要の上） */}
+        <div className="date-info" style={{
+          display: 'flex',
+          gap: '15px',
+          fontSize: '14px',
+          color: '#666',
+          alignItems: 'center',
+          flexWrap: 'wrap',
+          marginBottom: '20px',
+          paddingBottom: '15px',
+          borderBottom: '1px solid #e0e0e0'
+        }}>
+          <span>作成日: 2024-01-09</span>
+          <span>更新日: 2026-01-14</span>
+        </div>
+
         <section>
           <h2>概要</h2>
 
