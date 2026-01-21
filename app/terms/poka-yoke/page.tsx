@@ -17,6 +17,9 @@ export const metadata: Metadata = {
     title: 'ポカヨケとは？IT開発への応用を初心者向けに解説【実践例付き】',
     description: 'トヨタ生産方式のポカヨケをIT開発に応用する方法をわかりやすく解説。',
   },
+  alternates: {
+    canonical: 'https://itwords.jp/terms/poka-yoke',
+  },
 }
 
 export default function PokaYokePage() {

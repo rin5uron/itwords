@@ -1,6 +1,29 @@
 # SEO強化作業ログ
 
 ## 作業日時
+2026-01-19
+
+## 作業概要
+検索エンジンに引っかからない問題の原因分析と修正
+
+### 実施した修正
+1. **サイトマップ拡充**: 漏れていた20ページを追加（合計35ページすべて登録）
+2. **Canonical URL追加**: 全ページにcanonical URLを設定
+3. **OG URL統一**: vercel.appドメインをitwords.jpに統一
+4. **ドメイン重複問題解決**: vercel.appへのアクセスをitwords.jpにリダイレクト
+
+### 修正ファイル
+- `app/sitemap.ts`: 20ページ追加
+- `app/terms/*/layout.tsx`: 約18ファイルにcanonical URL追加
+- `app/terms/*/page.tsx`: 約12ファイルにcanonical URL追加
+- `app/terms/github/page.tsx`: OG URL修正（vercel.app → itwords.jp）
+- `app/terms/github-workflow/layout.tsx`: OG URL修正
+- `app/terms/http/page.tsx`: OG URL修正
+- `middleware.ts`: 新規作成（vercel.app → itwords.jpリダイレクト）
+
+---
+
+## 作業日時
 2026-01-07
 
 ## 作業概要

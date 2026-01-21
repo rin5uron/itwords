@@ -14,7 +14,10 @@ export const metadata: Metadata = {
     title: 'HTTP/HTTPSとは？初心者向けにわかりやすく解説【実践デモ付き】',
     description: 'HTTP/HTTPSとは？実践デモで違いと仕組みを今すぐ理解。読み方、HTTPメソッド、ステータスコード、SSL/TLSまで初心者向けに解説します。',
     type: 'article',
-    url: 'https://itwords.vercel.app/terms/http',
+    url: 'https://itwords.jp/terms/http',
+  },
+  alternates: {
+    canonical: 'https://itwords.jp/terms/http',
   },
 }
 

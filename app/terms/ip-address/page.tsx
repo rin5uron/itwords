@@ -12,6 +12,9 @@ export const metadata: Metadata = {
     description: 'IPアドレスの仕組みとIPv4/IPv6の違いを住所の例えでわかりやすく説明。プライベートIPとパブリックIPの違いも理解できます。',
     type: 'article',
   },
+  alternates: {
+    canonical: 'https://itwords.jp/terms/ip-address',
+  },
 }
 
 export default function IPAddressPage() {

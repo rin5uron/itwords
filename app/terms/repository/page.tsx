@@ -19,6 +19,9 @@ export const metadata: Metadata = {
     title: 'リポジトリとは？小学生でもわかる【コードの保管庫】',
     description: 'GitHubの「リポジトリ」って何？プログラムの「保管庫」を3分で理解。フォルダとの違いを実例で学べます。',
   },
+  alternates: {
+    canonical: 'https://itwords.jp/terms/repository',
+  },
 }
 
 export default function RepositoryPage() {

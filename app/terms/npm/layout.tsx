@@ -14,6 +14,9 @@ export const metadata: Metadata = {
     title: 'npmとは？小学生でもわかる【コマンド実行デモ付き】',
     description: 'npmとは？JavaScriptのパッケージ管理ツールのメリットと使い方を実行デモで体験。「npm install」「npm run」の意味を初心者向けに解説。',
   },
+  alternates: {
+    canonical: 'https://itwords.jp/terms/npm',
+  },
 }
 
 export default function NpmLayout({

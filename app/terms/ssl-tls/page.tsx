@@ -19,6 +19,9 @@ export const metadata: Metadata = {
     title: 'SSL/TLSとは？小学生でもわかる【HTTPSの🔒マークの正体】',
     description: 'なぜHTTPSには鍵マーク🔒がある？SSL/TLSの違いを3分で理解。暗号化の仕組みを体験デモで学べます。',
   },
+  alternates: {
+    canonical: 'https://itwords.jp/terms/ssl-tls',
+  },
 }
 
 export default function SslTlsPage() {

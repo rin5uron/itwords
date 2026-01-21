@@ -14,6 +14,10 @@ export const metadata: Metadata = {
     title: 'JSONとは？初心者向けにわかりやすく解説【実践デモ付き】',
     description: 'JSONを初心者向けに解説。実際に編集できるデモで体験しながら学べます。',
     type: 'article',
+    url: 'https://itwords.jp/terms/json',
+  },
+  alternates: {
+    canonical: 'https://itwords.jp/terms/json',
   },
 }
 

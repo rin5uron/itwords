@@ -28,6 +28,9 @@ export const metadata: Metadata = {
     description: 'ゼロデイ攻撃とは？攻撃シミュレーションで「0日」の意味を体験。防御が不可能な理由、実例から学ぶセキュリティ対策を解説します。',
     images: ['/images/terms/zero-day-hero.jpg'],
   },
+  alternates: {
+    canonical: 'https://itwords.jp/terms/zero-day',
+  },
 }
 
 export default function ZeroDayPage() {

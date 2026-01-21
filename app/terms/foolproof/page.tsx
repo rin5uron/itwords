@@ -20,6 +20,9 @@ export const metadata: Metadata = {
     title: 'フールプルーフとは？初心者向けにわかりやすく解説【実践デモ付き】',
     description: 'フールプルーフとは？実践デモで誤操作防止の仕組みを体験。削除確認ダイアログ、入力制限、ポカヨケとの関係、フェイルセーフとの違いまで初心者向けに解説します。',
   },
+  alternates: {
+    canonical: 'https://itwords.jp/terms/foolproof',
+  },
 }
 
 export default function FoolProofPage() {

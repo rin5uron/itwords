@@ -18,6 +18,9 @@ export const metadata: Metadata = {
     title: 'CVEとは？脆弱性識別番号の見方を体験デモで学ぶ',
     description: 'ニュースで見る「CVE-2024-xxxxx」の意味とは？脆弱性識別番号の調べ方を実践デモで体験。',
   },
+  alternates: {
+    canonical: 'https://itwords.jp/terms/cve',
+  },
 }
 
 export default function CVEPage() {

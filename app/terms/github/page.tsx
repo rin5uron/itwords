@@ -15,7 +15,10 @@ export const metadata: Metadata = {
     title: 'GitHubとは？小学生でもわかる【結局何に使うの？が分かる】',
     description: 'GitHubとは？図解とデモで使い方と仕組みを今すぐ理解。コード保存・共有・チーム開発ができるプラットフォームを初心者向けに解説。',
     type: 'article',
-    url: 'https://itwords.vercel.app/terms/github',
+    url: 'https://itwords.jp/terms/github',
+  },
+  alternates: {
+    canonical: 'https://itwords.jp/terms/github',
   },
 }
 

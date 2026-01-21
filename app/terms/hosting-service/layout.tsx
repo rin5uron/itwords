@@ -4,6 +4,9 @@ export const metadata: Metadata = {
   title: 'ホスティングサービスとは？小学生でもわかる【サーバー貸し】',
   description: 'Webサイトを公開する「サーバー貸し」サービス。Vercel、Netlify、AWSの違いを3分で理解。',
   keywords: ['ホスティング', 'hosting', 'ホスティングサービス', 'Vercel', 'サーバー', 'IT用語 わかりやすく'],
+  alternates: {
+    canonical: 'https://itwords.jp/terms/hosting-service',
+  },
 }
 
 export default function HostingServiceLayout({ children }: { children: React.ReactNode }) {

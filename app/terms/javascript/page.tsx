@@ -15,6 +15,9 @@ export const metadata: Metadata = {
     type: 'article',
     url: 'https://itwords.jp/terms/javascript',
   },
+  alternates: {
+    canonical: 'https://itwords.jp/terms/javascript',
+  },
 }
 
 const faqs = [

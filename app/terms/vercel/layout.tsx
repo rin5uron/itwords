@@ -14,6 +14,9 @@ export const metadata: Metadata = {
     title: 'Vercelとは？小学生でもわかる【デプロイ体験デモ付き】',
     description: 'Webサイトを数秒で世界公開できるVercel。デプロイの流れを体験デモで理解。',
   },
+  alternates: {
+    canonical: 'https://itwords.jp/terms/vercel',
+  },
 }
 
 export default function VercelLayout({

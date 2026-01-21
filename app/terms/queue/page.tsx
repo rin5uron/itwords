@@ -19,6 +19,9 @@ export const metadata: Metadata = {
     title: 'キュー（Queue）とは？初心者向けにわかりやすく解説【実践デモ付き】',
     description: 'キュー（Queue）は、先に入れたものが先に出ていくFIFO（先入れ先出し）のデータ構造です。レジの行列のように順番通りに処理される仕組みを解説。',
   },
+  alternates: {
+    canonical: 'https://itwords.jp/terms/queue',
+  },
 }
 
 export default function QueuePage() {

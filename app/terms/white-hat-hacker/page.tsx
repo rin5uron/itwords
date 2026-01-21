@@ -28,6 +28,9 @@ export const metadata: Metadata = {
     description: '善意のハッカー「ホワイトハッカー」の仕事を実践デモで体験。脆弱性診断の流れを学べます。',
     images: ['/images/terms/D259C20E-0772-4D3F-B6BF-4DA01517CECB.jpg'],
   },
+  alternates: {
+    canonical: 'https://itwords.jp/terms/white-hat-hacker',
+  },
 }
 
 export default function WhiteHatHackerPage() {

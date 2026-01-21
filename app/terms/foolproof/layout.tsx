@@ -14,6 +14,9 @@ export const metadata: Metadata = {
     title: 'フールプルーフとは？バカでも使える設計【失敗例→改善デモ】',
     description: '「バカでも間違えない設計」フールプルーフを3分で理解。USB、マイク穴の実例から学ぶ。',
   },
+  alternates: {
+    canonical: 'https://itwords.jp/terms/foolproof',
+  },
 }
 
 export default function FoolproofLayout({

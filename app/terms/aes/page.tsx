@@ -30,6 +30,9 @@ export const metadata: Metadata = {
     description: 'AESとは？暗号化デモで仕組みを今すぐ体験。Wi-FiやHTTPSで使われる暗号化、128と256の違い、実装方法まで初心者向けに解説します。',
     images: ['/images/terms/aes-hero.jpg'],
   },
+  alternates: {
+    canonical: 'https://itwords.jp/terms/aes',
+  },
 }
 
 export default function AESPage() {

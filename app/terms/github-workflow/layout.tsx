@@ -8,7 +8,10 @@ export const metadata: Metadata = {
     title: 'GitHubワークフローとは？プルリクエストとブランチ戦略【初心者向け】',
     description: 'GitHubのプルリクエストとブランチ戦略を初心者向けに解説。GitHub Flow、Git Flow、Trunk-basedの違いと使い分け、コードレビューのポイントを学べます。',
     type: 'article',
-    url: 'https://itwords.vercel.app/terms/github-workflow',
+    url: 'https://itwords.jp/terms/github-workflow',
+  },
+  alternates: {
+    canonical: 'https://itwords.jp/terms/github-workflow',
   },
 }
 

@@ -19,6 +19,9 @@ export const metadata: Metadata = {
     title: 'スタック構造とは？初心者向けにわかりやすく解説【実践デモ付き】',
     description: 'スタック構造（Stack）は、最後に入れたものが最初に出てくるLIFO（後入れ先出し）のデータ構造です。お皿の積み重ねやブラウザの戻るボタンなど身近な例から実践まで解説。',
   },
+  alternates: {
+    canonical: 'https://itwords.jp/terms/stack',
+  },
 }
 
 export default function StackPage() {

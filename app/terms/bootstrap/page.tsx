@@ -19,6 +19,9 @@ export const metadata: Metadata = {
     title: 'Bootstrapとは？小学生でもわかる【賛否両論のCSSフレームワーク】',
     description: 'なぜ人気なのに批判もされる？Bootstrapの賛否を実例で理解。「似たデザインになる」問題を体験デモで学べます。',
   },
+  alternates: {
+    canonical: 'https://itwords.jp/terms/bootstrap',
+  },
 }
 
 export default function BootstrapPage() {

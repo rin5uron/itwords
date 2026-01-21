@@ -20,6 +20,9 @@ export const metadata: Metadata = {
     title: 'ローカルストレージとは？初心者向けにわかりやすく解説【実践デモ付き】',
     description: 'ローカルストレージ（localStorage）は、ブラウザにデータを保存できる仕組みです。ページを閉じても情報が残り、JavaScriptから簡単にアクセス可能。',
   },
+  alternates: {
+    canonical: 'https://itwords.jp/terms/localstorage',
+  },
 }
 
 export default function LocalStoragePage() {

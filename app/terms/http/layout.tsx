@@ -14,6 +14,9 @@ export const metadata: Metadata = {
     title: 'HTTPとは？HTTPSとの違いを小学生でもわかる【通信体験デモ付き】',
     description: 'WebサイトがどうやってPCに届くか3分で理解。HTTPとHTTPSの違いを体験デモで学べます。',
   },
+  alternates: {
+    canonical: 'https://itwords.jp/terms/http',
+  },
 }
 
 export default function HttpLayout({
