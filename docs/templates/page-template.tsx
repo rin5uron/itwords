@@ -270,7 +270,17 @@ export default function ContentPage() {
       </div> */}
 
       <main>
-        {/* 更新日（概要の上） */}
+        {/* このページでわかること（一番上） */}
+        <PageSummary
+          items={[
+            '[ポイント1：用語の基本的な意味]',
+            '[ポイント2：日常での使われ方や実例]',
+            '[ポイント3：デモや体験できる内容]',
+            '[ポイント4：関連知識や応用]'
+          ]}
+        />
+
+        {/* 更新日 */}
         <div className="date-info" style={{
           fontSize: '14px',
           color: '#666',
@@ -283,15 +293,6 @@ export default function ContentPage() {
 
         <section>
           <h2>概要</h2>
-
-          <PageSummary
-            items={[
-              '[ポイント1：用語の基本的な意味]',
-              '[ポイント2：日常での使われ方や実例]',
-              '[ポイント3：デモや体験できる内容]',
-              '[ポイント4：関連知識や応用]'
-            ]}
-          />
 
           <p>
             <strong>[用語名]</strong>とは、<strong>[簡潔な説明]</strong>です。
