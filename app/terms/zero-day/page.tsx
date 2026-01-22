@@ -127,7 +127,17 @@ export default function ZeroDayPage() {
       </div>
 
       <main>
-        {/* 更新日（概要の上） */}
+        {/* このページでわかること（一番上） */}
+        <PageSummary
+          items={[
+            'ゼロデイ攻撃とは何か？なぜ「0日」なのか',
+            '攻撃シミュレーションで体験する脅威の実態',
+            '実際にあった攻撃事例（Stuxnet、WannaCry等）',
+            '個人でできる防御対策'
+          ]}
+        />
+
+        {/* 更新日 */}
         <div className="date-info" style={{
           fontSize: '14px',
           color: '#666',
@@ -140,15 +150,6 @@ export default function ZeroDayPage() {
 
         <section>
           <h2>概要</h2>
-
-          <PageSummary
-            items={[
-              'ゼロデイ攻撃とは何か？なぜ「0日」なのか',
-              '攻撃シミュレーションで体験する脅威の実態',
-              '実際にあった攻撃事例（Stuxnet、WannaCry等）',
-              '個人でできる防御対策'
-            ]}
-          />
 
           <p>
             <strong>ゼロデイ攻撃</strong>（Zero-day Attack）とは、<strong>脆弱性が発見されてから修正パッチが提供される前（対策日数がゼロ）に行われるサイバー攻撃</strong>です。

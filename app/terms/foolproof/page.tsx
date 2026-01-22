@@ -78,7 +78,17 @@ export default function FoolProofPage() {
       <TableOfContents />
 
       <main>
-        {/* 更新日（概要の上） */}
+        {/* このページでわかること（一番上） */}
+        <PageSummary
+          items={[
+            'フールプルーフとは何か？',
+            '身近な例（洗濯機、ATM、USB等）',
+            'Web開発での実装方法（コード付き）',
+            'ポカヨケ、フェイルセーフとの違い'
+          ]}
+        />
+
+        {/* 更新日 */}
         <div className="date-info" style={{
           fontSize: '14px',
           color: '#666',
@@ -91,15 +101,6 @@ export default function FoolProofPage() {
 
         <section>
           <h2>概要</h2>
-
-          <PageSummary
-            items={[
-              'フールプルーフとは何か？',
-              '身近な例（洗濯機、ATM、USB等）',
-              'Web開発での実装方法（コード付き）',
-              'ポカヨケ、フェイルセーフとの違い'
-            ]}
-          />
 
           <p>
             <strong>フールプルーフ</strong>（Fool Proof）とは、ユーザーの誤操作や誤入力を

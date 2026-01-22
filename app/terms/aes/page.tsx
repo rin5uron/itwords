@@ -119,7 +119,17 @@ export default function AESPage() {
       </div>
 
       <main>
-        {/* 更新日（概要の上） */}
+        {/* このページでわかること（一番上） */}
+        <PageSummary
+          items={[
+            'AESとは何か？暗号化の仕組み',
+            '暗号化デモで実際に体験',
+            'AES-128と256の違いと選び方',
+            'JavaScriptでの実装方法'
+          ]}
+        />
+
+        {/* 更新日 */}
         <div className="date-info" style={{
           fontSize: '14px',
           color: '#666',
@@ -132,15 +142,6 @@ export default function AESPage() {
 
         <section>
           <h2>概要</h2>
-
-          <PageSummary
-            items={[
-              'AESとは何か？暗号化の仕組み',
-              '暗号化デモで実際に体験',
-              'AES-128と256の違いと選び方',
-              'JavaScriptでの実装方法'
-            ]}
-          />
 
           <p>
             <strong>AES</strong>（Advanced Encryption Standard）とは、<strong>現代で最も広く使われている暗号化規格</strong>です。

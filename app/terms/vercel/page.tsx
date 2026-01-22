@@ -69,7 +69,17 @@ export default function VercelPage() {
       <TableOfContents />
 
       <main>
-        {/* 更新日（概要の上） */}
+        {/* このページでわかること（一番上） */}
+        <PageSummary
+          items={[
+            'Vercelとは何か？読み方は？',
+            'GitHubと連携した自動デプロイの仕組み',
+            'Next.jsとの相性が抜群な理由',
+            '無料プランでできること'
+          ]}
+        />
+
+        {/* 更新日 */}
         <div className="date-info" style={{
           fontSize: '14px',
           color: '#666',
@@ -82,15 +92,6 @@ export default function VercelPage() {
 
         <section>
           <h2>概要</h2>
-
-          <PageSummary
-            items={[
-              'Vercelとは何か？読み方は？',
-              'GitHubと連携した自動デプロイの仕組み',
-              'Next.jsとの相性が抜群な理由',
-              '無料プランでできること'
-            ]}
-          />
 
           <p>
             <strong>Vercel</strong>とは、

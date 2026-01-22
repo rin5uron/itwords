@@ -71,7 +71,17 @@ export default function HTTPPage() {
       />
 
       <main>
-        {/* 更新日（概要の上） */}
+        {/* このページでわかること（一番上） */}
+        <PageSummary
+          items={[
+            'HTTPとHTTPSの違い',
+            'HTTPメソッド（GET、POST等）の使い方',
+            'ステータスコード（200、404等）の意味',
+            'SSL/TLSによる暗号化の仕組み'
+          ]}
+        />
+
+        {/* 更新日 */}
         <div className="date-info" style={{
           fontSize: '14px',
           color: '#666',
@@ -84,15 +94,6 @@ export default function HTTPPage() {
 
         <section>
           <h2>概要</h2>
-
-          <PageSummary
-            items={[
-              'HTTPとHTTPSの違い',
-              'HTTPメソッド（GET、POST等）の使い方',
-              'ステータスコード（200、404等）の意味',
-              'SSL/TLSによる暗号化の仕組み'
-            ]}
-          />
 
           <p>
             <strong>HTTP</strong>（HyperText Transfer Protocol）とは、

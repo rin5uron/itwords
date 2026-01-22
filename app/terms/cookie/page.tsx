@@ -53,7 +53,17 @@ export default function CookiePage() {
       <TableOfContents />
 
       <main>
-        {/* 更新日（概要の上） */}
+        {/* このページでわかること（一番上） */}
+        <PageSummary
+          items={[
+            'Cookieとは何か？何に使われる？',
+            '体験デモでCookieの動作を確認',
+            'LocalStorageやSessionStorageとの違い',
+            'セキュリティとプライバシー対策'
+          ]}
+        />
+
+        {/* 更新日 */}
         <div className="date-info" style={{
           fontSize: '14px',
           color: '#666',
@@ -66,15 +76,6 @@ export default function CookiePage() {
 
         <section>
           <h2>概要</h2>
-
-          <PageSummary
-            items={[
-              'Cookieとは何か？何に使われる？',
-              '体験デモでCookieの動作を確認',
-              'LocalStorageやSessionStorageとの違い',
-              'セキュリティとプライバシー対策'
-            ]}
-          />
 
           <p>
             <strong>Cookie（クッキー）</strong>とは、

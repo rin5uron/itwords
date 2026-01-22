@@ -38,7 +38,17 @@ export default function HTMLPage() {
       <TableOfContents />
 
       <main>
-        {/* 更新日（概要の上） */}
+        {/* このページでわかること（一番上） */}
+        <PageSummary
+          items={[
+            'HTMLとは何か？Webページの構造を作る言語',
+            'HTMLデモで実際にコードを編集',
+            'HTMLとCSS、JavaScriptの違い',
+            'HTML5の新機能と基本タグ'
+          ]}
+        />
+
+        {/* 更新日 */}
         <div className="date-info" style={{
           fontSize: '14px',
           color: '#666',
@@ -51,15 +61,6 @@ export default function HTMLPage() {
 
         <section>
           <h2>概要</h2>
-
-          <PageSummary
-            items={[
-              'HTMLとは何か？Webページの構造を作る言語',
-              'HTMLデモで実際にコードを編集',
-              'HTMLとCSS、JavaScriptの違い',
-              'HTML5の新機能と基本タグ'
-            ]}
-          />
           <p>
             <strong>HTML</strong>（HyperText Markup Language）は、Webページの<strong>構造</strong>を作るための言語です。
             文章に「ここは見出し」「ここは段落」「ここはリンク」といった意味を付けることで、ブラウザがそれを理解し、適切に表示します。

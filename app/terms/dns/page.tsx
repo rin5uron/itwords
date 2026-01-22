@@ -98,7 +98,17 @@ export default function DNSPage() {
       </div>
 
       <main>
-        {/* 更新日（概要の上） */}
+        {/* このページでわかること（一番上） */}
+        <PageSummary
+          items={[
+            'DNSとは何か？なぜ必要なのか',
+            'ステップデモで名前解決の流れを体験',
+            'DNSレコードの種類と役割',
+            'DNS設定方法と実践的な使い方'
+          ]}
+        />
+
+        {/* 更新日 */}
         <div className="date-info" style={{
           fontSize: '14px',
           color: '#666',
@@ -111,15 +121,6 @@ export default function DNSPage() {
 
         <section>
           <h2>概要</h2>
-
-          <PageSummary
-            items={[
-              'DNSとは何か？なぜ必要なのか',
-              'ステップデモで名前解決の流れを体験',
-              'DNSレコードの種類と役割',
-              'DNS設定方法と実践的な使い方'
-            ]}
-          />
 
           <p>
             <strong>DNS</strong>（Domain Name System）とは、

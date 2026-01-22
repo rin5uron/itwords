@@ -67,7 +67,17 @@ export default function JavaScriptPage() {
       <TableOfContents />
 
       <main>
-        {/* 更新日（概要の上） */}
+        {/* このページでわかること（一番上） */}
+        <PageSummary
+          items={[
+            'JavaScriptとは何か？Webページに動きを追加する言語',
+            'JavaScriptデモで実際にコードを実行',
+            'JavaScriptとJavaの違い',
+            'ES6の新機能と基本構文'
+          ]}
+        />
+
+        {/* 更新日 */}
         <div className="date-info" style={{
           fontSize: '14px',
           color: '#666',
@@ -80,15 +90,6 @@ export default function JavaScriptPage() {
 
         <section>
           <h2>概要</h2>
-
-          <PageSummary
-            items={[
-              'JavaScriptとは何か？Webページに動きを追加する言語',
-              'JavaScriptデモで実際にコードを実行',
-              'JavaScriptとJavaの違い',
-              'ES6の新機能と基本構文'
-            ]}
-          />
           <p>
             <strong>JavaScript</strong>（略してJS）は、Webページに<strong>動き</strong>と<strong>インタラクション</strong>を追加するプログラミング言語です。
             ボタンをクリックしたときの処理、フォームの入力チェック、アニメーション、データの取得など、ユーザーの操作に応じた動的な機能を実現します。

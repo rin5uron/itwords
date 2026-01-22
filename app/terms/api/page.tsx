@@ -102,7 +102,17 @@ export default function APIPage() {
       <TableOfContents />
 
       <main>
-        {/* 更新日（概要の上） */}
+        {/* このページでわかること（一番上） */}
+        <PageSummary
+          items={[
+            'APIとは何か？レストランの例えで理解',
+            '天気API・名言API・猫画像APIを実際に体験',
+            'APIが使われている身近な例',
+            'APIの基本用語と仕組み'
+          ]}
+        />
+
+        {/* 更新日 */}
         <div className="date-info" style={{
           fontSize: '14px',
           color: '#666',
@@ -115,15 +125,6 @@ export default function APIPage() {
 
         <section id="overview">
           <h2>概要</h2>
-
-          <PageSummary
-            items={[
-              'APIとは何か？レストランの例えで理解',
-              '天気API・名言API・猫画像APIを実際に体験',
-              'APIが使われている身近な例',
-              'APIの基本用語と仕組み'
-            ]}
-          />
 
           <p>
             <strong>API</strong>とは、<strong>他のサービスの機能やデータを呼び出して使う仕組み</strong>です。

@@ -53,7 +53,17 @@ export default function GitHubWorkflowPage() {
       <TableOfContents />
 
       <main>
-        {/* 更新日（概要の上） */}
+        {/* このページでわかること（一番上） */}
+        <PageSummary
+          items={[
+            'プルリクエストとは何か？なぜ必要か？',
+            'プルリクエストの基本的な流れ',
+            'コードレビューのポイント',
+            'よくあるブランチ戦略（GitHub Flow、Git Flow、Trunk-based）'
+          ]}
+        />
+
+        {/* 更新日 */}
         <div className="date-info" style={{
           fontSize: '14px',
           color: '#666',
@@ -66,15 +76,6 @@ export default function GitHubWorkflowPage() {
 
         <section>
           <h2>概要</h2>
-
-          <PageSummary
-            items={[
-              'プルリクエストとは何か？なぜ必要か？',
-              'プルリクエストの基本的な流れ',
-              'コードレビューのポイント',
-              'よくあるブランチ戦略（GitHub Flow、Git Flow、Trunk-based）'
-            ]}
-          />
 
           <p>
             <strong>GitHubワークフロー</strong>とは、

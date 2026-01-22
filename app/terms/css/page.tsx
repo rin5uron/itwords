@@ -59,7 +59,17 @@ export default function CSSPage() {
       <TableOfContents />
 
       <main>
-        {/* 更新日（概要の上） */}
+        {/* このページでわかること（一番上） */}
+        <PageSummary
+          items={[
+            'CSSとは何か？Webページの見た目を整える言語',
+            'CSSデモで実際にスタイルを変更',
+            'CSSとHTMLの違い',
+            'CSSの書き方とよく使うプロパティ'
+          ]}
+        />
+
+        {/* 更新日 */}
         <div className="date-info" style={{
           fontSize: '14px',
           color: '#666',
@@ -72,15 +82,6 @@ export default function CSSPage() {
 
         <section>
           <h2>概要</h2>
-
-          <PageSummary
-            items={[
-              'CSSとは何か？Webページの見た目を整える言語',
-              'CSSデモで実際にスタイルを変更',
-              'CSSとHTMLの違い',
-              'CSSの書き方とよく使うプロパティ'
-            ]}
-          />
           <p>
             <strong>CSS</strong>（Cascading Style Sheets）とは、<strong>Webページの見た目を整えるための言語</strong>です。
             HTMLが「何を表示するか（構造）」を決めるのに対し、CSSは「どう表示するか（色・大きさ・配置）」を決めます。
