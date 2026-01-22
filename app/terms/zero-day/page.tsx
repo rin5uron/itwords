@@ -124,18 +124,13 @@ export default function ZeroDayPage() {
       <main>
         {/* 更新日（概要の上） */}
         <div className="date-info" style={{
-          display: 'flex',
-          gap: '15px',
           fontSize: '14px',
           color: '#666',
-          alignItems: 'center',
-          flexWrap: 'wrap',
           marginBottom: '20px',
           paddingBottom: '15px',
           borderBottom: '1px solid #e0e0e0'
         }}>
-          <span>作成日: 2024-01-09</span>
-          <span>更新日: 2026-01-14</span>
+          <span>作成日: 2024-01-09 | 最終更新: 2026-01-14</span>
         </div>
 
         <section>
