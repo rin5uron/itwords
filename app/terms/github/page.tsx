@@ -75,7 +75,17 @@ export default function GitHubPage() {
       <TableOfContents />
 
       <main>
-        {/* 更新日（概要の上） */}
+        {/* このページでわかること（一番上） */}
+        <PageSummary
+          items={[
+            'GitHubとは何か？何に使うのか？',
+            'GitとGitHubの違い',
+            '実際のGitコマンドの使い方（デモ付き）',
+            'GitHubの便利な機能（Issues、Actions、Pagesなど）'
+          ]}
+        />
+
+        {/* 更新日 */}
         <div className="date-info" style={{
           fontSize: '14px',
           color: '#666',
@@ -88,15 +98,6 @@ export default function GitHubPage() {
 
         <section>
           <h2>概要</h2>
-
-          <PageSummary
-            items={[
-              'GitHubとは何か？何に使うのか？',
-              'GitとGitHubの違い',
-              '実際のGitコマンドの使い方（デモ付き）',
-              'GitHubの便利な機能（Issues、Actions、Pagesなど）'
-            ]}
-          />
 
           <p>
             <strong>GitHub</strong>とは、
