@@ -79,7 +79,8 @@ export default function WhiteHatHackerPage() {
         borderRadius: '12px',
         overflow: 'hidden',
         boxShadow: '0 4px 12px rgba(0,0,0,0.1)',
-        maxHeight: '300px'
+        height: 'auto',
+        minHeight: '400px'
       }}>
         <Image
           src="/images/terms/D259C20E-0772-4D3F-B6BF-4DA01517CECB.jpg"

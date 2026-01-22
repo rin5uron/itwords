@@ -3,6 +3,8 @@ import { Metadata } from 'next'
 import JavaScriptDemo from '@/app/components/JavaScriptDemo'
 import StructuredData from '@/app/components/StructuredData'
 import TermHeader from '@/app/components/TermHeader'
+import TableOfContents from '@/app/components/TableOfContents'
+import PageSummary from '@/app/components/PageSummary'
 import FAQAccordion from '@/app/components/FAQAccordion'
 
 export const metadata: Metadata = {
@@ -62,6 +64,8 @@ export default function JavaScriptPage() {
         dateModified="2026-01-07"
       />
 
+      <TableOfContents />
+
       <main>
         {/* 更新日（概要の上） */}
         <div className="date-info" style={{
@@ -76,6 +80,15 @@ export default function JavaScriptPage() {
 
         <section>
           <h2>概要</h2>
+
+          <PageSummary
+            items={[
+              'JavaScriptとは何か？Webページに動きを追加する言語',
+              'JavaScriptデモで実際にコードを実行',
+              'JavaScriptとJavaの違い',
+              'ES6の新機能と基本構文'
+            ]}
+          />
           <p>
             <strong>JavaScript</strong>（略してJS）は、Webページに<strong>動き</strong>と<strong>インタラクション</strong>を追加するプログラミング言語です。
             ボタンをクリックしたときの処理、フォームの入力チェック、アニメーション、データの取得など、ユーザーの操作に応じた動的な機能を実現します。

@@ -2,6 +2,8 @@
 
 import Link from 'next/link'
 import TermHeader from '@/app/components/TermHeader'
+import TableOfContents from '@/app/components/TableOfContents'
+import PageSummary from '@/app/components/PageSummary'
 import HTMLDemo from './HTMLDemo'
 import FAQAccordion from '@/app/components/FAQAccordion'
 
@@ -33,6 +35,8 @@ export default function HTMLPage() {
         icon="fas fa-code"
       />
 
+      <TableOfContents />
+
       <main>
         {/* 更新日（概要の上） */}
         <div className="date-info" style={{
@@ -47,6 +51,15 @@ export default function HTMLPage() {
 
         <section>
           <h2>概要</h2>
+
+          <PageSummary
+            items={[
+              'HTMLとは何か？Webページの構造を作る言語',
+              'HTMLデモで実際にコードを編集',
+              'HTMLとCSS、JavaScriptの違い',
+              'HTML5の新機能と基本タグ'
+            ]}
+          />
           <p>
             <strong>HTML</strong>（HyperText Markup Language）は、Webページの<strong>構造</strong>を作るための言語です。
             文章に「ここは見出し」「ここは段落」「ここはリンク」といった意味を付けることで、ブラウザがそれを理解し、適切に表示します。

@@ -3,6 +3,8 @@ import Image from 'next/image'
 import { Metadata } from 'next'
 import StructuredData from '@/app/components/StructuredData'
 import TermHeader from '@/app/components/TermHeader'
+import TableOfContents from '@/app/components/TableOfContents'
+import PageSummary from '@/app/components/PageSummary'
 import ZeroDayDemo from '@/components/ZeroDayDemo'
 
 export const metadata: Metadata = {
@@ -96,6 +98,8 @@ export default function ZeroDayPage() {
         dateModified="2026-01-14"
       />
 
+      <TableOfContents />
+
       <div style={{
         width: '100%',
         maxWidth: '900px',
@@ -103,7 +107,8 @@ export default function ZeroDayPage() {
         borderRadius: '12px',
         overflow: 'hidden',
         boxShadow: '0 4px 12px rgba(0,0,0,0.1)',
-        maxHeight: '300px'
+        height: 'auto',
+        minHeight: '400px'
       }}>
         <Image
           src="/images/terms/zero-day-hero.jpg"
@@ -136,25 +141,14 @@ export default function ZeroDayPage() {
         <section>
           <h2>概要</h2>
 
-          <div style={{
-            padding: '15px',
-            backgroundColor: '#f9f7ef',
-            borderRadius: '8px',
-            marginBottom: '30px',
-            borderLeft: '4px solid #ea9b8a',
-            boxShadow: '0 2px 8px rgba(0,0,0,0.05)',
-            padding: '20px'
-          }}>
-            <p style={{ margin: 0, fontSize: '16px', fontWeight: 'bold', color: '#333', marginBottom: '12px' }}>
-              このページで分かること
-            </p>
-            <ul style={{ marginTop: 0, marginBottom: 0, paddingLeft: '20px' }}>
-              <li style={{ marginBottom: '8px' }}>ゼロデイ攻撃とは何か？なぜ「0日」なのか</li>
-              <li style={{ marginBottom: '8px' }}>攻撃シミュレーションで体験する脅威の実態</li>
-              <li style={{ marginBottom: '8px' }}>実際にあった攻撃事例（Stuxnet、WannaCry等）</li>
-              <li style={{ marginBottom: '8px' }}>個人でできる防御対策</li>
-            </ul>
-          </div>
+          <PageSummary
+            items={[
+              'ゼロデイ攻撃とは何か？なぜ「0日」なのか',
+              '攻撃シミュレーションで体験する脅威の実態',
+              '実際にあった攻撃事例（Stuxnet、WannaCry等）',
+              '個人でできる防御対策'
+            ]}
+          />
 
           <p>
             <strong>ゼロデイ攻撃</strong>（Zero-day Attack）とは、<strong>脆弱性が発見されてから修正パッチが提供される前（対策日数がゼロ）に行われるサイバー攻撃</strong>です。

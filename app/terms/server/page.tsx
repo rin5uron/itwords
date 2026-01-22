@@ -74,7 +74,8 @@ export default function ServerPage() {
         borderRadius: '12px',
         overflow: 'hidden',
         boxShadow: '0 4px 12px rgba(0,0,0,0.1)',
-        maxHeight: '300px'
+        height: 'auto',
+        minHeight: '400px'
       }}>
         <Image
           src="/images/terms/server-hero.jpg"

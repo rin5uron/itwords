@@ -240,7 +240,9 @@ export default function ContentPage() {
         dateModified="[更新日]"
       />
 
-      {/* ヒーロー画像（任意・目次の上に配置） */}
+      <TableOfContents />
+
+      {/* ヒーロー画像（任意・目次の下に配置） */}
       {/* <div style={{
         width: '100%',
         maxWidth: '900px',
@@ -248,7 +250,8 @@ export default function ContentPage() {
         borderRadius: '12px',
         overflow: 'hidden',
         boxShadow: '0 4px 12px rgba(0,0,0,0.1)',
-        maxHeight: '300px'
+        height: 'auto',
+        minHeight: '400px'
       }}>
         <Image
           src="/images/terms/[用語名]-hero.jpg"
@@ -269,34 +272,22 @@ export default function ContentPage() {
       <main>
         {/* 更新日（概要の上） */}
         <div className="date-info" style={{
-          display: 'flex',
-          gap: '15px',
           fontSize: '14px',
           color: '#666',
-          alignItems: 'center',
-          flexWrap: 'wrap',
           marginBottom: '20px',
           paddingBottom: '15px',
           borderBottom: '1px solid #e0e0e0'
         }}>
-          <span>作成日: [作成日]</span>
-          <span>更新日: [更新日]</span>
+          <span>作成日: [作成日] | 最終更新: [更新日]</span>
         </div>
 
-        {/* このページで分かること（一番上） */}
-        <div style={{
-          padding: '15px',
-          backgroundColor: '#e6f7f5',
-          borderRadius: '8px',
-          marginBottom: '30px',
-          borderLeft: '4px solid #14b8a6'
-        }}>
-          <p style={{ margin: 0, fontSize: '16px', fontWeight: 'bold', color: '#0d9488' }}>
-            📚 このページで分かること
-          </p>
-          <ul style={{ marginTop: '10px', marginBottom: 0 }}>
-            <li>[ポイント1：用語の基本的な意味]</li>
-            <li>[ポイント2：日常での使われ方や実例]</li>
+        <section>
+          <h2>概要</h2>
+
+          <PageSummary
+            items={[
+              '[ポイント1：用語の基本的な意味]',
+              '[ポイント2：日常での使われ方や実例]',
             <li>[ポイント3：デモや体験できる内容]</li>
             <li>[ポイント4：関連知識や応用]</li>
           </ul>

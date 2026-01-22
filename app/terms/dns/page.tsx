@@ -6,6 +6,7 @@ import { useState } from 'react'
 import StructuredData from '@/app/components/StructuredData'
 import TermHeader from '@/app/components/TermHeader'
 import TableOfContents from '@/app/components/TableOfContents'
+import PageSummary from '@/app/components/PageSummary'
 
 export default function DNSPage() {
   const [currentStep, setCurrentStep] = useState(0)
@@ -68,6 +69,8 @@ export default function DNSPage() {
         dateModified="2026-01-19"
       />
 
+      <TableOfContents />
+
       <div style={{
         width: '100%',
         maxWidth: '900px',
@@ -75,7 +78,8 @@ export default function DNSPage() {
         borderRadius: '12px',
         overflow: 'hidden',
         boxShadow: '0 4px 12px rgba(0,0,0,0.1)',
-        maxHeight: '300px'
+        height: 'auto',
+        minHeight: '400px'
       }}>
         <Image
           src="/images/terms/dns-hero.jpg"
@@ -105,28 +109,17 @@ export default function DNSPage() {
           <span>作成日: 2026-01-12 | 最終更新: 2026-01-19</span>
         </div>
 
-        {/* このページで分かること（一番上） */}
-        <div style={{
-          padding: '20px',
-          backgroundColor: '#f9f7ef',
-          borderRadius: '8px',
-          marginBottom: '30px',
-          borderLeft: '4px solid #ea9b8a',
-          boxShadow: '0 2px 8px rgba(0,0,0,0.05)'
-        }}>
-          <p style={{ margin: 0, fontSize: '16px', fontWeight: 'bold', color: '#333', marginBottom: '12px' }}>
-            このページで分かること
-          </p>
-          <ul style={{ marginTop: 0, marginBottom: 0, paddingLeft: '20px' }}>
-            <li style={{ marginBottom: '8px' }}>DNSとは何か？なぜ必要なのか</li>
-            <li style={{ marginBottom: '8px' }}>ステップデモで名前解決の流れを体験</li>
-            <li style={{ marginBottom: '8px' }}>DNSレコードの種類と役割</li>
-            <li style={{ marginBottom: '8px' }}>DNS設定方法と実践的な使い方</li>
-          </ul>
-        </div>
-
         <section>
           <h2>概要</h2>
+
+          <PageSummary
+            items={[
+              'DNSとは何か？なぜ必要なのか',
+              'ステップデモで名前解決の流れを体験',
+              'DNSレコードの種類と役割',
+              'DNS設定方法と実践的な使い方'
+            ]}
+          />
 
           <p>
             <strong>DNS</strong>（Domain Name System）とは、

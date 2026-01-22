@@ -5,6 +5,8 @@ import { useState } from 'react'
 import { Metadata } from 'next'
 import StructuredData from '@/app/components/StructuredData'
 import TermHeader from '@/app/components/TermHeader'
+import TableOfContents from '@/app/components/TableOfContents'
+import PageSummary from '@/app/components/PageSummary'
 import CSSStepByStepDemo from '@/components/CSSStepByStepDemo'
 import CSSWritingMethodsDemo from '@/components/CSSWritingMethodsDemo'
 
@@ -54,6 +56,8 @@ export default function CSSPage() {
         dateModified="2026-01-15"
       />
 
+      <TableOfContents />
+
       <main>
         {/* 更新日（概要の上） */}
         <div className="date-info" style={{
@@ -68,6 +72,15 @@ export default function CSSPage() {
 
         <section>
           <h2>概要</h2>
+
+          <PageSummary
+            items={[
+              'CSSとは何か？Webページの見た目を整える言語',
+              'CSSデモで実際にスタイルを変更',
+              'CSSとHTMLの違い',
+              'CSSの書き方とよく使うプロパティ'
+            ]}
+          />
           <p>
             <strong>CSS</strong>（Cascading Style Sheets）とは、<strong>Webページの見た目を整えるための言語</strong>です。
             HTMLが「何を表示するか（構造）」を決めるのに対し、CSSは「どう表示するか（色・大きさ・配置）」を決めます。

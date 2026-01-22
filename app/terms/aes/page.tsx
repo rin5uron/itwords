@@ -5,6 +5,7 @@ import StructuredData from '@/app/components/StructuredData'
 import TermHeader from '@/app/components/TermHeader'
 import AESDemo from '@/components/AESDemo'
 import TableOfContents from '@/app/components/TableOfContents'
+import PageSummary from '@/app/components/PageSummary'
 import FAQAccordion from '@/app/components/FAQAccordion'
 
 export const metadata: Metadata = {
@@ -98,7 +99,8 @@ export default function AESPage() {
         borderRadius: '12px',
         overflow: 'hidden',
         boxShadow: '0 4px 12px rgba(0,0,0,0.1)',
-        maxHeight: '300px'
+        height: 'auto',
+        minHeight: '400px'
       }}>
         <Image
           src="/images/terms/aes-hero.jpg"
@@ -128,28 +130,17 @@ export default function AESPage() {
           <span>作成日: 2024-01-09 | 最終更新: 2026-01-19</span>
         </div>
 
-        {/* このページで分かること（一番上） */}
-        <div style={{
-          padding: '20px',
-          backgroundColor: '#f9f7ef',
-          borderRadius: '8px',
-          marginBottom: '30px',
-          borderLeft: '4px solid #ea9b8a',
-          boxShadow: '0 2px 8px rgba(0,0,0,0.05)'
-        }}>
-          <p style={{ margin: 0, fontSize: '16px', fontWeight: 'bold', color: '#333', marginBottom: '12px' }}>
-            このページで分かること
-          </p>
-          <ul style={{ marginTop: 0, marginBottom: 0, paddingLeft: '20px' }}>
-            <li style={{ marginBottom: '8px' }}>AESとは何か？暗号化の仕組み</li>
-            <li style={{ marginBottom: '8px' }}>暗号化デモで実際に体験</li>
-            <li style={{ marginBottom: '8px' }}>AES-128と256の違いと選び方</li>
-            <li style={{ marginBottom: '8px' }}>JavaScriptでの実装方法</li>
-          </ul>
-        </div>
-
         <section>
           <h2>概要</h2>
+
+          <PageSummary
+            items={[
+              'AESとは何か？暗号化の仕組み',
+              '暗号化デモで実際に体験',
+              'AES-128と256の違いと選び方',
+              'JavaScriptでの実装方法'
+            ]}
+          />
 
           <p>
             <strong>AES</strong>（Advanced Encryption Standard）とは、<strong>現代で最も広く使われている暗号化規格</strong>です。

@@ -4,6 +4,8 @@ import Link from 'next/link'
 import { useState } from 'react'
 import StructuredData from '@/app/components/StructuredData'
 import TermHeader from '@/app/components/TermHeader'
+import TableOfContents from '@/app/components/TableOfContents'
+import PageSummary from '@/app/components/PageSummary'
 import AdSenseUnit from '@/app/components/AdSenseUnit'
 
 export default function APIPage() {
@@ -97,17 +99,7 @@ export default function APIPage() {
         dateModified="2026-01-17"
       />
 
-      {/* コンパクト目次 */}
-      <nav className="table-of-contents">
-        <ul>
-          <li><a href="#overview">1. 概要</a></li>
-          <li><a href="#demo">2. 体験デモ：APIを呼んでみる</a></li>
-          <li><a href="#examples">3. このAPIはどこで使われている？</a></li>
-          <li><a href="#mechanism">4. APIの仕組みを超かんたんに言うと</a></li>
-          <li><a href="#terms">5. APIの基本用語</a></li>
-          <li><a href="#summary">6. まとめ：APIは何ができるのか</a></li>
-        </ul>
-      </nav>
+      <TableOfContents />
 
       <main>
         {/* 更新日（概要の上） */}
@@ -123,6 +115,16 @@ export default function APIPage() {
 
         <section id="overview">
           <h2>概要</h2>
+
+          <PageSummary
+            items={[
+              'APIとは何か？レストランの例えで理解',
+              '天気API・名言API・猫画像APIを実際に体験',
+              'APIが使われている身近な例',
+              'APIの基本用語と仕組み'
+            ]}
+          />
+
           <p>
             <strong>API</strong>とは、<strong>他のサービスの機能やデータを呼び出して使う仕組み</strong>です。
           </p>

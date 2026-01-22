@@ -4,6 +4,7 @@ import FoolProofDemo from '@/components/FoolProofDemo'
 import StructuredData from '@/app/components/StructuredData'
 import TableOfContents from '@/app/components/TableOfContents'
 import TermHeader from '@/app/components/TermHeader'
+import PageSummary from '@/app/components/PageSummary'
 import FAQAccordion from '@/app/components/FAQAccordion'
 
 export const metadata: Metadata = {
@@ -91,25 +92,14 @@ export default function FoolProofPage() {
         <section>
           <h2>概要</h2>
 
-          <div style={{
-            padding: '15px',
-            backgroundColor: '#f9f7ef',
-            borderRadius: '8px',
-            marginBottom: '30px',
-            borderLeft: '4px solid #ea9b8a',
-            boxShadow: '0 2px 8px rgba(0,0,0,0.05)',
-            padding: '20px'
-          }}>
-            <p style={{ margin: 0, fontSize: '16px', fontWeight: 'bold', color: '#333', marginBottom: '12px' }}>
-              このページで分かること
-            </p>
-            <ul style={{ marginTop: 0, marginBottom: 0, paddingLeft: '20px' }}>
-              <li style={{ marginBottom: '8px' }}>フールプルーフとは何か？</li>
-              <li style={{ marginBottom: '8px' }}>身近な例（洗濯機、ATM、USB等）</li>
-              <li style={{ marginBottom: '8px' }}>Web開発での実装方法（コード付き）</li>
-              <li style={{ marginBottom: '8px' }}>ポカヨケ、フェイルセーフとの違い</li>
-            </ul>
-          </div>
+          <PageSummary
+            items={[
+              'フールプルーフとは何か？',
+              '身近な例（洗濯機、ATM、USB等）',
+              'Web開発での実装方法（コード付き）',
+              'ポカヨケ、フェイルセーフとの違い'
+            ]}
+          />
 
           <p>
             <strong>フールプルーフ</strong>（Fool Proof）とは、ユーザーの誤操作や誤入力を
