@@ -974,24 +974,24 @@ footer a:hover {
   border: 1px solid #e0e0e0;
   border-left: 4px solid #14b8a6;
   border-radius: 8px;
-  padding: clamp(16px, 3vw, 20px);
-  margin-bottom: clamp(20px, 4vw, 30px);
-  margin-top: clamp(15px, 3vw, 20px);
+  padding: clamp(12px, 2.5vw, 16px);
+  margin-bottom: clamp(15px, 3vw, 20px);
+  margin-top: clamp(10px, 2.5vw, 15px);
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
 }
 
 .table-of-contents-header {
   display: flex;
   align-items: center;
-  gap: 10px;
-  margin-bottom: 12px;
-  font-size: clamp(15px, 3.5vw, 18px);
+  gap: 8px;
+  margin-bottom: 10px;
+  font-size: clamp(14px, 3vw, 16px);
   font-weight: 700;
   color: #2c3e50;
 }
 
 .table-of-contents-header i {
-  font-size: clamp(16px, 3.5vw, 20px);
+  font-size: clamp(14px, 3vw, 18px);
   color: #14b8a6;
 }
 
@@ -1001,7 +1001,7 @@ footer a:hover {
   margin: 0;
   display: flex;
   flex-direction: column;
-  gap: 8px;
+  gap: 6px;
 }
 
 .table-of-contents li {
@@ -1012,14 +1012,14 @@ footer a:hover {
 .table-of-contents a {
   display: flex;
   align-items: center;
-  gap: 12px;
+  gap: 10px;
   color: #495057;
   text-decoration: none;
-  padding: 10px 12px;
+  padding: 8px 10px;
   border-radius: 6px;
   transition: all 0.2s ease;
-  font-size: clamp(14px, 3vw, 16px);
-  line-height: 1.5;
+  font-size: clamp(13px, 2.8vw, 15px);
+  line-height: 1.4;
 }
 
 .table-of-contents a:hover {
@@ -1036,12 +1036,12 @@ footer a:hover {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  min-width: 28px;
-  height: 28px;
+  min-width: 24px;
+  height: 24px;
   background-color: #14b8a6;
   color: white;
   border-radius: 50%;
-  font-size: clamp(12px, 2.5vw, 14px);
+  font-size: clamp(11px, 2.3vw, 13px);
   font-weight: 600;
   flex-shrink: 0;
 }
@@ -1148,30 +1148,39 @@ footer a:hover {
 
   /* 目次のスマホ対応 */
   .table-of-contents {
-    padding: 12px;
-    margin-bottom: 20px;
-    margin-top: 20px;
+    padding: 10px;
+    margin-bottom: 15px;
+    margin-top: 15px;
   }
 
   .table-of-contents-header {
-    font-size: 16px;
-    margin-bottom: 10px;
+    font-size: 14px;
+    margin-bottom: 8px;
+    gap: 6px;
+  }
+
+  .table-of-contents-header i {
+    font-size: 14px;
+  }
+
+  .table-of-contents ul {
+    gap: 5px;
   }
 
   .table-of-contents a {
-    padding: 8px 10px;
+    padding: 6px 8px;
     gap: 8px;
-    font-size: 14px;
+    font-size: 13px;
   }
 
   .toc-number {
-    min-width: 24px;
-    height: 24px;
-    font-size: 12px;
+    min-width: 22px;
+    height: 22px;
+    font-size: 11px;
   }
 
   .toc-title {
-    font-size: 14px;
+    font-size: 13px;
     line-height: 1.4;
   }
 }

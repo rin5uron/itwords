@@ -9,9 +9,10 @@ type TocItem = {
 
 type TableOfContentsProps = {
   minHeadings?: number // 最低何個のh2があったら表示するか（デフォルト: 4）
+  className?: string // カスタムクラス名を指定可能
 }
 
-export default function TableOfContents({ minHeadings = 4 }: TableOfContentsProps) {
+export default function TableOfContents({ minHeadings = 4, className }: TableOfContentsProps) {
   const [headings, setHeadings] = useState<TocItem[]>([])
 
   useEffect(() => {
@@ -50,7 +51,7 @@ export default function TableOfContents({ minHeadings = 4 }: TableOfContentsProp
   }
 
   return (
-    <nav className="table-of-contents">
+    <nav className={`table-of-contents ${className || ''}`}>
       <div className="table-of-contents-header">
         <i className="fas fa-list" aria-hidden="true"></i>
         <span>目次</span>
