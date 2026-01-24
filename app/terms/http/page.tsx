@@ -3,6 +3,7 @@ import { Metadata } from 'next'
 import HTTPDemo from '@/app/components/HTTPDemo'
 import StructuredData from '@/app/components/StructuredData'
 import TermHeader from '@/app/components/TermHeader'
+import TableOfContents from '@/app/components/TableOfContents'
 import PageSummary from '@/app/components/PageSummary'
 import FAQAccordion from '@/app/components/FAQAccordion'
 
@@ -60,15 +61,17 @@ export default function HTTPPage() {
         title="HTTP/HTTPS（エイチティーティーピー）とは？読み方・違いを初心者向けに解説"
         description="HTTP/HTTPS（エイチティーティーピー/エイチティーティーピーエス）を初心者向けに解説。読み方、違い、仕組み、HTTPメソッド、ステータスコードを実践デモ付きで学べます。"
         datePublished="2024-01-01"
-        dateModified="2026-01-16"
+        dateModified="2026-01-24"
       />
       <TermHeader
         termName="HTTP/HTTPS"
         reading="エイチティーティーピー / エイチティーティーピーエス"
         icon="fas fa-exchange-alt"
         dateCreated="2024-01-01"
-        dateModified="2026-01-16"
+        dateModified="2026-01-24"
       />
+
+      <TableOfContents />
 
       <main>
         {/* このページでわかること（一番上） */}
@@ -77,7 +80,8 @@ export default function HTTPPage() {
             'HTTPとHTTPSの違い',
             'HTTPメソッド（GET、POST等）の使い方',
             'ステータスコード（200、404等）の意味',
-            'SSL/TLSによる暗号化の仕組み'
+            'SSL/TLSによる暗号化の仕組み',
+            'プロトコルとは？「同じ道を走る別の車」の比喩'
           ]}
         />
 
@@ -89,7 +93,7 @@ export default function HTTPPage() {
           paddingBottom: '15px',
           borderBottom: '1px solid #e0e0e0'
         }}>
-          <span>作成日: 2024-01-01 | 最終更新: 2026-01-16</span>
+          <span>作成日: 2024-01-01 | 最終更新: 2026-01-24</span>
         </div>
 
         <section>
@@ -120,6 +124,54 @@ export default function HTTPPage() {
             </p>
             <HTTPDemo />
           </div>
+        </section>
+
+        <section>
+          <h2>プロトコルとは？「同じ道を走る別の車」の比喩</h2>
+          <p>
+            インターネットは、世界中のコンピュータをつなぐ大きな道路のようなものです。
+            この道路を、目的に応じて異なる「車」が走ります。
+          </p>
+
+          <p>
+            <strong>HTTP</strong>はWebページを見るための「車」、
+            <Link href="/terms/smtp">SMTP</Link>はメールを送るための「車」です。
+            <strong>同じ道を走りますが、目的が違うのです。</strong>
+          </p>
+
+          <div className="comparison-table">
+            <table>
+              <thead>
+                <tr>
+                  <th>プロトコル</th>
+                  <th>役割</th>
+                  <th>比喩</th>
+                  <th>ポート番号</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td><span className="term-name">HTTP</span></td>
+                  <td>Webページを表示する</td>
+                  <td>観光バス（Webページを運ぶ）</td>
+                  <td>80番（HTTP）、443番（HTTPS）</td>
+                </tr>
+                <tr>
+                  <td><Link href="/terms/smtp" className="term-name">SMTP</Link></td>
+                  <td>メールを送信する</td>
+                  <td>郵便トラック（メールを運ぶ）</td>
+                  <td>25番（標準）、587番、465番</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+
+          <p className="note">
+            <strong>💡 ポイント：</strong>
+            インターネットという「同じ道」を、HTTPや<Link href="/terms/smtp">SMTP</Link>などの「違う車」が走っています。
+            <Link href="/terms/ip-address">IPアドレスとポート番号</Link>が「住所と部屋番号」なら、
+            プロトコルは「その部屋で何をするか」を決めるルールです。
+          </p>
         </section>
 
         <section>
@@ -358,6 +410,14 @@ export default function HTTPPage() {
                 <tr>
                   <td><Link href="/terms/cookie" className="term-name">Cookie</Link></td>
                   <td>HTTPでやり取りされる小さなデータ（ログイン状態の保持など）</td>
+                </tr>
+                <tr>
+                  <td><Link href="/terms/ip-address" className="term-name">IPアドレスとポート番号</Link></td>
+                  <td>IPアドレスが「住所」、ポート番号が「部屋番号」。HTTPはポート80番、HTTPSはポート443番を使う</td>
+                </tr>
+                <tr>
+                  <td><Link href="/terms/smtp" className="term-name">SMTP</Link></td>
+                  <td>メールを送信するためのプロトコル。HTTPと同じ「インターネットの道」を使うが、目的が違う</td>
                 </tr>
                 <tr>
                   <td>DNS</td>

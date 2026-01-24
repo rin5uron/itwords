@@ -1,15 +1,17 @@
 import Link from 'next/link'
 import StructuredData from '@/app/components/StructuredData'
 import TermHeader from '@/app/components/TermHeader'
+import TableOfContents from '@/app/components/TableOfContents'
+import PageSummary from '@/app/components/PageSummary'
 import { Metadata } from 'next'
 
 export const metadata: Metadata = {
-  title: 'IPアドレスとは？初心者向けにわかりやすく解説 | 実践型IT用語辞典',
-  description: 'IPアドレスとは何か、初心者向けにわかりやすく解説。サーバーやパソコンの「住所」として機能するIPアドレスの仕組み、IPv4とIPv6の違い、プライベートIPとパブリックIPについて学べます。',
-  keywords: ['IPアドレス', 'IPアドレス とは', 'IPv4', 'IPv6', 'プライベートIP', 'パブリックIP', 'IP アドレス 確認', 'IT用語 わかりやすく', 'ネットワーク 初心者'],
+  title: 'IPアドレスとポート番号とは？小学生でもわかる【住所と部屋番号】',
+  description: 'IPアドレスとポート番号とは？住所と部屋番号の比喩で今すぐ理解。IPv4/IPv6の違い、ポート80/443/25の役割、HTTP/SMTPとの関係まで初心者向けに解説します。',
+  keywords: ['IPアドレス', 'ポート番号', 'IPアドレス とは', 'ポート番号 とは', 'IPv4', 'IPv6', 'ポート80', 'ポート443', 'ポート25', 'IT用語 わかりやすく', 'ネットワーク 初心者'],
   openGraph: {
-    title: 'IPアドレスとは？初心者向けにわかりやすく解説',
-    description: 'IPアドレスの仕組みとIPv4/IPv6の違いを住所の例えでわかりやすく説明。プライベートIPとパブリックIPの違いも理解できます。',
+    title: 'IPアドレスとポート番号とは？小学生でもわかる【住所と部屋番号】',
+    description: 'IPアドレスとポート番号とは？住所と部屋番号の比喩で今すぐ理解。IPv4/IPv6の違い、ポート80/443/25の役割、HTTP/SMTPとの関係まで初心者向けに解説します。',
     type: 'article',
   },
   alternates: {
@@ -35,6 +37,14 @@ export default function IPAddressPage() {
       question: '自分のIPアドレスを確認する方法は？',
       answer: 'パブリックIPは「https://www.cman.jp/network/support/go_access.cgi」などのサイトで確認できます。プライベートIPは、Windowsなら「ipconfig」、Mac/Linuxなら「ifconfig」コマンドで確認できます。',
     },
+    {
+      question: 'ポート番号とは何ですか？',
+      answer: 'ポート番号は、IPアドレスに付け加えて「どのサービスにアクセスするか」を指定する番号です。IPアドレスが「住所」なら、ポート番号は「部屋番号」のようなものです。Webページを見る時はポート80番（HTTP）または443番（HTTPS）、メールを送る時はポート25番（SMTP）が使われます。',
+    },
+    {
+      question: 'ポート80番と443番の違いは何ですか？',
+      answer: 'ポート80番はHTTP（暗号化なしのWebページ）、ポート443番はHTTPS（暗号化された安全なWebページ）用です。現代のWebサイトでは、セキュリティのためポート443番（HTTPS）が標準となっています。',
+    },
   ]
 
   return (
@@ -45,18 +55,31 @@ export default function IPAddressPage() {
         title="IPアドレスとは？初心者向けにわかりやすく解説"
         description="IPアドレスの役割とIPv4/IPv6の違いを初心者向けに解説。サーバーやデバイスの住所として機能する仕組みを学べます。"
         datePublished="2026-01-12"
-        dateModified="2026-01-12"
+        dateModified="2026-01-24"
       />
 
       <TermHeader
-        termName="IPアドレス"
-        reading="アイピーアドレス / IP Address"
+        termName="IPアドレスとポート番号"
+        reading="アイピーアドレス / IP Address and Port Number"
         icon="fas fa-network-wired"
         dateCreated="2026-01-12"
-        dateModified="2026-01-12"
+        dateModified="2026-01-24"
       />
 
+      <TableOfContents />
+
       <main>
+        {/* このページでわかること（一番上） */}
+        <PageSummary
+          items={[
+            'IPアドレスとは？デバイスの住所',
+            'ポート番号とは？部屋番号の比喩',
+            'IPv4とIPv6の違い',
+            'プライベートIPとパブリックIPの違い',
+            'プロトコルとポート番号の関係'
+          ]}
+        />
+
         {/* 更新日（概要の上） */}
         <div className="date-info" style={{
           fontSize: '14px',
@@ -65,7 +88,7 @@ export default function IPAddressPage() {
           paddingBottom: '15px',
           borderBottom: '1px solid #e0e0e0'
         }}>
-          <span>作成日: 2026-01-12 | 最終更新: 2026-01-12</span>
+          <span>作成日: 2026-01-12 | 最終更新: 2026-01-24</span>
         </div>
 
         <section>
@@ -86,11 +109,19 @@ export default function IPAddressPage() {
             <Link href="/terms/server">サーバー</Link>のIPアドレスを使って正しい場所にリクエストを送ります。
           </p>
 
-          <div className="code-example">
-            <pre><code>{`例: IPアドレスの形式
+          <p>
+            <strong>ポート番号</strong>は、IPアドレスに付け加えて「どの部屋（サービス）にアクセスするか」を指定する番号です。
+            IPアドレスが「住所」なら、ポート番号は「部屋番号」のようなものです。
+          </p>
 
-IPv4: 192.168.1.1
-IPv6: 2001:0db8:85a3::8a2e:0370:7334`}</code></pre>
+          <div className="code-example">
+            <pre><code>{`例: IPアドレスとポート番号の形式
+
+IPv4: 192.168.1.1:80
+IPv6: 2001:0db8:85a3::8a2e:0370:7334:443
+
+IPアドレス:ポート番号
+住所:部屋番号`}</code></pre>
           </div>
         </section>
 
@@ -269,6 +300,166 @@ ip addr show`}</code></pre>
         </section>
 
         <section>
+          <h2>ポート番号とは？「住所と部屋番号」の比喩</h2>
+          <p>
+            IPアドレスが「住所」なら、<strong>ポート番号は「部屋番号」</strong>です。
+          </p>
+
+          <p>
+            一つの建物（サーバー）には、複数の部屋（サービス）があります。
+            Webページを見る部屋、メールを送る部屋、ファイルをダウンロードする部屋など、
+            それぞれに部屋番号（ポート番号）が割り当てられています。
+          </p>
+
+          <div className="comparison-table">
+            <table>
+              <thead>
+                <tr>
+                  <th>比喩</th>
+                  <th>実際の意味</th>
+                  <th>例</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>住所</td>
+                  <td>IPアドレス</td>
+                  <td>192.168.1.1</td>
+                </tr>
+                <tr>
+                  <td>部屋番号</td>
+                  <td>ポート番号</td>
+                  <td>80番（Webページ）、443番（安全なWebページ）、25番（メール送信）</td>
+                </tr>
+                <tr>
+                  <td>建物全体</td>
+                  <td>サーバー</td>
+                  <td>Webサーバー、メールサーバーなど</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+
+          <h3>よく使われるポート番号</h3>
+          <p>
+            インターネットでは、よく使われるサービスに標準的なポート番号が決まっています。
+          </p>
+
+          <div className="comparison-table">
+            <table>
+              <thead>
+                <tr>
+                  <th>ポート番号</th>
+                  <th>プロトコル</th>
+                  <th>用途</th>
+                  <th>説明</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td><code>80</code></td>
+                  <td><Link href="/terms/http" className="term-name">HTTP</Link></td>
+                  <td>Webページを表示</td>
+                  <td>通常のWebサイト（暗号化なし）</td>
+                </tr>
+                <tr>
+                  <td><code>443</code></td>
+                  <td><Link href="/terms/http" className="term-name">HTTPS</Link></td>
+                  <td>安全なWebページを表示</td>
+                  <td>暗号化されたWebサイト</td>
+                </tr>
+                <tr>
+                  <td><code>25</code></td>
+                  <td><Link href="/terms/smtp" className="term-name">SMTP</Link></td>
+                  <td>メールを送信</td>
+                  <td>メール送信用のプロトコル</td>
+                </tr>
+                <tr>
+                  <td><code>587</code></td>
+                  <td>SMTP over TLS</td>
+                  <td>安全にメールを送信</td>
+                  <td>暗号化されたメール送信</td>
+                </tr>
+                <tr>
+                  <td><code>110</code></td>
+                  <td>POP3</td>
+                  <td>メールを受信</td>
+                  <td>メールを受信するプロトコル</td>
+                </tr>
+                <tr>
+                  <td><code>143</code></td>
+                  <td>IMAP</td>
+                  <td>メールを受信（サーバーに保存）</td>
+                  <td>サーバーにメールを保存したまま受信</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+
+          <p className="note">
+            <strong>💡 ポイント：</strong>
+            Webページを見る時は通常、ポート80番（HTTP）または443番（HTTPS）が使われます。
+            メールを送る時は、ポート25番や587番（<Link href="/terms/smtp">SMTP</Link>）が使われます。
+            ブラウザは通常、ポート番号を自動的に判断するので、私たちは意識する必要がありません。
+          </p>
+
+          <h3>ポート番号の書き方</h3>
+          <p>
+            IPアドレスとポート番号は、コロン（:）で区切って書きます。
+          </p>
+
+          <div className="code-example">
+            <pre><code>{`例: IPアドレス:ポート番号
+
+192.168.1.1:80      → HTTP（Webページ）
+192.168.1.1:443     → HTTPS（安全なWebページ）
+192.168.1.1:25      → SMTP（メール送信）
+
+URLで書く場合：
+http://192.168.1.1:80
+https://192.168.1.1:443`}</code></pre>
+          </div>
+
+          <p>
+            <strong>例：</strong>
+            あなたが「https://itwords.jp」にアクセスするとき、
+            ブラウザは自動的に「itwords.jpのIPアドレス:443番」に接続します。
+            ポート443番はHTTPS用のポート番号なので、安全にWebページが表示されます。
+          </p>
+        </section>
+
+        <section>
+          <h2>プロトコルとポート番号の関係</h2>
+          <p>
+            <Link href="/terms/http">HTTP</Link>や<Link href="/terms/smtp">SMTP</Link>などのプロトコルは、
+            インターネットという「同じ道」を走る「違う車」です。
+            ポート番号は、その「車」がどの「部屋」に入るかを決める番号です。
+          </p>
+
+          <p>
+            <strong>例：</strong>
+          </p>
+          <ul>
+            <li>
+              <strong>Webページを見る時：</strong>
+              IPアドレス（住所）+ ポート80番または443番（部屋番号）で、
+              <Link href="/terms/http">HTTP</Link>という「車」に乗ってWebページを取得します
+            </li>
+            <li>
+              <strong>メールを送る時：</strong>
+              IPアドレス（住所）+ ポート25番または587番（部屋番号）で、
+              <Link href="/terms/smtp">SMTP</Link>という「車」に乗ってメールを送信します
+            </li>
+          </ul>
+
+          <p className="note">
+            <strong>💡 ポイント：</strong>
+            インターネットという「同じ道」を、HTTPやSMTPなどの「違う車」が走ります。
+            IPアドレスとポート番号が「住所と部屋番号」で、プロトコルが「その部屋で何をするか」を決めるルールです。
+          </p>
+        </section>
+
+        <section>
           <h2>なぜドメインが必要なのか</h2>
           <p>
             IPアドレスは数字の羅列で、人間にとって覚えにくいという問題があります。
@@ -348,6 +539,14 @@ itwords.jp → DNS解決 → 76.76.21.21`}</code></pre>
                 <tr>
                   <td><Link href="/terms/hosting-service" className="term-name">ホスティングサービス</Link></td>
                   <td>サーバーとIPアドレスをまとめて提供するサービス</td>
+                </tr>
+                <tr>
+                  <td><Link href="/terms/http" className="term-name">HTTP</Link></td>
+                  <td>Webページを表示するプロトコル。ポート80番（HTTP）または443番（HTTPS）を使う</td>
+                </tr>
+                <tr>
+                  <td><Link href="/terms/smtp" className="term-name">SMTP</Link></td>
+                  <td>メールを送信するプロトコル。ポート25番、587番、465番を使う</td>
                 </tr>
               </tbody>
             </table>
