@@ -88,25 +88,25 @@ export default function Home() {
         <section id="new">
           <h3>新着用語</h3>
           <div className="card-container">
+            <div className="card" data-category="web">
+              <Link href="/terms/smtp" className="card-link">
+                <span className="category-tag">Web</span>
+                <h4>SMTP</h4>
+                <p>メールを送信するためのプロトコル。HTTPと同じ「インターネットの道」を使うが、目的が違う。</p>
+              </Link>
+            </div>
+            <div className="card" data-category="infrastructure">
+              <Link href="/terms/ip-address" className="card-link">
+                <span className="category-tag">インフラ</span>
+                <h4>IPアドレスとポート番号</h4>
+                <p>IPアドレスが「住所」、ポート番号が「部屋番号」。プロトコルとの関係も理解できます。</p>
+              </Link>
+            </div>
             <div className="card" data-category="programming">
               <Link href="/terms/cli-gui" className="card-link">
                 <span className="category-tag">プログラミング</span>
                 <h4>CLI / GUI</h4>
                 <p>黒い画面（CLI）とボタン（GUI）の違い。昔のPCはCLIだけだった歴史も。</p>
-              </Link>
-            </div>
-            <div className="card" data-category="programming">
-              <Link href="/terms/sql" className="card-link">
-                <span className="category-tag">データベース</span>
-                <h4>SQL</h4>
-                <p>データベースを操作する言語。SELECT、INSERT、UPDATEを体験デモで学べます。</p>
-              </Link>
-            </div>
-            <div className="card" data-category="security">
-              <Link href="/terms/exploit" className="card-link">
-                <span className="category-tag">セキュリティ</span>
-                <h4>エクスプロイト</h4>
-                <p>脆弱性を悪用する攻撃コード。実際の攻撃シミュレーションで学べます。</p>
               </Link>
             </div>
           </div>
@@ -149,6 +149,13 @@ export default function Home() {
                 <span className="category-tag">Web</span>
                 <h4>HTTP/HTTPS</h4>
                 <p>Webブラウザとサーバー間でデータをやり取りするための通信規約です。</p>
+              </Link>
+            </div>
+            <div className="card" data-category="web">
+              <Link href="/terms/smtp" className="card-link">
+                <span className="category-tag">Web</span>
+                <h4>SMTP</h4>
+                <p>メールを送信するためのプロトコル。HTTPと同じ「インターネットの道」を使うが、目的が違う。</p>
               </Link>
             </div>
             <div className="card" data-category="web">
@@ -333,8 +340,8 @@ export default function Home() {
             <div className="card" data-category="infrastructure">
               <Link href="/terms/ip-address" className="card-link">
                 <span className="category-tag">インフラ</span>
-                <h4>IPアドレス</h4>
-                <p>ネットワーク上の機器を識別する番号です。</p>
+                <h4>IPアドレスとポート番号</h4>
+                <p>IPアドレスが「住所」、ポート番号が「部屋番号」。プロトコルとの関係も理解できます。</p>
               </Link>
             </div>
             <div className="card" data-category="infrastructure">

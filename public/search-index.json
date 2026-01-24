@@ -1,27 +1,32 @@
 [
   {
-    "title": "AES（Advanced Encryption Standard）とは？初心者向けにわかりやすく解説 | 実践型IT用語辞典",
-    "description": "AES（Advanced Encryption Standard）とは何か、初心者向けにわかりやすく解説。暗号化の仕組み、AES-128・AES-256の違い、実用例を具体的に学べます。共通鍵暗号方式の基本も理解できるプログラミング初心者向けIT用語解説。",
+    "title": "AESとは？小学生でもわかる【動かして学べるデモ付き】",
+    "description": "AESとは？暗号化デモで仕組みを今すぐ体験。Wi-FiやHTTPSで使われる暗号化、128と256の違い、実装方法まで初心者向けに解説します。",
     "path": "/terms/aes"
   },
   {
-    "title": "APIとは？デモで体験する初心者向け解説【実例で理解】 | 実践型IT用語辞典",
-    "description": "API（エーピーアイ）を初心者向けに解説。天気API・名言API・猫画像APIを実際に体験できるデモ付き。レストランの例えで仕組みを理解し、実践例でAPIの使い方を学べます。",
+    "title": "APIとは？初心者向けにわかりやすく解説 | 実践型IT用語辞典",
+    "description": "APIとは他のサービスの機能やデータを呼び出して使う仕組み",
     "path": "/terms/api"
   },
   {
-    "title": "CLI/GUIとは？違い・使い分けを初心者向けに解説【どっちを使う？】 | 実践型IT用語辞典",
-    "description": "CLI（黒い画面）とGUI（ボタン）の違いを初心者向けに解説。昔のPCはCLIだけだった歴史や、初心者がどっちから学ぶべきかをシミュレーター付きで分かりやすく説明します。",
+    "title": "Bootstrapとは？初心者向けにわかりやすく解説 | 実践型IT用語辞典",
+    "description": "Bootstrap（ブートストラップ）とはWebサイトのデザインを効率的に作るためのCSSフレームワーク",
+    "path": "/terms/bootstrap"
+  },
+  {
+    "title": "CLI / GUIとは？初心者向けにわかりやすく解説 | 実践型IT用語辞典",
+    "description": "CLI / GUIについて、初心者向けにわかりやすく解説します。",
     "path": "/terms/cli-gui"
   },
   {
-    "title": "Cookie（クッキー）とは？初心者向けにわかりやすく解説【実践デモ付き】 | 実践型IT用語辞典",
-    "description": "Cookieとは、Webサイトがブラウザに保存する小さなデータファイルです。ログイン状態の保持や、ショッピングカートの内容記憶などに使われます。",
+    "title": "Cookieとは？初心者向けにわかりやすく解説 | 実践型IT用語辞典",
+    "description": "Cookie（クッキー）とは「Webサイトがあなたのブラウザに保存する小さなデータファイル」",
     "path": "/terms/cookie"
   },
   {
-    "title": "CSSとは？初心者向けにわかりやすく解説【実践デモ付き】 | 実践型IT用語辞典",
-    "description": "CSSとは、Webページの見た目を整えるためのスタイルシート言語です。色、フォント、レイアウトなどを指定して、HTMLで作った構造に装飾を加えます。",
+    "title": "CSSとは？初心者向けにわかりやすく解説 | 実践型IT用語辞典",
+    "description": "CSSとはWebページの見た目を整えるための言語",
     "path": "/terms/css"
   },
   {
@@ -46,18 +51,23 @@
   },
   {
     "title": "フールプルーフとは？初心者向けにわかりやすく解説【実践デモ付き】 | 実践型IT用語辞典",
-    "description": "フールプルーフ（Fool Proof）は、誤操作や誤入力を未然に防ぐ設計思想です。削除確認ダイアログ、入力制限、ボタンの色分けなど具体例と実践デモで、ユーザーが間違えにくいシステムを作る考え方を初心者にもわかりやすく解説します。製造業のポカヨケとの関係、フェイルセーフとの違いも詳しく説明。",
+    "description": "フールプルーフとは？実践デモで誤操作防止の仕組みを体験。削除確認ダイアログ、入力制限、ポカヨケとの関係、フェイルセーフとの違いまで初心者向けに解説します。",
     "path": "/terms/foolproof"
   },
   {
-    "title": "Frameworkとは？初心者向けにわかりやすく解説【実践デモ付き】 | 実践型IT用語辞典",
-    "description": "Frameworkとは、アプリケーション開発のための土台となる枠組みです。React、Vue、Next.jsなど人気フレームワークを比較しながら解説します。",
+    "title": "Frameworkとは？初心者向けにわかりやすく解説 | 実践型IT用語辞典",
+    "description": "Framework（フレームワーク）とは「アプリケーション開発のための土台となる枠組み」",
     "path": "/terms/framework"
   },
   {
-    "title": "GitHubとは？使い方・プルリクエストの流れを3分で理解【初心者向け】 | 実践型IT用語辞典",
-    "description": "GitHub初心者向けに、使い方・プルリクエスト・Gitフローを3分で解説。リポジトリ、コミット、プッシュの基本からチーム開発の流れまで、実践デモ付きでわかりやすく説明します。今日から使えるGitHub入門ガイド。",
+    "title": "GitHubとは？初心者向けにわかりやすく解説 | 実践型IT用語辞典",
+    "description": "GitHubとは「ソースコードをバージョン管理し、世界中の開発者と共有・協力できるプラットフォーム」",
     "path": "/terms/github"
+  },
+  {
+    "title": "GitHubワークフローとは？初心者向けにわかりやすく解説 | 実践型IT用語辞典",
+    "description": "GitHubワークフローとは「チームで協力してコードを開発・管理するための一連の流れ」",
+    "path": "/terms/github-workflow"
   },
   {
     "title": "ホスティングサービスとは？初心者向けにわかりやすく解説 | 実践型IT用語辞典",
@@ -65,17 +75,22 @@
     "path": "/terms/hosting-service"
   },
   {
-    "title": "HTMLとは？初心者向けにわかりやすく解説【実践デモ付き】 | 実践型IT用語辞典",
-    "description": "HTMLとは、Webページの構造を作るマークアップ言語です。見出し、段落、リンク、画像などの要素を配置して、Webページの骨組みを作ります。",
+    "title": "HTMLとは？初心者向けにわかりやすく解説 | 実践型IT用語辞典",
+    "description": "HTMLについて、初心者向けにわかりやすく解説します。",
     "path": "/terms/html"
   },
   {
-    "title": "HTTP/HTTPSとは？初心者向けにわかりやすく解説【実践デモ付き】 | 実践型IT用語辞典",
-    "description": "HTTP/HTTPSとは、Webブラウザとサーバー間でデータをやり取りするための通信規約です。HTTPSは暗号化されたHTTPで、個人情報や決済情報を安全に送信できます。",
+    "title": "HTTP/HTTPSとは？初心者向けにわかりやすく解説 | 実践型IT用語辞典",
+    "description": "HTTPとは「Webブラウザとサーバーの間でデータをやり取りするためのルール（通信規約）」",
     "path": "/terms/http"
   },
   {
-    "title": "IPアドレスとは？初心者向けにわかりやすく解説 | 実践型IT用語辞典",
+    "title": "HTTPSとは？初心者向けにわかりやすく解説 | 実践型IT用語辞典",
+    "description": "HTTPSとは「Webブラウザとサーバーの間でデータを安全にやり取りするための暗号化された通信規約」",
+    "path": "/terms/https"
+  },
+  {
+    "title": "IPアドレスとポート番号とは？初心者向けにわかりやすく解説 | 実践型IT用語辞典",
     "description": "IPアドレスとはインターネットやネットワークに接続されたデバイス（コンピュータ、サーバー、スマホなど）を識別するための番号",
     "path": "/terms/ip-address"
   },
@@ -85,8 +100,8 @@
     "path": "/terms/javascript"
   },
   {
-    "title": "JSONとは？初心者向けにわかりやすく解説【実践デモ付き】 | 実践型IT用語辞典",
-    "description": "JSONとは何か、初心者向けにわかりやすく解説。JavaScript Object Notationの基本から、Web APIやデータ保存で使われる軽量データ交換フォーマットまで、実際に編集できるデモで体験しながら学べます。プログラミング初心者向けIT用語解説。",
+    "title": "JSONとは？初心者向けにわかりやすく解説 | 実践型IT用語辞典",
+    "description": "JSONについて、初心者向けにわかりやすく解説します。",
     "path": "/terms/json"
   },
   {
@@ -95,8 +110,8 @@
     "path": "/terms/localstorage"
   },
   {
-    "title": "npmとは？読み方・使い方を初心者向けに解説【実践デモ付き】 | 実践型IT用語辞典",
-    "description": "npm（エヌピーエム）を初心者向けに解説。読み方、使い方、主要コマンドを実践デモ付きで学べます。",
+    "title": "npmとは？初心者向けにわかりやすく解説 | 実践型IT用語辞典",
+    "description": "npmとは「JavaScriptのパッケージ（ライブラリ）を管理するツール」",
     "path": "/terms/npm"
   },
   {
@@ -105,9 +120,14 @@
     "path": "/terms/poka-yoke"
   },
   {
-    "title": "Queueとは？初心者向けにわかりやすく解説【実践デモ付き】 | 実践型IT用語辞典",
-    "description": "Queueとは、先入れ先出し（FIFO）のデータ構造です。コンビニのレジ待ちのように、先に来た人から順番に処理します。",
+    "title": "キュー (Queue)とは？初心者向けにわかりやすく解説 | 実践型IT用語辞典",
+    "description": "キュー (Queue)について、初心者向けにわかりやすく解説します。",
     "path": "/terms/queue"
+  },
+  {
+    "title": "リポジトリとは？初心者向けにわかりやすく解説 | 実践型IT用語辞典",
+    "description": "リポジトリ（Repository）とはプログラムのソースコードやファイルを保存・管理する「保管庫」",
+    "path": "/terms/repository"
   },
   {
     "title": "サーバーとは？初心者向けにわかりやすく解説 | 実践型IT用語辞典",
@@ -115,13 +135,23 @@
     "path": "/terms/server"
   },
   {
-    "title": "SQL（エスキューエル）とは？読み方・基本コマンドを初心者向けに解説 | 実践型IT用語辞典",
-    "description": "SQL（エスキューエル/シークェル）を初心者向けに解説。読み方、基本コマンド（SELECT、INSERT、UPDATE、DELETE）、NoSQLとの違いを実践デモ付きで学べます。",
+    "title": "SMTPとは？初心者向けにわかりやすく解説 | 実践型IT用語辞典",
+    "description": "SMTPとは「メールを送信するためのルール（通信規約）」",
+    "path": "/terms/smtp"
+  },
+  {
+    "title": "SQLとは？初心者向けにわかりやすく解説 | 実践型IT用語辞典",
+    "description": "SQLとは「データベースを操作するための言語」",
     "path": "/terms/sql"
   },
   {
-    "title": "Stackとは？初心者向けにわかりやすく解説【実践デモ付き】 | 実践型IT用語辞典",
-    "description": "Stackとは、後入れ先出し（LIFO）のデータ構造です。お皿を重ねたように、最後に入れたものから順番に取り出します。",
+    "title": "SSL/TLSとは？初心者向けにわかりやすく解説 | 実践型IT用語辞典",
+    "description": "SSL/TLSとはインターネット通信を暗号化して安全にする仕組み",
+    "path": "/terms/ssl-tls"
+  },
+  {
+    "title": "スタック構造とは？初心者向けにわかりやすく解説 | 実践型IT用語辞典",
+    "description": "スタック構造について、初心者向けにわかりやすく解説します。",
     "path": "/terms/stack"
   },
   {
@@ -130,13 +160,13 @@
     "path": "/terms/validation"
   },
   {
-    "title": "Vercel（ヴァーセル）とは？読み方から使い方まで初心者向けに解説 | 実践型IT用語辞典",
-    "description": "Vercel（ヴァーセル）を初心者向けに解説。読み方、特徴、使い方、料金プランをデプロイステップのデモ付きで学べます。",
+    "title": "Vercelとは？初心者向けにわかりやすく解説 | 実践型IT用語辞典",
+    "description": "Vercelとは「Webサイトやアプリを簡単に公開できるホスティングサービス」",
     "path": "/terms/vercel"
   },
   {
-    "title": "Webhookとは？初心者向けにわかりやすく解説【実践デモ付き】 | 実践型IT用語辞典",
-    "description": "Webhookとは、イベント発生時に自動でデータを送信する仕組みです。GitHubのプッシュ通知やSlackの自動投稿などに使われます。",
+    "title": "Webhookとは？初心者向けにわかりやすく解説 | 実践型IT用語辞典",
+    "description": "Webhookとは「あるイベントが発生したときに、自動的にHTTPリクエストを送信する仕組み」",
     "path": "/terms/webhook"
   },
   {
