@@ -77,6 +77,7 @@ export default function HTTPPage() {
         {/* このページでわかること（一番上） */}
         <PageSummary
           items={[
+            'URLを入力してから画面が表示されるまでの流れ（DNS→HTTP）',
             'HTTPとHTTPSの違い',
             'HTTPメソッド（GET、POST等）の使い方',
             'ステータスコード（200、404等）の意味',
@@ -171,6 +172,41 @@ export default function HTTPPage() {
             インターネットという「同じ道」を、HTTPや<Link href="/terms/smtp">SMTP</Link>などの「違う車」が走っています。
             <Link href="/terms/ip-address">IPアドレスとポート番号</Link>が「住所と部屋番号」なら、
             プロトコルは「その部屋で何をするか」を決めるルールです。
+          </p>
+        </section>
+
+        <section>
+          <h2>URLを入力してから画面が表示されるまで</h2>
+          <p>
+            Webサイトを見るとき、ブラウザのアドレスバーに<code>https://itwords.jp</code>のようなURLを入力しますよね。
+            実は、HTTPのやり取りが始まる<strong>前</strong>に、重要なステップがあります。
+          </p>
+
+          <ol>
+            <li>
+              <strong>DNSで名前解決：</strong>
+              ブラウザはまず<Link href="/terms/dns">DNS</Link>サーバーに問い合わせて、
+              ドメイン名（<code>itwords.jp</code>）を<Link href="/terms/ip-address">IPアドレス</Link>に変換します。
+              これを「名前解決」と呼びます。
+            </li>
+            <li>
+              <strong>Webサーバーに接続：</strong>
+              取得したIPアドレスを使って、<Link href="/terms/server">Webサーバー</Link>に接続します。
+            </li>
+            <li>
+              <strong>HTTPでリクエスト：</strong>
+              ここで初めてHTTP（またはHTTPS）のルールに従って、
+              「このページを見せてください」とリクエストを送ります。
+            </li>
+            <li>
+              <strong>HTMLを受け取って表示：</strong>
+              サーバーがHTMLなどのデータを返し、ブラウザが画面に表示します。
+            </li>
+          </ol>
+
+          <p>
+            つまり、<strong>DNS → Webサーバー接続 → HTTPでデータ取得 → 表示</strong>という流れで、
+            URLから情報が返ってくるまでに、複数の仕組みが連携して動いています。
           </p>
         </section>
 
@@ -420,8 +456,8 @@ export default function HTTPPage() {
                   <td>メールを送信するためのプロトコル。HTTPと同じ「インターネットの道」を使うが、目的が違う</td>
                 </tr>
                 <tr>
-                  <td>DNS</td>
-                  <td>ドメイン名をIPアドレスに変換する仕組み</td>
+                  <td><Link href="/terms/dns" className="term-name">DNS</Link></td>
+                  <td>ドメイン名をIPアドレスに変換する仕組み。HTTPの前に名前解決が行われる</td>
                 </tr>
               </tbody>
             </table>

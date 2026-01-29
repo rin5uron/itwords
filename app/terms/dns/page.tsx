@@ -443,6 +443,23 @@ github.com → DNS解決 → 140.82.121.4`}</code></pre>
         </section>
 
         <section>
+          <h2>深掘り：DNSはWebサイトが存在するための前提条件</h2>
+          <p>
+            Webサイトを公開するためには、<Link href="/terms/data-center">データセンター</Link>と<Link href="/terms/server">Webサーバー</Link>が必ず必要になります。
+            <Link href="/terms/vercel">Vercel</Link>などのホスティングサービスは、データセンター上でWebサーバーを提供しています。
+          </p>
+          <p>
+            しかし、WebサーバーがURLでアクセス可能になるためには、<strong>DNSによる名前解決が不可欠</strong>です。
+            そのため、Webサーバーを提供する事業者は、自社DNSまたは外部DNSサービスと必ず連携しています。
+          </p>
+          <p className="note">
+            <strong>ひとこと整理：</strong>
+            DNSは「Webサイトが存在するための前提条件」。
+            インターネットは、分業されたインフラ同士の連携で成り立っています。
+          </p>
+        </section>
+
+        <section>
           <h2>DNSのセキュリティ</h2>
 
           <h3>DNSハイジャック</h3>
@@ -492,6 +509,10 @@ github.com → DNS解決 → 140.82.121.4`}</code></pre>
                 <tr>
                   <td><Link href="/terms/vercel" className="term-name">Vercel</Link></td>
                   <td>DNS設定を自動化するホスティングサービス</td>
+                </tr>
+                <tr>
+                  <td><Link href="/terms/data-center" className="term-name">データセンター</Link></td>
+                  <td>Webサーバーが置かれる施設。DNSと連携してWeb公開を支える</td>
                 </tr>
               </tbody>
             </table>

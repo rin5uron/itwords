@@ -423,6 +423,10 @@ export default function HostingServicePage() {
               </thead>
               <tbody>
                 <tr>
+                  <td><Link href="/terms/data-center" className="term-name">データセンター</Link></td>
+                  <td>ホスティングサービスがサーバーを置く施設</td>
+                </tr>
+                <tr>
                   <td><Link href="/terms/server" className="term-name">サーバー</Link></td>
                   <td>ホスティングサービスが提供するコンピュータ</td>
                 </tr>

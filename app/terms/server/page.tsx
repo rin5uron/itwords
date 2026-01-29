@@ -123,6 +123,11 @@ export default function ServerPage() {
             あなたが「このWebページを見せて」とリクエストすると、サーバーが処理してデータを返してくれます。
           </p>
 
+          <p>
+            サーバーは多くの場合<Link href="/terms/data-center">データセンター</Link>に置かれています。
+            URLでアクセスできるようにするには、<Link href="/terms/dns">DNS</Link>による名前解決が不可欠です。
+          </p>
+
           <ul>
             <li><strong>クライアント（Client）</strong>: サービスを利用する側（あなたのPC、スマホ、ブラウザ）</li>
             <li><strong>サーバー（Server）</strong>: サービスを提供する側（Webサイトのデータを保存・配信するコンピュータ）</li>
@@ -391,6 +396,10 @@ export default function ServerPage() {
                 <tr>
                   <td><Link href="/terms/dns" className="term-name">DNS</Link></td>
                   <td>ドメイン名をIPアドレスに変換するシステム</td>
+                </tr>
+                <tr>
+                  <td><Link href="/terms/data-center" className="term-name">データセンター</Link></td>
+                  <td>サーバーが置かれる施設。24時間稼働の基盤</td>
                 </tr>
                 <tr>
                   <td><Link href="/terms/hosting-service" className="term-name">ホスティングサービス</Link></td>

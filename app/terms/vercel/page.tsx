@@ -110,6 +110,12 @@ export default function VercelPage() {
             数秒後には世界中からアクセスできる状態になります。
           </p>
 
+          <p>
+            Vercelは<Link href="/terms/data-center">データセンター</Link>上で<Link href="/terms/server">Webサーバー</Link>を提供しています。
+            URLでアクセスできるようにするため、<Link href="/terms/dns">DNS</Link>と連携しており、
+            ドメインを入力するだけで自動的にDNS設定を行ってくれます。
+          </p>
+
           <p className="note">
             <strong>💡 このサイトもVercelで動いています！</strong>
             <code>https://itwords.jp</code> は、Vercelを使って公開されています。
@@ -436,6 +442,10 @@ DATABASE_URL=postgresql://...`}</code></pre>
                 </tr>
               </thead>
               <tbody>
+                <tr>
+                  <td><Link href="/terms/data-center" className="term-name">データセンター</Link></td>
+                  <td>Vercelはデータセンター上でWebサーバーを提供</td>
+                </tr>
                 <tr>
                   <td><Link href="/terms/hosting-service" className="term-name">ホスティングサービス</Link></td>
                   <td>Vercelはサーバーレス型のホスティングサービス</td>
