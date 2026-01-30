@@ -138,6 +138,13 @@ export default function Home() {
               </Link>
             </div>
             <div className="card" data-category="web">
+              <Link href="/terms/bootstrap" className="card-link">
+                <span className="category-tag">Web</span>
+                <h4>Bootstrap</h4>
+                <p>Webサイトのデザインを効率的に作るためのCSSフレームワークです。</p>
+              </Link>
+            </div>
+            <div className="card" data-category="web">
               <Link href="/terms/javascript" className="card-link">
                 <span className="category-tag">Web</span>
                 <h4>JavaScript</h4>
@@ -309,6 +316,13 @@ export default function Home() {
                 <span className="category-tag">ツール</span>
                 <h4>GitHub</h4>
                 <p>ソースコードをバージョン管理し、世界中の開発者と共有できるプラットフォームです。</p>
+              </Link>
+            </div>
+            <div className="card" data-category="tools">
+              <Link href="/terms/github-workflow" className="card-link">
+                <span className="category-tag">ツール</span>
+                <h4>GitHubワークフロー</h4>
+                <p>プルリクエストとブランチ戦略で、チームで安全にコードを開発する流れを学べます。</p>
               </Link>
             </div>
             <div className="card" data-category="tools">

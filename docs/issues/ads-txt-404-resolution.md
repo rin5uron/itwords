@@ -1,6 +1,6 @@
 # [AdSense] ads.txt ファイルが見つからない問題
 
-**タグ**: `adsense`, `bug`, `infrastructure`, `nextjs`
+**タグ**: `インデックス登録エラー`, `adsense`, `bug`, `infrastructure`, `nextjs`
 
 **作成日**: 2026-01-29  
 **ステータス**: ✅ 解決済み
