@@ -3,6 +3,8 @@ import type { Metadata } from 'next'
 import QueueDemo from '@/components/QueueDemo'
 import StructuredData from '@/app/components/StructuredData'
 import TermHeader from '@/app/components/TermHeader'
+import TableOfContents from '@/app/components/TableOfContents'
+import PageSummary from '@/app/components/PageSummary'
 import FAQAccordion from '@/app/components/FAQAccordion'
 
 export const metadata: Metadata = {
@@ -89,17 +91,22 @@ export default function QueuePage() {
         dateModified="2026-01-07"
       />
 
+      <div className="date-info-toc">
+        <span>作成日: 2024-01-07 | 最終更新: 2026-01-07</span>
+      </div>
+
+      <TableOfContents />
+
       <main>
-        {/* 更新日（概要の上） */}
-        <div className="date-info" style={{
-          fontSize: '14px',
-          color: '#666',
-          marginBottom: '20px',
-          paddingBottom: '15px',
-          borderBottom: '1px solid #e0e0e0'
-        }}>
-          <span>作成日: 2024-01-07 | 最終更新: 2026-01-07</span>
-        </div>
+        <PageSummary
+          items={[
+            'キューとは？FIFO（先入れ先出し）',
+            'Enqueue・Dequeueの基本操作',
+            'キューの仕組みを体験するデモ',
+            '日常例（レジの行列、印刷ジョブ）',
+            'スタックとの違い、実践での使い方',
+          ]}
+        />
 
         <section>
           <h2>概要</h2>

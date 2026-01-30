@@ -3,6 +3,8 @@
 import Link from 'next/link'
 import { useState } from 'react'
 import TermHeader from '@/app/components/TermHeader'
+import TableOfContents from '@/app/components/TableOfContents'
+import PageSummary from '@/app/components/PageSummary'
 import FAQAccordion from '@/app/components/FAQAccordion'
 
 const faqs = [
@@ -47,17 +49,22 @@ export default function FrameworkPage() {
         icon="fas fa-cube"
       />
 
+      <div className="date-info-toc">
+        <span>作成日: 2024-01-01 | 最終更新: 2026-01-07</span>
+      </div>
+
+      <TableOfContents />
+
       <main>
-        {/* 更新日（概要の上） */}
-        <div className="date-info" style={{
-          fontSize: '14px',
-          color: '#666',
-          marginBottom: '20px',
-          paddingBottom: '15px',
-          borderBottom: '1px solid #e0e0e0'
-        }}>
-          <span>作成日: 2024-01-01 | 最終更新: 2026-01-07</span>
-        </div>
+        <PageSummary
+          items={[
+            'フレームワークとは？開発の土台となる枠組み',
+            'ライブラリとの違い（呼び出す側・呼ばれる側）',
+            'フレームワーク選びのデモ（React / Next.js / Vue）',
+            '使うメリット・代表例',
+            'おすすめの学習順序',
+          ]}
+        />
 
         <section>
           <h2>概要</h2>

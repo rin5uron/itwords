@@ -518,9 +518,6 @@ github.com → DNS解決 → 140.82.121.4`}</code></pre>
             </table>
           </div>
         </section>
-
-        {/* 目次（mainの最後） */}
-        <TableOfContents />
       </main>
 
       <footer className="footer-nav">

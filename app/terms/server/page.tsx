@@ -67,6 +67,12 @@ export default function ServerPage() {
         dateModified="2026-01-12"
       />
 
+      <div className="date-info-toc">
+        <span>作成日: 2026-01-12 | 最終更新: 2026-01-12</span>
+      </div>
+
+      <TableOfContents />
+
       <div style={{
         width: '100%',
         maxWidth: '900px',
@@ -94,17 +100,6 @@ export default function ServerPage() {
       </div>
 
       <main>
-        {/* 更新日（概要の上） */}
-        <div className="date-info" style={{
-          fontSize: '14px',
-          color: '#666',
-          marginBottom: '20px',
-          paddingBottom: '15px',
-          borderBottom: '1px solid #e0e0e0'
-        }}>
-          <span>作成日: 2026-01-12 | 最終更新: 2026-01-12</span>
-        </div>
-
         <section>
           <h2>概要</h2>
           <p>
@@ -417,9 +412,6 @@ export default function ServerPage() {
             </table>
           </div>
         </section>
-
-        {/* 目次（mainの最後） */}
-        <TableOfContents />
       </main>
 
       <footer className="footer-nav">

@@ -118,6 +118,12 @@ export default function AESPage() {
         />
       </div>
 
+      <div className="date-info-toc">
+        <span>作成日: 2024-01-09 | 最終更新: 2026-01-19</span>
+      </div>
+
+      <TableOfContents />
+
       <main>
         {/* このページでわかること（一番上） */}
         <PageSummary
@@ -815,9 +821,6 @@ async function decryptData(ciphertext, key, iv) {
             </table>
           </div>
         </section>
-
-        {/* 目次（mainの最後） */}
-        <TableOfContents />
       </main>
 
       <footer className="footer-nav">

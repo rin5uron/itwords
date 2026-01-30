@@ -3,6 +3,9 @@ import Image from 'next/image'
 import { Metadata } from 'next'
 import StructuredData from '@/app/components/StructuredData'
 import TermHeader from '@/app/components/TermHeader'
+import TableOfContents from '@/app/components/TableOfContents'
+import PageSummary from '@/app/components/PageSummary'
+import FAQAccordion from '@/app/components/FAQAccordion'
 import WhiteHatDemo from '@/components/WhiteHatDemo'
 
 export const metadata: Metadata = {
@@ -72,6 +75,12 @@ export default function WhiteHatHackerPage() {
         dateModified="2026-01-14"
       />
 
+      <div className="date-info-toc">
+        <span>作成日: 2026-01-14 | 最終更新: 2026-01-14</span>
+      </div>
+
+      <TableOfContents />
+
       <div style={{
         width: '100%',
         maxWidth: '900px',
@@ -99,16 +108,15 @@ export default function WhiteHatHackerPage() {
       </div>
 
       <main>
-        {/* 更新日（概要の上） */}
-        <div className="date-info" style={{
-          fontSize: '14px',
-          color: '#666',
-          marginBottom: '20px',
-          paddingBottom: '15px',
-          borderBottom: '1px solid #e0e0e0'
-        }}>
-          <span>作成日: 2026-01-14 | 最終更新: 2026-01-14</span>
-        </div>
+        <PageSummary
+          items={[
+            'ホワイトハッカーとは？善意でセキュリティを守る技術者',
+            'ホワイトハット・ブラックハットの由来',
+            '脆弱性診断の流れを体験するデモ',
+            'ホワイトハッカーとブラックハッカーの違い',
+            'グレーハッカー、仕事内容・なるには',
+          ]}
+        />
 
         <section>
           <h2>概要</h2>
@@ -205,6 +213,8 @@ export default function WhiteHatHackerPage() {
             <li><strong>継続学習</strong>：新しい攻撃手法や対策を常にキャッチアップ</li>
           </ol>
         </section>
+
+        <FAQAccordion faqs={faqs} />
 
         <section>
           <h2>関連用語</h2>
