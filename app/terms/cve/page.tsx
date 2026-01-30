@@ -2,6 +2,9 @@ import Link from 'next/link'
 import { Metadata } from 'next'
 import StructuredData from '@/app/components/StructuredData'
 import TermHeader from '@/app/components/TermHeader'
+import TableOfContents from '@/app/components/TableOfContents'
+import PageSummary from '@/app/components/PageSummary'
+import FAQAccordion from '@/app/components/FAQAccordion'
 import CVEDemo from '@/components/CVEDemo'
 
 export const metadata: Metadata = {
@@ -62,17 +65,22 @@ export default function CVEPage() {
         dateModified="2026-01-14"
       />
 
+      <div className="date-info-toc">
+        <span>作成日: 2026-01-14 | 最終更新: 2026-01-14</span>
+      </div>
+
+      <TableOfContents />
+
       <main>
-        {/* 更新日（概要の上） */}
-        <div className="date-info" style={{
-          fontSize: '14px',
-          color: '#666',
-          marginBottom: '20px',
-          paddingBottom: '15px',
-          borderBottom: '1px solid #e0e0e0'
-        }}>
-          <span>作成日: 2026-01-14 | 最終更新: 2026-01-14</span>
-        </div>
+        <PageSummary
+          items={[
+            'CVEとは何か？世界共通の脆弱性識別番号',
+            'CVE番号の見方（CVE-年-連番）',
+            '実際のCVE番号を検索する体験デモ',
+            'CVSSスコアと深刻度（Low〜Critical）',
+            'CVEとゼロデイ攻撃の関係、調べ方・限界',
+          ]}
+        />
 
         <section>
           <h2>概要</h2>
@@ -189,6 +197,8 @@ export default function CVEPage() {
             <li><strong>すべての脆弱性が登録されるわけではない</strong>：軽微なものや未公開のものは登録されない</li>
           </ul>
         </section>
+
+        <FAQAccordion faqs={faqs} />
 
         <section>
           <h2>関連用語</h2>
