@@ -240,6 +240,11 @@ export default function ContentPage() {
         dateModified="[更新日]"
       />
 
+      {/* 作成日・更新日（目次の上、右寄せ） */}
+      <div className="date-info-toc">
+        <span>作成日: [作成日] | 最終更新: [更新日]</span>
+      </div>
+
       <TableOfContents />
 
       {/* ヒーロー画像（任意・目次の下に配置） */}
@@ -279,17 +284,6 @@ export default function ContentPage() {
             '[ポイント4：関連知識や応用]'
           ]}
         />
-
-        {/* 更新日 */}
-        <div className="date-info" style={{
-          fontSize: '14px',
-          color: '#666',
-          marginBottom: '20px',
-          paddingBottom: '15px',
-          borderBottom: '1px solid #e0e0e0'
-        }}>
-          <span>作成日: [作成日] | 最終更新: [更新日]</span>
-        </div>
 
         <section>
           <h2>概要</h2>

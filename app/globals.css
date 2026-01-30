@@ -993,6 +993,27 @@ footer a:hover {
   font-size: clamp(14px, 3vw, 16px);
 }
 
+/* 日付表示（目次の上、右寄せ） */
+.date-info-toc {
+  text-align: right;
+  font-size: 14px;
+  color: #666;
+  margin-top: 15px;
+  margin-bottom: 8px;
+  padding-right: 5px;
+  padding-bottom: 8px;
+  border-bottom: 1px solid #14b8a6;
+}
+
+@media (max-width: 640px) {
+  .date-info-toc {
+    font-size: 12px;
+    margin-top: 10px;
+    margin-bottom: 6px;
+    padding-bottom: 6px;
+  }
+}
+
 /* 目次ラッパー：目次と本文の境界を明確にする */
 .toc-wrapper {
   display: block;
@@ -1009,7 +1030,7 @@ footer a:hover {
   border-radius: 8px;
   padding: clamp(12px, 2.5vw, 16px);
   margin-bottom: 0;
-  margin-top: clamp(10px, 2.5vw, 15px);
+  margin-top: 0; /* 余白削減: clamp(10px, 2.5vw, 15px) → 0 */
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
 }
 
@@ -1091,6 +1112,24 @@ footer a:hover {
   width: 100%;
   clear: both;
   margin-top: 0;
+}
+
+/* 本文中のリンクスタイル統一 */
+main a:not(.card-link):not(.breadcrumb-link):not(.term-name) {
+  color: #14b8a6;
+  text-decoration: none;
+  border-bottom: 1px solid transparent;
+  transition: all 0.2s ease;
+  font-weight: 500;
+}
+
+main a:not(.card-link):not(.breadcrumb-link):not(.term-name):hover {
+  color: #0d9488;
+  border-bottom-color: #0d9488;
+}
+
+main a:not(.card-link):not(.breadcrumb-link):not(.term-name):active {
+  color: #0a7f74;
 }
 
 /* FAQアコーディオンスタイル */
