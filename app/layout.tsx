@@ -54,7 +54,8 @@ export const metadata: Metadata = {
     apple: [
       { url: '/icon.png', sizes: '180x180', type: 'image/png' },
     ],
-    shortcut: '/icon.ico',
+    // 公式は icon.png のみ。古いブラウザが /icon.ico を要求しても next.config で /icon.png に飛ばす
+    shortcut: '/icon.png',
   },
 }
 
@@ -73,11 +74,16 @@ export default function RootLayout({
         {AD_CLIENT_ID && <GoogleAdSense adClientId={AD_CLIENT_ID} />}
         {children}
         <footer className="site-footer-layout">
-          <Link href="/privacy">プライバシーポリシー</Link>
-          {' | '}
-          <Link href="/terms-of-service">利用規約</Link>
-          {' | '}
-          <Link href="/contact">お問い合わせ</Link>
+          <div className="footer-links-main">
+            <Link href="/privacy">プライバシーポリシー</Link>
+            {' | '}
+            <Link href="/terms-of-service">利用規約</Link>
+            {' | '}
+            <Link href="/contact">お問い合わせ</Link>
+          </div>
+          <div className="footer-mobile-only">
+            <Link href="/#about">制作背景</Link>
+          </div>
           <p>&copy; 2026 itwords - 実践型IT用語辞典</p>
         </footer>
       </body>

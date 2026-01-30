@@ -4,6 +4,9 @@ import type { Metadata } from 'next'
 export const metadata: Metadata = {
   title: '利用規約 | 実践型IT用語辞典',
   description: 'IT用語辞典の利用規約です。サイトの利用条件、免責事項、著作権について掲載しています。',
+  alternates: {
+    canonical: 'https://itwords.jp/terms-of-service',
+  },
 }
 
 export default function TermsOfServicePage() {

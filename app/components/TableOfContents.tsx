@@ -51,27 +51,29 @@ export default function TableOfContents({ minHeadings = 4, className }: TableOfC
   }
 
   return (
-    <nav className={`table-of-contents ${className || ''}`}>
-      <div className="table-of-contents-header">
-        <i className="fas fa-list" aria-hidden="true"></i>
-        <span>目次</span>
-      </div>
-      <ul>
-        {headings.map((heading, index) => (
-          <li key={heading.id}>
-            <a
-              href={`#${heading.id}`}
-              onClick={(e) => {
-                e.preventDefault()
-                scrollToSection(heading.id)
-              }}
-            >
-              <span className="toc-number">{index + 1}</span>
-              <span className="toc-title">{heading.title}</span>
-            </a>
-          </li>
-        ))}
-      </ul>
-    </nav>
+    <div className="toc-wrapper">
+      <nav className={`table-of-contents ${className || ''}`}>
+        <div className="table-of-contents-header">
+          <i className="fas fa-list" aria-hidden="true"></i>
+          <span>目次</span>
+        </div>
+        <ul>
+          {headings.map((heading, index) => (
+            <li key={heading.id}>
+              <a
+                href={`#${heading.id}`}
+                onClick={(e) => {
+                  e.preventDefault()
+                  scrollToSection(heading.id)
+                }}
+              >
+                <span className="toc-number">{index + 1}</span>
+                <span className="toc-title">{heading.title}</span>
+              </a>
+            </li>
+          ))}
+        </ul>
+      </nav>
+    </div>
   )
 }

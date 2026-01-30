@@ -875,6 +875,31 @@ footer a:hover {
   margin-bottom: 0;
 }
 
+/* スマホ時のみフッターに「制作背景」を表示（改行で見切れ防止） */
+.footer-mobile-only {
+  display: none;
+}
+
+.footer-links-main {
+  display: inline;
+}
+
+/* スマホ: ヘッダーから「制作背景」を隠し、フッターに表示 */
+@media (max-width: 768px) {
+  .nav-item-about {
+    display: none;
+  }
+
+  .footer-mobile-only {
+    display: block;
+    margin-top: 0.5rem;
+  }
+
+  .footer-links-main {
+    display: block;
+  }
+}
+
 /* サイトヘッダー（共通）スタイル */
 .site-title-link {
   text-decoration: none;
@@ -968,6 +993,14 @@ footer a:hover {
   font-size: clamp(14px, 3vw, 16px);
 }
 
+/* 目次ラッパー：目次と本文の境界を明確にする */
+.toc-wrapper {
+  display: block;
+  width: 100%;
+  margin-bottom: clamp(24px, 5vw, 32px);
+  clear: both;
+}
+
 /* 目次（Table of Contents） */
 .table-of-contents {
   background: linear-gradient(135deg, #f8f9fa 0%, #ffffff 100%);
@@ -975,7 +1008,7 @@ footer a:hover {
   border-left: 4px solid #14b8a6;
   border-radius: 8px;
   padding: clamp(12px, 2.5vw, 16px);
-  margin-bottom: clamp(15px, 3vw, 20px);
+  margin-bottom: 0;
   margin-top: clamp(10px, 2.5vw, 15px);
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
 }
@@ -1050,6 +1083,14 @@ footer a:hover {
   flex: 1;
   word-wrap: break-word;
   overflow-wrap: break-word;
+}
+
+/* 本文エリア：目次の下に明確に配置 */
+.container main {
+  display: block;
+  width: 100%;
+  clear: both;
+  margin-top: 0;
 }
 
 /* FAQアコーディオンスタイル */
