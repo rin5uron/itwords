@@ -20,7 +20,7 @@ export default function CVEDemo() {
       id: 'CVE-2021-44228',
       year: '2021',
       number: '44228',
-      description: 'Apache Log4jのリモートコード実行脆弱性（Log4Shell）',
+      description: 'Log4j（Javaでログを記録するためのライブラリ）に、攻撃者が遠隔から好きなプログラムを実行できる重大な穴がありました。通称「Log4Shell」。',
       cvss: 10.0,
       severity: 'Critical',
       affected: 'Apache Log4j 2.0-beta9 〜 2.14.1',
@@ -29,7 +29,7 @@ export default function CVEDemo() {
       id: 'CVE-2024-3094',
       year: '2024',
       number: '3094',
-      description: 'XZ Utilsのバックドア（供給チェーン攻撃）',
+      description: 'XZ Utils（データを圧縮するソフト。多くのLinuxで使われている）に、開発者が意図的に仕込んだ不正なコード（バックドア）が混入していた事件です。',
       cvss: 9.8,
       severity: 'Critical',
       affected: 'XZ Utils 5.6.0, 5.6.1',
@@ -38,7 +38,7 @@ export default function CVEDemo() {
       id: 'CVE-2023-23397',
       year: '2023',
       number: '23397',
-      description: 'Microsoft Outlookの権限昇格脆弱性',
+      description: 'Microsoft Outlookで、攻撃者が他人のメールを読んだり、権限を乗っ取ったりできる脆弱性です。',
       cvss: 9.1,
       severity: 'Critical',
       affected: 'Microsoft Outlook (複数バージョン)',
@@ -190,63 +190,36 @@ export default function CVEDemo() {
               </div>
             </div>
 
-            <div style={{ marginBottom: '12px' }}>
-              <div style={{
-                fontSize: '12px',
-                color: '#666',
-                marginBottom: '4px',
-                fontWeight: 'bold'
-              }}>
-                <i className="fas fa-clipboard-list" aria-hidden /> 説明：
-              </div>
-              <div style={{ fontSize: '14px', color: '#333', lineHeight: '1.6' }}>
+            <div style={{ marginBottom: '14px' }}>
+              <div style={{ fontSize: 'clamp(15px, 3.2vw, 17px)', color: '#333', lineHeight: '1.65', fontWeight: '500' }}>
                 {selectedCVE.description}
               </div>
             </div>
 
-            <div style={{ marginBottom: '12px' }}>
+            <div style={{ marginBottom: 0 }}>
               <div style={{
-                fontSize: '12px',
-                color: '#666',
-                marginBottom: '4px',
-                fontWeight: 'bold'
+                display: 'flex',
+                flexWrap: 'wrap',
+                gap: '8px',
+                alignItems: 'center',
               }}>
-                <i className="fas fa-bullseye" aria-hidden /> 影響を受けるバージョン：
+                {selectedCVE.affected.split(/[,、]/).map((part, i) => (
+                  <span
+                    key={i}
+                    style={{
+                      fontSize: 'clamp(12px, 2.6vw, 14px)',
+                      fontFamily: 'monospace',
+                      backgroundColor: '#e9ecef',
+                      color: '#495057',
+                      padding: '6px 12px',
+                      borderRadius: '20px',
+                      border: '1px solid #dee2e6',
+                    }}
+                  >
+                    {part.trim()}
+                  </span>
+                ))}
               </div>
-              <div style={{
-                fontSize: '14px',
-                color: '#333',
-                fontFamily: 'monospace',
-                backgroundColor: '#f5f5f5',
-                padding: '8px',
-                borderRadius: '5px'
-              }}>
-                {selectedCVE.affected}
-              </div>
-            </div>
-
-            <div style={{
-              backgroundColor: '#e8f4f8',
-              padding: '10px',
-              borderRadius: '5px',
-              fontSize: '13px',
-              color: '#0c5460',
-              borderLeft: '4px solid #17a2b8'
-            }}>
-              <i className="fas fa-lightbulb" aria-hidden /> 実際のCVEデータベースで詳細を確認：
-              <a
-                href={`https://nvd.nist.gov/vuln/detail/${selectedCVE.id}`}
-                target="_blank"
-                rel="noopener noreferrer"
-                style={{
-                  color: '#0c5460',
-                  fontWeight: 'bold',
-                  textDecoration: 'underline',
-                  marginLeft: '8px'
-                }}
-              >
-                NVDで開く →
-              </a>
             </div>
           </div>
         )}
