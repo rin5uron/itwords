@@ -87,7 +87,7 @@ export default function GitHubWorkflowPage() {
           </p>
 
           <p className="note">
-            <strong>💡 豆知識：</strong>
+            <strong><i className="fas fa-lightbulb" aria-hidden /> 豆知識：</strong>
             このページでは、<Link href="/terms/github">GitHubの基本</Link>を理解していることを前提に、
             より実践的なワークフローについて説明します。
           </p>
@@ -115,9 +115,9 @@ export default function GitHubWorkflowPage() {
             どうなるでしょうか？
           </p>
           <ul>
-            <li>❌ <strong>動かないコード</strong>が本番に混入する</li>
-            <li>❌ <strong>他人の変更</strong>と衝突して壊れる</li>
-            <li>❌ <strong>誰の変更が原因</strong>でバグったか分からない</li>
+            <li><i className="fas fa-times-circle" aria-hidden /> <strong>動かないコード</strong>が本番に混入する</li>
+            <li><i className="fas fa-times-circle" aria-hidden /> <strong>他人の変更</strong>と衝突して壊れる</li>
+            <li><i className="fas fa-times-circle" aria-hidden /> <strong>誰の変更が原因</strong>でバグったか分からない</li>
           </ul>
 
           <p>
@@ -147,16 +147,16 @@ export default function GitHubWorkflowPage() {
           </ol>
 
           <p style={{ marginTop: '20px' }}>
-            <strong>💡 補足：</strong>
+            <strong><i className="fas fa-lightbulb" aria-hidden /> 補足：</strong>
             プルリクエストの流れを視覚的に理解したい場合は、上の「GitHubの全体の流れを理解する」デモを参照してください。
           </p>
 
           <h3>PRのメリット</h3>
           <ul>
-            <li>✅ <strong>コードレビュー</strong>: 他の開発者が確認できる</li>
-            <li>✅ <strong>議論の場</strong>: コメントで「ここはこうした方が良い」と提案</li>
-            <li>✅ <strong>履歴が残る</strong>: なぜこの変更をしたのか記録される</li>
-            <li>✅ <strong>テスト自動化</strong>: PR作成時に自動テストを走らせられる</li>
+            <li><i className="fas fa-check-circle" aria-hidden /> <strong>コードレビュー</strong>: 他の開発者が確認できる</li>
+            <li><i className="fas fa-check-circle" aria-hidden /> <strong>議論の場</strong>: コメントで「ここはこうした方が良い」と提案</li>
+            <li><i className="fas fa-check-circle" aria-hidden /> <strong>履歴が残る</strong>: なぜこの変更をしたのか記録される</li>
+            <li><i className="fas fa-check-circle" aria-hidden /> <strong>テスト自動化</strong>: PR作成時に自動テストを走らせられる</li>
           </ul>
 
           <h3>PRの作り方</h3>
@@ -194,14 +194,14 @@ Closes #123`}</code></pre>
             PRを見る側（レビュアー）も重要な役割です：
           </p>
           <ul>
-            <li>🔍 <strong>ロジックは正しいか</strong>: バグがないか確認</li>
-            <li>🔍 <strong>読みやすいか</strong>: 他の人が理解できるコードか</li>
-            <li>🔍 <strong>テストはあるか</strong>: 動作確認ができるか</li>
-            <li>🔍 <strong>セキュリティリスクはないか</strong>: 脆弱性がないか</li>
+            <li><i className="fas fa-search" aria-hidden /> <strong>ロジックは正しいか</strong>: バグがないか確認</li>
+            <li><i className="fas fa-search" aria-hidden /> <strong>読みやすいか</strong>: 他の人が理解できるコードか</li>
+            <li><i className="fas fa-search" aria-hidden /> <strong>テストはあるか</strong>: 動作確認ができるか</li>
+            <li><i className="fas fa-search" aria-hidden /> <strong>セキュリティリスクはないか</strong>: 脆弱性がないか</li>
           </ul>
 
           <p className="note">
-            <strong>💡 ポイント：</strong>
+            <strong><i className="fas fa-lightbulb" aria-hidden /> ポイント：</strong>
             PRは「マージするかしないか」だけでなく、<strong>チームの学びの場</strong>でもあります。
             新しいやり方を共有したり、ベストプラクティスを議論したりできます。
           </p>
@@ -249,9 +249,9 @@ Closes #123`}</code></pre>
             シンプルで理解しやすく、それでいて十分強力です。
           </p>
           <ul>
-            <li>✅ <strong>シンプル</strong>: mainブランチとfeatureブランチだけ</li>
-            <li>✅ <strong>理解しやすい</strong>: 複雑なルールがない</li>
-            <li>✅ <strong>頻繁にデプロイ</strong>: 小規模な変更をすぐに反映できる</li>
+            <li><i className="fas fa-check-circle" aria-hidden /> <strong>シンプル</strong>: mainブランチとfeatureブランチだけ</li>
+            <li><i className="fas fa-check-circle" aria-hidden /> <strong>理解しやすい</strong>: 複雑なルールがない</li>
+            <li><i className="fas fa-check-circle" aria-hidden /> <strong>頻繁にデプロイ</strong>: 小規模な変更をすぐに反映できる</li>
           </ul>
 
           <h3>Git Flow</h3>
@@ -259,9 +259,9 @@ Closes #123`}</code></pre>
             大規模なプロジェクトや、リリースサイクルが明確な場合に適しています。
           </p>
           <ul>
-            <li>✅ <strong>安定版と開発版を分離</strong>: main（本番）とdevelop（開発）を分ける</li>
-            <li>✅ <strong>リリース管理</strong>: releaseブランチでリリース準備</li>
-            <li>✅ <strong>ホットフィックス対応</strong>: 緊急修正用のhotfixブランチ</li>
+            <li><i className="fas fa-check-circle" aria-hidden /> <strong>安定版と開発版を分離</strong>: main（本番）とdevelop（開発）を分ける</li>
+            <li><i className="fas fa-check-circle" aria-hidden /> <strong>リリース管理</strong>: releaseブランチでリリース準備</li>
+            <li><i className="fas fa-check-circle" aria-hidden /> <strong>ホットフィックス対応</strong>: 緊急修正用のhotfixブランチ</li>
           </ul>
 
           <h3>Trunk-based</h3>
@@ -269,9 +269,9 @@ Closes #123`}</code></pre>
             超高速開発や、CI/CDが完備されている場合に適しています。
           </p>
           <ul>
-            <li>✅ <strong>高速開発</strong>: ブランチを切らずに直接mainにコミット</li>
-            <li>✅ <strong>短命なブランチ</strong>: 必要最小限のブランチのみ</li>
-            <li>⚠️ <strong>高度なCI/CDが必要</strong>: 自動テストとデプロイが必須</li>
+            <li><i className="fas fa-check-circle" aria-hidden /> <strong>高速開発</strong>: ブランチを切らずに直接mainにコミット</li>
+            <li><i className="fas fa-check-circle" aria-hidden /> <strong>短命なブランチ</strong>: 必要最小限のブランチのみ</li>
+            <li><i className="fas fa-exclamation-triangle" aria-hidden /> <strong>高度なCI/CDが必要</strong>: 自動テストとデプロイが必須</li>
           </ul>
         </section>
 

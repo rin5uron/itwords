@@ -80,6 +80,11 @@
 //    → overflowX: 'auto' や wordWrap: 'break-word' を使う
 // 6. ボタンは flex: '1' と minWidth を組み合わせる
 //    → スマホで適切なサイズになる
+// 7. デモの高さ: .demo-section に max-height + overflow-y: auto を適用済み（globals.css）
+//    → 高さ制限なし・スクロール必要時は自動でスクロール可能に
+// 8. 絵文字: ✓🔍✅❌💡などは使わず Font Awesome で統一
+//    → 例: <i className="fas fa-check-circle" aria-hidden />（✅）、fas fa-search（🔍）、fas fa-lightbulb（💡）、fas fa-times-circle（❌）
+// 9. アイコン出典: app/lib/icons.ts で FONT_AWESOME_VERSION（5.15.4）を一括変更可能。layout で読み込み。
 //
 // ============================================
 // 作成日・更新日のルール
@@ -699,7 +704,7 @@ export default function ContentPage() {
             minWidth: '150px',
             textAlign: 'center' 
           }}>
-            <div style={{ fontSize: 'clamp(20px, 5vw, 24px)', marginBottom: '8px' }}>🔍</div>
+            <div style={{ fontSize: 'clamp(20px, 5vw, 24px)', marginBottom: '8px' }}><i className="fas fa-search" aria-hidden /></div>
             <div style={{ fontSize: 'clamp(12px, 3vw, 14px)', fontWeight: 'bold', color: '#ea9b8a' }}>
               [項目1]
             </div>
@@ -784,7 +789,7 @@ console.log('残りの列:', registerQueue);
           </details>
 
           <p className="note" style={{ marginTop: '20px' }}>
-            <strong>💡 ポイント：</strong>
+            <strong><i className="fas fa-lightbulb" aria-hidden /> ポイント：</strong>
             このコードは、さっき説明した「[実例のタイトル]」の仕組みをそのまま実装しています。
             [コードから学べることを説明。]
           </p>

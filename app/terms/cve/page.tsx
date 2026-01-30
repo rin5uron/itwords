@@ -119,14 +119,14 @@ export default function CVEPage() {
             <li><strong>12345</strong>：その年の連番（何番目に登録されたか）</li>
           </ul>
           <p>
-            ⚠️ 注意：連番が大きいほど後に発見されたものですが、<strong>深刻度とは関係ありません</strong>。
+            <i className="fas fa-exclamation-triangle" aria-hidden /> 注意：連番が大きいほど後に発見されたものですが、<strong>深刻度とは関係ありません</strong>。
           </p>
         </section>
 
         <section>
-          <h2>⚡ CVE番号を検索してみよう</h2>
+          <h2><i className="fas fa-bolt" aria-hidden /> CVE番号を検索してみよう</h2>
           <p>
-            実際のCVEデータベースの使い方を体験 👇
+            実際のCVEデータベースの使い方を体験 <i className="fas fa-hand-point-down" aria-hidden style={{ marginLeft: '0.25em' }} />
           </p>
 
           <CVEDemo />
@@ -138,10 +138,10 @@ export default function CVEPage() {
             CVE情報には、脆弱性の深刻度を示す<strong>CVSS（Common Vulnerability Scoring System）スコア</strong>が付いています：
           </p>
           <ul>
-            <li><strong>0.0-3.9</strong>：🟢 低（Low）</li>
-            <li><strong>4.0-6.9</strong>：🟡 中（Medium）</li>
-            <li><strong>7.0-8.9</strong>：🟠 高（High）</li>
-            <li><strong>9.0-10.0</strong>：🔴 緊急（Critical）</li>
+            <li><strong>0.0-3.9</strong>：<i className="fas fa-circle" style={{ color: '#22c55e', fontSize: '0.6em', verticalAlign: 'middle' }} aria-hidden /> 低（Low）</li>
+            <li><strong>4.0-6.9</strong>：<i className="fas fa-circle" style={{ color: '#eab308', fontSize: '0.6em', verticalAlign: 'middle' }} aria-hidden /> 中（Medium）</li>
+            <li><strong>7.0-8.9</strong>：<i className="fas fa-circle" style={{ color: '#f97316', fontSize: '0.6em', verticalAlign: 'middle' }} aria-hidden /> 高（High）</li>
+            <li><strong>9.0-10.0</strong>：<i className="fas fa-circle" style={{ color: '#ef4444', fontSize: '0.6em', verticalAlign: 'middle' }} aria-hidden /> 緊急（Critical）</li>
           </ul>
           <p>
             スコアが高いほど、早急な対応が必要です。

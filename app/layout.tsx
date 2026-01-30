@@ -3,6 +3,7 @@ import './globals.css'
 import GoogleAnalytics from './components/GoogleAnalytics'
 import GoogleAdSense from './components/GoogleAdSense'
 import Link from 'next/link'
+import { FONT_AWESOME_CDN } from './lib/icons'
 
 export const metadata: Metadata = {
   metadataBase: new URL('https://itwords.jp'),
@@ -69,6 +70,9 @@ export default function RootLayout({
 
   return (
     <html lang="ja">
+      <head>
+        <link rel="stylesheet" href={FONT_AWESOME_CDN} />
+      </head>
       <body>
         {GA_ID && <GoogleAnalytics GA_ID={GA_ID} />}
         {AD_CLIENT_ID && <GoogleAdSense adClientId={AD_CLIENT_ID} />}
