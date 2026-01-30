@@ -66,7 +66,7 @@ export default function HTTPDemo() {
       )}
 
       <p style={{ marginTop: '15px', fontSize: '14px', color: '#6c757d' }}>
-        💡 ヒント：一般的なWebサイト閲覧では主にGETメソッドが使われ、フォーム送信ではPOSTメソッドが使われます。
+        <i className="fas fa-lightbulb" aria-hidden style={{ marginRight: '0.25em' }} /> ヒント：一般的なWebサイト閲覧では主にGETメソッドが使われ、フォーム送信ではPOSTメソッドが使われます。
       </p>
     </div>
   )

@@ -84,13 +84,20 @@ export default function WhiteHatDemo() {
   }
 
   const getSeverityLabel = (severity?: string) => {
+    const icon = severity ? (
+      <i
+        className="fas fa-circle"
+        style={{ color: getSeverityColor(severity), marginRight: '6px', fontSize: '0.85em' }}
+        aria-hidden
+      />
+    ) : null
     switch (severity) {
       case 'high':
-        return '🔴 高'
+        return <>{icon}高</>
       case 'medium':
-        return '🟡 中'
+        return <>{icon}中</>
       case 'low':
-        return '🟢 低'
+        return <>{icon}低</>
       default:
         return ''
     }
@@ -106,7 +113,7 @@ export default function WhiteHatDemo() {
         marginBottom: '20px'
       }}>
         <h3 style={{ marginTop: 0, marginBottom: '12px', fontSize: '18px', fontWeight: 'bold', color: '#333' }}>
-          🎮 脆弱性診断の流れを体験しよう
+          <i className="fas fa-gamepad" aria-hidden /> 脆弱性診断の流れを体験しよう
         </h3>
 
         <div style={{ marginBottom: '15px' }}>
@@ -130,7 +137,7 @@ export default function WhiteHatDemo() {
               >
                 <div style={{ display: 'flex', alignItems: 'center', marginBottom: '6px' }}>
                   <span style={{ fontSize: '20px', marginRight: '8px' }}>
-                    {isCompleted ? '✅' : isActive ? '🔍' : '⏳'}
+                    {isCompleted ? <i className="fas fa-check-circle" aria-hidden /> : isActive ? <i className="fas fa-search" aria-hidden /> : <i className="fas fa-hourglass-half" aria-hidden />}
                   </span>
                   <h4 style={{
                     margin: 0,
@@ -179,7 +186,7 @@ export default function WhiteHatDemo() {
             textAlign: 'center'
           }}>
             <p style={{ margin: 0, fontSize: '15px', fontWeight: 'bold', color: '#0c5460' }}>
-              🔍 スキャン中...
+              <i className="fas fa-search" aria-hidden /> スキャン中...
             </p>
           </div>
         )}
@@ -193,7 +200,7 @@ export default function WhiteHatDemo() {
             marginBottom: '12px',
           }}>
             <div style={{ fontWeight: 'bold', marginBottom: '8px', color: '#721c24' }}>
-              ⚠️ 発見された脆弱性：
+              <i className="fas fa-exclamation-triangle" aria-hidden /> 発見された脆弱性：
             </div>
             <ul style={{ margin: 0, paddingLeft: '20px', color: '#721c24' }}>
               {foundVulnerabilities.map((vuln, idx) => (

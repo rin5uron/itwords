@@ -72,7 +72,7 @@ export default function CSSDemo() {
       </div>
 
       <p style={{ marginTop: '15px', fontSize: '14px', color: '#6c757d' }}>
-        💡 試してみよう：<br />
+        <i className="fas fa-lightbulb" aria-hidden style={{ marginRight: '0.25em' }} /> 試してみよう：<br />
         • <code>color: red;</code> で文字色を赤に<br />
         • <code>font-size: 48px;</code> で文字を大きく<br />
         • <code>text-decoration: underline;</code> で下線を付ける<br />

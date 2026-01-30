@@ -9,7 +9,7 @@ export default function GitFlowDemo() {
     {
       title: '1. mainブランチ（本番）',
       description: '本番環境で動いているコード',
-      icon: '🌳',
+      icon: 'fas fa-code-branch',
       color: '#28a745',
       branch: 'main',
       action: '安定版のコード'
@@ -17,7 +17,7 @@ export default function GitFlowDemo() {
     {
       title: '2. ブランチを作成',
       description: '新機能開発用のブランチを作る',
-      icon: '🔀',
+      icon: 'fas fa-code-branch',
       color: '#007bff',
       branch: 'feature/login',
       action: 'git checkout -b feature/login'
@@ -25,7 +25,7 @@ export default function GitFlowDemo() {
     {
       title: '3. 開発＆コミット',
       description: 'ブランチ上で開発し、変更を記録',
-      icon: '💻',
+      icon: 'fas fa-laptop-code',
       color: '#ffc107',
       branch: 'feature/login',
       action: 'git add . && git commit'
@@ -33,7 +33,7 @@ export default function GitFlowDemo() {
     {
       title: '4. プッシュ',
       description: 'GitHubにブランチをアップロード',
-      icon: '📤',
+      icon: 'fas fa-cloud-upload-alt',
       color: '#17a2b8',
       branch: 'feature/login',
       action: 'git push origin feature/login'
@@ -41,7 +41,7 @@ export default function GitFlowDemo() {
     {
       title: '5. プルリクエスト作成',
       description: 'mainに統合したいとお願いする',
-      icon: '📝',
+      icon: 'fas fa-file-alt',
       color: '#6f42c1',
       branch: 'feature/login → main',
       action: 'GitHub上でPR作成'
@@ -49,7 +49,7 @@ export default function GitFlowDemo() {
     {
       title: '6. コードレビュー',
       description: 'チームメンバーがコードを確認',
-      icon: '👀',
+      icon: 'fas fa-eye',
       color: '#fd7e14',
       branch: 'feature/login',
       action: 'レビュー＆承認'
@@ -57,7 +57,7 @@ export default function GitFlowDemo() {
     {
       title: '7. マージ',
       description: 'mainブランチに統合される',
-      icon: '✅',
+      icon: 'fas fa-check-circle',
       color: '#28a745',
       branch: 'main',
       action: 'マージ完了！本番反映'
@@ -89,11 +89,11 @@ export default function GitFlowDemo() {
       marginTop: '20px'
     }}>
       <h3 style={{ marginTop: 0, marginBottom: '15px', fontSize: '18px', fontWeight: 'bold', color: '#333' }}>
-        🎮 Gitフロー体験デモ
+        <i className="fas fa-play-circle" aria-hidden style={{ marginRight: '0.25em' }} /> Gitフロー体験デモ
       </h3>
 
       <p style={{ fontSize: '14px', color: '#555', marginBottom: '20px' }}>
-        実際のチーム開発の流れをステップごとに確認してみましょう👇
+        実際のチーム開発の流れをステップごとに確認してみましょう <i className="fas fa-hand-point-down" aria-hidden style={{ marginLeft: '0.25em' }} />
       </p>
 
       {/* 現在のステップ表示 */}
@@ -106,7 +106,7 @@ export default function GitFlowDemo() {
         textAlign: 'center'
       }}>
         <div style={{ fontSize: '48px', marginBottom: '10px' }}>
-          {gitFlowSteps[currentStep].icon}
+          <i className={gitFlowSteps[currentStep].icon} aria-hidden style={{ color: '#fff' }} />
         </div>
         <h4 style={{ margin: '0 0 10px 0', fontSize: '20px' }}>
           {gitFlowSteps[currentStep].title}
@@ -235,7 +235,7 @@ export default function GitFlowDemo() {
             fontWeight: 'bold'
           }}
         >
-          ← 前へ
+          <i className="fas fa-arrow-left" aria-hidden style={{ marginRight: '0.25em' }} /> 前へ
         </button>
         <button
           onClick={resetSteps}
@@ -250,7 +250,7 @@ export default function GitFlowDemo() {
             fontWeight: 'bold'
           }}
         >
-          🔄 リセット
+          <i className="fas fa-sync-alt" aria-hidden style={{ marginRight: '0.25em' }} /> リセット
         </button>
         <button
           onClick={nextStep}
@@ -266,7 +266,7 @@ export default function GitFlowDemo() {
             fontWeight: 'bold'
           }}
         >
-          次へ →
+          次へ <i className="fas fa-arrow-right" aria-hidden style={{ marginLeft: '0.25em' }} />
         </button>
       </div>
 
@@ -276,7 +276,7 @@ export default function GitFlowDemo() {
         color: '#6c757d',
         textAlign: 'center'
       }}>
-        💡 これがチーム開発の基本的な流れです。ブランチを切って開発し、PRでレビューしてからマージします。
+        <i className="fas fa-lightbulb" aria-hidden style={{ marginRight: '0.25em' }} /> これがチーム開発の基本的な流れです。ブランチを切って開発し、PRでレビューしてからマージします。
       </p>
     </div>
   )

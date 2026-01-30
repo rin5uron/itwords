@@ -144,7 +144,7 @@ export default function JsonDemo() {
               }}
             >
               <p style={{ margin: 0, fontSize: '14px' }}>
-                <strong>💡 JSONのメリット：</strong>
+                <strong><i className="fas fa-lightbulb" aria-hidden /> JSONのメリット：</strong>
                 <br />
                 軽量でシンプル、しかも人間にも読みやすい。これがJSONが広く使われる理由です。
               </p>

@@ -6,11 +6,11 @@ export default function VercelDemo() {
   const [currentStep, setCurrentStep] = useState(0)
 
   const deploymentSteps = [
-    { title: '1. コードをプッシュ', description: 'GitHubにコードをpushします', icon: '📤', color: '#28a745' },
-    { title: '2. 自動検知', description: 'Vercelが変更を自動検知します', icon: '🔍', color: '#007bff' },
-    { title: '3. ビルド開始', description: 'プロジェクトをビルドします', icon: '⚙️', color: '#ffc107' },
-    { title: '4. デプロイ', description: 'グローバルCDNにデプロイします', icon: '🚀', color: '#17a2b8' },
-    { title: '5. 完了', description: 'サイトが公開されました！', icon: '✅', color: '#28a745' }
+    { title: '1. コードをプッシュ', description: 'GitHubにコードをpushします', icon: 'fas fa-cloud-upload-alt', color: '#28a745' },
+    { title: '2. 自動検知', description: 'Vercelが変更を自動検知します', icon: 'fas fa-search', color: '#007bff' },
+    { title: '3. ビルド開始', description: 'プロジェクトをビルドします', icon: 'fas fa-cog', color: '#ffc107' },
+    { title: '4. デプロイ', description: 'グローバルCDNにデプロイします', icon: 'fas fa-rocket', color: '#17a2b8' },
+    { title: '5. 完了', description: 'サイトが公開されました！', icon: 'fas fa-check-circle', color: '#28a745' }
   ]
 
   const nextStep = () => {
@@ -50,12 +50,13 @@ export default function VercelDemo() {
             }}
           >
             <div style={{
-              fontSize: '32px',
+              fontSize: '24px',
               marginRight: '15px',
               minWidth: '40px',
-              textAlign: 'center'
+              textAlign: 'center',
+              color: step.color
             }}>
-              {step.icon}
+              <i className={step.icon} aria-hidden />
             </div>
             <div style={{ flex: 1 }}>
               <h4 style={{ margin: '0 0 5px 0', color: index <= currentStep ? step.color : '#6c757d' }}>

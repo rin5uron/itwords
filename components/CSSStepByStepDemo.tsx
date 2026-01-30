@@ -101,11 +101,11 @@ export default function CSSStepByStepDemo() {
         marginBottom: '20px'
       }}>
         <h3 style={{ marginTop: 0, marginBottom: '15px', fontSize: '18px', fontWeight: 'bold', color: '#333' }}>
-          🎮 CSSを一つずつ適用してみよう
+          <i className="fas fa-gamepad" aria-hidden /> CSSを一つずつ適用してみよう
         </h3>
 
         <p style={{ fontSize: '14px', color: '#555', marginBottom: '15px' }}>
-          ボタンを押して、CSSの効果を確認しましょう👇
+          ボタンを押して、CSSの効果を確認しましょう <i className="fas fa-hand-point-down" aria-hidden />
         </p>
 
         {/* コントロールボタン */}
@@ -131,7 +131,7 @@ export default function CSSStepByStepDemo() {
                 transition: 'all 0.2s ease'
               }}
             >
-              {appliedStyles.has(prop.id) ? '✓ ' : ''}{prop.label}
+              {appliedStyles.has(prop.id) ? <><i className="fas fa-check" aria-hidden /> </> : ''}{prop.label}
             </button>
           ))}
           <button
@@ -147,7 +147,7 @@ export default function CSSStepByStepDemo() {
               fontWeight: 'bold'
             }}
           >
-            🔄 全部リセット
+            <i className="fas fa-sync-alt" aria-hidden /> 全部リセット
           </button>
         </div>
 
@@ -170,7 +170,7 @@ export default function CSSStepByStepDemo() {
               fontSize: '14px',
               color: '#856404'
             }}>
-              📄 HTML
+              <i className="fas fa-file-code" aria-hidden /> HTML
             </div>
             <pre style={{
               backgroundColor: '#2d2d2d',
@@ -200,7 +200,7 @@ export default function CSSStepByStepDemo() {
               fontSize: '14px',
               color: '#0c5460'
             }}>
-              🎨 CSS
+              <i className="fas fa-palette" aria-hidden /> CSS
             </div>
             <pre style={{
               backgroundColor: '#2d2d2d',
@@ -236,7 +236,7 @@ export default function CSSStepByStepDemo() {
             fontSize: '14px',
             color: '#495057'
           }}>
-            ✨ プレビュー
+            <i className="fas fa-eye" aria-hidden /> プレビュー
           </div>
 
           <div style={{
@@ -271,7 +271,7 @@ export default function CSSStepByStepDemo() {
             wordWrap: 'break-word',
             overflowWrap: 'break-word'
           }}>
-            <strong>📝 適用中のスタイル：</strong>
+            <strong><i className="fas fa-edit" aria-hidden /> 適用中のスタイル：</strong>
             <ul style={{ margin: '8px 0 0 0', paddingLeft: '20px' }}>
               {cssProperties
                 .filter(prop => appliedStyles.has(prop.id))

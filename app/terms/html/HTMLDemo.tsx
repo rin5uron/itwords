@@ -49,7 +49,7 @@ export default function HTMLDemo() {
       />
 
       <p style={{ marginTop: '15px', fontSize: '14px', color: '#6c757d' }}>
-        💡 試してみよう：<br />
+        <i className="fas fa-lightbulb" aria-hidden style={{ marginRight: '0.25em' }} /> 試してみよう：<br />
         • <code>&lt;h2&gt;見出し&lt;/h2&gt;</code> で見出しを追加<br />
         • <code>&lt;strong&gt;太字&lt;/strong&gt;</code> で文字を太くする<br />
         • <code>&lt;a href=&quot;https://example.com&quot;&gt;リンク&lt;/a&gt;</code> でリンクを作成

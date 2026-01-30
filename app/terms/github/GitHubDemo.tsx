@@ -88,7 +88,7 @@ export default function GitHubDemo() {
       )}
 
       <p style={{ marginTop: '15px', fontSize: '14px', color: '#6c757d' }}>
-        💡 基本的な流れ：<code>git add</code> → <code>git commit</code> → <code>git push</code> でGitHubに変更を反映できます！
+        <i className="fas fa-lightbulb" aria-hidden style={{ marginRight: '0.25em' }} /> 基本的な流れ：<code>git add</code> → <code>git commit</code> → <code>git push</code> でGitHubに変更を反映できます！
       </p>
     </div>
   )

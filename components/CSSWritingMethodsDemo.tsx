@@ -62,7 +62,7 @@ export default function CSSWritingMethodsDemo() {
                   fontSize: '14px',
                   color: '#856404'
                 }}>
-                  📄 index.html
+                  <i className="fas fa-file-code" aria-hidden /> index.html
                 </div>
                 <pre style={{
                   backgroundColor: '#2d2d2d',
@@ -132,13 +132,13 @@ export default function CSSWritingMethodsDemo() {
               wordWrap: 'break-word',
               overflowWrap: 'break-word'
             }}>
-              <strong>✅ メリット：</strong>
+              <strong><i className="fas fa-check-circle" aria-hidden /> メリット：</strong>
               <ul style={{ margin: '8px 0 0 0', paddingLeft: '20px' }}>
                 <li>複数ページで使い回せる</li>
                 <li>管理しやすい</li>
                 <li>プロも使う方法</li>
               </ul>
-              <strong style={{ display: 'block', marginTop: '8px' }}>📁 ファイル数：2つ（HTMLとCSS）</strong>
+              <strong style={{ display: 'block', marginTop: '8px' }}><i className="fas fa-folder" aria-hidden /> ファイル数：2つ（HTMLとCSS）</strong>
             </div>
           </div>
         )}
@@ -188,7 +188,7 @@ export default function CSSWritingMethodsDemo() {
                   fontSize: '14px',
                   color: '#856404'
                 }}>
-                  📄 index.html
+                  <i className="fas fa-file-code" aria-hidden /> index.html
                 </div>
                 <pre style={{
                   backgroundColor: '#2d2d2d',
@@ -230,12 +230,12 @@ export default function CSSWritingMethodsDemo() {
               wordWrap: 'break-word',
               overflowWrap: 'break-word'
             }}>
-              <strong>⚠️ 注意：</strong>
+              <strong><i className="fas fa-exclamation-triangle" aria-hidden /> 注意：</strong>
               <ul style={{ margin: '8px 0 0 0', paddingLeft: '20px' }}>
                 <li>そのページだけに適用される</li>
                 <li>他のページでは使えない</li>
               </ul>
-              <strong style={{ display: 'block', marginTop: '8px' }}>📁 ファイル数：1つ（HTML内に全部入り）</strong>
+              <strong style={{ display: 'block', marginTop: '8px' }}><i className="fas fa-folder" aria-hidden /> ファイル数：1つ（HTML内に全部入り）</strong>
             </div>
           </div>
         )}
@@ -285,7 +285,7 @@ export default function CSSWritingMethodsDemo() {
                   fontSize: '14px',
                   color: '#856404'
                 }}>
-                  📄 index.html
+                  <i className="fas fa-file-code" aria-hidden /> index.html
                 </div>
                 <pre style={{
                   backgroundColor: '#2d2d2d',
@@ -321,12 +321,12 @@ export default function CSSWritingMethodsDemo() {
               wordWrap: 'break-word',
               overflowWrap: 'break-word'
             }}>
-              <strong>💡 使い分け：</strong>
+              <strong><i className="fas fa-lightbulb" aria-hidden /> 使い分け：</strong>
               <ul style={{ margin: '8px 0 0 0', paddingLeft: '20px' }}>
                 <li><strong>style属性</strong>：ピンポイントでその要素だけにスタイルを適用したいとき</li>
                 <li><strong>外部ファイル</strong>：全体で管理しやすくしたいとき</li>
               </ul>
-              <strong style={{ display: 'block', marginTop: '8px' }}>📁 ファイル数：1つ（HTML内に直接記述）</strong>
+              <strong style={{ display: 'block', marginTop: '8px' }}><i className="fas fa-folder" aria-hidden /> ファイル数：1つ（HTML内に直接記述）</strong>
             </div>
           </div>
         )}

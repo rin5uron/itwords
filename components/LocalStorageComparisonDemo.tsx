@@ -232,7 +232,7 @@ export default function LocalStorageComparisonDemo() {
           borderRadius: '8px'
         }}>
           <p style={{ margin: 0, fontSize: '14px' }}>
-            <strong>💡 比較のポイント：</strong>
+            <strong><i className="fas fa-lightbulb" aria-hidden /> 比較のポイント：</strong>
             <br />
             {selectedMethod === 'javascript' && 'JavaScript変数は軽いですが、ページを閉じると消えます。'}
             {selectedMethod === 'json' && 'JSONは構造化できますが、サーバーが必要で重いです。'}

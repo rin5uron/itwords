@@ -87,7 +87,7 @@ export default function APIDemo() {
       )}
 
       <p style={{ marginTop: '15px', fontSize: '14px', color: '#6c757d' }}>
-        💡 このデモでは、<code>https://api.github.com/users/github</code> にGETリクエストを送信し、GitHubアカウントの情報を取得しています。
+        <i className="fas fa-lightbulb" aria-hidden style={{ marginRight: '0.25em' }} /> このデモでは、<code>https://api.github.com/users/github</code> にGETリクエストを送信し、GitHubアカウントの情報を取得しています。
       </p>
     </div>
   )

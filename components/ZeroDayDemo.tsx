@@ -44,13 +44,13 @@ export default function ZeroDayDemo() {
               border: '1px solid #ddd'
             }}>
               <div style={{ flex: 1, textAlign: 'center' }}>
-                <div style={{ fontSize: '24px', marginBottom: '8px' }}>👤</div>
+                <div style={{ fontSize: '24px', marginBottom: '8px' }}><i className="fas fa-user" aria-hidden /></div>
                 <div style={{ fontSize: '14px', fontWeight: 'bold', color: '#ea9b8a' }}>攻撃者</div>
                 <div style={{ fontSize: '12px', color: '#666', marginTop: '5px' }}>脆弱性を発見</div>
               </div>
               <div style={{ fontSize: '20px', color: '#999', margin: '0 10px' }}>→</div>
               <div style={{ flex: 1, textAlign: 'center', opacity: 0.5 }}>
-                <div style={{ fontSize: '24px', marginBottom: '8px' }}>🛡️</div>
+                <div style={{ fontSize: '24px', marginBottom: '8px' }}><i className="fas fa-shield-alt" aria-hidden /></div>
                 <div style={{ fontSize: '14px', fontWeight: 'bold', color: '#8abdea' }}>防御側</div>
                 <div style={{ fontSize: '12px', color: '#666', marginTop: '5px' }}>まだ気づいていない</div>
               </div>
@@ -87,13 +87,13 @@ export default function ZeroDayDemo() {
                   border: '2px solid #ea9b8a'
                 }}>
                   <div style={{ flex: 1, textAlign: 'center' }}>
-                    <div style={{ fontSize: '24px', marginBottom: '8px' }}>👤</div>
+                    <div style={{ fontSize: '24px', marginBottom: '8px' }}><i className="fas fa-user" aria-hidden /></div>
                     <div style={{ fontSize: '14px', fontWeight: 'bold', color: '#ea9b8a' }}>攻撃者</div>
                     <div style={{ fontSize: '12px', color: '#666', marginTop: '5px' }}>攻撃を実行中...</div>
                   </div>
-                  <div style={{ fontSize: '20px', color: '#ea9b8a', margin: '0 10px', animation: 'pulse 1s infinite' }}>⚡</div>
+                  <div style={{ fontSize: '20px', color: '#ea9b8a', margin: '0 10px', animation: 'pulse 1s infinite' }}><i className="fas fa-bolt" aria-hidden /></div>
                   <div style={{ flex: 1, textAlign: 'center', opacity: 0.5 }}>
-                    <div style={{ fontSize: '24px', marginBottom: '8px' }}>🛡️</div>
+                    <div style={{ fontSize: '24px', marginBottom: '8px' }}><i className="fas fa-shield-alt" aria-hidden /></div>
                     <div style={{ fontSize: '14px', fontWeight: 'bold', color: '#8abdea' }}>防御側</div>
                     <div style={{ fontSize: '12px', color: '#666', marginTop: '5px' }}>パッチなし（Day 0）</div>
                   </div>
@@ -113,13 +113,13 @@ export default function ZeroDayDemo() {
                   border: '2px solid #dc3545'
                 }}>
                   <div style={{ flex: 1, textAlign: 'center' }}>
-                    <div style={{ fontSize: '24px', marginBottom: '8px' }}>👤</div>
+                    <div style={{ fontSize: '24px', marginBottom: '8px' }}><i className="fas fa-user" aria-hidden /></div>
                     <div style={{ fontSize: '14px', fontWeight: 'bold', color: '#ea9b8a' }}>攻撃者</div>
-                    <div style={{ fontSize: '12px', color: '#666', marginTop: '5px' }}>攻撃成功 ✓</div>
+                    <div style={{ fontSize: '12px', color: '#666', marginTop: '5px' }}>攻撃成功 <i className="fas fa-check" aria-hidden /></div>
                   </div>
                   <div style={{ fontSize: '20px', color: '#dc3545', margin: '0 10px' }}>→</div>
                   <div style={{ flex: 1, textAlign: 'center' }}>
-                    <div style={{ fontSize: '24px', marginBottom: '8px' }}>🛡️</div>
+                    <div style={{ fontSize: '24px', marginBottom: '8px' }}><i className="fas fa-shield-alt" aria-hidden /></div>
                     <div style={{ fontSize: '14px', fontWeight: 'bold', color: '#8abdea' }}>防御側</div>
                     <div style={{ fontSize: '12px', color: '#666', marginTop: '5px' }}>パッチ公開（Day 1以降）</div>
                   </div>
@@ -133,7 +133,7 @@ export default function ZeroDayDemo() {
                   textAlign: 'center'
                 }}>
                   <p style={{ margin: 0, fontSize: '14px', fontWeight: 'bold', color: '#856404' }}>
-                    ❌ 攻撃成功！パッチが存在しない状態（Day 0）で攻撃され、防御不可能でした
+                    <i className="fas fa-times-circle" aria-hidden /> 攻撃成功！パッチが存在しない状態（Day 0）で攻撃され、防御不可能でした
                   </p>
                 </div>
                 <div style={{ textAlign: 'center' }}>

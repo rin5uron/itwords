@@ -156,7 +156,7 @@ export default function CookieDemo() {
       )}
 
       <p style={{ marginTop: '15px', fontSize: '14px', color: '#6c757d' }}>
-        💡 このデモでは、ブラウザにCookieを保存します。保存したCookieは1時間後に自動的に削除されます。
+        <i className="fas fa-lightbulb" aria-hidden style={{ marginRight: '0.25em' }} /> このデモでは、ブラウザにCookieを保存します。保存したCookieは1時間後に自動的に削除されます。
       </p>
     </div>
   )

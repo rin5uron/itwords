@@ -93,10 +93,10 @@ export default function AESDemo() {
         marginBottom: '20px'
       }}>
         <h3 style={{ marginTop: 0, marginBottom: '12px', fontSize: '18px', fontWeight: 'bold', color: '#333' }}>
-          🔐 AES暗号化を体験してみよう
+          <i className="fas fa-lock" aria-hidden /> AES暗号化を体験してみよう
         </h3>
         <p style={{ marginBottom: '15px', color: '#555', fontSize: '14px', fontWeight: '500' }}>
-          <strong>💡 ポイント：</strong> 同じ鍵を使わないと復号化できません。
+          <strong><i className="fas fa-lightbulb" aria-hidden /> ポイント：</strong> 同じ鍵を使わないと復号化できません。
         </p>
 
         <div style={{ marginBottom: '12px' }}>
@@ -156,7 +156,7 @@ export default function AESDemo() {
               minWidth: '100px'
             }}
           >
-            🔒 暗号化
+            <i className="fas fa-lock" aria-hidden /> 暗号化
           </button>
           <button
             className="demo-button"
@@ -175,7 +175,7 @@ export default function AESDemo() {
               minWidth: '100px'
             }}
           >
-            🔓 復号化
+            <i className="fas fa-unlock" aria-hidden /> 復号化
           </button>
           <button
             className="demo-button"

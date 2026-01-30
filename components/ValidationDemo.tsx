@@ -105,7 +105,7 @@ export default function ValidationDemo() {
       borderRadius: '8px',
       margin: '1.5rem 0'
     }}>
-      <h3 style={{ marginTop: 0 }}>📝 リアルタイムバリデーションデモ</h3>
+      <h3 style={{ marginTop: 0 }}><i className="fas fa-edit" aria-hidden /> リアルタイムバリデーションデモ</h3>
       <p style={{ color: '#666', marginBottom: '1.5rem' }}>
         各項目を入力してみてください。リアルタイムでバリデーションが実行されます。
       </p>
@@ -145,7 +145,7 @@ export default function ValidationDemo() {
               transform: 'translateY(-50%)',
               color: '#28a745',
               fontSize: '20px'
-            }}>✓</span>
+            }}><i className="fas fa-check" aria-hidden /></span>
           )}
         </div>
         {emailError && (
@@ -155,7 +155,7 @@ export default function ValidationDemo() {
             marginTop: '0.5rem',
             marginBottom: 0
           }}>
-            ⚠️ {emailError}
+            <i className="fas fa-exclamation-triangle" aria-hidden /> {emailError}
           </p>
         )}
         {emailValid && (
@@ -165,7 +165,7 @@ export default function ValidationDemo() {
             marginTop: '0.5rem',
             marginBottom: 0
           }}>
-            ✓ 正しい形式です
+            <i className="fas fa-check" aria-hidden /> 正しい形式です
           </p>
         )}
       </div>
@@ -205,7 +205,7 @@ export default function ValidationDemo() {
               transform: 'translateY(-50%)',
               color: '#28a745',
               fontSize: '20px'
-            }}>✓</span>
+            }}><i className="fas fa-check" aria-hidden /></span>
           )}
         </div>
         {passwordError && (
@@ -215,7 +215,7 @@ export default function ValidationDemo() {
             marginTop: '0.5rem',
             marginBottom: 0
           }}>
-            ⚠️ {passwordError}
+            <i className="fas fa-exclamation-triangle" aria-hidden /> {passwordError}
           </p>
         )}
         {passwordValid && (
@@ -225,7 +225,7 @@ export default function ValidationDemo() {
             marginTop: '0.5rem',
             marginBottom: 0
           }}>
-            ✓ 強力なパスワードです
+            <i className="fas fa-check" aria-hidden /> 強力なパスワードです
           </p>
         )}
       </div>
@@ -265,7 +265,7 @@ export default function ValidationDemo() {
               transform: 'translateY(-50%)',
               color: '#28a745',
               fontSize: '20px'
-            }}>✓</span>
+            }}><i className="fas fa-check" aria-hidden /></span>
           )}
         </div>
         {phoneError && (
@@ -275,7 +275,7 @@ export default function ValidationDemo() {
             marginTop: '0.5rem',
             marginBottom: 0
           }}>
-            ⚠️ {phoneError}
+            <i className="fas fa-exclamation-triangle" aria-hidden /> {phoneError}
           </p>
         )}
         {phoneValid && (
@@ -285,7 +285,7 @@ export default function ValidationDemo() {
             marginTop: '0.5rem',
             marginBottom: 0
           }}>
-            ✓ 正しい形式です
+            <i className="fas fa-check" aria-hidden /> 正しい形式です
           </p>
         )}
       </div>

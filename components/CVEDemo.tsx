@@ -60,56 +60,71 @@ export default function CVEDemo() {
     }
   }
 
-  const getSeverityEmoji = (severity: string) => {
-    switch (severity) {
-      case 'Critical':
-        return '🔴'
-      case 'High':
-        return '🟠'
-      case 'Medium':
-        return '🟡'
-      case 'Low':
-        return '🟢'
-      default:
-        return '⚪'
-    }
-  }
+  const getSeverityIcon = (severity: string) => (
+    <i
+      className="fas fa-circle"
+      style={{ color: getSeverityColor(severity), marginRight: '6px', fontSize: '0.85em' }}
+      aria-hidden
+    />
+  )
 
   return (
-    <div className="demo-section" style={{ marginTop: '20px' }}>
-      <div style={{
-        backgroundColor: '#f9f9f9',
-        padding: '15px',
-        borderRadius: '10px',
-        border: '2px solid #ddd',
-        marginBottom: '20px'
-      }}>
-        <h3 style={{ marginTop: 0, marginBottom: '12px', fontSize: '18px', fontWeight: 'bold', color: '#333' }}>
-          🎮 実際のCVE番号を調べてみよう
-        </h3>
+    <div
+      className="demo-section"
+      style={{
+        marginTop: '20px',
+        maxHeight: 'min(85vh, 720px)',
+        display: 'flex',
+        flexDirection: 'column',
+        overflow: 'hidden',
+      }}
+    >
+      <div
+        style={{
+          backgroundColor: '#f9f9f9',
+          padding: 'clamp(10px, 2.5vw, 15px)',
+          borderRadius: '10px',
+          border: '2px solid #ddd',
+          flex: '1 1 auto',
+          minHeight: 0,
+          display: 'flex',
+          flexDirection: 'column',
+          overflow: 'hidden',
+        }}
+      >
+        <div style={{ flexShrink: 0 }}>
+          <h3 style={{ marginTop: 0, marginBottom: '8px', fontSize: 'clamp(16px, 3.5vw, 18px)', fontWeight: 'bold', color: '#333' }}>
+            <i className="fas fa-gamepad" aria-hidden /> 実際のCVE番号を調べてみよう
+          </h3>
 
-        <p style={{ fontSize: '14px', color: '#555', marginBottom: '15px' }}>
-          下の有名なCVE番号をクリックして、詳細を確認してみましょう：
-        </p>
+          <p style={{ fontSize: 'clamp(13px, 2.8vw, 14px)', color: '#555', marginBottom: '10px' }}>
+            下のCVE番号をクリックして詳細を確認：
+          </p>
 
-        <div style={{ marginBottom: '15px' }}>
+          <div
+            style={{
+              display: 'flex',
+              flexWrap: 'wrap',
+              gap: '8px',
+              marginBottom: '10px',
+            }}
+          >
           {exampleCVEs.map((cve) => (
             <button
               key={cve.id}
               onClick={() => setSelectedCVE(cve)}
               style={{
-                display: 'block',
-                width: '100%',
-                padding: '12px',
-                marginBottom: '8px',
+                flex: '1 1 auto',
+                minWidth: 'min(100%, 140px)',
+                padding: 'clamp(8px, 2vw, 12px)',
                 backgroundColor: selectedCVE?.id === cve.id ? '#8abdea' : '#fff',
                 color: selectedCVE?.id === cve.id ? '#fff' : '#333',
                 border: '2px solid #8abdea',
                 borderRadius: '8px',
                 cursor: 'pointer',
-                fontSize: '15px',
+                fontSize: 'clamp(12px, 2.8vw, 15px)',
                 fontWeight: 'bold',
-                textAlign: 'left',
+                textAlign: 'center',
                 fontFamily: 'monospace',
                 transition: 'all 0.2s ease',
               }}
@@ -127,16 +142,22 @@ export default function CVEDemo() {
               {cve.id}
             </button>
           ))}
+          </div>
         </div>
 
         {selectedCVE && (
-          <div style={{
-            backgroundColor: '#fff',
-            border: '3px solid #8abdea',
-            borderRadius: '10px',
-            padding: '15px',
-            marginTop: '15px',
-          }}>
+          <div
+            style={{
+              backgroundColor: '#fff',
+              border: '3px solid #8abdea',
+              borderRadius: '10px',
+              padding: 'clamp(10px, 2.5vw, 15px)',
+              marginTop: '8px',
+              flex: '1 1 auto',
+              minHeight: 0,
+              overflowY: 'auto',
+            }}
+          >
             <div style={{
               display: 'flex',
               justifyContent: 'space-between',
@@ -164,7 +185,7 @@ export default function CVEDemo() {
                 fontSize: '14px',
                 fontWeight: 'bold'
               }}>
-                {getSeverityEmoji(selectedCVE.severity)} {selectedCVE.severity}
+                {getSeverityIcon(selectedCVE.severity)} {selectedCVE.severity}
                 <span style={{ marginLeft: '8px' }}>CVSS {selectedCVE.cvss}</span>
               </div>
             </div>
@@ -176,7 +197,7 @@ export default function CVEDemo() {
                 marginBottom: '4px',
                 fontWeight: 'bold'
               }}>
-                📋 説明：
+                <i className="fas fa-clipboard-list" aria-hidden /> 説明：
               </div>
               <div style={{ fontSize: '14px', color: '#333', lineHeight: '1.6' }}>
                 {selectedCVE.description}
@@ -190,7 +211,7 @@ export default function CVEDemo() {
                 marginBottom: '4px',
                 fontWeight: 'bold'
               }}>
-                🎯 影響を受けるバージョン：
+                <i className="fas fa-bullseye" aria-hidden /> 影響を受けるバージョン：
               </div>
               <div style={{
                 fontSize: '14px',
@@ -212,7 +233,7 @@ export default function CVEDemo() {
               color: '#0c5460',
               borderLeft: '4px solid #17a2b8'
             }}>
-              💡 実際のCVEデータベースで詳細を確認：
+              <i className="fas fa-lightbulb" aria-hidden /> 実際のCVEデータベースで詳細を確認：
               <a
                 href={`https://nvd.nist.gov/vuln/detail/${selectedCVE.id}`}
                 target="_blank"
@@ -231,16 +252,19 @@ export default function CVEDemo() {
         )}
 
         {!selectedCVE && (
-          <div style={{
-            backgroundColor: '#f8f9fa',
-            border: '2px dashed #ddd',
-            borderRadius: '8px',
-            padding: '20px',
-            textAlign: 'center',
-            color: '#6c757d',
-            fontSize: '14px'
-          }}>
-            👆 上のCVE番号をクリックして詳細を表示
+          <div
+            style={{
+              backgroundColor: '#f8f9fa',
+              border: '2px dashed #ddd',
+              borderRadius: '8px',
+              padding: 'clamp(12px, 2.5vw, 20px)',
+              textAlign: 'center',
+              color: '#6c757d',
+              fontSize: 'clamp(13px, 2.8vw, 14px)',
+              flexShrink: 0,
+            }}
+          >
+            <i className="fas fa-hand-point-up" aria-hidden /> 上のCVE番号をクリックして詳細を表示
           </div>
         )}
       </div>
