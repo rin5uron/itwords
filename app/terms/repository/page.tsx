@@ -3,21 +3,23 @@ import { Metadata } from 'next'
 import StructuredData from '@/app/components/StructuredData'
 import TermHeader from '@/app/components/TermHeader'
 import TableOfContents from '@/app/components/TableOfContents'
+import PageSummary from '@/app/components/PageSummary'
 import FAQAccordion from '@/app/components/FAQAccordion'
 
 export const metadata: Metadata = {
   title: 'リポジトリとは？小学生でもわかる【コードの保管庫】',
-  description: 'GitHubの「リポジトリ」って何？プログラムの「保管庫」を3分で理解。「フォルダとの違いは？」を実例で学べます。',
-  keywords: ['リポジトリ', 'repository', 'GitHub', 'Git', 'リポジトリ とは', 'IT用語 わかりやすく'],
+  description: 'リポジトリとは？フォルダ・ディレクトリとの違いを図解で理解。GitHubの「保管庫」の作り方とローカル・リモートの違いまで初心者向けに解説。',
+  keywords: ['リポジトリ', 'repository', 'GitHub', 'Git', 'リポジトリ とは', 'リポジトリ フォルダ ディレクトリ 違い', 'IT用語 わかりやすく'],
   openGraph: {
     title: 'リポジトリとは？小学生でもわかる【コードの保管庫】',
-    description: 'GitHubの「リポジトリ」って何？プログラムの「保管庫」を3分で理解。フォルダとの違いを実例で学べます。',
+    description: 'リポジトリとは？フォルダ・ディレクトリとの違いを図解で理解。GitHubの「保管庫」の作り方とローカル・リモートの違いまで初心者向けに解説。',
     type: 'article',
+    url: 'https://itwords.jp/terms/repository',
   },
   twitter: {
     card: 'summary_large_image',
     title: 'リポジトリとは？小学生でもわかる【コードの保管庫】',
-    description: 'GitHubの「リポジトリ」って何？プログラムの「保管庫」を3分で理解。フォルダとの違いを実例で学べます。',
+    description: 'リポジトリとは？フォルダ・ディレクトリとの違いを図解で理解。GitHubの「保管庫」の作り方とローカル・リモートの違いまで初心者向けに解説。',
   },
   alternates: {
     canonical: 'https://itwords.jp/terms/repository',
@@ -54,7 +56,7 @@ export default function RepositoryPage() {
       <StructuredData
         type="Article"
         title="リポジトリとは？小学生でもわかる【コードの保管庫】"
-        description="GitHubの「リポジトリ」って何？プログラムの「保管庫」を3分で理解。フォルダとの違いを実例で学べます。"
+        description="リポジトリとは？フォルダ・ディレクトリとの違いを図解で理解。GitHubの「保管庫」の作り方とローカル・リモートの違いまで初心者向けに解説。"
         datePublished="2026-01-18"
         dateModified="2026-01-18"
       />
@@ -67,19 +69,21 @@ export default function RepositoryPage() {
         dateModified="2026-01-18"
       />
 
+      <div className="date-info-toc">
+        <span>作成日: 2026-01-18 | 最終更新: 2026-01-18</span>
+      </div>
+
       <TableOfContents />
 
       <main>
-        {/* 更新日（概要の上） */}
-        <div className="date-info" style={{
-          fontSize: '14px',
-          color: '#666',
-          marginBottom: '20px',
-          paddingBottom: '15px',
-          borderBottom: '1px solid #e0e0e0'
-        }}>
-          <span>作成日: 2026-01-18 | 最終更新: 2026-01-18</span>
-        </div>
+        <PageSummary
+          items={[
+            'リポジトリとは何か（コードの保管庫）',
+            'リポジトリ・フォルダ・ディレクトリの違い（図解付き）',
+            'ローカルリポジトリとリモートリポジトリの違い',
+            'GitHubでリポジトリを作る方法とREADMEの書き方'
+          ]}
+        />
 
         <section>
           <h2>概要</h2>
@@ -100,7 +104,7 @@ export default function RepositoryPage() {
           </p>
 
           <p className="note">
-            <strong>💡 このサイトもGitHubのリポジトリで管理されています</strong>
+            <strong><i className="fas fa-lightbulb" aria-hidden /> このサイトもGitHubのリポジトリで管理されています</strong>
             <br />
             全ての変更履歴が記録され、いつでも過去の状態に戻せます。
           </p>
@@ -326,7 +330,7 @@ export default function RepositoryPage() {
           </ol>
 
           <p className="note">
-            <strong>💡 ポイント</strong>
+            <strong><i className="fas fa-lightbulb" aria-hidden /> ポイント</strong>
             <br />
             「Initialize this repository with a README」にチェックを入れると、
             最初からREADME.mdファイルが作られて便利です。

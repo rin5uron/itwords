@@ -135,17 +135,6 @@ export default function AESPage() {
           ]}
         />
 
-        {/* 更新日 */}
-        <div className="date-info" style={{
-          fontSize: '14px',
-          color: '#666',
-          marginBottom: '20px',
-          paddingBottom: '15px',
-          borderBottom: '1px solid #e0e0e0'
-        }}>
-          <span>作成日: 2024-01-09 | 最終更新: 2026-01-19</span>
-        </div>
-
         <section>
           <h2>概要</h2>
 

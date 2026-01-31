@@ -32,7 +32,7 @@
   - og:title
   - og:description
   - og:image（推奨）
-  - og:url
+  - og:url（検索数が伸びているページは特に要確認）
   - og:type
 
 - [ ] **全ページにTwitter Cardが設定されている**
@@ -203,6 +203,18 @@
 1. **順位が下がった**: コンテンツの更新、メタデータの見直し
 2. **クリック数が減った**: title, descriptionの改善
 3. **インデックスされていない**: sitemap.xmlの確認、robots.txtの確認
+
+### 検索数が伸びているページの見直し（推奨）
+
+Search Console でインプレッション・クリックが増えているページは、以下を確認して強化する。
+
+- [ ] **テンプレ準拠**: PageSummary・TableOfContents・date-info-toc の有無（`docs/templates/page-template.tsx` 参照）
+- [ ] **og:url**: Open Graph に `url` が設定されているか
+- [ ] **1位狙いキーワード**: `keywords` に戦略キーワードが含まれているか（`docs/all-pages-seo-strategy.md` 参照）
+- [ ] **description**: 前半に魅力的フレーズ・後半に具体的内容が入っているか
+- [ ] **絵文字**: テンプレ方針に合わせて Font Awesome に統一しているか
+
+参照: `docs/issues/インデックス登録エラー.md` の「検索数が伸びているページの見直し」セクション
 
 ---
 
