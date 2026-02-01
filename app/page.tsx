@@ -88,6 +88,13 @@ export default function Home() {
         <section id="new">
           <h3>新着用語</h3>
           <div className="card-container">
+            <div className="card" data-category="infrastructure">
+              <Link href="/terms/ssh" className="card-link">
+                <span className="category-tag">インフラ</span>
+                <h4>SSH</h4>
+                <p>遠くのサーバーに安全に入る仕組み。暗号化・秘密鍵・sshdまで初心者向けに解説。</p>
+              </Link>
+            </div>
             <div className="card" data-category="web">
               <Link href="/terms/smtp" className="card-link">
                 <span className="category-tag">Web</span>
@@ -100,13 +107,6 @@ export default function Home() {
                 <span className="category-tag">インフラ</span>
                 <h4>IPアドレスとポート番号</h4>
                 <p>IPアドレスが「住所」、ポート番号が「部屋番号」。プロトコルとの関係も理解できます。</p>
-              </Link>
-            </div>
-            <div className="card" data-category="programming">
-              <Link href="/terms/cli-gui" className="card-link">
-                <span className="category-tag">プログラミング</span>
-                <h4>CLI / GUI</h4>
-                <p>黒い画面（CLI）とボタン（GUI）の違い。昔のPCはCLIだけだった歴史も。</p>
               </Link>
             </div>
           </div>
@@ -349,6 +349,13 @@ export default function Home() {
                 <span className="category-tag">インフラ</span>
                 <h4>サーバー</h4>
                 <p>データやサービスを提供するコンピューターです。</p>
+              </Link>
+            </div>
+            <div className="card" data-category="infrastructure">
+              <Link href="/terms/ssh" className="card-link">
+                <span className="category-tag">インフラ</span>
+                <h4>SSH</h4>
+                <p>遠くのサーバーに安全に入る仕組み。暗号化・秘密鍵・sshdまで初心者向けに解説。</p>
               </Link>
             </div>
             <div className="card" data-category="infrastructure">
