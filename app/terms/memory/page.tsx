@@ -76,11 +76,10 @@ export default function MemoryPage() {
       <main>
         <PageSummary
           items={[
-            'メモリ（主記憶）の役割と記憶装置の種類',
-            '記憶階層のイメージデモ',
+            'メモリ＝CPUが今使う情報を置く場所',
+            'データはどこから探される？（記憶階層デモ）',
             'アドレス・命令部とアドレス部',
-            'アドレス指定方式（相対・基底）の計算デモ',
-            '実効アクセス時間の計算デモ',
+            'アドレス指定方式・実効アクセス時間の計算デモ',
             '割り込み・メモリインターリーブの概要',
           ]}
         />
@@ -89,28 +88,19 @@ export default function MemoryPage() {
           <h2>概要</h2>
           <p>
             <strong>メモリ</strong>（主記憶・RAM）は、
-            <strong>CPUが「今」使うプログラムやデータを一時的に置く作業場</strong>である。
-            補助記憶（SSD/HDD）から読み込んだ内容をここに置き、CPUはメモリから命令やデータを読み書きする。
-          </p>
-          <p>
-            メモリは「番地（アドレス）」で場所を指定する。命令には「何をするか」を表す<strong>命令部</strong>と「どの番地を扱うか」を表す<strong>アドレス部</strong>がある。
-            このページでは、記憶装置の種類・記憶階層・アドレス指定方式・実効アクセス時間を、基本情報技術者試験を意識したデモとともに説明する。
+            <strong>CPUが仕事をするために、今使う情報を置いておく場所</strong>である。
+            CPUはここから<strong>命令</strong>と<strong>データ</strong>を読み書きする。
           </p>
         </section>
 
         <section>
-          <h2>記憶装置の種類と記憶階層</h2>
+          <h2>データはどこから探される？</h2>
           <p>
-            コンピュータには複数の記憶装置があり、<strong>CPUに近いほど速いが容量は小さい</strong>という階層になっている。
+            コンピュータには複数の記憶装置があり、<strong>CPUに近い順</strong>に「探しに行く」順番になっている。
+            下のデモで、その並びと「今どこを探しているか」を確認できる。
           </p>
-          <ul>
-            <li><strong>レジスタ</strong>：CPUのすぐそば。最も速いが数は少ない（数十個程度）。今まさに計算に使う値を置く。</li>
-            <li><strong>キャッシュメモリ</strong>：主記憶の<strong>コピー</strong>を置く。主記憶より速いが容量は小さい。本物は主記憶にある。</li>
-            <li><strong>主記憶（RAM）</strong>：プログラムとデータを置く作業場。揮発性（電源で消える）。</li>
-            <li><strong>補助記憶（SSD/HDD）</strong>：長く保存する倉庫。遅いが大容量で不揮発性。</li>
-          </ul>
-          <p>
-            下のデモで、階層の順序と「CPUに近いほど速い」イメージを確認できる。
+          <p style={{ fontSize: '14px', color: '#555', marginBottom: '12px' }}>
+            CPUがデータを探すとき、まずキャッシュを見る。あればキャッシュで終わり（速い）、なければ主記憶まで行く（遅い）。これは例え話としてイメージしてほしい。
           </p>
 
           <div
@@ -119,15 +109,14 @@ export default function MemoryPage() {
               border: '2px solid #17a2b8',
               borderRadius: '8px',
               padding: 'clamp(12px, 3vw, 20px)',
-              marginTop: '20px',
+              marginTop: '12px',
               backgroundColor: '#e8f4f8',
               maxWidth: '100%',
+              maxHeight: 'none',
+              overflow: 'visible',
             }}
           >
-            <h3 style={{ marginTop: 0 }}>記憶階層のイメージ</h3>
-            <p style={{ fontSize: '14px', marginBottom: '12px' }}>
-              CPUがデータを探すとき、まずキャッシュを見る。あればキャッシュで終わり（速い）、なければ主記憶まで行く（遅い）。
-            </p>
+            <h3 style={{ marginTop: 0 }}>記憶装置の並び（CPUに近い順）</h3>
             {HIERARCHY_LAYERS.map((layer, i) => (
               <div
                 key={i}
@@ -138,10 +127,10 @@ export default function MemoryPage() {
                   gap: '12px',
                   marginBottom: '10px',
                   padding: 'clamp(10px, 2vw, 14px)',
-                  backgroundColor: '#fff',
-                  border: `2px solid ${layer.color}`,
+                  backgroundColor: hierarchyStep === 'idle' ? '#fff' : hierarchyStep === 'cache' ? (i <= 1 ? '#e8f5e9' : '#fff') : (i <= 2 ? '#fffde7' : '#fff'),
+                  border: `2px solid ${hierarchyStep === 'idle' ? layer.color : hierarchyStep === 'cache' ? (i === 1 ? '#28a745' : i < 1 ? layer.color : '#dee2e6') : (i === 2 ? '#ffc107' : i < 2 ? layer.color : '#dee2e6')}`,
                   borderRadius: '8px',
-                  opacity: hierarchyStep === 'idle' ? 1 : hierarchyStep === 'cache' ? (i <= 1 ? 1 : 0.5) : (i <= 2 ? 1 : 0.5),
+                  opacity: hierarchyStep === 'idle' ? 1 : hierarchyStep === 'cache' ? (i <= 1 ? 1 : 0.6) : (i <= 2 ? 1 : 0.6),
                 }}
               >
                 <i className={layer.icon} style={{ color: layer.color, fontSize: 'clamp(18px, 4vw, 22px)' }} aria-hidden />
@@ -149,6 +138,12 @@ export default function MemoryPage() {
                   <strong>{layer.name}</strong>
                   <span style={{ marginLeft: '8px', fontSize: '14px', color: '#555' }}>{layer.desc}</span>
                 </div>
+                {hierarchyStep === 'cache' && i === 1 && (
+                  <span style={{ fontSize: '12px', color: '#28a745', fontWeight: 'bold' }}>ここで見つかった</span>
+                )}
+                {hierarchyStep === 'main' && i === 2 && (
+                  <span style={{ fontSize: '12px', color: '#d97706', fontWeight: 'bold' }}>ここまで探しにいった</span>
+                )}
               </div>
             ))}
             <div style={{ display: 'flex', flexWrap: 'wrap', gap: '10px', marginTop: '16px' }}>
@@ -168,27 +163,36 @@ export default function MemoryPage() {
                 {hierarchyStep === 'idle' ? 'データを探す（キャッシュヒット）' : hierarchyStep === 'cache' ? 'データを探す（主記憶まで）' : 'リセット'}
               </button>
             </div>
-            {hierarchyStep === 'cache' && (
-              <p style={{ marginTop: '12px', fontSize: '14px', color: '#28a745' }}>
-                キャッシュにあったので、ここで終わり（速い）。
-              </p>
-            )}
-            {hierarchyStep === 'main' && (
-              <p style={{ marginTop: '12px', fontSize: '14px', color: '#ffc107' }}>
-                キャッシュになかったので、主記憶まで取りに行った（遅い）。
-              </p>
-            )}
           </div>
+
+          {hierarchyStep === 'cache' && (
+            <p style={{ marginTop: '16px', marginBottom: '0', fontSize: '14px', color: '#28a745' }}>
+              キャッシュにあったので、ここで終わり（速い）。
+            </p>
+          )}
+          {hierarchyStep === 'main' && (
+            <p style={{ marginTop: '16px', marginBottom: '0', fontSize: '14px', color: '#d97706' }}>
+              キャッシュになかったので、主記憶まで取りに行った（遅い）。
+            </p>
+          )}
+
+          <p style={{ marginTop: '20px', fontWeight: 'bold', marginBottom: '8px' }}>記憶装置の種類</p>
+          <ul style={{ marginTop: 0 }}>
+            <li><strong>レジスタ</strong>：CPUのすぐそば。最も速いが数は少ない。</li>
+            <li><strong>キャッシュメモリ</strong>：主記憶のコピーを置く。主記憶より速い。</li>
+            <li><strong>主記憶（RAM）</strong>：プログラムとデータを置く作業場。揮発性。</li>
+            <li><strong>補助記憶（SSD/HDD）</strong>：長く保存する倉庫。遅いが大容量。</li>
+          </ul>
         </section>
 
         <section>
-          <h2>メモリの役割とアドレス</h2>
+          <h2>メモリの「どこ」はどう指定する？</h2>
           <p>
             CPUがメモリの「どこ」を読むかは<strong>アドレス（番地）</strong>で指定する。
             1本の命令には、<strong>命令部</strong>（何をするか：足す・読む・書くなど）と<strong>アドレス部</strong>（どの番地を扱うか）がある。
           </p>
           <p>
-            アドレス空間は「CPUが使える番地の範囲全体」、メモリマップは「その範囲のどこに何を置くかの地図」のようなものだと考えるとよい。
+            バイト単位で場所を指定する話や、アドレス空間・メモリマップは、基本情報では後半の単元で扱う。ここでは「番地で場所を指定する」イメージがわかれば十分である。
           </p>
         </section>
 
@@ -214,6 +218,8 @@ export default function MemoryPage() {
               marginTop: '20px',
               backgroundColor: '#f0f8f0',
               maxWidth: '100%',
+              maxHeight: 'none',
+              overflow: 'visible',
             }}
           >
             <h3 style={{ marginTop: 0 }}>実効アドレスの計算</h3>
@@ -275,6 +281,8 @@ export default function MemoryPage() {
               marginTop: '20px',
               backgroundColor: '#f8f9fa',
               maxWidth: '100%',
+              maxHeight: 'none',
+              overflow: 'visible',
             }}
           >
             <h3 style={{ marginTop: 0 }}>実効アクセス時間の計算</h3>
