@@ -158,7 +158,7 @@ export default function SSHPage() {
           </p>
           {/* 参考画像を入れる場合：PuTTY や Termius の接続画面（ホスト名・ユーザー名の入力欄と「接続」ボタンが写っているスクリーンショット）がわかりやすいです */}
           <p>
-            GUIのツールは、簡単にいうと<strong>ボタンや入力枠があるタイプ</strong>のソフトです（ホスト名・ユーザー名などを入力して接続ボタンを押すもの）。代表例は、Windowsでは<strong>PuTTY</strong>・<strong>Tera Term</strong>、Mac/Windows両方で使える<strong>Termius</strong>などです。このページでは、ターミナルで打つ流れをデモで確認できます。
+            GUIのツールは、簡単にいうと<strong>ボタンや入力枠があるタイプ</strong>のソフトです（ホスト名・ユーザー名などを入力して接続ボタンを押すもの）。このページでは、ターミナルで打つ流れをデモで確認できます。
           </p>
           <div
             style={{
