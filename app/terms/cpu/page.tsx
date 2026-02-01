@@ -3,9 +3,7 @@
 import Link from 'next/link'
 import { useState } from 'react'
 import StructuredData from '@/app/components/StructuredData'
-import TermHeader from '@/app/components/TermHeader'
-import TableOfContents from '@/app/components/TableOfContents'
-import PageSummary from '@/app/components/PageSummary'
+import TermPageHeader from '@/app/components/TermPageHeader'
 import FAQAccordion from '@/app/components/FAQAccordion'
 import AdBelowRelatedTerms from '@/app/components/AdBelowRelatedTerms'
 
@@ -61,31 +59,22 @@ export default function CPUPage() {
         dateModified="2026-02-01"
       />
 
-      <TermHeader
+      <TermPageHeader
         termName="CPU"
         reading="しーぴーゆー / Central Processing Unit（中央処理装置）"
         icon="fas fa-microchip"
         dateCreated="2026-02-01"
         dateModified="2026-02-01"
+        summaryItems={[
+          'CPUとメモリの関係をデモで一発イメージ',
+          'プログラムはHDD/SSD→メモリ→CPUの順で動く',
+          'Fetch → Decode → Execute の3ステップ',
+          'クロック・コア・キャッシュのイメージ',
+          '「どれだけ速いか」の指標（クロック周波数・MIPS）',
+        ]}
       />
 
-      <div className="date-info-toc">
-        <span>作成日: 2026-02-01 | 最終更新: 2026-02-01</span>
-      </div>
-
       <main>
-        <PageSummary
-          items={[
-            'CPUとメモリの関係をデモで一発イメージ',
-            'プログラムはHDD/SSD→メモリ→CPUの順で動く',
-            'Fetch → Decode → Execute の3ステップ',
-            'クロック・コア・キャッシュのイメージ',
-            '「どれだけ速いか」の指標（クロック周波数・MIPS）',
-          ]}
-        />
-
-        <TableOfContents />
-
         <section>
           <h2>まず体験：CPUとメモリの関係</h2>
           <p>

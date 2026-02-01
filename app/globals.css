@@ -581,37 +581,18 @@ footer a:hover {
     gap: 10px !important;
   }
 
-  /* 目次のスマホ対応（タブレット以下） */
-  .table-of-contents {
-    padding: 14px;
-  }
-
-  .table-of-contents a {
-    padding: 9px 11px;
-    gap: 10px;
-  }
-
-  /* ページサマリーと目次のレスポンシブ対応 */
-  .page-summary,
-  .table-of-contents {
+  /* ページサマリーのレスポンシブ（目次は下のブロックで一括指定） */
+  .page-summary {
     padding: 15px;
     margin-bottom: 20px;
   }
 
-  .page-summary-header,
-  .table-of-contents-header {
+  .page-summary-header {
     font-size: 16px;
   }
 
-  .page-summary-list li,
-  .table-of-contents a {
+  .page-summary-list li {
     font-size: 14px;
-  }
-
-  .toc-number {
-    min-width: 24px;
-    height: 24px;
-    font-size: 12px;
   }
 
   .demo-section {
@@ -1015,6 +996,53 @@ footer a:hover {
   }
 }
 
+/* ========================================
+ * 用語ページ共通ヘッダー（タイトル・日付・このページでわかること・目次）
+ * TermPageHeader で一括デザイン指定
+ * ======================================== */
+.term-page-header {
+  width: 100%;
+  max-width: 100%;
+  box-sizing: border-box;
+}
+
+.term-page-header__date {
+  font-size: 14px;
+  color: #666;
+  margin-top: 15px;
+  margin-bottom: 8px;
+  padding-right: 5px;
+  padding-bottom: 8px;
+  border-bottom: 1px solid #14b8a6;
+  text-align: right;
+}
+
+.term-page-header__summary {
+  margin-bottom: clamp(16px, 4vw, 24px);
+}
+
+.term-page-header__summary .page-summary {
+  margin-bottom: 0;
+}
+
+.term-page-header__toc {
+  margin-bottom: clamp(16px, 4vw, 24px);
+}
+
+.term-page-header__toc .toc-wrapper {
+  margin-bottom: 0;
+}
+
+@media (max-width: 768px) {
+  .term-page-header__date {
+    font-size: 12px;
+    margin-top: 10px;
+    margin-bottom: 6px;
+    padding-bottom: 6px;
+    text-align: left;
+  }
+}
+
 /* 目次ラッパー：目次と本文の境界を明確にする（レスポンシブ） */
 .toc-wrapper {
   display: block;
@@ -1269,19 +1297,23 @@ main a:not(.card-link):not(.breadcrumb-link):not(.term-name):active {
     padding: 16px;
   }
 
-  /* 目次のスマホ対応（崩れ防止） */
+  /* 目次のスマホ対応（幅100%・項目が狭くならないように） */
   .toc-wrapper {
     padding: 0;
     margin-left: 0;
     margin-right: 0;
+    width: 100%;
+    max-width: 100%;
+    box-sizing: border-box;
   }
 
   .table-of-contents {
     padding: clamp(8px, 2.5vw, 10px);
     margin-bottom: 12px;
     margin-top: 0;
-    max-width: 100%;
     width: 100%;
+    max-width: 100%;
+    box-sizing: border-box;
   }
 
   .table-of-contents-header {
@@ -1297,20 +1329,25 @@ main a:not(.card-link):not(.breadcrumb-link):not(.term-name):active {
 
   .table-of-contents ul {
     gap: 2px;
+    width: 100%;
     max-width: 100%;
     max-height: 45vh;
     overflow-y: auto;
     -webkit-overflow-scrolling: touch;
+    box-sizing: border-box;
   }
 
   .table-of-contents li {
+    width: 100%;
     min-width: 0;
   }
 
   .table-of-contents a {
-    padding: 3px 6px;
-    gap: 6px;
-    font-size: clamp(11px, 2.8vw, 12px);
+    padding: 6px 8px;
+    gap: 8px;
+    font-size: clamp(12px, 3vw, 13px);
+    width: 100%;
+    box-sizing: border-box;
     min-width: 0;
   }
 
