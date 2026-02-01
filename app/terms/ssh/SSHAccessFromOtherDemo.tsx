@@ -8,7 +8,7 @@ export default function SSHAccessFromOtherDemo() {
 
   return (
     <div
-      className="demo-section"
+      className="demo-section demo-section--no-max-height"
       style={{
         border: '2px solid #8b5cf6',
         borderRadius: '8px',

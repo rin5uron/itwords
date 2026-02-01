@@ -123,6 +123,11 @@ header .date-info {
   overflow-y: auto;
 }
 
+/* 高さ制限なし（別のPC→自分のPCの流れデモなど） */
+.demo-section--no-max-height {
+  max-height: none;
+}
+
 .demo-section p {
   font-size: 1.2em;
 }
@@ -598,6 +603,10 @@ footer a:hover {
   .demo-section {
     padding: 25px 15px;
     max-height: 60vh;
+  }
+
+  .demo-section--no-max-height {
+    max-height: none;
   }
 
   .demo-section p {

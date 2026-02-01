@@ -15,7 +15,7 @@ export default function SSHDemo() {
 
   return (
     <div
-      className="demo-section"
+      className="demo-section demo-section--no-max-height"
       style={{
         border: '2px solid #14b8a6',
         borderRadius: '8px',
