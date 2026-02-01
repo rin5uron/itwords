@@ -1055,6 +1055,26 @@ footer a:hover {
   color: #14b8a6;
 }
 
+.table-of-contents-header {
+  flex-wrap: wrap;
+}
+
+.toc-toggle {
+  margin-left: auto;
+  padding: 6px 12px;
+  font-size: clamp(12px, 2.5vw, 14px);
+  color: #14b8a6;
+  background: #fff;
+  border: 1px solid #14b8a6;
+  border-radius: 6px;
+  cursor: pointer;
+  white-space: nowrap;
+}
+
+.toc-toggle:hover {
+  background: #e6f7f5;
+}
+
 .table-of-contents ul {
   list-style: none;
   padding: 0;

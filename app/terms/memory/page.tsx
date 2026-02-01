@@ -73,8 +73,6 @@ export default function MemoryPage() {
         <span>作成日: 2026-01-26 | 最終更新: 2026-01-26</span>
       </div>
 
-      <TableOfContents />
-
       <main>
         <PageSummary
           items={[
@@ -350,6 +348,8 @@ export default function MemoryPage() {
           </p>
         </section>
 
+        <TableOfContents />
+
         <section className="term-comparison">
           <h2>関連用語</h2>
           <div className="comparison-table">
@@ -383,7 +383,12 @@ export default function MemoryPage() {
 
       <footer className="footer-nav">
         <Link href="/">トップページに戻る</Link>
-        <p>&copy; 2026 itwords - 実践型IT用語辞典</p>
+        <span style={{ margin: '0 8px', color: '#999' }}>|</span>
+        <Link href="/privacy">プライバシーポリシー</Link>
+        <span style={{ margin: '0 8px', color: '#999' }}>|</span>
+        <Link href="/terms-of-service">利用規約</Link>
+        <span style={{ margin: '0 8px', color: '#999' }}>|</span>
+        <Link href="/contact">お問い合わせ</Link>
       </footer>
     </div>
   )

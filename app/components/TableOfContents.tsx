@@ -14,6 +14,16 @@ type TableOfContentsProps = {
 
 export default function TableOfContents({ minHeadings = 4, className }: TableOfContentsProps) {
   const [headings, setHeadings] = useState<TocItem[]>([])
+  const [isMobile, setIsMobile] = useState(false)
+  const [isOpen, setIsOpen] = useState(false)
+
+  useEffect(() => {
+    const mq = window.matchMedia('(max-width: 768px)')
+    setIsMobile(mq.matches)
+    const handler = () => setIsMobile(mq.matches)
+    mq.addEventListener('change', handler)
+    return () => mq.removeEventListener('change', handler)
+  }, [])
 
   useEffect(() => {
     // ページ内のh2タグを全て取得
@@ -48,16 +58,30 @@ export default function TableOfContents({ minHeadings = 4, className }: TableOfC
       const y = element.getBoundingClientRect().top + window.pageYOffset + yOffset
       window.scrollTo({ top: y, behavior: 'smooth' })
     }
+    if (isMobile) setIsOpen(false)
   }
+
+  const showCollapsed = isMobile && !isOpen
 
   return (
     <div className="toc-wrapper">
-      <nav className={`table-of-contents ${className || ''}`}>
+      <nav className={`table-of-contents ${className || ''}`} aria-label="目次">
         <div className="table-of-contents-header">
           <i className="fas fa-list" aria-hidden="true"></i>
           <span>目次</span>
+          {isMobile && (
+            <button
+              type="button"
+              className="toc-toggle"
+              onClick={() => setIsOpen(!isOpen)}
+              aria-expanded={isOpen}
+              aria-controls="toc-list"
+            >
+              {isOpen ? '目次を閉じる' : '目次を開く'}
+            </button>
+          )}
         </div>
-        <ul>
+        <ul id="toc-list" style={showCollapsed ? { display: 'none' } : undefined}>
           {headings.map((heading, index) => (
             <li key={heading.id}>
               <a

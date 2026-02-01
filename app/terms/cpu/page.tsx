@@ -15,6 +15,7 @@ const FDESTEPS = [
 ]
 
 export default function CPUPage() {
+  const [memoryStep, setMemoryStep] = useState(0)
   const [fdeStep, setFdeStep] = useState(0)
   const [clockGHz, setClockGHz] = useState(1)
   const [cmdAClocks, setCmdAClocks] = useState(10)
@@ -71,31 +72,103 @@ export default function CPUPage() {
         <span>作成日: 2026-01-26 | 最終更新: 2026-01-26</span>
       </div>
 
-      <TableOfContents />
-
       <main>
         <PageSummary
           items={[
-            'CPUの役割（命令の取り出し・解読・実行）',
-            'Fetch → Decode → Execute の流れをデモで体験',
-            '命令はメモリから読む理由',
+            'CPUとメモリの関係をデモで一発イメージ',
+            'プログラムはHDD/SSD→メモリ→CPUの順で動く',
+            'Fetch → Decode → Execute の3ステップ',
             'クロック・コア・キャッシュのイメージ',
-            '基本情報で出るクロック周波数とMIPSの計算デモ',
+            '「どれだけ速いか」の指標（クロック周波数・MIPS）',
           ]}
         />
 
         <section>
-          <h2>概要</h2>
+          <h2>まず体験：CPUとメモリの関係</h2>
           <p>
-            <strong>CPU</strong>（Central Processing Unit、中央処理装置）は、
-            <strong>コンピュータの「頭脳」</strong>にあたる部品である。
-            プログラムの命令を読み取り、計算・判断・メモリの読み書きなどを実行する。
+            下のデモで、<strong>メモリに並んだ命令を、CPUが順番に取りに行く</strong>様子を確認できる。
+            何をしているかわからなくても大丈夫。まず触ってみよう。
+          </p>
+          <div
+            className="demo-section"
+            style={{
+              border: '2px solid #14b8a6',
+              borderRadius: '8px',
+              padding: 'clamp(12px, 3vw, 20px)',
+              marginTop: '16px',
+              backgroundColor: '#f0fdfa',
+              maxWidth: '100%',
+            }}
+          >
+            <h3 style={{ marginTop: 0 }}>メモリの命令をCPUが取りにいく</h3>
+            <div style={{ display: 'flex', flexWrap: 'wrap', gap: '12px', marginBottom: '16px', alignItems: 'center' }}>
+              <span style={{ fontSize: '14px', color: '#555' }}>メモリ：</span>
+              {['命令1', '命令2', '命令3'].map((cmd, i) => (
+                <span
+                  key={i}
+                  style={{
+                    padding: '8px 14px',
+                    borderRadius: '8px',
+                    backgroundColor: memoryStep >= i ? '#e6f7f5' : '#f0f0f0',
+                    border: memoryStep === i ? '2px solid #14b8a6' : '1px solid #ddd',
+                    fontWeight: memoryStep === i ? 700 : 400,
+                  }}
+                >
+                  {cmd}
+                </span>
+              ))}
+            </div>
+            <div style={{ display: 'flex', alignItems: 'center', gap: '12px', flexWrap: 'wrap' }}>
+              <i className="fas fa-microchip" style={{ color: '#007bff', fontSize: '24px' }} aria-hidden />
+              <span style={{ fontSize: '14px' }}>
+                CPUが<strong>{memoryStep < 3 ? `「${['命令1', '命令2', '命令3'][memoryStep]}」を取りにいった` : '3本とも取り終えた'}</strong>
+              </span>
+            </div>
+            <div style={{ display: 'flex', flexWrap: 'wrap', gap: '10px', marginTop: '16px' }}>
+              <button
+                type="button"
+                onClick={() => setMemoryStep((n) => (n < 3 ? n + 1 : n))}
+                disabled={memoryStep >= 3}
+                style={{
+                  padding: '10px 20px',
+                  fontSize: 'clamp(14px, 2.5vw, 16px)',
+                  backgroundColor: memoryStep >= 3 ? '#6c757d' : '#14b8a6',
+                  color: '#fff',
+                  border: 'none',
+                  borderRadius: '5px',
+                  cursor: memoryStep >= 3 ? 'not-allowed' : 'pointer',
+                }}
+              >
+                次の命令を取りにいく
+              </button>
+              <button
+                type="button"
+                onClick={() => setMemoryStep(0)}
+                style={{
+                  padding: '10px 20px',
+                  fontSize: 'clamp(14px, 2.5vw, 16px)',
+                  backgroundColor: '#6c757d',
+                  color: '#fff',
+                  border: 'none',
+                  borderRadius: '5px',
+                  cursor: 'pointer',
+                }}
+              >
+                リセット
+              </button>
+            </div>
+          </div>
+        </section>
+
+        <section>
+          <h2>全体の流れ：プログラムはどこからCPUへ？</h2>
+          <p>
+            プログラムは、起動時に<strong>ハードディスク／SSD</strong>から<strong>メモリ（RAM）</strong>に読み込まれる。
+            CPUは、<strong>メモリ上に並んだ命令を1つずつ</strong>取り出して実行している。
           </p>
           <p>
-            CPUは「<strong>取り出し（Fetch）→ 解読（Decode）→ 実行（Execute）</strong>」という3ステップを、
-            クロックという「タイミングのリズム」に合わせて、1秒間に何億回も繰り返している。
-            このページでは、その全体の流れと、基本情報技術者試験でも出る「クロック周波数」「MIPS」を、
-            イメージしやすいデモとともに説明する。
+            この時点では「命令」「計算」「制御」くらいの粒度で考えてよい。
+            CPUは勝手に考えているわけではなく、<strong>全部、メモリに置かれた命令通り</strong>に動いている。
           </p>
         </section>
 
@@ -255,9 +328,15 @@ export default function CPUPage() {
         </section>
 
         <section>
-          <h2>クロック周波数とMIPSの計算（基本情報で出る）</h2>
+          <h2>CPUは「どれだけ速く命令を実行できるのか？」</h2>
           <p>
-            基本情報技術者試験では、<strong>クロック周波数</strong>と<strong>MIPS</strong>（1秒間に実行できる命令数を百万単位で表した指標）の計算が出題される。
+            <strong>クロック</strong>（クロック信号）が「いつ進めるか」を決め、<strong>クロック周波数</strong>（例：3GHz）が高いほど1秒間にこなせる処理は増える。
+            <strong>MIPS</strong>（Million Instructions Per Second）は、1秒間に実行できる命令数を百万単位で表した指標で、基本情報技術者試験でも計算問題が出る。
+          </p>
+          <p>
+            <strong>この数字、いつ気にすればいいの？</strong>
+            クロック周波数が高いと単純な処理が速くなりやすい。一方、低くても<strong>キャッシュ</strong>が効いていると体感は速い場合がある。
+            スマホとPCでは省電力と性能のバランスが違うので、同じ数字でも「速い」の意味合いは変わる。
           </p>
           <ul>
             <li><strong>MIPS</strong> ＝ クロック周波数 ÷ 平均命令実行クロック数</li>
@@ -359,13 +438,12 @@ export default function CPUPage() {
           <p>
             CPUは「メモリに並んだ命令」を、<strong>クロック</strong>に合わせて
             <strong>取り出し（Fetch）→ 解読（Decode）→ 実行（Execute）</strong>する。
-            この流れを、何コアかで並列に、キャッシュでメモリの遅さを補いながら繰り返している。
-          </p>
-          <p>
-            基本情報技術者試験では、この「クロック周波数」と「1命令あたりのクロック数」から
-            <strong>MIPS</strong>を求める問題が出るので、上のデモで式と感覚をセットで押さえておくとよい。
+            この流れを、何コアかで並列に、<strong>キャッシュ</strong>でメモリの遅さを補いながら繰り返している。
+            <strong>クロック</strong>が活きるのは、キャッシュが効いているときだという感覚を持っておくとよい。
           </p>
         </section>
+
+        <TableOfContents />
 
         <section className="term-comparison">
           <h2>関連用語</h2>
@@ -400,7 +478,12 @@ export default function CPUPage() {
 
       <footer className="footer-nav">
         <Link href="/">トップページに戻る</Link>
-        <p>&copy; 2026 itwords - 実践型IT用語辞典</p>
+        <span style={{ margin: '0 8px', color: '#999' }}>|</span>
+        <Link href="/privacy">プライバシーポリシー</Link>
+        <span style={{ margin: '0 8px', color: '#999' }}>|</span>
+        <Link href="/terms-of-service">利用規約</Link>
+        <span style={{ margin: '0 8px', color: '#999' }}>|</span>
+        <Link href="/contact">お問い合わせ</Link>
       </footer>
     </div>
   )
