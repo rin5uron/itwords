@@ -46,6 +46,10 @@ export default function SSHPage() {
       question: 'ポート22番って何ですか？',
       answer: 'SSHのサービスは、多くの場合「22番」という番号の入口（ポート）で待っています。IPアドレスが「住所」なら、ポートは「部屋番号」のようなものです。ssh コマンドは通常、自動的に22番に接続します。',
     },
+    {
+      question: 'sshdとは何ですか？',
+      answer: 'sshdは、SSHの仕組みのうち「接続される側」で動くプログラムの名前です。裏で動いていて、22番ポートで「誰かがSSHで入ってこないか」を待っています。OSによって最初から入っている／後から有効にできるが違います。',
+    },
   ]
 
   return (
@@ -67,9 +71,11 @@ export default function SSHPage() {
         dateModified="2026-02-01"
         summaryItems={[
           'SSHとは？遠くのサーバーに安全に入る仕組み',
-          '会社のパソコン → 会社のサーバーの流れ',
+          '実務での使われ方（オフィス・リモート・鍵渡し）',
+          '会社のパソコン → サーバーに入る流れ',
           '暗号化で盗み見されにくくする',
           '秘密鍵・公開鍵でより安全に',
+          '別のPCから自分のPCにもアクセスできる・sshdとは',
           'ターミナルと ssh コマンドの基本',
         ]}
       />
@@ -95,9 +101,35 @@ export default function SSHPage() {
           </p>
 
           <p className="note">
-            <strong>💡 一言でいうと</strong>
+            <strong><i className="fas fa-lightbulb" aria-hidden /> 一言でいうと</strong>
             <br />
             SSH = 「遠くのコンピュータに、安全にログインするための仕組み」
+          </p>
+        </section>
+
+        <section>
+          <h2>実務での使われ方</h2>
+          <p>
+            SSHは、オフィスやリモート作業の場面でよく使われます。
+            普段意識していないだけで、サーバーを触る仕事ではほぼ毎日のように利用されている仕組みです。
+          </p>
+
+          <h3>1. オフィスの自分の席からサーバーに入る</h3>
+          <p>
+            会社のサーバーは機械室やデータセンター、クラウド上にあることが多いです。
+            毎回その場所まで行かず、自分の席のパソコンでターミナルを開き、<code>ssh ユーザー名@サーバーのアドレス</code> を打って中に入り、設定の確認やプログラムの起動などを行います。
+          </p>
+
+          <h3>2. 自宅や外出先から会社のサーバーに入る</h3>
+          <p>
+            リモートワークでは、自宅のPCやノートPCから会社のサーバーにSSHで接続することがあります。
+            その際、秘密鍵を自分のPCに置いておき、公開鍵をサーバー側に登録しておく「鍵認証」がよく使われます。
+          </p>
+
+          <h3>3. 鍵を渡して「この人を入れていい」と許可する</h3>
+          <p>
+            チームでサーバーを共有するとき、管理者が「この人の公開鍵をサーバーに登録する」ことで、その人だけがSSHで入れるようにします。
+            「鍵を渡す」＝公開鍵をサーバーに登録する、というイメージです。
           </p>
         </section>
 
@@ -161,7 +193,7 @@ ssh ユーザー名@サーバーのホスト名
           </p>
 
           <p className="note">
-            <strong>💡 似た考え方</strong>
+            <strong><i className="fas fa-lightbulb" aria-hidden /> 似た考え方</strong>
             <br />
             Webページで使う<Link href="/terms/ssl-tls">SSL/TLS</Link>も「通信を暗号化して安全にする」仕組みです。SSHは「遠くのコンピュータにログインするとき」専用の、暗号化付きの仕組みだと思えばOKです。
           </p>
@@ -192,17 +224,40 @@ ssh ユーザー名@サーバーのホスト名
           </p>
 
           <p className="note">
-            <strong>💡 覚え方</strong>
+            <strong><i className="fas fa-lightbulb" aria-hidden /> 覚え方</strong>
             <br />
             秘密鍵 = 自分だけの鍵。公開鍵 = サーバーに預けておく鍵。2つで1セット。
           </p>
         </section>
 
         <section>
+          <h2>別のPCから自分のPCにもアクセスできる</h2>
+          <p>
+            「サーバー」は特別な機械ではなく、<strong>「接続される側（入り先）」の役割の名前</strong>です。
+            だから、自分のPCで「接続を待つ側」のソフトを動かしておけば、そのPCが“サーバー”になり、<strong>別のPC（オフィスの同僚のPCや、自宅のもう一台のPCなど）から、自分のPCにSSHで入れる</strong>ようになります。
+          </p>
+          <p>
+            この「接続を待つ側」で動くプログラムが <strong>sshd（エスエスエッチディー）</strong> です。
+          </p>
+
+          <h3>sshd とは</h3>
+          <p>
+            <strong>sshd</strong> は、SSHの仕組みのうち<strong>「接続される側」で動くプログラムの名前</strong>です。
+            裏でずっと動いていて、「誰かがSSHで入ってこないか」を待っています。だいたい<strong>22番ポート</strong>という入口で待っています。
+          </p>
+          <p>
+            「PCに最初から入っているの？」というと、<strong>OSによって違います</strong>。
+            Windows では OpenSSH サーバーを「機能の追加」で有効にできます。Mac では最初から入っていますが、初期状態ではオフで、「システム設定 → 一般 → 共有」の「リモートログイン」をオンにすると動きます。Linux では <code>openssh-server</code> などをインストールして使います。
+            つまり、<strong>標準で必ず入っているわけではなく、OSごとに「入っている／後から入れられる」が違う</strong>と覚えておくとよいです。
+          </p>
+        </section>
+
+        <section>
           <h2>よく出てくる用語</h2>
           <ul>
-            <li><strong>クライアント</strong> … 接続する側（会社のパソコンなど）</li>
+            <li><strong>クライアント</strong> … 接続する側（手元のパソコンなど）</li>
             <li><strong>サーバー</strong> … 接続される側。詳しくは<Link href="/terms/server">サーバー</Link>の用語ページへ。</li>
+            <li><strong>sshd</strong> … その仕組みの「接続される側」で動くプログラムの名前。22番ポートで待っている。OSによって入っている／後から入れ方が違う。</li>
             <li><strong>ターミナル</strong> … コマンドを打つための画面。<Link href="/terms/cli-gui">CLI</Link>の一種。</li>
             <li><strong>ssh コマンド</strong> … SSHで接続するときに打つコマンド（例: <code>ssh user@host</code>）</li>
             <li><strong>ポート22</strong> … SSHのサービスがよく使う「入口」の番号。<Link href="/terms/ip-address">IPアドレスとポート番号</Link>の「部屋番号」に相当。</li>
