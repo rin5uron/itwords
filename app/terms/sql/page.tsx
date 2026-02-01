@@ -3,8 +3,7 @@
 import Link from 'next/link'
 import { useState } from 'react'
 import StructuredData from '@/app/components/StructuredData'
-import TermHeader from '@/app/components/TermHeader'
-import TableOfContents from '@/app/components/TableOfContents'
+import TermPageHeader from '@/app/components/TermPageHeader'
 import AdBelowRelatedTerms from '@/app/components/AdBelowRelatedTerms'
 
 export default function SQLPage() {
@@ -79,7 +78,7 @@ export default function SQLPage() {
         dateModified="2026-01-16"
       />
 
-      <TermHeader
+      <TermPageHeader
         termName="SQL"
         reading="エスキューエル / シークェル / Structured Query Language"
         icon="fas fa-database"
@@ -88,19 +87,6 @@ export default function SQLPage() {
       />
 
       <main>
-        <TableOfContents />
-
-        {/* 更新日（概要の上） */}
-        <div className="date-info" style={{
-          fontSize: '14px',
-          color: '#666',
-          marginBottom: '20px',
-          paddingBottom: '15px',
-          borderBottom: '1px solid #e0e0e0'
-        }}>
-          <span>作成日: 2026-01-16 | 最終更新: 2026-01-16</span>
-        </div>
-
         <section>
           <h2>概要</h2>
           <p>

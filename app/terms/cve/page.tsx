@@ -1,9 +1,7 @@
 import Link from 'next/link'
 import { Metadata } from 'next'
 import StructuredData from '@/app/components/StructuredData'
-import TermHeader from '@/app/components/TermHeader'
-import TableOfContents from '@/app/components/TableOfContents'
-import PageSummary from '@/app/components/PageSummary'
+import TermPageHeader from '@/app/components/TermPageHeader'
 import FAQAccordion from '@/app/components/FAQAccordion'
 import AdBelowRelatedTerms from '@/app/components/AdBelowRelatedTerms'
 import CVEDemo from '@/components/CVEDemo'
@@ -58,31 +56,22 @@ export default function CVEPage() {
         dateModified="2026-01-14"
       />
 
-      <TermHeader
+      <TermPageHeader
         termName="CVE"
         reading="シーブイイー / Common Vulnerabilities and Exposures"
         icon="fas fa-fingerprint"
         dateCreated="2026-01-14"
         dateModified="2026-01-14"
+        summaryItems={[
+          'CVEとは何か？世界共通の脆弱性識別番号',
+          'CVE番号の見方（CVE-年-連番）',
+          '実際のCVE番号を検索する体験デモ',
+          'CVSSスコアと深刻度（Low〜Critical）',
+          'CVEとゼロデイ攻撃の関係、調べ方・限界',
+        ]}
       />
 
-      <div className="date-info-toc">
-        <span>作成日: 2026-01-14 | 最終更新: 2026-01-14</span>
-      </div>
-
       <main>
-        <PageSummary
-          items={[
-            'CVEとは何か？世界共通の脆弱性識別番号',
-            'CVE番号の見方（CVE-年-連番）',
-            '実際のCVE番号を検索する体験デモ',
-            'CVSSスコアと深刻度（Low〜Critical）',
-            'CVEとゼロデイ攻撃の関係、調べ方・限界',
-          ]}
-        />
-
-        <TableOfContents />
-
         <section>
           <h2>概要</h2>
           <p>

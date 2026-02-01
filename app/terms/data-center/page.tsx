@@ -1,8 +1,6 @@
 import Link from 'next/link'
 import StructuredData from '@/app/components/StructuredData'
-import TermHeader from '@/app/components/TermHeader'
-import TableOfContents from '@/app/components/TableOfContents'
-import PageSummary from '@/app/components/PageSummary'
+import TermPageHeader from '@/app/components/TermPageHeader'
 import FAQAccordion from '@/app/components/FAQAccordion'
 import AdBelowRelatedTerms from '@/app/components/AdBelowRelatedTerms'
 
@@ -37,37 +35,22 @@ export default function DataCenterPage() {
         dateModified="2026-01-29"
       />
 
-      <TermHeader
+      <TermPageHeader
         termName="データセンター"
         reading="データセンター / Data Center"
         icon="fas fa-building"
         dateCreated="2026-01-29"
         dateModified="2026-01-29"
+        summaryItems={[
+          'データセンターとは？「サーバーの家」の比喩',
+          'Webサイト公開にはデータセンターとWebサーバーが必須',
+          'Vercelはデータセンター上でWebサーバーを提供',
+          'URLでアクセスするにはDNSが不可欠',
+          'インターネットは分業されたインフラの連携で成り立っている'
+        ]}
       />
 
       <main>
-        <PageSummary
-          items={[
-            'データセンターとは？「サーバーの家」の比喩',
-            'Webサイト公開にはデータセンターとWebサーバーが必須',
-            'Vercelはデータセンター上でWebサーバーを提供',
-            'URLでアクセスするにはDNSが不可欠',
-            'インターネットは分業されたインフラの連携で成り立っている'
-          ]}
-        />
-
-        <TableOfContents />
-
-        <div className="date-info" style={{
-          fontSize: '14px',
-          color: '#666',
-          marginBottom: '20px',
-          paddingBottom: '15px',
-          borderBottom: '1px solid #e0e0e0'
-        }}>
-          <span>作成日: 2026-01-29 | 最終更新: 2026-01-29</span>
-        </div>
-
         <section>
           <h2>概要</h2>
           <p>

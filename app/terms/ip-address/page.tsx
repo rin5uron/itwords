@@ -1,8 +1,6 @@
 import Link from 'next/link'
 import StructuredData from '@/app/components/StructuredData'
-import TermHeader from '@/app/components/TermHeader'
-import TableOfContents from '@/app/components/TableOfContents'
-import PageSummary from '@/app/components/PageSummary'
+import TermPageHeader from '@/app/components/TermPageHeader'
 import AdBelowRelatedTerms from '@/app/components/AdBelowRelatedTerms'
 import { Metadata } from 'next'
 
@@ -59,39 +57,22 @@ export default function IPAddressPage() {
         dateModified="2026-01-24"
       />
 
-      <TermHeader
+      <TermPageHeader
         termName="IPアドレスとポート番号"
         reading="アイピーアドレス / IP Address and Port Number"
         icon="fas fa-network-wired"
         dateCreated="2026-01-12"
         dateModified="2026-01-24"
+        summaryItems={[
+          'IPアドレスとは？デバイスの住所',
+          'ポート番号とは？部屋番号の比喩',
+          'IPv4とIPv6の違い',
+          'プライベートIPとパブリックIPの違い',
+          'プロトコルとポート番号の関係'
+        ]}
       />
 
       <main>
-        {/* このページでわかること（一番上） */}
-        <PageSummary
-          items={[
-            'IPアドレスとは？デバイスの住所',
-            'ポート番号とは？部屋番号の比喩',
-            'IPv4とIPv6の違い',
-            'プライベートIPとパブリックIPの違い',
-            'プロトコルとポート番号の関係'
-          ]}
-        />
-
-        <TableOfContents />
-
-        {/* 更新日（概要の上） */}
-        <div className="date-info" style={{
-          fontSize: '14px',
-          color: '#666',
-          marginBottom: '20px',
-          paddingBottom: '15px',
-          borderBottom: '1px solid #e0e0e0'
-        }}>
-          <span>作成日: 2026-01-12 | 最終更新: 2026-01-24</span>
-        </div>
-
         <section>
           <h2>概要</h2>
           <p>

@@ -3,7 +3,7 @@ import type { Metadata } from 'next'
 import LocalStorageDemo from '@/components/LocalStorageDemo'
 import LocalStorageComparisonDemo from '@/components/LocalStorageComparisonDemo'
 import StructuredData from '@/app/components/StructuredData'
-import TermHeader from '@/app/components/TermHeader'
+import TermPageHeader from '@/app/components/TermPageHeader'
 import FAQAccordion from '@/app/components/FAQAccordion'
 import AdBelowRelatedTerms from '@/app/components/AdBelowRelatedTerms'
 
@@ -83,7 +83,7 @@ export default function LocalStoragePage() {
         datePublished="2024-01-07"
         dateModified="2026-01-07"
       />
-      <TermHeader
+      <TermPageHeader
         termName="ローカルストレージ"
         reading="ろーかるすとれーじ / localStorage"
         icon="fas fa-database"
@@ -92,17 +92,6 @@ export default function LocalStoragePage() {
       />
 
       <main>
-        {/* 更新日（概要の上） */}
-        <div className="date-info" style={{
-          fontSize: '14px',
-          color: '#666',
-          marginBottom: '20px',
-          paddingBottom: '15px',
-          borderBottom: '1px solid #e0e0e0'
-        }}>
-          <span>作成日: 2024-01-07 | 最終更新: 2026-01-07</span>
-        </div>
-
         <section>
           <h2>概要</h2>
           <p>

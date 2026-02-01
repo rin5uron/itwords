@@ -1,9 +1,7 @@
 'use client'
 
 import Link from 'next/link'
-import TermHeader from '@/app/components/TermHeader'
-import TableOfContents from '@/app/components/TableOfContents'
-import PageSummary from '@/app/components/PageSummary'
+import TermPageHeader from '@/app/components/TermPageHeader'
 import HTMLDemo from './HTMLDemo'
 import FAQAccordion from '@/app/components/FAQAccordion'
 import AdBelowRelatedTerms from '@/app/components/AdBelowRelatedTerms'
@@ -30,36 +28,21 @@ const faqs = [
 export default function HTMLPage() {
   return (
     <div className="container">
-      <TermHeader
+      <TermPageHeader
         termName="HTML"
         reading="エイチティーエムエル / HyperText Markup Language"
         icon="fas fa-code"
+        dateCreated="2024-01-01"
+        dateModified="2026-01-07"
+        summaryItems={[
+          'HTMLとは何か？Webページの構造を作る言語',
+          'HTMLデモで実際にコードを編集',
+          'HTMLとCSS、JavaScriptの違い',
+          'HTML5の新機能と基本タグ'
+        ]}
       />
 
       <main>
-        {/* このページでわかること（一番上） */}
-        <PageSummary
-          items={[
-            'HTMLとは何か？Webページの構造を作る言語',
-            'HTMLデモで実際にコードを編集',
-            'HTMLとCSS、JavaScriptの違い',
-            'HTML5の新機能と基本タグ'
-          ]}
-        />
-
-        <TableOfContents />
-
-        {/* 更新日 */}
-        <div className="date-info" style={{
-          fontSize: '14px',
-          color: '#666',
-          marginBottom: '20px',
-          paddingBottom: '15px',
-          borderBottom: '1px solid #e0e0e0'
-        }}>
-          <span>作成日: 2024-01-01 | 最終更新: 2026-01-07</span>
-        </div>
-
         <section>
           <h2>概要</h2>
           <p>

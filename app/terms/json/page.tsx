@@ -2,8 +2,7 @@ import Link from 'next/link'
 import type { Metadata } from 'next'
 import JsonDemo from '@/components/JsonDemo'
 import StructuredData from '@/app/components/StructuredData'
-import TermHeader from '@/app/components/TermHeader'
-import TableOfContents from '@/app/components/TableOfContents'
+import TermPageHeader from '@/app/components/TermPageHeader'
 import FAQAccordion from '@/app/components/FAQAccordion'
 import AdBelowRelatedTerms from '@/app/components/AdBelowRelatedTerms'
 
@@ -76,7 +75,7 @@ export default function JsonPage() {
         datePublished="2024-01-01"
         dateModified="2026-01-16"
       />
-      <TermHeader
+      <TermPageHeader
         termName="JSON"
         reading="ジェイソン / JavaScript Object Notation"
         icon="fas fa-brackets-curly"
@@ -85,19 +84,6 @@ export default function JsonPage() {
       />
 
       <main>
-        <TableOfContents />
-
-        {/* 更新日（概要の上） */}
-        <div className="date-info" style={{
-          fontSize: '14px',
-          color: '#666',
-          marginBottom: '20px',
-          paddingBottom: '15px',
-          borderBottom: '1px solid #e0e0e0'
-        }}>
-          <span>作成日: 2024-01-01 | 最終更新: 2026-01-16</span>
-        </div>
-
         <section>
           <h2>概要</h2>
           <p>

@@ -1,9 +1,7 @@
 import Link from 'next/link'
 import { Metadata } from 'next'
 import StructuredData from '@/app/components/StructuredData'
-import TermHeader from '@/app/components/TermHeader'
-import TableOfContents from '@/app/components/TableOfContents'
-import PageSummary from '@/app/components/PageSummary'
+import TermPageHeader from '@/app/components/TermPageHeader'
 import FAQAccordion from '@/app/components/FAQAccordion'
 import AdBelowRelatedTerms from '@/app/components/AdBelowRelatedTerms'
 
@@ -62,30 +60,21 @@ export default function RepositoryPage() {
         dateModified="2026-01-18"
       />
 
-      <TermHeader
+      <TermPageHeader
         termName="リポジトリ"
         reading="Repository / レポジトリ"
         icon="fas fa-folder-open"
         dateCreated="2026-01-18"
         dateModified="2026-01-18"
+        summaryItems={[
+          'リポジトリとは何か（コードの保管庫）',
+          'リポジトリ・フォルダ・ディレクトリの違い（図解付き）',
+          'ローカルリポジトリとリモートリポジトリの違い',
+          'GitHubでリポジトリを作る方法とREADMEの書き方'
+        ]}
       />
 
-      <div className="date-info-toc">
-        <span>作成日: 2026-01-18 | 最終更新: 2026-01-18</span>
-      </div>
-
       <main>
-        <PageSummary
-          items={[
-            'リポジトリとは何か（コードの保管庫）',
-            'リポジトリ・フォルダ・ディレクトリの違い（図解付き）',
-            'ローカルリポジトリとリモートリポジトリの違い',
-            'GitHubでリポジトリを作る方法とREADMEの書き方'
-          ]}
-        />
-
-        <TableOfContents />
-
         <section>
           <h2>概要</h2>
           <p>

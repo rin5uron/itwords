@@ -3,9 +3,7 @@
 import Link from 'next/link'
 import GitFlowDemo from '../github/GitFlowDemo'
 import StructuredData from '@/app/components/StructuredData'
-import TableOfContents from '@/app/components/TableOfContents'
-import TermHeader from '@/app/components/TermHeader'
-import PageSummary from '@/app/components/PageSummary'
+import TermPageHeader from '@/app/components/TermPageHeader'
 import FAQAccordion from '@/app/components/FAQAccordion'
 import AdBelowRelatedTerms from '@/app/components/AdBelowRelatedTerms'
 
@@ -43,32 +41,21 @@ export default function GitHubWorkflowPage() {
         dateModified="2026-01-19"
       />
 
-      <TermHeader
+      <TermPageHeader
         termName="GitHubワークフロー"
         reading="ギットハブワークフロー"
         icon="fab fa-github"
         dateCreated="2026-01-19"
         dateModified="2026-01-19"
+        summaryItems={[
+          'プルリクエストとは何か？なぜ必要か？',
+          'プルリクエストの基本的な流れ',
+          'コードレビューのポイント',
+          'よくあるブランチ戦略（GitHub Flow、Git Flow、Trunk-based）'
+        ]}
       />
 
-      {/* 作成日・更新日（目次の上、右寄せ） */}
-      <div className="date-info-toc">
-        <span>作成日: 2026-01-19 | 最終更新: 2026-01-19</span>
-      </div>
-
       <main>
-        {/* このページでわかること（一番上） */}
-        <PageSummary
-          items={[
-            'プルリクエストとは何か？なぜ必要か？',
-            'プルリクエストの基本的な流れ',
-            'コードレビューのポイント',
-            'よくあるブランチ戦略（GitHub Flow、Git Flow、Trunk-based）'
-          ]}
-        />
-
-        <TableOfContents />
-
         <section>
           <h2>概要</h2>
 

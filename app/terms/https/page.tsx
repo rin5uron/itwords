@@ -2,9 +2,7 @@
 
 import Link from 'next/link'
 import StructuredData from '@/app/components/StructuredData'
-import TermHeader from '@/app/components/TermHeader'
-import TableOfContents from '@/app/components/TableOfContents'
-import PageSummary from '@/app/components/PageSummary'
+import TermPageHeader from '@/app/components/TermPageHeader'
 import FAQAccordion from '@/app/components/FAQAccordion'
 import AdBelowRelatedTerms from '@/app/components/AdBelowRelatedTerms'
 
@@ -50,38 +48,21 @@ export default function HTTPSPage() {
         datePublished="2026-01-23"
         dateModified="2026-01-23"
       />
-      <TermHeader
+      <TermPageHeader
         termName="HTTPS"
         reading="エイチティーティーピーエス / HyperText Transfer Protocol Secure"
         icon="fas fa-lock"
         dateCreated="2026-01-23"
         dateModified="2026-01-23"
+        summaryItems={[
+          'HTTPSとは何か？なぜURLに鍵マーク🔒が表示される？',
+          'HTTPSとHTTPの違い（暗号化の仕組み）',
+          'SSL/TLSによる暗号化の仕組み',
+          'HTTPSを使うメリットと必要性'
+        ]}
       />
 
       <main>
-        {/* このページでわかること（一番上） */}
-        <PageSummary
-          items={[
-            'HTTPSとは何か？なぜURLに鍵マーク🔒が表示される？',
-            'HTTPSとHTTPの違い（暗号化の仕組み）',
-            'SSL/TLSによる暗号化の仕組み',
-            'HTTPSを使うメリットと必要性'
-          ]}
-        />
-
-        <TableOfContents />
-
-        {/* 更新日 */}
-        <div className="date-info" style={{
-          fontSize: '14px',
-          color: '#666',
-          marginBottom: '20px',
-          paddingBottom: '15px',
-          borderBottom: '1px solid #e0e0e0'
-        }}>
-          <span>作成日: 2026-01-23 | 最終更新: 2026-01-23</span>
-        </div>
-
         <section>
           <h2>概要</h2>
 

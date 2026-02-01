@@ -2,9 +2,7 @@ import Link from 'next/link'
 import { Metadata } from 'next'
 import HTTPDemo from '@/app/components/HTTPDemo'
 import StructuredData from '@/app/components/StructuredData'
-import TermHeader from '@/app/components/TermHeader'
-import TableOfContents from '@/app/components/TableOfContents'
-import PageSummary from '@/app/components/PageSummary'
+import TermPageHeader from '@/app/components/TermPageHeader'
 import FAQAccordion from '@/app/components/FAQAccordion'
 import AdBelowRelatedTerms from '@/app/components/AdBelowRelatedTerms'
 
@@ -64,40 +62,23 @@ export default function HTTPPage() {
         datePublished="2024-01-01"
         dateModified="2026-01-24"
       />
-      <TermHeader
+      <TermPageHeader
         termName="HTTP/HTTPS"
         reading="エイチティーティーピー / エイチティーティーピーエス"
         icon="fas fa-exchange-alt"
         dateCreated="2024-01-01"
         dateModified="2026-01-24"
+        summaryItems={[
+          'URLを入力してから画面が表示されるまでの流れ（DNS→HTTP）',
+          'HTTPとHTTPSの違い',
+          'HTTPメソッド（GET、POST等）の使い方',
+          'ステータスコード（200、404等）の意味',
+          'SSL/TLSによる暗号化の仕組み',
+          'プロトコルとは？「同じ道を走る別の車」の比喩'
+        ]}
       />
 
       <main>
-        {/* このページでわかること（一番上） */}
-        <PageSummary
-          items={[
-            'URLを入力してから画面が表示されるまでの流れ（DNS→HTTP）',
-            'HTTPとHTTPSの違い',
-            'HTTPメソッド（GET、POST等）の使い方',
-            'ステータスコード（200、404等）の意味',
-            'SSL/TLSによる暗号化の仕組み',
-            'プロトコルとは？「同じ道を走る別の車」の比喩'
-          ]}
-        />
-
-        <TableOfContents />
-
-        {/* 更新日 */}
-        <div className="date-info" style={{
-          fontSize: '14px',
-          color: '#666',
-          marginBottom: '20px',
-          paddingBottom: '15px',
-          borderBottom: '1px solid #e0e0e0'
-        }}>
-          <span>作成日: 2024-01-01 | 最終更新: 2026-01-24</span>
-        </div>
-
         <section>
           <h2>概要</h2>
 

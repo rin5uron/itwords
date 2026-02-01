@@ -3,9 +3,7 @@
 import Link from 'next/link'
 import { useState } from 'react'
 import StructuredData from '@/app/components/StructuredData'
-import TableOfContents from '@/app/components/TableOfContents'
-import TermHeader from '@/app/components/TermHeader'
-import PageSummary from '@/app/components/PageSummary'
+import TermPageHeader from '@/app/components/TermPageHeader'
 import FAQAccordion from '@/app/components/FAQAccordion'
 import AdBelowRelatedTerms from '@/app/components/AdBelowRelatedTerms'
 
@@ -59,38 +57,21 @@ export default function VercelPage() {
         datePublished="2024-01-09"
         dateModified="2026-01-16"
       />
-      <TermHeader
+      <TermPageHeader
         termName="Vercel"
         reading="ヴァーセル"
         icon="fas fa-server"
         dateCreated="2024-01-09"
         dateModified="2026-01-16"
+        summaryItems={[
+          'Vercelとは何か？読み方は？',
+          'GitHubと連携した自動デプロイの仕組み',
+          'Next.jsとの相性が抜群な理由',
+          '無料プランでできること'
+        ]}
       />
 
       <main>
-        {/* このページでわかること（一番上） */}
-        <PageSummary
-          items={[
-            'Vercelとは何か？読み方は？',
-            'GitHubと連携した自動デプロイの仕組み',
-            'Next.jsとの相性が抜群な理由',
-            '無料プランでできること'
-          ]}
-        />
-
-        <TableOfContents />
-
-        {/* 更新日 */}
-        <div className="date-info" style={{
-          fontSize: '14px',
-          color: '#666',
-          marginBottom: '20px',
-          paddingBottom: '15px',
-          borderBottom: '1px solid #e0e0e0'
-        }}>
-          <span>作成日: 2024-01-09 | 最終更新: 2026-01-16</span>
-        </div>
-
         <section>
           <h2>概要</h2>
 

@@ -2,9 +2,7 @@ import Link from 'next/link'
 import type { Metadata } from 'next'
 import QueueDemo from '@/components/QueueDemo'
 import StructuredData from '@/app/components/StructuredData'
-import TermHeader from '@/app/components/TermHeader'
-import TableOfContents from '@/app/components/TableOfContents'
-import PageSummary from '@/app/components/PageSummary'
+import TermPageHeader from '@/app/components/TermPageHeader'
 import FAQAccordion from '@/app/components/FAQAccordion'
 import AdBelowRelatedTerms from '@/app/components/AdBelowRelatedTerms'
 
@@ -84,31 +82,22 @@ export default function QueuePage() {
         datePublished="2024-01-07"
         dateModified="2026-01-07"
       />
-      <TermHeader
+      <TermPageHeader
         termName="キュー (Queue)"
         reading="きゅー / Queue (FIFO)"
         icon="fas fa-users"
         dateCreated="2024-01-07"
         dateModified="2026-01-07"
+        summaryItems={[
+          'キューとは？FIFO（先入れ先出し）',
+          'Enqueue・Dequeueの基本操作',
+          'キューの仕組みを体験するデモ',
+          '日常例（レジの行列、印刷ジョブ）',
+          'スタックとの違い、実践での使い方',
+        ]}
       />
 
-      <div className="date-info-toc">
-        <span>作成日: 2024-01-07 | 最終更新: 2026-01-07</span>
-      </div>
-
       <main>
-        <PageSummary
-          items={[
-            'キューとは？FIFO（先入れ先出し）',
-            'Enqueue・Dequeueの基本操作',
-            'キューの仕組みを体験するデモ',
-            '日常例（レジの行列、印刷ジョブ）',
-            'スタックとの違い、実践での使い方',
-          ]}
-        />
-
-        <TableOfContents />
-
         <section>
           <h2>概要</h2>
           <p>

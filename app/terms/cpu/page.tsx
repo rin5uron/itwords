@@ -66,20 +66,19 @@ export default function CPUPage() {
         dateCreated="2026-02-01"
         dateModified="2026-02-01"
         summaryItems={[
-          'CPUとメモリの関係をデモで一発イメージ',
-          'プログラムはHDD/SSD→メモリ→CPUの順で動く',
-          'Fetch → Decode → Execute の3ステップ',
-          'クロック・コア・キャッシュのイメージ',
-          '「どれだけ速いか」の指標（クロック周波数・MIPS）',
+          '命令はメモリの中にあり、CPUが取りに行く（デモで体験）',
+          'プログラム→ハードディスク→メモリ→CPUの流れ',
+          'タイミングを決めるクロック・コア・キャッシュ',
+          'どれくらい速い？（MIPS）',
         ]}
       />
 
       <main>
         <section>
-          <h2>まず体験：CPUとメモリの関係</h2>
+          <h2>命令はメモリの中にあり、CPUが取りに行く</h2>
           <p>
-            下のデモで、<strong>メモリに並んだ命令を、CPUが順番に取りに行く</strong>様子を確認できる。
-            何をしているかわからなくても大丈夫。まず触ってみよう。
+            下のデモでは、<strong>メモリの「枠の中」に命令があり、CPUがそこに取りに行く</strong>様子が一目でわかります。
+            ボタンで「次の命令を取りにいく」を押して、関係を体験してみよう。
           </p>
           <div
             className="demo-section"
@@ -92,31 +91,63 @@ export default function CPUPage() {
               maxWidth: '100%',
             }}
           >
-            <h3 style={{ marginTop: 0 }}>メモリの命令をCPUが取りにいく</h3>
-            <div style={{ display: 'flex', flexWrap: 'wrap', gap: '12px', marginBottom: '16px', alignItems: 'center' }}>
-              <span style={{ fontSize: '14px', color: '#555' }}>メモリ：</span>
-              {['命令1', '命令2', '命令3'].map((cmd, i) => (
-                <span
-                  key={i}
+            <h3 style={{ marginTop: 0 }}>メモリとCPUの関係</h3>
+            {/* 左：メモリ（大きな枠） 右：CPU 下：ボタン */}
+            <div style={{ display: 'flex', flexWrap: 'wrap', gap: '20px', alignItems: 'flex-start', marginBottom: '20px' }}>
+              <div
+                style={{
+                  flex: '1 1 200px',
+                  minWidth: '180px',
+                  border: '2px solid #14b8a6',
+                  borderRadius: '12px',
+                  padding: '16px',
+                  backgroundColor: '#e6f7f5',
+                }}
+              >
+                <div style={{ fontSize: '14px', fontWeight: 'bold', marginBottom: '12px', color: '#0d9488' }}>メモリ（今使うものを置く机）</div>
+                <div style={{ display: 'flex', flexDirection: 'column', gap: '8px' }}>
+                  {['命令1', '命令2', '命令3'].map((cmd, i) => (
+                    <div
+                      key={i}
+                      style={{
+                        padding: '10px 14px',
+                        borderRadius: '8px',
+                        backgroundColor: memoryStep >= i ? '#fff' : '#f0f0f0',
+                        border: memoryStep === i ? '2px solid #14b8a6' : '1px solid #b2dfdb',
+                        fontWeight: memoryStep === i ? 700 : 400,
+                        boxShadow: memoryStep === i ? '0 0 0 2px rgba(20,184,166,0.3)' : 'none',
+                      }}
+                    >
+                      {cmd}
+                    </div>
+                  ))}
+                </div>
+              </div>
+              <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '12px', flex: '0 0 auto' }}>
+                {memoryStep < 3 && (
+                  <div style={{ fontSize: '14px', color: '#007bff', display: 'flex', alignItems: 'center', gap: '4px' }}>
+                    <i className="fas fa-arrow-right" aria-hidden />
+                    <span>取りにいく</span>
+                  </div>
+                )}
+                <div
                   style={{
-                    padding: '8px 14px',
-                    borderRadius: '8px',
-                    backgroundColor: memoryStep >= i ? '#e6f7f5' : '#f0f0f0',
-                    border: memoryStep === i ? '2px solid #14b8a6' : '1px solid #ddd',
-                    fontWeight: memoryStep === i ? 700 : 400,
+                    padding: '16px 20px',
+                    borderRadius: '12px',
+                    backgroundColor: '#e3f2fd',
+                    border: '2px solid #007bff',
+                    textAlign: 'center',
                   }}
                 >
-                  {cmd}
-                </span>
-              ))}
+                  <i className="fas fa-microchip" style={{ color: '#007bff', fontSize: '28px', display: 'block', marginBottom: '8px' }} aria-hidden />
+                  <span style={{ fontWeight: 'bold', fontSize: '14px' }}>CPU</span>
+                  <p style={{ margin: '8px 0 0 0', fontSize: '13px', color: '#555' }}>
+                    {memoryStep < 3 ? `「${['命令1', '命令2', '命令3'][memoryStep]}」を取りにいった` : '3本とも取り終えた'}
+                  </p>
+                </div>
+              </div>
             </div>
-            <div style={{ display: 'flex', alignItems: 'center', gap: '12px', flexWrap: 'wrap' }}>
-              <i className="fas fa-microchip" style={{ color: '#007bff', fontSize: '24px' }} aria-hidden />
-              <span style={{ fontSize: '14px' }}>
-                CPUが<strong>{memoryStep < 3 ? `「${['命令1', '命令2', '命令3'][memoryStep]}」を取りにいった` : '3本とも取り終えた'}</strong>
-              </span>
-            </div>
-            <div style={{ display: 'flex', flexWrap: 'wrap', gap: '10px', marginTop: '16px' }}>
+            <div style={{ display: 'flex', flexWrap: 'wrap', gap: '10px', justifyContent: 'flex-end', borderTop: '1px solid #b2dfdb', paddingTop: '16px' }}>
               <button
                 type="button"
                 onClick={() => setMemoryStep((n) => (n < 3 ? n + 1 : n))}
@@ -153,19 +184,56 @@ export default function CPUPage() {
         </section>
 
         <section>
-          <h2>全体の流れ：プログラムはどこからCPUへ？</h2>
+          <h2>プログラムってなに？</h2>
           <p>
-            プログラムは、起動時に<strong>ハードディスク／SSD</strong>から<strong>メモリ（RAM）</strong>に読み込まれる。
-            CPUは、<strong>メモリ上に並んだ命令を1つずつ</strong>取り出して実行している。
+            プログラムは、<strong>「やることを書いた設計図」</strong>です。
+          </p>
+          <ul>
+            <li>ゲームを動かす</li>
+            <li>文字を表示する</li>
+            <li>計算する</li>
+          </ul>
+          <p>など、コンピュータにさせたいことを順番に書いたものです。</p>
+        </section>
+
+        <section>
+          <h2>ハードディスクってなに？</h2>
+          <p>
+            ハードディスク（やSSD）は、<strong>「しまっておく場所」</strong>です。
+            電源を切っても消えません。
+          </p>
+          <ul>
+            <li>ゲームのデータ</li>
+            <li>アプリ</li>
+            <li>写真</li>
+          </ul>
+          <p>まだ「使っていない」状態のプログラムが、ここに置いてあります。</p>
+        </section>
+
+        <section>
+          <h2>メモリってなに？</h2>
+          <p>
+            メモリは、<strong>「今使うものを置く机」</strong>です。
+            電源を切ると消えます。CPUのすぐ近くにあります。
           </p>
           <p>
-            この時点では「命令」「計算」「制御」くらいの粒度で考えてよい。
-            CPUは勝手に考えているわけではなく、<strong>全部、メモリに置かれた命令通り</strong>に動いている。
+            プログラムは、<strong>ハードディスク → メモリ</strong>にコピーされてから使われます。
           </p>
         </section>
 
         <section>
-          <h2>CPUの3ステップ：Fetch → Decode → Execute</h2>
+          <h2>CPUは何をしている？</h2>
+          <p>
+            CPUは、<strong>「考えて実行する人」</strong>のようなものです。
+            メモリにある命令を、1つ取りに行く → 実行する → また次を取りに行く、を繰り返します。
+          </p>
+          <p>
+            CPUは<strong>ハードディスクには直接行きません</strong>。必ずメモリから命令を取り出して実行します。
+          </p>
+        </section>
+
+        <section>
+          <h2>CPUの3ステップ：取り出し → 解読 → 実行</h2>
           <p>
             命令は<strong>メモリ（RAM）</strong>に置かれている。プログラムは起動時に<strong>ハードディスク／SSD</strong>から<strong>メモリ</strong>に読み込まれる。CPUは、そのメモリ上の命令を1本ずつ次のように処理する。
           </p>
@@ -279,48 +347,32 @@ export default function CPUPage() {
         </section>
 
         <section>
-          <h2>命令はメモリから読む</h2>
+          <h2>タイミングを決める：クロック</h2>
           <p>
-            プログラムは起動時に、ハードディスクやSSDから<strong>メモリ（RAM）</strong>に読み込まれる。
-            CPUが実行する「命令」は、このメモリ上に並んでいる。
-          </p>
-          <p>
-            CPUが毎回ディスクから読むと非常に遅いため、
-            「今実行する分」はメモリに置いておき、CPUは<strong>メモリから</strong>命令を1本ずつ取り出して実行する。
-            メモリはディスクよりずっと速いので、処理がスムーズになる。
-          </p>
-          <p>
-            メモリの「どの位置（アドレス）に何があるか」や、CPUのすぐそばにある「レジスタ」については、
-            別ページ（メモリの解説）でアドレス指定やレジスタとあわせて説明する予定である。
+            <strong>クロック</strong>は、CPUが「次に進んでいいよ」と合図する<strong>リズム</strong>です。
+            プログラムは「何を」するかを決め、クロックは「いつ」進めるかを決めます。
+            クロック周波数（例：3GHz）が高いほど、1秒間に刻まれる回数は増えます。
           </p>
         </section>
 
         <section>
-          <h2>クロック・コア・キャッシュのイメージ</h2>
-
-          <h3>クロック（クロック周波数）</h3>
+          <h2>同時に考えられる人数：コア</h2>
           <p>
-            「いつ次のステップに進むか」のタイミングを決めているのが<strong>クロック</strong>（クロック信号）である。
-            プログラムは「何を」するかを決めるが、<strong>クロック</strong>は「いつ」進めるかを決める。
-            <strong>クロック周波数</strong>（例：3GHz）が高いほど1秒間に<strong>クロック</strong>が刻まれる回数は増える。3GHzなら1秒間に約30億回である。
-          </p>
-
-          <h3>コア</h3>
-          <p>
-            <strong>コア</strong>は、CPUの中で実際に命令を実行する「1つ分の処理ユニット」である。
-            デュアルコアなら2つ、クアッドコアなら4つあり、複数の処理を同時に進められる。
-          </p>
-
-          <h3>キャッシュ</h3>
-          <p>
-            <strong>キャッシュ</strong>は、メモリ（主記憶）より速いが容量の小さい記憶領域で、CPUの近くにある。
-            主記憶にある「今さっき使った／これから使いそうな」データや命令の<strong>コピー</strong>をここに置いておき、
-            毎回メモリまで取りに行く回数を減らして待ち時間を短くする。本物のデータは主記憶にあり、キャッシュはその写しを置く場所である。
+            <strong>コア</strong>は、CPUのなかで「考えて実行する人」が何人分いるか、というイメージです。
+            1人で考える（シングルコア）、2人で考える（デュアルコア）、4人で考える（クアッドコア）などがあり、コアが多いほど複数の処理を同時に進められます。
           </p>
         </section>
 
         <section>
-          <h2>CPUは「どれだけ速く命令を実行できるのか？」</h2>
+          <h2>すぐ取り出せる引き出し：キャッシュ</h2>
+          <p>
+            <strong>キャッシュ</strong>は、メモリよりさらにCPUに近いところにある「引き出し」です。
+            よく使うデータや命令の<strong>コピー</strong>をここに置いておくので、毎回メモリまで探しに行かなくてすみ、速く動きます。
+          </p>
+        </section>
+
+        <section>
+          <h2>どれくらい速い？（MIPS）</h2>
           <p>
             <strong>クロック</strong>（クロック信号）が「いつ進めるか」を決め、<strong>クロック周波数</strong>（例：3GHz）が高いほど1秒間にこなせる処理は増える。
             <strong>MIPS</strong>（Million Instructions Per Second）は、1秒間に実行できる命令数を百万単位で表した指標で、基本情報技術者試験でも計算問題が出る。

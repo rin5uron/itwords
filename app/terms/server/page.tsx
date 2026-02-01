@@ -5,8 +5,7 @@ import Image from 'next/image'
 import { useState } from 'react'
 import { Metadata } from 'next'
 import StructuredData from '@/app/components/StructuredData'
-import TermHeader from '@/app/components/TermHeader'
-import TableOfContents from '@/app/components/TableOfContents'
+import TermPageHeader from '@/app/components/TermPageHeader'
 import AdBelowRelatedTerms from '@/app/components/AdBelowRelatedTerms'
 
 export default function ServerPage() {
@@ -60,17 +59,13 @@ export default function ServerPage() {
         dateModified="2026-01-12"
       />
 
-      <TermHeader
+      <TermPageHeader
         termName="サーバー"
         reading="サーバー / Server"
         icon="fas fa-server"
         dateCreated="2026-01-12"
         dateModified="2026-01-12"
       />
-
-      <div className="date-info-toc">
-        <span>作成日: 2026-01-12 | 最終更新: 2026-01-12</span>
-      </div>
 
       <div style={{
         width: '100%',
@@ -99,8 +94,6 @@ export default function ServerPage() {
       </div>
 
       <main>
-        <TableOfContents />
-
         <section>
           <h2>概要</h2>
           <p>

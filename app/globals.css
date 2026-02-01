@@ -1128,15 +1128,17 @@ footer a:hover {
 
 .table-of-contents a {
   display: flex;
-  align-items: center;
+  align-items: flex-start;
   gap: 8px;
   color: #495057;
   text-decoration: none;
-  padding: 4px 8px;
+  padding: 6px 8px;
   border-radius: 6px;
-  transition: all 0.2s ease;
+  transition: background-color 0.2s ease, color 0.2s ease, transform 0.2s ease;
   font-size: clamp(12px, 2.5vw, 13px);
   line-height: 1.35;
+  width: 100%;
+  box-sizing: border-box;
 }
 
 .table-of-contents a:hover {
@@ -1155,12 +1157,13 @@ footer a:hover {
   justify-content: center;
   min-width: 20px;
   height: 20px;
+  margin-top: 0;
+  flex-shrink: 0;
   background-color: #14b8a6;
   color: white;
   border-radius: 50%;
   font-size: clamp(10px, 2vw, 11px);
   font-weight: 600;
-  flex-shrink: 0;
 }
 
 .toc-title {

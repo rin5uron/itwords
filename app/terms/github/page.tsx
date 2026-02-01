@@ -2,9 +2,7 @@ import Link from 'next/link'
 import { Metadata } from 'next'
 import GitHubDemo from './GitHubDemo'
 import StructuredData from '@/app/components/StructuredData'
-import TableOfContents from '@/app/components/TableOfContents'
-import TermHeader from '@/app/components/TermHeader'
-import PageSummary from '@/app/components/PageSummary'
+import TermPageHeader from '@/app/components/TermPageHeader'
 import FAQAccordion from '@/app/components/FAQAccordion'
 import AdBelowRelatedTerms from '@/app/components/AdBelowRelatedTerms'
 
@@ -65,38 +63,21 @@ export default function GitHubPage() {
         dateModified="2026-01-19"
       />
 
-      <TermHeader
+      <TermPageHeader
         termName="GitHub"
         reading="ギットハブ"
         icon="fab fa-github"
         dateCreated="2024-01-01"
         dateModified="2026-01-19"
+        summaryItems={[
+          'GitHubとは何か？何に使うのか？',
+          'GitとGitHubの違い',
+          '実際のGitコマンドの使い方（デモ付き）',
+          'GitHubの便利な機能（Issues、Actions、Pagesなど）'
+        ]}
       />
 
       <main>
-        {/* このページでわかること（一番上） */}
-        <PageSummary
-          items={[
-            'GitHubとは何か？何に使うのか？',
-            'GitとGitHubの違い',
-            '実際のGitコマンドの使い方（デモ付き）',
-            'GitHubの便利な機能（Issues、Actions、Pagesなど）'
-          ]}
-        />
-
-        <TableOfContents />
-
-        {/* 更新日 */}
-        <div className="date-info" style={{
-          fontSize: '14px',
-          color: '#666',
-          marginBottom: '20px',
-          paddingBottom: '15px',
-          borderBottom: '1px solid #e0e0e0'
-        }}>
-          <span>作成日: 2024-01-01 | 最終更新: 2026-01-19</span>
-        </div>
-
         <section>
           <h2>概要</h2>
 

@@ -2,9 +2,7 @@ import Link from 'next/link'
 import Image from 'next/image'
 import { Metadata } from 'next'
 import StructuredData from '@/app/components/StructuredData'
-import TermHeader from '@/app/components/TermHeader'
-import TableOfContents from '@/app/components/TableOfContents'
-import PageSummary from '@/app/components/PageSummary'
+import TermPageHeader from '@/app/components/TermPageHeader'
 import FAQAccordion from '@/app/components/FAQAccordion'
 import AdBelowRelatedTerms from '@/app/components/AdBelowRelatedTerms'
 import WhiteHatDemo from '@/components/WhiteHatDemo'
@@ -68,17 +66,20 @@ export default function WhiteHatHackerPage() {
         dateModified="2026-01-14"
       />
 
-      <TermHeader
+      <TermPageHeader
         termName="ホワイトハッカー"
         reading="ホワイトハッカー / White Hat Hacker"
         icon="fas fa-user-shield"
         dateCreated="2026-01-14"
         dateModified="2026-01-14"
+        summaryItems={[
+          'ホワイトハッカーとは？善意でセキュリティを守る技術者',
+          'ホワイトハット・ブラックハットの由来',
+          '脆弱性診断の流れを体験するデモ',
+          'ホワイトハッカーとブラックハッカーの違い',
+          'グレーハッカー、仕事内容・なるには',
+        ]}
       />
-
-      <div className="date-info-toc">
-        <span>作成日: 2026-01-14 | 最終更新: 2026-01-14</span>
-      </div>
 
       <div style={{
         width: '100%',
@@ -107,18 +108,6 @@ export default function WhiteHatHackerPage() {
       </div>
 
       <main>
-        <PageSummary
-          items={[
-            'ホワイトハッカーとは？善意でセキュリティを守る技術者',
-            'ホワイトハット・ブラックハットの由来',
-            '脆弱性診断の流れを体験するデモ',
-            'ホワイトハッカーとブラックハッカーの違い',
-            'グレーハッカー、仕事内容・なるには',
-          ]}
-        />
-
-        <TableOfContents />
-
         <section>
           <h2>概要</h2>
           <p>

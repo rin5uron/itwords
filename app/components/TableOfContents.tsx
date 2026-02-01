@@ -26,8 +26,9 @@ export default function TableOfContents({ minHeadings = 4, className }: TableOfC
   }, [])
 
   useEffect(() => {
-    // ページ内のh2タグを全て取得
-    const h2Elements = Array.from(document.querySelectorAll('main h2'))
+    // ページ内のh2タグのみ取得（h3は目次に含めない）
+    const allInMain = document.querySelectorAll('main h2')
+    const h2Elements = Array.from(allInMain).filter((el) => el.tagName === 'H2')
 
     const items: TocItem[] = h2Elements.map((heading, index) => {
       // idがない場合は自動生成

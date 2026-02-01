@@ -1,9 +1,7 @@
 import Link from 'next/link'
 import { Metadata } from 'next'
 import StructuredData from '@/app/components/StructuredData'
-import TermHeader from '@/app/components/TermHeader'
-import TableOfContents from '@/app/components/TableOfContents'
-import PageSummary from '@/app/components/PageSummary'
+import TermPageHeader from '@/app/components/TermPageHeader'
 import FAQAccordion from '@/app/components/FAQAccordion'
 import AdBelowRelatedTerms from '@/app/components/AdBelowRelatedTerms'
 
@@ -59,38 +57,21 @@ export default function SMTPPage() {
         datePublished="2026-01-24"
         dateModified="2026-01-24"
       />
-      <TermHeader
+      <TermPageHeader
         termName="SMTP"
         reading="エスエムティーピー / Simple Mail Transfer Protocol"
         icon="fas fa-envelope"
         dateCreated="2026-01-24"
         dateModified="2026-01-24"
+        summaryItems={[
+          'SMTPとは？メールを送信するためのプロトコル',
+          'HTTPとの違い：「同じ道を走る別の車」',
+          'ポート番号25番の役割',
+          'メール送信の仕組みと流れ'
+        ]}
       />
 
       <main>
-        {/* このページでわかること（一番上） */}
-        <PageSummary
-          items={[
-            'SMTPとは？メールを送信するためのプロトコル',
-            'HTTPとの違い：「同じ道を走る別の車」',
-            'ポート番号25番の役割',
-            'メール送信の仕組みと流れ'
-          ]}
-        />
-
-        <TableOfContents />
-
-        {/* 更新日 */}
-        <div className="date-info" style={{
-          fontSize: '14px',
-          color: '#666',
-          marginBottom: '20px',
-          paddingBottom: '15px',
-          borderBottom: '1px solid #e0e0e0'
-        }}>
-          <span>作成日: 2026-01-24 | 最終更新: 2026-01-24</span>
-        </div>
-
         <section>
           <h2>概要</h2>
 

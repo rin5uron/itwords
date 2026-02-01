@@ -2,10 +2,8 @@ import Link from 'next/link'
 import Image from 'next/image'
 import { Metadata } from 'next'
 import StructuredData from '@/app/components/StructuredData'
-import TermHeader from '@/app/components/TermHeader'
+import TermPageHeader from '@/app/components/TermPageHeader'
 import AESDemo from '@/components/AESDemo'
-import TableOfContents from '@/app/components/TableOfContents'
-import PageSummary from '@/app/components/PageSummary'
 import FAQAccordion from '@/app/components/FAQAccordion'
 import AdBelowRelatedTerms from '@/app/components/AdBelowRelatedTerms'
 
@@ -84,12 +82,18 @@ export default function AESPage() {
         dateModified="2026-01-19"
       />
 
-      <TermHeader
+      <TermPageHeader
         termName="AES"
         reading="エーイーエス / Advanced Encryption Standard"
         icon="fas fa-lock"
         dateCreated="2024-01-09"
         dateModified="2026-01-19"
+        summaryItems={[
+          'AESとは何か？暗号化の仕組み',
+          '暗号化デモで実際に体験',
+          'AES-128と256の違いと選び方',
+          'JavaScriptでの実装方法'
+        ]}
       />
 
       {/* ヒーロー画像（タイトルの下に配置） */}
@@ -119,23 +123,7 @@ export default function AESPage() {
         />
       </div>
 
-      <div className="date-info-toc">
-        <span>作成日: 2024-01-09 | 最終更新: 2026-01-19</span>
-      </div>
-
       <main>
-        {/* このページでわかること（一番上） */}
-        <PageSummary
-          items={[
-            'AESとは何か？暗号化の仕組み',
-            '暗号化デモで実際に体験',
-            'AES-128と256の違いと選び方',
-            'JavaScriptでの実装方法'
-          ]}
-        />
-
-        <TableOfContents />
-
         <section>
           <h2>概要</h2>
 

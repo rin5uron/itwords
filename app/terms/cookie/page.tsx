@@ -1,11 +1,9 @@
 'use client'
 
 import Link from 'next/link'
-import TableOfContents from '@/app/components/TableOfContents'
-import TermHeader from '@/app/components/TermHeader'
+import TermPageHeader from '@/app/components/TermPageHeader'
 import CookieDemo from '@/app/components/CookieDemo'
 import StructuredData from '@/app/components/StructuredData'
-import PageSummary from '@/app/components/PageSummary'
 import FAQAccordion from '@/app/components/FAQAccordion'
 import AdBelowRelatedTerms from '@/app/components/AdBelowRelatedTerms'
 
@@ -43,38 +41,21 @@ export default function CookiePage() {
         datePublished="2024-01-01"
         dateModified="2026-01-19"
       />
-      <TermHeader
+      <TermPageHeader
         termName="Cookie"
         reading="クッキー"
         icon="fas fa-cookie-bite"
         dateCreated="2024-01-01"
         dateModified="2026-01-19"
+        summaryItems={[
+          'Cookieとは何か？何に使われる？',
+          '体験デモでCookieの動作を確認',
+          'LocalStorageやSessionStorageとの違い',
+          'セキュリティとプライバシー対策'
+        ]}
       />
 
       <main>
-        {/* このページでわかること（一番上） */}
-        <PageSummary
-          items={[
-            'Cookieとは何か？何に使われる？',
-            '体験デモでCookieの動作を確認',
-            'LocalStorageやSessionStorageとの違い',
-            'セキュリティとプライバシー対策'
-          ]}
-        />
-
-        <TableOfContents />
-
-        {/* 更新日 */}
-        <div className="date-info" style={{
-          fontSize: '14px',
-          color: '#666',
-          marginBottom: '20px',
-          paddingBottom: '15px',
-          borderBottom: '1px solid #e0e0e0'
-        }}>
-          <span>作成日: 2024-01-01 | 最終更新: 2026-01-19</span>
-        </div>
-
         <section>
           <h2>概要</h2>
 

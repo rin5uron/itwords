@@ -2,9 +2,7 @@
 
 import Link from 'next/link'
 import { useState } from 'react'
-import TermHeader from '@/app/components/TermHeader'
-import TableOfContents from '@/app/components/TableOfContents'
-import PageSummary from '@/app/components/PageSummary'
+import TermPageHeader from '@/app/components/TermPageHeader'
 import FAQAccordion from '@/app/components/FAQAccordion'
 import AdBelowRelatedTerms from '@/app/components/AdBelowRelatedTerms'
 
@@ -44,29 +42,22 @@ export default function FrameworkPage() {
 
   return (
     <div className="container">
-      <TermHeader
+      <TermPageHeader
         termName="Framework"
         reading="フレームワーク"
         icon="fas fa-cube"
+        dateCreated="2024-01-01"
+        dateModified="2026-01-07"
+        summaryItems={[
+          'フレームワークとは？開発の土台となる枠組み',
+          'ライブラリとの違い（呼び出す側・呼ばれる側）',
+          'フレームワーク選びのデモ（React / Next.js / Vue）',
+          '使うメリット・代表例',
+          'おすすめの学習順序',
+        ]}
       />
 
-      <div className="date-info-toc">
-        <span>作成日: 2024-01-01 | 最終更新: 2026-01-07</span>
-      </div>
-
       <main>
-        <PageSummary
-          items={[
-            'フレームワークとは？開発の土台となる枠組み',
-            'ライブラリとの違い（呼び出す側・呼ばれる側）',
-            'フレームワーク選びのデモ（React / Next.js / Vue）',
-            '使うメリット・代表例',
-            'おすすめの学習順序',
-          ]}
-        />
-
-        <TableOfContents />
-
         <section>
           <h2>概要</h2>
           <p>

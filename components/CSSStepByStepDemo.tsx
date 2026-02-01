@@ -252,7 +252,8 @@ export default function CSSStepByStepDemo() {
               ...getAppliedCSS(),
               transition: 'all 0.3s ease'
             }}>
-              <h2 style={{ margin: '0 0 10px 0', fontSize: '20px' }}>こんにちは</h2>
+              {/* デモ用の見た目だけの見出し（目次に拾われないよう div で表示） */}
+              <div style={{ margin: '0 0 10px 0', fontSize: '20px', fontWeight: 'bold' }}>こんにちは</div>
               <p style={{ margin: 0, fontSize: '14px' }}>これはカードです</p>
             </div>
           </div>

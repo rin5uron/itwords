@@ -2,7 +2,7 @@
 
 import Link from 'next/link'
 import { useState } from 'react'
-import TermHeader from '@/app/components/TermHeader'
+import TermPageHeader from '@/app/components/TermPageHeader'
 import FAQAccordion from '@/app/components/FAQAccordion'
 import AdBelowRelatedTerms from '@/app/components/AdBelowRelatedTerms'
 import StructuredData from '@/app/components/StructuredData'
@@ -89,7 +89,7 @@ export default function WebhookPage() {
         dateModified="2026-01-19"
       />
 
-      <TermHeader
+      <TermPageHeader
         termName="Webhook"
         reading="ウェブフック"
         icon="fas fa-webhook"
@@ -98,17 +98,6 @@ export default function WebhookPage() {
       />
 
       <main>
-        {/* 更新日（概要の上） */}
-        <div className="date-info" style={{
-          fontSize: '14px',
-          color: '#666',
-          marginBottom: '20px',
-          paddingBottom: '15px',
-          borderBottom: '1px solid #e0e0e0'
-        }}>
-          <span>作成日: 2024-01-10 | 最終更新: 2026-01-19</span>
-        </div>
-
         <section>
           <h2>概要</h2>
 

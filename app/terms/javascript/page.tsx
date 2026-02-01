@@ -2,9 +2,7 @@ import Link from 'next/link'
 import { Metadata } from 'next'
 import JavaScriptDemo from '@/app/components/JavaScriptDemo'
 import StructuredData from '@/app/components/StructuredData'
-import TermHeader from '@/app/components/TermHeader'
-import TableOfContents from '@/app/components/TableOfContents'
-import PageSummary from '@/app/components/PageSummary'
+import TermPageHeader from '@/app/components/TermPageHeader'
 import FAQAccordion from '@/app/components/FAQAccordion'
 import AdBelowRelatedTerms from '@/app/components/AdBelowRelatedTerms'
 
@@ -57,38 +55,21 @@ export default function JavaScriptPage() {
         datePublished="2024-01-01"
         dateModified="2026-01-07"
       />
-      <TermHeader
+      <TermPageHeader
         termName="JavaScript"
         reading="ジャバスクリプト / JS"
         icon="fas fa-code-branch"
         dateCreated="2024-01-01"
         dateModified="2026-01-07"
+        summaryItems={[
+          'JavaScriptとは何か？Webページに動きを追加する言語',
+          'JavaScriptデモで実際にコードを実行',
+          'JavaScriptとJavaの違い',
+          'ES6の新機能と基本構文'
+        ]}
       />
 
       <main>
-        {/* このページでわかること（一番上） */}
-        <PageSummary
-          items={[
-            'JavaScriptとは何か？Webページに動きを追加する言語',
-            'JavaScriptデモで実際にコードを実行',
-            'JavaScriptとJavaの違い',
-            'ES6の新機能と基本構文'
-          ]}
-        />
-
-        <TableOfContents />
-
-        {/* 更新日 */}
-        <div className="date-info" style={{
-          fontSize: '14px',
-          color: '#666',
-          marginBottom: '20px',
-          paddingBottom: '15px',
-          borderBottom: '1px solid #e0e0e0'
-        }}>
-          <span>作成日: 2024-01-01 | 最終更新: 2026-01-07</span>
-        </div>
-
         <section>
           <h2>概要</h2>
           <p>

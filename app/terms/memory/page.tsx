@@ -3,17 +3,15 @@
 import Link from 'next/link'
 import { useState } from 'react'
 import StructuredData from '@/app/components/StructuredData'
-import TermHeader from '@/app/components/TermHeader'
-import TableOfContents from '@/app/components/TableOfContents'
-import PageSummary from '@/app/components/PageSummary'
+import TermPageHeader from '@/app/components/TermPageHeader'
 import FAQAccordion from '@/app/components/FAQAccordion'
 import AdBelowRelatedTerms from '@/app/components/AdBelowRelatedTerms'
 
 const HIERARCHY_LAYERS = [
   { name: 'レジスタ', desc: 'CPUのすぐそば。', desc2: '最も速いが数は少ない。', icon: 'fas fa-microchip', color: '#007bff' },
-  { name: 'キャッシュメモリ', desc: '主記憶のコピーを置く。', desc2: '主記憶より速い。', icon: 'fas fa-bolt', color: '#28a745' },
-  { name: '主記憶（RAM）', desc: 'プログラムとデータを置く作業場。', desc2: '揮発性。', icon: 'fas fa-memory', color: '#ffc107' },
-  { name: '補助記憶（SSD/HDD）', desc: '長く保存する倉庫。', desc2: '遅いが大容量・不揮発。', icon: 'fas fa-hdd', color: '#6c757d' },
+  { name: 'キャッシュ', desc: 'メモリのコピーを置く。', desc2: 'メモリより速い。', icon: 'fas fa-bolt', color: '#28a745' },
+  { name: 'メモリ（RAM）', desc: 'プログラムとデータを置く作業場。', desc2: '電源を切ると消える。', icon: 'fas fa-memory', color: '#ffc107' },
+  { name: '補助記憶（SSD/HDD）', desc: '長く保存する倉庫。', desc2: '遅いが大容量。', icon: 'fas fa-hdd', color: '#6c757d' },
 ]
 
 export default function MemoryPage() {
@@ -30,24 +28,24 @@ export default function MemoryPage() {
 
   const faqs = [
     {
-      question: 'メモリ（主記憶）とは何ですか？',
-      answer: 'メモリ（主記憶・RAM）は、CPUが「今」実行するプログラムやデータを一時的に置く作業場です。SSD/HDDから読み込んだ内容をここに置き、CPUはメモリから命令やデータを読み書きします。電源を切ると消える揮発性の記憶装置です。',
+      question: 'メモリとは何ですか？',
+      answer: 'メモリ（RAM）は、CPUが「今」実行するプログラムやデータを一時的に置く作業場です。SSD/HDDから読み込んだ内容をここに置き、CPUはメモリから命令やデータを読み書きします。電源を切ると消える記憶装置です。',
     },
     {
       question: 'アドレスとは何ですか？',
-      answer: 'アドレス（番地）は、メモリ上の「どの位置」かを表す番号です。CPUは「このアドレスのデータを読め」「このアドレスに書け」のように指定してメモリにアクセスします。命令には「何をするか」の命令部と「どのアドレスを扱うか」のアドレス部があります。',
+      answer: 'アドレス（番地）は、メモリ上の「どの位置」かを表す番号です。CPUは「このアドレスに探しに行け」「このアドレスに書け」のように指定してメモリにアクセスします。命令には「何をするか」の命令部と「どのアドレスを扱うか」のアドレス部があります。',
     },
     {
       question: 'キャッシュはコピーですか？',
-      answer: 'はい。キャッシュメモリには主記憶のデータのコピーを置きます。本物は主記憶にあり、よく使うデータの写しをCPUの近くに置いて、メモリまで取りに行く回数を減らし、アクセスを速くしています。',
+      answer: 'はい。キャッシュにはメモリのデータのコピーを置きます。本物はメモリにあり、よく使うデータの写しをCPUの近くに置いて、メモリまで探しに行く回数を減らし、速くしています。',
     },
     {
-      question: '実効アクセス時間とは何ですか？',
-      answer: 'キャッシュに欲しいデータがある確率（ヒット率）を考慮した、平均的なアクセス時間です。式は「実効アクセス時間＝ヒット率×キャッシュアクセス時間＋(1－ヒット率)×主記憶アクセス時間」で、基本情報技術者試験で計算問題として出題されます。',
+      question: 'ヒット率（近くにあった割合）とは？',
+      answer: 'ヒット率は、探したデータがキャッシュ（近く）にあった割合です。高いほどすぐ見つかることが多く、CPUが待たずにすむので、全体が速く動きます。「だいたいどれくらい待つか」は、この割合とキャッシュ・メモリの探しに行く時間で計算できます。',
     },
     {
       question: '相対アドレス指定と基底アドレス指定の違いは？',
-      answer: '相対アドレス指定は、命令のアドレス部にプログラムカウンタ（PC）の値を足して実効アドレスを求めます。基底アドレス指定は、アドレス部に基底レジスタ（BR）の値を足して実効アドレスを求めます。どちらも「基準となる値＋アドレス部」で実際にアクセスする番地を決めます。',
+      answer: '「場所の指定のしかた」が違います。相対は「今いるところからどれだけ離れているか」、基底は「決めた基準の場所からどれだけ離れているか」で、実際に探しに行く番地を決めます。',
     },
   ]
 
@@ -62,48 +60,37 @@ export default function MemoryPage() {
         dateModified="2026-02-01"
       />
 
-      <TermHeader
+      <TermPageHeader
         termName="メモリ"
         reading="めもり / Memory（主記憶・RAM）"
         icon="fas fa-memory"
         dateCreated="2026-02-01"
         dateModified="2026-02-01"
+        summaryItems={[
+          'メモリ＝CPUが今使う情報を置く場所',
+          'データはどこから探される？（キャッシュ・メモリデモ）',
+          'アドレス・命令部とアドレス部',
+          '近くにあった割合（ヒット率）・だいたいどれくらい待つか',
+          '割り込み・メモリインターリーブの概要',
+        ]}
       />
 
-      <div className="date-info-toc">
-        <span>作成日: 2026-02-01 | 最終更新: 2026-02-01</span>
-      </div>
-
       <main>
-        <PageSummary
-          items={[
-            'メモリ＝CPUが今使う情報を置く場所',
-            'データはどこから探される？（記憶階層デモ）',
-            'アドレス・命令部とアドレス部',
-            'アドレス指定方式・実効アクセス時間の計算デモ',
-            '割り込み・メモリインターリーブの概要',
-          ]}
-        />
-
-        <TableOfContents />
-
         <section>
           <h2>概要</h2>
           <p>
-            <strong>メモリ</strong>（主記憶・RAM）は、
-            <strong>CPUが仕事をするために、今使う情報を置いておく場所</strong>である。
-            CPUはここから<strong>命令</strong>と<strong>データ</strong>を読み書きする。
+            <strong>メモリ</strong>（RAM）は、
+            <strong>CPUが仕事をするために、今使う情報を置いておく場所</strong>です。
+            CPUはここから<strong>命令</strong>と<strong>データ</strong>を読み書き（探しに行く・書く）します。
           </p>
         </section>
 
         <section>
           <h2>データはどこから探される？</h2>
           <p>
-            コンピュータには複数の記憶装置があり、<strong>CPUに近い順</strong>に「探しに行く」順番になっている。
-            下のデモで、その並びと「今どこを探しているか」を確認できる。
-          </p>
-          <p style={{ fontSize: '14px', color: '#555', marginBottom: '12px' }}>
-            CPUがデータを探すとき、まずキャッシュを見る。あればキャッシュで終わり（速い）、なければ主記憶まで行く（遅い）。これは例え話としてイメージしてほしい。
+            CPUがデータを探しに行くとき、まず<strong>キャッシュ</strong>（近く）を見ます。
+            あればそこで終わり（速い）。なければ<strong>メモリ</strong>まで探しに行きます（ちょっと時間がかかる）。
+            下のデモで、その様子を体験できる。
           </p>
 
           <div
@@ -119,90 +106,117 @@ export default function MemoryPage() {
               overflow: 'visible',
             }}
           >
-            <h3 style={{ marginTop: 0 }}>記憶装置の並び（CPUに近い順）</h3>
-            {HIERARCHY_LAYERS.map((layer, i) => (
+            <h3 style={{ marginTop: 0 }}>キャッシュとメモリ</h3>
+            <div style={{ display: 'flex', flexWrap: 'wrap', gap: '20px', alignItems: 'flex-start' }}>
+              {/* 左：表示エリア（キャッシュ・メモリ・結果メッセージ） */}
               <div
-                key={i}
                 style={{
-                  display: 'flex',
-                  flexWrap: 'wrap',
-                  alignItems: 'center',
-                  gap: '12px',
-                  marginBottom: '10px',
-                  padding: 'clamp(10px, 2vw, 14px)',
-                  backgroundColor: hierarchyStep === 'idle' ? '#fff' : hierarchyStep === 'cache' ? (i <= 1 ? '#e8f5e9' : '#fff') : (i <= 2 ? '#fffde7' : '#fff'),
-                  border: `2px solid ${hierarchyStep === 'idle' ? layer.color : hierarchyStep === 'cache' ? (i === 1 ? '#28a745' : i < 1 ? layer.color : '#dee2e6') : (i === 2 ? '#ffc107' : i < 2 ? layer.color : '#dee2e6')}`,
-                  borderRadius: '8px',
-                  opacity: hierarchyStep === 'idle' ? 1 : hierarchyStep === 'cache' ? (i <= 1 ? 1 : 0.6) : (i <= 2 ? 1 : 0.6),
+                  flex: '1 1 240px',
+                  minWidth: '200px',
+                  border: '2px solid #b2dfdb',
+                  borderRadius: '12px',
+                  padding: '16px',
+                  backgroundColor: '#fff',
                 }}
               >
-                <i className={layer.icon} style={{ color: layer.color, fontSize: 'clamp(18px, 4vw, 22px)' }} aria-hidden />
-                <div style={{ flex: 1, minWidth: 0 }}>
-                  <strong>{layer.name}</strong>
-                  <span style={{ display: 'block', marginTop: '4px', fontSize: '14px', color: '#555' }}>{layer.desc}{layer.desc2}</span>
+                <div style={{ marginBottom: '12px' }}>
+                  <div
+                    style={{
+                      display: 'flex',
+                      alignItems: 'center',
+                      gap: '8px',
+                      padding: '10px 12px',
+                      borderRadius: '8px',
+                      backgroundColor: hierarchyStep === 'cache' ? '#e8f5e9' : hierarchyStep === 'main' ? '#fff3e0' : '#f5f5f5',
+                      border: `2px solid ${hierarchyStep === 'cache' ? '#28a745' : '#e0e0e0'}`,
+                    }}
+                  >
+                    <i className="fas fa-bolt" style={{ color: '#28a745' }} aria-hidden />
+                    <strong>キャッシュ</strong>
+                  </div>
                 </div>
-                {hierarchyStep === 'cache' && i === 1 && (
-                  <span style={{ fontSize: '12px', color: '#28a745', fontWeight: 'bold' }}>ここで見つかった</span>
-                )}
-                {hierarchyStep === 'main' && i === 2 && (
-                  <span style={{ fontSize: '12px', color: '#d97706', fontWeight: 'bold' }}>ここまで探しにいった</span>
+                <div style={{ marginBottom: '12px' }}>
+                  <div
+                    style={{
+                      display: 'flex',
+                      alignItems: 'center',
+                      gap: '8px',
+                      padding: '10px 12px',
+                      borderRadius: '8px',
+                      backgroundColor: hierarchyStep === 'main' ? '#fffde7' : '#f5f5f5',
+                      border: `2px solid ${hierarchyStep === 'main' ? '#ffc107' : '#e0e0e0'}`,
+                    }}
+                  >
+                    <i className="fas fa-memory" style={{ color: '#ffc107' }} aria-hidden />
+                    <strong>メモリ</strong>
+                  </div>
+                </div>
+                {/* 結果メッセージ（枠内） */}
+                {hierarchyStep !== 'idle' && (
+                  <div
+                    style={{
+                      padding: '12px',
+                      borderRadius: '8px',
+                      backgroundColor: hierarchyStep === 'cache' ? '#e8f5e9' : '#fff3e0',
+                      border: `1px solid ${hierarchyStep === 'cache' ? '#28a745' : '#ff9800'}`,
+                      fontSize: '14px',
+                      color: hierarchyStep === 'cache' ? '#1b5e20' : '#e65100',
+                      fontWeight: 'bold',
+                    }}
+                  >
+                    {hierarchyStep === 'cache'
+                      ? '近くにあった！すぐ見つかった（はやい）'
+                      : '近くになかった…メモリまで探しに行く（ちょっと時間かかる）'}
+                  </div>
                 )}
               </div>
-            ))}
-            <div style={{ display: 'flex', flexWrap: 'wrap', gap: '10px', marginTop: '16px' }}>
-              <button
-                type="button"
-                onClick={() => setHierarchyStep(hierarchyStep === 'idle' ? 'cache' : hierarchyStep === 'cache' ? 'main' : 'idle')}
-                disabled={hierarchyStep === 'main'}
-                style={{
-                  padding: '10px 20px',
-                  fontSize: 'clamp(14px, 2.5vw, 16px)',
-                  backgroundColor: hierarchyStep === 'main' ? '#6c757d' : '#17a2b8',
-                  color: '#fff',
-                  border: 'none',
-                  borderRadius: '5px',
-                  cursor: hierarchyStep === 'main' ? 'default' : 'pointer',
-                }}
-              >
-                {hierarchyStep === 'idle' ? 'データを探す（キャッシュヒット）' : hierarchyStep === 'cache' ? 'データを探す（主記憶まで）' : '主記憶まで見たあと'}
-              </button>
-              <button
-                type="button"
-                onClick={() => setHierarchyStep('idle')}
-                style={{
-                  padding: '10px 20px',
-                  fontSize: 'clamp(14px, 2.5vw, 16px)',
-                  backgroundColor: '#6c757d',
-                  color: '#fff',
-                  border: 'none',
-                  borderRadius: '5px',
-                  cursor: 'pointer',
-                }}
-              >
-                最初からやり直す
-              </button>
+              {/* 右：操作ボタン */}
+              <div style={{ display: 'flex', flexDirection: 'column', gap: '10px', flex: '0 0 auto', justifyContent: 'center' }}>
+                <button
+                  type="button"
+                  onClick={() => setHierarchyStep(hierarchyStep === 'idle' ? 'cache' : hierarchyStep === 'cache' ? 'main' : 'idle')}
+                  style={{
+                    padding: '12px 24px',
+                    fontSize: 'clamp(14px, 2.5vw, 16px)',
+                    backgroundColor: '#17a2b8',
+                    color: '#fff',
+                    border: 'none',
+                    borderRadius: '5px',
+                    cursor: 'pointer',
+                    whiteSpace: 'nowrap',
+                  }}
+                >
+                  {hierarchyStep === 'idle' ? 'データを探す' : hierarchyStep === 'cache' ? 'もう一度探す（今度はメモリまで）' : '最初からやり直す'}
+                </button>
+                {hierarchyStep !== 'idle' && (
+                  <button
+                    type="button"
+                    onClick={() => setHierarchyStep('idle')}
+                    style={{
+                      padding: '10px 20px',
+                      fontSize: 'clamp(14px, 2.5vw, 16px)',
+                      backgroundColor: '#6c757d',
+                      color: '#fff',
+                      border: 'none',
+                      borderRadius: '5px',
+                      cursor: 'pointer',
+                    }}
+                  >
+                    リセット
+                  </button>
+                )}
+              </div>
             </div>
           </div>
 
-          {hierarchyStep === 'cache' && (
-            <p style={{ marginTop: '16px', marginBottom: '0', fontSize: '14px', color: '#28a745' }}>
-              キャッシュにあったので、ここで終わり（速い）。
-            </p>
-          )}
-          {hierarchyStep === 'main' && (
-            <p style={{ marginTop: '16px', marginBottom: '0', fontSize: '14px', color: '#d97706' }}>
-              キャッシュになかったので、主記憶まで取りに行った（遅い）。
-            </p>
-          )}
-
           <p style={{ marginTop: '20px', fontWeight: 'bold', marginBottom: '8px' }}>記憶装置の種類と役割</p>
           <p style={{ marginTop: '0', marginBottom: '8px', fontSize: '14px', color: '#555' }}>
-            上は「CPUに近い順」の並び。それぞれの役割は次のとおりである。
+            CPUに近い順に「探しに行く」先が並んでいます。
           </p>
           <ul style={{ marginTop: '0' }}>
             <li><strong>レジスタ</strong>：計算の途中結果や、今実行している命令を置く。CPUの内部にある。</li>
-            <li><strong>キャッシュメモリ</strong>：主記憶の写しを置き、よく使うデータに素早くアクセスするため。</li>
-            <li><strong>主記憶（RAM）</strong>：今動かしているプログラムとそのデータを置く。電源を切ると消える。</li>
+            <li><strong>キャッシュ</strong>：メモリの写しを置き、よく使うデータに素早く探しに行けるようにする。</li>
+            <li><strong>メモリ（RAM）</strong>：今動かしているプログラムとそのデータを置く。電源を切ると消える。</li>
             <li><strong>補助記憶（SSD/HDD）</strong>：プログラムやファイルを長く保存する。電源を切っても残る。</li>
           </ul>
         </section>
@@ -210,8 +224,8 @@ export default function MemoryPage() {
         <section>
           <h2>メモリの場所は番地（アドレス）で指定する</h2>
           <p>
-            CPUがメモリの「どこ」を読むかは<strong>アドレス（番地）</strong>で指定する。
-            1本の命令は、<strong>命令部</strong>（何をするか：足す・読む・書くなど）と<strong>アドレス部</strong>（どの番地を扱うか）の2つに分かれる。
+            CPUがメモリの「どこ」に探しに行くかは<strong>アドレス（番地）</strong>で指定します。
+            1本の命令は、<strong>命令部</strong>（何をするか：足す・読む・書くなど）と<strong>アドレス部</strong>（どの番地を扱うか）の2つに分かれます。
           </p>
           <div style={{ margin: '16px 0', padding: '16px', border: '1px solid #e0e0e0', borderRadius: '8px', backgroundColor: '#fafafa', maxWidth: '100%' }}>
             <p style={{ margin: '0 0 8px 0', fontSize: '14px', fontWeight: 'bold' }}>1本の命令のイメージ</p>
@@ -229,16 +243,14 @@ export default function MemoryPage() {
         </section>
 
         <section>
-          <h2>実際にアクセスする番地の求め方（相対・基底）</h2>
+          <h2>場所の指定のしかた（相対・基底）</h2>
           <p>
-            命令のアドレス部には「基準からの距離」が書かれていることがある。それに「基準の番地」を足すと、実際にアクセスする番地（実効アドレス）になる。
+            「どの番地を探しに行くか」の<strong>指定のしかた</strong>がいくつかあります。
+            相対アドレス指定は「今いるところからどれだけ離れているか」、基底アドレス指定は「決めた基準の場所からどれだけ離れているか」で場所を表します。
+            細かい計算より、「基準が違う」と覚えておけば大丈夫です。
           </p>
-          <ul>
-            <li><strong>相対アドレス指定</strong>：基準が「プログラムカウンタ（PC）」＝今実行している命令の番地。実効アドレス ＝ PC ＋ アドレス部。</li>
-            <li><strong>基底アドレス指定</strong>：基準が「基底レジスタ（BR）」＝プログラムごとに決めた基準の番地。実効アドレス ＝ BR ＋ アドレス部。</li>
-          </ul>
           <p>
-            下のデモで、基準（PCまたはBR）とアドレス部を変えて実効アドレスを確認できる。
+            下のデモで、基準（PCまたはBR）とアドレス部を変えると、実際に探しに行く番地がどう変わるか確認できます。
           </p>
 
           <div
@@ -293,15 +305,14 @@ export default function MemoryPage() {
         </section>
 
         <section>
-          <h2>キャッシュを考慮した平均アクセス時間</h2>
+          <h2>近くにあった割合（ヒット率）</h2>
           <p>
-            キャッシュに欲しいデータがある確率を<strong>ヒット率</strong>という。ヒット率を考慮した平均のアクセス時間を、ここでは「キャッシュを考慮した平均アクセス時間」として説明する。
+            <strong>ヒット率</strong>は、<strong>探したデータが近く（キャッシュ）にあった割合</strong>です。
+            ヒット率が高いと、すぐ見つかることが多く、CPUが待たなくてすむので、全体が速く動きます。
+            「できるだけ近くに欲しいデータがあると楽」— それを数字で表したのがヒット率です。
           </p>
           <p>
-            式：<strong>実効アクセス時間 ＝ ヒット率×キャッシュアクセス時間 ＋ (1－ヒット率)×主記憶アクセス時間</strong>
-          </p>
-          <p>
-            下のデモで、キャッシュ・主記憶のアクセス時間（ナノ秒）とヒット率（%）を変えて実効アクセス時間を確認できる。
+            下のデモで、キャッシュ・メモリの「探しに行くのにかかる時間」と「近くにあった割合」を変えると、<strong>だいたいどれくらい待つか</strong>（平均）がどう変わるか確認できます。
           </p>
 
           <div
@@ -317,10 +328,10 @@ export default function MemoryPage() {
               overflow: 'visible',
             }}
           >
-            <h3 style={{ marginTop: 0 }}>実効アクセス時間の計算</h3>
+            <h3 style={{ marginTop: 0 }}>だいたいどれくらい待つか（平均）</h3>
             <div style={{ display: 'flex', flexWrap: 'wrap', gap: '20px', marginBottom: '16px' }}>
               <label style={{ display: 'flex', flexDirection: 'column', gap: '4px', minWidth: '140px' }}>
-                <span style={{ fontSize: '14px' }}>キャッシュアクセス時間（ns）</span>
+                <span style={{ fontSize: '14px' }}>キャッシュに探しに行く時間（ns）</span>
                 <input
                   type="number"
                   min={1}
@@ -331,7 +342,7 @@ export default function MemoryPage() {
                 />
               </label>
               <label style={{ display: 'flex', flexDirection: 'column', gap: '4px', minWidth: '140px' }}>
-                <span style={{ fontSize: '14px' }}>主記憶アクセス時間（ns）</span>
+                <span style={{ fontSize: '14px' }}>メモリに探しに行く時間（ns）</span>
                 <input
                   type="number"
                   min={10}
@@ -342,7 +353,7 @@ export default function MemoryPage() {
                 />
               </label>
               <label style={{ display: 'flex', flexDirection: 'column', gap: '4px', minWidth: '140px' }}>
-                <span style={{ fontSize: '14px' }}>ヒット率（%）</span>
+                <span style={{ fontSize: '14px' }}>近くにあった割合（%）</span>
                 <input
                   type="number"
                   min={0}
@@ -354,9 +365,9 @@ export default function MemoryPage() {
               </label>
             </div>
             <div style={{ marginTop: '16px', padding: '16px', backgroundColor: '#fff', borderRadius: '8px', border: '1px solid #dee2e6' }}>
-              <p style={{ margin: '0 0 8px 0', fontWeight: 'bold' }}>計算結果</p>
+              <p style={{ margin: '0 0 8px 0', fontWeight: 'bold' }}>結果</p>
               <p style={{ margin: '4px 0' }}>
-                実効アクセス時間 ＝ {hitRate}%×{cacheTime} ＋ (1－{hitRate}%)×{mainTime} ＝{' '}
+                だいたいどれくらい待つか ＝ {hitRate}%×{cacheTime} ＋ (1－{hitRate}%)×{mainTime} ＝{' '}
                 <strong>{(effectiveTime * 10) / 10} ns</strong>
               </p>
             </div>

@@ -2,9 +2,7 @@ import Link from 'next/link'
 import Image from 'next/image'
 import { Metadata } from 'next'
 import StructuredData from '@/app/components/StructuredData'
-import TermHeader from '@/app/components/TermHeader'
-import TableOfContents from '@/app/components/TableOfContents'
-import PageSummary from '@/app/components/PageSummary'
+import TermPageHeader from '@/app/components/TermPageHeader'
 import ZeroDayDemo from '@/components/ZeroDayDemo'
 
 export const metadata: Metadata = {
@@ -90,12 +88,18 @@ export default function ZeroDayPage() {
         dateModified="2026-01-14"
       />
 
-      <TermHeader
+      <TermPageHeader
         termName="ゼロデイ攻撃"
         reading="ゼロデイこうげき / Zero-day Attack"
         icon="fas fa-shield-alt"
         dateCreated="2024-01-09"
         dateModified="2026-01-14"
+        summaryItems={[
+          'ゼロデイ攻撃とは何か？なぜ「0日」なのか',
+          '攻撃シミュレーションで体験する脅威の実態',
+          '実際にあった攻撃事例（Stuxnet、WannaCry等）',
+          '個人でできる防御対策'
+        ]}
       />
 
       <div style={{
@@ -125,29 +129,6 @@ export default function ZeroDayPage() {
       </div>
 
       <main>
-        {/* このページでわかること（一番上） */}
-        <PageSummary
-          items={[
-            'ゼロデイ攻撃とは何か？なぜ「0日」なのか',
-            '攻撃シミュレーションで体験する脅威の実態',
-            '実際にあった攻撃事例（Stuxnet、WannaCry等）',
-            '個人でできる防御対策'
-          ]}
-        />
-
-        <TableOfContents />
-
-        {/* 更新日 */}
-        <div className="date-info" style={{
-          fontSize: '14px',
-          color: '#666',
-          marginBottom: '20px',
-          paddingBottom: '15px',
-          borderBottom: '1px solid #e0e0e0'
-        }}>
-          <span>作成日: 2024-01-09 | 最終更新: 2026-01-14</span>
-        </div>
-
         <section>
           <h2>概要</h2>
 

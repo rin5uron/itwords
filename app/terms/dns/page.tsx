@@ -4,9 +4,7 @@ import Link from 'next/link'
 import Image from 'next/image'
 import { useState } from 'react'
 import StructuredData from '@/app/components/StructuredData'
-import TermHeader from '@/app/components/TermHeader'
-import TableOfContents from '@/app/components/TableOfContents'
-import PageSummary from '@/app/components/PageSummary'
+import TermPageHeader from '@/app/components/TermPageHeader'
 import AdBelowRelatedTerms from '@/app/components/AdBelowRelatedTerms'
 
 export default function DNSPage() {
@@ -62,12 +60,18 @@ export default function DNSPage() {
         dateModified="2026-01-19"
       />
 
-      <TermHeader
+      <TermPageHeader
         termName="DNS"
         reading="ディーエヌエス / Domain Name System"
         icon="fas fa-book"
         dateCreated="2026-01-12"
         dateModified="2026-01-19"
+        summaryItems={[
+          'DNSとは何か？なぜ必要なのか',
+          'ステップデモで名前解決の流れを体験',
+          'DNSレコードの種類と役割',
+          'DNS設定方法と実践的な使い方'
+        ]}
       />
 
       <div style={{
@@ -97,29 +101,6 @@ export default function DNSPage() {
       </div>
 
       <main>
-        {/* このページでわかること（一番上） */}
-        <PageSummary
-          items={[
-            'DNSとは何か？なぜ必要なのか',
-            'ステップデモで名前解決の流れを体験',
-            'DNSレコードの種類と役割',
-            'DNS設定方法と実践的な使い方'
-          ]}
-        />
-
-        <TableOfContents />
-
-        {/* 更新日 */}
-        <div className="date-info" style={{
-          fontSize: '14px',
-          color: '#666',
-          marginBottom: '20px',
-          paddingBottom: '15px',
-          borderBottom: '1px solid #e0e0e0'
-        }}>
-          <span>作成日: 2026-01-12 | 最終更新: 2026-01-19</span>
-        </div>
-
         <section>
           <h2>概要</h2>
 
