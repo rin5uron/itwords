@@ -1309,7 +1309,7 @@ main a:not(.card-link):not(.breadcrumb-link):not(.term-name):active {
     padding: 16px;
   }
 
-  /* 目次のスマホ対応（幅100%・項目が狭くならないように） */
+  /* 目次のスマホ対応（幅100%・左寄せ・項目が狭くならないように） */
   .toc-wrapper {
     padding: 0;
     margin-left: 0;
@@ -1317,6 +1317,7 @@ main a:not(.card-link):not(.breadcrumb-link):not(.term-name):active {
     width: 100%;
     max-width: 100%;
     box-sizing: border-box;
+    text-align: left;
   }
 
   .table-of-contents {
@@ -1326,6 +1327,7 @@ main a:not(.card-link):not(.breadcrumb-link):not(.term-name):active {
     width: 100%;
     max-width: 100%;
     box-sizing: border-box;
+    text-align: left;
   }
 
   .table-of-contents-header {
@@ -1333,6 +1335,8 @@ main a:not(.card-link):not(.breadcrumb-link):not(.term-name):active {
     margin-bottom: 5px;
     gap: 5px;
     flex-wrap: wrap;
+    text-align: left;
+    justify-content: flex-start;
   }
 
   .table-of-contents-header i {

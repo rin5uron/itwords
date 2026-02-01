@@ -1,3 +1,4 @@
+import type { ReactNode } from 'react'
 import TermHeader from './TermHeader'
 import PageSummary from './PageSummary'
 import TableOfContents from './TableOfContents'
@@ -15,6 +16,8 @@ export type TermPageHeaderProps = {
   dateModified?: string
   /** 「このページでわかること」の項目。省略時は表示しない */
   summaryItems?: string[]
+  /** ヒーロー画像（わかることの直後・目次の直前に表示。省略時は表示しない） */
+  heroImage?: ReactNode
 }
 
 /**
@@ -28,6 +31,7 @@ export default function TermPageHeader({
   dateCreated,
   dateModified,
   summaryItems,
+  heroImage,
 }: TermPageHeaderProps) {
   const showDate =
     (dateCreated != null || dateModified != null) &&
@@ -54,6 +58,12 @@ export default function TermPageHeader({
       {summaryItems != null && summaryItems.length > 0 && (
         <div className="term-page-header__summary">
           <PageSummary items={summaryItems} />
+        </div>
+      )}
+
+      {heroImage != null && (
+        <div className="term-page-header__hero">
+          {heroImage}
         </div>
       )}
 

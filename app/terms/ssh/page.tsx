@@ -81,34 +81,35 @@ export default function SSHPage() {
           '手元のPCからサーバーに入る流れ',
           'ターミナルとSSHコマンドの基本',
         ]}
+        heroImage={
+          <div
+            style={{
+              width: '100%',
+              maxWidth: '900px',
+              margin: '0 auto clamp(24px, 4vw, 32px) auto',
+              borderRadius: '12px',
+              overflow: 'hidden',
+              boxShadow: '0 4px 12px rgba(0,0,0,0.1)',
+              aspectRatio: '16 / 9',
+            }}
+          >
+            <Image
+              src="/images/ssh.png"
+              alt="SSH - 手元のPCから遠くのサーバーに安全に接続する仕組み"
+              width={1536}
+              height={864}
+              priority
+              style={{
+                width: '100%',
+                height: '100%',
+                objectFit: 'cover',
+                objectPosition: 'center',
+                display: 'block',
+              }}
+            />
+          </div>
+        }
       />
-
-      <div
-        style={{
-          width: '100%',
-          maxWidth: '900px',
-          margin: '0 auto clamp(24px, 4vw, 32px) auto',
-          borderRadius: '12px',
-          overflow: 'hidden',
-          boxShadow: '0 4px 12px rgba(0,0,0,0.1)',
-          aspectRatio: '16 / 9',
-        }}
-      >
-        <Image
-          src="/images/ssh.png"
-          alt="SSH - 手元のPCから遠くのサーバーに安全に接続する仕組み"
-          width={1536}
-          height={864}
-          priority
-          style={{
-            width: '100%',
-            height: '100%',
-            objectFit: 'cover',
-            objectPosition: 'center',
-            display: 'block',
-          }}
-        />
-      </div>
 
       <main>
         <section>
@@ -121,7 +122,7 @@ export default function SSHPage() {
           
 
           <p>
-          <strong>サーバー</strong>とは、データを預かったりWebサイトを動かしたりする「いつでも動いているコンピュータ」です。
+          <strong>サーバー</strong>とは、データを預かったりWebサイトを動かしたりする<strong>いつでも動いているコンピュータ</strong>です。
             そのサーバーが会社の奥の機械室や、遠くのデータセンターにあるとき、毎回その場所まで行ってキーボードをつなぐのは大変ですよね。
           </p>
 
@@ -156,7 +157,7 @@ export default function SSHPage() {
             会社のPCは、最初からサーバーに「つなぐ準備」が整っていることが多いです。そのうえで、<strong>ターミナルで <code>ssh</code> コマンドを打つ</strong>か、<strong>GUIのツールで接続する</strong>かのどちらかになります。
           </p>
           <p>
-            GUIのツールとは、画面上で「ホスト名」「ユーザー名」などを入力して接続ボタンを押すタイプのソフトです。代表例は、Windowsでは<strong>PuTTY</strong>・<strong>Tera Term</strong>、MacやWindowsの両方で使える<strong>Termius</strong>などがあります。このページでは、ターミナルで打つ流れをデモで確認できます。
+            GUIのツールは、簡単にいうと<strong>ボタンや入力枠があるタイプ</strong>のソフトです（ホスト名・ユーザー名などを入力して接続ボタンを押すもの）。代表例は、Windowsでは<strong>PuTTY</strong>・<strong>Tera Term</strong>、Mac/Windows両方で使える<strong>Termius</strong>などです。このページでは、ターミナルで打つ流れをデモで確認できます。
           </p>
           <div
             style={{
@@ -200,7 +201,7 @@ ssh ユーザー名@サーバーのIPアドレス
         </section>
 
         <section>
-          <h2>SSHの「S」＝ Secure（安全）— なぜ安全なの？</h2>
+          <h2>SSHの「S」＝ Secure（安全）</h2>
           <p>
             SSHの「S」は<strong>Secure（セキュア）</strong>＝「安全な」という意味です。
           </p>
@@ -238,7 +239,7 @@ ssh ユーザー名@サーバーのIPアドレス
         </section>
 
         <section>
-          <h2>SSHでサーバーに入る方法（鍵で入る）</h2>
+          <h2>SSHでサーバーに入る方法</h2>
           <p>
             SSHでサーバーに入る方法は、主に2つあります。
           </p>
@@ -250,26 +251,57 @@ ssh ユーザー名@サーバーのIPアドレス
 
           <h3>② 鍵で入る</h3>
           <p>
-            <strong>鍵で入る</strong>方法では、自分だけが持つ鍵（秘密鍵）を自分のパソコンに置き、サーバー側にはその鍵とペアになる鍵（公開鍵）を登録しておきます。
+            <strong>鍵で入る</strong>方法だと、自分だけの鍵を自分のパソコンに持っておいて、入り先のパソコン（サーバー）には、その鍵と「おそろいのペア」になるもう1本の鍵を登録しておく。
           </p>
           <p>
-            サーバーは「この公開鍵に対応する秘密鍵を持っている人だけを入れていい」と判断します。鍵は他人に渡さない限り漏れにくいので、<strong>パスワードより安全</strong>として、多くの会社で使われています。
+            入り先は「このペアの鍵を持ってる人だけ、入れていいよ」と判断する。鍵は人に渡さない限り盗まれにくいので、<strong>パスワードより安全</strong>だとして、多くの会社で使われている。
           </p>
         </section>
 
         <section>
-          <h2>別のPCから自分のPCにもアクセスできる（SSHのもう一つの形）</h2>
+          <h2>別PCから自分のPCにもアクセスできる（SSHのもう一つの形）</h2>
           <p>
-            いままでのは<strong>「手元のPC → 会社のサーバーに入る」</strong>形でした。SSHには、もう一つの形があります。
+            いままでのは<strong>「手元のPC → 会社のサーバーに入る」</strong>形です。もう一つの形は、<strong>自分のPCを「入り先」にする</strong>使い方になります。
           </p>
           <p>
-            「サーバー」って、特別な機械の名前じゃなくて、<strong>「入られてる側（入り先）」の役割の名前</strong>なんだ。
-            だから、自分のPCで「誰かが入ってこないか、ずっと待ってる」ソフトを動かしておくと、そのパソコンが“サーバー”になり、<strong>別のパソコン（おうちのもう一台とか、お友達のパソコンとか）から、自分のパソコンにSSHで入れる</strong>ようになる。
+            「サーバー」は機械の名前ではなく<strong>「入り先」の役割</strong>の名前です。自分のPCで <strong>sshd</strong> を動かすと、そのとき自分のPCがその役になります。だから別のPCから、自分のPCにSSHで入れるようになります。
           </p>
           <div
             style={{
+              display: 'flex',
+              flexWrap: 'nowrap',
+              alignItems: 'center',
+              gap: 'clamp(8px, 2vw, 12px)',
+              marginBottom: '1em',
+              padding: 'clamp(10px, 2.5vw, 14px)',
+              backgroundColor: '#f5f3ff',
+              borderRadius: '8px',
+              border: '1px solid #c4b5fd',
+              whiteSpace: 'nowrap',
+              overflowX: 'auto',
+              maxWidth: '100%',
+            }}
+          >
+            <span style={{ display: 'inline-flex', alignItems: 'center', gap: '6px', fontWeight: 600, flexShrink: 0 }}>
+              <i className="fas fa-laptop" aria-hidden style={{ color: '#8b5cf6' }} />
+              別のPC（ssh でつなぎに行く）
+            </span>
+            <span style={{ color: '#94a3b8', flexShrink: 0 }}>→</span>
+            <span style={{ display: 'inline-flex', alignItems: 'center', gap: '6px', flexShrink: 0 }}>
+              <i className="fas fa-server" aria-hidden style={{ color: '#7c3aed' }} />
+              自分のPC（sshd で待ってる・入り先）
+            </span>
+          </div>
+          <p>
+            下のデモで、その流れを先に確認できます。
+          </p>
+          <div style={{ maxWidth: '100%', overflowX: 'auto' }}>
+            <SSHAccessFromOtherDemo />
+          </div>
+          <div
+            style={{
               padding: 'clamp(12px, 3vw, 16px)',
-              marginTop: '1em',
+              marginTop: '1.2em',
               marginBottom: '1em',
               border: '2px solid #8b5cf6',
               borderLeft: '6px solid #8b5cf6',
@@ -279,19 +311,12 @@ ssh ユーザー名@サーバーのIPアドレス
           >
             <strong>sshd を一言でいうと</strong>
             <p style={{ margin: '8px 0 0 0', lineHeight: 1.6 }}>
-              <strong>ssh</strong> は、こっちから「つなぎに行く」ときに打つコマンド。<strong>sshd</strong> は、あっちで「つなぎに来るのを待ってる」プログラム。おそろいの<strong>ペア</strong>になっている。入り先のパソコンでは、sshd が「22番」っていう入口でずっと待っていて、誰かが <code>ssh</code> で来たら「はい、どうぞ」って受け付ける。
+              <strong>ssh</strong> は、こっちから「つなぎに行く」ときに打つコマンドです。<strong>sshd</strong> は、あっちで「つなぎに来るのを待っている」プログラムです。おそろいの<strong>ペア</strong>になっています。入り先のパソコンでは、sshd が「22番」という入口でずっと待っていて、誰かが <code>ssh</code> で来たら「はい、どうぞ」と受け付けます。
             </p>
           </div>
-
+          <h3>sshd を動かすには</h3>
           <p>
-            下のデモで、自分のPCを"サーバー"にする流れと、sshd の役割を確認できます。
-          </p>
-          <div style={{ maxWidth: '100%', overflowX: 'auto' }}>
-            <SSHAccessFromOtherDemo />
-          </div>
-          <h3>sshd を有効にするには</h3>
-          <p>
-            Windows では OpenSSH サーバーを「機能の追加」で有効にできます。Mac では「システム設定 → 一般 → 共有」の「リモートログイン」をオンにすると動きます。Linux では <code>openssh-server</code> などをインストールして使います。OSによって最初から入っている／後から有効にできるが違います。
+            かんたんにいうと、<strong>パソコンの種類によってやり方がちがいます</strong>。Windows なら「機能の追加」で OpenSSH サーバーを入れます。Mac なら「システム設定」の「共有」で「リモートログイン」をオンにします。Linux なら <code>openssh-server</code> を入れます。最初から入っているパソコンもあれば、あとから入れるパソコンもあります。
           </p>
         </section>
 
