@@ -153,12 +153,15 @@ export default function SSHPage() {
         <section>
           <h2>手元のPCからサーバーに入る流れを体験できます</h2>
           <p>
-            会社のPCは、最初からサーバーに「つなぐ準備」が整っていることが多いです。そのうえで、<strong>ターミナルでSSHコマンドを打つ</strong>か、<strong>GUIのツールで接続する</strong>かのどちらかになります。このページでは、ターミナルで打つ流れをデモで確認できます。
+            会社のPCは、最初からサーバーに「つなぐ準備」が整っていることが多いです。そのうえで、<strong>ターミナルで <code>ssh</code> コマンドを打つ</strong>か、<strong>GUIのツールで接続する</strong>かのどちらかになります。
+          </p>
+          <p>
+            GUIのツールとは、画面上で「ホスト名」「ユーザー名」などを入力して接続ボタンを押すタイプのソフトです。代表例は、Windowsでは<strong>PuTTY</strong>・<strong>Tera Term</strong>、MacやWindowsの両方で使える<strong>Termius</strong>などがあります。このページでは、ターミナルで打つ流れをデモで確認できます。
           </p>
           <div
             style={{
               display: 'flex',
-              flexWrap: 'wrap',
+              flexWrap: 'nowrap',
               alignItems: 'center',
               gap: 'clamp(8px, 2vw, 12px)',
               marginBottom: '1em',
@@ -166,14 +169,17 @@ export default function SSHPage() {
               backgroundColor: '#f8fafc',
               borderRadius: '8px',
               border: '1px solid #e2e8f0',
+              whiteSpace: 'nowrap',
+              overflowX: 'auto',
+              maxWidth: '100%',
             }}
           >
-            <span style={{ display: 'inline-flex', alignItems: 'center', gap: '6px', fontWeight: 600 }}>
+            <span style={{ display: 'inline-flex', alignItems: 'center', gap: '6px', fontWeight: 600, flexShrink: 0 }}>
               <i className="fas fa-laptop" aria-hidden style={{ color: '#14b8a6' }} />
               手元のPC
             </span>
-            <span style={{ color: '#94a3b8' }}>→</span>
-            <span style={{ display: 'inline-flex', alignItems: 'center', gap: '6px' }}>
+            <span style={{ color: '#94a3b8', flexShrink: 0 }}>→</span>
+            <span style={{ display: 'inline-flex', alignItems: 'center', gap: '6px', flexShrink: 0 }}>
               <i className="fas fa-terminal" aria-hidden style={{ color: '#0d9488' }} />
               ターミナルでSSHコマンドを打つ
             </span>
@@ -252,24 +258,40 @@ ssh ユーザー名@サーバーのIPアドレス
         </section>
 
         <section>
-          <h2>別のPCから自分のPCにもアクセスできる</h2>
+          <h2>別のPCから自分のPCにもアクセスできる（SSHのもう一つの形）</h2>
+          <p>
+            いままでのは<strong>「手元のPC → 会社のサーバーに入る」</strong>形でした。SSHには、もう一つの形があります。
+          </p>
           <p>
             「サーバー」は特別な機械ではなく、<strong>「接続される側（入り先）」の役割の名前</strong>です。
             だから、自分のPCで「接続を待つ側」のソフトを動かしておけば、そのPCが“サーバー”になり、<strong>別のPC（オフィスの同僚のPCや、自宅のもう一台のPCなど）から、自分のPCにSSHで入れる</strong>ようになります。
           </p>
+          <div
+            style={{
+              padding: 'clamp(12px, 3vw, 16px)',
+              marginTop: '1em',
+              marginBottom: '1em',
+              border: '2px solid #8b5cf6',
+              borderLeft: '6px solid #8b5cf6',
+              borderRadius: '8px',
+              backgroundColor: '#f5f3ff',
+            }}
+          >
+            <strong>sshd を一言でいうと</strong>
+            <p style={{ margin: '8px 0 0 0', lineHeight: 1.6 }}>
+              <strong>ssh</strong> は「つなぎに行く」ときに打つコマンド。<strong>sshd</strong> は「つなぎに来るのを待つ」側で動くプログラム。同じSSHの仕組みの<strong>ペア</strong>になっています。入り先のPCでは、sshd が22番の入口でずっと待っていて、誰かが <code>ssh</code> で来たら受け付けます。
+            </p>
+          </div>
+
           <p>
-            この「接続を待つ側」で動くプログラムが <strong>sshd（エスエスエッチディー）</strong> です。裏で動いていて、だいたい<strong>22番ポート</strong>という入口で待っています。OSによって最初から入っている／後から有効にできるが違います。
-          </p>
-          <p>
-            下のデモで、自分のPCを"サーバー"にする流れを確認できます。
+            下のデモで、自分のPCを"サーバー"にする流れと、sshd の役割を確認できます。
           </p>
           <div style={{ maxWidth: '100%', overflowX: 'auto' }}>
             <SSHAccessFromOtherDemo />
           </div>
-          <h3>sshd とは</h3>
+          <h3>sshd を有効にするには</h3>
           <p>
-            <strong>sshd</strong> は、SSHの仕組みのうち<strong>「接続される側」で動くプログラムの名前</strong>です。
-            Windows では OpenSSH サーバーを「機能の追加」で有効にできます。Mac では「システム設定 → 一般 → 共有」の「リモートログイン」をオンにすると動きます。Linux では <code>openssh-server</code> などをインストールして使います。
+            Windows では OpenSSH サーバーを「機能の追加」で有効にできます。Mac では「システム設定 → 一般 → 共有」の「リモートログイン」をオンにすると動きます。Linux では <code>openssh-server</code> などをインストールして使います。OSによって最初から入っている／後から有効にできるが違います。
           </p>
         </section>
 
