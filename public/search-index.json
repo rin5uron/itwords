@@ -25,6 +25,11 @@
     "path": "/terms/cookie"
   },
   {
+    "title": "CPUとは？初心者向けにわかりやすく解説 | 実践型IT用語辞典",
+    "description": "CPUについて、初心者向けにわかりやすく解説します。",
+    "path": "/terms/cpu"
+  },
+  {
     "title": "CSSとは？初心者向けにわかりやすく解説 | 実践型IT用語辞典",
     "description": "CSSとはWebページの見た目を整えるための言語",
     "path": "/terms/css"
@@ -35,9 +40,9 @@
     "path": "/terms/cve"
   },
   {
-    "title": "CPUとは？基本情報でも出る仕組みをわかりやすく【クロック・MIPSデモ付き】",
-    "description": "CPUの役割とFetch/Decode/Executeの流れを解説。クロック周波数とMIPSの計算をデモで体感。基本情報技術者試験のイメージがつかめます。",
-    "path": "/terms/cpu"
+    "title": "データセンターとは？初心者向けにわかりやすく解説 | 実践型IT用語辞典",
+    "description": "データセンターとはサーバーやネットワーク機器を24時間365日稼働させるための専用施設",
+    "path": "/terms/data-center"
   },
   {
     "title": "DNSとは？初心者向けにわかりやすく解説 | 実践型IT用語辞典",
@@ -115,8 +120,8 @@
     "path": "/terms/localstorage"
   },
   {
-    "title": "メモリとは？主記憶・アドレス・実効アクセス時間を基本情報向けに解説【デモ付き】",
-    "description": "メモリ（主記憶）の役割と記憶階層を解説。アドレス指定方式・実効アクセス時間の計算をデモで体感。基本情報技術者試験のイメージがつかめます。",
+    "title": "メモリとは？初心者向けにわかりやすく解説 | 実践型IT用語辞典",
+    "description": "メモリについて、初心者向けにわかりやすく解説します。",
     "path": "/terms/memory"
   },
   {
@@ -153,6 +158,11 @@
     "title": "SQLとは？初心者向けにわかりやすく解説 | 実践型IT用語辞典",
     "description": "SQLとは「データベースを操作するための言語」",
     "path": "/terms/sql"
+  },
+  {
+    "title": "SSHとは？初心者向けにわかりやすく解説 | 実践型IT用語辞典",
+    "description": "SSH（Secure Shell）とは離れた場所にあるコンピュータ（サーバー）に、ネットワークを通じて安全に「入る」ための仕組み",
+    "path": "/terms/ssh"
   },
   {
     "title": "SSL/TLSとは？初心者向けにわかりやすく解説 | 実践型IT用語辞典",

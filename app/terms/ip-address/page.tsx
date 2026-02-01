@@ -537,11 +537,6 @@ itwords.jp → DNS解決 → 76.76.21.21`}</code></pre>
 
         <AdBelowRelatedTerms />
       </main>
-
-      <footer className="footer-nav">
-        <Link href="/">トップページに戻る</Link>
-        <p>&copy; 2026 itwords - 実践型IT用語辞典</p>
-      </footer>
     </div>
   )
 }

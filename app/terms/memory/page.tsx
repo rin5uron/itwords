@@ -431,16 +431,6 @@ export default function MemoryPage() {
 
         <FAQAccordion faqs={faqs} />
       </main>
-
-      <footer className="footer-nav">
-        <Link href="/">トップページに戻る</Link>
-        <span style={{ margin: '0 8px', color: '#999' }}>|</span>
-        <Link href="/privacy">プライバシーポリシー</Link>
-        <span style={{ margin: '0 8px', color: '#999' }}>|</span>
-        <Link href="/terms-of-service">利用規約</Link>
-        <span style={{ margin: '0 8px', color: '#999' }}>|</span>
-        <Link href="/contact">お問い合わせ</Link>
-      </footer>
     </div>
   )
 }

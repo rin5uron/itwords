@@ -17,10 +17,12 @@
 **テンプレートに書かれている構造は、絶対に変更してはいけません：**
 
 - ✅ インポートの順序
-- ✅ コンポーネントの配置順序（TermHeader → TableOfContents → main → PageSummary → 更新日 → セクション → 関連用語 → FAQAccordion）
+- ✅ **ヘッダーは TermPageHeader 一括**（タイトル → 日付 → このページでわかること → 目次）。TermHeader・PageSummary・TableOfContents・date-info を個別に書かない。
+- ✅ コンポーネントの配置順序（TermPageHeader → main → セクション → 関連用語 → FAQAccordion）。main 内に目次・日付ブロックを置かない。
 - ✅ セクションの順序（概要 → 日常生活での実例 → 補足セクション → 関連用語 → FAQ）
 - ✅ メタデータの形式
 - ✅ 構造化データの形式
+- ✅ **目次・ヘッダーのスタイルは globals.css の .term-page-header 系・.table-of-contents 系で一括指定。個別ページにインラインで書かない。**
 
 ---
 
@@ -33,13 +35,13 @@
 - [ ] ユーザーに作業計画を提示し、承認を得た
 
 ### Phase 2: ファイル作成（必須）
-- [ ] `TableOfContents`コンポーネントをインポートしている
-- [ ] `PageSummary`コンポーネントをインポートしている
-- [ ] `TermHeader` → `TableOfContents` → `main`の順序で配置している
-- [ ] `main`内で`PageSummary` → 更新日 → セクションの順序になっている
+- [ ] **TermPageHeader** をインポートし、1つだけ使っている（TermHeader・PageSummary・TableOfContents・date-info を個別に書かない）
+- [ ] TermPageHeader に `termName` / `reading` / `icon` / `dateCreated` / `dateModified` を渡している。`summaryItems`（このページでわかること）は任意
+- [ ] TermPageHeader → `main` の順序で配置している。main 内に目次・日付ブロックを置いていない
 - [ ] セクション順序が「概要 → 日常生活での実例 → 補足 → 関連用語 → FAQ」になっている
 - [ ] 関連用語セクションに`className="term-comparison"`が付いている
 - [ ] 関連用語テーブルに`className="comparison-table"`が付いている
+- [ ] 目次・ヘッダーのスタイルを個別ページにインラインで書いていない（globals.css の .term-page-header 系・.table-of-contents 系で一括）
 
 ### Phase 3: トップページへの追加（必須）
 - [ ] トップページ（`app/page.tsx`）の適切なカテゴリセクションにカードを追加した
@@ -61,9 +63,7 @@
 import Link from 'next/link'
 import { Metadata } from 'next'
 import StructuredData from '@/app/components/StructuredData'
-import TermHeader from '@/app/components/TermHeader'
-import TableOfContents from '@/app/components/TableOfContents'  // ← 必須
-import PageSummary from '@/app/components/PageSummary'  // ← 必須
+import TermPageHeader from '@/app/components/TermPageHeader'  // ← 必須（タイトル・日付・このページでわかること・目次を一括）
 import FAQAccordion from '@/app/components/FAQAccordion'
 
 export const metadata: Metadata = { ... }
@@ -73,36 +73,37 @@ export default function Page() {
     <div className="container">
       <StructuredData type="FAQPage" faqs={faqs} />
       <StructuredData type="Article" ... />
-      
-      <TermHeader ... />
-      <TableOfContents />  // ← 必須
-      
+
+      <TermPageHeader
+        termName="[用語名]"
+        reading="[読み方] / [英語表記]"
+        icon="fas fa-[アイコン名]"
+        dateCreated="YYYY-MM-DD"
+        dateModified="YYYY-MM-DD"
+        summaryItems={['[ポイント1]', '[ポイント2]', ...]}  // ← 任意。省略すると「このページでわかること」は非表示
+      />
+
       <main>
-        <PageSummary items={[...]} />  // ← 必須（一番上）
-        
-        {/* 更新日 */}
-        <div className="date-info">...</div>
-        
         <section>
           <h2>概要</h2>
           ...
         </section>
-        
+
         <section>
           <h2>日常生活での[用語名]の例</h2>  // ← 2番目のセクション
           ...
         </section>
-        
+
         {/* 補足セクション */}
         ...
-        
+
         <section className="term-comparison">  // ← 必須
           <h2>関連用語</h2>
           <div className="comparison-table">  // ← 必須
             <table>...</table>
           </div>
         </section>
-        
+
         <FAQAccordion faqs={faqs} />
       </main>
     </div>
@@ -110,15 +111,18 @@ export default function Page() {
 }
 ```
 
+**スタイル一括指定**: 目次・ヘッダーの見た目は `app/globals.css` の `.term-page-header` / `.term-page-header__date` / `.term-page-header__summary` / `.term-page-header__toc` および `.table-of-contents` 系で一括。個別ページにインラインで書かない。
+
 ---
 
 ## ⚠️ よくある間違い
 
 ### ❌ 間違い例
-- `TableOfContents`を忘れる
-- `PageSummary`を忘れる
+- **TermPageHeader を使わず、TermHeader・PageSummary・TableOfContents・date-info を個別に書く**
+- main 内に目次や日付ブロックを置く
 - セクションの順序が違う（「日常生活での実例」が後半にある）
 - 関連用語セクションに`className="term-comparison"`がない
+- 目次・ヘッダーのスタイルを個別ページにインラインで書く（globals.css で一括すること）
 - テンプレートを読まずに作成する
 - **トップページに追加し忘れる**
 - **検索インデックスを更新し忘れる**
@@ -135,8 +139,11 @@ export default function Page() {
 ## 📚 参考ファイル
 
 - **テンプレート**: `docs/templates/page-template.tsx`
-- **既存ページ例**: `app/terms/http/page.tsx`, `app/terms/json/page.tsx`
-- **README**: `readme.md`（103行目にテンプレート使用の記載あり）
+- **ヘッダー一括コンポーネント**: `app/components/TermPageHeader.tsx`
+- **一括スタイル**: `app/globals.css`（.term-page-header 系・.table-of-contents 系）
+- **既存ページ例**: `app/terms/cpu/page.tsx`, `app/terms/http/page.tsx`
+- **チェック一覧**: `docs/issues/template-compliance-and-emoji-checklist.md`
+- **README**: `readme.md`
 - **トップページ**: `app/page.tsx`
 
 ---
@@ -151,4 +158,4 @@ export default function Page() {
 
 ---
 
-**最終更新**: 2026-01-24
+**最終更新**: 2026-01（TermPageHeader 一括・目次スタイル一括をテンプレに反映）

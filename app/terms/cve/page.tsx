@@ -201,11 +201,6 @@ export default function CVEPage() {
 
         <AdBelowRelatedTerms />
       </main>
-
-      <footer className="footer-nav">
-        <Link href="/">トップページに戻る</Link>
-        <p>&copy; 2026 itwords - 実践型IT用語辞典</p>
-      </footer>
     </div>
   )
 }

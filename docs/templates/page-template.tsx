@@ -142,9 +142,7 @@
 import Link from 'next/link'
 import { Metadata } from 'next'
 import StructuredData from '@/app/components/StructuredData'
-import TermHeader from '@/app/components/TermHeader'
-import TableOfContents from '@/app/components/TableOfContents'
-import PageSummary from '@/app/components/PageSummary'
+import TermPageHeader from '@/app/components/TermPageHeader'
 import FAQAccordion from '@/app/components/FAQAccordion'
 
 // メタデータ（SEO対策）
@@ -255,22 +253,26 @@ export default function ContentPage() {
         ]}
       /> */}
 
-      <TermHeader
+      {/*
+        【重要】用語ページ共通ヘッダー（タイトル・日付・このページでわかること・目次）
+        - TermPageHeader で一括表示。スタイルは app/globals.css の .term-page-header 系・.table-of-contents 系で一括指定。
+        - summaryItems を渡すと「このページでわかること」が表示される。省略可。
+      */}
+      <TermPageHeader
         termName="[用語名]"
         reading="[読み方] / [英語表記]"
         icon="fas fa-[アイコン名]"
         dateCreated="[作成日]"
         dateModified="[更新日]"
+        summaryItems={[
+          '[ポイント1：用語の基本的な意味]',
+          '[ポイント2：日常での使われ方や実例]',
+          '[ポイント3：デモや体験できる内容]',
+          '[ポイント4：関連知識や応用]',
+        ]}
       />
 
-      {/* 作成日・更新日（目次の上、右寄せ） */}
-      <div className="date-info-toc">
-        <span>作成日: [作成日] | 最終更新: [更新日]</span>
-      </div>
-
-      <TableOfContents />
-
-      {/* ヒーロー画像（任意・目次の下に配置） */}
+      {/* ヒーロー画像（任意・TermPageHeader の下に配置） */}
       {/* <div style={{
         width: '100%',
         maxWidth: '900px',
@@ -298,16 +300,7 @@ export default function ContentPage() {
       </div> */}
 
       <main>
-        {/* このページでわかること（一番上） */}
-        <PageSummary
-          items={[
-            '[ポイント1：用語の基本的な意味]',
-            '[ポイント2：日常での使われ方や実例]',
-            '[ポイント3：デモや体験できる内容]',
-            '[ポイント4：関連知識や応用]'
-          ]}
-        />
-
+        {/* このページでわかることは TermPageHeader の summaryItems で表示。main 内には書かない。 */}
         <section>
           <h2>概要</h2>
 
@@ -1023,9 +1016,6 @@ console.log('残りの列:', registerQueue);
 
         {/* FAQセクション（FAQがある場合） */}
         <FAQAccordion faqs={faqs} />
-
-        {/* 目次（mainの最後） */}
-        <TableOfContents />
       </main>
 
       <footer className="footer-nav">

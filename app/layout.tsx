@@ -79,6 +79,8 @@ export default function RootLayout({
         {children}
         <footer className="site-footer-layout">
           <div className="footer-links-main">
+            <Link href="/">トップページに戻る</Link>
+            {' | '}
             <Link href="/privacy">プライバシーポリシー</Link>
             {' | '}
             <Link href="/terms-of-service">利用規約</Link>
