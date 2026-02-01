@@ -56,20 +56,20 @@ export default function CPUPage() {
         type="Article"
         title="CPUとは？基本情報でも出る仕組みをわかりやすく【クロック・MIPSデモ付き】"
         description="CPUの役割とFetch/Decode/Executeの流れを初心者向けに解説。クロック周波数とMIPSの計算をデモで体感。基本情報技術者試験のイメージがつかめます。"
-        datePublished="2026-01-26"
-        dateModified="2026-01-26"
+        datePublished="2026-02-01"
+        dateModified="2026-02-01"
       />
 
       <TermHeader
         termName="CPU"
         reading="しーぴーゆー / Central Processing Unit（中央処理装置）"
         icon="fas fa-microchip"
-        dateCreated="2026-01-26"
-        dateModified="2026-01-26"
+        dateCreated="2026-02-01"
+        dateModified="2026-02-01"
       />
 
       <div className="date-info-toc">
-        <span>作成日: 2026-01-26 | 最終更新: 2026-01-26</span>
+        <span>作成日: 2026-02-01 | 最終更新: 2026-02-01</span>
       </div>
 
       <main>
@@ -175,7 +175,7 @@ export default function CPUPage() {
         <section>
           <h2>CPUの3ステップ：Fetch → Decode → Execute</h2>
           <p>
-            CPUはメモリに置かれた命令を、1本ずつ次のように処理する。
+            命令は<strong>メモリ（RAM）</strong>に置かれている。プログラムは起動時に<strong>ハードディスク／SSD</strong>から<strong>メモリ</strong>に読み込まれる。CPUは、そのメモリ上の命令を1本ずつ次のように処理する。
           </p>
           <ol>
             <li><strong>Fetch（取り出し）</strong>：メモリから「次に実行する命令」を1本取り出す。</li>
@@ -308,9 +308,9 @@ export default function CPUPage() {
 
           <h3>クロック（クロック周波数）</h3>
           <p>
-            「いつ次のステップに進むか」のタイミングを決めているのが<strong>クロック（クロック信号）</strong>である。
-            プログラムは「何を」するかを決めるが、クロックは「いつ」進めるかを決める。
-            例：3GHzなら1秒間に約30億回、クロックが刻まれる。
+            「いつ次のステップに進むか」のタイミングを決めているのが<strong>クロック</strong>（クロック信号）である。
+            プログラムは「何を」するかを決めるが、<strong>クロック</strong>は「いつ」進めるかを決める。
+            <strong>クロック周波数</strong>（例：3GHz）が高いほど1秒間に<strong>クロック</strong>が刻まれる回数は増える。3GHzなら1秒間に約30億回である。
           </p>
 
           <h3>コア</h3>
