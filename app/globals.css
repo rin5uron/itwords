@@ -1062,6 +1062,7 @@ footer a:hover {
   display: flex;
   flex-direction: column;
   gap: 6px;
+  align-items: stretch; /* nav ulのalign-items:centerを上書き */
 }
 
 .table-of-contents li {
