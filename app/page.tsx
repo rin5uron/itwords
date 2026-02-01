@@ -379,6 +379,13 @@ export default function Home() {
                 <p>Webサイトを公開するためのサーバーを提供するサービスです。</p>
               </Link>
             </div>
+            <div className="card" data-category="infrastructure">
+              <Link href="/terms/cpu" className="card-link">
+                <span className="category-tag">インフラ</span>
+                <h4>CPU</h4>
+                <p>コンピュータの頭脳。命令の取り出し・解読・実行と、クロック・MIPSのイメージがつかめます。</p>
+              </Link>
+            </div>
           </div>
         </section>
 

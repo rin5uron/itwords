@@ -35,6 +35,11 @@
     "path": "/terms/cve"
   },
   {
+    "title": "CPUとは？基本情報でも出る仕組みをわかりやすく【クロック・MIPSデモ付き】",
+    "description": "CPUの役割とFetch/Decode/Executeの流れを解説。クロック周波数とMIPSの計算をデモで体感。基本情報技術者試験のイメージがつかめます。",
+    "path": "/terms/cpu"
+  },
+  {
     "title": "DNSとは？初心者向けにわかりやすく解説 | 実践型IT用語辞典",
     "description": "DNSとは「インターネットの電話帳」",
     "path": "/terms/dns"
