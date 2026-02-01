@@ -1,4 +1,5 @@
 import Link from 'next/link'
+import Image from 'next/image'
 import { Metadata } from 'next'
 import StructuredData from '@/app/components/StructuredData'
 import TermPageHeader from '@/app/components/TermPageHeader'
@@ -15,11 +16,15 @@ export const metadata: Metadata = {
     title: 'SSHとは？小学生でもわかる【会社のパソコンからサーバーに入る仕組み】',
     description: '会社のパソコンから会社のサーバーに安全に入る仕組みがSSH。遠隔ログインの基本を初心者向けに解説します。',
     type: 'article',
+    images: [
+      { url: '/images/ssh.png', width: 1536, height: 864, alt: 'SSH - 手元のPCから遠くのサーバーに安全に接続する仕組み' },
+    ],
   },
   twitter: {
     card: 'summary_large_image',
     title: 'SSHとは？小学生でもわかる【会社のパソコンからサーバーに入る仕組み】',
     description: '会社のパソコンから会社のサーバーに安全に入る仕組みがSSH。遠隔ログインの基本を初心者向けに解説します。',
+    images: ['/images/ssh.png'],
   },
   alternates: {
     canonical: 'https://itwords.jp/terms/ssh',
@@ -73,10 +78,37 @@ export default function SSHPage() {
         dateModified="2026-02-01"
         summaryItems={[
           'SSHとは？遠くのサーバーに安全に入る仕組み',
-          '会社のパソコン → サーバーに入る流れ',
-          '別のPCから自分のPCにもアクセスできる・sshdとは',
+          '手元のPCからサーバーに入る流れ',
+          'ターミナルとSSHコマンドの基本',
         ]}
       />
+
+      <div
+        style={{
+          width: '100%',
+          maxWidth: '900px',
+          margin: '0 auto clamp(24px, 4vw, 32px) auto',
+          borderRadius: '12px',
+          overflow: 'hidden',
+          boxShadow: '0 4px 12px rgba(0,0,0,0.1)',
+          aspectRatio: '16 / 9',
+        }}
+      >
+        <Image
+          src="/images/ssh.png"
+          alt="SSH - 手元のPCから遠くのサーバーに安全に接続する仕組み"
+          width={1536}
+          height={864}
+          priority
+          style={{
+            width: '100%',
+            height: '100%',
+            objectFit: 'cover',
+            objectPosition: 'center',
+            display: 'block',
+          }}
+        />
+      </div>
 
       <main>
         <section>
