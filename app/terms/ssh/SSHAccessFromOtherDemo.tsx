@@ -19,9 +19,7 @@ export default function SSHAccessFromOtherDemo() {
       }}
     >
       <h4 style={{ marginTop: 0, color: '#6d28d9' }}>別のPCから自分のPCに入る流れ</h4>
-      <p style={{ marginBottom: '12px', fontSize: 'clamp(12px, 2.5vw, 13px)', color: '#64748b' }}>
-        ssh は「つなぎに行く」側、sshd は「つなぎに来るのを待つ」側。この形では、自分のPCで sshd を動かします。
-      </p>
+      
       <div style={{ display: 'flex', flexDirection: 'column', gap: '12px', marginBottom: '16px' }}>
         <div
           style={{
@@ -53,7 +51,8 @@ export default function SSHAccessFromOtherDemo() {
             1
           </span>
           <div>
-            <strong>自分のPCで sshd を動かす（「入ってきて」を待つ）</strong>
+            <strong>自分のPCで sshd を動かす<br>（誰かが「SSH
+            で入ってくる」を待つ）</strong>
             <p style={{ margin: '4px 0 0 0', fontSize: 'clamp(12px, 2.5vw, 13px)', color: '#64748b' }}>
               sshd が22番の入口で待っているので、自分のPCが“入り先”になる。このとき自分のPCが“サーバー”の役。
             </p>

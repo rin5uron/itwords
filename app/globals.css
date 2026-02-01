@@ -1043,6 +1043,18 @@ footer a:hover {
   }
 }
 
+/* 接続図（別のPC→自分のPC）：スマホでは2行表示 */
+@media (max-width: 640px) {
+  .flow-diagram-mobile-wrap {
+    flex-wrap: wrap;
+    white-space: normal;
+    overflow-x: visible;
+  }
+  .flow-diagram-mobile-wrap > span:first-child {
+    width: 100%;
+  }
+}
+
 /* 目次ラッパー：目次と本文の境界を明確にする（レスポンシブ） */
 .toc-wrapper {
   display: block;
