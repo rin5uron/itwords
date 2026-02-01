@@ -7,6 +7,7 @@ import TableOfContents from '@/app/components/TableOfContents'
 import TermHeader from '@/app/components/TermHeader'
 import PageSummary from '@/app/components/PageSummary'
 import FAQAccordion from '@/app/components/FAQAccordion'
+import AdBelowRelatedTerms from '@/app/components/AdBelowRelatedTerms'
 
 export default function GitHubWorkflowPage() {
   const faqs = [
@@ -55,8 +56,6 @@ export default function GitHubWorkflowPage() {
         <span>作成日: 2026-01-19 | 最終更新: 2026-01-19</span>
       </div>
 
-      <TableOfContents />
-
       <main>
         {/* このページでわかること（一番上） */}
         <PageSummary
@@ -67,6 +66,8 @@ export default function GitHubWorkflowPage() {
             'よくあるブランチ戦略（GitHub Flow、Git Flow、Trunk-based）'
           ]}
         />
+
+        <TableOfContents />
 
         <section>
           <h2>概要</h2>
@@ -333,6 +334,8 @@ Closes #123`}</code></pre>
             </table>
           </div>
         </section>
+
+        <AdBelowRelatedTerms />
       </main>
 
       <footer className="footer-nav">

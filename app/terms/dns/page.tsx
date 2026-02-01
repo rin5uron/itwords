@@ -7,6 +7,7 @@ import StructuredData from '@/app/components/StructuredData'
 import TermHeader from '@/app/components/TermHeader'
 import TableOfContents from '@/app/components/TableOfContents'
 import PageSummary from '@/app/components/PageSummary'
+import AdBelowRelatedTerms from '@/app/components/AdBelowRelatedTerms'
 
 export default function DNSPage() {
   const [currentStep, setCurrentStep] = useState(0)
@@ -69,8 +70,6 @@ export default function DNSPage() {
         dateModified="2026-01-19"
       />
 
-      <TableOfContents />
-
       <div style={{
         width: '100%',
         maxWidth: '900px',
@@ -107,6 +106,8 @@ export default function DNSPage() {
             'DNS設定方法と実践的な使い方'
           ]}
         />
+
+        <TableOfContents />
 
         {/* 更新日 */}
         <div className="date-info" style={{
@@ -518,6 +519,8 @@ github.com → DNS解決 → 140.82.121.4`}</code></pre>
             </table>
           </div>
         </section>
+
+        <AdBelowRelatedTerms />
       </main>
 
       <footer className="footer-nav">

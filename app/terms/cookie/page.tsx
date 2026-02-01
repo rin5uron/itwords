@@ -7,6 +7,7 @@ import CookieDemo from '@/app/components/CookieDemo'
 import StructuredData from '@/app/components/StructuredData'
 import PageSummary from '@/app/components/PageSummary'
 import FAQAccordion from '@/app/components/FAQAccordion'
+import AdBelowRelatedTerms from '@/app/components/AdBelowRelatedTerms'
 
 const faqs = [
   {
@@ -50,8 +51,6 @@ export default function CookiePage() {
         dateModified="2026-01-19"
       />
 
-      <TableOfContents />
-
       <main>
         {/* このページでわかること（一番上） */}
         <PageSummary
@@ -62,6 +61,8 @@ export default function CookiePage() {
             'セキュリティとプライバシー対策'
           ]}
         />
+
+        <TableOfContents />
 
         {/* 更新日 */}
         <div className="date-info" style={{
@@ -337,6 +338,8 @@ export default function CookiePage() {
             </table>
           </div>
         </section>
+
+        <AdBelowRelatedTerms />
 
         <FAQAccordion faqs={faqs} />
       </main>

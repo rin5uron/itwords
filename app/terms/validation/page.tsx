@@ -5,6 +5,7 @@ import StructuredData from '@/app/components/StructuredData'
 import TermHeader from '@/app/components/TermHeader'
 import ValidationDemo from '@/components/ValidationDemo'
 import TableOfContents from '@/app/components/TableOfContents'
+import AdBelowRelatedTerms from '@/app/components/AdBelowRelatedTerms'
 
 const metadata = {
   title: 'バリデーションとは？初心者向けにわかりやすく解説【実装例付き】 | 実践型IT用語辞典',
@@ -69,9 +70,9 @@ export default function ValidationPage() {
         dateModified="2026-01-13"
       />
 
-      <TableOfContents />
-
       <main>
+        <TableOfContents />
+
         {/* 更新日（概要の上） */}
         <div className="date-info" style={{
           fontSize: '14px',
@@ -674,6 +675,8 @@ document.getElementById('strength-bar').style.backgroundColor = result.color;`}<
             </table>
           </div>
         </section>
+
+        <AdBelowRelatedTerms />
       </main>
 
       <footer className="footer-nav">

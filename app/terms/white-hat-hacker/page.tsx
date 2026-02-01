@@ -6,6 +6,7 @@ import TermHeader from '@/app/components/TermHeader'
 import TableOfContents from '@/app/components/TableOfContents'
 import PageSummary from '@/app/components/PageSummary'
 import FAQAccordion from '@/app/components/FAQAccordion'
+import AdBelowRelatedTerms from '@/app/components/AdBelowRelatedTerms'
 import WhiteHatDemo from '@/components/WhiteHatDemo'
 
 export const metadata: Metadata = {
@@ -79,8 +80,6 @@ export default function WhiteHatHackerPage() {
         <span>作成日: 2026-01-14 | 最終更新: 2026-01-14</span>
       </div>
 
-      <TableOfContents />
-
       <div style={{
         width: '100%',
         maxWidth: '900px',
@@ -117,6 +116,8 @@ export default function WhiteHatHackerPage() {
             'グレーハッカー、仕事内容・なるには',
           ]}
         />
+
+        <TableOfContents />
 
         <section>
           <h2>概要</h2>
@@ -223,6 +224,8 @@ export default function WhiteHatHackerPage() {
             <li><Link href="/terms/exploit" style={{ color: '#8abdea', textDecoration: 'underline' }}>エクスプロイト</Link> - ホワイトハッカーが発見・報告する攻撃コード</li>
           </ul>
         </section>
+
+        <AdBelowRelatedTerms />
       </main>
 
       <footer className="footer-nav">

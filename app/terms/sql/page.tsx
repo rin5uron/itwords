@@ -5,6 +5,7 @@ import { useState } from 'react'
 import StructuredData from '@/app/components/StructuredData'
 import TermHeader from '@/app/components/TermHeader'
 import TableOfContents from '@/app/components/TableOfContents'
+import AdBelowRelatedTerms from '@/app/components/AdBelowRelatedTerms'
 
 export default function SQLPage() {
   const [selectedQuery, setSelectedQuery] = useState<string | null>(null)
@@ -86,9 +87,9 @@ export default function SQLPage() {
         dateModified="2026-01-16"
       />
 
-      <TableOfContents />
-
       <main>
+        <TableOfContents />
+
         {/* 更新日（概要の上） */}
         <div className="date-info" style={{
           fontSize: '14px',
@@ -420,6 +421,8 @@ export default function SQLPage() {
             </table>
           </div>
         </section>
+
+        <AdBelowRelatedTerms />
       </main>
 
       <footer className="footer-nav">

@@ -5,6 +5,7 @@ import TermHeader from '@/app/components/TermHeader'
 import TableOfContents from '@/app/components/TableOfContents'
 import PageSummary from '@/app/components/PageSummary'
 import FAQAccordion from '@/app/components/FAQAccordion'
+import AdBelowRelatedTerms from '@/app/components/AdBelowRelatedTerms'
 
 export const metadata: Metadata = {
   title: 'SMTP（エスエムティーピー）とは？小学生でもわかる【メール送信のルール】',
@@ -66,8 +67,6 @@ export default function SMTPPage() {
         dateModified="2026-01-24"
       />
 
-      <TableOfContents />
-
       <main>
         {/* このページでわかること（一番上） */}
         <PageSummary
@@ -78,6 +77,8 @@ export default function SMTPPage() {
             'メール送信の仕組みと流れ'
           ]}
         />
+
+        <TableOfContents />
 
         {/* 更新日 */}
         <div className="date-info" style={{
@@ -497,6 +498,8 @@ Outlook.comのSMTP設定例：
             </table>
           </div>
         </section>
+
+        <AdBelowRelatedTerms />
 
         <FAQAccordion faqs={smtpFAQs} />
       </main>

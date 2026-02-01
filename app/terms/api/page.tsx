@@ -7,6 +7,7 @@ import TermHeader from '@/app/components/TermHeader'
 import TableOfContents from '@/app/components/TableOfContents'
 import PageSummary from '@/app/components/PageSummary'
 import AdSenseUnit from '@/app/components/AdSenseUnit'
+import AdBelowRelatedTerms from '@/app/components/AdBelowRelatedTerms'
 
 export default function APIPage() {
   const [weatherLoading, setWeatherLoading] = useState(false)
@@ -99,8 +100,6 @@ export default function APIPage() {
         dateModified="2026-01-17"
       />
 
-      <TableOfContents />
-
       <main>
         {/* このページでわかること（一番上） */}
         <PageSummary
@@ -111,6 +110,8 @@ export default function APIPage() {
             'APIの基本用語と仕組み'
           ]}
         />
+
+        <TableOfContents />
 
         {/* 更新日 */}
         <div className="date-info" style={{
@@ -509,6 +510,8 @@ export default function APIPage() {
             </table>
           </div>
         </section>
+
+        <AdBelowRelatedTerms />
       </main>
 
       <footer className="footer-nav">

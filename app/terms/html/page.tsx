@@ -6,6 +6,7 @@ import TableOfContents from '@/app/components/TableOfContents'
 import PageSummary from '@/app/components/PageSummary'
 import HTMLDemo from './HTMLDemo'
 import FAQAccordion from '@/app/components/FAQAccordion'
+import AdBelowRelatedTerms from '@/app/components/AdBelowRelatedTerms'
 
 const faqs = [
   {
@@ -35,8 +36,6 @@ export default function HTMLPage() {
         icon="fas fa-code"
       />
 
-      <TableOfContents />
-
       <main>
         {/* このページでわかること（一番上） */}
         <PageSummary
@@ -47,6 +46,8 @@ export default function HTMLPage() {
             'HTML5の新機能と基本タグ'
           ]}
         />
+
+        <TableOfContents />
 
         {/* 更新日 */}
         <div className="date-info" style={{
@@ -221,6 +222,8 @@ export default function HTMLPage() {
             </table>
           </div>
         </section>
+
+        <AdBelowRelatedTerms />
 
         <FAQAccordion faqs={faqs} />
       </main>

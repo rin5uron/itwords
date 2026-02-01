@@ -6,6 +6,7 @@ import TermHeader from '@/app/components/TermHeader'
 import TableOfContents from '@/app/components/TableOfContents'
 import PageSummary from '@/app/components/PageSummary'
 import FAQAccordion from '@/app/components/FAQAccordion'
+import AdBelowRelatedTerms from '@/app/components/AdBelowRelatedTerms'
 
 export const metadata: Metadata = {
   title: 'JavaScriptとは？初心者向けにわかりやすく解説【実践デモ付き】 | 実践型IT用語辞典',
@@ -64,8 +65,6 @@ export default function JavaScriptPage() {
         dateModified="2026-01-07"
       />
 
-      <TableOfContents />
-
       <main>
         {/* このページでわかること（一番上） */}
         <PageSummary
@@ -76,6 +75,8 @@ export default function JavaScriptPage() {
             'ES6の新機能と基本構文'
           ]}
         />
+
+        <TableOfContents />
 
         {/* 更新日 */}
         <div className="date-info" style={{
@@ -272,6 +273,8 @@ const moreNumbers = [...numbers, 4, 5];  // [1, 2, 3, 4, 5]`}</code></pre>
             </table>
           </div>
         </section>
+
+        <AdBelowRelatedTerms />
 
         <FAQAccordion faqs={faqs} />
       </main>

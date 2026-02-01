@@ -5,6 +5,7 @@ import TermHeader from '@/app/components/TermHeader'
 import TableOfContents from '@/app/components/TableOfContents'
 import PageSummary from '@/app/components/PageSummary'
 import FAQAccordion from '@/app/components/FAQAccordion'
+import AdBelowRelatedTerms from '@/app/components/AdBelowRelatedTerms'
 
 export const metadata: Metadata = {
   title: 'リポジトリとは？小学生でもわかる【コードの保管庫】',
@@ -73,8 +74,6 @@ export default function RepositoryPage() {
         <span>作成日: 2026-01-18 | 最終更新: 2026-01-18</span>
       </div>
 
-      <TableOfContents />
-
       <main>
         <PageSummary
           items={[
@@ -84,6 +83,8 @@ export default function RepositoryPage() {
             'GitHubでリポジトリを作る方法とREADMEの書き方'
           ]}
         />
+
+        <TableOfContents />
 
         <section>
           <h2>概要</h2>
@@ -562,6 +563,8 @@ MIT`}</code></pre>
             </table>
           </div>
         </section>
+
+        <AdBelowRelatedTerms />
       </main>
 
       <footer className="footer-nav">

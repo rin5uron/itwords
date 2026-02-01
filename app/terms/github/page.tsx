@@ -6,6 +6,7 @@ import TableOfContents from '@/app/components/TableOfContents'
 import TermHeader from '@/app/components/TermHeader'
 import PageSummary from '@/app/components/PageSummary'
 import FAQAccordion from '@/app/components/FAQAccordion'
+import AdBelowRelatedTerms from '@/app/components/AdBelowRelatedTerms'
 
 export const metadata: Metadata = {
   title: 'GitHubとは？小学生でもわかる【結局何に使うの？が分かる】',
@@ -72,8 +73,6 @@ export default function GitHubPage() {
         dateModified="2026-01-19"
       />
 
-      <TableOfContents />
-
       <main>
         {/* このページでわかること（一番上） */}
         <PageSummary
@@ -84,6 +83,8 @@ export default function GitHubPage() {
             'GitHubの便利な機能（Issues、Actions、Pagesなど）'
           ]}
         />
+
+        <TableOfContents />
 
         {/* 更新日 */}
         <div className="date-info" style={{
@@ -712,6 +713,8 @@ node_modules/
             </table>
           </div>
         </section>
+
+        <AdBelowRelatedTerms />
       </main>
 
       <footer className="footer-nav">

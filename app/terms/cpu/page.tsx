@@ -7,6 +7,7 @@ import TermHeader from '@/app/components/TermHeader'
 import TableOfContents from '@/app/components/TableOfContents'
 import PageSummary from '@/app/components/PageSummary'
 import FAQAccordion from '@/app/components/FAQAccordion'
+import AdBelowRelatedTerms from '@/app/components/AdBelowRelatedTerms'
 
 const FDESTEPS = [
   { phase: 'Fetch（取り出し）', desc: 'メモリから「次に実行する命令」を1本取り出す', icon: 'fas fa-download', color: '#007bff' },
@@ -82,6 +83,8 @@ export default function CPUPage() {
             '「どれだけ速いか」の指標（クロック周波数・MIPS）',
           ]}
         />
+
+        <TableOfContents />
 
         <section>
           <h2>まず体験：CPUとメモリの関係</h2>
@@ -443,8 +446,6 @@ export default function CPUPage() {
           </p>
         </section>
 
-        <TableOfContents />
-
         <section className="term-comparison">
           <h2>関連用語</h2>
           <div className="comparison-table">
@@ -472,6 +473,8 @@ export default function CPUPage() {
             </table>
           </div>
         </section>
+
+        <AdBelowRelatedTerms />
 
         <FAQAccordion faqs={faqs} />
       </main>

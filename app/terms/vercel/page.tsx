@@ -7,6 +7,7 @@ import TableOfContents from '@/app/components/TableOfContents'
 import TermHeader from '@/app/components/TermHeader'
 import PageSummary from '@/app/components/PageSummary'
 import FAQAccordion from '@/app/components/FAQAccordion'
+import AdBelowRelatedTerms from '@/app/components/AdBelowRelatedTerms'
 
 export default function VercelPage() {
   const faqs = [
@@ -66,8 +67,6 @@ export default function VercelPage() {
         dateModified="2026-01-16"
       />
 
-      <TableOfContents />
-
       <main>
         {/* このページでわかること（一番上） */}
         <PageSummary
@@ -78,6 +77,8 @@ export default function VercelPage() {
             '無料プランでできること'
           ]}
         />
+
+        <TableOfContents />
 
         {/* 更新日 */}
         <div className="date-info" style={{
@@ -478,6 +479,8 @@ DATABASE_URL=postgresql://...`}</code></pre>
             </table>
           </div>
         </section>
+
+        <AdBelowRelatedTerms />
 
         <FAQAccordion faqs={faqs} />
       </main>

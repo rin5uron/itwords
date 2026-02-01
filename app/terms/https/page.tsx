@@ -6,6 +6,7 @@ import TermHeader from '@/app/components/TermHeader'
 import TableOfContents from '@/app/components/TableOfContents'
 import PageSummary from '@/app/components/PageSummary'
 import FAQAccordion from '@/app/components/FAQAccordion'
+import AdBelowRelatedTerms from '@/app/components/AdBelowRelatedTerms'
 
 const httpsFAQs = [
   {
@@ -57,8 +58,6 @@ export default function HTTPSPage() {
         dateModified="2026-01-23"
       />
 
-      <TableOfContents />
-
       <main>
         {/* このページでわかること（一番上） */}
         <PageSummary
@@ -69,6 +68,8 @@ export default function HTTPSPage() {
             'HTTPSを使うメリットと必要性'
           ]}
         />
+
+        <TableOfContents />
 
         {/* 更新日 */}
         <div className="date-info" style={{
@@ -404,6 +405,8 @@ HTTPS = HyperText Transfer Protocol Secure（暗号化あり）</code></pre>
             </table>
           </div>
         </section>
+
+        <AdBelowRelatedTerms />
 
         <FAQAccordion faqs={httpsFAQs} />
       </main>

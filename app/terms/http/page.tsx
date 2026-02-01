@@ -6,6 +6,7 @@ import TermHeader from '@/app/components/TermHeader'
 import TableOfContents from '@/app/components/TableOfContents'
 import PageSummary from '@/app/components/PageSummary'
 import FAQAccordion from '@/app/components/FAQAccordion'
+import AdBelowRelatedTerms from '@/app/components/AdBelowRelatedTerms'
 
 export const metadata: Metadata = {
   title: 'HTTP/HTTPS（エイチティーティーピー）とは？読み方・違いを初心者向けに解説 | 実践型IT用語辞典',
@@ -71,8 +72,6 @@ export default function HTTPPage() {
         dateModified="2026-01-24"
       />
 
-      <TableOfContents />
-
       <main>
         {/* このページでわかること（一番上） */}
         <PageSummary
@@ -85,6 +84,8 @@ export default function HTTPPage() {
             'プロトコルとは？「同じ道を走る別の車」の比喩'
           ]}
         />
+
+        <TableOfContents />
 
         {/* 更新日 */}
         <div className="date-info" style={{
@@ -463,6 +464,8 @@ export default function HTTPPage() {
             </table>
           </div>
         </section>
+
+        <AdBelowRelatedTerms />
 
         <FAQAccordion faqs={httpFAQs} />
       </main>

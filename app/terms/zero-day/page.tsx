@@ -98,8 +98,6 @@ export default function ZeroDayPage() {
         dateModified="2026-01-14"
       />
 
-      <TableOfContents />
-
       <div style={{
         width: '100%',
         maxWidth: '900px',
@@ -136,6 +134,8 @@ export default function ZeroDayPage() {
             '個人でできる防御対策'
           ]}
         />
+
+        <TableOfContents />
 
         {/* 更新日 */}
         <div className="date-info" style={{

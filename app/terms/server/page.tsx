@@ -7,6 +7,7 @@ import { Metadata } from 'next'
 import StructuredData from '@/app/components/StructuredData'
 import TermHeader from '@/app/components/TermHeader'
 import TableOfContents from '@/app/components/TableOfContents'
+import AdBelowRelatedTerms from '@/app/components/AdBelowRelatedTerms'
 
 export default function ServerPage() {
   const [currentStep, setCurrentStep] = useState(0)
@@ -71,8 +72,6 @@ export default function ServerPage() {
         <span>作成日: 2026-01-12 | 最終更新: 2026-01-12</span>
       </div>
 
-      <TableOfContents />
-
       <div style={{
         width: '100%',
         maxWidth: '900px',
@@ -100,6 +99,8 @@ export default function ServerPage() {
       </div>
 
       <main>
+        <TableOfContents />
+
         <section>
           <h2>概要</h2>
           <p>
@@ -412,6 +413,8 @@ export default function ServerPage() {
             </table>
           </div>
         </section>
+
+        <AdBelowRelatedTerms />
       </main>
 
       <footer className="footer-nav">

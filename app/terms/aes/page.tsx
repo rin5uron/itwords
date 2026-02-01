@@ -7,6 +7,7 @@ import AESDemo from '@/components/AESDemo'
 import TableOfContents from '@/app/components/TableOfContents'
 import PageSummary from '@/app/components/PageSummary'
 import FAQAccordion from '@/app/components/FAQAccordion'
+import AdBelowRelatedTerms from '@/app/components/AdBelowRelatedTerms'
 
 export const metadata: Metadata = {
   title: 'AESとは？小学生でもわかる【動かして学べるデモ付き】',
@@ -122,8 +123,6 @@ export default function AESPage() {
         <span>作成日: 2024-01-09 | 最終更新: 2026-01-19</span>
       </div>
 
-      <TableOfContents />
-
       <main>
         {/* このページでわかること（一番上） */}
         <PageSummary
@@ -134,6 +133,8 @@ export default function AESPage() {
             'JavaScriptでの実装方法'
           ]}
         />
+
+        <TableOfContents />
 
         <section>
           <h2>概要</h2>
@@ -810,6 +811,9 @@ async function decryptData(ciphertext, key, iv) {
             </table>
           </div>
         </section>
+
+        <AdBelowRelatedTerms />
+
       </main>
 
       <footer className="footer-nav">

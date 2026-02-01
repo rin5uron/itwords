@@ -7,6 +7,7 @@ import TermHeader from '@/app/components/TermHeader'
 import TableOfContents from '@/app/components/TableOfContents'
 import PageSummary from '@/app/components/PageSummary'
 import FAQAccordion from '@/app/components/FAQAccordion'
+import AdBelowRelatedTerms from '@/app/components/AdBelowRelatedTerms'
 
 const HIERARCHY_LAYERS = [
   { name: 'レジスタ', desc: 'CPUのすぐそば。', desc2: '最も速いが数は少ない。', icon: 'fas fa-microchip', color: '#007bff' },
@@ -83,6 +84,8 @@ export default function MemoryPage() {
             '割り込み・メモリインターリーブの概要',
           ]}
         />
+
+        <TableOfContents />
 
         <section>
           <h2>概要</h2>
@@ -385,8 +388,6 @@ export default function MemoryPage() {
           </p>
         </section>
 
-        <TableOfContents />
-
         <section className="term-comparison">
           <h2>関連用語</h2>
           <div className="comparison-table">
@@ -414,6 +415,8 @@ export default function MemoryPage() {
             </table>
           </div>
         </section>
+
+        <AdBelowRelatedTerms />
 
         <FAQAccordion faqs={faqs} />
       </main>

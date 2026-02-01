@@ -6,6 +6,7 @@ import TermHeader from '@/app/components/TermHeader'
 import TableOfContents from '@/app/components/TableOfContents'
 import PageSummary from '@/app/components/PageSummary'
 import FAQAccordion from '@/app/components/FAQAccordion'
+import AdBelowRelatedTerms from '@/app/components/AdBelowRelatedTerms'
 
 export const metadata: Metadata = {
   title: 'キュー（Queue）とは？初心者向けにわかりやすく解説【実践デモ付き】 | 実践型IT用語辞典',
@@ -95,8 +96,6 @@ export default function QueuePage() {
         <span>作成日: 2024-01-07 | 最終更新: 2026-01-07</span>
       </div>
 
-      <TableOfContents />
-
       <main>
         <PageSummary
           items={[
@@ -107,6 +106,8 @@ export default function QueuePage() {
             'スタックとの違い、実践での使い方',
           ]}
         />
+
+        <TableOfContents />
 
         <section>
           <h2>概要</h2>
@@ -273,6 +274,8 @@ console.log('次の会計:', nextCustomer); // "佐藤さん"
             </table>
           </div>
         </section>
+
+        <AdBelowRelatedTerms />
 
         <FAQAccordion faqs={faqs} />
       </main>

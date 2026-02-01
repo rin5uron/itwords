@@ -6,6 +6,7 @@ import StructuredData from '@/app/components/StructuredData'
 import TableOfContents from '@/app/components/TableOfContents'
 import TermHeader from '@/app/components/TermHeader'
 import FAQAccordion from '@/app/components/FAQAccordion'
+import AdBelowRelatedTerms from '@/app/components/AdBelowRelatedTerms'
 
 export default function NpmPage() {
   const faqs = [
@@ -147,9 +148,9 @@ export default function NpmPage() {
         dateModified="2026-01-19"
       />
 
-      <TableOfContents />
-
       <main>
+        <TableOfContents />
+
         {/* 更新日（概要の上） */}
         <div className="date-info" style={{
           fontSize: '14px',
@@ -673,6 +674,8 @@ const today = format(new Date(), 'yyyy-MM-dd')`}</code></pre>
             </table>
           </div>
         </section>
+
+        <AdBelowRelatedTerms />
 
         <FAQAccordion faqs={faqs} />
       </main>

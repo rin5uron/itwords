@@ -6,6 +6,7 @@ import { Metadata } from 'next'
 import StructuredData from '@/app/components/StructuredData'
 import TermHeader from '@/app/components/TermHeader'
 import TableOfContents from '@/app/components/TableOfContents'
+import AdBelowRelatedTerms from '@/app/components/AdBelowRelatedTerms'
 
 export default function HostingServicePage() {
   const [selectedType, setSelectedType] = useState<'shared' | 'vps' | 'cloud' | 'serverless'>('shared')
@@ -91,9 +92,9 @@ export default function HostingServicePage() {
         dateModified="2026-01-12"
       />
 
-      <TableOfContents />
-
       <main>
+        <TableOfContents />
+
         {/* 更新日（概要の上） */}
         <div className="date-info" style={{
           fontSize: '14px',
@@ -450,6 +451,8 @@ export default function HostingServicePage() {
             </table>
           </div>
         </section>
+
+        <AdBelowRelatedTerms />
       </main>
 
       <footer className="footer-nav">

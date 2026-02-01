@@ -6,6 +6,7 @@ import TableOfContents from '@/app/components/TableOfContents'
 import TermHeader from '@/app/components/TermHeader'
 import PageSummary from '@/app/components/PageSummary'
 import FAQAccordion from '@/app/components/FAQAccordion'
+import AdBelowRelatedTerms from '@/app/components/AdBelowRelatedTerms'
 
 export const metadata: Metadata = {
   title: 'フールプルーフとは？初心者向けにわかりやすく解説【実践デモ付き】 | 実践型IT用語辞典',
@@ -75,8 +76,6 @@ export default function FoolProofPage() {
         dateModified="2026-01-12"
       />
 
-      <TableOfContents />
-
       <main>
         {/* このページでわかること（一番上） */}
         <PageSummary
@@ -87,6 +86,8 @@ export default function FoolProofPage() {
             'ポカヨケ、フェイルセーフとの違い'
           ]}
         />
+
+        <TableOfContents />
 
         {/* 更新日 */}
         <div className="date-info" style={{
@@ -671,6 +672,8 @@ function FileManager() {
             </table>
           </div>
         </section>
+
+        <AdBelowRelatedTerms />
 
         <FAQAccordion faqs={faqs} />
       </main>

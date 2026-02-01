@@ -5,6 +5,7 @@ import TermHeader from '@/app/components/TermHeader'
 import TableOfContents from '@/app/components/TableOfContents'
 import PageSummary from '@/app/components/PageSummary'
 import FAQAccordion from '@/app/components/FAQAccordion'
+import AdBelowRelatedTerms from '@/app/components/AdBelowRelatedTerms'
 import CVEDemo from '@/components/CVEDemo'
 
 export const metadata: Metadata = {
@@ -69,8 +70,6 @@ export default function CVEPage() {
         <span>作成日: 2026-01-14 | 最終更新: 2026-01-14</span>
       </div>
 
-      <TableOfContents />
-
       <main>
         <PageSummary
           items={[
@@ -81,6 +80,8 @@ export default function CVEPage() {
             'CVEとゼロデイ攻撃の関係、調べ方・限界',
           ]}
         />
+
+        <TableOfContents />
 
         <section>
           <h2>概要</h2>
@@ -208,6 +209,8 @@ export default function CVEPage() {
             <li><Link href="/terms/white-hat-hacker" style={{ color: '#8abdea', textDecoration: 'underline' }}>ホワイトハッカー</Link> - CVEに登録される脆弱性を発見する人たち</li>
           </ul>
         </section>
+
+        <AdBelowRelatedTerms />
       </main>
 
       <footer className="footer-nav">

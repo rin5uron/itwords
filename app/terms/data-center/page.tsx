@@ -4,6 +4,7 @@ import TermHeader from '@/app/components/TermHeader'
 import TableOfContents from '@/app/components/TableOfContents'
 import PageSummary from '@/app/components/PageSummary'
 import FAQAccordion from '@/app/components/FAQAccordion'
+import AdBelowRelatedTerms from '@/app/components/AdBelowRelatedTerms'
 
 const faqs = [
   {
@@ -44,8 +45,6 @@ export default function DataCenterPage() {
         dateModified="2026-01-29"
       />
 
-      <TableOfContents />
-
       <main>
         <PageSummary
           items={[
@@ -56,6 +55,8 @@ export default function DataCenterPage() {
             'インターネットは分業されたインフラの連携で成り立っている'
           ]}
         />
+
+        <TableOfContents />
 
         <div className="date-info" style={{
           fontSize: '14px',
@@ -202,6 +203,8 @@ export default function DataCenterPage() {
             </table>
           </div>
         </section>
+
+        <AdBelowRelatedTerms />
 
         <FAQAccordion faqs={faqs} />
       </main>

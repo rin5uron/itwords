@@ -6,6 +6,7 @@ import TermHeader from '@/app/components/TermHeader'
 import TableOfContents from '@/app/components/TableOfContents'
 import PageSummary from '@/app/components/PageSummary'
 import FAQAccordion from '@/app/components/FAQAccordion'
+import AdBelowRelatedTerms from '@/app/components/AdBelowRelatedTerms'
 
 const faqs = [
   {
@@ -53,8 +54,6 @@ export default function FrameworkPage() {
         <span>作成日: 2024-01-01 | 最終更新: 2026-01-07</span>
       </div>
 
-      <TableOfContents />
-
       <main>
         <PageSummary
           items={[
@@ -65,6 +64,8 @@ export default function FrameworkPage() {
             'おすすめの学習順序',
           ]}
         />
+
+        <TableOfContents />
 
         <section>
           <h2>概要</h2>
@@ -329,6 +330,8 @@ export default function FrameworkPage() {
             </table>
           </div>
         </section>
+
+        <AdBelowRelatedTerms />
 
         <FAQAccordion faqs={faqs} />
       </main>

@@ -4,6 +4,7 @@ import StructuredData from '@/app/components/StructuredData'
 import TermHeader from '@/app/components/TermHeader'
 import TableOfContents from '@/app/components/TableOfContents'
 import FAQAccordion from '@/app/components/FAQAccordion'
+import AdBelowRelatedTerms from '@/app/components/AdBelowRelatedTerms'
 
 export const metadata: Metadata = {
   title: 'SSL/TLSとは？小学生でもわかる【HTTPSの🔒マークの正体】',
@@ -63,9 +64,9 @@ export default function SslTlsPage() {
         dateModified="2026-01-18"
       />
 
-      <TableOfContents />
-
       <main>
+        <TableOfContents />
+
         {/* 更新日（概要の上） */}
         <div className="date-info" style={{
           fontSize: '14px',
@@ -360,6 +361,8 @@ export default function SslTlsPage() {
             </table>
           </div>
         </section>
+
+        <AdBelowRelatedTerms />
       </main>
 
       <footer className="footer-nav">

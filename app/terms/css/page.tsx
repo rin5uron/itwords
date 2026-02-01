@@ -9,6 +9,7 @@ import TableOfContents from '@/app/components/TableOfContents'
 import PageSummary from '@/app/components/PageSummary'
 import CSSStepByStepDemo from '@/components/CSSStepByStepDemo'
 import CSSWritingMethodsDemo from '@/components/CSSWritingMethodsDemo'
+import AdBelowRelatedTerms from '@/app/components/AdBelowRelatedTerms'
 
 export default function CSSPage() {
   const [cssCode, setCssCode] = useState('color: blue;\nfont-size: 24px;\nfont-weight: bold;')
@@ -56,8 +57,6 @@ export default function CSSPage() {
         dateModified="2026-01-15"
       />
 
-      <TableOfContents />
-
       <main>
         {/* このページでわかること（一番上） */}
         <PageSummary
@@ -68,6 +67,8 @@ export default function CSSPage() {
             'CSSの書き方とよく使うプロパティ'
           ]}
         />
+
+        <TableOfContents />
 
         {/* 更新日 */}
         <div className="date-info" style={{
@@ -348,6 +349,8 @@ p {
             </table>
           </div>
         </section>
+
+        <AdBelowRelatedTerms />
       </main>
 
       <footer className="footer-nav">

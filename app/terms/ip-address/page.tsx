@@ -3,6 +3,7 @@ import StructuredData from '@/app/components/StructuredData'
 import TermHeader from '@/app/components/TermHeader'
 import TableOfContents from '@/app/components/TableOfContents'
 import PageSummary from '@/app/components/PageSummary'
+import AdBelowRelatedTerms from '@/app/components/AdBelowRelatedTerms'
 import { Metadata } from 'next'
 
 export const metadata: Metadata = {
@@ -66,8 +67,6 @@ export default function IPAddressPage() {
         dateModified="2026-01-24"
       />
 
-      <TableOfContents />
-
       <main>
         {/* このページでわかること（一番上） */}
         <PageSummary
@@ -79,6 +78,8 @@ export default function IPAddressPage() {
             'プロトコルとポート番号の関係'
           ]}
         />
+
+        <TableOfContents />
 
         {/* 更新日（概要の上） */}
         <div className="date-info" style={{
@@ -552,6 +553,8 @@ itwords.jp → DNS解決 → 76.76.21.21`}</code></pre>
             </table>
           </div>
         </section>
+
+        <AdBelowRelatedTerms />
       </main>
 
       <footer className="footer-nav">
