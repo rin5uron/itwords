@@ -4,6 +4,7 @@ import { Metadata } from 'next'
 import StructuredData from '@/app/components/StructuredData'
 import TermPageHeader from '@/app/components/TermPageHeader'
 import ZeroDayDemo from '@/components/ZeroDayDemo'
+import AdBelowRelatedTerms from '@/app/components/AdBelowRelatedTerms'
 
 export const metadata: Metadata = {
   title: 'ゼロデイ攻撃とは？「0日」の意味と防御法【攻撃者の視点で体験】',
@@ -230,6 +231,7 @@ export default function ZeroDayPage() {
           </ul>
         </section>
 
+        <AdBelowRelatedTerms />
       </main>
     </div>
   )

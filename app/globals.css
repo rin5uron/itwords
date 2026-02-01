@@ -1056,6 +1056,8 @@ footer a:hover {
 
 /* 目次（Table of Contents）－全ページ共通スタイル（globals.css） */
 .table-of-contents {
+  width: 100%;
+  max-width: 100%;
   background: linear-gradient(135deg, #f8f9fa 0%, #ffffff 100%);
   border: 1px solid #e0e0e0;
   border-left: 4px solid #14b8a6;
@@ -1064,7 +1066,6 @@ footer a:hover {
   margin-bottom: 0;
   margin-top: 0;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
-  max-width: 100%;
   box-sizing: border-box;
 }
 
@@ -1115,15 +1116,21 @@ footer a:hover {
   list-style: none;
   padding: 0;
   margin: 0;
+  width: 100%;
+  max-width: 100%;
   display: flex;
   flex-direction: column;
+  flex-wrap: nowrap;
   gap: 3px;
-  align-items: stretch; /* nav ulのalign-items:centerを上書き */
+  align-items: stretch;
+  box-sizing: border-box;
 }
 
 .table-of-contents li {
   width: 100%;
+  max-width: 100%;
   margin-bottom: 0;
+  box-sizing: border-box;
 }
 
 .table-of-contents a {
@@ -1138,6 +1145,8 @@ footer a:hover {
   font-size: clamp(12px, 2.5vw, 13px);
   line-height: 1.35;
   width: 100%;
+  max-width: 100%;
+  min-width: 0;
   box-sizing: border-box;
 }
 
@@ -1337,12 +1346,15 @@ main a:not(.card-link):not(.breadcrumb-link):not(.term-name):active {
     max-height: 45vh;
     overflow-y: auto;
     -webkit-overflow-scrolling: touch;
+    flex-wrap: nowrap;
     box-sizing: border-box;
   }
 
   .table-of-contents li {
     width: 100%;
+    max-width: 100%;
     min-width: 0;
+    box-sizing: border-box;
   }
 
   .table-of-contents a {
@@ -1350,6 +1362,7 @@ main a:not(.card-link):not(.breadcrumb-link):not(.term-name):active {
     gap: 8px;
     font-size: clamp(12px, 3vw, 13px);
     width: 100%;
+    max-width: 100%;
     box-sizing: border-box;
     min-width: 0;
   }

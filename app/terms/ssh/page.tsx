@@ -4,6 +4,7 @@ import StructuredData from '@/app/components/StructuredData'
 import TermPageHeader from '@/app/components/TermPageHeader'
 import FAQAccordion from '@/app/components/FAQAccordion'
 import AdBelowRelatedTerms from '@/app/components/AdBelowRelatedTerms'
+import SSHDemo from './SSHDemo'
 
 export const metadata: Metadata = {
   title: 'SSHとは？小学生でもわかる【会社のパソコンからサーバーに入る仕組み】',
@@ -72,6 +73,7 @@ export default function SSHPage() {
         summaryItems={[
           'SSHとは？遠くのサーバーに安全に入る仕組み',
           '実務での使われ方（オフィス・リモート・鍵渡し）',
+          'SSHの流れをデモで体験（4ステップ）',
           '会社のパソコン → サーバーに入る流れ',
           '暗号化で盗み見されにくくする',
           '秘密鍵・公開鍵でより安全に',
@@ -131,6 +133,17 @@ export default function SSHPage() {
             チームでサーバーを共有するとき、管理者が「この人の公開鍵をサーバーに登録する」ことで、その人だけがSSHで入れるようにします。
             「鍵を渡す」＝公開鍵をサーバーに登録する、というイメージです。
           </p>
+        </section>
+
+        <section>
+          <h2>SSHでサーバーに入る流れを体験してみよう</h2>
+          <p>
+            下のデモで、手元のPCからサーバーに「入る」までの4ステップを確認できます。
+            ボタンを押して進めると、クライアント → ネットワーク → サーバー（sshd）→ 接続完了の流れがイメージしやすくなります。
+          </p>
+          <div style={{ maxWidth: '100%', overflowX: 'auto' }}>
+            <SSHDemo />
+          </div>
         </section>
 
         <section>

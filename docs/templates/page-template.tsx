@@ -55,7 +55,11 @@
 //    - 類似用語との比較（任意）
 //    - 関連用語の一覧
 //
-// 9. FAQセクション（任意）
+// 9. 広告スペース（推奨）
+//    - 関連用語の直下に AdBelowRelatedTerms を配置（NEXT_PUBLIC_ADSENSE_SLOT 設定時のみ表示）
+//    - 自動広告がオンでも、手動ユニットで確実に1箇所表示される
+//
+// 10. FAQセクション（任意）
 //    - よくある質問と回答
 //
 // 【全体の考え方】
@@ -144,6 +148,7 @@ import { Metadata } from 'next'
 import StructuredData from '@/app/components/StructuredData'
 import TermPageHeader from '@/app/components/TermPageHeader'
 import FAQAccordion from '@/app/components/FAQAccordion'
+import AdBelowRelatedTerms from '@/app/components/AdBelowRelatedTerms'
 
 // メタデータ（SEO対策）
 //
@@ -1013,6 +1018,9 @@ console.log('残りの列:', registerQueue);
             </table>
           </div>
         </section>
+
+        {/* 広告スペース（関連用語の直下。NEXT_PUBLIC_ADSENSE_SLOT 設定時のみ表示） */}
+        <AdBelowRelatedTerms />
 
         {/* FAQセクション（FAQがある場合） */}
         <FAQAccordion faqs={faqs} />
