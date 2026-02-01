@@ -40,11 +40,6 @@ export default function ContactPage() {
           </ul>
         </section>
       </main>
-
-      <footer className="footer-nav">
-        <Link href="/">トップページに戻る</Link>
-        <p>&copy; {new Date().getFullYear()} [サイト名]</p>
-      </footer>
     </div>
   )
 }

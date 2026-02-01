@@ -85,11 +85,6 @@ export default function PrivacyPolicy() {
           <p><strong>制定日：2026年1月6日</strong></p>
         </section>
       </main>
-
-      <footer>
-        <Link href="/">トップページに戻る</Link>
-        <p>&copy; 2026 itwords - 実践型IT用語辞典</p>
-      </footer>
     </div>
   )
 }

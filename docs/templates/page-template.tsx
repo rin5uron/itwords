@@ -1017,11 +1017,6 @@ console.log('残りの列:', registerQueue);
         {/* FAQセクション（FAQがある場合） */}
         <FAQAccordion faqs={faqs} />
       </main>
-
-      <footer className="footer-nav">
-        <Link href="/">トップページに戻る</Link>
-        <p>&copy; {new Date().getFullYear()} [サイト名]</p>
-      </footer>
     </div>
   )
 }

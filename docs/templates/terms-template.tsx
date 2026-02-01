@@ -80,11 +80,6 @@ export default function TermsOfService() {
           <p><strong>制定日：[制定日]</strong></p>
         </section>
       </main>
-
-      <footer>
-        <Link href="/">トップページに戻る</Link>
-        <p>&copy; {new Date().getFullYear()} [サイト名]</p>
-      </footer>
     </div>
   )
 }
