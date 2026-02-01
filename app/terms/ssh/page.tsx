@@ -5,6 +5,7 @@ import TermPageHeader from '@/app/components/TermPageHeader'
 import FAQAccordion from '@/app/components/FAQAccordion'
 import AdBelowRelatedTerms from '@/app/components/AdBelowRelatedTerms'
 import SSHDemo from './SSHDemo'
+import SSHAccessFromOtherDemo from './SSHAccessFromOtherDemo'
 
 export const metadata: Metadata = {
   title: 'SSHとは？小学生でもわかる【会社のパソコンからサーバーに入る仕組み】',
@@ -33,11 +34,11 @@ export default function SSHPage() {
     },
     {
       question: 'なぜ「会社のパソコンからサーバーに入る」のにSSHを使うのですか？',
-      answer: 'サーバーは多くの場合、データセンターなど別の場所にあります。直接キーボードをつないで操作する代わりに、SSHでネットワーク越しにログインして、コマンドで操作します。通信が暗号化されるので、安全に遠くのサーバーを扱えます。',
+      answer: 'サーバーは多くの場合、データセンターなど別の場所にあります。直接キーボードをつないで操作する代わりに、SSHでネットワーク越しにサーバーに入ることができます。通信が暗号化されるので、安全に遠くのサーバーを扱えます。',
     },
     {
       question: 'SSHとパスワード入力の違いは？',
-      answer: 'SSHでもパスワードで入る方法がありますが、より安全なのが「秘密鍵と公開鍵」を使う方法です。鍵を持っている人だけが入れます。パスワードは忘れたり漏れたりするリスクがありますが、鍵方式はその点で強く、多くの会社で使われています。',
+      answer: 'SSHでもパスワードで入る方法がありますが、より安全なのが「鍵で入る」方法です。自分だけが持つ鍵をパソコンに置き、サーバー側にはその鍵とペアになる鍵を登録しておく方式で、多くの会社で使われています。',
     },
     {
       question: 'ターミナルって何ですか？',
@@ -72,13 +73,8 @@ export default function SSHPage() {
         dateModified="2026-02-01"
         summaryItems={[
           'SSHとは？遠くのサーバーに安全に入る仕組み',
-          '実務での使われ方（オフィス・リモート・鍵渡し）',
-          'SSHの流れをデモで体験（4ステップ）',
           '会社のパソコン → サーバーに入る流れ',
-          '暗号化で盗み見されにくくする',
-          '秘密鍵・公開鍵でより安全に',
           '別のPCから自分のPCにもアクセスできる・sshdとは',
-          'ターミナルと ssh コマンドの基本',
         ]}
       />
 
@@ -93,103 +89,80 @@ export default function SSHPage() {
           
 
           <p>
-            サーバーは、データを預かったりWebサイトを動かしたりする「いつでも動いているコンピュータ」です。
+          <strong>サーバー</strong>とは、データを預かったりWebサイトを動かしたりする「いつでも動いているコンピュータ」です。
             そのサーバーが会社の奥の機械室や、遠くのデータセンターにあるとき、毎回その場所まで行ってキーボードをつなぐのは大変ですよね。
           </p>
 
           <p>
-            SSHを使うと、<strong>自分の席のパソコンから、ネットワーク越しにサーバーに「入って」、コマンドで操作</strong>できます。
-            しかも、やり取りする内容は<strong>暗号化</strong>されるので、途中で誰かに盗み見されにくい、安全な仕組みです。
+            SSHを使うと、<strong>自分の席のパソコンから、ネットワーク越しにサーバーに入ることができます。</strong>
+            そして、やり取りする内容は<strong>暗号化</strong>されるので、途中で誰かに盗み見されにくい、安全な仕組みです。
           </p>
 
-          <p className="note">
+          <div
+            className="note"
+            style={{
+              padding: 'clamp(14px, 3vw, 20px)',
+              marginTop: '1.2em',
+              marginBottom: '1.2em',
+              border: '2px solid #14b8a6',
+              borderLeft: '6px solid #14b8a6',
+              borderRadius: '8px',
+              backgroundColor: '#f0fdfa',
+              boxShadow: '0 2px 8px rgba(20, 184, 166, 0.12)',
+            }}
+          >
             <strong><i className="fas fa-lightbulb" aria-hidden /> 一言でいうと</strong>
-            <br />
-            SSH = 「遠くのコンピュータに、安全にログインするための仕組み」
-          </p>
+            <p style={{ margin: '8px 0 0 0', fontSize: '1em', lineHeight: 1.6 }}>
+              SSH ＝ 遠くのコンピュータに、安全にログインするための仕組み
+            </p>
+          </div>
         </section>
 
         <section>
-          <h2>実務での使われ方</h2>
+          <h2>手元のPCからサーバーに入る流れを体験できます</h2>
           <p>
-            SSHは、オフィスやリモート作業の場面でよく使われます。
-            普段意識していないだけで、サーバーを触る仕事ではほぼ毎日のように利用されている仕組みです。
+            会社のPCは、最初からサーバーに「つなぐ準備」が整っていることが多いです。そのうえで、<strong>ターミナルでSSHコマンドを打つ</strong>か、<strong>GUIのツールで接続する</strong>かのどちらかになります。このページでは、ターミナルで打つ流れをデモで確認できます。
           </p>
-
-          <h3>1. オフィスの自分の席からサーバーに入る</h3>
+          <div
+            style={{
+              display: 'flex',
+              flexWrap: 'wrap',
+              alignItems: 'center',
+              gap: 'clamp(8px, 2vw, 12px)',
+              marginBottom: '1em',
+              padding: 'clamp(10px, 2.5vw, 14px)',
+              backgroundColor: '#f8fafc',
+              borderRadius: '8px',
+              border: '1px solid #e2e8f0',
+            }}
+          >
+            <span style={{ display: 'inline-flex', alignItems: 'center', gap: '6px', fontWeight: 600 }}>
+              <i className="fas fa-laptop" aria-hidden style={{ color: '#14b8a6' }} />
+              手元のPC
+            </span>
+            <span style={{ color: '#94a3b8' }}>→</span>
+            <span style={{ display: 'inline-flex', alignItems: 'center', gap: '6px' }}>
+              <i className="fas fa-terminal" aria-hidden style={{ color: '#0d9488' }} />
+              ターミナルでSSHコマンドを打つ
+            </span>
+          </div>
           <p>
-            会社のサーバーは機械室やデータセンター、クラウド上にあることが多いです。
-            毎回その場所まで行かず、自分の席のパソコンでターミナルを開き、<code>ssh ユーザー名@サーバーのアドレス</code> を打って中に入り、設定の確認やプログラムの起動などを行います。
-          </p>
-
-          <h3>2. 自宅や外出先から会社のサーバーに入る</h3>
-          <p>
-            リモートワークでは、自宅のPCやノートPCから会社のサーバーにSSHで接続することがあります。
-            その際、秘密鍵を自分のPCに置いておき、公開鍵をサーバー側に登録しておく「鍵認証」がよく使われます。
-          </p>
-
-          <h3>3. 鍵を渡して「この人を入れていい」と許可する</h3>
-          <p>
-            チームでサーバーを共有するとき、管理者が「この人の公開鍵をサーバーに登録する」ことで、その人だけがSSHで入れるようにします。
-            「鍵を渡す」＝公開鍵をサーバーに登録する、というイメージです。
-          </p>
-        </section>
-
-        <section>
-          <h2>SSHでサーバーに入る流れを体験してみよう</h2>
-          <p>
-            下のデモで、手元のPCからサーバーに「入る」までの4ステップを確認できます。
-            ボタンを押して進めると、クライアント → ネットワーク → サーバー（sshd）→ 接続完了の流れがイメージしやすくなります。
+            下のデモで、手元のPC → ネットワーク → サーバー（sshd）→ 接続完了の4ステップを確認できます。
           </p>
           <div style={{ maxWidth: '100%', overflowX: 'auto' }}>
             <SSHDemo />
           </div>
-        </section>
-
-        <section>
-          <h2>会社のパソコンからサーバーに入る流れ</h2>
-          <p>
-            お友達がやっていた「会社のパソコン → 会社のサーバー」の流れを、順番に整理します。
-          </p>
-
-          <h3>1. 会社のパソコン（手元）</h3>
-          <p>
-            ここが<strong>クライアント</strong>（お客さん側）です。
-            このパソコンで「ターミナル」という画面を開き、<strong>ssh</strong> というコマンドを打ちます。
-          </p>
-
-          <h3>2. ネットワーク（インターネットや社内LAN）</h3>
-          <p>
-            パソコンからサーバーへ、SSHのルールに従って「接続したい」という要求が送られます。
-            このとき、<strong>パスワード</strong>や、あとで説明する<strong>秘密鍵</strong>を使って「自分は許可された人です」と証明します。
-          </p>
-
-          <h3>3. 会社のサーバー（遠く）</h3>
-          <p>
-            サーバー側では、<strong>SSHのサービス（sshd など）</strong>が動いていて、「誰かが入ろうとしている」のを受け付けます。
-            パスワードや鍵が正しければ「OK」として、その人を中に入れます。
-          </p>
-
-          <h3>4. 入ったあと</h3>
-          <p>
-            接続が成功すると、ターミナルにサーバーの中の画面が表示されます。
-            ここから、ファイルの確認・プログラムの起動・設定の変更など、サーバー上でできる操作を、コマンドで行います。
-          </p>
-
-          <div className="code-example">
+          <div className="code-example" style={{ marginTop: '1.2em' }}>
             <pre><code>{`例: SSHでサーバーに接続するコマンド
 
 ssh ユーザー名@サーバーのIPアドレス
-または
-ssh ユーザー名@サーバーのホスト名
-
 例）ssh tanaka@192.168.1.100
-    → 192.168.1.100 というサーバーに、tanaka というユーザーで入る`}</code></pre>
+    → 192.168.1.100 のサーバーに、tanaka というユーザーで入る`}</code></pre>
           </div>
         </section>
 
         <section>
-          <h2>なぜ「安全」なの？暗号化の役割</h2>
+          <h2>SSHの「S」＝ Secure（安全）— なぜ安全なの？</h2>
           <p>
             SSHの「S」は<strong>Secure（セキュア）</strong>＝「安全な」という意味です。
           </p>
@@ -205,15 +178,29 @@ ssh ユーザー名@サーバーのホスト名
             会社の大事なサーバーに触るときに、SSHが使われる理由の一つがこれです。
           </p>
 
-          <p className="note">
+          <div
+            className="note"
+            style={{
+              padding: 'clamp(14px, 3vw, 20px)',
+              marginTop: '1.2em',
+              marginBottom: '1.2em',
+              border: '2px solid #14b8a6',
+              borderLeft: '6px solid #14b8a6',
+              borderRadius: '8px',
+              backgroundColor: '#f0fdfa',
+              boxShadow: '0 2px 8px rgba(20, 184, 166, 0.12)',
+            }}
+          >
             <strong><i className="fas fa-lightbulb" aria-hidden /> 似た考え方</strong>
-            <br />
-            Webページで使う<Link href="/terms/ssl-tls">SSL/TLS</Link>も「通信を暗号化して安全にする」仕組みです。SSHは「遠くのコンピュータにログインするとき」専用の、暗号化付きの仕組みだと思えばOKです。
-          </p>
+            <ul style={{ margin: '8px 0 0 0', paddingLeft: '1.2em', lineHeight: 1.7 }}>
+              <li>Webページで使う<Link href="/terms/ssl-tls">SSL/TLS</Link> … 「通信を暗号化して安全にする」仕組み</li>
+              <li>SSH … 「遠くのコンピュータにログインするとき」専用の、暗号化付きの仕組み</li>
+            </ul>
+          </div>
         </section>
 
         <section>
-          <h2>秘密鍵と公開鍵（鍵で入る方法）</h2>
+          <h2>SSHでサーバーに入る方法（鍵で入る）</h2>
           <p>
             SSHでサーバーに入る方法は、主に2つあります。
           </p>
@@ -223,23 +210,12 @@ ssh ユーザー名@サーバーのホスト名
             接続するときに、毎回パスワードを入力する方法です。わかりやすいですが、パスワードが漏れると危険です。
           </p>
 
-          <h3>② 鍵（キー）で入る</h3>
+          <h3>② 鍵で入る</h3>
           <p>
-            <strong>秘密鍵</strong>と<strong>公開鍵</strong>のペアを使う方法です。
+            <strong>鍵で入る</strong>方法では、自分だけが持つ鍵（秘密鍵）を自分のパソコンに置き、サーバー側にはその鍵とペアになる鍵（公開鍵）を登録しておきます。
           </p>
-          <ul>
-            <li><strong>秘密鍵</strong> … 自分だけが持つ、絶対に人に見せない鍵。自分のパソコンに置いておく。</li>
-            <li><strong>公開鍵</strong> … サーバー側に登録しておく鍵。こちらは配ってもよい。</li>
-          </ul>
           <p>
-            サーバーは「この公開鍵に対応する秘密鍵を持っている人だけを入れていい」と判断します。
-            秘密鍵は他人に渡さない限り漏れにくいので、<strong>パスワードより安全</strong>として、多くの会社で使われています。
-          </p>
-
-          <p className="note">
-            <strong><i className="fas fa-lightbulb" aria-hidden /> 覚え方</strong>
-            <br />
-            秘密鍵 = 自分だけの鍵。公開鍵 = サーバーに預けておく鍵。2つで1セット。
+            サーバーは「この公開鍵に対応する秘密鍵を持っている人だけを入れていい」と判断します。鍵は他人に渡さない限り漏れにくいので、<strong>パスワードより安全</strong>として、多くの会社で使われています。
           </p>
         </section>
 
@@ -250,18 +226,18 @@ ssh ユーザー名@サーバーのホスト名
             だから、自分のPCで「接続を待つ側」のソフトを動かしておけば、そのPCが“サーバー”になり、<strong>別のPC（オフィスの同僚のPCや、自宅のもう一台のPCなど）から、自分のPCにSSHで入れる</strong>ようになります。
           </p>
           <p>
-            この「接続を待つ側」で動くプログラムが <strong>sshd（エスエスエッチディー）</strong> です。
+            この「接続を待つ側」で動くプログラムが <strong>sshd（エスエスエッチディー）</strong> です。裏で動いていて、だいたい<strong>22番ポート</strong>という入口で待っています。OSによって最初から入っている／後から有効にできるが違います。
           </p>
-
+          <p>
+            下のデモで、自分のPCを"サーバー"にする流れを確認できます。
+          </p>
+          <div style={{ maxWidth: '100%', overflowX: 'auto' }}>
+            <SSHAccessFromOtherDemo />
+          </div>
           <h3>sshd とは</h3>
           <p>
             <strong>sshd</strong> は、SSHの仕組みのうち<strong>「接続される側」で動くプログラムの名前</strong>です。
-            裏でずっと動いていて、「誰かがSSHで入ってこないか」を待っています。だいたい<strong>22番ポート</strong>という入口で待っています。
-          </p>
-          <p>
-            「PCに最初から入っているの？」というと、<strong>OSによって違います</strong>。
-            Windows では OpenSSH サーバーを「機能の追加」で有効にできます。Mac では最初から入っていますが、初期状態ではオフで、「システム設定 → 一般 → 共有」の「リモートログイン」をオンにすると動きます。Linux では <code>openssh-server</code> などをインストールして使います。
-            つまり、<strong>標準で必ず入っているわけではなく、OSごとに「入っている／後から入れられる」が違う</strong>と覚えておくとよいです。
+            Windows では OpenSSH サーバーを「機能の追加」で有効にできます。Mac では「システム設定 → 一般 → 共有」の「リモートログイン」をオンにすると動きます。Linux では <code>openssh-server</code> などをインストールして使います。
           </p>
         </section>
 
