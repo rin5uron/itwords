@@ -387,8 +387,8 @@ export default function CPUPage() {
                   <td>プログラム同士が「命令」のようにやり取りする窓口</td>
                 </tr>
                 <tr>
-                  <td className="term-name">メモリ（RAM）</td>
-                  <td>命令やデータを置く場所。アドレス指定・レジスタは別ページで解説予定</td>
+                  <td><Link href="/terms/memory" className="term-name">メモリ（RAM）</Link></td>
+                  <td>命令やデータを置く場所。アドレス指定・レジスタ・実効アクセス時間はメモリのページで解説</td>
                 </tr>
               </tbody>
             </table>

@@ -386,6 +386,13 @@ export default function Home() {
                 <p>コンピュータの頭脳。命令の取り出し・解読・実行と、クロック・MIPSのイメージがつかめます。</p>
               </Link>
             </div>
+            <div className="card" data-category="infrastructure">
+              <Link href="/terms/memory" className="card-link">
+                <span className="category-tag">インフラ</span>
+                <h4>メモリ</h4>
+                <p>主記憶の役割と記憶階層。アドレス指定・実効アクセス時間をデモで体感できます。</p>
+              </Link>
+            </div>
           </div>
         </section>
 
