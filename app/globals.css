@@ -1074,10 +1074,10 @@ footer a:hover {
   display: block;
   width: 100%;
   max-width: 100%;
-  margin-bottom: clamp(16px, 4vw, 24px);
+  margin-bottom: clamp(24px, 5vw, 32px);
   clear: both;
   box-sizing: border-box;
-  overflow-x: hidden;
+  overflow: hidden; /* はみ出しによるスクロールバーを強制的に非表示 */
 }
 
 /* 目次（Table of Contents）－全ページ共通スタイル（globals.css） */
