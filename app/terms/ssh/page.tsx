@@ -77,9 +77,10 @@ export default function SSHPage() {
         dateCreated="2026-02-01"
         dateModified="2026-02-01"
         summaryItems={[
-          'SSHとは？遠くのサーバーに安全に入る仕組み',
-          '手元のPCからサーバーに入る流れ',
-          'ターミナルとSSHコマンドの基本',
+          '会社のサーバーにつなぐとは？（デモで体験）',
+          '安全につなぐ仕組み（SSHのS＝Secure）',
+          'どうやって実際につなぐの？（コマンドとGUI）',
+          'sshdでMy PCを遠隔操作',
         ]}
         heroImage={
           <div
@@ -112,30 +113,25 @@ export default function SSHPage() {
       />
 
       <main>
-        <section>
+        <section className="term-content-section">
           <h2>概要</h2>
           <p>
             <strong>SSH（Secure Shell）</strong>とは、
             <strong>離れた場所にあるコンピュータ（サーバー）に、ネットワークを通じて安全に「入る」ための仕組み</strong>です。
           </p>
-
-          
-
           <p>
-          <strong>サーバー</strong>とは、データを預かったりWebサイトを動かしたりする<strong>いつでも動いているコンピュータ</strong>です。
+            <strong>サーバー</strong>とは、データを預かったりWebサイトを動かしたりする<strong>いつでも動いているコンピュータ</strong>です。
             そのサーバーが会社の奥の機械室や、遠くのデータセンターにあるとき、毎回その場所まで行ってキーボードをつなぐのは大変ですよね。
           </p>
-
           <p>
             SSHを使うと、<strong>自分の席のパソコンから、ネットワーク越しにサーバーに入ることができます。</strong>
-            そして、やり取りする内容は<strong>暗号化</strong>されるので、途中で誰かに盗み見されにくい、安全な仕組みです。
+            そして、やり取りする内容は<strong>暗号化</strong>（読まれないようにすること）されるので、途中で誰かに盗み見されにくい、安全な仕組みです。
           </p>
-
           <div
             className="note"
             style={{
               padding: 'clamp(14px, 3vw, 20px)',
-              marginTop: '1.2em',
+              marginTop: '1.8em',
               marginBottom: '1.2em',
               border: '2px solid #14b8a6',
               borderLeft: '6px solid #14b8a6',
@@ -151,14 +147,10 @@ export default function SSHPage() {
           </div>
         </section>
 
-        <section>
-          <h2>手元のPCからサーバーに入る流れを体験できます</h2>
+        <section className="term-content-section">
+          <h2>会社のサーバーにつなぐとは？</h2>
           <p>
-            会社のPCは、最初からサーバーに「つなぐ準備」が整っていることが多いです。そのうえで、<strong>ターミナルで <code>ssh</code> コマンドを打つ</strong>か、<strong>GUIのツールで接続する</strong>かのどちらかになります。
-          </p>
-          {/* 参考画像を入れる場合：PuTTY や Termius の接続画面（ホスト名・ユーザー名の入力欄と「接続」ボタンが写っているスクリーンショット）がわかりやすいです */}
-          <p>
-            GUIのツールは、簡単にいうと<strong>ボタンや入力枠があるタイプ</strong>のソフトです（ホスト名・ユーザー名などを入力して接続ボタンを押すもの）。このページでは、ターミナルで打つ流れをデモで確認できます。
+            会社のサーバーにつなぐとは、<strong>自分の席のパソコンから、遠くにあるサーバーに「入る」</strong>ことです。下のデモで、その流れを体験できます。
           </p>
           <div
             style={{
@@ -187,37 +179,27 @@ export default function SSHPage() {
             </span>
           </div>
           <p>
-            下のデモで、手元のPC → ネットワーク → サーバー（sshd）→ 接続完了の4ステップを確認できます。
+            手元のPC → ネットワーク → サーバー（sshd）→ 接続完了の4ステップを確認できます。
           </p>
           <div style={{ maxWidth: '100%', overflowX: 'auto' }}>
             <SSHDemo />
           </div>
-          <div className="code-example" style={{ marginTop: '1.2em' }}>
-            <pre><code>{`例: SSHでサーバーに接続するコマンド
-
-ssh ユーザー名@サーバーのIPアドレス
-例）ssh tanaka@192.168.1.100
-    → 192.168.1.100 のサーバーに、tanaka というユーザーで入る`}</code></pre>
-          </div>
         </section>
 
-        <section>
-          <h2>SSHの「S」＝ Secure（安全）</h2>
+        <section className="term-content-section">
+          <h2>安全につなぐ仕組みとは？</h2>
           <p>
             SSHの「S」は<strong>Secure（セキュア）</strong>＝「安全な」という意味です。
           </p>
-
           <p>
             ネットワーク上では、データがいろんな機械の間を流れます。
-            もし暗号化していないと、悪意のある人が途中で「パスワード」や「打ったコマンド」を盗み見する可能性があります。
+            もし暗号化していないと、よくないことをする人が途中で「パスワード」や「打ったコマンド」を盗み見する可能性があります。
           </p>
-
           <p>
             SSHでは、<strong>クライアントとサーバーがやり取りする内容を暗号化</strong>します。
             なので、途中で誰かがキャッチしても、中身を読むのがとても難しくなります。
             会社の大事なサーバーに触るときに、SSHが使われる理由の一つがこれです。
           </p>
-
           <div
             className="note"
             style={{
@@ -239,28 +221,36 @@ ssh ユーザー名@サーバーのIPアドレス
           </div>
         </section>
 
-        <section>
-          <h2>SSHでサーバーに入る方法</h2>
+        <section className="term-content-section">
+          <h2>どうやって実際につなぐの？</h2>
           <p>
-            SSHでサーバーに入る方法は、主に2つあります。
+            会社のPCは、最初からサーバーに「つなぐ準備」が整っていることが多いです。そのうえで、<strong>ターミナルで <code>ssh</code> コマンドを打つ</strong>か、<strong>GUIのツールで接続する</strong>かのどちらかになります。
           </p>
-
+          <p>
+            GUIのツールは、簡単にいうと<strong>ボタンや入力枠があるタイプ</strong>のソフトです（ホスト名・ユーザー名などを入力して接続ボタンを押すもの）。代表例は、Windowsでは<strong>PuTTY</strong>・<strong>Tera Term</strong>、Mac/Windows両方で使える<strong>Termius</strong>などです。
+          </p>
           <h3>① パスワードで入る</h3>
           <p>
             接続するときに、毎回パスワードを入力する方法です。わかりやすいですが、パスワードが漏れると危険です。
           </p>
-
           <h3>② 鍵で入る</h3>
           <p>
             <strong>鍵で入る</strong>方法では、自分だけの鍵を自分のパソコンに持っておき、入り先のパソコン（サーバー）には、その鍵と「おそろいのペア」になるもう1本の鍵を登録しておきます。
           </p>
           <p>
-            入り先は「このペアの鍵を持っている人だけ、入れていい」と判断します。鍵は人に渡さない限り盗まれにくいので、<strong>パスワードより安全</strong>として、多くの会社で使われています。
+            入り先は「このペアの鍵を持っている人だけ、入れていいです」と判断します。鍵は人に渡さない限り盗まれにくいので、<strong>パスワードより安全</strong>として、多くの会社で使われています。
           </p>
+          <div className="code-example" style={{ marginTop: '1.2em' }}>
+            <pre><code>{`例: SSHでサーバーに接続するコマンド
+
+ssh ユーザー名@サーバーのIPアドレス
+例）ssh tanaka@192.168.1.100
+    → 192.168.1.100 のサーバーに、tanaka というユーザーで入る`}</code></pre>
+          </div>
         </section>
 
-        <section>
-          <h2>別PCから自分のPCにもアクセスできる（SSHのもう一つの形）</h2>
+        <section className="term-content-section">
+          <h2>sshdでMy PCを遠隔操作</h2>
           <p>
             いままでのは<strong>「手元のPC → 会社のサーバーに入る」</strong>形です。もう一つの形は、<strong>自分のPCを「入り先」にする</strong>使い方になります。
           </p>
@@ -291,7 +281,7 @@ ssh ユーザー名@サーバーのIPアドレス
             <span style={{ color: '#94a3b8', flexShrink: 0 }}>→</span>
             <span style={{ display: 'inline-flex', alignItems: 'center', gap: '6px', flexShrink: 0 }}>
               <i className="fas fa-server" aria-hidden style={{ color: '#7c3aed' }} />
-              自分のPC（sshd で待ってる・入り先）
+              自分のPC（sshd で待っている・入り先）
             </span>
           </div>
           <p>
@@ -322,7 +312,7 @@ ssh ユーザー名@サーバーのIPアドレス
           </p>
         </section>
 
-        <section>
+        <section className="term-content-section">
           <h2>よく出てくる用語</h2>
           <ul>
             <li><strong>クライアント</strong> … 接続する側（手元のパソコンなど）</li>

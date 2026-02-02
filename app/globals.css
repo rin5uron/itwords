@@ -1052,6 +1052,11 @@ footer a:hover {
   }
 }
 
+/* 用語ページ本文：セクション間の余白 */
+.term-content-section + .term-content-section {
+  margin-top: 2.5em;
+}
+
 /* 接続図（別のPC→自分のPC）：スマホでは2行表示 */
 @media (max-width: 640px) {
   .flow-diagram-mobile-wrap {

@@ -51,10 +51,10 @@ export default function SSHAccessFromOtherDemo() {
             1
           </span>
           <div>
-            <strong>自分のPCで sshd を動かす<br>（誰かが「SSH
+            <strong>自分のPCで sshd を動かす<br />（誰かが「SSH
             で入ってくる」を待つ）</strong>
             <p style={{ margin: '4px 0 0 0', fontSize: 'clamp(12px, 2.5vw, 13px)', color: '#64748b' }}>
-              sshd が22番の入口で待っているので、自分のPCが“入り先”になる。このとき自分のPCが“サーバー”の役。
+              sshd が22番の入口で待っているので、自分のPCが“入り先”になります。このとき自分のPCが“サーバー”の役になります。
             </p>
           </div>
         </div>
@@ -90,7 +90,7 @@ export default function SSHAccessFromOtherDemo() {
           <div>
             <strong>別のPCから ssh ユーザー名@自分のPCのアドレス を打つ</strong>
             <p style={{ margin: '4px 0 0 0', fontSize: 'clamp(12px, 2.5vw, 13px)', color: '#64748b' }}>
-              別のPCが“クライアント”になり、自分のPCの中に入れる
+              別のPCが“クライアント”になり、自分のPCの中に入れることができます
             </p>
           </div>
         </div>
