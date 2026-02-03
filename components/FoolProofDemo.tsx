@@ -3,38 +3,60 @@
 import { useState } from 'react'
 
 export default function FoolProofDemo() {
+  const [input, setInput] = useState('')
   const [message, setMessage] = useState('')
   const [messageColor, setMessageColor] = useState('#4a4a4a')
 
-  const startDemo = () => {
-    setMessage('') // メッセージをリセット
-
-    const confirm1 = window.confirm('本当にこのファイルを削除しますか？この操作は取り消せません。')
-    if (!confirm1) {
-      setMessage('キャンセルされました。')
-      setMessageColor('#4a4a4a')
-      return
-    }
-
-    const confirm2 = window.confirm(
-      '最終確認です。関連するデータもすべて失われますが、よろしいですか？'
-    )
-    if (confirm2) {
-      setMessage('削除しました！ (という想定です)')
-      setMessageColor('#d9534f')
-    } else {
-      setMessage('削除を中止しました。')
-      setMessageColor('#4a4a4a')
-    }
+  const isValid = input.trim().length >= 3
+  const handleSubmit = () => {
+    setMessage(`「${input}」を送信しました！（想定）`)
+    setMessageColor('#0d9488')
   }
 
   return (
     <div className="demo-section">
-      <p>下のボタンを押して、二段階の確認ダイアログを体験してみましょう。</p>
-      <button className="demo-button" onClick={startDemo}>
-        削除を実行
-      </button>
-      <p id="demo-message" style={{ marginTop: '25px', fontSize: '1.5em', fontWeight: 'bold', minHeight: '1.5em', color: messageColor }}>
+      <p>
+        入力欄が空のまま、または3文字未満では送信ボタンが押せません。
+        正しい形式（3文字以上）を入力するとボタンが有効になります。
+      </p>
+      <div style={{ marginTop: '1rem' }}>
+        <input
+          type="text"
+          value={input}
+          onChange={(e) => setInput(e.target.value)}
+          placeholder="3文字以上入力してください"
+          style={{
+            padding: '10px 14px',
+            fontSize: '1rem',
+            border: '1px solid #ccc',
+            borderRadius: '6px',
+            width: '100%',
+            maxWidth: '300px',
+          }}
+        />
+        <button
+          className="demo-button"
+          onClick={handleSubmit}
+          disabled={!isValid}
+          style={{
+            marginTop: '12px',
+            opacity: isValid ? 1 : 0.6,
+            cursor: isValid ? 'pointer' : 'not-allowed',
+          }}
+        >
+          送信する
+        </button>
+      </div>
+      <p
+        id="demo-message"
+        style={{
+          marginTop: '25px',
+          fontSize: '1.5em',
+          fontWeight: 'bold',
+          minHeight: '1.5em',
+          color: messageColor,
+        }}
+      >
         {message}
       </p>
     </div>

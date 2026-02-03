@@ -55,7 +55,7 @@ export default function SSHPage() {
         title="SSHとは？小学生でもわかる【会社のパソコンからサーバーに入る仕組み】"
         description="会社のパソコンから会社のサーバーに安全に入る仕組みがSSH。遠隔ログイン・暗号化・秘密鍵の基本を初心者向けに解説します。"
         datePublished="2026-02-01"
-        dateModified="2026-02-01"
+        dateModified="2026-02-03"
       />
 
       <TermPageHeader
@@ -63,7 +63,7 @@ export default function SSHPage() {
         reading="エスエスエッチ / Secure Shell"
         icon="fas fa-terminal"
         dateCreated="2026-02-01"
-        dateModified="2026-02-01"
+        dateModified="2026-02-03"
         summaryItems={[
           'SSHでサーバーに入るとは？',
           'SSHで安全が守られる仕組み',

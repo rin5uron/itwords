@@ -2,6 +2,9 @@
 
 import Link from 'next/link'
 import FoolProofDemo from '@/components/FoolProofDemo'
+import ConfirmDialogDemo from '@/components/ConfirmDialogDemo'
+import InputValidationDemo from '@/components/InputValidationDemo'
+import DisabledUIDemo from '@/components/DisabledUIDemo'
 import StructuredData from '@/app/components/StructuredData'
 import TermPageHeader from '@/app/components/TermPageHeader'
 import FAQAccordion from '@/app/components/FAQAccordion'
@@ -10,28 +13,8 @@ import AdBelowRelatedTerms from '@/app/components/AdBelowRelatedTerms'
 export default function FoolProofPage() {
   const faqs = [
     {
-      question: 'フールプルーフとは何ですか？',
-      answer: 'フールプルーフとは、ユーザーの誤操作や誤入力を未然に防ぐための設計思想です。人間は誰でもミスをするという前提に立ち、間違えにくいシステムを作ることを目指します。「Fool（間抜け）」でも「Proof（防げる）」という意味から名付けられました。'
-    },
-    {
-      question: 'フールプルーフの身近な例を教えてください',
-      answer: '日常生活では、洗濯機の蓋が開いていると動作しない仕組み、USB Type-Cの上下どちらでも挿せる設計、ATMのカード挿入口の形状制限などがあります。IT分野では、削除前の確認ダイアログ、メールアドレス形式のバリデーション、危険なボタンの色分け（削除は赤など）が代表的です。'
-    },
-    {
-      question: 'フールプルーフとフェイルセーフの違いは？',
-      answer: 'フールプルーフは誤操作を操作前・操作中に未然に防ぐ設計で、対象はユーザーのミスです。一方、フェイルセーフは故障や異常が発生した後に安全な状態になる設計で、対象はシステムの故障です。作動するタイミングと目的が異なりますが、両方を併用することでより高い安全性を実現できます。'
-    },
-    {
-      question: 'Webサイトでフールプルーフを実装するには？',
-      answer: 'JavaScriptのconfirm()関数で確認ダイアログを表示、HTML5のtype属性やpattern属性で入力制限、CSSでボタンの色分け、必須項目をrequired属性で指定するなどの方法があります。また、自動保存機能やゴミ箱機能で「やり直せる」仕組みを用意することも重要です。'
-    },
-    {
       question: 'なぜフールプルーフが重要なのですか？',
-      answer: 'ユーザーの誤操作によるデータ損失やトラブルを防ぎ、ユーザーエクスペリエンスを向上させることができます。特に重要な操作（削除、決済、送信など）ほど、フールプルーフの実装が必要です。また、サポートコストの削減や、ユーザーの信頼獲得にもつながります。'
-    },
-    {
-      question: 'ポカヨケとフールプルーフの関係は？',
-      answer: 'ポカヨケは製造業におけるフールプルーフの概念で、トヨタ生産方式で提唱されました。作業者のヒューマンエラーを防止する仕組みや工夫を指します。部品の向き固定、治具の色分け、カウントセンサーなどが代表例で、ITシステム開発にも応用できる考え方です。'
+      answer: '人は必ずミスをするからです。ミスを「注意不足」で片付けると事故やトラブルにつながります。設計で防げば、ユーザーのストレスが減り、トラブル・問い合わせが減り、安全性・信頼性が上がります。'
     }
   ]
 
@@ -46,197 +29,162 @@ export default function FoolProofPage() {
         title="【身近な例で学ぶ】フールプルーフとは？意味や目的をわかりやすく解説"
         description="フールプルーフ（Fool Proof）は、誤操作や誤入力を未然に防ぐ設計思想です。削除確認ダイアログ、入力制限、ボタンの色分けなど具体例と実践デモで、ユーザーが間違えにくいシステムを作る考え方を初心者にもわかりやすく解説します。"
         datePublished="2024-01-07"
-        dateModified="2026-02-01"
+        dateModified="2026-02-03"
       />
       <TermPageHeader
         termName="フールプルーフ"
         reading="ふーるぷるーふ / Fool Proof"
         icon="fas fa-shield-alt"
         dateCreated="2024-01-07"
-        dateModified="2026-02-01"
+        dateModified="2026-02-03"
         summaryItems={[
           'フールプルーフとは「ミスを防ぐ」設計思想',
-          '身近な例：電子レンジ、ATM、USBなど',
-          'Web開発での実装デモを体験できる',
-          'フェイルセーフ、ポカヨケとの違いがわかる'
+          'Webでも当たり前に使われている',
+          '入力制限・ボタン無効化の体験デモ',
+          '身近な例：電子レンジ、ATM、USBなど'
         ]}
       />
 
       <main>
         <section>
-          <h2>フールプルーフとは？</h2>
+          <h2>1. フールプルーフとは</h2>
           <p>
-            <strong>フールプルーフ</strong>（Fool Proof）とは、ユーザーの誤操作やうっかりミスを
-            <strong>未然に防ぐ</strong>ための設計思想のことです。
-            <br />
-            「Fool（愚か者）」でも「Proof（耐えられる）」という言葉通り、人間は誰でも間違えるという前提に立ち、そもそもミスが起きにくいようにシステムをデザインすることを目指します。
+            <strong>フールプルーフ</strong>（Foolproof）とは、
+            <strong>「利用者が間違えても、重大なミスや事故につながらないようにする設計思想」</strong>のことです。
+          </p>
+          <p>
+            「注意力」や「慣れ」に頼らず、
+            <strong>設計そのものがミスを防ぐ</strong>ことを目的とします。
           </p>
         </section>
 
         <section>
-          <h2>【体験デモ】削除前の確認</h2>
+          <h2>2. Webサイト・Webサービスでのフールプルーフ</h2>
           <p>
-            フールプルーフの最も代表的な例が、重要な操作の前に行う確認です。以下のボタンを押して、誤操作を防ぐ仕組みを体験してみましょう。
+            実は、私たちが毎日使っているWebはフールプルーフだらけです。
+          </p>
+          <ul>
+            <li>入力内容が正しくないと送信できない</li>
+            <li>必須項目が未入力だとエラーが表示される</li>
+            <li>条件を満たすまでボタンが押せない</li>
+            <li>操作前に確認ダイアログが表示される</li>
+          </ul>
+        </section>
+
+        <section>
+          <h2>3. 体験デモ①：入力制限・ボタンの無効化</h2>
+          <p>
+            ユーザーが「間違えないように頑張る」のではなく、
+            <strong>間違えた状態では先に進めない設計</strong>になっています。
           </p>
           <FoolProofDemo />
         </section>
 
         <section>
-          <h2>フールプルーフの身近な例</h2>
+          <h2>4. その他のフールプルーフ例（Web中心）</h2>
           <p>
-            フールプルーフは、私たちの身の回りの様々な製品やサービスに活かされています。
-          </p>
-          
-          <h3>日常生活の例</h3>
-          <ul>
-            <li>
-              <strong>電子レンジ</strong>: 扉が閉まっていないと動作しない。マイクロ波が漏れるのを防ぎます。
-            </li>
-            <li>
-              <strong>ATMのカード挿入口</strong>: 決まった向きでしかカードが入らない。カードの破損や読み取りエラーを防ぎます。
-            </li>
-            <li>
-              <strong>USB Type-C</strong>: コネクタの上下を気にせず挿せる。接続の失敗やストレスをなくします。
-            </li>
-          </ul>
-
-          <h3>Web・ITサービスの例</h3>
-          <ul>
-            <li>
-              <strong>入力フォーム</strong>: メールアドレスの形式が違うとエラーが出る（バリデーション）。
-            </li>
-            <li>
-              <strong>SNSの投稿ボタン</strong>: 一度クリックすると、処理が終わるまでボタンが押せなくなる。二重投稿を防ぎます。
-            </li>
-            <li>
-              <strong>パスワード表示機能</strong>: 「目」のアイコンを押すと、入力したパスワードを確認できる。
-            </li>
-          </ul>
-
-          <details>
-            <summary>その他の身近な例を見る</summary>
-            <ul style={{ marginTop: '1rem' }}>
-              <li><strong>洗濯機</strong>: 蓋が閉まらないと脱水が始まらない。</li>
-              <li><strong>自動車</strong>: ブレーキを踏まないとエンジンがかからない（AT車）。</li>
-              <li><strong>薬のPTP包装</strong>: 一錠ずつしか取り出せない。誤飲や過剰摂取を防ぐ。</li>
-              <li><strong>Googleドキュメント</strong>: 文字を編集すると自動で保存される。保存忘れを防ぐ。</li>
-            </ul>
-          </details>
-        </section>
-
-        <section className="term-comparison">
-          <h2>関連用語との違い</h2>
-          <p>
-            フールプルーフには、似たような目的を持つ関連用語があります。違いを理解することで、より深く概念を掴むことができます。
+            他にもWebでよく使われるフールプルーフの例を、アコーディオン形式で紹介します。
           </p>
 
-          <div className="comparison-table">
-            <table>
-              <thead>
-                <tr>
-                  <th>用語</th>
-                  <th>目的</th>
-                  <th>タイミング</th>
-                  <th>対象</th>
-                  <th>具体例</th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr>
-                  <td><strong>フールプルーフ</strong></td>
-                  <td>ミスを<strong>未然に防ぐ</strong></td>
-                  <td>操作前・操作中</td>
-                  <td>ユーザーの誤操作</td>
-                  <td>削除確認ダイアログ</td>
-                </tr>
-                <tr>
-                  <td><strong>フェイルセーフ</strong></td>
-                  <td>異常時に<strong>安全を保つ</strong></td>
-                  <td>異常発生後</td>
-                  <td>システムの故障</td>
-                  <td>停電時にエレベーターが最寄り階で停止</td>
-                </tr>
-                <tr>
-                  <td><strong>ポカヨケ</strong></td>
-                  <td>作業ミスを<strong>物理的に防ぐ</strong></td>
-                  <td>作業中</td>
-                  <td>作業者のヒューマンエラー</td>
-                  <td>部品が正しい向きでしかはまらない</td>
-                </tr>
-              </tbody>
-            </table>
-          </div>
-          <p style={{ marginTop: '1rem' }}>
-            <strong>フェイルセーフ</strong>は「故障」した後の安全を考え、<strong>フールプルーフ</strong>は「正常時」のユーザーのミスを防ぐ点で異なります。また、<strong>ポカヨケ</strong>は主に製造現場で使われる言葉で、フールプルーフの考え方を物理的な仕組みで実現するものです。
-          </p>
-        </section>
-
-        <section>
-          <h2>なぜフールプルーフは重要か？</h2>
-          <p>
-            優れたフールプルーフ設計は、ユーザーとサービス提供者の両方にメリットをもたらします。
-          </p>
-          <ul>
-            <li>
-              <strong>ユーザーの満足度向上</strong>: 「使いやすい」「安心できる」と感じ、ストレスなくサービスを利用できます。
-            </li>
-            <li>
-              <strong>ビジネス上の損失防止</strong>: ユーザーの誤操作による機会損失（例：フォーム入力中の離脱）や、データ破損などのトラブルを防ぎます。
-            </li>
-            <li>
-              <strong>サポートコストの削減</strong>: 「操作を間違えた」という問い合わせが減り、サポート業務の負担を軽減します。
-            </li>
-          </ul>
-        </section>
-
-        <section>
-          <h2>Web開発での実装方法</h2>
-          <p>
-            Webサイトでフールプルーフを実装する代表的な方法をいくつか紹介します。
-          </p>
-          <details>
-            <summary>サンプルコードを見る (HTML / CSS / JavaScript)</summary>
-            <div style={{ marginTop: '1rem' }}>
-              <h4>1. 確認ダイアログ (JavaScript)</h4>
-              <p>
-                重要な操作の前に<code>confirm()</code>で確認を取ります。
-              </p>
-              <div className="code-example">
-                <pre><code className="language-javascript">{`const isConfirmed = confirm('本当に削除しますか？');
-if (isConfirmed) {
+          <div className="faq-accordion" style={{ marginTop: '1rem' }}>
+            <details style={{ marginBottom: '15px', border: '1px solid #e2e8f0', borderRadius: '8px', overflow: 'hidden' }}>
+              <summary style={{ padding: '14px 18px', cursor: 'pointer', backgroundColor: '#f8fafc', fontWeight: 600 }}>
+                デモ②：確認ダイアログ（confirm）
+              </summary>
+              <div style={{ padding: '18px', borderTop: '1px solid #e2e8f0' }}>
+                <p>
+                  削除・送信・購入前などに「本当に実行しますか？」と確認する仕組みです。
+                </p>
+                <ConfirmDialogDemo />
+                <details style={{ marginTop: '1rem' }}>
+                  <summary style={{ cursor: 'pointer', fontSize: '0.95em', color: '#0d9488' }}>サンプルコードを見る</summary>
+                  <div className="code-example" style={{ marginTop: '0.5rem' }}>
+                    <pre><code className="language-javascript">{`const confirmed = confirm('本当に削除しますか？');
+if (confirmed) {
   // 削除処理を実行
 }`}</code></pre>
+                  </div>
+                </details>
               </div>
+            </details>
 
-              <h4 style={{ marginTop: '1.5rem' }}>2. 入力制限 (HTML)</h4>
-              <p>
-                <code>input</code>タグの属性で、入力できる値の種類や形式を制限します。
-              </p>
-              <div className="code-example">
-                <pre><code className="language-html">{`<!-- 必須項目にする -->
-<input type="text" required>
-
-<!-- メールアドレス形式のみ許可 -->
+            <details style={{ marginBottom: '15px', border: '1px solid #e2e8f0', borderRadius: '8px', overflow: 'hidden' }}>
+              <summary style={{ padding: '14px 18px', cursor: 'pointer', backgroundColor: '#f8fafc', fontWeight: 600 }}>
+                デモ③：入力形式のガイド・リアルタイム警告
+              </summary>
+              <div style={{ padding: '18px', borderTop: '1px solid #e2e8f0' }}>
+                <p>
+                  メールアドレス形式でないと警告表示、文字数オーバーで即時エラー表示する仕組みです。
+                </p>
+                <InputValidationDemo />
+                <details style={{ marginTop: '1rem' }}>
+                  <summary style={{ cursor: 'pointer', fontSize: '0.95em', color: '#0d9488' }}>サンプルコードを見る</summary>
+                  <div className="code-example" style={{ marginTop: '0.5rem' }}>
+                    <pre><code className="language-html">{`<!-- メールアドレス形式のみ許可 -->
 <input type="email">
 
-<!-- 1から10までの数値のみ許可 -->
-<input type="number" min="1" max="10">`}</code></pre>
+<!-- 文字数制限 -->
+<input maxlength="20">`}</code></pre>
+                  </div>
+                </details>
               </div>
+            </details>
 
-              <h4 style={{ marginTop: '1.5rem' }}>3. ボタンの無効化 (CSS + HTML)</h4>
-              <p>
-                入力条件が満たされるまで、送信ボタンを押せないようにします。
-              </p>
-              <div className="code-example">
-                <pre><code className="language-css">{`.submit-button:disabled {
-  background-color: #ccc;
+            <details style={{ marginBottom: '15px', border: '1px solid #e2e8f0', borderRadius: '8px', overflow: 'hidden' }}>
+              <summary style={{ padding: '14px 18px', cursor: 'pointer', backgroundColor: '#f8fafc', fontWeight: 600 }}>
+                デモ④：操作できないUI（非表示・グレーアウト）
+              </summary>
+              <div style={{ padding: '18px', borderTop: '1px solid #e2e8f0' }}>
+                <p>
+                  権限がない操作は最初から表示しない、条件未達成の操作は選択不可にする仕組みです。
+                </p>
+                <DisabledUIDemo />
+                <details style={{ marginTop: '1rem' }}>
+                  <summary style={{ cursor: 'pointer', fontSize: '0.95em', color: '#0d9488' }}>サンプルコードを見る</summary>
+                  <div className="code-example" style={{ marginTop: '0.5rem' }}>
+                    <pre><code className="language-html">{`<!-- disabled属性でボタンを無効化 -->
+<button disabled>送信</button>`}</code></pre>
+                    <pre><code className="language-css">{`button:disabled {
+  opacity: 0.6;
   cursor: not-allowed;
 }`}</code></pre>
-                <pre><code className="language-html">{`<!-- disabled属性でボタンを無効化 -->
-<button class="submit-button" disabled>送信</button>`}</code></pre>
+                  </div>
+                </details>
               </div>
-            </div>
-          </details>
+            </details>
+          </div>
+        </section>
+
+        <section>
+          <h2>5. 身近なフールプルーフの例（Web → 日常へ）</h2>
+          <p>
+            Webも日常も、考え方は同じです。
+          </p>
+          <h3>ITサービスの例</h3>
+          <ul>
+            <li><strong>ATM</strong>：金額未入力だと次に進めない</li>
+            <li><strong>スマホアプリ</strong>：未設定項目があると保存できない</li>
+          </ul>
+          <h3>日常生活の例</h3>
+          <ul>
+            <li><strong>電子レンジ</strong>：ドアが開いていると動かない</li>
+            <li><strong>USB</strong>：上下逆では挿さらない（Type-Cは両面挿し可能）</li>
+          </ul>
+        </section>
+
+        <section>
+          <h2>6. なぜフールプルーフが重要なのか</h2>
+          <ul>
+            <li>人は必ずミスをするから</li>
+            <li>ミスを「注意不足」で片付けると事故やトラブルにつながる</li>
+            <li>設計で防げば、
+              <ul>
+                <li>ユーザーのストレスが減る</li>
+                <li>トラブル・問い合わせが減る</li>
+                <li>安全性・信頼性が上がる</li>
+              </ul>
+            </li>
+          </ul>
         </section>
 
         <section className="term-comparison">
