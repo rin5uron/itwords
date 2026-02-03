@@ -3,10 +3,10 @@
 import { useState } from 'react'
 
 const STEPS = [
-  { label: '手元のPC', desc: 'ターミナルで ssh コマンドを打つ', icon: 'fas fa-laptop', color: '#14b8a6' },
-  { label: 'ネットワーク', desc: '暗号化してサーバーへ送る', icon: 'fas fa-network-wired', color: '#0ea5e9' },
-  { label: 'サーバー（sshd）', desc: '22番ポートで受け付け、鍵を確認', icon: 'fas fa-server', color: '#8b5cf6' },
-  { label: '接続完了', desc: 'サーバーの中に入れました', icon: 'fas fa-check-circle', color: '#22c55e' },
+  { label: '手元のPC', desc: 'SSH接続を開始する', icon: 'fas fa-laptop', color: '#14b8a6' },
+  { label: 'ネットワーク', desc: '暗号化された接続情報が送られる', icon: 'fas fa-network-wired', color: '#0ea5e9' },
+  { label: 'サーバー（sshd）', desc: 'パスワードや鍵を確認する', icon: 'fas fa-server', color: '#8b5cf6' },
+  { label: '接続完了', desc: 'サーバーの中に入りました', icon: 'fas fa-check-circle', color: '#22c55e' },
 ]
 
 export default function SSHDemo() {
@@ -26,6 +26,9 @@ export default function SSHDemo() {
       }}
     >
       <h3 style={{ marginTop: 0 }}>SSHでサーバーに入る流れ</h3>
+      <p style={{ marginBottom: '8px', fontSize: 'clamp(12px, 2.5vw, 13px)', color: '#64748b' }}>
+        ― 手元のPCからログイン完了まで ―
+      </p>
       <p style={{ marginBottom: '16px', fontSize: 'clamp(13px, 2.8vw, 14px)', color: '#555' }}>
         ボタンを押して、手元のPCからサーバーに「入る」までの4ステップを確認できます。
       </p>

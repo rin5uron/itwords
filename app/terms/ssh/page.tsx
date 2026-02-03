@@ -13,7 +13,7 @@ export const metadata: Metadata = {
   description: '会社のパソコンから会社のサーバーに安全に入る仕組みがSSH。遠隔ログイン・暗号化・秘密鍵の基本を、初心者向けにやさしく解説します。',
   keywords: ['SSH', 'Secure Shell', 'SSH とは', 'リモート接続', 'サーバー接続', '秘密鍵', '公開鍵', 'ターミナル', 'IT用語 わかりやすく'],
   openGraph: {
-    title: 'SSHとは？小学生でもわかる【会社のパソコンからサーバーに入る仕組み】',
+    title: 'SSHとは？小学生もわかる【会社のパソコンからサーバーに入る仕組み】',
     description: '会社のパソコンから会社のサーバーに安全に入る仕組みがSSH。遠隔ログインの基本を初心者向けに解説します。',
     type: 'article',
     images: [
@@ -77,10 +77,9 @@ export default function SSHPage() {
         dateCreated="2026-02-01"
         dateModified="2026-02-01"
         summaryItems={[
-          '会社のサーバーにつなぐとは？（デモで体験）',
-          '安全につなぐ仕組み（SSHのS＝Secure）',
-          'どうやって実際につなぐの？（コマンドとGUI）',
-          'sshdでMy PCを遠隔操作',
+          'SSHでサーバーに入るとは？',
+          'SSHで安全が守られる仕組み',
+          '実際のSSH接続方法（コマンド／GUI）',
         ]}
         heroImage={
           <div
@@ -148,38 +147,15 @@ export default function SSHPage() {
         </section>
 
         <section className="term-content-section">
-          <h2>会社のサーバーにつなぐとは？</h2>
+          <h2>SSHでサーバーに入るとは？</h2>
           <p>
-            会社のサーバーにつなぐとは、<strong>自分の席のパソコンから、遠くにあるサーバーに「入る」</strong>ことです。下のデモで、その流れを体験できます。
+            会社のサーバーにつなぐとは、<strong>自分の席のパソコンから、遠くにあるサーバーに「入る」</strong>ことです。
           </p>
-          <div
-            style={{
-              display: 'flex',
-              flexWrap: 'nowrap',
-              alignItems: 'center',
-              gap: 'clamp(8px, 2vw, 12px)',
-              marginBottom: '1em',
-              padding: 'clamp(10px, 2.5vw, 14px)',
-              backgroundColor: '#f8fafc',
-              borderRadius: '8px',
-              border: '1px solid #e2e8f0',
-              whiteSpace: 'nowrap',
-              overflowX: 'auto',
-              maxWidth: '100%',
-            }}
-          >
-            <span style={{ display: 'inline-flex', alignItems: 'center', gap: '6px', fontWeight: 600, flexShrink: 0 }}>
-              <i className="fas fa-laptop" aria-hidden style={{ color: '#14b8a6' }} />
-              手元のPC
-            </span>
-            <span style={{ color: '#94a3b8', flexShrink: 0 }}>→</span>
-            <span style={{ display: 'inline-flex', alignItems: 'center', gap: '6px', flexShrink: 0 }}>
-              <i className="fas fa-terminal" aria-hidden style={{ color: '#0d9488' }} />
-              ターミナルでSSHコマンドを打つ
-            </span>
-          </div>
           <p>
-            手元のPC → ネットワーク → サーバー（sshd）→ 接続完了の4ステップを確認できます。
+            SSHが使われる場面で最も多いのは、自分の席のパソコンから、遠くにある会社のサーバーに入るときです。
+          </p>
+          <p>
+            このデモでは、SSHでサーバーに入るまでの流れを、4つのステップに分けて確認します。
           </p>
           <div style={{ maxWidth: '100%', overflowX: 'auto' }}>
             <SSHDemo />
@@ -187,129 +163,117 @@ export default function SSHPage() {
         </section>
 
         <section className="term-content-section">
-          <h2>安全につなぐ仕組みとは？</h2>
+          <h2>実際のSSH接続方法（コマンド／GUI）</h2>
           <p>
-            SSHの「S」は<strong>Secure（セキュア）</strong>＝「安全な」という意味です。
+            SSHでサーバーに接続する方法はいくつかあります。会社では、コマンドまたはGUIツールを使って接続することが多いです。
           </p>
+
+          <h3>接続方法は大きく2つ</h3>
+          <h4>■ コマンドで接続する</h4>
           <p>
-            ネットワーク上では、データがいろんな機械の間を流れます。
-            もし暗号化していないと、よくないことをする人が途中で「パスワード」や「打ったコマンド」を盗み見する可能性があります。
+            ターミナルで <code>ssh</code> コマンドを入力して接続する方法です。主にエンジニアやIT担当者が使います。
           </p>
+          <h4>■ GUIツールで接続する</h4>
           <p>
-            SSHでは、<strong>クライアントとサーバーがやり取りする内容を暗号化</strong>します。
-            なので、途中で誰かがキャッチしても、中身を読むのがとても難しくなります。
-            会社の大事なサーバーに触るときに、SSHが使われる理由の一つがこれです。
+            ボタンや入力欄を使って接続する方法です。多くの会社では、この方法が使われています。
           </p>
-          <div
-            className="note"
-            style={{
-              padding: 'clamp(14px, 3vw, 20px)',
-              marginTop: '1.2em',
-              marginBottom: '1.2em',
-              border: '2px solid #14b8a6',
-              borderLeft: '6px solid #14b8a6',
-              borderRadius: '8px',
-              backgroundColor: '#f0fdfa',
-              boxShadow: '0 2px 8px rgba(20, 184, 166, 0.12)',
-            }}
-          >
-            <strong><i className="fas fa-lightbulb" aria-hidden /> 似た考え方</strong>
-            <ul style={{ margin: '8px 0 0 0', paddingLeft: '1.2em', lineHeight: 1.7 }}>
-              <li>Webページで使う<Link href="/terms/ssl-tls">SSL/TLS</Link> … 「通信を暗号化して安全にする」仕組み</li>
-              <li>SSH … 「遠くのコンピュータにログインするとき」専用の、暗号化付きの仕組み</li>
-            </ul>
+
+          <h3>サーバーへの入り方も2つあります</h3>
+          <h4>🔑 ① パスワードで入る</h4>
+          <ul>
+            <li>接続するたびに、パスワードを入力します</li>
+            <li>分かりやすい方法ですが、漏れると危険です</li>
+          </ul>
+          <h4>🔐 ② 鍵で入る（よく使われる）</h4>
+          <ul>
+            <li>自分のパソコンに「鍵」を持っておきます</li>
+            <li>サーバーには、その鍵とペアになる情報を登録します</li>
+            <li>鍵を持っている人だけが入れる仕組みです</li>
+            <li>パスワードより安全なため、多くの会社で使われています</li>
+          </ul>
+
+          <h3>参考：SSHでサーバーに接続するコマンド</h3>
+          <div className="code-example" style={{ marginTop: '0.5em' }}>
+            <pre><code>{`ssh ユーザー名@サーバーのIPアドレス
+例）ssh tanaka@192.168.1.100`}</code></pre>
           </div>
         </section>
 
         <section className="term-content-section">
-          <h2>どうやって実際につなぐの？</h2>
+          <h2>SSHで安全が守られる仕組み</h2>
           <p>
-            会社のPCは、最初からサーバーに「つなぐ準備」が整っていることが多いです。そのうえで、<strong>ターミナルで <code>ssh</code> コマンドを打つ</strong>か、<strong>GUIのツールで接続する</strong>かのどちらかになります。
+            先ほど見た「SSHでサーバーに入る流れ」の中で、ネットワークを通る部分がありました。そのときに送られている情報は、<strong>すべて暗号化されています</strong>。
           </p>
           <p>
-            GUIのツールは、簡単にいうと<strong>ボタンや入力枠があるタイプ</strong>のソフトです（ホスト名・ユーザー名などを入力して接続ボタンを押すもの）。代表例は、Windowsでは<strong>PuTTY</strong>・<strong>Tera Term</strong>、Mac/Windows両方で使える<strong>Termius</strong>などです。
-          </p>
-          <h3>① パスワードで入る</h3>
-          <p>
-            接続するときに、毎回パスワードを入力する方法です。わかりやすいですが、パスワードが漏れると危険です。
-          </p>
-          <h3>② 鍵で入る</h3>
-          <p>
-            <strong>鍵で入る</strong>方法では、自分だけの鍵を自分のパソコンに持っておき、入り先のパソコン（サーバー）には、その鍵と「おそろいのペア」になるもう1本の鍵を登録しておきます。
+            SSHが安全と言われる理由は、<strong>通信の内容がすべて暗号化される</strong>からです。
           </p>
           <p>
-            入り先は「このペアの鍵を持っている人だけ、入れていいです」と判断します。鍵は人に渡さない限り盗まれにくいので、<strong>パスワードより安全</strong>として、多くの会社で使われています。
+            途中で誰かに見られても、中身を読むことができません。
           </p>
-          <div className="code-example" style={{ marginTop: '1.2em' }}>
-            <pre><code>{`例: SSHでサーバーに接続するコマンド
-
-ssh ユーザー名@サーバーのIPアドレス
-例）ssh tanaka@192.168.1.100
-    → 192.168.1.100 のサーバーに、tanaka というユーザーで入る`}</code></pre>
-          </div>
+          <p>
+            ネットワーク上では、データはさまざまな機器を経由して送られます。
+          </p>
+          <p>
+            もし暗号化されていないと、
+          </p>
+          <ul>
+            <li>パスワード</li>
+            <li>入力したコマンド</li>
+          </ul>
+          <p style={{ marginTop: '-0.5em' }}>
+            などが、途中で盗み見される可能性があります。
+          </p>
+          <p>
+            SSHでは、クライアントとサーバーの間でやり取りする内容を<strong>すべて暗号化</strong>することで、安全にサーバーへ接続します。
+          </p>
         </section>
 
         <section className="term-content-section">
           <h2>sshdでMy PCを遠隔操作</h2>
           <p>
-            いままでのは<strong>「手元のPC → 会社のサーバーに入る」</strong>形です。もう一つの形は、<strong>自分のPCを「入り先」にする</strong>使い方になります。
+            ここまでは、「手元のPCから、会社のサーバーに入る」使い方を見てきました。
           </p>
           <p>
-            「サーバー」は機械の名前ではなく<strong>「入り先」の役割</strong>の名前です。自分のPCで <strong>sshd</strong> を動かすと、そのとき自分のPCがその役になります。だから別のPCから、自分のPCにSSHで入れるようになります。
+            SSHには、もう一つの使い方があります。それは、自分のPCを「入り先」にする使い方です。
           </p>
-          <div
-            className="flow-diagram-mobile-wrap"
-            style={{
-              display: 'flex',
-              flexWrap: 'nowrap',
-              alignItems: 'center',
-              gap: 'clamp(8px, 2vw, 12px)',
-              marginBottom: '1em',
-              padding: 'clamp(10px, 2.5vw, 14px)',
-              backgroundColor: '#f5f3ff',
-              borderRadius: '8px',
-              border: '1px solid #c4b5fd',
-              whiteSpace: 'nowrap',
-              overflowX: 'auto',
-              maxWidth: '100%',
-            }}
-          >
-            <span style={{ display: 'inline-flex', alignItems: 'center', gap: '6px', fontWeight: 600, flexShrink: 0 }}>
-              <i className="fas fa-laptop" aria-hidden style={{ color: '#8b5cf6' }} />
-              別のPC（ssh でつなぎに行く）
-            </span>
-            <span style={{ color: '#94a3b8', flexShrink: 0 }}>→</span>
-            <span style={{ display: 'inline-flex', alignItems: 'center', gap: '6px', flexShrink: 0 }}>
-              <i className="fas fa-server" aria-hidden style={{ color: '#7c3aed' }} />
-              自分のPC（sshd で待っている・入り先）
-            </span>
-          </div>
+
+          <hr style={{ margin: '1.5em 0', border: 'none', borderTop: '1px solid #e2e8f0' }} />
+
+          <h3>別のPCから自分のPCに入る流れ（概要）</h3>
           <p>
-            下のデモで、その流れを先に確認できます。
+            このデモでは、<strong>自分のPCが「入られる側」になる流れだけ</strong>を確認します。
           </p>
-          <div style={{ maxWidth: '100%', overflowX: 'auto' }}>
+          <ol style={{ paddingLeft: '1.5em', lineHeight: 1.8 }}>
+            <li>自分のPCを「入り先」にする（sshd を動かして待つ）</li>
+            <li>別のPCから、つなぎに来る（ssh で接続する）</li>
+            <li>自分のPCに入れる（遠隔操作できる状態）</li>
+          </ol>
+          <div style={{ maxWidth: '100%', overflowX: 'auto', marginTop: '1em' }}>
             <SSHAccessFromOtherDemo />
           </div>
-          <div
-            style={{
-              padding: 'clamp(12px, 3vw, 16px)',
-              marginTop: '1.2em',
-              marginBottom: '1em',
-              border: '2px solid #8b5cf6',
-              borderLeft: '6px solid #8b5cf6',
-              borderRadius: '8px',
-              backgroundColor: '#f5f3ff',
-            }}
-          >
-            <strong>sshd を一言でいうと</strong>
-            <p style={{ margin: '8px 0 0 0', lineHeight: 1.6 }}>
-              <strong>ssh</strong> は、こっちから「つなぎに行く」ときに打つコマンドです。<strong>sshd</strong> は、あっちで「つなぎに来るのを待っている」プログラムです。おそろいの<strong>ペア</strong>になっています。入り先のパソコンでは、sshd が「22番」という入口でずっと待っていて、誰かが <code>ssh</code> で来たら「はい、どうぞ」と受け付けます。
-            </p>
-          </div>
-          <h3>sshd を動かすには</h3>
-          <p>
-            かんたんにいうと、<strong>パソコンの種類によってやり方がちがいます</strong>。Windows なら「機能の追加」で OpenSSH サーバーを入れます。Mac なら「システム設定」の「共有」で「リモートログイン」をオンにします。Linux なら <code>openssh-server</code> を入れます。最初から入っているパソコンもあれば、あとから入れるパソコンもあります。
+
+          <hr style={{ margin: '1.5em 0', border: 'none', borderTop: '1px solid #e2e8f0' }} />
+
+          <p style={{ fontSize: '0.95em', color: '#64748b' }}>
+            ※ <strong>ssh</strong> は「行く側」、<strong>sshd</strong> は「待つ側」のプログラムです。
           </p>
+
+          <hr style={{ margin: '1.5em 0', border: 'none', borderTop: '1px solid #e2e8f0' }} />
+
+          <details style={{ marginTop: '1em', padding: '12px 16px', border: '1px solid #e2e8f0', borderRadius: '8px', backgroundColor: '#f8fafc' }}>
+            <summary style={{ cursor: 'pointer', fontWeight: 600 }}>参考：sshdを動かすには</summary>
+            <p style={{ marginTop: '12px', marginBottom: '8px' }}>
+              かんたんにいうと、<strong>パソコンの種類によってやり方が異なります。</strong>
+            </p>
+            <ul style={{ marginBottom: 0, paddingLeft: '1.5em', lineHeight: 1.7 }}>
+              <li>Windows：OpenSSH サーバーを有効にする</li>
+              <li>Mac：システム設定の「共有」で「リモートログイン」をオン</li>
+              <li>Linux：openssh-server をインストール</li>
+            </ul>
+            <p style={{ marginTop: '12px', marginBottom: 0, fontSize: '0.95em', color: '#64748b' }}>
+              最初から sshd が入っているパソコンもあれば、あとから有効にするパソコンもあります。
+            </p>
+          </details>
         </section>
 
         <section className="term-content-section">
