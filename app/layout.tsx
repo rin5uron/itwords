@@ -66,7 +66,7 @@ export default function RootLayout({
   children: React.ReactNode
 }) {
   const GA_ID = process.env.NEXT_PUBLIC_GA_ID
-  const AD_CLIENT_ID = process.env.NEXT_PUBLIC_ADSENSE_ID
+  const AD_CLIENT_ID = process.env.NEXT_PUBLIC_ADSENSE_ID || 'ca-pub-6439411211038936'
 
   return (
     <html lang="ja">
@@ -75,7 +75,7 @@ export default function RootLayout({
       </head>
       <body>
         {GA_ID && <GoogleAnalytics GA_ID={GA_ID} />}
-        {AD_CLIENT_ID && <GoogleAdSense adClientId={AD_CLIENT_ID} />}
+        <GoogleAdSense adClientId={AD_CLIENT_ID} />
         {children}
         <footer className="site-footer-layout">
           <div className="footer-links-main">
