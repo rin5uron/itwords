@@ -145,77 +145,92 @@ export default function SSHPage() {
           <p>
             このデモでは、SSHでサーバーに入るまでの流れを、4つのステップに分けて確認します。
           </p>
-          <div style={{ maxWidth: '100%', overflowX: 'auto' }}>
-            <SSHDemo />
-          </div>
+          <SSHDemo />
           
         </section>
 
         <section className="term-content-section">
           <h2>実際のSSH接続方法</h2>
           <p>
-            SSHでサーバーに接続する方法はいくつかあります。会社では、コマンドまたはGUIツールを使って接続することが多いです。
+            会社では、ターミナルの <code>ssh</code> コマンドまたはGUIツールを使って接続することが多いです。
           </p>
 
-          <h3>接続方法は大きく2つ</h3>
-          <h4>■ コマンドで接続する</h4>
-          <p>
-            ターミナルで <code>ssh</code> コマンドを入力して接続する方法です。主にエンジニアやIT担当者が使います。
-          </p>
-          <h3>SSHでサーバーに接続するコマンド例</h3>
+          <h3>コマンドで接続する場合</h3>
           <div className="code-example" style={{ marginTop: '0.5em' }}>
             <pre><code>{`ssh ユーザー名@サーバーのIPアドレス
 例）ssh tanaka@192.168.1.100`}</code></pre>
           </div>
-          <h4>■ GUIツールで接続する</h4>
-          <p>
-            ボタンや入力欄を使って接続する方法です。多くの会社では、この方法が使われています。
-          </p>
 
-          <h3>サーバーへの入り方も2つあります</h3>
-          <h4>🔑 ① パスワードで入る</h4>
-          <ul>
-            <li>接続するたびに、パスワードを入力します</li>
-            <li>分かりやすい方法ですが、漏れると危険です</li>
-          </ul>
-          <h4>🔐 ② 鍵で入る（よく使われる）</h4>
-          <ul>
-            <li>自分のパソコンに「鍵」を持っておきます</li>
-            <li>サーバーには、その鍵とペアになる情報を登録します</li>
-            <li>鍵を持っている人だけが入れる仕組みです</li>
-            <li>パスワードより安全なため、多くの会社で使われています</li>
-          </ul>
-
-          
+          <h3>サーバーへの入り方：2つの方法</h3>
+          <div style={{
+            display: 'grid',
+            gridTemplateColumns: 'repeat(auto-fit, minmax(240px, 1fr))',
+            gap: 'clamp(12px, 3vw, 16px)',
+            marginTop: '0.8em',
+          }}>
+            <div style={{
+              padding: 'clamp(14px, 3vw, 18px)',
+              border: '2px solid #cbd5e1',
+              borderRadius: '8px',
+              backgroundColor: '#f8fafc',
+            }}>
+              <p style={{ margin: '0 0 6px', fontWeight: 700, fontSize: '1em' }}>
+                <i className="fas fa-key" aria-hidden style={{ color: '#64748b', marginRight: '6px' }} />
+                パスワード認証
+              </p>
+              <ul style={{ margin: 0, paddingLeft: '1.2em', fontSize: '0.95em', lineHeight: 1.7 }}>
+                <li>接続するたびにパスワードを入力</li>
+                <li>わかりやすいが、漏れると危険</li>
+              </ul>
+            </div>
+            <div style={{
+              padding: 'clamp(14px, 3vw, 18px)',
+              border: '2px solid #14b8a6',
+              borderRadius: '8px',
+              backgroundColor: '#f0fdfa',
+            }}>
+              <p style={{ margin: '0 0 6px', fontWeight: 700, fontSize: '1em' }}>
+                <i className="fas fa-lock" aria-hidden style={{ color: '#14b8a6', marginRight: '6px' }} />
+                鍵認証（よく使われる）
+              </p>
+              <ul style={{ margin: 0, paddingLeft: '1.2em', fontSize: '0.95em', lineHeight: 1.7 }}>
+                <li>自分のPCに「鍵」を持っておく</li>
+                <li>サーバーにペアとなる情報を登録</li>
+                <li>パスワードより安全</li>
+              </ul>
+            </div>
+          </div>
         </section>
 
         <section className="term-content-section">
           <h2>SSHで安全が守られる仕組み</h2>
           <p>
-            先ほど見た「SSHでサーバーに入る流れ」の中で、ネットワークを通る部分がありました。そのときに送られている情報は、<strong>すべて暗号化されています</strong>。
-          </p>
-          <p>
-            SSHが安全と言われる理由は、<strong>通信の内容がすべて暗号化される</strong>からです。
-          </p>
-          <p>
+            ネットワーク上では、データはさまざまな機器を経由して送られます。
+            SSHが安全と言われる理由は、<strong>クライアントとサーバーの間の通信がすべて暗号化される</strong>からです。
             途中で誰かに見られても、中身を読むことができません。
           </p>
-          <p>
-            ネットワーク上では、データはさまざまな機器を経由して送られます。
-          </p>
-          <p>
-            もし暗号化されていないと、
-          </p>
-          <ul>
-            <li>パスワード</li>
-            <li>入力したコマンド</li>
-          </ul>
-          <p style={{ marginTop: '-0.5em' }}>
-            などが、途中で盗み見される可能性があります。
-          </p>
-          <p>
-            SSHでは、クライアントとサーバーの間でやり取りする内容を<strong>すべて暗号化</strong>することで、安全にサーバーへ接続します。
-          </p>
+          <div
+            className="note"
+            style={{
+              padding: 'clamp(14px, 3vw, 20px)',
+              marginTop: '1.2em',
+              marginBottom: '0.5em',
+              border: '2px solid #cbd5e1',
+              borderLeft: '6px solid #64748b',
+              borderRadius: '8px',
+              backgroundColor: '#f8fafc',
+              boxShadow: '0 2px 8px rgba(100, 116, 139, 0.08)',
+            }}
+          >
+            <strong><i className="fas fa-exclamation-triangle" aria-hidden /> 暗号化されていないと</strong>
+            <ul style={{ margin: '6px 0 0', paddingLeft: '1.2em', fontSize: '0.95em', lineHeight: 1.7 }}>
+              <li>パスワード</li>
+              <li>入力したコマンド</li>
+            </ul>
+            <p style={{ margin: '4px 0 0', fontSize: '0.95em' }}>
+              などが途中で盗み見される可能性があります。
+            </p>
+          </div>
         </section>
 
         <section className="term-content-section">
@@ -238,7 +253,7 @@ export default function SSHPage() {
             <li>別のPCから、つなぎに来る（ssh で接続する）</li>
             <li>自分のPCに入れる（遠隔操作できる状態）</li>
           </ol>
-          <div style={{ maxWidth: '100%', overflowX: 'auto', marginTop: '1em' }}>
+          <div style={{ marginTop: '1em' }}>
             <SSHAccessFromOtherDemo />
           </div>
 
