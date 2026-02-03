@@ -4,7 +4,6 @@ import { Metadata } from 'next'
 import StructuredData from '@/app/components/StructuredData'
 import TermPageHeader from '@/app/components/TermPageHeader'
 import FAQAccordion from '@/app/components/FAQAccordion'
-import AdBelowRelatedTerms from '@/app/components/AdBelowRelatedTerms'
 import WhiteHatDemo from '@/components/WhiteHatDemo'
 
 export const metadata: Metadata = {
@@ -214,7 +213,6 @@ export default function WhiteHatHackerPage() {
           </ul>
         </section>
 
-        <AdBelowRelatedTerms />
       </main>
     </div>
   )

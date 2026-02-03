@@ -4,7 +4,6 @@ import Link from 'next/link'
 import { useState } from 'react'
 import StructuredData from '@/app/components/StructuredData'
 import TermPageHeader from '@/app/components/TermPageHeader'
-import AdBelowRelatedTerms from '@/app/components/AdBelowRelatedTerms'
 
 export default function SQLPage() {
   const [selectedQuery, setSelectedQuery] = useState<string | null>(null)
@@ -408,7 +407,6 @@ export default function SQLPage() {
           </div>
         </section>
 
-        <AdBelowRelatedTerms />
       </main>
     </div>
   )

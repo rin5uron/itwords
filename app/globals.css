@@ -1418,3 +1418,22 @@ main a:not(.card-link):not(.breadcrumb-link):not(.term-name):active {
     -webkit-box-orient: unset;
   }
 }
+
+/* AdSense スマホ時の高さ制限 */
+@media (max-width: 768px) {
+  .adsense-subtle-top {
+    max-height: 25vh;
+    overflow: hidden;
+  }
+  .adsense-subtle-bottom {
+    max-height: 50vh;
+    overflow: hidden;
+  }
+}
+
+/* AdSense PC時は下部広告を非表示 */
+@media (min-width: 769px) {
+  .adsense-subtle-bottom {
+    display: none;
+  }
+}

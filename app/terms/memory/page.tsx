@@ -5,7 +5,6 @@ import { useState } from 'react'
 import StructuredData from '@/app/components/StructuredData'
 import TermPageHeader from '@/app/components/TermPageHeader'
 import FAQAccordion from '@/app/components/FAQAccordion'
-import AdBelowRelatedTerms from '@/app/components/AdBelowRelatedTerms'
 
 const HIERARCHY_LAYERS = [
   { name: 'レジスタ', desc: 'CPUのすぐそば。', desc2: '最も速いが数は少ない。', icon: 'fas fa-microchip', color: '#007bff' },
@@ -427,7 +426,6 @@ export default function MemoryPage() {
           </div>
         </section>
 
-        <AdBelowRelatedTerms />
 
         <FAQAccordion faqs={faqs} />
       </main>

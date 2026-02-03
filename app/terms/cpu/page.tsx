@@ -5,7 +5,6 @@ import { useState } from 'react'
 import StructuredData from '@/app/components/StructuredData'
 import TermPageHeader from '@/app/components/TermPageHeader'
 import FAQAccordion from '@/app/components/FAQAccordion'
-import AdBelowRelatedTerms from '@/app/components/AdBelowRelatedTerms'
 
 const FDESTEPS = [
   { phase: 'Fetch（取り出し）', desc: 'メモリから「次に実行する命令」を1本取り出す', icon: 'fas fa-download', color: '#007bff' },
@@ -486,7 +485,6 @@ export default function CPUPage() {
           </div>
         </section>
 
-        <AdBelowRelatedTerms />
 
         <FAQAccordion faqs={faqs} />
       </main>

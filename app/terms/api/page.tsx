@@ -4,8 +4,6 @@ import Link from 'next/link'
 import { useState } from 'react'
 import StructuredData from '@/app/components/StructuredData'
 import TermPageHeader from '@/app/components/TermPageHeader'
-import AdSenseUnit from '@/app/components/AdSenseUnit'
-import AdBelowRelatedTerms from '@/app/components/AdBelowRelatedTerms'
 
 export default function APIPage() {
   const [weatherLoading, setWeatherLoading] = useState(false)
@@ -491,8 +489,6 @@ export default function APIPage() {
             </table>
           </div>
         </section>
-
-        <AdBelowRelatedTerms />
       </main>
     </div>
   )

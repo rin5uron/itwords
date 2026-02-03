@@ -5,6 +5,13 @@ import GoogleAdSense from './components/GoogleAdSense'
 import Link from 'next/link'
 import { FONT_AWESOME_CDN } from './lib/icons'
 
+export const viewport = {
+  width: 'device-width',
+  initialScale: 1,
+  maximumScale: 1,
+  userScalable: false,
+}
+
 export const metadata: Metadata = {
   metadataBase: new URL('https://itwords.jp'),
   title: '実践型IT用語辞典 - IT用語をわかりやすく解説【初心者向け】',

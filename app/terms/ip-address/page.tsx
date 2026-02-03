@@ -1,7 +1,6 @@
 import Link from 'next/link'
 import StructuredData from '@/app/components/StructuredData'
 import TermPageHeader from '@/app/components/TermPageHeader'
-import AdBelowRelatedTerms from '@/app/components/AdBelowRelatedTerms'
 import { Metadata } from 'next'
 
 export const metadata: Metadata = {
@@ -535,7 +534,6 @@ itwords.jp → DNS解決 → 76.76.21.21`}</code></pre>
           </div>
         </section>
 
-        <AdBelowRelatedTerms />
       </main>
     </div>
   )

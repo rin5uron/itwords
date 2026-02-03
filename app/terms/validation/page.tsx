@@ -4,7 +4,6 @@ import Link from 'next/link'
 import StructuredData from '@/app/components/StructuredData'
 import TermPageHeader from '@/app/components/TermPageHeader'
 import ValidationDemo from '@/components/ValidationDemo'
-import AdBelowRelatedTerms from '@/app/components/AdBelowRelatedTerms'
 
 const metadata = {
   title: 'バリデーションとは？初心者向けにわかりやすく解説【実装例付き】 | 実践型IT用語辞典',
@@ -662,7 +661,6 @@ document.getElementById('strength-bar').style.backgroundColor = result.color;`}<
           </div>
         </section>
 
-        <AdBelowRelatedTerms />
       </main>
     </div>
   )

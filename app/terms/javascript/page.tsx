@@ -4,7 +4,6 @@ import JavaScriptDemo from '@/app/components/JavaScriptDemo'
 import StructuredData from '@/app/components/StructuredData'
 import TermPageHeader from '@/app/components/TermPageHeader'
 import FAQAccordion from '@/app/components/FAQAccordion'
-import AdBelowRelatedTerms from '@/app/components/AdBelowRelatedTerms'
 
 export const metadata: Metadata = {
   title: 'JavaScriptとは？初心者向けにわかりやすく解説【実践デモ付き】 | 実践型IT用語辞典',
@@ -255,7 +254,6 @@ const moreNumbers = [...numbers, 4, 5];  // [1, 2, 3, 4, 5]`}</code></pre>
           </div>
         </section>
 
-        <AdBelowRelatedTerms />
 
         <FAQAccordion faqs={faqs} />
       </main>

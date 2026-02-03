@@ -4,7 +4,6 @@ import QueueDemo from '@/components/QueueDemo'
 import StructuredData from '@/app/components/StructuredData'
 import TermPageHeader from '@/app/components/TermPageHeader'
 import FAQAccordion from '@/app/components/FAQAccordion'
-import AdBelowRelatedTerms from '@/app/components/AdBelowRelatedTerms'
 
 export const metadata: Metadata = {
   title: 'キュー（Queue）とは？初心者向けにわかりやすく解説【実践デモ付き】 | 実践型IT用語辞典',
@@ -264,7 +263,6 @@ console.log('次の会計:', nextCustomer); // "佐藤さん"
           </div>
         </section>
 
-        <AdBelowRelatedTerms />
 
         <FAQAccordion faqs={faqs} />
       </main>

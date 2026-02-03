@@ -4,7 +4,6 @@ import Link from 'next/link'
 import StructuredData from '@/app/components/StructuredData'
 import TermPageHeader from '@/app/components/TermPageHeader'
 import FAQAccordion from '@/app/components/FAQAccordion'
-import AdBelowRelatedTerms from '@/app/components/AdBelowRelatedTerms'
 
 const httpsFAQs = [
   {
@@ -387,7 +386,6 @@ HTTPS = HyperText Transfer Protocol Secure（暗号化あり）</code></pre>
           </div>
         </section>
 
-        <AdBelowRelatedTerms />
 
         <FAQAccordion faqs={httpsFAQs} />
       </main>

@@ -4,7 +4,6 @@ import GitHubDemo from './GitHubDemo'
 import StructuredData from '@/app/components/StructuredData'
 import TermPageHeader from '@/app/components/TermPageHeader'
 import FAQAccordion from '@/app/components/FAQAccordion'
-import AdBelowRelatedTerms from '@/app/components/AdBelowRelatedTerms'
 
 export const metadata: Metadata = {
   title: 'GitHubとは？小学生でもわかる【結局何に使うの？が分かる】',
@@ -695,7 +694,6 @@ node_modules/
           </div>
         </section>
 
-        <AdBelowRelatedTerms />
       </main>
     </div>
   )

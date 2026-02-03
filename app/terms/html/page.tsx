@@ -4,7 +4,6 @@ import Link from 'next/link'
 import TermPageHeader from '@/app/components/TermPageHeader'
 import HTMLDemo from './HTMLDemo'
 import FAQAccordion from '@/app/components/FAQAccordion'
-import AdBelowRelatedTerms from '@/app/components/AdBelowRelatedTerms'
 
 const faqs = [
   {
@@ -206,7 +205,6 @@ export default function HTMLPage() {
           </div>
         </section>
 
-        <AdBelowRelatedTerms />
 
         <FAQAccordion faqs={faqs} />
       </main>

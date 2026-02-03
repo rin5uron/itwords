@@ -3,7 +3,6 @@ import { Metadata } from 'next'
 import StructuredData from '@/app/components/StructuredData'
 import TermPageHeader from '@/app/components/TermPageHeader'
 import FAQAccordion from '@/app/components/FAQAccordion'
-import AdBelowRelatedTerms from '@/app/components/AdBelowRelatedTerms'
 
 export const metadata: Metadata = {
   title: 'SSL/TLSとは？小学生でもわかる【HTTPSの🔒マークの正体】',
@@ -348,7 +347,6 @@ export default function SslTlsPage() {
           </div>
         </section>
 
-        <AdBelowRelatedTerms />
       </main>
     </div>
   )

@@ -5,7 +5,6 @@ import TermPageHeader from '@/app/components/TermPageHeader'
 import CookieDemo from '@/app/components/CookieDemo'
 import StructuredData from '@/app/components/StructuredData'
 import FAQAccordion from '@/app/components/FAQAccordion'
-import AdBelowRelatedTerms from '@/app/components/AdBelowRelatedTerms'
 
 const faqs = [
   {
@@ -320,7 +319,6 @@ export default function CookiePage() {
           </div>
         </section>
 
-        <AdBelowRelatedTerms />
 
         <FAQAccordion faqs={faqs} />
       </main>

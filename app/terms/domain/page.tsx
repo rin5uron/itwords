@@ -5,7 +5,6 @@ import { useState } from 'react'
 import { Metadata } from 'next'
 import StructuredData from '@/app/components/StructuredData'
 import TermPageHeader from '@/app/components/TermPageHeader'
-import AdBelowRelatedTerms from '@/app/components/AdBelowRelatedTerms'
 
 export default function DomainPage() {
   const [expandedLevel, setExpandedLevel] = useState(0)
@@ -368,7 +367,6 @@ https://itwords.jp/terms/api
           </div>
         </section>
 
-        <AdBelowRelatedTerms />
       </main>
     </div>
   )

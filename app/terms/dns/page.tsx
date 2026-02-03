@@ -5,7 +5,6 @@ import Image from 'next/image'
 import { useState } from 'react'
 import StructuredData from '@/app/components/StructuredData'
 import TermPageHeader from '@/app/components/TermPageHeader'
-import AdBelowRelatedTerms from '@/app/components/AdBelowRelatedTerms'
 
 export default function DNSPage() {
   const [currentStep, setCurrentStep] = useState(0)
@@ -501,7 +500,6 @@ github.com → DNS解決 → 140.82.121.4`}</code></pre>
           </div>
         </section>
 
-        <AdBelowRelatedTerms />
       </main>
     </div>
   )

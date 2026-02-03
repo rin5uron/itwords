@@ -4,7 +4,6 @@ import HTTPDemo from '@/app/components/HTTPDemo'
 import StructuredData from '@/app/components/StructuredData'
 import TermPageHeader from '@/app/components/TermPageHeader'
 import FAQAccordion from '@/app/components/FAQAccordion'
-import AdBelowRelatedTerms from '@/app/components/AdBelowRelatedTerms'
 
 export const metadata: Metadata = {
   title: 'HTTP/HTTPS（エイチティーティーピー）とは？読み方・違いを初心者向けに解説 | 実践型IT用語辞典',
@@ -446,7 +445,6 @@ export default function HTTPPage() {
           </div>
         </section>
 
-        <AdBelowRelatedTerms />
 
         <FAQAccordion faqs={httpFAQs} />
       </main>

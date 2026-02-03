@@ -38,6 +38,28 @@
 
 ---
 
+## 今日学んだこと（2026-02-03）
+
+```
+【AdSense 広告配置の2パターン】
+
+1. 全ページ
+   - AdBelowRelatedTerms
+   - NEXT_PUBLIC_ADSENSE_SLOT が設定されていれば全用語ページの「関連用語の直下」に表示
+
+2. ユニットで一部
+   - AdSenseUnit（adSlot を直接指定）
+   - 特定ページだけに広告を置きたいときに使う（例：SSH、フールプルーフ）
+
+【依存関係】
+- ID（NEXT_PUBLIC_ADSENSE_ID）が土台 → これがないと SLOT もユニットも動かない
+- SLOT（NEXT_PUBLIC_ADSENSE_SLOT）→ AdBelowRelatedTerms 用
+- ユニット（AdSenseUnit + adSlot）→ ページごとに好きな位置に配置可能
+```
+
+---
+
 ## 更新履歴
 
 - 2026-02-03: 初版（原因と対策の記録）
+- 2026-02-03: 今日学んだこと（全ページ vs ユニットで一部）を追加

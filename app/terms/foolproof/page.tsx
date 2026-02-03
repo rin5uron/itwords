@@ -8,8 +8,6 @@ import DisabledUIDemo from '@/components/DisabledUIDemo'
 import StructuredData from '@/app/components/StructuredData'
 import TermPageHeader from '@/app/components/TermPageHeader'
 import FAQAccordion from '@/app/components/FAQAccordion'
-import AdSenseUnit from '@/app/components/AdSenseUnit'
-import AdBelowRelatedTerms from '@/app/components/AdBelowRelatedTerms'
 
 export default function FoolProofPage() {
   const faqs = [
@@ -188,8 +186,6 @@ if (confirmed) {
           </ul>
         </section>
 
-        <AdSenseUnit adSlot="5647254283" />
-
         <section className="term-comparison">
           <h2>関連用語</h2>
           <div className="comparison-table">
@@ -225,8 +221,6 @@ if (confirmed) {
             </table>
           </div>
         </section>
-
-        <AdBelowRelatedTerms />
 
         <FAQAccordion faqs={faqs} />
       </main>

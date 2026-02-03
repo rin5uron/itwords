@@ -5,7 +5,6 @@ import StructuredData from '@/app/components/StructuredData'
 import TermPageHeader from '@/app/components/TermPageHeader'
 import AESDemo from '@/components/AESDemo'
 import FAQAccordion from '@/app/components/FAQAccordion'
-import AdBelowRelatedTerms from '@/app/components/AdBelowRelatedTerms'
 
 export const metadata: Metadata = {
   title: 'AESとは？小学生でもわかる【動かして学べるデモ付き】',
@@ -800,7 +799,6 @@ async function decryptData(ciphertext, key, iv) {
           </div>
         </section>
 
-        <AdBelowRelatedTerms />
 
       </main>
     </div>

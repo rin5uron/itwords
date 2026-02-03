@@ -4,7 +4,6 @@ import StackDemo from '@/components/StackDemo'
 import StructuredData from '@/app/components/StructuredData'
 import TermPageHeader from '@/app/components/TermPageHeader'
 import FAQAccordion from '@/app/components/FAQAccordion'
-import AdBelowRelatedTerms from '@/app/components/AdBelowRelatedTerms'
 
 export const metadata: Metadata = {
   title: 'スタック構造とは？初心者向けにわかりやすく解説【実践デモ付き】 | 実践型IT用語辞典',
@@ -234,7 +233,6 @@ Changes not staged for commit:
           </div>
         </section>
 
-        <AdBelowRelatedTerms />
 
         <div
           className="summary-box"

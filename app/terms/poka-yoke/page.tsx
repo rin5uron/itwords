@@ -2,7 +2,6 @@ import Link from 'next/link'
 import type { Metadata } from 'next'
 import StructuredData from '@/app/components/StructuredData'
 import TermPageHeader from '@/app/components/TermPageHeader'
-import AdBelowRelatedTerms from '@/app/components/AdBelowRelatedTerms'
 
 export const metadata: Metadata = {
   title: 'ポカヨケとは？IT開発への応用を初心者向けに解説【実践例付き】 | 実践型IT用語辞典',
@@ -369,7 +368,6 @@ function sendEmail(user: User) {
           </div>
         </section>
 
-        <AdBelowRelatedTerms />
       </main>
     </div>
   )

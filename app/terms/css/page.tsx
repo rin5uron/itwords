@@ -7,7 +7,6 @@ import StructuredData from '@/app/components/StructuredData'
 import TermPageHeader from '@/app/components/TermPageHeader'
 import CSSStepByStepDemo from '@/components/CSSStepByStepDemo'
 import CSSWritingMethodsDemo from '@/components/CSSWritingMethodsDemo'
-import AdBelowRelatedTerms from '@/app/components/AdBelowRelatedTerms'
 
 export default function CSSPage() {
   const [cssCode, setCssCode] = useState('color: blue;\nfont-size: 24px;\nfont-weight: bold;')
@@ -331,7 +330,6 @@ p {
           </div>
         </section>
 
-        <AdBelowRelatedTerms />
       </main>
     </div>
   )

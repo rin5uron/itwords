@@ -4,7 +4,6 @@ import Link from 'next/link'
 import { useState } from 'react'
 import TermPageHeader from '@/app/components/TermPageHeader'
 import FAQAccordion from '@/app/components/FAQAccordion'
-import AdBelowRelatedTerms from '@/app/components/AdBelowRelatedTerms'
 import StructuredData from '@/app/components/StructuredData'
 
 const faqs = [
@@ -404,7 +403,6 @@ export default function WebhookPage() {
           </div>
         </section>
 
-        <AdBelowRelatedTerms />
 
         <FAQAccordion faqs={faqs} />
       </main>

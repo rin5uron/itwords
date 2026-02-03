@@ -3,7 +3,6 @@ import { Metadata } from 'next'
 import StructuredData from '@/app/components/StructuredData'
 import TermPageHeader from '@/app/components/TermPageHeader'
 import FAQAccordion from '@/app/components/FAQAccordion'
-import AdBelowRelatedTerms from '@/app/components/AdBelowRelatedTerms'
 import CVEDemo from '@/components/CVEDemo'
 
 export const metadata: Metadata = {
@@ -199,7 +198,6 @@ export default function CVEPage() {
           </ul>
         </section>
 
-        <AdBelowRelatedTerms />
       </main>
     </div>
   )

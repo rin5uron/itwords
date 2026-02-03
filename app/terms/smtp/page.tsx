@@ -3,7 +3,6 @@ import { Metadata } from 'next'
 import StructuredData from '@/app/components/StructuredData'
 import TermPageHeader from '@/app/components/TermPageHeader'
 import FAQAccordion from '@/app/components/FAQAccordion'
-import AdBelowRelatedTerms from '@/app/components/AdBelowRelatedTerms'
 
 export const metadata: Metadata = {
   title: 'SMTP（エスエムティーピー）とは？小学生でもわかる【メール送信のルール】',
@@ -480,7 +479,6 @@ Outlook.comのSMTP設定例：
           </div>
         </section>
 
-        <AdBelowRelatedTerms />
 
         <FAQAccordion faqs={smtpFAQs} />
       </main>
