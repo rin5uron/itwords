@@ -148,10 +148,11 @@ export default function SSHPage() {
           <div style={{ maxWidth: '100%', overflowX: 'auto' }}>
             <SSHDemo />
           </div>
+          
         </section>
 
         <section className="term-content-section">
-          <h2>実際のSSH接続方法（コマンド／GUI）</h2>
+          <h2>実際のSSH接続方法</h2>
           <p>
             SSHでサーバーに接続する方法はいくつかあります。会社では、コマンドまたはGUIツールを使って接続することが多いです。
           </p>
@@ -161,6 +162,11 @@ export default function SSHPage() {
           <p>
             ターミナルで <code>ssh</code> コマンドを入力して接続する方法です。主にエンジニアやIT担当者が使います。
           </p>
+          <h3>SSHでサーバーに接続するコマンド例</h3>
+          <div className="code-example" style={{ marginTop: '0.5em' }}>
+            <pre><code>{`ssh ユーザー名@サーバーのIPアドレス
+例）ssh tanaka@192.168.1.100`}</code></pre>
+          </div>
           <h4>■ GUIツールで接続する</h4>
           <p>
             ボタンや入力欄を使って接続する方法です。多くの会社では、この方法が使われています。
@@ -180,11 +186,7 @@ export default function SSHPage() {
             <li>パスワードより安全なため、多くの会社で使われています</li>
           </ul>
 
-          <h3>参考：SSHでサーバーに接続するコマンド</h3>
-          <div className="code-example" style={{ marginTop: '0.5em' }}>
-            <pre><code>{`ssh ユーザー名@サーバーのIPアドレス
-例）ssh tanaka@192.168.1.100`}</code></pre>
-          </div>
+          
         </section>
 
         <section className="term-content-section">
