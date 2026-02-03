@@ -4,7 +4,7 @@ import { Metadata } from 'next'
 import StructuredData from '@/app/components/StructuredData'
 import TermPageHeader from '@/app/components/TermPageHeader'
 import FAQAccordion from '@/app/components/FAQAccordion'
-import AdBelowRelatedTerms from '@/app/components/AdBelowRelatedTerms'
+import AdSenseUnit from '@/app/components/AdSenseUnit'
 import SSHDemo from './SSHDemo'
 import SSHAccessFromOtherDemo from './SSHAccessFromOtherDemo'
 
@@ -305,7 +305,7 @@ export default function SSHPage() {
 
         <FAQAccordion faqs={faqs} />
 
-        <AdBelowRelatedTerms />
+        <AdSenseUnit adSlot="5647254283" />
       </main>
     </div>
   )
