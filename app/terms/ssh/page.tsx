@@ -34,28 +34,16 @@ export const metadata: Metadata = {
 export default function SSHPage() {
   const faqs = [
     {
-      question: 'SSHとは何ですか？',
-      answer: 'SSH（Secure Shell）とは、離れた場所にあるコンピュータ（例：会社のサーバー）に、ネットワークを通じて安全に「入る」ための仕組みです。パスワードや通信内容が暗号化されるので、第三者に盗み見されにくくなります。',
+      question: 'なぜ会社のパソコンからサーバーに入るのに SSH を使うのですか？',
+      answer: '通信を暗号化して、安全にサーバーへログインするためです。',
     },
     {
-      question: 'なぜ「会社のパソコンからサーバーに入る」のにSSHを使うのですか？',
-      answer: 'サーバーは多くの場合、データセンターなど別の場所にあります。直接キーボードをつないで操作する代わりに、SSHでネットワーク越しにサーバーに入ることができます。通信が暗号化されるので、安全に遠くのサーバーを扱えます。',
+      question: 'SSH と sshd の違いは何ですか？',
+      answer: 'ssh は「つなぎに行く側」、sshd は「つながれるのを待つ側」のプログラムです。',
     },
     {
-      question: 'SSHとパスワード入力の違いは？',
-      answer: 'SSHでもパスワードで入る方法がありますが、より安全なのが「鍵で入る」方法です。自分だけが持つ鍵をパソコンに置き、サーバー側にはその鍵とペアになる鍵を登録しておく方式で、多くの会社で使われています。',
-    },
-    {
-      question: 'ターミナルって何ですか？',
-      answer: 'ターミナルは、文字（コマンド）でコンピュータに指示を出すための画面です。マウスでクリックするのではなく、「ssh user@server」のようなコマンドを打ってSSHでサーバーに接続します。プログラマーやインフラ担当の人がよく使います。',
-    },
-    {
-      question: 'ポート22番って何ですか？',
-      answer: 'SSHのサービスは、多くの場合「22番」という番号の入口（ポート）で待っています。IPアドレスが「住所」なら、ポートは「部屋番号」のようなものです。ssh コマンドは通常、自動的に22番に接続します。',
-    },
-    {
-      question: 'sshdとは何ですか？',
-      answer: 'sshdは、SSHの仕組みのうち「接続される側」で動くプログラムの名前です。裏で動いていて、22番ポートで「誰かがSSHで入ってこないか」を待っています。OSによって最初から入っている／後から有効にできるが違います。',
+      question: 'ポート22番とは何ですか？',
+      answer: 'SSHの通信でよく使われる、サーバー側の入口番号です。',
     },
   ]
 
@@ -277,66 +265,28 @@ export default function SSHPage() {
         </section>
 
         <section className="term-content-section">
-          <h2>よく出てくる用語</h2>
-          <ul>
-            <li><strong>クライアント</strong> … 接続する側（手元のパソコンなど）</li>
-            <li><strong>サーバー</strong> … 接続される側。詳しくは<Link href="/terms/server">サーバー</Link>の用語ページへ。</li>
-            <li><strong>sshd</strong> … その仕組みの「接続される側」で動くプログラムの名前。22番ポートで待っている。OSによって入っている／後から入れ方が違う。</li>
-            <li><strong>ターミナル</strong> … コマンドを打つための画面。<Link href="/terms/cli-gui">CLI</Link>の一種。</li>
-            <li><strong>ssh コマンド</strong> … SSHで接続するときに打つコマンド（例: <code>ssh user@host</code>）</li>
-            <li><strong>ポート22</strong> … SSHのサービスがよく使う「入口」の番号。<Link href="/terms/ip-address">IPアドレスとポート番号</Link>の「部屋番号」に相当。</li>
+          <h2>このページで使う用語</h2>
+          <ul style={{ listStyle: 'none', paddingLeft: 0 }}>
+            <li style={{ marginBottom: '1em' }}><strong>クライアント</strong><br />SSHで「つなぎに行く側」（手元のパソコンなど）</li>
+            <li style={{ marginBottom: '1em' }}><strong>サーバー</strong><br />SSHで「接続される側」（入り先のコンピュータ）</li>
+            <li style={{ marginBottom: '1em' }}><strong>sshd</strong><br />接続される側で動く、SSHの受付プログラム</li>
+            <li style={{ marginBottom: '1em' }}><strong>ターミナル</strong><br />コマンドを文字で入力する画面（CLI）</li>
+            <li style={{ marginBottom: '1em' }}><strong>sshコマンド</strong><br />SSHで接続するときに使うコマンド（例：<code>ssh user@host</code>）</li>
+            <li style={{ marginBottom: '1em' }}><strong>ポート22</strong><br />SSHがよく使う通信の入口番号</li>
+          </ul>
+        </section>
+
+        <section className="term-content-section">
+          <h2>関連用語</h2>
+          <ul style={{ listStyle: 'none', paddingLeft: 0 }}>
+            <li style={{ marginBottom: '1em' }}><strong>サーバー</strong><br />SSHで「入る先」になるコンピュータ<br /><Link href="/terms/server">→ サーバーの用語ページへ</Link></li>
+            <li style={{ marginBottom: '1em' }}><strong>IPアドレスとポート番号</strong><br />サーバーの住所と入口番号<br /><Link href="/terms/ip-address">→ IPアドレス／ポート番号の解説へ</Link></li>
+            <li style={{ marginBottom: '1em' }}><strong>SSL/TLS</strong><br />Web通信を暗号化して安全にする仕組み<br /><Link href="/terms/ssl-tls">→ SSL/TLSの用語ページへ</Link></li>
+            <li style={{ marginBottom: '1em' }}><strong>CLI / GUI</strong><br />文字で操作する画面と、ボタンで操作する画面<br /><Link href="/terms/cli-gui">→ CLI・GUIの違いへ</Link></li>
           </ul>
         </section>
 
         <FAQAccordion faqs={faqs} />
-
-        <section className="term-comparison">
-          <h2>関連用語</h2>
-          <div className="comparison-table">
-            <table>
-              <thead>
-                <tr>
-                  <th>用語</th>
-                  <th>説明</th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr>
-                  <td>
-                    <Link href="/terms/server" className="term-name">
-                      サーバー
-                    </Link>
-                  </td>
-                  <td>SSHで「入る」先のコンピュータ</td>
-                </tr>
-                <tr>
-                  <td>
-                    <Link href="/terms/ip-address" className="term-name">
-                      IPアドレスとポート番号
-                    </Link>
-                  </td>
-                  <td>サーバーの住所と、SSHの入口（ポート22）を理解するのに役立つ</td>
-                </tr>
-                <tr>
-                  <td>
-                    <Link href="/terms/ssl-tls" className="term-name">
-                      SSL/TLS
-                    </Link>
-                  </td>
-                  <td>SSHと同じく「通信を暗号化して安全にする」仕組み（Web用）</td>
-                </tr>
-                <tr>
-                  <td>
-                    <Link href="/terms/cli-gui" className="term-name">
-                      CLI / GUI
-                    </Link>
-                  </td>
-                  <td>SSHで使う「ターミナル」はCLI（文字で操作する画面）</td>
-                </tr>
-              </tbody>
-            </table>
-          </div>
-        </section>
 
         <AdBelowRelatedTerms />
       </main>
