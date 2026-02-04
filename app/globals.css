@@ -1306,6 +1306,33 @@ main a:not(.card-link):not(.breadcrumb-link):not(.term-name):active {
   color: #0a7f74;
 }
 
+/* デモ用アコーディオン（確認ダイアログ・入力制限など） */
+.demo-accordion {
+  margin-top: 1rem;
+}
+
+.demo-accordion details {
+  margin-bottom: 15px;
+  border: 1px solid #e2e8f0;
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.demo-accordion details:last-child {
+  margin-bottom: 0;
+}
+
+.demo-accordion summary {
+  padding: 14px 18px;
+  background-color: #f8fafc;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.demo-accordion details[open] summary {
+  border-bottom: 1px solid #e2e8f0;
+}
+
 /* FAQアコーディオンスタイル */
 .faq-section {
   margin-top: 50px;

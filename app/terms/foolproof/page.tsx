@@ -1,6 +1,7 @@
 'use client'
 
 import Link from 'next/link'
+import Image from 'next/image'
 import FoolProofDemo from '@/components/FoolProofDemo'
 import ConfirmDialogDemo from '@/components/ConfirmDialogDemo'
 import InputValidationDemo from '@/components/InputValidationDemo'
@@ -40,8 +41,36 @@ export default function FoolProofPage() {
           'フールプルーフとは「ミスを防ぐ」設計思想',
           'Webサイト・Webサービスで身近に使われている',
           '身近な例（日常生活・ITサービス）からの理解',
-          'フールプルーフがなぜ重要なのか'
+          'よくある質問（FAQ）'
         ]}
+        heroImage={
+          <div
+            style={{
+              width: '100%',
+              maxWidth: '900px',
+              margin: '0 auto clamp(24px, 4vw, 32px) auto',
+              borderRadius: '12px',
+              overflow: 'hidden',
+              boxShadow: '0 4px 12px rgba(0,0,0,0.1)',
+              aspectRatio: '3 / 2',
+            }}
+          >
+            <Image
+              src="/images/terms/foolproof-hero.png"
+              alt="フールプルーフ - ミスを防ぐ設計思想をわかりやすく学ぶ"
+              width={1536}
+              height={1024}
+              priority
+              style={{
+                width: '100%',
+                height: '100%',
+                objectFit: 'cover',
+                objectPosition: 'center',
+                display: 'block',
+              }}
+            />
+          </div>
+        }
       />
 
       <main>
@@ -58,7 +87,7 @@ export default function FoolProofPage() {
         </section>
 
         <section>
-          <h2>2. Webサイト・Webサービスでのフールプルーフ</h2>
+          <h2>2. Webの世界でのフールプルーフ</h2>
           <p>
             実は、私たちが毎日使っているWebはフールプルーフだらけです。
           </p>
@@ -69,26 +98,21 @@ export default function FoolProofPage() {
             <li>条件を満たすまでボタンが押せない</li>
             <li>操作前に確認ダイアログが表示される</li>
           </ul>
-        </section>
 
-        <section>
-          <h2>3. 入力制限・ボタンの無効化</h2>
+          <h3>入力制限・ボタンの無効化</h3>
           <p>
             ユーザーが「間違えないように頑張る」のではなく、
             <strong>間違えた状態では先に進めない設計</strong>になっています。
           </p>
           <FoolProofDemo />
-        </section>
 
-        <section>
-          <h2>4. その他のフールプルーフ例（Web中心）</h2>
+          <h3>その他のフールプルーフ例</h3>
           <p>
             他にもWebでよく使われるフールプルーフの例を、アコーディオン形式で紹介します。
           </p>
-
-          <div className="faq-accordion" style={{ marginTop: '1rem' }}>
-            <details style={{ marginBottom: '15px', border: '1px solid #e2e8f0', borderRadius: '8px', overflow: 'hidden' }}>
-              <summary style={{ padding: '14px 18px', cursor: 'pointer', backgroundColor: '#f8fafc', fontWeight: 600 }}>
+          <div className="demo-accordion">
+            <details>
+              <summary>
                 確認ダイアログ（confirm）
               </summary>
               <div style={{ padding: '18px', borderTop: '1px solid #e2e8f0' }}>
@@ -108,8 +132,8 @@ if (confirmed) {
               </div>
             </details>
 
-            <details style={{ marginBottom: '15px', border: '1px solid #e2e8f0', borderRadius: '8px', overflow: 'hidden' }}>
-              <summary style={{ padding: '14px 18px', cursor: 'pointer', backgroundColor: '#f8fafc', fontWeight: 600 }}>
+            <details>
+              <summary>
                 入力形式のガイド・リアルタイム警告
               </summary>
               <div style={{ padding: '18px', borderTop: '1px solid #e2e8f0' }}>
@@ -130,8 +154,8 @@ if (confirmed) {
               </div>
             </details>
 
-            <details style={{ marginBottom: '15px', border: '1px solid #e2e8f0', borderRadius: '8px', overflow: 'hidden' }}>
-              <summary style={{ padding: '14px 18px', cursor: 'pointer', backgroundColor: '#f8fafc', fontWeight: 600 }}>
+            <details>
+              <summary>
                 操作できないUI（非表示・グレーアウト）
               </summary>
               <div style={{ padding: '18px', borderTop: '1px solid #e2e8f0' }}>
@@ -156,7 +180,7 @@ if (confirmed) {
         </section>
 
         <section>
-          <h2>5. 身近なフールプルーフの例（Web → 日常へ）</h2>
+          <h2>3. 身近なフールプルーフの例（Web → 日常へ）</h2>
           <p>
             Webも日常も、考え方は同じです。
           </p>
@@ -169,22 +193,6 @@ if (confirmed) {
           <ul>
             <li><strong>電子レンジ</strong>：ドアが開いていると動かない</li>
             <li><strong>USB</strong>：上下逆では挿さらない（Type-Cは両面挿し可能）</li>
-          </ul>
-        </section>
-
-        <section>
-          <h2>6. なぜフールプルーフが重要なのか</h2>
-          <h3>Q. なぜフールプルーフが重要なのですか？</h3>
-          <ul>
-            <li>人は必ずミスをするから</li>
-            <li>ミスを「注意不足」で片付けると事故やトラブルにつながる</li>
-            <li>設計で防げば、
-              <ul>
-                <li>ユーザーのストレスが減る</li>
-                <li>トラブル・問い合わせが減る</li>
-                <li>安全性・信頼性が上がる</li>
-              </ul>
-            </li>
           </ul>
         </section>
 
