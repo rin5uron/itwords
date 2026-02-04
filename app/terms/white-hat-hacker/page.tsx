@@ -203,8 +203,6 @@ export default function WhiteHatHackerPage() {
           </ol>
         </section>
 
-        <FAQAccordion faqs={faqs} />
-
         <section>
           <h2>関連用語</h2>
           <ul>
@@ -212,6 +210,8 @@ export default function WhiteHatHackerPage() {
             <li><Link href="/terms/exploit" style={{ color: '#8abdea', textDecoration: 'underline' }}>エクスプロイト</Link> - ホワイトハッカーが発見・報告する攻撃コード</li>
           </ul>
         </section>
+
+        <FAQAccordion faqs={faqs} />
 
       </main>
     </div>

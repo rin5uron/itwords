@@ -187,8 +187,6 @@ export default function CVEPage() {
           </ul>
         </section>
 
-        <FAQAccordion faqs={faqs} />
-
         <section>
           <h2>関連用語</h2>
           <ul>
@@ -197,6 +195,8 @@ export default function CVEPage() {
             <li><Link href="/terms/white-hat-hacker" style={{ color: '#8abdea', textDecoration: 'underline' }}>ホワイトハッカー</Link> - CVEに登録される脆弱性を発見する人たち</li>
           </ul>
         </section>
+
+        <FAQAccordion faqs={faqs} />
 
       </main>
     </div>

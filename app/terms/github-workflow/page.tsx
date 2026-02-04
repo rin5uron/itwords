@@ -291,8 +291,6 @@ Closes #123`}</code></pre>
           </p>
         </section>
 
-        <FAQAccordion faqs={faqs} />
-
         <section className="term-comparison">
           <h2>関連用語</h2>
           <div className="comparison-table">
@@ -320,6 +318,8 @@ Closes #123`}</code></pre>
             </table>
           </div>
         </section>
+
+        <FAQAccordion faqs={faqs} />
 
       </main>
     </div>

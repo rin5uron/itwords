@@ -432,8 +432,6 @@ export default function BootstrapPage() {
           </div>
         </section>
 
-        <FAQAccordion faqs={faqs} />
-
         <section className="term-comparison">
           <h2>関連用語</h2>
           <div className="comparison-table">
@@ -481,6 +479,8 @@ export default function BootstrapPage() {
             </table>
           </div>
         </section>
+
+        <FAQAccordion faqs={faqs} />
 
       </main>
     </div>
