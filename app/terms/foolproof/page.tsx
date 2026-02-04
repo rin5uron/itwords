@@ -38,8 +38,8 @@ export default function FoolProofPage() {
         dateModified="2026-02-03"
         summaryItems={[
           'フールプルーフとは「ミスを防ぐ」設計思想',
-          'Webでも当たり前に使われている',
-          '入力制限・ボタン無効化の体験デモ',
+          'Webサイト・Webサービスで身近に使われている',
+          '入力制限・ボタン無効化で体験できる',
           '身近な例：電子レンジ、ATM、USBなど'
         ]}
       />

@@ -120,8 +120,16 @@ header .date-info {
   background-color: #f9f7ef;
   border-radius: 8px;
   max-height: 70vh;
-  overflow-x: hidden;
+  overflow-x: auto;
   overflow-y: auto;
+  box-sizing: border-box;
+}
+
+/* フールプルーフデモ：入力が見切れないよう overflow を緩和 */
+.demo-section--foolproof {
+  overflow-x: visible;
+  overflow-y: visible;
+  max-height: none;
 }
 
 /* 高さ制限なし（別のPC→自分のPCの流れデモなど） */
@@ -604,6 +612,13 @@ footer a:hover {
   .demo-section {
     padding: 25px 15px;
     max-height: 60vh;
+  }
+
+  /* スマホではデモ内の入力・ボタンを横幅100%に（PC基準のmax-widthを上書き） */
+  .demo-section input,
+  .demo-section .demo-button {
+    max-width: 100% !important;
+    box-sizing: border-box;
   }
 
   .demo-section--no-max-height {

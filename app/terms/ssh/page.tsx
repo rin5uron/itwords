@@ -8,11 +8,11 @@ import SSHDemo from './SSHDemo'
 import SSHAccessFromOtherDemo from './SSHAccessFromOtherDemo'
 
 export const metadata: Metadata = {
-  title: 'SSHとは？小学生でもわかる【会社のパソコンからサーバーに入る仕組み】',
+  title: 'SSHとは？会社のパソコンからサーバーに入る仕組み（小学生でもわかる）',
   description: '会社のパソコンから会社のサーバーに安全に入る仕組みがSSH。遠隔ログイン・暗号化・秘密鍵の基本を、初心者向けにやさしく解説します。',
   keywords: ['SSH', 'Secure Shell', 'SSH とは', 'リモート接続', 'サーバー接続', '秘密鍵', '公開鍵', 'ターミナル', 'IT用語 わかりやすく'],
   openGraph: {
-    title: 'SSHとは？小学生もわかる【会社のパソコンからサーバーに入る仕組み】',
+    title: 'SSHとは？会社のパソコンからサーバーに入る仕組み（小学生でもわかる）',
     description: '会社のパソコンから会社のサーバーに安全に入る仕組みがSSH。遠隔ログインの基本を初心者向けに解説します。',
     type: 'article',
     images: [
@@ -21,7 +21,7 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'SSHとは？小学生でもわかる【会社のパソコンからサーバーに入る仕組み】',
+    title: 'SSHとは？会社のパソコンからサーバーに入る仕組み（小学生でもわかる）',
     description: '会社のパソコンから会社のサーバーに安全に入る仕組みがSSH。遠隔ログインの基本を初心者向けに解説します。',
     images: ['/images/ssh.png'],
   },
@@ -51,7 +51,7 @@ export default function SSHPage() {
       <StructuredData type="FAQPage" faqs={faqs} />
       <StructuredData
         type="Article"
-        title="SSHとは？小学生でもわかる【会社のパソコンからサーバーに入る仕組み】"
+        title="SSHとは？会社のパソコンからサーバーに入る仕組み（小学生でもわかる）"
         description="会社のパソコンから会社のサーバーに安全に入る仕組みがSSH。遠隔ログイン・暗号化・秘密鍵の基本を初心者向けに解説します。"
         datePublished="2026-02-01"
         dateModified="2026-02-03"
@@ -154,13 +154,22 @@ export default function SSHPage() {
             会社では、ターミナルの <code>ssh</code> コマンドまたはGUIツールを使って接続することが多いです。
           </p>
 
-          <h3>コマンドで接続する場合</h3>
+          <h3>1. サーバーへの入り方（接続方法は2つ）</h3>
+          <p style={{ marginTop: '0.5em' }}>
+            <strong>コマンド</strong>で接続するか、<strong>GUIツール</strong>で接続するか、どちらかです。
+          </p>
+          <p>
+            コマンドで接続する場合は、ターミナルで次のように入力します。
+          </p>
           <div className="code-example" style={{ marginTop: '0.5em' }}>
             <pre><code>{`ssh ユーザー名@サーバーのIPアドレス
 例）ssh tanaka@192.168.1.100`}</code></pre>
           </div>
+          <p style={{ marginTop: '0.8em', fontSize: '0.95em', color: '#64748b' }}>
+            GUIツール（Tera Term、PuTTY、Termius など）を使う場合は、接続先・ユーザー名・ポートを入力する画面で同じ情報を指定します。
+          </p>
 
-          <h3>サーバーへの入り方：2つの方法</h3>
+          <h3>2. 認証の仕方（2つある）</h3>
           <div style={{
             display: 'grid',
             gridTemplateColumns: 'repeat(auto-fit, minmax(240px, 1fr))',
@@ -238,19 +247,31 @@ export default function SSHPage() {
             ここまでは、「手元のPCから、会社のサーバーに入る」使い方を見てきました。
           </p>
           <p>
-            SSHには、もう一つの使い方があります。それは、自分のPCを「入り先」にする使い方です。
+            SSHには、もう一つの使い方があります。自分のPCを「入り先」にすると、<strong>別のPCから自分のPCに入り、遠隔操作できる状態</strong>になります。
           </p>
 
           <hr style={{ margin: '1.5em 0', border: 'none', borderTop: '1px solid #e2e8f0' }} />
 
-          <h3>別のPCから自分のPCに入る流れ（概要）</h3>
+          <h3>別のPCから自分のPCに入る流れ</h3>
           <p>
-            このデモでは、<strong>自分のPCが「入られる側」になる流れだけ</strong>を確認します。
+            このデモでは、流れを確認できます。
           </p>
+          <div
+            style={{
+              padding: '12px 16px',
+              marginBottom: '1em',
+              backgroundColor: '#f8fafc',
+              border: '1px solid #e2e8f0',
+              borderRadius: '8px',
+              fontSize: '0.95em',
+            }}
+          >
+            <strong>入られる側の条件：</strong>自分のPCで sshd を動かして待つ
+          </div>
           <ol style={{ paddingLeft: '1.5em', lineHeight: 1.8 }}>
-            <li>自分のPCを「入り先」にする（sshd を動かして待つ）</li>
-            <li>別のPCから、つなぎに来る（ssh で接続する）</li>
-            <li>自分のPCに入れる（遠隔操作できる状態）</li>
+            <li>自分のPCを「入り先」にする</li>
+            <li>別のPCから、つなぎに来る</li>
+            <li>自分のPCに入れる</li>
           </ol>
           <div style={{ marginTop: '1em' }}>
             <SSHAccessFromOtherDemo />
@@ -295,75 +316,75 @@ export default function SSHPage() {
           </details>
         </section>
 
-        <section className="term-content-section">
+        <section className="term-comparison">
           <h2>このページで使う用語</h2>
-          <div
-            style={{
-              padding: 'clamp(16px, 4vw, 24px)',
-              backgroundColor: '#f8fafc',
-              borderRadius: '8px',
-              border: '1px solid #e2e8f0',
-              marginTop: '1em',
-            }}
-          >
-            <dl style={{ margin: 0, display: 'grid', gap: 'clamp(12px, 3vw, 16px)' }}>
-              <div style={{ paddingBottom: 'clamp(12px, 3vw, 16px)', borderBottom: '1px solid #e2e8f0' }}>
-                <dt style={{ margin: '0 0 4px', fontWeight: 700, fontSize: '1.05em', color: '#0f172a' }}>クライアント</dt>
-                <dd style={{ margin: 0, fontSize: '0.95em', lineHeight: 1.6, color: '#475569' }}>SSHで「つなぎに行く側」（手元のパソコンなど）</dd>
-              </div>
-              <div style={{ paddingBottom: 'clamp(12px, 3vw, 16px)', borderBottom: '1px solid #e2e8f0' }}>
-                <dt style={{ margin: '0 0 4px', fontWeight: 700, fontSize: '1.05em', color: '#0f172a' }}>サーバー</dt>
-                <dd style={{ margin: 0, fontSize: '0.95em', lineHeight: 1.6, color: '#475569' }}>SSHで「接続される側」（入り先のコンピュータ）</dd>
-              </div>
-              <div style={{ paddingBottom: 'clamp(12px, 3vw, 16px)', borderBottom: '1px solid #e2e8f0' }}>
-                <dt style={{ margin: '0 0 4px', fontWeight: 700, fontSize: '1.05em', color: '#0f172a' }}>sshd</dt>
-                <dd style={{ margin: 0, fontSize: '0.95em', lineHeight: 1.6, color: '#475569' }}>接続される側で動く、SSHの受付プログラム</dd>
-              </div>
-              <div style={{ paddingBottom: 'clamp(12px, 3vw, 16px)', borderBottom: '1px solid #e2e8f0' }}>
-                <dt style={{ margin: '0 0 4px', fontWeight: 700, fontSize: '1.05em', color: '#0f172a' }}>ターミナル</dt>
-                <dd style={{ margin: 0, fontSize: '0.95em', lineHeight: 1.6, color: '#475569' }}>コマンドを文字で入力する画面（CLI）</dd>
-              </div>
-              <div style={{ paddingBottom: 'clamp(12px, 3vw, 16px)', borderBottom: '1px solid #e2e8f0' }}>
-                <dt style={{ margin: '0 0 4px', fontWeight: 700, fontSize: '1.05em', color: '#0f172a' }}>sshコマンド</dt>
-                <dd style={{ margin: 0, fontSize: '0.95em', lineHeight: 1.6, color: '#475569' }}>SSHで接続するときに使うコマンド（例：<code>ssh user@host</code>）</dd>
-              </div>
-              <div>
-                <dt style={{ margin: '0 0 4px', fontWeight: 700, fontSize: '1.05em', color: '#0f172a' }}>ポート22</dt>
-                <dd style={{ margin: 0, fontSize: '0.95em', lineHeight: 1.6, color: '#475569' }}>SSHがよく使う通信の入口番号</dd>
-              </div>
-            </dl>
+          <div className="comparison-table">
+            <table>
+              <thead>
+                <tr>
+                  <th>用語</th>
+                  <th>説明</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>クライアント</td>
+                  <td>SSHで「つなぎに行く側」（手元のパソコンなど）</td>
+                </tr>
+                <tr>
+                  <td>サーバー</td>
+                  <td>SSHで「接続される側」（入り先のコンピュータ）</td>
+                </tr>
+                <tr>
+                  <td>sshd</td>
+                  <td>接続される側で動く、SSHの受付プログラム</td>
+                </tr>
+                <tr>
+                  <td>ターミナル</td>
+                  <td>コマンドを文字で入力する画面（CLI）</td>
+                </tr>
+                <tr>
+                  <td>sshコマンド</td>
+                  <td>SSHで接続するときに使うコマンド（例：<code>ssh user@host</code>）</td>
+                </tr>
+                <tr>
+                  <td>ポート22</td>
+                  <td>SSHがよく使う通信の入口番号</td>
+                </tr>
+              </tbody>
+            </table>
           </div>
         </section>
 
-        <section className="term-content-section">
+        <section className="term-comparison">
           <h2>関連用語</h2>
-          <div
-            style={{
-              padding: 'clamp(16px, 4vw, 24px)',
-              backgroundColor: '#f0fdfa',
-              borderRadius: '8px',
-              border: '1px solid #99f6e4',
-              marginTop: '1em',
-            }}
-          >
-            <dl style={{ margin: 0, display: 'grid', gap: 'clamp(12px, 3vw, 16px)' }}>
-              <div style={{ paddingBottom: 'clamp(12px, 3vw, 16px)', borderBottom: '1px solid #99f6e4' }}>
-                <dt style={{ margin: '0 0 4px', fontWeight: 700, fontSize: '1.05em', color: '#0f172a' }}>サーバー</dt>
-                <dd style={{ margin: 0, fontSize: '0.95em', lineHeight: 1.6, color: '#475569' }}>SSHで「入る先」になるコンピュータ<br /><Link href="/terms/server" style={{ color: '#14b8a6', fontWeight: 500 }}>→ サーバーの用語ページへ</Link></dd>
-              </div>
-              <div style={{ paddingBottom: 'clamp(12px, 3vw, 16px)', borderBottom: '1px solid #99f6e4' }}>
-                <dt style={{ margin: '0 0 4px', fontWeight: 700, fontSize: '1.05em', color: '#0f172a' }}>IPアドレスとポート番号</dt>
-                <dd style={{ margin: 0, fontSize: '0.95em', lineHeight: 1.6, color: '#475569' }}>サーバーの住所と入口番号<br /><Link href="/terms/ip-address" style={{ color: '#14b8a6', fontWeight: 500 }}>→ IPアドレス／ポート番号の解説へ</Link></dd>
-              </div>
-              <div style={{ paddingBottom: 'clamp(12px, 3vw, 16px)', borderBottom: '1px solid #99f6e4' }}>
-                <dt style={{ margin: '0 0 4px', fontWeight: 700, fontSize: '1.05em', color: '#0f172a' }}>SSL/TLS</dt>
-                <dd style={{ margin: 0, fontSize: '0.95em', lineHeight: 1.6, color: '#475569' }}>Web通信を暗号化して安全にする仕組み<br /><Link href="/terms/ssl-tls" style={{ color: '#14b8a6', fontWeight: 500 }}>→ SSL/TLSの用語ページへ</Link></dd>
-              </div>
-              <div>
-                <dt style={{ margin: '0 0 4px', fontWeight: 700, fontSize: '1.05em', color: '#0f172a' }}>CLI / GUI</dt>
-                <dd style={{ margin: 0, fontSize: '0.95em', lineHeight: 1.6, color: '#475569' }}>文字で操作する画面と、ボタンで操作する画面<br /><Link href="/terms/cli-gui" style={{ color: '#14b8a6', fontWeight: 500 }}>→ CLI・GUIの違いへ</Link></dd>
-              </div>
-            </dl>
+          <div className="comparison-table">
+            <table>
+              <thead>
+                <tr>
+                  <th>用語</th>
+                  <th>説明</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td><Link href="/terms/server" className="term-name">サーバー</Link></td>
+                  <td>SSHで「入る先」になるコンピュータ</td>
+                </tr>
+                <tr>
+                  <td><Link href="/terms/ip-address" className="term-name">IPアドレスとポート番号</Link></td>
+                  <td>サーバーの住所と入口番号</td>
+                </tr>
+                <tr>
+                  <td><Link href="/terms/ssl-tls" className="term-name">SSL/TLS</Link></td>
+                  <td>Web通信を暗号化して安全にする仕組み</td>
+                </tr>
+                <tr>
+                  <td><Link href="/terms/cli-gui" className="term-name">CLI / GUI</Link></td>
+                  <td>文字で操作する画面と、ボタンで操作する画面</td>
+                </tr>
+              </tbody>
+            </table>
           </div>
         </section>
 
