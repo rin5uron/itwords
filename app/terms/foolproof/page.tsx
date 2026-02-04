@@ -57,7 +57,7 @@ export default function FoolProofPage() {
           >
             <Image
               src="/images/terms/foolproof-hero.png"
-              alt="フールプルーフ - ミスを防ぐ設計思想をわかりやすく学ぶ"
+              alt="フールプルーフ - 確認ダイアログなどミスを防ぐ設計をわかりやすく学ぶ"
               width={1536}
               height={1024}
               priority
@@ -180,7 +180,7 @@ if (confirmed) {
         </section>
 
         <section>
-          <h2>3. 身近なフールプルーフの例（Web → 日常へ）</h2>
+          <h2>3. 身近なフールプルーフの例</h2>
           <p>
             Webも日常も、考え方は同じです。
           </p>

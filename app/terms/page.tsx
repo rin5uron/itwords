@@ -1,4 +1,5 @@
 import Link from 'next/link'
+import Image from 'next/image'
 import fs from 'fs'
 import path from 'path'
 import type { Metadata } from 'next'
@@ -36,6 +37,28 @@ export default function TermsListPage() {
       <SiteHeader showNav={true} />
 
       <header>
+        <div
+          style={{
+            width: '100%',
+            maxWidth: '280px',
+            margin: '0 auto 1.5rem',
+            borderRadius: '12px',
+            overflow: 'hidden',
+            boxShadow: '0 4px 12px rgba(0,0,0,0.08)',
+          }}
+        >
+          <Image
+            src="/images/terms/it-terms-hero.png"
+            alt="IT用語を学ぶ"
+            width={1024}
+            height={1024}
+            style={{
+              width: '100%',
+              height: 'auto',
+              display: 'block',
+            }}
+          />
+        </div>
         <h1>用語一覧</h1>
         <p>IT用語を一覧から探したり、検索したりできます。</p>
       </header>
