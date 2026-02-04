@@ -659,9 +659,6 @@ node_modules/
           </p>
         </section>
 
-
-        <FAQAccordion faqs={faqs} />
-
         <section className="term-comparison">
           <h2>関連用語</h2>
           <div className="comparison-table">
@@ -694,6 +691,7 @@ node_modules/
           </div>
         </section>
 
+        <FAQAccordion faqs={faqs} />
       </main>
     </div>
   )

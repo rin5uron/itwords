@@ -751,8 +751,6 @@ async function decryptData(ciphertext, key, iv) {
           </p>
         </section>
 
-        <FAQAccordion faqs={faqs} />
-
         <section className="term-comparison">
           <h2>関連用語</h2>
           <div className="comparison-table">
@@ -799,7 +797,7 @@ async function decryptData(ciphertext, key, iv) {
           </div>
         </section>
 
-
+        <FAQAccordion faqs={faqs} />
       </main>
     </div>
   )

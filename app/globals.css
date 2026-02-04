@@ -1098,6 +1098,7 @@ footer a:hover {
 .term-page-header__toc {
   margin-bottom: clamp(16px, 4vw, 24px);
   text-align: left; /* 目次を左寄せ（親の center 継承を打ち消す） */
+  overflow-x: hidden; /* 横スライダーを出さない（一括指定） */
 }
 
 .term-page-header__toc .toc-wrapper {
@@ -1164,6 +1165,7 @@ footer a:hover {
 @media (min-width: 769px) {
   .toc-wrapper .table-of-contents ul {
     max-height: 50vh;
+    overflow-x: hidden; /* 横スライダーを出さない（一括指定） */
     overflow-y: auto;
   }
 }
@@ -1209,12 +1211,14 @@ footer a:hover {
   margin: 0;
   width: 100%;
   max-width: 100%;
+  min-width: 0; /* flex子の横はみ出し防止 */
   display: flex;
   flex-direction: column;
   flex-wrap: nowrap;
   gap: 3px;
   align-items: stretch;
   box-sizing: border-box;
+  overflow-x: hidden; /* 横スライダーを出さない（一括指定） */
 }
 
 .table-of-contents li {
@@ -1465,7 +1469,9 @@ main a:not(.card-link):not(.breadcrumb-link):not(.term-name):active {
     gap: 2px;
     width: 100%;
     max-width: 100%;
+    min-width: 0;
     max-height: 45vh;
+    overflow-x: hidden; /* 横スライダーを出さない（一括指定） */
     overflow-y: auto;
     -webkit-overflow-scrolling: touch;
     flex-wrap: nowrap;

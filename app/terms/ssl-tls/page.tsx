@@ -297,8 +297,6 @@ export default function SslTlsPage() {
           </p>
         </section>
 
-        <FAQAccordion faqs={faqs} />
-
         <section className="term-comparison">
           <h2>関連用語</h2>
           <div className="comparison-table">
@@ -347,6 +345,7 @@ export default function SslTlsPage() {
           </div>
         </section>
 
+        <FAQAccordion faqs={httpsFAQs} />
       </main>
     </div>
   )

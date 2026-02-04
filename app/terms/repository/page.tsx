@@ -500,8 +500,6 @@ MIT`}</code></pre>
           </div>
         </section>
 
-        <FAQAccordion faqs={faqs} />
-
         <section className="term-comparison">
           <h2>関連用語</h2>
           <div className="comparison-table">
@@ -552,6 +550,7 @@ MIT`}</code></pre>
           </div>
         </section>
 
+        <FAQAccordion faqs={faqs} />
       </main>
     </div>
   )
