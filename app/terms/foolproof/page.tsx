@@ -71,7 +71,7 @@ export default function FoolProofPage() {
         </section>
 
         <section>
-          <h2>3. 体験デモ①：入力制限・ボタンの無効化</h2>
+          <h2>3. 入力制限・ボタンの無効化</h2>
           <p>
             ユーザーが「間違えないように頑張る」のではなく、
             <strong>間違えた状態では先に進めない設計</strong>になっています。
@@ -88,7 +88,7 @@ export default function FoolProofPage() {
           <div className="faq-accordion" style={{ marginTop: '1rem' }}>
             <details style={{ marginBottom: '15px', border: '1px solid #e2e8f0', borderRadius: '8px', overflow: 'hidden' }}>
               <summary style={{ padding: '14px 18px', cursor: 'pointer', backgroundColor: '#f8fafc', fontWeight: 600 }}>
-                デモ②：確認ダイアログ（confirm）
+                確認ダイアログ（confirm）
               </summary>
               <div style={{ padding: '18px', borderTop: '1px solid #e2e8f0' }}>
                 <p>
@@ -109,7 +109,7 @@ if (confirmed) {
 
             <details style={{ marginBottom: '15px', border: '1px solid #e2e8f0', borderRadius: '8px', overflow: 'hidden' }}>
               <summary style={{ padding: '14px 18px', cursor: 'pointer', backgroundColor: '#f8fafc', fontWeight: 600 }}>
-                デモ③：入力形式のガイド・リアルタイム警告
+                入力形式のガイド・リアルタイム警告
               </summary>
               <div style={{ padding: '18px', borderTop: '1px solid #e2e8f0' }}>
                 <p>
@@ -131,7 +131,7 @@ if (confirmed) {
 
             <details style={{ marginBottom: '15px', border: '1px solid #e2e8f0', borderRadius: '8px', overflow: 'hidden' }}>
               <summary style={{ padding: '14px 18px', cursor: 'pointer', backgroundColor: '#f8fafc', fontWeight: 600 }}>
-                デモ④：操作できないUI（非表示・グレーアウト）
+                操作できないUI（非表示・グレーアウト）
               </summary>
               <div style={{ padding: '18px', borderTop: '1px solid #e2e8f0' }}>
                 <p>

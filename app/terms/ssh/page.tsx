@@ -300,8 +300,9 @@ export default function SSHPage() {
 
           <hr style={{ margin: '1.5em 0', border: 'none', borderTop: '1px solid #e2e8f0' }} />
 
-          <details style={{ marginTop: '1em', padding: '12px 16px', border: '1px solid #e2e8f0', borderRadius: '8px', backgroundColor: '#f8fafc' }}>
-            <summary style={{ cursor: 'pointer', fontWeight: 600 }}>参考：sshdを動かすには</summary>
+          <details className="ref-details">
+            <summary><span className="ref-badge">補足</span>sshdを動かすには</summary>
+            <div className="ref-details-content">
             <p style={{ marginTop: '12px', marginBottom: '8px' }}>
               かんたんにいうと、<strong>パソコンの種類によってやり方が異なります。</strong>
             </p>
@@ -313,6 +314,7 @@ export default function SSHPage() {
             <p style={{ marginTop: '12px', marginBottom: 0, fontSize: '0.95em', color: '#64748b' }}>
               最初から sshd が入っているパソコンもあれば、あとから有効にするパソコンもあります。
             </p>
+            </div>
           </details>
         </section>
 
@@ -332,7 +334,7 @@ export default function SSHPage() {
                   <td>SSHで「つなぎに行く側」（手元のパソコンなど）</td>
                 </tr>
                 <tr>
-                  <td>サーバー</td>
+                  <td><Link href="/terms/server" className="term-name">サーバー</Link></td>
                   <td>SSHで「接続される側」（入り先のコンピュータ）</td>
                 </tr>
                 <tr>
@@ -350,26 +352,6 @@ export default function SSHPage() {
                 <tr>
                   <td>ポート22</td>
                   <td>SSHがよく使う通信の入口番号</td>
-                </tr>
-              </tbody>
-            </table>
-          </div>
-        </section>
-
-        <section className="term-comparison">
-          <h2>関連用語</h2>
-          <div className="comparison-table">
-            <table>
-              <thead>
-                <tr>
-                  <th>用語</th>
-                  <th>説明</th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr>
-                  <td><Link href="/terms/server" className="term-name">サーバー</Link></td>
-                  <td>SSHで「入る先」になるコンピュータ</td>
                 </tr>
                 <tr>
                   <td><Link href="/terms/ip-address" className="term-name">IPアドレスとポート番号</Link></td>

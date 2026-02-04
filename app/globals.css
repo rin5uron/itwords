@@ -195,6 +195,51 @@ summary:hover {
   background-color: #f2f2f2;
 }
 
+/* 補足・参考アコーディオン（共通フォーマット） */
+.ref-details {
+  margin-top: 1em;
+  padding: 0;
+  border: 1px solid #e2e8f0;
+  border-radius: 8px;
+  background-color: #f8fafc;
+  overflow: hidden;
+}
+
+.ref-details summary {
+  padding: 12px 16px;
+  background-color: transparent;
+  border: none;
+  border-bottom: none;
+  font-weight: 600;
+  font-size: 0.95em;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.ref-details[open] summary {
+  border-bottom: 1px solid #e2e8f0;
+}
+
+.ref-details summary:hover {
+  background-color: #f1f5f9;
+}
+
+.ref-badge {
+  display: inline-block;
+  padding: 2px 8px;
+  font-size: 0.75em;
+  font-weight: 600;
+  color: #64748b;
+  background-color: #e2e8f0;
+  border-radius: 4px;
+  flex-shrink: 0;
+}
+
+.ref-details-content {
+  padding: 12px 16px 16px;
+}
+
 .code-example {
   background-color: #1e1e1e;
   color: #d4d4d4;
@@ -1052,6 +1097,7 @@ footer a:hover {
 
 .term-page-header__toc {
   margin-bottom: clamp(16px, 4vw, 24px);
+  text-align: left; /* 目次を左寄せ（親の center 継承を打ち消す） */
 }
 
 .term-page-header__toc .toc-wrapper {
@@ -1094,6 +1140,7 @@ footer a:hover {
   clear: both;
   box-sizing: border-box;
   overflow: hidden; /* はみ出しによるスクロールバーを強制的に非表示 */
+  text-align: left; /* 親の text-align: center 継承を打ち消す */
 }
 
 /* 目次（Table of Contents）－全ページ共通スタイル（globals.css） */
@@ -1110,6 +1157,7 @@ footer a:hover {
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
   box-sizing: border-box;
   overflow-x: hidden;
+  text-align: left; /* 親の text-align: center 継承を打ち消す */
 }
 
 /* PCで目次が画面いっぱいにならないよう高さを制限（共通） */
