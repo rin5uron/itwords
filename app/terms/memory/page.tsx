@@ -353,14 +353,15 @@ export default function MemoryPage() {
               </label>
               <label style={{ display: 'flex', flexDirection: 'column', gap: '4px', minWidth: '140px' }}>
                 <span style={{ fontSize: '14px' }}>近くにあった割合（%）</span>
-                <input
-                  type="number"
-                  min={0}
-                  max={100}
+                <select
                   value={hitRate}
-                  onChange={(e) => setHitRate(Number(e.target.value) || 0)}
+                  onChange={(e) => setHitRate(Number(e.target.value))}
                   style={{ padding: '8px', fontSize: '16px', borderRadius: '4px' }}
-                />
+                >
+                  {[50, 70, 80, 90, 95, 99].map((v) => (
+                    <option key={v} value={v}>{v}%</option>
+                  ))}
+                </select>
               </label>
             </div>
             <div style={{ marginTop: '16px', padding: '16px', backgroundColor: '#fff', borderRadius: '8px', border: '1px solid #dee2e6' }}>

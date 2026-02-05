@@ -1526,10 +1526,3 @@ main a:not(.card-link):not(.breadcrumb-link):not(.term-name):active {
     overflow: hidden;
   }
 }
-
-/* AdSense PC時は下部広告を非表示 */
-@media (min-width: 769px) {
-  .adsense-subtle-bottom {
-    display: none;
-  }
-}

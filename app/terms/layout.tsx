@@ -10,7 +10,7 @@ export default function TermsLayout({
 }) {
   return (
     <>
-      {/* 上部広告は非表示（表示時は position="top" で 25vh） */}
+      <AdSubtleHorizontal adSlot={SLOT_TOP} position="top" />
       {children}
       <AdSubtleHorizontal adSlot={SLOT_BOTTOM} position="bottom" />
     </>

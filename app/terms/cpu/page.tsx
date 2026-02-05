@@ -66,13 +66,23 @@ export default function CPUPage() {
         dateCreated="2026-02-01"
         dateModified="2026-02-01"
         summaryItems={[
-          '命令はメモリの中にあり、CPUが取りに行く（デモで体験）',
-          'プログラム→ハードディスク→メモリ→CPUの流れ',
-          'クロック・コア・キャッシュ、MIPSについて',
+          'CPUは「脳」、SSDは「体の倉庫」のイメージ（M2チップの例）',
+          'プログラム→SSD→メモリ→CPUの流れを体験',
+          'CPUの3ステップ：取り出し・解読・実行',
+          'CPUの性能を決める3つの指標（クロック・命令数・MIPS）',
         ]}
       />
 
       <main>
+        <section>
+          <h2>概要</h2>
+          <p>
+            <strong>CPU</strong>（Central Processing Unit）は、コンピュータの「<strong>脳</strong>」にあたる部品です。
+            メモリにある命令を取り出し、解読し、実行する、という流れを何億回も繰り返しています。
+            Apple のM2チップなども、このCPUの一種です。
+          </p>
+        </section>
+
         <section>
           <h2>命令はメモリの中にあり、CPUが取りに行く</h2>
           <p>
@@ -431,11 +441,15 @@ export default function CPUPage() {
         </section>
 
         <section>
-          <h2>どれくらい速い？（MIPS）</h2>
+          <h2>CPUの性能を決める3つの指標</h2>
           <p>
-            <strong>クロック</strong>が「いつ進めるか」を決め、<strong>クロック周波数</strong>（例：3GHz）が高いほど1秒間にこなせる処理は増えます。
-            <strong>MIPS</strong>は、1秒間に実行できる命令数を百万単位で表した指標で、基本情報技術者試験でも計算問題が出ます。
+            CPUの「速さ」は、以下の3つで判断できる。
           </p>
+          <ul>
+            <li><strong>クロック周波数（GHz）</strong>：1秒間に「取り出し→解読→実行」のサイクルが何回回るか。高いほど単純な処理が速い。</li>
+            <li><strong>1秒間に実行できる命令数</strong>：実際に何本の命令をこなせるか。クロック周波数だけでなく、命令の効率にも左右される。</li>
+            <li><strong>MIPSスコア</strong>：「1秒間に実行できる命令数」を百万単位で表した数字。基本情報技術者試験でも計算問題として出る。</li>
+          </ul>
           <p>
             <strong>この数字、いつ気にすればいいの？</strong>
             クロック周波数が高いと単純な処理が速くなりやすい。一方、低くても<strong>キャッシュ</strong>が効いていると体感は速い場合があります。スマホとPCでは省電力と性能のバランスが違うので、同じ数字でも「速い」の意味合いは変わります。
@@ -570,6 +584,10 @@ export default function CPUPage() {
                 <tr>
                   <td><Link href="/terms/memory" className="term-name">メモリ（RAM）</Link></td>
                   <td>命令やデータを置く場所。アドレス指定・レジスタ・実効アクセス時間はメモリのページで解説</td>
+                </tr>
+                <tr>
+                  <td>GPU</td>
+                  <td>グラフィックス処理専用のプロセッサ。画像や動画の計算を大量に並列に処理する。CPUと同様に「脳」だが、「幅広く少し」ではなく「多数の単純な計算を同時に」できる</td>
                 </tr>
               </tbody>
             </table>
