@@ -9,6 +9,7 @@ import DisabledUIDemo from '@/components/DisabledUIDemo'
 import StructuredData from '@/app/components/StructuredData'
 import TermPageHeader from '@/app/components/TermPageHeader'
 import FAQAccordion from '@/app/components/FAQAccordion'
+import AdBelowRelatedTerms from '@/app/components/AdBelowRelatedTerms'
 
 export default function FoolProofPage() {
   const faqs = [
@@ -27,11 +28,12 @@ export default function FoolProofPage() {
       <StructuredData
         type="Article"
         title="【身近な例で学ぶ】フールプルーフとは？意味や目的をわかりやすく解説"
-        description="フールプルーフ（Fool Proof）は、誤操作や誤入力を未然に防ぐ設計思想です。削除確認ダイアログ、入力制限、ボタンの色分けなど具体例と実践デモで、ユーザーが間違えにくいシステムを作る考え方を初心者にもわかりやすく解説します。"
+        description="フールプルーフは、誤操作や誤入力を未然に防ぐ設計思想です。削除確認ダイアログ、入力制限、ボタンの色分けなど具体例と実践デモで、ユーザーが間違えにくいシステムを作る考え方を初心者にもわかりやすく解説します。"
         datePublished="2024-01-07"
-        dateModified="2026-02-03"
+        dateModified="2026-02-04"
       />
       <TermPageHeader
+
         termName="フールプルーフ"
         reading="ふーるぷるーふ / Fool Proof"
         icon="fas fa-shield-alt"
@@ -56,7 +58,7 @@ export default function FoolProofPage() {
             }}
           >
             <Image
-              src="/images/terms/foolproof-hero.png"
+              src="/images/terms/foolproof-hero.jpeg"
               alt="フールプルーフ - 確認ダイアログなどミスを防ぐ設計をわかりやすく学ぶ"
               width={1536}
               height={1024}
@@ -208,29 +210,51 @@ if (confirmed) {
               </thead>
               <tbody>
                 <tr>
-                  <td><Link href="/terms/validation" className="term-name">バリデーション</Link></td>
+                  <td>
+                    <Link href="/terms/validation" className="term-name">
+                      バリデーション
+                    </Link>
+                  </td>
                   <td>フールプルーフを実現する代表的な手段の一つ</td>
                 </tr>
                 <tr>
-                  <td><Link href="/terms/poka-yoke" className="term-name">ポカヨケ</Link></td>
+                  <td>
+                    <Link href="/terms/poka-yoke" className="term-name">
+                      ポカヨケ
+                    </Link>
+                  </td>
                   <td>製造業におけるフールプルーフの概念</td>
                 </tr>
                 <tr>
-                  <td><Link href="/terms/html" className="term-name">HTML</Link></td>
+                  <td>
+                    <Link href="/terms/html" className="term-name">
+                      HTML
+                    </Link>
+                  </td>
                   <td>HTML5の標準機能でフールプルーフを実装できる</td>
                 </tr>
                 <tr>
-                  <td><Link href="/terms/javascript" className="term-name">JavaScript</Link></td>
+                  <td>
+                    <Link href="/terms/javascript" className="term-name">
+                      JavaScript
+                    </Link>
+                  </td>
                   <td>確認ダイアログやカスタム制御で誤操作を防ぐ</td>
                 </tr>
                 <tr>
-                  <td><Link href="/terms/css" className="term-name">CSS</Link></td>
+                  <td>
+                    <Link href="/terms/css" className="term-name">
+                      CSS
+                    </Link>
+                  </td>
                   <td>ボタンの色分けやdisabled状態のスタイリング</td>
                 </tr>
               </tbody>
             </table>
           </div>
         </section>
+
+        <AdBelowRelatedTerms />
 
         <FAQAccordion faqs={faqs} />
       </main>

@@ -277,7 +277,9 @@ export default function ContentPage() {
         ]}
       />
 
-      {/* ヒーロー画像（任意・TermPageHeader の下に配置） */}
+      {/* ヒーロー画像（任意・TermPageHeader の下に配置）
+          命名・配置ルール: docs/templates/hero-image-rules.md を参照
+          配置: public/images/terms/[用語スラッグ]-hero.[jpg|jpeg|png] */}
       {/* <div style={{
         width: '100%',
         maxWidth: '900px',
@@ -289,7 +291,7 @@ export default function ContentPage() {
         minHeight: '400px'
       }}>
         <Image
-          src="/images/terms/[用語名]-hero.jpg"
+          src="/images/terms/[用語スラッグ]-hero.jpg"
           alt="[用語名]のイメージ"
           width={1200}
           height={630}

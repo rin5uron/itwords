@@ -38,9 +38,9 @@ export const metadata: Metadata = {
     url: 'https://itwords.jp',
     images: [
       {
-        url: 'https://itwords.jp/icon.png',
-        width: 1200,
-        height: 630,
+        url: 'https://itwords.jp/icon.svg',
+        width: 1024,
+        height: 1024,
         alt: 'IT用語辞典',
       },
     ],
@@ -55,15 +55,13 @@ export const metadata: Metadata = {
   },
   icons: {
     icon: [
-      { url: '/icon.png', sizes: '32x32', type: 'image/png' },
-      { url: '/icon.png', sizes: '96x96', type: 'image/png' },
-      { url: '/icon.png', sizes: '192x192', type: 'image/png' },
+      { url: '/icon.svg', type: 'image/svg+xml' },
     ],
     apple: [
-      { url: '/icon.png', sizes: '180x180', type: 'image/png' },
+      { url: '/icon.svg', type: 'image/svg+xml' },
     ],
-    // 公式は icon.png のみ。古いブラウザが /icon.ico を要求しても next.config で /icon.png に飛ばす
-    shortcut: '/icon.png',
+    // 古いブラウザが /icon.ico を要求しても next.config で /icon.svg に飛ばす
+    shortcut: '/icon.svg',
   },
 }
 

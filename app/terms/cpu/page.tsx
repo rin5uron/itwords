@@ -14,6 +14,7 @@ const FDESTEPS = [
 
 export default function CPUPage() {
   const [memoryStep, setMemoryStep] = useState(0)
+  const [brainStep, setBrainStep] = useState(0)
   const [fdeStep, setFdeStep] = useState(0)
   const [clockGHz, setClockGHz] = useState(1)
   const [cmdAClocks, setCmdAClocks] = useState(10)
@@ -182,7 +183,15 @@ export default function CPUPage() {
         </section>
 
         <section>
-          <h2>CPUは何をしている？</h2>
+          <h2>CPUは何をしている？（脳と体のイメージ）</h2>
+          <p>
+            コンピュータの仕組みは、「人の脳と体」に置き換えると理解しやすい。
+          </p>
+          <p>
+            <strong>CPU＝脳</strong>。「考える」「判断する」「命令を実行する」ことを担う。
+            <strong>SSD（やハードディスク）＝体の中の倉庫</strong>。長期に覚えておく場所で、電源を切っても消えない。
+            <strong>メモリ＝今使う手元の机</strong>。「今考えている」ことだけ置いておく。電源を切ると消える。
+          </p>
           <p>
             まず「プログラム」「ハードディスク」「メモリ」が何かをおさえておくと、CPUの役割がわかりやすくなります。
           </p>
@@ -190,14 +199,96 @@ export default function CPUPage() {
             <strong>プログラム</strong>は、「やることを書いた設計図」です。ゲームを動かす・文字を表示する・計算するなど、コンピュータにさせたいことを順番に書いたものです。
           </p>
           <p>
-            <strong>ハードディスク</strong>（やSSD）は、「しまっておく場所」です。電源を切っても消えません。ゲームのデータ・アプリ・写真……まだ「使っていない」状態のプログラムが、ここに置いてあります。
+            <strong>ハードディスク</strong>（やSSD）は、「体の中の倉庫」です。電源を切っても消えません。ゲームのデータ・アプリ・写真……まだ「使っていない」状態のプログラムが、ここに置いてあります。
           </p>
           <p>
-            <strong>メモリ</strong>は、「今使うものを置く机」です。電源を切ると消えます。CPUのすぐ近くにあります。プログラムは、ハードディスク → メモリにコピーされてから使われます。
+            <strong>メモリ</strong>は、「今使うものを置く手元の机」です。電源を切ると消えます。CPUのすぐ近くにあります。プログラムは、ハードディスク → メモリにコピーされてから使われます。
           </p>
           <p>
-            では<strong>CPU</strong>は？ CPUは「考えて実行する人」のようなものです。メモリにある命令を、1つ取りに行く → 実行する → また次を取りに行く、を繰り返します。CPUはハードディスクには直接行きません。必ずメモリから命令を取り出して実行します。
+            では<strong>CPU</strong>は？ CPUは「脳」のようなものです。メモリにある命令を、1つ取りに行く → 実行する → また次を取りに行く、を繰り返します。CPUはハードディスクには直接行きません。必ずメモリから命令を取り出して実行します。
           </p>
+          <p>
+            例えば <strong>Apple のM2チップ</strong> を搭載したMacBook Airにおいて、アプリを起動したときの流れは以下のようになっている。下のデモで「次へ」を押して体験してみよう。
+          </p>
+
+          <div
+            className="demo-section"
+            style={{
+              border: '2px solid #8b5cf6',
+              borderRadius: '8px',
+              padding: 'clamp(12px, 3vw, 20px)',
+              marginTop: '16px',
+              backgroundColor: '#f5f3ff',
+              maxWidth: '100%',
+            }}
+          >
+            <h3 style={{ marginTop: 0 }}>脳と体のイメージ（M2チップの場合）</h3>
+            <div style={{ display: 'flex', flexWrap: 'wrap', gap: '12px', marginBottom: '16px' }}>
+              {[
+                { label: 'SSD（体の倉庫）', desc: 'アプリのデータが長期に保存されている', icon: 'fas fa-hdd', color: '#6c757d', active: brainStep >= 1 },
+                { label: 'メモリ（手元の机）', desc: 'SSDからコピーされ、今使う分だけ置かれる', icon: 'fas fa-memory', color: '#ffc107', active: brainStep >= 2 },
+                { label: 'M2チップ（脳）', desc: 'メモリから命令を取り出し実行する', icon: 'fas fa-microchip', color: '#8b5cf6', active: brainStep >= 3 },
+              ].map((item, i) => (
+                <div
+                  key={i}
+                  style={{
+                    flex: '1 1 140px',
+                    minWidth: '130px',
+                    padding: '14px',
+                    borderRadius: '10px',
+                    border: `2px solid ${item.active ? item.color : '#e0e0e0'}`,
+                    backgroundColor: item.active ? '#fff' : '#eee',
+                    opacity: item.active ? 1 : 0.5,
+                    transition: 'all 0.3s',
+                    textAlign: 'center' as const,
+                  }}
+                >
+                  <i className={item.icon} style={{ color: item.color, fontSize: '24px' }} aria-hidden />
+                  <p style={{ margin: '8px 0 4px 0', fontWeight: 'bold', fontSize: '14px' }}>{item.label}</p>
+                  <p style={{ margin: 0, fontSize: '12px', color: '#555' }}>{item.desc}</p>
+                </div>
+              ))}
+            </div>
+            <p style={{ fontSize: '14px', color: '#333', minHeight: '40px', margin: '0 0 12px 0', fontWeight: brainStep > 0 ? 600 : 400 }}>
+              {brainStep === 0 && 'アプリ起動前。まず「次へ」を押してみよう。'}
+              {brainStep === 1 && 'SSDにアプリのデータがある。でもまだ動かせない。次は…'}
+              {brainStep === 2 && 'SSD → メモリにコピーされた。CPUが使えるようになった。次は…'}
+              {brainStep === 3 && 'M2チップ（脳）がメモリから命令を取り出し、アプリが動いた！'}
+            </p>
+            <div style={{ display: 'flex', flexWrap: 'wrap', gap: '10px' }}>
+              <button
+                type="button"
+                onClick={() => setBrainStep((n) => (n < 3 ? n + 1 : n))}
+                disabled={brainStep >= 3}
+                style={{
+                  padding: '10px 20px',
+                  fontSize: 'clamp(14px, 2.5vw, 16px)',
+                  backgroundColor: brainStep >= 3 ? '#6c757d' : '#8b5cf6',
+                  color: '#fff',
+                  border: 'none',
+                  borderRadius: '5px',
+                  cursor: brainStep >= 3 ? 'not-allowed' : 'pointer',
+                }}
+              >
+                次へ
+              </button>
+              <button
+                type="button"
+                onClick={() => setBrainStep(0)}
+                style={{
+                  padding: '10px 20px',
+                  fontSize: 'clamp(14px, 2.5vw, 16px)',
+                  backgroundColor: '#6c757d',
+                  color: '#fff',
+                  border: 'none',
+                  borderRadius: '5px',
+                  cursor: 'pointer',
+                }}
+              >
+                リセット
+              </button>
+            </div>
+          </div>
         </section>
 
         <section>

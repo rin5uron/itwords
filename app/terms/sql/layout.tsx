@@ -1,8 +1,8 @@
 import { Metadata } from 'next'
 
 export const metadata: Metadata = {
-  title: 'SQLとは？小学生でもわかる【データベース言語】',
-  description: 'データを「探す・保存する」言語SQL。SELECT、INSERT、UPDATEの意味を3分で理解。実演デモ付き。',
+  title: 'SQLとは？読み方・使い方を初心者向けに解説【実演デモ付き】',
+  description: 'SQL（エスキューエル）とは？データベースを操作する言語のこと。SELECT、INSERT、UPDATE、DELETEの意味と使い方を実演デモで体験。初心者向け解説。',
   keywords: ['SQL', 'SQL とは', 'データベース', 'SELECT', 'INSERT', 'IT用語 わかりやすく'],
   alternates: {
     canonical: 'https://itwords.jp/terms/sql',

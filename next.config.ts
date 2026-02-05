@@ -5,8 +5,8 @@ const nextConfig: NextConfig = {
   trailingSlash: false,
   async redirects() {
     return [
-      // 不合格対策: /icon.ico を /icon.png へ統一（404を防ぐ）
-      { source: '/icon.ico', destination: '/icon.png', permanent: true },
+      // 不合格対策: /icon.ico を /icon.svg へ統一（404を防ぐ）
+      { source: '/icon.ico', destination: '/icon.svg', permanent: true },
     ]
   },
 }

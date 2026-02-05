@@ -16,7 +16,7 @@ export const metadata: Metadata = {
     type: 'article',
     images: [
       {
-        url: '/images/terms/D259C20E-0772-4D3F-B6BF-4DA01517CECB.jpg',
+        url: '/images/terms/white-hat-hacker-hero.jpg',
         width: 1200,
         height: 630,
         alt: 'ホワイトハッカーとブラックハッカーの対比 - サイバーセキュリティにおける防御と攻撃',
@@ -27,7 +27,7 @@ export const metadata: Metadata = {
     card: 'summary_large_image',
     title: 'ホワイトハッカーとは？仕事内容を体験デモで学ぶ',
     description: '善意のハッカー「ホワイトハッカー」の仕事を実践デモで体験。脆弱性診断の流れを学べます。',
-    images: ['/images/terms/D259C20E-0772-4D3F-B6BF-4DA01517CECB.jpg'],
+    images: ['/images/terms/white-hat-hacker-hero.jpg'],
   },
   alternates: {
     canonical: 'https://itwords.jp/terms/white-hat-hacker',
@@ -91,7 +91,7 @@ export default function WhiteHatHackerPage() {
         minHeight: '400px'
       }}>
         <Image
-          src="/images/terms/D259C20E-0772-4D3F-B6BF-4DA01517CECB.jpg"
+          src="/images/terms/white-hat-hacker-hero.jpg"
           alt="ホワイトハッカーとブラックハッカーの対比 - サイバーセキュリティにおける防御と攻撃"
           width={1200}
           height={630}

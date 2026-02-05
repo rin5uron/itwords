@@ -8,22 +8,22 @@ import SSHDemo from './SSHDemo'
 import SSHAccessFromOtherDemo from './SSHAccessFromOtherDemo'
 
 export const metadata: Metadata = {
-  title: 'SSHとは？会社のパソコンからサーバーに入る仕組み（小学生でもわかる）',
-  description: '会社のパソコンから会社のサーバーに安全に入る仕組みがSSH。遠隔ログイン・暗号化・秘密鍵の基本を、初心者向けにやさしく解説します。',
-  keywords: ['SSH', 'Secure Shell', 'SSH とは', 'リモート接続', 'サーバー接続', '秘密鍵', '公開鍵', 'ターミナル', 'IT用語 わかりやすく'],
+  title: 'SSHとは？遠隔ログイン・暗号化の仕組みを初心者向けに解説',
+  description: 'SSH（Secure Shell）とは？サーバーへの遠隔ログイン・暗号化・秘密鍵の基本を初心者向けに解説。体験デモ付き。',
+  keywords: ['SSH', 'Secure Shell', 'SSH とは', 'リモート接続', '遠隔ログイン', 'サーバー接続', '秘密鍵', '公開鍵', 'ターミナル', 'IT用語 わかりやすく'],
   openGraph: {
-    title: 'SSHとは？会社のパソコンからサーバーに入る仕組み（小学生でもわかる）',
-    description: '会社のパソコンから会社のサーバーに安全に入る仕組みがSSH。遠隔ログインの基本を初心者向けに解説します。',
+    title: 'SSHとは？遠隔ログイン・暗号化の仕組みを初心者向けに解説',
+    description: 'SSH（Secure Shell）とは？遠隔ログイン・暗号化の仕組みを初心者向けに解説。',
     type: 'article',
     images: [
-      { url: '/images/ssh.png', width: 1536, height: 1024, alt: 'SSH - 手元のPCから遠くのサーバーに安全に接続する仕組み' },
+      { url: '/images/terms/ssh-hero.png', width: 1536, height: 1024, alt: 'SSH - 手元のPCから遠くのサーバーに安全に接続する仕組み' },
     ],
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'SSHとは？会社のパソコンからサーバーに入る仕組み（小学生でもわかる）',
-    description: '会社のパソコンから会社のサーバーに安全に入る仕組みがSSH。遠隔ログインの基本を初心者向けに解説します。',
-    images: ['/images/ssh.png'],
+    title: 'SSHとは？遠隔ログイン・暗号化の仕組みを初心者向けに解説',
+    description: 'SSH（Secure Shell）とは？遠隔ログイン・暗号化の仕組みを初心者向けに解説。',
+    images: ['/images/terms/ssh-hero.png'],
   },
   alternates: {
     canonical: 'https://itwords.jp/terms/ssh',
@@ -81,7 +81,7 @@ export default function SSHPage() {
             }}
           >
             <Image
-              src="/images/ssh.png"
+              src="/images/terms/ssh-hero.png"
               alt="SSH - 手元のPCから遠くのサーバーに安全に接続する仕組み"
               width={1536}
               height={1024}

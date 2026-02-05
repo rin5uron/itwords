@@ -7,8 +7,8 @@ import AESDemo from '@/components/AESDemo'
 import FAQAccordion from '@/app/components/FAQAccordion'
 
 export const metadata: Metadata = {
-  title: 'AESとは？小学生でもわかる【動かして学べるデモ付き】',
-  description: 'AESとは？暗号化デモで仕組みを今すぐ体験。Wi-FiやHTTPSで使われる暗号化、128と256の違い、実装方法まで初心者向けに解説します。',
+  title: 'AESとは？暗号化の仕組みを初心者向けに解説【デモ付き】',
+  description: 'AES（Advanced Encryption Standard）とは？Wi-FiやHTTPSで使われる暗号化技術のこと。128と256の違い、仕組みを体験デモで初心者向けに解説。',
   keywords: ['AES', 'AES とは', '暗号化', 'Advanced Encryption Standard', 'AES-128', 'AES-256', '共通鍵暗号', 'セキュリティ', 'IT用語 わかりやすく', 'プログラミング 初心者', 'AES デモ', 'AES 実装'],
   openGraph: {
     title: 'AESとは？小学生でもわかる【動かして学べるデモ付き】',
@@ -25,8 +25,8 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'AESとは？小学生でもわかる【動かして学べるデモ付き】',
-    description: 'AESとは？暗号化デモで仕組みを今すぐ体験。Wi-FiやHTTPSで使われる暗号化、128と256の違い、実装方法まで初心者向けに解説します。',
+    title: 'AESとは？暗号化の仕組みを初心者向けに解説【デモ付き】',
+    description: 'AES（Advanced Encryption Standard）とは？暗号化技術の仕組みを体験デモで解説。',
     images: ['/images/terms/aes-hero.jpg'],
   },
   alternates: {

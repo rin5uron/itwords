@@ -41,7 +41,7 @@ export default function StructuredData({ type, title, description, faqs, datePub
         name: 'IT用語辞典',
         logo: {
           '@type': 'ImageObject',
-          url: 'https://itwords.jp/icon.png',
+          url: 'https://itwords.jp/icon.svg',
         },
       },
       publisher: {
@@ -49,7 +49,7 @@ export default function StructuredData({ type, title, description, faqs, datePub
         name: 'IT用語辞典',
         logo: {
           '@type': 'ImageObject',
-          url: 'https://itwords.jp/icon.png',
+          url: 'https://itwords.jp/icon.svg',
         },
       },
     }
@@ -65,7 +65,7 @@ export default function StructuredData({ type, title, description, faqs, datePub
         name: 'IT用語辞典',
         logo: {
           '@type': 'ImageObject',
-          url: 'https://itwords.jp/icon.png',
+          url: 'https://itwords.jp/icon.svg',
         },
       },
       potentialAction: {
