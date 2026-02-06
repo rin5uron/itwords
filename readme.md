@@ -1,62 +1,36 @@
 # 実践型IT用語辞典 - itwords
 
-
-**このドキュメントは、AI（ClaudeやCursor）がこのプロジェクトを管理・拡張するためのガイドです。**
-
-<br />
+**AI（Claude・Cursor）と人間がパッと理解するためのプロジェクトガイド**
 
 ---
 
-<br />
+## 目次
 
-## 🎯 このサイトの本質
-
-### 💡 Will（やりたいこと・使命）
-**門外漢でアレルギーだった人間が、IT業界の楽しさを伝える**
-- ゼロからIT世界に入った経験を活かす
-- 勉強している人や小中高生に「諦めないでほしい」と希望を届ける
-
-### 🎯 Need（社会のニーズ）
-**文字と難しい言葉だらけの世界で、本当に初心者向けの教材が少ない**
-- Wikipedia的な難解な説明しかない
-- 小学生や中学生でも理解できる教材がほとんどない
-
-### ⚙️ Can（あなたができること）
-**学んだIT知識を、わかりやすくアウトプットする**
-- 門外漢だった視点で「本当につまずくポイント」が分かる
-- 自分が理解するまでのプロセスを言語化できる
-
-### 🚀 Skill（どう届けるか）
-**学びながら、技術で届ける**
-
-1. **SEO** - 検索で見つけてもらえる構造を作る
-   - キーワード戦略、メタデータ最適化
-   - データを見ながら改善
-
-2. **Next.js** - サイト運営を通して学ぶ（学習中）
-   - 実装しながら理解を深める
-   - 毎日5分の小課題で継続
-
-3. **デザイン** - わかりやすさと親しみやすさを追求（学習中）
-   - 余白、配色、タイポグラフィ
-   - 実践を通して感覚を磨く
-
-<br />
-<br />
+- [このサイトの本質](#このサイトの本質)
+- [毎日の作業](#毎日の作業)
+- [スラッシュコマンド](#スラッシュコマンド)
+- [重要Issue](#-重要issue)
+- [全ドキュメント一覧](#全ドキュメント一覧)
 
 ---
 
-<br />
+## このサイトの本質
 
-## 🚀 毎日の作業
+| 観点 | 内容 |
+|------|------|
+| **Will** | 門外漢だった人間が、IT業界の楽しさを伝える。小中高生に「諦めないでほしい」と届ける |
+| **Need** | 初心者向けの教材が少ない。Wikipedia的な難解な説明しかない |
+| **Can** | 門外漢視点で「つまずくポイント」が分かる。理解までのプロセスを言語化できる |
+| **Skill** | SEO・Next.js・デザインを学びながら、技術で届ける |
+
+---
+
+## 毎日の作業
 
 ### 30分チャレンジを開始
 
-```
-今日の作業を開始します
-```
+`/start-daily` で以下が順番に実行されます：
 
-このコマンドで以下が自動実行されます：
 1. **データ分析（5分）** - Search Console/Analytics確認、Issue提案
 2. **用語ページ改善（10分）** - 既存用語ページ1本を改善
 3. **新規用語ページ（10分）** - 新しい用語ページを1本作成
@@ -64,191 +38,58 @@
 
 **詳細**: [毎日の作業ルーチン](./docs/DAILY-ROUTINE.md)
 
-<br />
-<br />
-
 ---
 
-<br />
-
-## 🛠️ スラッシュコマンド
+## スラッシュコマンド
 
 Claude Codeで使えるコマンド一覧。`.claude/commands/` の各ファイルが `/コマンド名` になる。
 
-| コマンド | 何をする |
-|----------|----------|
-| `/start-daily` | 30分チャレンジを開始（DAILY-ROUTINE に沿って自動実行） |
-| `/new-page [用語名]` | 新規用語ページを作成（テンプレート準拠・インデックス更新まで） |
-| `/improve-page [ページ名]` | 既存ページのコンテンツ・テンプレート準拠を改善 |
-| `/seo-check` | Search Consoleのキーワードデータを貼り付けてtitle・descriptionを確認・修正 |
+| コマンド | 何をする | 詳細 |
+|----------|----------|------|
+| `/start-daily` | 30分チャレンジを開始（DAILY-ROUTINE に沿って Phase 1→4 を順に実行） | [start-daily.md](./.claude/commands/start-daily.md) |
+| `/new-page [用語名]` | 新規用語ページを作成（テンプレート準拠・インデックス更新まで） | [new-page.md](./.claude/commands/new-page.md) |
+| `/improve-page [ページ名]` | 既存ページのコンテンツ・テンプレート準拠を改善 | [improve-page.md](./.claude/commands/improve-page.md) |
+| `/seo-check` | Search Consoleのキーワードデータを貼り付けて title・description を確認・修正 | [seo-check.md](./.claude/commands/seo-check.md) |
 
-<br />
-<br />
-
----
-
-<br />
-
-## 📊 作業進捗管理
-
-### Issueの分類体系
-
-| ラベル | 用途 |
-|--------|------|
-| `SEO` | 検索エンジン最適化（title/description/キーワード） |
-| `description` | title・descriptionのメタ情報 |
-| `コンテンツ` | 記事の執筆・品質管理 |
-| `UI/UX` | デザイン・使いやすさ |
-| `仕組み作り` | ワークフロー・ルール・テンプレート整備 |
-| `bug` | 不具合 |
-
-### ページの状態管理
-
-各ページの品質は「内容」「SEO」の2観点で管理する。
-
-#### 内容の状態
-- ✅ **テンプレート準拠**: 概要・デモ・FAQ・関連用語の順序が正しい
-- 👌 **完璧**: 人間が実際に見て「完璧」と判断したページ
-- 🔄 **作業待ち**: 新規タスクが追加され、改善が必要なページ
-
-#### SEOの状態
-- ✅ **適切**: title/description/キーワードが適切に設定されている
-- 🔄 **改善待ち**: SEOチェックで問題が見つかったページ
-
-#### 状態の更新ルール
-1. 新規ページ作成時: テンプレート準拠チェックを行う
-2. 人間が「完璧」と判断したら 👌 タグを付ける
-3. 新たなタスクが追加されたら: 👌 タグを取るか確認 → 必要なら 🔄 に戻す
-4. SEOチェックで引っかかったら: 👌 の有無を確認 → 改善が必要か判断
-
-### 作業の流れ
-
-1. **Search Console でデータ確認** → CTRが低いページを特定
-2. **`/seo-check` コマンド実行** → title/description を自動修正
-3. **Issueを作成/更新** → 変更内容を記録（SEO・descriptionラベル）
-4. **ページ状態を更新** → 👌 タグの有無を確認・更新
-5. **ビルド & デプロイ** → 変更を本番反映
-
-<br />
-<br />
+**補足**: `/start-daily` は他のコマンドを呼び出さない。DAILY-ROUTINE の Phase に沿って AI が作業する。個別作業は各コマンドを直接使う。
 
 ---
 
-<br />
+## 🔥 重要Issue
 
-## 📜 基本原則
+進行中の重要なIssueを把握するための一覧。完了したらこのリストから削除する。
 
-1. **明確化と確認**: ファイル変更や破壊的コマンドの実行前に、計画を伝えて確認を求める
-2. **構造への準拠**: 既存のプロジェクト構造、規約、コーディングスタイルに従う。テンプレートがあれば使用する
-3. **人間との連携**: 主観的判断や外部の非公開データ（Google Analytics、Search Console）が必要な場合は、必ず人間に情報提供を求める
-4. **ツールの使用**: ファイルシステムとのやり取りには利用可能なツールを使用する。ファイル内容を推測しない
+### 仕組み作り（継続管理）
+- [#7](https://github.com/rin5uron/itwords/issues/7): 品質管理ガイドライン作成
+- [#12](https://github.com/rin5uron/itwords/issues/12): 用語ページテンプレート - デザイン統一
+- [#13](https://github.com/rin5uron/itwords/issues/13): 用語ページテンプレート - 構造改善
+- [#20](https://github.com/rin5uron/itwords/issues/20): Issue管理ルール整備
 
-<br />
-<br />
+### 収益化（AdSense）
+- [#17](https://github.com/rin5uron/itwords/issues/17): AdSense - 広告表示バグ調査
 
----
+### SEO（全体最適化）
+- [#18](https://github.com/rin5uron/itwords/issues/18): 全用語ページ - SEOメタデータ改善
 
-<br />
-
-## ⚙️ ワークフロー
-
-### WORKFLOW: 新規用語ページ追加
-
-人間が新しい用語ページの作成を依頼した場合（例：「Cacheという用語のページを作成して」）
-
-#### **PHASE 1: 計画（人間とのやり取りが必要）**
-
-1. **リクエスト確認**: 人間からのリクエストを確認
-2. **キーワード明確化**: 主要キーワードが不明確な場合は質問する
-3. **コンテキスト読み込み**: SEOベストプラクティスを理解するため以下を読む
-   - `docs/templates/checklists/seo-check-sheet.md`
-
-#### **PHASE 2: 実行（AI実行）**
-
-1. **ディレクトリ作成**: `app/terms/`内に新ディレクトリを作成（kebab-case、例：`app/terms/cache-memory/`）
-2. **ページファイル作成**: 新ディレクトリ内に`page.tsx`を作成。`docs/templates/page-template.tsx`を参考にする
-3. **【重要】metadataの設定**:
-   - **インタラクティブなデモがない場合**: `page.tsx`に直接`export const metadata`を記述
-   - **インタラクティブなデモがある場合（`'use client'`が必要）**: `layout.tsx`を作成して`metadata`を記述
-     - `docs/templates/layout-template.tsx`を参考にする
-     - layout.tsxがないと検索エンジンにタイトル・説明文が表示されない（**SEO致命的**）
-   - **必須ルール**:
-     - title: 「[用語]とは？小学生でもわかる【[特徴/デモ内容]】」（50文字以内）
-     - description: 「[身近な例]で使われる[用語]を3分で理解。「[疑問点]」を[方法]で学べます。」（120文字以内）
-     - 「| 実践型IT用語辞典」は不要（冗長）
-     - 「初心者向けに解説」「わかりやすく説明」は避ける（具体性がない）
-4. **【重要】公式リンクの追加**（**AdSense要件・E-E-A-T対策で必須**）:
-   - **必ず入れる**: 公式ドキュメント、MDN、GitHub公式、Wikipediaなど信頼できるソースへのリンク
-   - **文章内に自然に埋め込む**: 「詳しくは[公式サイト](URL)で確認できます」
-   - **避けるリンク**: 個人ブログ、競合サイト、アフィリエイト目的のサイト
-   - **理由**: Googleが「信頼できる情報源を参照している」と評価し、AdSense審査通過率が上がる
-5. **プレースホルダーコンテンツ**: 基本的なプレースホルダーコンテンツと構造を追加
-5. **人間にレビュー依頼**: 作成したファイルのパスを提示。基本構造が完成したことを伝え、本文コンテンツ追加のレビューを依頼
-6. **検索インデックス更新**: 人間がコンテンツ追加を確認したら、検索インデックスを更新
-   ```bash
-   npm run build-index
-   ```
-7. **確認と完了報告**: コマンド成功を確認し、人間に完了を報告
-
-<br />
-
-#### **PHASE 3: SEOチェック（AI-人間連携）**
-
-1. **チェック開始**: 人間からのプロンプト（例：「Cacheという用語のSEOチェックをして」）で開始。ページ公開・インデックス後数日後に実施
-2. **予備検索**: `google_web_search`ツールで主要キーワードを検索し、公開検索ランキングを推定
-3. **人間にデータ依頼**: Google Search Consoleから正確なデータを要求
-   > 「正確にパフォーマンスを追跡するため、Google Search Consoleからキーワード **'[keyword]'** の以下のデータを提供してください：
-   > - 現在のランク:
-   > - クリック数:
-   > - インプレッション数:
-   > - CTR (%):"
-
-<br />
-
-#### **PHASE 4: データ記録（AI実行）**
-
-1. **データ受信**: 人間からのデータを待つ
-2. **トラッキングシート読み込み**: `docs/templates/checklists/seo-keyword-tracking-sheet.md`を読む
-3. **レコード追記**: 新データをMarkdownテーブル形式で適切なテーブルに新行として追記
-4. **完了確認**: SEOトラッキングデータが記録されたことを人間に通知
-
-<br />
-<br />
+### コンテンツ拡充（優先度順）
+- [#21](https://github.com/rin5uron/itwords/issues/21): queue - コンテンツ拡充（2,500→3,500文字）
+- [#22](https://github.com/rin5uron/itwords/issues/22): localstorage - コンテンツ拡充（2,700→3,500文字）
+- [#23](https://github.com/rin5uron/itwords/issues/23): zero-day - コンテンツ拡充（2,700→3,500文字）
+- [#24](https://github.com/rin5uron/itwords/issues/24): json - コンテンツ拡充（2,800→3,500文字）
+- [#25](https://github.com/rin5uron/itwords/issues/25): exploit - コンテンツ拡充（2,900→3,500文字）
+- [#26](https://github.com/rin5uron/itwords/issues/26): html - コンテンツ拡充（3,100→4,000文字）
+- [#27](https://github.com/rin5uron/itwords/issues/27): cve - コンテンツ拡充（3,200→4,000文字）
+- [#28](https://github.com/rin5uron/itwords/issues/28): white-hat-hacker - コンテンツ拡充（3,600→4,000文字）
+- [#29](https://github.com/rin5uron/itwords/issues/29): stack - コンテンツ拡充（3,600→4,000文字）
 
 ---
 
-<br />
+## 全ドキュメント一覧
 
-## 📂 プロジェクト構
-### ドキュメント
-- **`docs/`**: プロジェクトドキュメント
-  - **`docs/ideas/`**: 計画・アイデアドキュメント
-  - **`docs/templates/`**: コンテンツ作成テンプレート
-  - **`docs/image-generation-*.md`**: 画像生成ワークフローとルール
-
-### ページ
-- **`app/terms/`**: 用語定義ページ
-  - 各用語は独自のディレクトリ（例：`app/terms/api/`）
-  - 各ディレクトリに`page.tsx`を含む
-  - ヒーロー画像は`public/images/terms/`に保存
-
-<br />
-
-## 📋 UI/UXルール
-
-### トップページの表示ルール
-- **新着用語**: 3つまで表示する
-- **人気用語**: 適宜更新（6つ程度）
-- **すべての用語**: カテゴリ別に整理して表示
-
-<br />
-<br />
-
----
-
-<br />
-
-## 📚 全ドキュメント一覧
+### 運用・ルール（詳細はここから）
+- [作業進捗管理](./docs/ISSUE-MANAGEMENT.md) - Issueタイトル・ラベル・状態管理・作業の流れ
+- [ワークフロー](./docs/WORKFLOW.md) - 新規用語ページ追加の手順（PHASE 1〜4）
+- [基本原則・プロジェクト構造・UI/UX](./docs/PRINCIPLES.md) - AI運用原則・ディレクトリ構成・表示ルール
 
 ### 運用・ワークフロー
 - [毎日の作業ルーチン](./docs/DAILY-ROUTINE.md) - 30分チャレンジの詳細
@@ -258,13 +99,6 @@ Claude Codeで使えるコマンド一覧。`.claude/commands/` の各ファイ�
 ### プロジェクト概要
 - [ビジョン](./docs/vision.md) - サイトのコンセプト・ペルソナ
 - [技術仕様](./docs/spec.md) - ディレクトリ構成・CSS設計
-- [エラーログ](./docs/error.md) - トラブルシューティング履歴
-
-### SEO・収益化
-- [SEOキーワード戦略](./docs/seo-keyword-strategy.md) - キーワード優先度とトラッキング
-- [全ページSEO戦略](./docs/all-pages-seo-strategy.md) - ページ別SEO対策
-- [AdSense申請ガイド](./docs/adsense-application-guide.md) - 収益化準備
-- [AdSense要件チェック](./docs/adsense-requirement-check.md) - 申請前チェックリスト
 
 ### 学習管理
 - [Next.js学習進捗](./docs/learning/nextjs-progress.md) - 学習項目と進捗状況
@@ -274,17 +108,11 @@ Claude Codeで使えるコマンド一覧。`.claude/commands/` の各ファイ�
 - [SEOチェックシート](./docs/templates/checklists/seo-check-sheet.md) - SEO品質確認
 - [SEOトラッキングシート](./docs/templates/checklists/seo-keyword-tracking-sheet.md) - キーワード追跡
 
-### フェーズ管理
-- [コンテンツフェーズ](./docs/phases/content-phase.md) - 用語ページ作成進捗
-- [SEOロードマップ](./docs/phases/seo-roadmap.md) - SEO施策の段階的実装
-- [AdSenseフェーズ](./docs/phases/phase2-adsense.md) - 収益化計画
-
-### ログ・記録
-- [プロセスログ](./docs/process-log.md) - 実装・修正の履歴
-
-<br />
-<br />
+### アイデア
+- [インフラ用語計画](./docs/ideas/infrastructure-terms-plan.md) - 追加予定の用語リスト
+- [Next.js学習システム提案](./docs/ideas/nextjs-learning-system-proposal.md) - 学習管理の提案
+- [Claude Skills評価](./docs/ideas/CLAUDE-SKILLS-EVALUATION.md) - AI支援ツールの評価
 
 ---
 
-**最終更新**: 2026-01-17
+**最終更新**: 2026-02-06
