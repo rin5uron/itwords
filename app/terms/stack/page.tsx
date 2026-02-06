@@ -6,7 +6,7 @@ import TermPageHeader from '@/app/components/TermPageHeader'
 import FAQAccordion from '@/app/components/FAQAccordion'
 
 export const metadata: Metadata = {
-  title: 'スタック構造とは？初心者向けにわかりやすく解説【実践デモ付き】 | 実践型IT用語辞典',
+  title: 'スタック構造とは？初心者向けにわかりやすく解説【実践デモ付き】',
   description: 'スタック構造（Stack）は、最後に入れたものが最初に出てくるLIFO（後入れ先出し）のデータ構造です。お皿の積み重ねやブラウザの戻るボタンなど身近な例から、git stashの実践的な使い方まで、初心者にもわかりやすく解説します。',
   keywords: ['スタック', 'Stack', 'LIFO', '後入れ先出し', 'データ構造', 'git stash', 'プログラミング', '初心者', 'わかりやすく', 'スタック構造 とは'],
   openGraph: {

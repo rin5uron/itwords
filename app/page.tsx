@@ -29,6 +29,11 @@ export const metadata: Metadata = {
     description: 'IT用語を初心者向けにわかりやすく解説。APIやJSONなどを体験デモで学べる実践型IT用語辞典',
     type: 'website',
   },
+  twitter: {
+    card: 'summary_large_image',
+    title: '実践型IT用語辞典 - IT用語をわかりやすく解説',
+    description: 'IT用語を初心者向けにわかりやすく解説。APIやJSONなどを体験デモで学べる実践型IT用語辞典。',
+  },
 }
 
 export default function Home() {

@@ -6,7 +6,7 @@ import TermPageHeader from '@/app/components/TermPageHeader'
 import FAQAccordion from '@/app/components/FAQAccordion'
 
 export const metadata: Metadata = {
-  title: 'JSONとは？初心者向けにわかりやすく解説【実践デモ付き】 | 実践型IT用語辞典',
+  title: 'JSONとは？初心者向けにわかりやすく解説【実践デモ付き】',
   description: 'JSONとは何か、初心者向けにわかりやすく解説。JavaScript Object Notationの基本から、Web APIやデータ保存で使われる軽量データ交換フォーマットまで、実際に編集できるデモで体験しながら学べます。プログラミング初心者向けIT用語解説。',
   keywords: ['JSON', 'JSON とは', 'JSON わかりやすく', 'JSON 初心者', 'JavaScript Object Notation', 'データ形式', 'Web API', 'プログラミング 初心者', 'IT用語 わかりやすく'],
   openGraph: {

@@ -9,10 +9,10 @@ export default function TermsLayout({
   children: React.ReactNode
 }) {
   return (
-    <>
+    <div className="terms-layout">
       <AdSubtleHorizontal adSlot={SLOT_TOP} position="top" />
       {children}
       <AdSubtleHorizontal adSlot={SLOT_BOTTOM} position="bottom" />
-    </>
+    </div>
   )
 }

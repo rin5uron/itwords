@@ -6,7 +6,7 @@ import TermPageHeader from '@/app/components/TermPageHeader'
 import FAQAccordion from '@/app/components/FAQAccordion'
 
 export const metadata: Metadata = {
-  title: 'HTTP/HTTPS（エイチティーティーピー）とは？読み方・違いを初心者向けに解説 | 実践型IT用語辞典',
+  title: 'HTTP/HTTPS（エイチティーティーピー）とは？読み方・違いを初心者向けに解説',
   description: 'HTTP/HTTPSとは？実践デモで違いと仕組みを今すぐ理解。読み方、HTTPメソッド、ステータスコード、SSL/TLSまで初心者向けに解説します。',
   keywords: ['HTTP', 'HTTPS', 'HTTP とは', 'HTTP わかりやすく', 'HTTP 初心者', 'HTTP HTTPS 違い', 'HTTPメソッド', 'HTTPステータスコード', 'GET', 'POST', 'SSL', 'TLS', 'IT用語 わかりやすく', 'プログラミング 初心者'],
   openGraph: {

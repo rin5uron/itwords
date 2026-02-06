@@ -15,6 +15,11 @@ export const metadata: Metadata = {
     type: 'article',
     url: 'https://itwords.jp/terms/github',
   },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'GitHubとは？使い方・仕組みを初心者向けに解説【デモ付き】',
+    description: 'GitHub（ギットハブ）とは？コード保存・共有・チーム開発ができるプラットフォーム。初心者向けに解説。',
+  },
   alternates: {
     canonical: 'https://itwords.jp/terms/github',
   },

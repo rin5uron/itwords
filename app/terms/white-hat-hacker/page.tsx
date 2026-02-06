@@ -7,7 +7,7 @@ import FAQAccordion from '@/app/components/FAQAccordion'
 import WhiteHatDemo from '@/components/WhiteHatDemo'
 
 export const metadata: Metadata = {
-  title: 'ホワイトハッカーとは？仕事内容を体験デモで学ぶ | 実践型IT用語辞典',
+  title: 'ホワイトハッカーとは？仕事内容を体験デモで学ぶ',
   description: 'ホワイトハッカーとは何をする人？ブラックハッカーとの違いは？脆弱性診断の仕事を体験できるデモで、善意のハッカーの役割を初心者向けにわかりやすく解説。',
   keywords: ['ホワイトハッカー', 'White Hat', 'ホワイトハッカー とは', 'ブラックハッカー', 'グレーハッカー', 'セキュリティエンジニア', '脆弱性診断', 'ペネトレーションテスト', 'IT用語 わかりやすく'],
   openGraph: {

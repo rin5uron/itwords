@@ -6,7 +6,7 @@ import FAQAccordion from '@/app/components/FAQAccordion'
 import CVEDemo from '@/components/CVEDemo'
 
 export const metadata: Metadata = {
-  title: 'CVEとは？脆弱性識別番号の見方を体験デモで学ぶ | 実践型IT用語辞典',
+  title: 'CVEとは？脆弱性識別番号の見方を体験デモで学ぶ',
   description: 'CVE（Common Vulnerabilities and Exposures）とは何か？「CVE-2024-12345」の意味と調べ方を、実際のCVE検索を体験できるデモで初心者向けにわかりやすく解説。',
   keywords: ['CVE', 'CVE とは', 'CVE番号', '脆弱性', 'Common Vulnerabilities and Exposures', 'セキュリティ', 'ゼロデイ攻撃', 'IT用語 わかりやすく'],
   openGraph: {

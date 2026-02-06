@@ -6,7 +6,7 @@ import TermPageHeader from '@/app/components/TermPageHeader'
 import FAQAccordion from '@/app/components/FAQAccordion'
 
 export const metadata: Metadata = {
-  title: 'キュー（Queue）とは？初心者向けにわかりやすく解説【実践デモ付き】 | 実践型IT用語辞典',
+  title: 'キュー（Queue）とは？初心者向けにわかりやすく解説【実践デモ付き】',
   description: 'キュー（Queue）は、先に入れたものが先に出ていくFIFO（先入れ先出し）のデータ構造です。レジの行列のように順番通りに処理される仕組みを、身近な例とインタラクティブなデモで初心者にもわかりやすく解説します。',
   keywords: ['キュー', 'Queue', 'FIFO', '先入れ先出し', 'データ構造', 'プログラミング', 'JavaScript', '初心者', 'わかりやすく', 'キュー とは'],
   openGraph: {
