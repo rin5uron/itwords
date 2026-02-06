@@ -12,11 +12,10 @@
 
 ## 実行前に読むファイル（必須）
 
-1. `.claude/TEMPLATE_RULES.md` - テンプレート準拠ルール
+1. `docs/WORKFLOW.md` - テンプレート準拠ルールと更新日ポリシー
 2. `docs/templates/page-template.tsx` - ページテンプレート
-3. `.claude/UPDATE_DATE_POLICY.md` - 更新日ポリシー
-4. 対象ページ本体（`app/terms/[ページ名]/page.tsx`）
-5. 対象ページの layout.tsx（あれば）
+3. 対象ページ本体（`app/terms/[ページ名]/page.tsx`）
+4. 対象ページの layout.tsx（あれば）
 
 ## 実行手順
 

@@ -4,11 +4,10 @@
 
 ## 実行前に読むファイル（必須）
 
-1. `.claude/TEMPLATE_RULES.md` - テンプレート準拠ルール
+1. `docs/WORKFLOW.md` - 新規ページ作成フロー（PHASE 1-4）とルール
 2. `docs/templates/page-template.tsx` - ページテンプレート
-3. `.claude/UPDATE_DATE_POLICY.md` - 更新日ポリシー
-4. `app/components/TermPageHeader.tsx` - ヘッダーコンポーネント
-5. 既存ページ1つ（例：`app/terms/dns/page.tsx`）- 構成の参考
+3. `app/components/TermPageHeader.tsx` - ヘッダーコンポーネント
+4. 既存ページ1つ（例：`app/terms/dns/page.tsx`）- 構成の参考
 
 ## 実行手順
 
