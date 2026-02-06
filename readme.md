@@ -7,10 +7,13 @@
 ## 目次
 
 - [このサイトの本質](#このサイトの本質)
+- [クイックスタート](#クイックスタート)
+  - [Skills](#skills)
+  - [スラッシュコマンド](#スラッシュコマンド)
 - [毎日の作業](#毎日の作業)
-- [スラッシュコマンド](#スラッシュコマンド)
-- [重要Issue](#-重要issue)
+- [重要Issue](#重要issue)
 - [全ドキュメント一覧](#全ドキュメント一覧)
+- [ドキュメントポリシー](#ドキュメントポリシー)
 
 ---
 
@@ -25,37 +28,51 @@
 
 ---
 
-## 毎日の作業
+## クイックスタート
 
-### 30分チャレンジを開始
+### Skills
 
-`/start-daily` で以下が順番に実行されます：
+Claude Code Skills を使って用語ページの改善レビューを実行できます。
 
-1. **データ分析（5分）** - Search Console/Analytics確認、Issue提案
-2. **用語ページ改善（10分）** - 既存用語ページ1本を改善
-3. **新規用語ページ（10分）** - 新しい用語ページを1本作成
-4. **Next.js課題（5分）** - 学習項目を1つ実装
+| Skill | 何をする |
+|-------|----------|
+| `itwords-content-review` | 用語ページの内容改善レビュー（テンプレート準拠チェック、コンテンツ品質確認） |
 
-**詳細**: [毎日の作業ルーチン](./docs/DAILY-ROUTINE.md)
+**使い方**:
+```
+skill: itwords-content-review
+```
 
----
-
-## スラッシュコマンド
+### スラッシュコマンド
 
 Claude Codeで使えるコマンド一覧。`.claude/commands/` の各ファイルが `/コマンド名` になる。
 
-| コマンド | 何をする | 詳細 |
-|----------|----------|------|
-| `/start-daily` | 30分チャレンジを開始（DAILY-ROUTINE に沿って Phase 1→4 を順に実行） | [start-daily.md](./.claude/commands/start-daily.md) |
-| `/new-page [用語名]` | 新規用語ページを作成（テンプレート準拠・インデックス更新まで） | [new-page.md](./.claude/commands/new-page.md) |
-| `/improve-page [ページ名]` | 既存ページのコンテンツ・テンプレート準拠を改善 | [improve-page.md](./.claude/commands/improve-page.md) |
-| `/seo-check` | Search Consoleのキーワードデータを貼り付けて title・description を確認・修正 | [seo-check.md](./.claude/commands/seo-check.md) |
+| コマンド | 何をする |
+|----------|----------|
+| `/new-page [用語名]` | 新規用語ページを作成（テンプレート準拠・インデックス更新まで） |
+| `/seo-check [用語名]` | Search Consoleのデータを元に title・description を確認・修正 |
 
-**補足**: `/start-daily` は他のコマンドを呼び出さない。DAILY-ROUTINE の Phase に沿って AI が作業する。個別作業は各コマンドを直接使う。
+**詳細**: [ワークフロー](./docs/WORKFLOW.md) - 各コマンドの実行フローと手順
 
 ---
 
-## 🔥 重要Issue
+## 毎日の作業
+
+### 推奨ワークフロー（30分）
+
+1. **データ分析（5分）** - Search Console/Analytics確認、Issue提案
+2. **用語ページ改善（10分）** - Skills でレビュー → Issue 記録 → 修正
+3. **新規用語ページ（10分）** - `/new-page` で新しい用語ページを1本作成
+4. **Next.js課題（5分）** - 学習項目を1つ実装
+
+**ポイント**:
+- Skills でレビュー → 改善点を Issue に記録（手動 or 自動化検討中）
+- Issue ラベルで分類（`SEO`, `コンテンツ`, `UI/UX`, `仕組み作り`, `next`）
+- 完了したら Issue をクローズ
+
+---
+
+## 重要Issue
 
 進行中の重要なIssueを把握するための一覧。完了したらこのリストから削除する。
 
@@ -71,47 +88,42 @@ Claude Codeで使えるコマンド一覧。`.claude/commands/` の各ファイ�
 ### SEO（全体最適化）
 - [#18](https://github.com/rin5uron/itwords/issues/18): 全用語ページ - SEOメタデータ改善
 
-### コンテンツ拡充（優先度順）
-- [#21](https://github.com/rin5uron/itwords/issues/21): queue - コンテンツ拡充（2,500→3,500文字）
-- [#22](https://github.com/rin5uron/itwords/issues/22): localstorage - コンテンツ拡充（2,700→3,500文字）
-- [#23](https://github.com/rin5uron/itwords/issues/23): zero-day - コンテンツ拡充（2,700→3,500文字）
-- [#24](https://github.com/rin5uron/itwords/issues/24): json - コンテンツ拡充（2,800→3,500文字）
-- [#25](https://github.com/rin5uron/itwords/issues/25): exploit - コンテンツ拡充（2,900→3,500文字）
-- [#26](https://github.com/rin5uron/itwords/issues/26): html - コンテンツ拡充（3,100→4,000文字）
-- [#27](https://github.com/rin5uron/itwords/issues/27): cve - コンテンツ拡充（3,200→4,000文字）
-- [#28](https://github.com/rin5uron/itwords/issues/28): white-hat-hacker - コンテンツ拡充（3,600→4,000文字）
-- [#29](https://github.com/rin5uron/itwords/issues/29): stack - コンテンツ拡充（3,600→4,000文字）
+### アイデア
+- [#30](https://github.com/rin5uron/itwords/issues/30): Next.js学習システムの構築
+- [#31](https://github.com/rin5uron/itwords/issues/31): インフラ・ネットワーク関連用語ページの作成計画
 
 ---
 
 ## 全ドキュメント一覧
 
-### 運用・ルール（詳細はここから）
+### 運用・ルール（必読）
+- [ワークフロー](./docs/WORKFLOW.md) - 新規用語ページ追加の手順（PHASE 1〜4）、コマンド詳細
 - [作業進捗管理](./docs/ISSUE-MANAGEMENT.md) - Issueタイトル・ラベル・状態管理・作業の流れ
-- [ワークフロー](./docs/WORKFLOW.md) - 新規用語ページ追加の手順（PHASE 1〜4）
-- [基本原則・プロジェクト構造・UI/UX](./docs/PRINCIPLES.md) - AI運用原則・ディレクトリ構成・表示ルール
+- [基本原則・プロジェクト構造](./docs/PRINCIPLES.md) - AI運用原則・ディレクトリ構成・UI/UXルール
 
-### 運用・ワークフロー
-- [毎日の作業ルーチン](./docs/DAILY-ROUTINE.md) - 30分チャレンジの詳細
-- [画像生成ワークフロー](./docs/image-generation-claude-workflow.md) - AI補助による画像生成手順
+### テンプレート（ページ作成時に使用）
+- [用語ページテンプレート](./docs/templates/page-template.tsx) - 新規ページ作成時の雛形
+- [レイアウトテンプレート](./docs/templates/layout-template.tsx) - metadata設定用
+- [ヒーロー画像ルール](./docs/templates/hero-image-rules.md) - 画像生成時のルール
+
+### 画像生成
+- [Claude画像生成ワークフロー](./docs/image-generation-claude-workflow.md) - AI補助による画像生成手順
 - [DALL-E 3ルール](./docs/image-generation-dalle3-rules.md) - 画像生成プロジェクトルール
 
-### プロジェクト概要
-- [ビジョン](./docs/vision.md) - サイトのコンセプト・ペルソナ
-- [技術仕様](./docs/spec.md) - ディレクトリ構成・CSS設計
+---
 
-### 学習管理
-- [Next.js学習進捗](./docs/learning/nextjs-progress.md) - 学習項目と進捗状況
+## ドキュメントポリシー
 
-### テンプレート
-- [用語ページテンプレート](./docs/templates/page-template.tsx) - 新規ページ作成時の雛形
-- [SEOチェックシート](./docs/templates/checklists/seo-check-sheet.md) - SEO品質確認
-- [SEOトラッキングシート](./docs/templates/checklists/seo-keyword-tracking-sheet.md) - キーワード追跡
+**原則: これ以上ドキュメントを増やさない**
 
-### アイデア
-- [インフラ用語計画](./docs/ideas/infrastructure-terms-plan.md) - 追加予定の用語リスト
-- [Next.js学習システム提案](./docs/ideas/nextjs-learning-system-proposal.md) - 学習管理の提案
-- [Claude Skills評価](./docs/ideas/CLAUDE-SKILLS-EVALUATION.md) - AI支援ツールの評価
+- **新しいアイデア・改善案**: GitHub Issue で管理
+- **作業履歴・進捗**: GitHub Issue のコメントで記録
+- **ルール変更**: 既存の3ファイル（WORKFLOW.md, ISSUE-MANAGEMENT.md, PRINCIPLES.md）を更新
+
+**理由**:
+- ドキュメントが増えると管理コストが高くなる
+- Issue で管理すれば時系列で追いやすい
+- 人間もAIも迷わない
 
 ---
 
