@@ -60,7 +60,99 @@ export default function ExcelShortcutsPage() {
     },
   ]
 
-  const currentMission = selectedLevel === 1 ? level1Missions[currentMissionIndex] : null
+  // レベル2のミッション定義
+  const level2Missions: Mission[] = [
+    {
+      id: 6,
+      title: 'Ctrl+D で下方向にコピー',
+      description: '選択したセルを下方向に一括コピーします。',
+      instruction: 'セルを範囲選択して、Ctrl + D を押してください',
+      checkKey: (e: KeyboardEvent) => e.ctrlKey && e.key.toLowerCase() === 'd',
+    },
+    {
+      id: 7,
+      title: 'Ctrl+R で右方向にコピー',
+      description: '選択したセルを右方向に一括コピーします。',
+      instruction: 'セルを範囲選択して、Ctrl + R を押してください',
+      checkKey: (e: KeyboardEvent) => e.ctrlKey && e.key.toLowerCase() === 'r',
+    },
+    {
+      id: 8,
+      title: 'Ctrl+Z で元に戻す',
+      description: '直前の操作を取り消します。',
+      instruction: 'Ctrl + Z を押して、操作を元に戻してください',
+      checkKey: (e: KeyboardEvent) => e.ctrlKey && e.key.toLowerCase() === 'z',
+    },
+    {
+      id: 9,
+      title: 'Ctrl+Home で先頭に移動',
+      description: 'シートの先頭（A1セル）に一瞬で移動します。',
+      instruction: 'Ctrl + Home を押して、A1セルに移動してください',
+      checkKey: (e: KeyboardEvent) => e.ctrlKey && e.key === 'Home',
+    },
+    {
+      id: 10,
+      title: 'Ctrl+End でデータ範囲の末尾に移動',
+      description: 'データが入力されている範囲の右下端に移動します。',
+      instruction: 'Ctrl + End を押して、データ範囲の末尾に移動してください',
+      checkKey: (e: KeyboardEvent) => e.ctrlKey && e.key === 'End',
+    },
+  ]
+
+  // レベル3のミッション定義
+  const level3Missions: Mission[] = [
+    {
+      id: 11,
+      title: 'Ctrl+Shift+Home で先頭まで範囲選択',
+      description: '現在のセルから先頭（A1）までを一括で選択します。',
+      instruction: 'Ctrl + Shift + Home を押して、先頭まで選択してください',
+      checkKey: (e: KeyboardEvent) => e.ctrlKey && e.shiftKey && e.key === 'Home',
+    },
+    {
+      id: 12,
+      title: 'Ctrl+Shift+End でデータ末尾まで範囲選択',
+      description: '現在のセルからデータ範囲の末尾まで選択します。',
+      instruction: 'Ctrl + Shift + End を押して、データ末尾まで選択してください',
+      checkKey: (e: KeyboardEvent) => e.ctrlKey && e.shiftKey && e.key === 'End',
+    },
+    {
+      id: 13,
+      title: 'Ctrl+Space で列全体を選択',
+      description: '現在のセルの列全体を選択します。',
+      instruction: 'Ctrl + Space を押して、列全体を選択してください',
+      checkKey: (e: KeyboardEvent) => e.ctrlKey && e.key === ' ',
+    },
+    {
+      id: 14,
+      title: 'Shift+Space で行全体を選択',
+      description: '現在のセルの行全体を選択します。',
+      instruction: 'Shift + Space を押して、行全体を選択してください',
+      checkKey: (e: KeyboardEvent) => e.shiftKey && e.key === ' ',
+    },
+    {
+      id: 15,
+      title: 'Ctrl+PageDown でシート移動（右）',
+      description: '次のワークシートに移動します。',
+      instruction: 'Ctrl + PageDown を押して、次のシートに移動してください',
+      checkKey: (e: KeyboardEvent) => e.ctrlKey && e.key === 'PageDown',
+    },
+  ]
+
+  const getMissionsByLevel = (level: number): Mission[] => {
+    switch (level) {
+      case 1:
+        return level1Missions
+      case 2:
+        return level2Missions
+      case 3:
+        return level3Missions
+      default:
+        return []
+    }
+  }
+
+  const currentMissions = selectedLevel !== null ? getMissionsByLevel(selectedLevel) : []
+  const currentMission = selectedLevel !== null ? currentMissions[currentMissionIndex] : null
 
   // キー入力検知
   const handleKeyPress = useCallback(
@@ -73,13 +165,13 @@ export default function ExcelShortcutsPage() {
 
         setTimeout(() => {
           setShowSuccess(false)
-          if (currentMissionIndex < level1Missions.length - 1) {
+          if (currentMissionIndex < currentMissions.length - 1) {
             setCurrentMissionIndex(currentMissionIndex + 1)
           }
         }, 1500)
       }
     },
-    [currentMission, currentMissionIndex, completedMissions, level1Missions.length]
+    [currentMission, currentMissionIndex, completedMissions, currentMissions.length]
   )
 
   const resetMissions = () => {
@@ -131,9 +223,10 @@ export default function ExcelShortcutsPage() {
         dateModified="2026-02-07"
         summaryItems={[
           '擬似Excelアプリで実際にショートカットを練習',
-          'レベル1：基本操作（Ctrl+矢印、範囲選択、コピペ、F2編集）',
-          'ミッション形式で段階的に習得',
-          '財務モデリングで使う実践的なショートカット'
+          'レベル1：基本操作（Ctrl+矢印、範囲選択、コピペ、F2）',
+          'レベル2：移動＆操作（Ctrl+D/R、Ctrl+Z、Ctrl+Home/End）',
+          'レベル3：実務スピード（列・行選択、範囲選択、シート移動）',
+          'ミッション形式（全15問）で段階的に習得'
         ]}
         summaryHeaderText="このページでできること"
         summaryIcon="fas fa-laptop-code"
@@ -244,60 +337,100 @@ export default function ExcelShortcutsPage() {
                 </div>
               </div>
 
-              <div style={{
-                padding: 'clamp(20px, 4vw, 30px)',
-                backgroundColor: '#f8f9fa',
-                border: '2px solid #6c757d',
-                borderRadius: '12px',
-                opacity: 0.6
-              }}>
+              <div
+                onClick={() => startLevel(2)}
+                style={{
+                  padding: 'clamp(20px, 4vw, 30px)',
+                  backgroundColor: '#fff',
+                  border: '2px solid #28a745',
+                  borderRadius: '12px',
+                  cursor: 'pointer',
+                  transition: 'all 0.3s',
+                  boxShadow: '0 2px 8px rgba(0,0,0,0.1)'
+                }}
+                onMouseEnter={(e) => {
+                  e.currentTarget.style.transform = 'translateY(-5px)'
+                  e.currentTarget.style.boxShadow = '0 4px 16px rgba(0,0,0,0.2)'
+                }}
+                onMouseLeave={(e) => {
+                  e.currentTarget.style.transform = 'translateY(0)'
+                  e.currentTarget.style.boxShadow = '0 2px 8px rgba(0,0,0,0.1)'
+                }}
+              >
                 <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', flexWrap: 'wrap', gap: '10px' }}>
                   <div style={{ flex: '1', minWidth: '200px' }}>
-                    <h3 style={{ margin: '0 0 10px 0', fontSize: 'clamp(18px, 4vw, 22px)', color: '#6c757d' }}>
-                      <i className="fas fa-star" aria-hidden /><i className="fas fa-star" aria-hidden /> レベル2：書式＆数式
+                    <h3 style={{ margin: '0 0 10px 0', fontSize: 'clamp(18px, 4vw, 22px)', color: '#28a745' }}>
+                      <i className="fas fa-star" aria-hidden /><i className="fas fa-star" aria-hidden /> レベル2：移動＆操作
                     </h3>
                     <p style={{ margin: 0, fontSize: 'clamp(13px, 3.2vw, 14px)', color: '#666' }}>
-                      新人1ヶ月・実務の準備
+                      新人1ヶ月・迷わず飛べる
+                    </p>
+                    <p style={{
+                      margin: '10px 0 0 0',
+                      fontSize: 'clamp(12px, 3vw, 13px)',
+                      color: '#999'
+                    }}>
+                      Ctrl+D/R、Ctrl+Z、Ctrl+Home/End
                     </p>
                   </div>
                   <div style={{
                     padding: '10px 20px',
-                    backgroundColor: '#6c757d',
+                    backgroundColor: '#28a745',
                     color: '#fff',
                     borderRadius: '25px',
                     fontSize: 'clamp(13px, 3.2vw, 14px)',
                     fontWeight: 'bold'
                   }}>
-                    近日公開
+                    開始 →
                   </div>
                 </div>
               </div>
 
-              <div style={{
-                padding: 'clamp(20px, 4vw, 30px)',
-                backgroundColor: '#f8f9fa',
-                border: '2px solid #6c757d',
-                borderRadius: '12px',
-                opacity: 0.6
-              }}>
+              <div
+                onClick={() => startLevel(3)}
+                style={{
+                  padding: 'clamp(20px, 4vw, 30px)',
+                  backgroundColor: '#fff',
+                  border: '2px solid #dc3545',
+                  borderRadius: '12px',
+                  cursor: 'pointer',
+                  transition: 'all 0.3s',
+                  boxShadow: '0 2px 8px rgba(0,0,0,0.1)'
+                }}
+                onMouseEnter={(e) => {
+                  e.currentTarget.style.transform = 'translateY(-5px)'
+                  e.currentTarget.style.boxShadow = '0 4px 16px rgba(0,0,0,0.2)'
+                }}
+                onMouseLeave={(e) => {
+                  e.currentTarget.style.transform = 'translateY(0)'
+                  e.currentTarget.style.boxShadow = '0 2px 8px rgba(0,0,0,0.1)'
+                }}
+              >
                 <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', flexWrap: 'wrap', gap: '10px' }}>
                   <div style={{ flex: '1', minWidth: '200px' }}>
-                    <h3 style={{ margin: '0 0 10px 0', fontSize: 'clamp(18px, 4vw, 22px)', color: '#6c757d' }}>
+                    <h3 style={{ margin: '0 0 10px 0', fontSize: 'clamp(18px, 4vw, 22px)', color: '#dc3545' }}>
                       <i className="fas fa-star" aria-hidden /><i className="fas fa-star" aria-hidden /><i className="fas fa-star" aria-hidden /> レベル3：実務スピード
                     </h3>
                     <p style={{ margin: 0, fontSize: 'clamp(13px, 3.2vw, 14px)', color: '#666' }}>
                       即戦力・マウス不要の境地
                     </p>
+                    <p style={{
+                      margin: '10px 0 0 0',
+                      fontSize: 'clamp(12px, 3vw, 13px)',
+                      color: '#999'
+                    }}>
+                      Ctrl+Shift+Home/End、Ctrl/Shift+Space、シート移動
+                    </p>
                   </div>
                   <div style={{
                     padding: '10px 20px',
-                    backgroundColor: '#6c757d',
+                    backgroundColor: '#dc3545',
                     color: '#fff',
                     borderRadius: '25px',
                     fontSize: 'clamp(13px, 3.2vw, 14px)',
                     fontWeight: 'bold'
                   }}>
-                    近日公開
+                    開始 →
                   </div>
                 </div>
               </div>
@@ -305,7 +438,7 @@ export default function ExcelShortcutsPage() {
           </section>
         )}
 
-        {selectedLevel === 1 && (
+        {selectedLevel !== null && (
           <section>
             <div style={{
               display: 'flex',
@@ -315,7 +448,11 @@ export default function ExcelShortcutsPage() {
               flexWrap: 'wrap',
               gap: '10px'
             }}>
-              <h2 style={{ margin: 0 }}>レベル1：基本操作</h2>
+              <h2 style={{ margin: 0 }}>
+                {selectedLevel === 1 && 'レベル1：基本操作'}
+                {selectedLevel === 2 && 'レベル2：移動＆操作'}
+                {selectedLevel === 3 && 'レベル3：実務スピード'}
+              </h2>
               <button
                 onClick={() => setSelectedLevel(null)}
                 style={{
@@ -348,13 +485,13 @@ export default function ExcelShortcutsPage() {
                 gap: '10px'
               }}>
                 <h3 style={{ margin: 0, fontSize: 'clamp(16px, 3.8vw, 18px)' }}>
-                  ミッション {currentMissionIndex + 1} / {level1Missions.length}
+                  ミッション {currentMissionIndex + 1} / {currentMissions.length}
                 </h3>
                 <div style={{
                   fontSize: 'clamp(13px, 3.2vw, 14px)',
                   color: '#666'
                 }}>
-                  完了: {completedMissions.length} / {level1Missions.length}
+                  完了: {completedMissions.length} / {currentMissions.length}
                 </div>
               </div>
 
@@ -367,7 +504,7 @@ export default function ExcelShortcutsPage() {
                 marginBottom: '20px'
               }}>
                 <div style={{
-                  width: `${(completedMissions.length / level1Missions.length) * 100}%`,
+                  width: `${(completedMissions.length / currentMissions.length) * 100}%`,
                   height: '100%',
                   backgroundColor: '#28a745',
                   transition: 'width 0.5s'
@@ -426,7 +563,7 @@ export default function ExcelShortcutsPage() {
                     </div>
                   )}
 
-                  {completedMissions.length === level1Missions.length && (
+                  {completedMissions.length === currentMissions.length && (
                     <div style={{
                       padding: '20px',
                       backgroundColor: '#d4edda',
@@ -440,10 +577,12 @@ export default function ExcelShortcutsPage() {
                         color: '#155724',
                         marginBottom: '10px'
                       }}>
-                        <i className="fas fa-trophy" aria-hidden /> レベル1クリア！
+                        <i className="fas fa-trophy" aria-hidden /> レベル{selectedLevel}クリア！
                       </h3>
                       <p style={{ fontSize: 'clamp(13px, 3.2vw, 14px)', marginBottom: '15px' }}>
-                        基本操作をマスターしました。次はレベル2に挑戦しましょう！
+                        {selectedLevel === 1 && '基本操作をマスターしました。次はレベル2に挑戦しましょう！'}
+                        {selectedLevel === 2 && '移動＆操作をマスターしました。次はレベル3に挑戦しましょう！'}
+                        {selectedLevel === 3 && '全てのミッションをクリアしました！あなたはもうExcelマスターです！'}
                       </p>
                       <div style={{
                         display: 'flex',
@@ -502,19 +641,21 @@ export default function ExcelShortcutsPage() {
         )}
 
         <section>
-          <h2>ショートカット一覧（レベル1）</h2>
+          <h2>ショートカット一覧</h2>
+
           <details style={{ marginBottom: '15px' }}>
             <summary style={{
               padding: '15px',
-              backgroundColor: '#f9f9f9',
-              border: '1px solid #ddd',
+              backgroundColor: '#007bff',
+              color: '#fff',
+              border: '1px solid #007bff',
               borderRadius: '5px',
               cursor: 'pointer',
               fontWeight: 'bold',
               fontSize: 'clamp(14px, 3.5vw, 16px)',
               listStyle: 'none'
             }}>
-              <span style={{ marginRight: '10px' }}>📋 全ショートカット一覧を見る</span>
+              <span style={{ marginRight: '10px' }}>⭐ レベル1：基本操作</span>
             </summary>
             <div style={{
               padding: '15px',
@@ -552,6 +693,42 @@ export default function ExcelShortcutsPage() {
                       <td><strong>F2</strong></td>
                       <td>セルを編集モードにする</td>
                     </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </details>
+
+          <details style={{ marginBottom: '15px' }}>
+            <summary style={{
+              padding: '15px',
+              backgroundColor: '#28a745',
+              color: '#fff',
+              border: '1px solid #28a745',
+              borderRadius: '5px',
+              cursor: 'pointer',
+              fontWeight: 'bold',
+              fontSize: 'clamp(14px, 3.5vw, 16px)',
+              listStyle: 'none'
+            }}>
+              <span style={{ marginRight: '10px' }}>⭐⭐ レベル2：移動＆操作</span>
+            </summary>
+            <div style={{
+              padding: '15px',
+              backgroundColor: '#fff',
+              border: '1px solid #ddd',
+              borderTop: 'none',
+              borderRadius: '0 0 5px 5px'
+            }}>
+              <div className="comparison-table">
+                <table>
+                  <thead>
+                    <tr>
+                      <th>ショートカット</th>
+                      <th>説明</th>
+                    </tr>
+                  </thead>
+                  <tbody>
                     <tr>
                       <td><strong>Ctrl + D</strong></td>
                       <td>選択範囲を下方向にコピー</td>
@@ -559,6 +736,74 @@ export default function ExcelShortcutsPage() {
                     <tr>
                       <td><strong>Ctrl + R</strong></td>
                       <td>選択範囲を右方向にコピー</td>
+                    </tr>
+                    <tr>
+                      <td><strong>Ctrl + Z</strong></td>
+                      <td>元に戻す（Undo）</td>
+                    </tr>
+                    <tr>
+                      <td><strong>Ctrl + Home</strong></td>
+                      <td>先頭（A1セル）に移動</td>
+                    </tr>
+                    <tr>
+                      <td><strong>Ctrl + End</strong></td>
+                      <td>データ範囲の末尾に移動</td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </details>
+
+          <details style={{ marginBottom: '15px' }}>
+            <summary style={{
+              padding: '15px',
+              backgroundColor: '#dc3545',
+              color: '#fff',
+              border: '1px solid #dc3545',
+              borderRadius: '5px',
+              cursor: 'pointer',
+              fontWeight: 'bold',
+              fontSize: 'clamp(14px, 3.5vw, 16px)',
+              listStyle: 'none'
+            }}>
+              <span style={{ marginRight: '10px' }}>⭐⭐⭐ レベル3：実務スピード</span>
+            </summary>
+            <div style={{
+              padding: '15px',
+              backgroundColor: '#fff',
+              border: '1px solid #ddd',
+              borderTop: 'none',
+              borderRadius: '0 0 5px 5px'
+            }}>
+              <div className="comparison-table">
+                <table>
+                  <thead>
+                    <tr>
+                      <th>ショートカット</th>
+                      <th>説明</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td><strong>Ctrl + Shift + Home</strong></td>
+                      <td>先頭（A1）まで範囲選択</td>
+                    </tr>
+                    <tr>
+                      <td><strong>Ctrl + Shift + End</strong></td>
+                      <td>データ末尾まで範囲選択</td>
+                    </tr>
+                    <tr>
+                      <td><strong>Ctrl + Space</strong></td>
+                      <td>列全体を選択</td>
+                    </tr>
+                    <tr>
+                      <td><strong>Shift + Space</strong></td>
+                      <td>行全体を選択</td>
+                    </tr>
+                    <tr>
+                      <td><strong>Ctrl + PageDown</strong></td>
+                      <td>次のワークシートに移動</td>
                     </tr>
                   </tbody>
                 </table>
