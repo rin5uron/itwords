@@ -7,6 +7,336 @@ import ExcelGrid from '@/app/components/ExcelGrid'
 import TermPageHeader from '@/app/components/TermPageHeader'
 import AdBelowRelatedTerms from '@/app/components/AdBelowRelatedTerms'
 
+// テンプレートカラー（.cursorrules 準拠）
+const ACCENT = '#14b8a6'
+const ACCENT_DARK = '#0d9488'
+const ACCENT_TEA = '#ea9b8a'
+const BG_SUCCESS = '#f9f7ef'
+const BG_HINT = '#f0fdfa'
+
+interface ShortcutAccordionProps {
+  level: number
+  title: string
+  color: string
+  shortcuts: { key: string; desc: string }[]
+  completedMissions: number[]
+  shortcutToMissionId: Record<string, number>
+}
+
+function ShortcutAccordion({ level, title, color, shortcuts, completedMissions, shortcutToMissionId }: ShortcutAccordionProps) {
+  const stars = Array(level).fill(null).map((_, i) => <i key={i} className="fas fa-star" aria-hidden />)
+  return (
+    <details style={{ marginBottom: '15px' }}>
+      <summary style={{
+        padding: '15px',
+        backgroundColor: color,
+        color: '#fff',
+        border: `1px solid ${color}`,
+        borderRadius: '5px',
+        cursor: 'pointer',
+        fontWeight: 'bold',
+        fontSize: 'clamp(14px, 3.5vw, 16px)',
+        listStyle: 'none'
+      }}>
+        <span style={{ marginRight: '10px' }}>{stars} {title}</span>
+      </summary>
+      <div style={{
+        padding: '15px',
+        backgroundColor: '#fff',
+        border: '1px solid #ddd',
+        borderTop: 'none',
+        borderRadius: '0 0 5px 5px'
+      }}>
+        <div className="comparison-table">
+          <table>
+            <thead>
+              <tr>
+                <th>ショートカット</th>
+                <th>説明</th>
+              </tr>
+            </thead>
+            <tbody>
+              {shortcuts.map(({ key, desc }) => {
+                const missionId = shortcutToMissionId[key]
+                const isCompleted = missionId != null && completedMissions.includes(missionId)
+                return (
+                  <tr
+                    key={key}
+                    style={isCompleted ? { backgroundColor: BG_HINT } : undefined}
+                  >
+                    <td><strong>{key}</strong>{isCompleted && <><span style={{ marginLeft: '6px' }}><i className="fas fa-check-circle" style={{ color: ACCENT }} aria-hidden /></span></>}</td>
+                    <td>{desc}</td>
+                  </tr>
+                )
+              })}
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </details>
+  )
+}
+
+interface LevelCardProps {
+  level: number
+  title: string
+  desc: string
+  keys: string
+  color: string
+  selectedLevel: number | null
+  startLevel: (n: number) => void
+  setSelectedLevel: (n: number | null) => void
+  children: React.ReactNode
+}
+
+function LevelCard({ level, title, desc, keys, color, selectedLevel, startLevel, setSelectedLevel, children }: LevelCardProps) {
+  const isExpanded = selectedLevel === level
+  return (
+    <div
+      style={{
+        padding: 'clamp(20px, 4vw, 30px)',
+        backgroundColor: '#fff',
+        border: `2px solid ${color}`,
+        borderRadius: '12px',
+        transition: 'all 0.3s',
+        boxShadow: '0 2px 8px rgba(0,0,0,0.1)'
+      }}
+    >
+      <div
+        onClick={() => !isExpanded && startLevel(level)}
+        style={{
+          display: 'flex',
+          alignItems: 'center',
+          justifyContent: 'space-between',
+          flexWrap: 'wrap',
+          gap: '10px',
+          cursor: isExpanded ? 'default' : 'pointer'
+        }}
+        onMouseEnter={(e) => {
+          if (!isExpanded && e.currentTarget.parentElement) {
+            e.currentTarget.parentElement.style.transform = 'translateY(-5px)'
+            e.currentTarget.parentElement.style.boxShadow = '0 4px 16px rgba(0,0,0,0.2)'
+          }
+        }}
+        onMouseLeave={(e) => {
+          if (e.currentTarget.parentElement) {
+            e.currentTarget.parentElement.style.transform = 'translateY(0)'
+            e.currentTarget.parentElement.style.boxShadow = '0 2px 8px rgba(0,0,0,0.1)'
+          }
+        }}
+      >
+        <div style={{ flex: '1', minWidth: '200px' }}>
+          <h3 style={{
+            margin: '0 0 10px 0',
+            fontSize: 'clamp(18px, 4vw, 22px)',
+            color,
+            display: 'flex',
+            alignItems: 'baseline',
+            gap: '4px'
+          }}>
+            <span>{Array(level).fill(null).map((_, i) => <i key={i} className="fas fa-star" aria-hidden />)}</span>
+            <span>{title}</span>
+          </h3>
+          <p style={{ margin: 0, fontSize: 'clamp(13px, 3.2vw, 14px)', color: '#666' }}>{desc}</p>
+          <p style={{ margin: '10px 0 0 0', fontSize: 'clamp(12px, 3vw, 13px)', color: '#999' }}>{keys}</p>
+        </div>
+        <div style={{ display: 'flex', gap: '8px', alignItems: 'center' }}>
+          {isExpanded ? (
+            <button
+              onClick={(e) => { e.stopPropagation(); setSelectedLevel(null) }}
+              style={{
+                padding: '8px 16px',
+                backgroundColor: '#6c757d',
+                color: '#fff',
+                border: 'none',
+                borderRadius: '5px',
+                cursor: 'pointer',
+                fontSize: 'clamp(13px, 3.2vw, 14px)'
+              }}
+            >
+              閉じる
+            </button>
+          ) : (
+            <div style={{
+              padding: '10px 20px',
+              backgroundColor: color,
+              color: '#fff',
+              borderRadius: '25px',
+              fontSize: 'clamp(13px, 3.2vw, 14px)',
+              fontWeight: 'bold'
+            }}>
+              開始 →
+            </div>
+          )}
+        </div>
+      </div>
+      {children}
+    </div>
+  )
+}
+
+interface LevelDemoContentProps {
+  selectedLevel: number
+  currentMissionIndex: number
+  currentMissions: Mission[]
+  currentMission: Mission | null
+  completedMissions: number[]
+  showSuccess: boolean
+  goToNextMission: () => void
+  resetMissions: () => void
+  setSelectedLevel: (n: number | null) => void
+  handleKeyPress: (e: KeyboardEvent) => void
+  ExcelGrid: React.ComponentType<{ onKeyPress: (e: KeyboardEvent) => void }>
+  accentColor: string
+  bgSuccess: string
+  accentTea: string
+}
+
+function LevelDemoContent({
+  selectedLevel,
+  currentMissionIndex,
+  currentMissions,
+  currentMission,
+  completedMissions,
+  showSuccess,
+  goToNextMission,
+  resetMissions,
+  setSelectedLevel,
+  handleKeyPress,
+  ExcelGrid,
+  accentColor,
+  bgSuccess,
+  accentTea,
+}: LevelDemoContentProps) {
+  const hasNext = currentMissionIndex < currentMissions.length - 1
+  const allCompleted = completedMissions.length === currentMissions.length
+
+  return (
+    <div style={{ marginTop: '20px', paddingTop: '20px', borderTop: '1px solid #eee' }}>
+      <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '15px', flexWrap: 'wrap', gap: '10px' }}>
+        <h3 style={{ margin: 0, fontSize: 'clamp(16px, 3.8vw, 18px)' }}>
+          ミッション {currentMissionIndex + 1} / {currentMissions.length}
+        </h3>
+        <div style={{ fontSize: 'clamp(13px, 3.2vw, 14px)', color: '#666' }}>
+          完了: {completedMissions.length} / {currentMissions.length}
+        </div>
+      </div>
+      <div style={{ width: '100%', height: '10px', backgroundColor: '#e9ecef', borderRadius: '5px', overflow: 'hidden', marginBottom: '20px' }}>
+        <div style={{ width: `${(completedMissions.length / currentMissions.length) * 100}%`, height: '100%', backgroundColor: accentColor, transition: 'width 0.5s' }} />
+      </div>
+
+      {currentMission && !allCompleted && (
+        <>
+          <h4 style={{ fontSize: 'clamp(16px, 3.8vw, 20px)', marginBottom: '10px', color: accentColor }}>
+            {currentMission.title}
+          </h4>
+          <p style={{ fontSize: 'clamp(13px, 3.2vw, 14px)', marginBottom: '15px' }}>{currentMission.description}</p>
+          <div style={{
+            padding: 'clamp(12px, 3vw, 15px)',
+            backgroundColor: '#f8f9fa',
+            border: '1px solid #dee2e6',
+            borderRadius: '8px',
+            marginBottom: '20px'
+          }}>
+            <p style={{ margin: '0 0 10px 0', fontSize: 'clamp(13px, 3.2vw, 14px)', fontWeight: 'bold' }}>
+              <i className="fas fa-keyboard" aria-hidden /> 指示：
+            </p>
+            <p style={{ margin: 0, fontSize: 'clamp(14px, 3.5vw, 16px)' }}>{currentMission.instruction}</p>
+          </div>
+          <div style={{ marginBottom: '20px' }}>
+            <ExcelGrid onKeyPress={handleKeyPress} />
+          </div>
+
+          {showSuccess && (
+            <div style={{
+              padding: '15px',
+              backgroundColor: bgSuccess,
+              borderLeft: `4px solid ${accentTea}`,
+              borderRadius: '8px',
+              textAlign: 'center',
+              fontSize: 'clamp(14px, 3.5vw, 16px)',
+              fontWeight: 'bold',
+              color: '#333',
+              marginTop: '20px'
+            }}>
+              <i className="fas fa-check-circle" aria-hidden /> 正解！
+              {hasNext && (
+                <button
+                  onClick={goToNextMission}
+                  style={{
+                    display: 'block',
+                    margin: '10px auto 0',
+                    padding: '10px 24px',
+                    backgroundColor: accentColor,
+                    color: '#fff',
+                    border: 'none',
+                    borderRadius: '5px',
+                    cursor: 'pointer',
+                    fontSize: 'clamp(13px, 3.2vw, 14px)',
+                    fontWeight: 'bold'
+                  }}
+                >
+                  次のミッションへ →
+                </button>
+              )}
+            </div>
+          )}
+        </>
+      )}
+
+      {allCompleted && (
+        <div style={{
+          padding: '20px',
+          backgroundColor: bgSuccess,
+          borderLeft: `4px solid ${accentTea}`,
+          borderRadius: '8px',
+          textAlign: 'center',
+          marginTop: '20px'
+        }}>
+          <h3 style={{ fontSize: 'clamp(18px, 4vw, 22px)', color: '#333', marginBottom: '10px' }}>
+            <i className="fas fa-trophy" aria-hidden /> レベル{selectedLevel}クリア！
+          </h3>
+          <p style={{ fontSize: 'clamp(13px, 3.2vw, 14px)', marginBottom: '15px' }}>
+            {selectedLevel === 1 && '基本操作をマスターしました。次はレベル2に挑戦しましょう！'}
+            {selectedLevel === 2 && '移動＆操作をマスターしました。次はレベル3に挑戦しましょう！'}
+            {selectedLevel === 3 && '全てのミッションをクリアしました！'}
+          </p>
+          <div style={{ display: 'flex', gap: '10px', justifyContent: 'center', flexWrap: 'wrap' }}>
+            <button
+              onClick={resetMissions}
+              style={{
+                padding: '10px 20px',
+                backgroundColor: accentColor,
+                color: '#fff',
+                border: 'none',
+                borderRadius: '5px',
+                cursor: 'pointer',
+                fontSize: 'clamp(13px, 3.2vw, 14px)'
+              }}
+            >
+              もう一度
+            </button>
+            <button
+              onClick={() => setSelectedLevel(null)}
+              style={{
+                padding: '10px 20px',
+                backgroundColor: '#6c757d',
+                color: '#fff',
+                border: 'none',
+                borderRadius: '5px',
+                cursor: 'pointer',
+                fontSize: 'clamp(13px, 3.2vw, 14px)'
+              }}
+            >
+              閉じる
+            </button>
+          </div>
+        </div>
+      )}
+    </div>
+  )
+}
+
 type Mission = {
   id: number
   title: string
@@ -154,7 +484,7 @@ export default function ExcelShortcutsPage() {
   const currentMissions = selectedLevel !== null ? getMissionsByLevel(selectedLevel) : []
   const currentMission = selectedLevel !== null ? currentMissions[currentMissionIndex] : null
 
-  // キー入力検知
+  // キー入力検知（正解時は「次のミッションへ」ボタンで進む導線を明確に）
   const handleKeyPress = useCallback(
     (e: KeyboardEvent) => {
       if (!currentMission || completedMissions.includes(currentMission.id)) return
@@ -162,17 +492,17 @@ export default function ExcelShortcutsPage() {
       if (currentMission.checkKey(e)) {
         setShowSuccess(true)
         setCompletedMissions([...completedMissions, currentMission.id])
-
-        setTimeout(() => {
-          setShowSuccess(false)
-          if (currentMissionIndex < currentMissions.length - 1) {
-            setCurrentMissionIndex(currentMissionIndex + 1)
-          }
-        }, 1500)
       }
     },
-    [currentMission, currentMissionIndex, completedMissions, currentMissions.length]
+    [currentMission, completedMissions]
   )
+
+  const goToNextMission = () => {
+    setShowSuccess(false)
+    if (currentMissionIndex < currentMissions.length - 1) {
+      setCurrentMissionIndex(currentMissionIndex + 1)
+    }
+  }
 
   const resetMissions = () => {
     setCurrentMissionIndex(0)
@@ -186,6 +516,10 @@ export default function ExcelShortcutsPage() {
   }
 
   const faqs = [
+    {
+      question: '投資銀行の財務モデリングとは何ですか？',
+      answer: '企業の価値や将来の業績を評価するために、Excelで数式や計算を組み立てた「財務モデル」を作る作業です。投資銀行では、M&A（企業買収）の相談や株式の評価などで膨大なセルを扱うため、マウスよりキーボードショートカットの方が圧倒的に速く、正確に作業できます。',
+    },
     {
       question: '投資銀行で本当にマウスを使わないのですか？',
       answer: 'はい、多くの投資銀行では財務モデリング作業中にマウスをほとんど使いません。キーボードショートカットを使うことで作業スピードが圧倒的に速くなり、長時間の作業でも疲れにくくなります。新人トレーニングでショートカットキーの習得が必須とされている企業も多いです。',
@@ -204,6 +538,14 @@ export default function ExcelShortcutsPage() {
     },
   ]
 
+  // ショートカット一覧の各項目とmission idの対応（体験済みハイライト用）
+  const shortcutToMissionId: Record<string, number> = {
+    'Ctrl + →': 1, 'Ctrl + Shift + →': 2, 'Ctrl + C': 3, 'Ctrl + V': 4, 'F2': 5,
+    'Ctrl + D': 6, 'Ctrl + R': 7, 'Ctrl + Z': 8, 'Ctrl + Home': 9, 'Ctrl + End': 10,
+    'Ctrl + Shift + Home': 11, 'Ctrl + Shift + End': 12, 'Ctrl + Space': 13,
+    'Shift + Space': 14, 'Ctrl + PageDown': 15,
+  }
+
   return (
     <div className="container">
       <StructuredData type="FAQPage" faqs={faqs} />
@@ -212,15 +554,15 @@ export default function ExcelShortcutsPage() {
         title="Excel ショートカット練習 - 投資銀行スタイル【マウス禁止】"
         description="Excelショートカットキーを実践形式で習得。投資銀行の財務モデリングで使われるキーボード操作をレベル別ミッションで体験できます。"
         datePublished="2026-02-07"
-        dateModified="2026-02-07"
+        dateModified="2026-02-08"
       />
 
       <TermPageHeader
         termName="Excel ショートカット練習"
-        reading="投資銀行スタイル 財務モデリング"
+        reading="擬似Excelでキーボード操作を習得"
         icon="fas fa-keyboard"
         dateCreated="2026-02-07"
-        dateModified="2026-02-07"
+        dateModified="2026-02-08"
         summaryItems={[
           '擬似Excelアプリで実際にショートカットを練習',
           'レベル1：基本操作（Ctrl+矢印、範囲選択、コピペ、F2）',
@@ -249,8 +591,8 @@ export default function ExcelShortcutsPage() {
 
           <div style={{
             padding: 'clamp(15px, 3vw, 20px)',
-            backgroundColor: '#fff3cd',
-            border: '2px solid #ffc107',
+            backgroundColor: BG_HINT,
+            border: `2px solid ${ACCENT}`,
             borderRadius: '8px',
             marginTop: '20px',
             maxWidth: '100%',
@@ -262,388 +604,113 @@ export default function ExcelShortcutsPage() {
           </div>
         </section>
 
-        {selectedLevel === null && (
-          <section>
-            <h2 style={{ wordWrap: 'break-word', overflowWrap: 'break-word', minWidth: 0 }}>疑似Excelで実際に体験</h2>
-            <div style={{
-              display: 'flex',
-              flexDirection: 'column',
-              gap: '15px',
-              maxWidth: '800px',
-              margin: '0 auto'
-            }}>
-              <div
-                onClick={() => startLevel(1)}
-                style={{
-                  padding: 'clamp(20px, 4vw, 30px)',
-                  backgroundColor: '#fff',
-                  border: '2px solid #007bff',
-                  borderRadius: '12px',
-                  cursor: 'pointer',
-                  transition: 'all 0.3s',
-                  boxShadow: '0 2px 8px rgba(0,0,0,0.1)'
-                }}
-                onMouseEnter={(e) => {
-                  e.currentTarget.style.transform = 'translateY(-5px)'
-                  e.currentTarget.style.boxShadow = '0 4px 16px rgba(0,0,0,0.2)'
-                }}
-                onMouseLeave={(e) => {
-                  e.currentTarget.style.transform = 'translateY(0)'
-                  e.currentTarget.style.boxShadow = '0 2px 8px rgba(0,0,0,0.1)'
-                }}
-              >
-                <div style={{
-                  display: 'flex',
-                  alignItems: 'center',
-                  justifyContent: 'space-between',
-                  flexWrap: 'wrap',
-                  gap: '10px'
-                }}>
-                  <div style={{ flex: '1', minWidth: '200px' }}>
-                    <h3 style={{
-                      margin: '0 0 10px 0',
-                      fontSize: 'clamp(18px, 4vw, 22px)',
-                      color: '#007bff',
-                      display: 'flex',
-                      alignItems: 'baseline',
-                      gap: '4px'
-                    }}>
-                      <span><i className="fas fa-star" aria-hidden /></span>
-                      <span>レベル1：基本操作</span>
-                    </h3>
-                    <p style={{ margin: 0, fontSize: 'clamp(13px, 3.2vw, 14px)', color: '#666' }}>
-                      Excelを使うなら絶対知っておきたいショートカット
-                    </p>
-                    <p style={{
-                      margin: '10px 0 0 0',
-                      fontSize: 'clamp(12px, 3vw, 13px)',
-                      color: '#999'
-                    }}>
-                      Ctrl+矢印、範囲選択、コピペ、F2編集
-                    </p>
-                  </div>
-                  <div style={{
-                    padding: '10px 20px',
-                    backgroundColor: '#007bff',
-                    color: '#fff',
-                    borderRadius: '25px',
-                    fontSize: 'clamp(13px, 3.2vw, 14px)',
-                    fontWeight: 'bold'
-                  }}>
-                    開始 →
-                  </div>
-                </div>
-              </div>
-
-              <div
-                onClick={() => startLevel(2)}
-                style={{
-                  padding: 'clamp(20px, 4vw, 30px)',
-                  backgroundColor: '#fff',
-                  border: '2px solid #28a745',
-                  borderRadius: '12px',
-                  cursor: 'pointer',
-                  transition: 'all 0.3s',
-                  boxShadow: '0 2px 8px rgba(0,0,0,0.1)'
-                }}
-                onMouseEnter={(e) => {
-                  e.currentTarget.style.transform = 'translateY(-5px)'
-                  e.currentTarget.style.boxShadow = '0 4px 16px rgba(0,0,0,0.2)'
-                }}
-                onMouseLeave={(e) => {
-                  e.currentTarget.style.transform = 'translateY(0)'
-                  e.currentTarget.style.boxShadow = '0 2px 8px rgba(0,0,0,0.1)'
-                }}
-              >
-                <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', flexWrap: 'wrap', gap: '10px' }}>
-                  <div style={{ flex: '1', minWidth: '200px' }}>
-                    <h3 style={{
-                      margin: '0 0 10px 0',
-                      fontSize: 'clamp(18px, 4vw, 22px)',
-                      color: '#28a745',
-                      display: 'flex',
-                      alignItems: 'baseline',
-                      gap: '4px'
-                    }}>
-                      <span><i className="fas fa-star" aria-hidden /><i className="fas fa-star" aria-hidden /></span>
-                      <span>レベル2：移動＆操作</span>
-                    </h3>
-                    <p style={{ margin: 0, fontSize: 'clamp(13px, 3.2vw, 14px)', color: '#666' }}>
-                      業種問わず「業務で使えたら作業効率爆上がり」ショートカット
-                    </p>
-                    <p style={{
-                      margin: '10px 0 0 0',
-                      fontSize: 'clamp(12px, 3vw, 13px)',
-                      color: '#999'
-                    }}>
-                      Ctrl+D/R、Ctrl+Z、Ctrl+Home/End
-                    </p>
-                  </div>
-                  <div style={{
-                    padding: '10px 20px',
-                    backgroundColor: '#28a745',
-                    color: '#fff',
-                    borderRadius: '25px',
-                    fontSize: 'clamp(13px, 3.2vw, 14px)',
-                    fontWeight: 'bold'
-                  }}>
-                    開始 →
-                  </div>
-                </div>
-              </div>
-
-              <div
-                onClick={() => startLevel(3)}
-                style={{
-                  padding: 'clamp(20px, 4vw, 30px)',
-                  backgroundColor: '#fff',
-                  border: '2px solid #dc3545',
-                  borderRadius: '12px',
-                  cursor: 'pointer',
-                  transition: 'all 0.3s',
-                  boxShadow: '0 2px 8px rgba(0,0,0,0.1)'
-                }}
-                onMouseEnter={(e) => {
-                  e.currentTarget.style.transform = 'translateY(-5px)'
-                  e.currentTarget.style.boxShadow = '0 4px 16px rgba(0,0,0,0.2)'
-                }}
-                onMouseLeave={(e) => {
-                  e.currentTarget.style.transform = 'translateY(0)'
-                  e.currentTarget.style.boxShadow = '0 2px 8px rgba(0,0,0,0.1)'
-                }}
-              >
-                <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', flexWrap: 'wrap', gap: '10px' }}>
-                  <div style={{ flex: '1', minWidth: '200px' }}>
-                    <h3 style={{
-                      margin: '0 0 10px 0',
-                      fontSize: 'clamp(18px, 4vw, 22px)',
-                      color: '#dc3545',
-                      display: 'flex',
-                      alignItems: 'baseline',
-                      gap: '4px'
-                    }}>
-                      <span><i className="fas fa-star" aria-hidden /><i className="fas fa-star" aria-hidden /><i className="fas fa-star" aria-hidden /></span>
-                      <span>レベル3：実務スピード</span>
-                    </h3>
-                    <p style={{ margin: 0, fontSize: 'clamp(13px, 3.2vw, 14px)', color: '#666' }}>
-                      投資銀行の財務モデリングでも活用できるショートカット
-                    </p>
-                    <p style={{
-                      margin: '10px 0 0 0',
-                      fontSize: 'clamp(12px, 3vw, 13px)',
-                      color: '#999'
-                    }}>
-                      Ctrl+Shift+Home/End、Ctrl/Shift+Space、シート移動
-                    </p>
-                  </div>
-                  <div style={{
-                    padding: '10px 20px',
-                    backgroundColor: '#dc3545',
-                    color: '#fff',
-                    borderRadius: '25px',
-                    fontSize: 'clamp(13px, 3.2vw, 14px)',
-                    fontWeight: 'bold'
-                  }}>
-                    開始 →
-                  </div>
-                </div>
-              </div>
-            </div>
-          </section>
-        )}
-
-        {selectedLevel !== null && (
-          <section>
-            <div style={{
-              display: 'flex',
-              justifyContent: 'space-between',
-              alignItems: 'center',
-              marginBottom: '20px',
-              flexWrap: 'wrap',
-              gap: '10px'
-            }}>
-              <h2 style={{ margin: 0 }}>
-                {selectedLevel === 1 && 'レベル1：基本操作'}
-                {selectedLevel === 2 && 'レベル2：移動＆操作'}
-                {selectedLevel === 3 && 'レベル3：実務スピード'}
-              </h2>
-              <button
-                onClick={() => setSelectedLevel(null)}
-                style={{
-                  padding: '8px 16px',
-                  backgroundColor: '#6c757d',
-                  color: '#fff',
-                  border: 'none',
-                  borderRadius: '5px',
-                  cursor: 'pointer',
-                  fontSize: 'clamp(13px, 3.2vw, 14px)'
-                }}
-              >
-                レベル選択に戻る
-              </button>
-            </div>
-
-            <div style={{
-              backgroundColor: '#fff',
-              border: '2px solid #007bff',
-              borderRadius: '12px',
-              padding: 'clamp(15px, 3vw, 20px)',
-              marginBottom: '20px'
-            }}>
-              <div style={{
-                display: 'flex',
-                justifyContent: 'space-between',
-                alignItems: 'center',
-                marginBottom: '15px',
-                flexWrap: 'wrap',
-                gap: '10px'
-              }}>
-                <h3 style={{ margin: 0, fontSize: 'clamp(16px, 3.8vw, 18px)' }}>
-                  ミッション {currentMissionIndex + 1} / {currentMissions.length}
-                </h3>
-                <div style={{
-                  fontSize: 'clamp(13px, 3.2vw, 14px)',
-                  color: '#666'
-                }}>
-                  完了: {completedMissions.length} / {currentMissions.length}
-                </div>
-              </div>
-
-              <div style={{
-                width: '100%',
-                height: '10px',
-                backgroundColor: '#e9ecef',
-                borderRadius: '5px',
-                overflow: 'hidden',
-                marginBottom: '20px'
-              }}>
-                <div style={{
-                  width: `${(completedMissions.length / currentMissions.length) * 100}%`,
-                  height: '100%',
-                  backgroundColor: '#28a745',
-                  transition: 'width 0.5s'
-                }} />
-              </div>
-
-              {currentMission && (
-                <>
-                  <h4 style={{
-                    fontSize: 'clamp(16px, 3.8vw, 20px)',
-                    marginBottom: '10px',
-                    color: '#007bff'
-                  }}>
-                    {currentMission.title}
-                  </h4>
-                  <p style={{ fontSize: 'clamp(13px, 3.2vw, 14px)', marginBottom: '15px' }}>
-                    {currentMission.description}
-                  </p>
-                  <div style={{
-                    padding: 'clamp(12px, 3vw, 15px)',
-                    backgroundColor: '#f8f9fa',
-                    border: '1px solid #dee2e6',
-                    borderRadius: '8px',
-                    marginBottom: '20px'
-                  }}>
-                    <p style={{
-                      margin: '0 0 10px 0',
-                      fontSize: 'clamp(13px, 3.2vw, 14px)',
-                      fontWeight: 'bold'
-                    }}>
-                      <i className="fas fa-keyboard" aria-hidden /> 指示：
-                    </p>
-                    <p style={{ margin: 0, fontSize: 'clamp(14px, 3.5vw, 16px)' }}>
-                      {currentMission.instruction}
-                    </p>
-                  </div>
-
-                  {/* 擬似Excelグリッド */}
-                  <div style={{ marginBottom: '20px' }}>
-                    <ExcelGrid onKeyPress={handleKeyPress} />
-                  </div>
-
-                  {showSuccess && (
-                    <div style={{
-                      padding: '15px',
-                      backgroundColor: '#d4edda',
-                      border: '2px solid #28a745',
-                      borderRadius: '8px',
-                      textAlign: 'center',
-                      fontSize: 'clamp(14px, 3.5vw, 16px)',
-                      fontWeight: 'bold',
-                      color: '#155724',
-                      marginTop: '20px'
-                    }}>
-                      <i className="fas fa-check-circle" aria-hidden /> 正解！次のミッションへ...
-                    </div>
-                  )}
-
-                  {completedMissions.length === currentMissions.length && (
-                    <div style={{
-                      padding: '20px',
-                      backgroundColor: '#d4edda',
-                      border: '2px solid #28a745',
-                      borderRadius: '8px',
-                      textAlign: 'center',
-                      marginTop: '20px'
-                    }}>
-                      <h3 style={{
-                        fontSize: 'clamp(18px, 4vw, 22px)',
-                        color: '#155724',
-                        marginBottom: '10px'
-                      }}>
-                        <i className="fas fa-trophy" aria-hidden /> レベル{selectedLevel}クリア！
-                      </h3>
-                      <p style={{ fontSize: 'clamp(13px, 3.2vw, 14px)', marginBottom: '15px' }}>
-                        {selectedLevel === 1 && '基本操作をマスターしました。次はレベル2に挑戦しましょう！'}
-                        {selectedLevel === 2 && '移動＆操作をマスターしました。次はレベル3に挑戦しましょう！'}
-                        {selectedLevel === 3 && '全てのミッションをクリアしました！あなたはもうExcelマスターです！'}
-                      </p>
-                      <div style={{
-                        display: 'flex',
-                        gap: '10px',
-                        justifyContent: 'center',
-                        flexWrap: 'wrap'
-                      }}>
-                        <button
-                          onClick={resetMissions}
-                          style={{
-                            padding: '10px 20px',
-                            backgroundColor: '#007bff',
-                            color: '#fff',
-                            border: 'none',
-                            borderRadius: '5px',
-                            cursor: 'pointer',
-                            fontSize: 'clamp(13px, 3.2vw, 14px)'
-                          }}
-                        >
-                          もう一度
-                        </button>
-                        <button
-                          onClick={() => setSelectedLevel(null)}
-                          style={{
-                            padding: '10px 20px',
-                            backgroundColor: '#6c757d',
-                            color: '#fff',
-                            border: 'none',
-                            borderRadius: '5px',
-                            cursor: 'pointer',
-                            fontSize: 'clamp(13px, 3.2vw, 14px)'
-                          }}
-                        >
-                          レベル選択に戻る
-                        </button>
-                      </div>
-                    </div>
-                  )}
-                </>
+        <section>
+          <h2 style={{ wordWrap: 'break-word', overflowWrap: 'break-word', minWidth: 0 }}>疑似Excelで実際に体験</h2>
+          <div style={{
+            display: 'flex',
+            flexDirection: 'column',
+            gap: '15px',
+            maxWidth: '800px',
+            margin: '0 auto'
+          }}>
+            <LevelCard
+              level={1}
+              title="レベル1：基本操作"
+              desc="Excelを使うなら絶対知っておきたいショートカット"
+              keys="Ctrl+矢印、範囲選択、コピペ、F2編集"
+              color={ACCENT}
+              selectedLevel={selectedLevel}
+              startLevel={startLevel}
+              setSelectedLevel={setSelectedLevel}
+            >
+              {selectedLevel === 1 && (
+                <LevelDemoContent
+                  selectedLevel={1}
+                  currentMissionIndex={currentMissionIndex}
+                  currentMissions={currentMissions}
+                  currentMission={currentMission}
+                  completedMissions={completedMissions}
+                  showSuccess={showSuccess}
+                  goToNextMission={goToNextMission}
+                  resetMissions={resetMissions}
+                  setSelectedLevel={setSelectedLevel}
+                  handleKeyPress={handleKeyPress}
+                  ExcelGrid={ExcelGrid}
+                  accentColor={ACCENT}
+                  bgSuccess={BG_SUCCESS}
+                  accentTea={ACCENT_TEA}
+                />
               )}
-            </div>
+            </LevelCard>
 
+            <LevelCard
+              level={2}
+              title="レベル2：移動＆操作"
+              desc="業種問わず「業務で使えたら作業効率爆上がり」ショートカット"
+              keys="Ctrl+D/R、Ctrl+Z、Ctrl+Home/End"
+              color={ACCENT_DARK}
+              selectedLevel={selectedLevel}
+              startLevel={startLevel}
+              setSelectedLevel={setSelectedLevel}
+            >
+              {selectedLevel === 2 && (
+                <LevelDemoContent
+                  selectedLevel={2}
+                  currentMissionIndex={currentMissionIndex}
+                  currentMissions={currentMissions}
+                  currentMission={currentMission}
+                  completedMissions={completedMissions}
+                  showSuccess={showSuccess}
+                  goToNextMission={goToNextMission}
+                  resetMissions={resetMissions}
+                  setSelectedLevel={setSelectedLevel}
+                  handleKeyPress={handleKeyPress}
+                  ExcelGrid={ExcelGrid}
+                  accentColor={ACCENT_DARK}
+                  bgSuccess={BG_SUCCESS}
+                  accentTea={ACCENT_TEA}
+                />
+              )}
+            </LevelCard>
+
+            <LevelCard
+              level={3}
+              title="レベル3：実務スピード"
+              desc="投資銀行の財務モデリングでも活用できるショートカット"
+              keys="Ctrl+Shift+Home/End、Ctrl/Shift+Space、シート移動"
+              color={ACCENT_TEA}
+              selectedLevel={selectedLevel}
+              startLevel={startLevel}
+              setSelectedLevel={setSelectedLevel}
+            >
+              {selectedLevel === 3 && (
+                <LevelDemoContent
+                  selectedLevel={3}
+                  currentMissionIndex={currentMissionIndex}
+                  currentMissions={currentMissions}
+                  currentMission={currentMission}
+                  completedMissions={completedMissions}
+                  showSuccess={showSuccess}
+                  goToNextMission={goToNextMission}
+                  resetMissions={resetMissions}
+                  setSelectedLevel={setSelectedLevel}
+                  handleKeyPress={handleKeyPress}
+                  ExcelGrid={ExcelGrid}
+                  accentColor={ACCENT_TEA}
+                  bgSuccess={BG_SUCCESS}
+                  accentTea={ACCENT_TEA}
+                />
+              )}
+            </LevelCard>
+          </div>
+
+          {selectedLevel !== null && (
             <div style={{
               padding: 'clamp(15px, 3vw, 20px)',
-              backgroundColor: '#fff3cd',
-              border: '1px solid #ffc107',
+              backgroundColor: BG_HINT,
+              border: `2px solid ${ACCENT}`,
               borderRadius: '8px',
+              marginTop: '20px',
               fontSize: 'clamp(12px, 3vw, 13px)'
             }}>
               <p style={{ margin: 0 }}>
@@ -651,81 +718,70 @@ export default function ExcelShortcutsPage() {
                 擬似Excelグリッド上で実際にキーボードショートカットを使ってみてください。正しいキーを押すと次のミッションに進みます。
               </p>
             </div>
-          </section>
-        )}
+          )}
+        </section>
 
         <section>
           <h2>ショートカット一覧</h2>
 
-          <details style={{ marginBottom: '15px' }}>
-            <summary style={{
-              padding: '15px',
-              backgroundColor: '#007bff',
-              color: '#fff',
-              border: '1px solid #007bff',
-              borderRadius: '5px',
-              cursor: 'pointer',
-              fontWeight: 'bold',
-              fontSize: 'clamp(14px, 3.5vw, 16px)',
-              listStyle: 'none'
-            }}>
-              <span style={{ marginRight: '10px' }}>⭐ レベル1：基本操作</span>
-            </summary>
-            <div style={{
-              padding: '15px',
-              backgroundColor: '#fff',
-              border: '1px solid #ddd',
-              borderTop: 'none',
-              borderRadius: '0 0 5px 5px'
-            }}>
-              <div className="comparison-table">
-                <table>
-                  <thead>
-                    <tr>
-                      <th>ショートカット</th>
-                      <th>説明</th>
-                    </tr>
-                  </thead>
-                  <tbody>
-                    <tr>
-                      <td><strong>Ctrl + →</strong></td>
-                      <td>データの端まで右にジャンプ</td>
-                    </tr>
-                    <tr>
-                      <td><strong>Ctrl + Shift + →</strong></td>
-                      <td>右方向に範囲選択</td>
-                    </tr>
-                    <tr>
-                      <td><strong>Ctrl + C</strong></td>
-                      <td>コピー</td>
-                    </tr>
-                    <tr>
-                      <td><strong>Ctrl + V</strong></td>
-                      <td>貼り付け</td>
-                    </tr>
-                    <tr>
-                      <td><strong>F2</strong></td>
-                      <td>セルを編集モードにする</td>
-                    </tr>
-                  </tbody>
-                </table>
-              </div>
-            </div>
-          </details>
+          <ShortcutAccordion
+            level={1}
+            title="レベル1：基本操作"
+            color={ACCENT}
+            shortcuts={[
+              { key: 'Ctrl + →', desc: 'データの端まで右にジャンプ' },
+              { key: 'Ctrl + Shift + →', desc: '右方向に範囲選択' },
+              { key: 'Ctrl + C', desc: 'コピー' },
+              { key: 'Ctrl + V', desc: '貼り付け' },
+              { key: 'F2', desc: 'セルを編集モードにする' },
+            ]}
+            completedMissions={completedMissions}
+            shortcutToMissionId={shortcutToMissionId}
+          />
+
+          <ShortcutAccordion
+            level={2}
+            title="レベル2：移動＆操作"
+            color={ACCENT_DARK}
+            shortcuts={[
+              { key: 'Ctrl + D', desc: '選択範囲を下方向にコピー' },
+              { key: 'Ctrl + R', desc: '選択範囲を右方向にコピー' },
+              { key: 'Ctrl + Z', desc: '元に戻す（Undo）' },
+              { key: 'Ctrl + Home', desc: '先頭（A1セル）に移動' },
+              { key: 'Ctrl + End', desc: 'データ範囲の末尾に移動' },
+            ]}
+            completedMissions={completedMissions}
+            shortcutToMissionId={shortcutToMissionId}
+          />
+
+          <ShortcutAccordion
+            level={3}
+            title="レベル3：実務スピード"
+            color={ACCENT_TEA}
+            shortcuts={[
+              { key: 'Ctrl + Shift + Home', desc: '先頭（A1）まで範囲選択' },
+              { key: 'Ctrl + Shift + End', desc: 'データ末尾まで範囲選択' },
+              { key: 'Ctrl + Space', desc: '列全体を選択' },
+              { key: 'Shift + Space', desc: '行全体を選択' },
+              { key: 'Ctrl + PageDown', desc: '次のワークシートに移動' },
+            ]}
+            completedMissions={completedMissions}
+            shortcutToMissionId={shortcutToMissionId}
+          />
 
           <details style={{ marginBottom: '15px' }}>
             <summary style={{
               padding: '15px',
-              backgroundColor: '#28a745',
+              backgroundColor: ACCENT_DARK,
               color: '#fff',
-              border: '1px solid #28a745',
+              border: `1px solid ${ACCENT_DARK}`,
               borderRadius: '5px',
               cursor: 'pointer',
               fontWeight: 'bold',
               fontSize: 'clamp(14px, 3.5vw, 16px)',
               listStyle: 'none'
             }}>
-              <span style={{ marginRight: '10px' }}>⭐⭐ レベル2：移動＆操作</span>
+              <span style={{ marginRight: '10px' }}><i className="fas fa-plus" aria-hidden /> 応用編：Alt（リボン操作）</span>
             </summary>
             <div style={{
               padding: '15px',
@@ -734,6 +790,9 @@ export default function ExcelShortcutsPage() {
               borderTop: 'none',
               borderRadius: '0 0 5px 5px'
             }}>
+              <p style={{ marginBottom: '15px' }}>
+                実務では<strong>Altキー</strong>でリボンメニューをキーボード操作します。色変更や書式設定など、UI的にマウス向けの操作もキーボードでこなせます。慣れが必要ですが、財務モデリングをやるならこのレベルの知識は必須です。
+              </p>
               <div className="comparison-table">
                 <table>
                   <thead>
@@ -744,86 +803,32 @@ export default function ExcelShortcutsPage() {
                   </thead>
                   <tbody>
                     <tr>
-                      <td><strong>Ctrl + D</strong></td>
-                      <td>選択範囲を下方向にコピー</td>
+                      <td><strong>Alt</strong></td>
+                      <td>リボンのキーヒントを表示</td>
                     </tr>
                     <tr>
-                      <td><strong>Ctrl + R</strong></td>
-                      <td>選択範囲を右方向にコピー</td>
+                      <td><strong>Alt + H</strong></td>
+                      <td>ホームタブを開く</td>
                     </tr>
                     <tr>
-                      <td><strong>Ctrl + Z</strong></td>
-                      <td>元に戻す（Undo）</td>
-                    </tr>
-                    <tr>
-                      <td><strong>Ctrl + Home</strong></td>
-                      <td>先頭（A1セル）に移動</td>
-                    </tr>
-                    <tr>
-                      <td><strong>Ctrl + End</strong></td>
-                      <td>データ範囲の末尾に移動</td>
+                      <td><strong>Alt + H, F, C</strong></td>
+                      <td>フォント色を変更</td>
                     </tr>
                   </tbody>
                 </table>
               </div>
             </div>
           </details>
+        </section>
 
-          <details style={{ marginBottom: '15px' }}>
-            <summary style={{
-              padding: '15px',
-              backgroundColor: '#dc3545',
-              color: '#fff',
-              border: '1px solid #dc3545',
-              borderRadius: '5px',
-              cursor: 'pointer',
-              fontWeight: 'bold',
-              fontSize: 'clamp(14px, 3.5vw, 16px)',
-              listStyle: 'none'
-            }}>
-              <span style={{ marginRight: '10px' }}>⭐⭐⭐ レベル3：実務スピード</span>
-            </summary>
-            <div style={{
-              padding: '15px',
-              backgroundColor: '#fff',
-              border: '1px solid #ddd',
-              borderTop: 'none',
-              borderRadius: '0 0 5px 5px'
-            }}>
-              <div className="comparison-table">
-                <table>
-                  <thead>
-                    <tr>
-                      <th>ショートカット</th>
-                      <th>説明</th>
-                    </tr>
-                  </thead>
-                  <tbody>
-                    <tr>
-                      <td><strong>Ctrl + Shift + Home</strong></td>
-                      <td>先頭（A1）まで範囲選択</td>
-                    </tr>
-                    <tr>
-                      <td><strong>Ctrl + Shift + End</strong></td>
-                      <td>データ末尾まで範囲選択</td>
-                    </tr>
-                    <tr>
-                      <td><strong>Ctrl + Space</strong></td>
-                      <td>列全体を選択</td>
-                    </tr>
-                    <tr>
-                      <td><strong>Shift + Space</strong></td>
-                      <td>行全体を選択</td>
-                    </tr>
-                    <tr>
-                      <td><strong>Ctrl + PageDown</strong></td>
-                      <td>次のワークシートに移動</td>
-                    </tr>
-                  </tbody>
-                </table>
-              </div>
-            </div>
-          </details>
+        <section>
+          <h2>ショートカットを身につけるコツ</h2>
+          <ul>
+            <li><strong>とにかく日常業務でどんどん使う</strong>：使わないと忘れます。毎日少しずつでも使う習慣を。</li>
+            <li><strong>目に見えるところに置く</strong>：よく見る場所に一覧を貼っておく。デスクの横、モニターの端など。</li>
+            <li><strong>覚えたいショートカットを書き出す</strong>：自分用のメモにまとめると頭に入りやすい。</li>
+            <li><strong>ショートカットシール（ステッカー）を活用</strong>：キーボードに貼るタイプも市販されています。手元を見ればすぐ確認できるのでおすすめです。</li>
+          </ul>
         </section>
 
         <AdBelowRelatedTerms />

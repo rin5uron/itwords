@@ -28,6 +28,9 @@ export default function SiteHeader({ showNav = false }: SiteHeaderProps) {
               <li>
                 <Link href="#all-terms">すべての用語</Link>
               </li>
+              <li>
+                <Link href="#practice">練習</Link>
+              </li>
               <li className="nav-item-about">
                 <Link href="#about">制作背景</Link>
               </li>

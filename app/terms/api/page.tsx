@@ -4,6 +4,8 @@ import Link from 'next/link'
 import { useState } from 'react'
 import StructuredData from '@/app/components/StructuredData'
 import TermPageHeader from '@/app/components/TermPageHeader'
+import FAQAccordion from '@/app/components/FAQAccordion'
+import AdBelowRelatedTerms from '@/app/components/AdBelowRelatedTerms'
 
 export default function APIPage() {
   const [weatherLoading, setWeatherLoading] = useState(false)
@@ -51,15 +53,28 @@ export default function APIPage() {
     setWeatherLoading(false)
   }
 
+  const FALLBACK_QUOTES = [
+    { content: 'The only way to do great work is to love what you do.', author: 'Steve Jobs' },
+    { content: 'It always seems impossible until it is done.', author: 'Nelson Mandela' },
+  ]
+
   const fetchQuote = async () => {
     setQuoteLoading(true)
     try {
-      const response = await fetch('https://api.quotable.io/random')
+      const response = await fetch('https://api.quotable.io/quotes/random')
+      if (!response.ok) throw new Error('API error')
       const data = await response.json()
-      setQuoteData(data)
+      const quote = Array.isArray(data) ? data[0] : data
+      if (quote?.content && quote?.author) {
+        setQuoteData(quote)
+      } else {
+        const fallback = FALLBACK_QUOTES[Math.floor(Math.random() * FALLBACK_QUOTES.length)]
+        setQuoteData(fallback)
+      }
     } catch (error) {
       console.error(error)
-      setQuoteData({ error: 'データ取得に失敗しました' })
+      const fallback = FALLBACK_QUOTES[Math.floor(Math.random() * FALLBACK_QUOTES.length)]
+      setQuoteData(fallback)
     }
     setQuoteLoading(false)
   }
@@ -115,6 +130,38 @@ export default function APIPage() {
           </p>
         </section>
 
+        <section id="examples">
+          <h2>日常生活でのAPIの例</h2>
+          <p>
+            APIは私たちが毎日使っているWebサービスやアプリの裏側で活躍しています。
+            普段意識していないだけで、実はたくさんの場面で利用されているのです。
+          </p>
+          <div className="comparison-table">
+            <table>
+              <thead>
+                <tr>
+                  <th>APIの種類</th>
+                  <th>使用例</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>天気API</td>
+                  <td>天気アプリ、お出かけ提案、洗濯・服装アドバイス</td>
+                </tr>
+                <tr>
+                  <td>名言API</td>
+                  <td>朝の一言サイト、モチベーションアプリ、LINEボット</td>
+                </tr>
+                <tr>
+                  <td>画像API</td>
+                  <td>ブログ、SNS自動投稿、デモ用コンテンツ</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </section>
+
         <section id="demo">
           <h2>体験デモ：APIを実際に呼んでみる</h2>
           <p>
@@ -122,11 +169,11 @@ export default function APIPage() {
           </p>
 
           {/* デモ①：天気API */}
-          <div style={{
+          <div className="demo-section" style={{
             backgroundColor: '#fff',
             border: '1px solid #4caf50',
             borderRadius: '8px',
-            padding: '20px',
+            padding: 'clamp(15px, 3vw, 20px)',
             marginBottom: '24px'
           }}>
             <h3 style={{ marginTop: 0, color: '#2e7d32' }}>
@@ -141,11 +188,12 @@ export default function APIPage() {
             </p>
 
             <button
+              className="demo-button"
               onClick={fetchWeather}
               disabled={weatherLoading}
               style={{
-                padding: '12px 24px',
-                fontSize: '16px',
+                padding: 'clamp(10px, 2.5vw, 12px) clamp(20px, 4vw, 24px)',
+                fontSize: 'clamp(14px, 3.5vw, 16px)',
                 backgroundColor: weatherLoading ? '#ccc' : '#4caf50',
                 color: '#fff',
                 border: 'none',
@@ -160,10 +208,10 @@ export default function APIPage() {
 
             {weatherData && !weatherData.error && (
               <div style={{
-                backgroundColor: '#e8f5e9',
-                padding: '15px',
+                backgroundColor: '#f9f7ef',
+                padding: 'clamp(12px, 3vw, 15px)',
                 borderRadius: '5px',
-                borderLeft: '4px solid #4caf50'
+                borderLeft: '4px solid #ea9b8a'
               }}>
                 <p style={{ margin: '0 0 8px 0', fontSize: '16px' }}>
                   <strong>東京の現在の天気</strong>
@@ -179,10 +227,10 @@ export default function APIPage() {
 
             {weatherData?.error && (
               <div style={{
-                backgroundColor: '#ffebee',
-                padding: '15px',
+                backgroundColor: '#f8d7da',
+                padding: 'clamp(12px, 3vw, 15px)',
                 borderRadius: '5px',
-                borderLeft: '4px solid #f44336',
+                borderLeft: '4px solid #d9534f',
                 color: '#c62828'
               }}>
                 {weatherData.error}
@@ -191,11 +239,11 @@ export default function APIPage() {
           </div>
 
           {/* デモ②：名言API */}
-          <div style={{
+          <div className="demo-section" style={{
             backgroundColor: '#fff',
             border: '1px solid #9c27b0',
             borderRadius: '8px',
-            padding: '20px',
+            padding: 'clamp(15px, 3vw, 20px)',
             marginBottom: '24px'
           }}>
             <h3 style={{ marginTop: 0, color: '#7b1fa2' }}>
@@ -210,11 +258,12 @@ export default function APIPage() {
             </p>
 
             <button
+              className="demo-button"
               onClick={fetchQuote}
               disabled={quoteLoading}
               style={{
-                padding: '12px 24px',
-                fontSize: '16px',
+                padding: 'clamp(10px, 2.5vw, 12px) clamp(20px, 4vw, 24px)',
+                fontSize: 'clamp(14px, 3.5vw, 16px)',
                 backgroundColor: quoteLoading ? '#ccc' : '#9c27b0',
                 color: '#fff',
                 border: 'none',
@@ -229,10 +278,10 @@ export default function APIPage() {
 
             {quoteData && !quoteData.error && (
               <div style={{
-                backgroundColor: '#f3e5f5',
-                padding: '15px',
+                backgroundColor: '#f9f7ef',
+                padding: 'clamp(12px, 3vw, 15px)',
                 borderRadius: '5px',
-                borderLeft: '4px solid #9c27b0'
+                borderLeft: '4px solid #ea9b8a'
               }}>
                 <p style={{ fontSize: '18px', fontStyle: 'italic', margin: '0 0 10px 0', color: '#4a148c' }}>
                   "{quoteData.content}"
@@ -245,10 +294,10 @@ export default function APIPage() {
 
             {quoteData?.error && (
               <div style={{
-                backgroundColor: '#ffebee',
-                padding: '15px',
+                backgroundColor: '#f8d7da',
+                padding: 'clamp(12px, 3vw, 15px)',
                 borderRadius: '5px',
-                borderLeft: '4px solid #f44336',
+                borderLeft: '4px solid #d9534f',
                 color: '#c62828'
               }}>
                 {quoteData.error}
@@ -257,11 +306,11 @@ export default function APIPage() {
           </div>
 
           {/* デモ③：猫画像API */}
-          <div style={{
+          <div className="demo-section" style={{
             backgroundColor: '#fff',
             border: '1px solid #ff9800',
             borderRadius: '8px',
-            padding: '20px',
+            padding: 'clamp(15px, 3vw, 20px)',
             marginBottom: '24px'
           }}>
             <h3 style={{ marginTop: 0, color: '#e65100' }}>
@@ -276,11 +325,12 @@ export default function APIPage() {
             </p>
 
             <button
+              className="demo-button"
               onClick={fetchCat}
               disabled={catLoading}
               style={{
-                padding: '12px 24px',
-                fontSize: '16px',
+                padding: 'clamp(10px, 2.5vw, 12px) clamp(20px, 4vw, 24px)',
+                fontSize: 'clamp(14px, 3.5vw, 16px)',
                 backgroundColor: catLoading ? '#ccc' : '#ff9800',
                 color: '#fff',
                 border: 'none',
@@ -295,10 +345,10 @@ export default function APIPage() {
 
             {catImage && (
               <div style={{
-                backgroundColor: '#fff3e0',
-                padding: '15px',
+                backgroundColor: '#f9f7ef',
+                padding: 'clamp(12px, 3vw, 15px)',
                 borderRadius: '5px',
-                borderLeft: '4px solid #ff9800'
+                borderLeft: '4px solid #ea9b8a'
               }}>
                 <img
                   src={catImage}
@@ -316,40 +366,6 @@ export default function APIPage() {
               </div>
             )}
           </div>
-        </section>
-
-        <section id="examples">
-          <h2>このAPIは実際のWebサイトでどう使われている？</h2>
-
-          <h3>お天気APIの実例</h3>
-          <ul>
-            <li>天気アプリ</li>
-            <li>お出かけ提案サイト</li>
-            <li>洗濯・服装アドバイス表示</li>
-          </ul>
-          <p style={{ fontSize: '14px', color: '#666', marginTop: '8px' }}>
-            トップページを読み込むと、現在地の天気を自動表示する機能などで使われています。
-          </p>
-
-          <h3>名言APIの実例</h3>
-          <ul>
-            <li>朝の一言表示サイト</li>
-            <li>モチベーションアプリ</li>
-            <li>LINEボット</li>
-          </ul>
-          <p style={{ fontSize: '14px', color: '#666', marginTop: '8px' }}>
-            ページを開くたびに、今日の一言が表示される機能などで使われています。
-          </p>
-
-          <h3>画像APIの実例</h3>
-          <ul>
-            <li>ブログの癒し要素</li>
-            <li>SNS自動投稿</li>
-            <li>デモ用コンテンツ</li>
-          </ul>
-          <p style={{ fontSize: '14px', color: '#666', marginTop: '8px' }}>
-            ページを更新するたびに、画像がランダムで切り替わる機能などで使われています。
-          </p>
         </section>
 
         <section id="mechanism">
@@ -489,6 +505,10 @@ export default function APIPage() {
             </table>
           </div>
         </section>
+
+        <AdBelowRelatedTerms />
+
+        <FAQAccordion faqs={faqs} />
       </main>
     </div>
   )
