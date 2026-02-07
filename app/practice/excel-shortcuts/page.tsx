@@ -1,11 +1,11 @@
 'use client'
 
-import Link from 'next/link'
 import { useState, useCallback } from 'react'
 import StructuredData from '@/app/components/StructuredData'
 import FAQAccordion from '@/app/components/FAQAccordion'
 import ExcelGrid from '@/app/components/ExcelGrid'
 import TermPageHeader from '@/app/components/TermPageHeader'
+import AdBelowRelatedTerms from '@/app/components/AdBelowRelatedTerms'
 
 type Mission = {
   id: number
@@ -234,7 +234,7 @@ export default function ExcelShortcutsPage() {
 
       <main>
         <section>
-          <h2>概要</h2>
+          <h2>このページでできること</h2>
           <p>
             投資銀行の財務モデリングでは、<strong>マウスをほとんど使いません</strong>。
           </p>
@@ -256,21 +256,15 @@ export default function ExcelShortcutsPage() {
             maxWidth: '100%',
             wordWrap: 'break-word'
           }}>
-            <p style={{ margin: 0, fontSize: 'clamp(13px, 3.2vw, 14px)', fontWeight: 'bold' }}>
-              <i className="fas fa-info-circle" aria-hidden /> このページの特徴
+            <p style={{ margin: 0, fontSize: 'clamp(13px, 3.2vw, 14px)' }}>
+              <i className="fas fa-info-circle" aria-hidden /> Windows版Excelに沿っています。タイムデータ（サンプル）付き。ミッション形式で段階的に習得できます。
             </p>
-            <ul style={{ marginTop: '10px', marginBottom: 0 }}>
-              <li>Windows版Excelを想定</li>
-              <li>実際のExcelのような操作感</li>
-              <li>財務データサンプル付き</li>
-              <li>ミッション形式で段階的に習得</li>
-            </ul>
           </div>
         </section>
 
         {selectedLevel === null && (
           <section>
-            <h2>レベルを選択してください</h2>
+            <h2 style={{ wordWrap: 'break-word', overflowWrap: 'break-word', minWidth: 0 }}>疑似Excelで実際に体験</h2>
             <div style={{
               display: 'flex',
               flexDirection: 'column',
@@ -309,12 +303,16 @@ export default function ExcelShortcutsPage() {
                     <h3 style={{
                       margin: '0 0 10px 0',
                       fontSize: 'clamp(18px, 4vw, 22px)',
-                      color: '#007bff'
+                      color: '#007bff',
+                      display: 'flex',
+                      alignItems: 'baseline',
+                      gap: '4px'
                     }}>
-                      <i className="fas fa-star" aria-hidden /> レベル1：基本操作
+                      <span><i className="fas fa-star" aria-hidden /></span>
+                      <span>レベル1：基本操作</span>
                     </h3>
                     <p style={{ margin: 0, fontSize: 'clamp(13px, 3.2vw, 14px)', color: '#666' }}>
-                      新人1週目・これができないと始まらない
+                      Excelを使うなら絶対知っておきたいショートカット
                     </p>
                     <p style={{
                       margin: '10px 0 0 0',
@@ -359,11 +357,19 @@ export default function ExcelShortcutsPage() {
               >
                 <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', flexWrap: 'wrap', gap: '10px' }}>
                   <div style={{ flex: '1', minWidth: '200px' }}>
-                    <h3 style={{ margin: '0 0 10px 0', fontSize: 'clamp(18px, 4vw, 22px)', color: '#28a745' }}>
-                      <i className="fas fa-star" aria-hidden /><i className="fas fa-star" aria-hidden /> レベル2：移動＆操作
+                    <h3 style={{
+                      margin: '0 0 10px 0',
+                      fontSize: 'clamp(18px, 4vw, 22px)',
+                      color: '#28a745',
+                      display: 'flex',
+                      alignItems: 'baseline',
+                      gap: '4px'
+                    }}>
+                      <span><i className="fas fa-star" aria-hidden /><i className="fas fa-star" aria-hidden /></span>
+                      <span>レベル2：移動＆操作</span>
                     </h3>
                     <p style={{ margin: 0, fontSize: 'clamp(13px, 3.2vw, 14px)', color: '#666' }}>
-                      新人1ヶ月・迷わず飛べる
+                      業種問わず「業務で使えたら作業効率爆上がり」ショートカット
                     </p>
                     <p style={{
                       margin: '10px 0 0 0',
@@ -408,11 +414,19 @@ export default function ExcelShortcutsPage() {
               >
                 <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', flexWrap: 'wrap', gap: '10px' }}>
                   <div style={{ flex: '1', minWidth: '200px' }}>
-                    <h3 style={{ margin: '0 0 10px 0', fontSize: 'clamp(18px, 4vw, 22px)', color: '#dc3545' }}>
-                      <i className="fas fa-star" aria-hidden /><i className="fas fa-star" aria-hidden /><i className="fas fa-star" aria-hidden /> レベル3：実務スピード
+                    <h3 style={{
+                      margin: '0 0 10px 0',
+                      fontSize: 'clamp(18px, 4vw, 22px)',
+                      color: '#dc3545',
+                      display: 'flex',
+                      alignItems: 'baseline',
+                      gap: '4px'
+                    }}>
+                      <span><i className="fas fa-star" aria-hidden /><i className="fas fa-star" aria-hidden /><i className="fas fa-star" aria-hidden /></span>
+                      <span>レベル3：実務スピード</span>
                     </h3>
                     <p style={{ margin: 0, fontSize: 'clamp(13px, 3.2vw, 14px)', color: '#666' }}>
-                      即戦力・マウス不要の境地
+                      投資銀行の財務モデリングでも活用できるショートカット
                     </p>
                     <p style={{
                       margin: '10px 0 0 0',
@@ -812,25 +826,7 @@ export default function ExcelShortcutsPage() {
           </details>
         </section>
 
-        <section className="term-comparison">
-          <h2>関連リンク</h2>
-          <div className="comparison-table">
-            <table>
-              <thead>
-                <tr>
-                  <th>リンク</th>
-                  <th>説明</th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr>
-                  <td><Link href="/" className="term-name">IT用語辞典 トップ</Link></td>
-                  <td>IT用語をわかりやすく解説</td>
-                </tr>
-              </tbody>
-            </table>
-          </div>
-        </section>
+        <AdBelowRelatedTerms />
 
         <FAQAccordion faqs={faqs} />
       </main>

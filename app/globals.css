@@ -24,6 +24,11 @@ body {
   padding-top: 10px;
 }
 
+/* 練習ページ：同様に上部広告の直下の余白を詰める */
+.practice-layout .container {
+  padding-top: 10px;
+}
+
 h1, h2 {
   font-weight: 700;
   color: #2c3e50;
