@@ -245,6 +245,15 @@ summary:hover {
   padding: 12px 16px 16px;
 }
 
+/* ポイント・わかったことの枠（テンプレート統一） */
+.key-point-box {
+  padding: clamp(12px, 3vw, 16px);
+  border-radius: 8px;
+  border-left: 4px solid #14b8a6;
+  background-color: #f0fdfa;
+  margin: 15px 0;
+}
+
 .code-example {
   background-color: #1e1e1e;
   color: #d4d4d4;

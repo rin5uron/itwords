@@ -1,13 +1,17 @@
 interface PageSummaryProps {
   items: string[]
+  /** カスタムヘッダーテキスト（省略時は「このページで分かること」） */
+  headerText?: string
+  /** カスタムアイコン（省略時は fas fa-book-open） */
+  icon?: string
 }
 
-export default function PageSummary({ items }: PageSummaryProps) {
+export default function PageSummary({ items, headerText = 'このページで分かること', icon = 'fas fa-book-open' }: PageSummaryProps) {
   return (
     <div className="page-summary">
       <div className="page-summary-header">
-        <i className="fas fa-book-open" aria-hidden="true"></i>
-        <span>このページで分かること</span>
+        <i className={icon} aria-hidden="true"></i>
+        <span>{headerText}</span>
       </div>
       <ul className="page-summary-list">
         {items.map((item, index) => (

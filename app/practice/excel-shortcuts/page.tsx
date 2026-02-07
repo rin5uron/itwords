@@ -1,16 +1,17 @@
 'use client'
 
 import Link from 'next/link'
-import { useState, useEffect, useCallback } from 'react'
+import { useState, useCallback } from 'react'
 import StructuredData from '@/app/components/StructuredData'
 import FAQAccordion from '@/app/components/FAQAccordion'
+import ExcelGrid from '@/app/components/ExcelGrid'
+import TermPageHeader from '@/app/components/TermPageHeader'
 
 type Mission = {
   id: number
   title: string
   description: string
   instruction: string
-  requiredKeys: string[]
   checkKey: (e: KeyboardEvent) => boolean
 }
 
@@ -19,48 +20,42 @@ export default function ExcelShortcutsPage() {
   const [currentMissionIndex, setCurrentMissionIndex] = useState(0)
   const [completedMissions, setCompletedMissions] = useState<number[]>([])
   const [showSuccess, setShowSuccess] = useState(false)
-  const [selectedCell, setSelectedCell] = useState<string>('A1')
 
   // レベル1のミッション定義
   const level1Missions: Mission[] = [
     {
       id: 1,
       title: 'Ctrl+矢印でジャンプ',
-      description: '現在のセル（A1）からデータの端まで一瞬で移動します。',
-      instruction: 'Ctrl + → を押して、右端のセル（E1）までジャンプしてください',
-      requiredKeys: ['Control', 'ArrowRight'],
+      description: 'データの端まで一瞬で移動します。',
+      instruction: 'Ctrl + → を押して、右端のデータまでジャンプしてください',
       checkKey: (e: KeyboardEvent) => e.ctrlKey && e.key === 'ArrowRight',
     },
     {
       id: 2,
       title: 'Ctrl+Shift+矢印で範囲選択',
       description: 'セル範囲を一瞬で選択できます。',
-      instruction: 'Ctrl + Shift + → を押して、A1:E1を選択してください',
-      requiredKeys: ['Control', 'Shift', 'ArrowRight'],
+      instruction: 'Ctrl + Shift + → を押して、範囲選択してください',
       checkKey: (e: KeyboardEvent) => e.ctrlKey && e.shiftKey && e.key === 'ArrowRight',
     },
     {
       id: 3,
-      title: 'Ctrl+D で下方向にコピー',
-      description: '選択したセルの内容を下方向にコピーします。',
-      instruction: 'Ctrl + D を押して、セルの内容を下にコピーしてください',
-      requiredKeys: ['Control', 'D'],
-      checkKey: (e: KeyboardEvent) => e.ctrlKey && e.key.toLowerCase() === 'd',
+      title: 'Ctrl+C でコピー',
+      description: 'セルの内容をコピーします。',
+      instruction: 'Ctrl + C を押して、セルをコピーしてください',
+      checkKey: (e: KeyboardEvent) => e.ctrlKey && e.key.toLowerCase() === 'c',
     },
     {
       id: 4,
-      title: 'Ctrl+R で右方向にコピー',
-      description: '選択したセルの内容を右方向にコピーします。',
-      instruction: 'Ctrl + R を押して、セルの内容を右にコピーしてください',
-      requiredKeys: ['Control', 'R'],
-      checkKey: (e: KeyboardEvent) => e.ctrlKey && e.key.toLowerCase() === 'r',
+      title: 'Ctrl+V で貼り付け',
+      description: 'コピーした内容を貼り付けます。',
+      instruction: '矢印キーで別のセルに移動して、Ctrl + V を押してください',
+      checkKey: (e: KeyboardEvent) => e.ctrlKey && e.key.toLowerCase() === 'v',
     },
     {
       id: 5,
       title: 'F2 でセル編集モード',
       description: 'セルを編集モードにして数式を直接編集できます。',
       instruction: 'F2 を押して、セルを編集モードにしてください',
-      requiredKeys: ['F2'],
       checkKey: (e: KeyboardEvent) => e.key === 'F2',
     },
   ]
@@ -68,12 +63,11 @@ export default function ExcelShortcutsPage() {
   const currentMission = selectedLevel === 1 ? level1Missions[currentMissionIndex] : null
 
   // キー入力検知
-  const handleKeyDown = useCallback(
+  const handleKeyPress = useCallback(
     (e: KeyboardEvent) => {
       if (!currentMission || completedMissions.includes(currentMission.id)) return
 
       if (currentMission.checkKey(e)) {
-        e.preventDefault()
         setShowSuccess(true)
         setCompletedMissions([...completedMissions, currentMission.id])
 
@@ -87,13 +81,6 @@ export default function ExcelShortcutsPage() {
     },
     [currentMission, currentMissionIndex, completedMissions, level1Missions.length]
   )
-
-  useEffect(() => {
-    if (selectedLevel !== null) {
-      window.addEventListener('keydown', handleKeyDown)
-      return () => window.removeEventListener('keydown', handleKeyDown)
-    }
-  }, [selectedLevel, handleKeyDown])
 
   const resetMissions = () => {
     setCurrentMissionIndex(0)
@@ -136,17 +123,21 @@ export default function ExcelShortcutsPage() {
         dateModified="2026-02-07"
       />
 
-      <header style={{ textAlign: 'center', marginBottom: '2rem' }}>
-        <h1 style={{ fontSize: 'clamp(24px, 5vw, 32px)', marginBottom: '1rem' }}>
-          Excel ショートカット練習
-        </h1>
-        <p style={{ fontSize: 'clamp(14px, 3.5vw, 16px)', color: '#666' }}>
-          投資銀行スタイル 財務モデリング【マウス禁止】
-        </p>
-        <p style={{ fontSize: 'clamp(12px, 3vw, 14px)', color: '#999', marginTop: '0.5rem' }}>
-          作成日: 2026-02-07 | 最終更新: 2026-02-07
-        </p>
-      </header>
+      <TermPageHeader
+        termName="Excel ショートカット練習"
+        reading="投資銀行スタイル 財務モデリング"
+        icon="fas fa-keyboard"
+        dateCreated="2026-02-07"
+        dateModified="2026-02-07"
+        summaryItems={[
+          '擬似Excelアプリで実際にショートカットを練習',
+          'レベル1：基本操作（Ctrl+矢印、範囲選択、コピペ、F2編集）',
+          'ミッション形式で段階的に習得',
+          '財務モデリングで使う実践的なショートカット'
+        ]}
+        summaryHeaderText="このページでできること"
+        summaryIcon="fas fa-laptop-code"
+      />
 
       <main>
         <section>
@@ -160,7 +151,7 @@ export default function ExcelShortcutsPage() {
           </p>
           <p>
             このページでは、投資銀行で実際に使われているExcelショートカットキーを、
-            <strong>実践形式のミッション</strong>で習得できます。
+            <strong>擬似Excelアプリ</strong>で練習できます。
           </p>
 
           <div style={{
@@ -177,9 +168,9 @@ export default function ExcelShortcutsPage() {
             </p>
             <ul style={{ marginTop: '10px', marginBottom: 0 }}>
               <li>Windows版Excelを想定</li>
-              <li>レベル1〜3の段階的な習得</li>
-              <li>実際にキーを押して体験</li>
-              <li>財務モデリングの実務を想定したミッション</li>
+              <li>実際のExcelのような操作感</li>
+              <li>財務データサンプル付き</li>
+              <li>ミッション形式で段階的に習得</li>
             </ul>
           </div>
         </section>
@@ -230,14 +221,14 @@ export default function ExcelShortcutsPage() {
                       <i className="fas fa-star" aria-hidden /> レベル1：基本操作
                     </h3>
                     <p style={{ margin: 0, fontSize: 'clamp(13px, 3.2vw, 14px)', color: '#666' }}>
-                      新人1週目・セル移動の基礎
+                      新人1週目・これができないと始まらない
                     </p>
                     <p style={{
                       margin: '10px 0 0 0',
                       fontSize: 'clamp(12px, 3vw, 13px)',
                       color: '#999'
                     }}>
-                      Ctrl+矢印、範囲選択、Ctrl+D/R、F2
+                      Ctrl+矢印、範囲選択、コピペ、F2編集
                     </p>
                   </div>
                   <div style={{
@@ -400,7 +391,7 @@ export default function ExcelShortcutsPage() {
                     backgroundColor: '#f8f9fa',
                     border: '1px solid #dee2e6',
                     borderRadius: '8px',
-                    marginBottom: '15px'
+                    marginBottom: '20px'
                   }}>
                     <p style={{
                       margin: '0 0 10px 0',
@@ -414,6 +405,11 @@ export default function ExcelShortcutsPage() {
                     </p>
                   </div>
 
+                  {/* 擬似Excelグリッド */}
+                  <div style={{ marginBottom: '20px' }}>
+                    <ExcelGrid onKeyPress={handleKeyPress} />
+                  </div>
+
                   {showSuccess && (
                     <div style={{
                       padding: '15px',
@@ -423,7 +419,8 @@ export default function ExcelShortcutsPage() {
                       textAlign: 'center',
                       fontSize: 'clamp(14px, 3.5vw, 16px)',
                       fontWeight: 'bold',
-                      color: '#155724'
+                      color: '#155724',
+                      marginTop: '20px'
                     }}>
                       <i className="fas fa-check-circle" aria-hidden /> 正解！次のミッションへ...
                     </div>
@@ -498,7 +495,7 @@ export default function ExcelShortcutsPage() {
             }}>
               <p style={{ margin: 0 }}>
                 <i className="fas fa-lightbulb" aria-hidden /> <strong>ヒント：</strong>
-                実際にキーボードで該当するショートカットキーを押してください。正しいキーを押すと次のミッションに進みます。
+                擬似Excelグリッド上で実際にキーボードショートカットを使ってみてください。正しいキーを押すと次のミッションに進みます。
               </p>
             </div>
           </section>
@@ -544,16 +541,24 @@ export default function ExcelShortcutsPage() {
                       <td>右方向に範囲選択</td>
                     </tr>
                     <tr>
+                      <td><strong>Ctrl + C</strong></td>
+                      <td>コピー</td>
+                    </tr>
+                    <tr>
+                      <td><strong>Ctrl + V</strong></td>
+                      <td>貼り付け</td>
+                    </tr>
+                    <tr>
+                      <td><strong>F2</strong></td>
+                      <td>セルを編集モードにする</td>
+                    </tr>
+                    <tr>
                       <td><strong>Ctrl + D</strong></td>
                       <td>選択範囲を下方向にコピー</td>
                     </tr>
                     <tr>
                       <td><strong>Ctrl + R</strong></td>
                       <td>選択範囲を右方向にコピー</td>
-                    </tr>
-                    <tr>
-                      <td><strong>F2</strong></td>
-                      <td>セルを編集モードにする</td>
                     </tr>
                   </tbody>
                 </table>

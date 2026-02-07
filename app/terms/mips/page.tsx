@@ -103,20 +103,12 @@ export default function MipsPage() {
 
   const faqs = [
     {
-      question: 'MIPSとは何ですか？',
-      answer: 'MIPS（Million Instructions Per Second）とは、コンピュータが1秒間に実行できる命令の数を百万単位で表したものです。例えば、10MIPSのコンピュータは、1秒間に1000万回の命令を実行できます。',
-    },
-    {
-      question: 'なぜMIPS計算ではマイクロ秒を使うのですか？',
-      answer: 'MIPSは「100万回/秒」という単位なので、1命令あたりの時間は「1秒 ÷ 100万」で計算されます。この結果は非常に小さい数（0.000001秒など）になるため、マイクロ秒（μs = 10⁻⁶秒）を使うと「1μs」のように分かりやすく表現できます。',
-    },
-    {
-      question: 'マイクロ秒は10のマイナス6乗ですが、なぜですか？',
-      answer: 'マイクロ（μ）は「100万分の1」を意味する接頭語です。ミリ（m）が「1000分の1 = 10⁻³」、マイクロ（μ）はさらにその1000分の1なので「10⁻³ × 10⁻³ = 10⁻⁶」になります。つまり、ミリから1000倍ずつ小さくなる階段を降りていくイメージです。',
-    },
-    {
       question: 'MIPSの値が大きいほど速いコンピュータですか？',
       answer: 'はい、MIPSの値が大きいほど、1秒間により多くの命令を実行できるため、処理が速いと言えます。ただし、MIPSだけでは性能を完全に評価できません。命令の複雑さやメモリアクセス速度なども影響するためです。',
+    },
+    {
+      question: '基本情報技術者試験ではどう出題されますか？',
+      answer: 'MIPSと平均命令実行時間の計算問題がよく出ます。公式「平均命令実行時間（μs）= 1 ÷ MIPS値」を覚えておきましょう。また、クロック周波数やCPIとの関係を問う問題もあります。',
     },
   ]
 
@@ -164,6 +156,9 @@ export default function MipsPage() {
             MIPSは、<strong>1秒間に何百万回の命令を実行できるか</strong>を表します。
           </p>
 
+          <p style={{ fontSize: 'clamp(13px, 3.2vw, 14px)', color: '#666', marginBottom: '8px' }}>
+            下の枠は、プログラミングの画面（ターミナル）をイメージした表示です。数値や式を「画面に出る形」で見せることで、現場で使われるツールに近い形で理解できます。
+          </p>
           <div className="code-example">
             <pre><code>{`MIPSの例:
 
@@ -182,11 +177,11 @@ export default function MipsPage() {
             100MIPSの方が10倍速く処理を終えることができます。
           </p>
 
-          <p className="note">
+          <div className="key-point-box">
             <strong><i className="fas fa-lightbulb" aria-hidden /> ポイント：</strong>
             MIPSは「1秒間に実行できる命令の数」を表す単位。
             値が大きいほど処理が速いコンピュータと言えます。
-          </p>
+          </div>
         </section>
 
         <section>
@@ -406,11 +401,11 @@ export default function MipsPage() {
             </p>
           </div>
 
-          <p className="note" style={{ marginTop: '20px' }}>
+          <div className="key-point-box" style={{ marginTop: '20px' }}>
             <strong><i className="fas fa-lightbulb" aria-hidden /> わかったこと：</strong>
             「命令実行が速い = 処理が終わるのが速い」ということ。
             MIPSの値が大きいほど、同じ時間でより多くの処理を完了できます。
-          </p>
+          </div>
         </section>
 
         <section>
@@ -425,13 +420,14 @@ export default function MipsPage() {
           </p>
 
           <div className="code-example">
-            <pre><code>{`計算式:
+            <pre><code>{`計算式（シンプル）:
+平均命令実行時間（マイクロ秒） = 1 ÷ MIPS値
 
-平均命令実行時間（秒） = 1 ÷ MIPS値（100万回/秒）
+例: 10 MIPS → 1 ÷ 10 = 0.1 マイクロ秒（μs）
 
-例:
-10 MIPS の場合
-→ 1 ÷ 10,000,000 = 0.0000001秒 = 0.1マイクロ秒`}</code></pre>
+なぜこれでよいか:
+MIPSは「100万回/秒」の単位。1命令の時間 = 1秒 ÷ (MIPS×100万) = 10⁻⁶/MIPS 秒。
+10⁻⁶ 秒 = 1マイクロ秒なので、答は「1/MIPS マイクロ秒」で表せる。`}</code></pre>
           </div>
 
           <h3>なぜマイクロ秒を使うのか？</h3>
@@ -449,15 +445,17 @@ export default function MipsPage() {
             これなら分かりやすいですね！
           </p>
 
-          <p className="note">
+          <div className="key-point-box">
             <strong><i className="fas fa-lightbulb" aria-hidden /> ポイント：</strong>
             MIPSは「100万回/秒」という単位なので、1命令あたりの時間は「1秒 ÷ 100万」で計算される。
             この結果は非常に小さい数になるため、マイクロ秒（μs = 10⁻⁶秒）を使うと分かりやすくなる。
-          </p>
+          </div>
 
           <h3>計算デモ</h3>
           <p>
-            実際に自分で計算してみましょう。下のデモで、MIPSと平均命令実行時間を相互に変換できます。
+            下のデモでは、<strong>MIPSと平均命令実行時間を相互に変換</strong>できます。
+            MIPSを入力すると平均命令実行時間が自動で出ます。逆に平均命令実行時間を入力するとMIPSが出ます。
+            どちらかの入力欄を変えると、もう一方が自動で更新されます。
           </p>
 
           <div style={{
@@ -469,6 +467,9 @@ export default function MipsPage() {
             maxWidth: '100%'
           }}>
             <h4>MIPS ↔ 平均命令実行時間 計算デモ</h4>
+            <p style={{ fontSize: 'clamp(13px, 3.2vw, 14px)', marginTop: '10px' }}>
+              どちらかの入力欄を変えると、もう一方が自動で更新されます。MIPSか平均命令実行時間のどちらかを入力すれば、相互に変換できます。
+            </p>
 
             <div style={{ marginTop: '20px' }}>
               <div style={{ marginBottom: '20px' }}>
@@ -601,15 +602,14 @@ export default function MipsPage() {
                   </div>
                   {index === currentUnit && (
                     <div style={{
-                      padding: '5px 15px',
+                      width: '12px',
+                      height: '12px',
+                      borderRadius: '50%',
                       backgroundColor: '#ffc107',
-                      color: '#000',
-                      borderRadius: '20px',
-                      fontSize: 'clamp(12px, 3vw, 13px)',
-                      fontWeight: 'bold'
-                    }}>
-                      現在地
-                    </div>
+                      flexShrink: 0
+                    }}
+                    aria-label="現在の位置"
+                    />
                   )}
                 </div>
               ))}
@@ -636,7 +636,7 @@ export default function MipsPage() {
                   minWidth: '100px'
                 }}
               >
-                上へ（×1000）
+                ×1000
               </button>
               <button
                 onClick={goDown}
@@ -653,7 +653,7 @@ export default function MipsPage() {
                   minWidth: '100px'
                 }}
               >
-                下へ（÷1000）
+                ÷1000
               </button>
               <button
                 onClick={resetUnits}
@@ -697,11 +697,11 @@ export default function MipsPage() {
 「ミリ」のさらに1000分の1 = 「マイクロ」`}</code></pre>
           </div>
 
-          <p className="note">
+          <div className="key-point-box">
             <strong><i className="fas fa-lightbulb" aria-hidden /> 覚え方：</strong>
             階段を1段降りるごとに1000倍（10³）小さくなる。
             ミリ（10⁻³）→ マイクロ（10⁻⁶）→ ナノ（10⁻⁹）→ ピコ（10⁻¹²）
-          </p>
+          </div>
 
           <h3>日常生活での例</h3>
           <p>
@@ -723,32 +723,26 @@ export default function MipsPage() {
         <section>
           <h2>まとめ</h2>
           <p>
-            MIPSについて、以下のポイントを押さえておきましょう。
+            MIPSを理解するための3つの柱を押さえましょう。
           </p>
 
           <ul>
             <li>
-              <strong>MIPSとは</strong>：Million Instructions Per Second（100万命令/秒）の略。コンピュータの処理速度を表す単位。
+              <strong>① MIPSとは</strong>：1秒間に何百万回の命令を実行できるかを表す単位。値が大きいほど速い。
             </li>
             <li>
-              <strong>命令実行速度</strong>：MIPSの値が大きいほど、同じ時間でより多くの処理を完了できる。
+              <strong>② 平均命令実行時間との関係</strong>：1 ÷ MIPS値 = 平均命令実行時間（マイクロ秒）。デモで相互変換を確認できる。
             </li>
             <li>
-              <strong>平均命令実行時間</strong>：1つの命令を実行するのにかかる時間。MIPS値から計算できる。
-            </li>
-            <li>
-              <strong>なぜマイクロ秒を使うか</strong>：MIPSは「100万回/秒」なので、1命令あたりの時間は非常に小さい数になる。マイクロ秒（μs）を使うと分かりやすい。
-            </li>
-            <li>
-              <strong>なぜマイクロは10⁻⁶</strong>：ミリ（10⁻³）からさらに1000倍小さくなる（10⁻³）と、マイクロ（10⁻⁶）になる。階段を1段降りるごとに1000倍小さくなる。
+              <strong>③ なぜマイクロ秒か</strong>：1命令の時間は非常に小さいため、マイクロ秒（10⁻⁶秒）で表す。ミリ→マイクロ→ナノと1000倍ずつ小さくなる階段を覚える。
             </li>
           </ul>
 
-          <p className="note">
+          <div className="key-point-box">
             <strong><i className="fas fa-lightbulb" aria-hidden /> 基本情報技術者試験のヒント：</strong>
             MIPS ↔ 平均命令実行時間の計算問題がよく出ます。
             「1 ÷ MIPS値 = 平均命令実行時間（マイクロ秒）」を覚えておきましょう！
-          </p>
+          </div>
         </section>
 
         <section className="term-comparison">

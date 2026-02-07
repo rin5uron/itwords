@@ -16,6 +16,10 @@ export type TermPageHeaderProps = {
   dateModified?: string
   /** 「このページでわかること」の項目。省略時は表示しない */
   summaryItems?: string[]
+  /** サマリーヘッダーのカスタムテキスト（例: 「このページでできること」） */
+  summaryHeaderText?: string
+  /** サマリーアイコンのカスタムクラス */
+  summaryIcon?: string
   /** ヒーロー画像（わかることの直後・目次の直前に表示。省略時は表示しない） */
   heroImage?: ReactNode
 }
@@ -31,6 +35,8 @@ export default function TermPageHeader({
   dateCreated,
   dateModified,
   summaryItems,
+  summaryHeaderText,
+  summaryIcon,
   heroImage,
 }: TermPageHeaderProps) {
   const showDate =
@@ -57,7 +63,11 @@ export default function TermPageHeader({
 
       {summaryItems != null && summaryItems.length > 0 && (
         <div className="term-page-header__summary">
-          <PageSummary items={summaryItems} />
+          <PageSummary
+            items={summaryItems}
+            headerText={summaryHeaderText}
+            icon={summaryIcon}
+          />
         </div>
       )}
 
