@@ -293,13 +293,25 @@ export default function ExcelGrid({ onKeyPress, initialData }: ExcelGridProps) {
   }, [handleKeyDown])
 
   return (
-    <div style={{
-      border: '2px solid #ccc',
-      borderRadius: '8px',
-      overflow: 'auto',
-      backgroundColor: '#fff',
-      maxWidth: '100%'
-    }}>
+    <div
+      tabIndex={0}
+      role="application"
+      aria-label="擬似Excelグリッド（キー操作可）"
+      style={{
+        border: '2px solid #ccc',
+        borderRadius: '8px',
+        overflow: 'auto',
+        backgroundColor: '#fff',
+        maxWidth: '100%',
+        outline: 'none'
+      }}
+      onFocus={(e) => {
+        ;(e.currentTarget as HTMLElement).style.boxShadow = '0 0 0 2px #14b8a6'
+      }}
+      onBlur={(e) => {
+        ;(e.currentTarget as HTMLElement).style.boxShadow = 'none'
+      }}
+    >
       <table style={{
         borderCollapse: 'collapse',
         width: '100%',

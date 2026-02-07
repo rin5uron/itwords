@@ -28,15 +28,16 @@ function ShortcutAccordion({ level, title, color, shortcuts, completedMissions, 
   return (
     <details style={{ marginBottom: '15px' }}>
       <summary style={{
-        padding: '15px',
+        padding: 'clamp(12px, 3vw, 15px)',
         backgroundColor: color,
         color: '#fff',
-        border: `1px solid ${color}`,
+        border: `2px solid ${color}`,
         borderRadius: '5px',
         cursor: 'pointer',
         fontWeight: 'bold',
         fontSize: 'clamp(14px, 3.5vw, 16px)',
-        listStyle: 'none'
+        listStyle: 'none',
+        WebkitTapHighlightColor: 'transparent'
       }}>
         <span style={{ marginRight: '10px' }}>{stars} {title}</span>
       </summary>
@@ -154,7 +155,7 @@ function LevelCard({ level, title, desc, keys, color, selectedLevel, startLevel,
                 fontSize: 'clamp(13px, 3.2vw, 14px)'
               }}
             >
-              閉じる
+              Close
             </button>
           ) : (
             <div style={{
@@ -165,7 +166,7 @@ function LevelCard({ level, title, desc, keys, color, selectedLevel, startLevel,
               fontSize: 'clamp(13px, 3.2vw, 14px)',
               fontWeight: 'bold'
             }}>
-              開始 →
+              Start →
             </div>
           )}
         </div>
@@ -243,6 +244,9 @@ function LevelDemoContent({
             </p>
             <p style={{ margin: 0, fontSize: 'clamp(14px, 3.5vw, 16px)' }}>{currentMission.instruction}</p>
           </div>
+          <p style={{ margin: '0 0 10px 0', fontSize: 'clamp(12px, 3vw, 13px)', color: '#666' }}>
+            ※ 下のグリッドをクリックしてからキーを押してください
+          </p>
           <div style={{ marginBottom: '20px' }}>
             <ExcelGrid onKeyPress={handleKeyPress} />
           </div>
@@ -328,7 +332,7 @@ function LevelDemoContent({
                 fontSize: 'clamp(13px, 3.2vw, 14px)'
               }}
             >
-              閉じる
+              Close
             </button>
           </div>
         </div>
@@ -497,12 +501,10 @@ export default function ExcelShortcutsPage() {
     [currentMission, completedMissions]
   )
 
-  const goToNextMission = () => {
+  const goToNextMission = useCallback(() => {
     setShowSuccess(false)
-    if (currentMissionIndex < currentMissions.length - 1) {
-      setCurrentMissionIndex(currentMissionIndex + 1)
-    }
-  }
+    setCurrentMissionIndex((prev) => Math.min(prev + 1, currentMissions.length - 1))
+  }, [currentMissions.length])
 
   const resetMissions = () => {
     setCurrentMissionIndex(0)
@@ -533,7 +535,7 @@ export default function ExcelShortcutsPage() {
       answer: 'はい、MacではCtrlキーの代わりにCommandキー（⌘）を使います。例えば、Windowsの「Ctrl+C」はMacでは「Command+C」になります。ただし、このページはWindows版Excelを想定して作成しています。Mac版Excelをお使いの方は、Ctrl → Command と読み替えてください。',
     },
     {
-      question: 'スマホでも練習できますか？',
+      question: 'このページはスマホでも練習できますか？',
       answer: 'このページはキーボード操作を前提としているため、スマホでは実際の練習はできません。ただし、ショートカット一覧の確認や、どのような操作があるかを学ぶことはできます。実際の練習はPCで行ってください。',
     },
   ]
@@ -564,11 +566,11 @@ export default function ExcelShortcutsPage() {
         dateCreated="2026-02-07"
         dateModified="2026-02-08"
         summaryItems={[
-          '擬似Excelアプリで実際にショートカットを練習',
+          'Excelショートカットの基本〜応用を擬似Excelで体験',
           'レベル1：基本操作（Ctrl+矢印、範囲選択、コピペ、F2）',
           'レベル2：移動＆操作（Ctrl+D/R、Ctrl+Z、Ctrl+Home/End）',
           'レベル3：実務スピード（列・行選択、範囲選択、シート移動）',
-          'ミッション形式（全15問）で段階的に習得'
+          'デモは財務モデリング想定・PC推奨（Macは⌘で可）'
         ]}
         summaryHeaderText="このページでできること"
         summaryIcon="fas fa-laptop-code"
@@ -578,15 +580,12 @@ export default function ExcelShortcutsPage() {
         <section>
           <h2>このページでできること</h2>
           <p>
-            投資銀行の財務モデリングでは、<strong>マウスをほとんど使いません</strong>。
+            Excelショートカットキーの<strong>基本から応用まで</strong>、擬似Excelアプリで体験できます。
+            レベル1〜3のミッション形式で段階的に習得できます。
           </p>
           <p>
-            なぜなら、膨大な数式とデータを扱う財務モデルでは、
-            キーボードショートカットを使った方が<strong>圧倒的に速く、正確</strong>だからです。
-          </p>
-          <p>
-            このページでは、投資銀行で実際に使われているExcelショートカットキーを、
-            <strong>擬似Excelアプリ</strong>で練習できます。
+            デモでは、Excelショートカットを使いこなす<strong>財務モデリング</strong>を想定しています。
+            投資銀行ではマウスをほとんど使わず、キーボードショートカットで膨大な数式とデータを扱います。
           </p>
 
           <div style={{
@@ -606,6 +605,26 @@ export default function ExcelShortcutsPage() {
 
         <section>
           <h2 style={{ wordWrap: 'break-word', overflowWrap: 'break-word', minWidth: 0 }}>疑似Excelで実際に体験</h2>
+          <div style={{
+            padding: 'clamp(12px, 3vw, 16px)',
+            backgroundColor: '#fefce8',
+            border: '2px solid #eab308',
+            borderRadius: '8px',
+            marginTop: '15px',
+            marginBottom: '15px',
+            maxWidth: '100%',
+            wordWrap: 'break-word',
+            overflowWrap: 'break-word'
+          }}>
+            <p style={{ margin: 0, fontSize: 'clamp(13px, 3.2vw, 14px)', lineHeight: 1.6 }}>
+              <i className="fas fa-desktop" aria-hidden /> このデモはPC推奨です。MacはCtrlを⌘（Command）に置き換えると使えます。
+            </p>
+          </div>
+          {selectedLevel !== null && (
+            <p style={{ margin: '0 0 15px 0', fontSize: 'clamp(12px, 3vw, 13px)', color: '#666' }}>
+              レベル2・3は下にスクロールすると表示されます
+            </p>
+          )}
           <div style={{
             display: 'flex',
             flexDirection: 'column',
@@ -715,7 +734,7 @@ export default function ExcelShortcutsPage() {
             }}>
               <p style={{ margin: 0 }}>
                 <i className="fas fa-lightbulb" aria-hidden /> <strong>ヒント：</strong>
-                擬似Excelグリッド上で実際にキーボードショートカットを使ってみてください。正しいキーを押すと次のミッションに進みます。
+                グリッドをクリックしてからキーを押してください。正解したら「次のミッションへ」ボタンで次へ進めます。
               </p>
             </div>
           )}
@@ -723,6 +742,9 @@ export default function ExcelShortcutsPage() {
 
         <section>
           <h2>ショートカット一覧</h2>
+          <p style={{ margin: '0 0 15px 0', fontSize: 'clamp(12px, 3vw, 13px)', color: '#666', lineHeight: 1.6, overflowWrap: 'break-word' }}>
+            色の意味：<span style={{ color: ACCENT, fontWeight: 'bold' }}>レベル1＝基本</span> / <span style={{ color: ACCENT_DARK, fontWeight: 'bold' }}>レベル2＝応用</span> / <span style={{ color: ACCENT_TEA, fontWeight: 'bold' }}>レベル3＝実務</span> / <span style={{ color: '#6366f1', fontWeight: 'bold' }}>応用編＝Alt</span>
+          </p>
 
           <ShortcutAccordion
             level={1}
@@ -771,15 +793,16 @@ export default function ExcelShortcutsPage() {
 
           <details style={{ marginBottom: '15px' }}>
             <summary style={{
-              padding: '15px',
-              backgroundColor: ACCENT_DARK,
+              padding: 'clamp(12px, 3vw, 15px)',
+              backgroundColor: '#6366f1',
               color: '#fff',
-              border: `1px solid ${ACCENT_DARK}`,
+              border: '2px solid #4f46e5',
               borderRadius: '5px',
               cursor: 'pointer',
               fontWeight: 'bold',
               fontSize: 'clamp(14px, 3.5vw, 16px)',
-              listStyle: 'none'
+              listStyle: 'none',
+              WebkitTapHighlightColor: 'transparent'
             }}>
               <span style={{ marginRight: '10px' }}><i className="fas fa-plus" aria-hidden /> 応用編：Alt（リボン操作）</span>
             </summary>
