@@ -93,6 +93,13 @@ export default function Home() {
         <section id="new">
           <h3>新着用語</h3>
           <div className="card-container">
+            <div className="card" data-category="hardware">
+              <Link href="/terms/mips" className="card-link">
+                <span className="category-tag">ハードウェア</span>
+                <h4>MIPS</h4>
+                <p>コンピュータの処理速度を表す単位。命令実行速度デモと単位計算で基本情報試験対策。</p>
+              </Link>
+            </div>
             <div className="card" data-category="infrastructure">
               <Link href="/terms/ssh" className="card-link">
                 <span className="category-tag">インフラ</span>
