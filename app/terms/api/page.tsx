@@ -21,20 +21,12 @@ export default function APIPage() {
       answer: 'APIは「エーピーアイ」と読みます。まれに「アピ」や「エイピーアイ」と読まれることもありますが、一般的には「エーピーアイ」が標準です。Application Programming Interfaceの頭文字を取った略語です。',
     },
     {
-      question: 'APIとは何ですか？',
-      answer: 'API（Application Programming Interface）とは、外部のサービスの機能を呼び出して使うための仕組みです。自分で全部作らず、他のサービスの機能を「お願いして使う」ことができます。',
+      question: 'APIはどのように使うのですか？',
+      answer: 'JavaScriptのfetchでURLを指定してAPIを呼び出して、返ってきたJSONデータを表示するだけです。このページのデモのように、ボタンを押したときにfetchを実行するだけで、自分のサイトにAPIを組み込めます。',
     },
     {
-      question: 'APIのデモを体験できますか？',
-      answer: 'はい、このページには3つの実践デモがあります。天気API、名言API、猫画像APIを実際にボタンクリックで体験できます。APIがどのように動くのか、実際に見て理解できます。',
-    },
-    {
-      question: 'APIはどこで使われていますか？',
-      answer: 'GoogleログインやTwitterログイン（認証API）、Google Maps表示（地図API）、クレジットカード決済（決済API）、天気予報アプリ（天気API）など、私たちが日常的に使うWebサービスのほとんどでAPIが使われています。',
-    },
-    {
-      question: '初心者でもAPIを使えますか？',
-      answer: '使えます！最初は「APIを呼び出して結果を見る」だけでOKです。このページのデモのように、ボタンを押して結果が返ってくる体験から始めましょう。慣れてきたら自分のプログラムからAPIを呼び出せるようになります。',
+      question: '初心者でもAPIは使えますか？',
+      answer: '使えます！最初は「ボタンを押してAPIを呼び出す → 結果を見る」だけでOKです。このページのデモを体験してから、自分のブログやサイトに同じ仕組みを組み込んでみましょう。',
     },
   ]
 
@@ -100,7 +92,7 @@ export default function APIPage() {
         title="APIとは？デモで体験する初心者向け解説【実例で理解】"
         description="API（エーピーアイ）を初心者向けに解説。天気API・名言API・猫画像APIを実際に体験できるデモ付き。レストランの例えで仕組みを理解し、実践例でAPIの使い方を学べます。"
         datePublished="2024-01-01"
-        dateModified="2026-01-17"
+        dateModified="2026-02-07"
       />
 
       <TermPageHeader
@@ -108,11 +100,12 @@ export default function APIPage() {
         reading="エーピーアイ / Application Programming Interface"
         icon="fas fa-link"
         dateCreated="2024-01-01"
-        dateModified="2026-01-17"
+        dateModified="2026-02-07"
         summaryItems={[
           'APIとは何か？レストランの例えで理解',
           '天気API・名言API・猫画像APIを実際に体験',
           'APIが使われている身近な例',
+          '自分のサイトにAPIを組み込むコード例',
           'APIの基本用語と仕組み'
         ]}
       />
@@ -168,13 +161,20 @@ export default function APIPage() {
             実際にAPIを呼び出して、結果を見てみましょう。ボタンを押すだけで、外部サービスからデータが返ってきます。
           </p>
 
+          <div style={{
+            display: 'flex',
+            flexDirection: 'column',
+            gap: 'clamp(28px, 5vw, 40px)',
+            marginTop: 'clamp(24px, 4vw, 32px)',
+            marginBottom: 'clamp(24px, 4vw, 32px)'
+          }}>
           {/* デモ①：天気API */}
           <div className="demo-section" style={{
             backgroundColor: '#fff',
             border: '1px solid #4caf50',
             borderRadius: '8px',
-            padding: 'clamp(15px, 3vw, 20px)',
-            marginBottom: '24px'
+            padding: 'clamp(20px, 4vw, 28px)',
+            marginBottom: 0
           }}>
             <h3 style={{ marginTop: 0, color: '#2e7d32' }}>
               <i className="fas fa-cloud-sun" style={{ marginRight: '8px' }}></i>
@@ -243,8 +243,8 @@ export default function APIPage() {
             backgroundColor: '#fff',
             border: '1px solid #9c27b0',
             borderRadius: '8px',
-            padding: 'clamp(15px, 3vw, 20px)',
-            marginBottom: '24px'
+            padding: 'clamp(20px, 4vw, 28px)',
+            marginBottom: 0
           }}>
             <h3 style={{ marginTop: 0, color: '#7b1fa2' }}>
               <i className="fas fa-quote-left" style={{ marginRight: '8px' }}></i>
@@ -310,8 +310,8 @@ export default function APIPage() {
             backgroundColor: '#fff',
             border: '1px solid #ff9800',
             borderRadius: '8px',
-            padding: 'clamp(15px, 3vw, 20px)',
-            marginBottom: '24px'
+            padding: 'clamp(20px, 4vw, 28px)',
+            marginBottom: 0
           }}>
             <h3 style={{ marginTop: 0, color: '#e65100' }}>
               <i className="fas fa-image" style={{ marginRight: '8px' }}></i>
@@ -366,10 +366,37 @@ export default function APIPage() {
               </div>
             )}
           </div>
+          </div>
+        </section>
+
+        <section id="implementation">
+          <h2>自分のサイトにAPIを組み込む場合</h2>
+          <p>
+            ブログに「今日の名言を表示」ボタンを置きたいとき、裏ではこんなコードが動いています。
+            このページのデモも、同じ仕組みで動いています。
+          </p>
+          <div className="key-point-box">
+            <strong><i className="fas fa-lightbulb" aria-hidden /> ポイント：</strong>
+            ボタンをクリック → <code>fetch</code> でAPIのURLにリクエスト → 返ってきたJSONを表示。これだけです。
+          </div>
+          <div className="code-example" style={{ marginTop: '1em' }}>
+            <pre>
+              <code className="language-javascript">{`// ボタンを押したときに実行する処理
+async function showQuote() {
+  const response = await fetch('https://api.quotable.io/quotes/random');
+  const data = await response.json();
+  const quote = Array.isArray(data) ? data[0] : data;
+  document.getElementById('result').textContent = quote.content + ' — ' + quote.author;
+}`}</code>
+            </pre>
+          </div>
+          <p style={{ marginTop: '1em', fontSize: '0.95em', color: '#666' }}>
+            上のコードは、名言APIを呼び出して結果を表示するだけ。HTMLにボタンと表示用の要素を置いて、クリック時にこの関数を実行すれば、ブログにも同じ機能を入れられます。
+          </p>
         </section>
 
         <section id="mechanism">
-          <h2>APIの仕組みを超かんたんに言うと（レストラン例）</h2>
+          <h2>APIの仕組みを例えると（レストラン例）</h2>
           <p>
             APIの仕組みを、レストランに例えて理解しましょう。
           </p>
