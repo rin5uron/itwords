@@ -124,6 +124,19 @@ export default function Home() {
           </div>
         </section>
 
+        <section id="practice">
+          <h3>練習コーナー</h3>
+          <div className="card-container">
+            <div className="card" data-category="practice">
+              <Link href="/practice/excel-shortcuts" className="card-link">
+                <span className="category-tag">練習</span>
+                <h4>Excel ショートカット練習</h4>
+                <p>投資銀行スタイルの財務モデリング。マウスを使わないキーボード操作をレベル別ミッションで習得。</p>
+              </Link>
+            </div>
+          </div>
+        </section>
+
         <section id="all-terms">
           <h3>すべての用語</h3>
           
