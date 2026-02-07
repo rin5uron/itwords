@@ -228,7 +228,7 @@ export default function CVEDemo() {
           <div
             style={{
               backgroundColor: '#f8f9fa',
-              border: '2px dashed #ddd',
+              border: '2px solid #ddd',
               borderRadius: '8px',
               padding: 'clamp(12px, 2.5vw, 20px)',
               textAlign: 'center',

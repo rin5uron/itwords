@@ -367,7 +367,7 @@ export default function ExcelGrid({ onKeyPress, initialData }: ExcelGridProps) {
                       padding: '4px 8px',
                       minWidth: '60px',
                       backgroundColor: isSelected ? '#d4e3fc' : isInRange ? '#e8f0fe' : '#fff',
-                      outline: isSelected ? '2px solid #0066cc' : isCopied ? '2px dashed #28a745' : 'none',
+                      outline: isSelected ? '2px solid #0066cc' : isCopied ? '2px solid #28a745' : 'none',
                       cursor: 'cell',
                       position: 'relative'
                     }}

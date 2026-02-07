@@ -51,7 +51,7 @@ export default function QueueDemo() {
       <div
         id="queue-visualizer"
         style={{
-          border: '2px dashed #ccc',
+          border: '2px solid #ccc',
           borderRadius: '5px',
           padding: '20px',
           minHeight: '60px',

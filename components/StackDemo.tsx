@@ -46,7 +46,7 @@ export default function StackDemo() {
         id="stack-visualizer"
         style={{
           minHeight: '100px',
-          border: '2px dashed #ddd',
+          border: '2px solid #ddd',
           padding: '20px',
           borderRadius: '10px',
           display: 'flex',

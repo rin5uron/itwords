@@ -7,14 +7,14 @@ body {
   color: #333;
   background-color: #f4f1e2;
   margin: 0;
-  padding: 40px 20px;
+  padding: clamp(24px, 5vw, 48px) clamp(16px, 4vw, 24px);
 }
 
 .container {
   max-width: 800px;
   margin: 0 auto;
   background-color: #fff;
-  padding: 50px;
+  padding: clamp(32px, 6vw, 60px) clamp(24px, 5vw, 50px);
   border-radius: 10px;
   box-shadow: 0 4px 20px rgba(0,0,0,0.07);
 }
@@ -56,7 +56,7 @@ h1 i {
 
 h2 {
   font-size: 1.6em;
-  margin-top: 50px;
+  margin-top: clamp(40px, 6vw, 60px);
 }
 
 h3 {
@@ -255,13 +255,18 @@ summary:hover {
   padding: 12px 16px 16px;
 }
 
-/* ポイント・わかったことの枠（テンプレート統一） */
+/* ポイント・わかったことの枠（テンプレート統一・SSH .note 準拠）
+ * 点線は使わない。まとめ・強調はこの枠を使う。
+ */
 .key-point-box {
-  padding: clamp(12px, 3vw, 16px);
+  padding: clamp(14px, 3vw, 20px);
+  margin-top: 1.8em;
+  margin-bottom: 1.2em;
+  border: 2px solid #14b8a6;
+  border-left: 6px solid #14b8a6;
   border-radius: 8px;
-  border-left: 4px solid #14b8a6;
   background-color: #f0fdfa;
-  margin: 15px 0;
+  box-shadow: 0 2px 8px rgba(20, 184, 166, 0.12);
 }
 
 .code-example {
