@@ -942,6 +942,12 @@ footer a:hover {
   font-size: 0.9rem;
   color: #666;
 }
+/* 用語ページ：広告とフッターの間の余白を上の幅（24px）に合わせる
+ * デフォルト4rem→24pxに縮小（AdInArticleのmargin-topと同程度）
+ */
+.terms-layout + .site-footer-layout {
+  margin-top: 24px;
+}
 .site-footer-layout a {
   color: #14b8a6;
   text-decoration: none;
@@ -1581,7 +1587,7 @@ main a:not(.card-link):not(.breadcrumb-link):not(.term-name):active {
    */
   .adsense-below-toc {
     aspect-ratio: 5 / 1;
-    max-height: 6vh;
+    max-height: 5vh;
     overflow: hidden;
   }
 
@@ -1592,7 +1598,7 @@ main a:not(.card-link):not(.breadcrumb-link):not(.term-name):active {
    */
   .adsense-footer {
     aspect-ratio: 4 / 1;
-    max-height: 10vh;
+    max-height: 8vh;
     overflow: hidden;
   }
 
@@ -1600,5 +1606,33 @@ main a:not(.card-link):not(.breadcrumb-link):not(.term-name):active {
   .adsense-in-article iframe {
     max-height: 100% !important;
     max-width: 100% !important;
+  }
+}
+
+/* ============================================
+   AdSense PC時の高さ制限（769px以上）
+   ============================================ */
+
+@media (min-width: 769px) {
+  /* 【用語ページ】目次の下の広告
+   * 使用場所: 各用語ページ（例: app/terms/ssh/page.tsx）
+   * コンポーネント: AdInArticle（position="below-toc"）
+   * 横長に強制: aspect-ratio 5/1
+   */
+  .adsense-below-toc {
+    aspect-ratio: 5 / 1;
+    max-height: 5vh;
+    overflow: hidden;
+  }
+
+  /* 【用語ページ】フッター上の広告
+   * 使用場所: app/terms/layout.tsx（一括配置）
+   * コンポーネント: AdInArticle（position="footer"）
+   * 横長に強制: aspect-ratio 4/1
+   */
+  .adsense-footer {
+    aspect-ratio: 4 / 1;
+    max-height: 8vh;
+    overflow: hidden;
   }
 }
