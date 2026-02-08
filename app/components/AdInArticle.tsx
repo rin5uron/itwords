@@ -52,6 +52,7 @@ export default function AdInArticle({
         style={{ display: 'block', textAlign: 'center' }}
         data-ad-layout="in-article"
         data-ad-format="fluid"
+        data-full-width-responsive="false"
         data-ad-client={adClientId}
         data-ad-slot={adSlot}
       />
