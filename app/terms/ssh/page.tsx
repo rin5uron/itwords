@@ -99,7 +99,7 @@ export default function SSHPage() {
         }
       />
 
-      <AdSubtleHorizontal adSlot="5675174441" position="bottom" />
+      <AdSubtleHorizontal adSlot="6660134815" position="bottom" />
 
       <main>
         <section className="term-content-section">
