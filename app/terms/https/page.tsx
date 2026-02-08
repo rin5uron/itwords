@@ -3,6 +3,7 @@
 import Link from 'next/link'
 import StructuredData from '@/app/components/StructuredData'
 import TermPageHeader from '@/app/components/TermPageHeader'
+import AdInArticle from '@/app/components/AdInArticle'
 import FAQAccordion from '@/app/components/FAQAccordion'
 
 const httpsFAQs = [
@@ -60,6 +61,8 @@ export default function HTTPSPage() {
           'HTTPSを使うメリットと必要性'
         ]}
       />
+
+      <AdInArticle adSlot="2892250316" position="below-toc" />
 
       <main>
         <section>

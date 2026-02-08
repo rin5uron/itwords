@@ -3,6 +3,7 @@ import { Metadata } from 'next'
 import HTTPDemo from '@/app/components/HTTPDemo'
 import StructuredData from '@/app/components/StructuredData'
 import TermPageHeader from '@/app/components/TermPageHeader'
+import AdInArticle from '@/app/components/AdInArticle'
 import FAQAccordion from '@/app/components/FAQAccordion'
 
 export const metadata: Metadata = {
@@ -76,6 +77,8 @@ export default function HTTPPage() {
           'プロトコルとは？「同じ道を走る別の車」の比喩'
         ]}
       />
+
+      <AdInArticle adSlot="2892250316" position="below-toc" />
 
       <main>
         <section>

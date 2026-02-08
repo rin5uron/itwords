@@ -3,6 +3,7 @@
 import Link from 'next/link'
 import { useState } from 'react'
 import TermPageHeader from '@/app/components/TermPageHeader'
+import AdInArticle from '@/app/components/AdInArticle'
 import FAQAccordion from '@/app/components/FAQAccordion'
 import StructuredData from '@/app/components/StructuredData'
 
@@ -95,6 +96,8 @@ export default function WebhookPage() {
         dateCreated="2024-01-10"
         dateModified="2026-01-19"
       />
+
+      <AdInArticle adSlot="2892250316" position="below-toc" />
 
       <main>
         <section>

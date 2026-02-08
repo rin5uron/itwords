@@ -4,6 +4,7 @@ import Link from 'next/link'
 import { useState, useEffect } from 'react'
 import StructuredData from '@/app/components/StructuredData'
 import TermPageHeader from '@/app/components/TermPageHeader'
+import AdInArticle from '@/app/components/AdInArticle'
 import FAQAccordion from '@/app/components/FAQAccordion'
 
 export default function MipsPage() {
@@ -135,6 +136,8 @@ export default function MipsPage() {
           '単位の階段デモでマイクロ秒・10のマイナス6乗を理解'
         ]}
       />
+
+      <AdInArticle adSlot="2892250316" position="below-toc" />
 
       <main>
         <section>

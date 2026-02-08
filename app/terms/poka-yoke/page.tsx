@@ -2,6 +2,7 @@ import Link from 'next/link'
 import type { Metadata } from 'next'
 import StructuredData from '@/app/components/StructuredData'
 import TermPageHeader from '@/app/components/TermPageHeader'
+import AdInArticle from '@/app/components/AdInArticle'
 export const metadata: Metadata = {
   title: 'ポカヨケとは？IT開発への応用を初心者向けに解説【実践例付き】',
   description: 'ポカヨケ（Poka-Yoke）とは、製造業のトヨタ生産方式で生まれたヒューマンエラー防止の仕組みです。CI/CD、コードレビュー、デプロイ制限など、IT開発への応用方法を初心者にもわかりやすく解説します。',
@@ -59,6 +60,8 @@ export default function PokaYokePage() {
         dateCreated="2026-01-13"
         dateModified="2026-01-13"
       />
+
+      <AdInArticle adSlot="2892250316" position="below-toc" />
 
       <main>
         <section>

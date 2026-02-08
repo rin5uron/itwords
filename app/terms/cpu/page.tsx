@@ -4,6 +4,7 @@ import Link from 'next/link'
 import { useState } from 'react'
 import StructuredData from '@/app/components/StructuredData'
 import TermPageHeader from '@/app/components/TermPageHeader'
+import AdInArticle from '@/app/components/AdInArticle'
 import FAQAccordion from '@/app/components/FAQAccordion'
 
 const FDESTEPS = [
@@ -72,6 +73,8 @@ export default function CPUPage() {
           'CPUの性能を決める3つの指標（クロック・命令数・MIPS）',
         ]}
       />
+
+      <AdInArticle adSlot="2892250316" position="below-toc" />
 
       <main>
         <section>

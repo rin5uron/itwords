@@ -3,6 +3,7 @@
 import Link from 'next/link'
 import StructuredData from '@/app/components/StructuredData'
 import TermPageHeader from '@/app/components/TermPageHeader'
+import AdInArticle from '@/app/components/AdInArticle'
 import ValidationDemo from '@/components/ValidationDemo'
 const metadata = {
   title: 'バリデーションとは？初心者向けにわかりやすく解説【実装例付き】 | 実践型IT用語辞典',
@@ -66,6 +67,8 @@ export default function ValidationPage() {
         dateCreated="2026-01-13"
         dateModified="2026-01-13"
       />
+
+      <AdInArticle adSlot="2892250316" position="below-toc" />
 
       <main>
         <section>

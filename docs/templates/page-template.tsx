@@ -55,7 +55,7 @@
 //    - 類似用語との比較（任意）
 //    - 関連用語の一覧
 //
-// 9. 広告：terms/layout.tsx でフッター上に統一配置（AdSubtleHorizontal）。各ページでの追加不要。
+// 9. 広告：terms/layout.tsx でフッター上（AdInArticle）、各ページで目次の下（AdInArticle）に配置。
 //
 // 10. FAQセクション（任意）
 //    - よくある質問と回答

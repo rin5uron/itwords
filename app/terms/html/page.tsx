@@ -2,6 +2,7 @@
 
 import Link from 'next/link'
 import TermPageHeader from '@/app/components/TermPageHeader'
+import AdInArticle from '@/app/components/AdInArticle'
 import HTMLDemo from './HTMLDemo'
 import FAQAccordion from '@/app/components/FAQAccordion'
 
@@ -40,6 +41,8 @@ export default function HTMLPage() {
           'HTML5の新機能と基本タグ'
         ]}
       />
+
+      <AdInArticle adSlot="2892250316" position="below-toc" />
 
       <main>
         <section>

@@ -4,6 +4,7 @@ import LocalStorageDemo from '@/components/LocalStorageDemo'
 import LocalStorageComparisonDemo from '@/components/LocalStorageComparisonDemo'
 import StructuredData from '@/app/components/StructuredData'
 import TermPageHeader from '@/app/components/TermPageHeader'
+import AdInArticle from '@/app/components/AdInArticle'
 import FAQAccordion from '@/app/components/FAQAccordion'
 
 export const metadata: Metadata = {
@@ -89,6 +90,8 @@ export default function LocalStoragePage() {
         dateCreated="2024-01-07"
         dateModified="2026-01-07"
       />
+
+      <AdInArticle adSlot="2892250316" position="below-toc" />
 
       <main>
         <section>

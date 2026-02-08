@@ -2,6 +2,7 @@
 
 import Link from 'next/link'
 import TermPageHeader from '@/app/components/TermPageHeader'
+import AdInArticle from '@/app/components/AdInArticle'
 import CookieDemo from '@/app/components/CookieDemo'
 import StructuredData from '@/app/components/StructuredData'
 import FAQAccordion from '@/app/components/FAQAccordion'
@@ -53,6 +54,8 @@ export default function CookiePage() {
           'セキュリティとプライバシー対策'
         ]}
       />
+
+      <AdInArticle adSlot="2892250316" position="below-toc" />
 
       <main>
         <section>

@@ -4,6 +4,7 @@ import Link from 'next/link'
 import { useState } from 'react'
 import StructuredData from '@/app/components/StructuredData'
 import TermPageHeader from '@/app/components/TermPageHeader'
+import AdInArticle from '@/app/components/AdInArticle'
 import FAQAccordion from '@/app/components/FAQAccordion'
 
 export default function NpmPage() {
@@ -145,6 +146,8 @@ export default function NpmPage() {
         dateCreated="2024-01-01"
         dateModified="2026-01-19"
       />
+
+      <AdInArticle adSlot="2892250316" position="below-toc" />
 
       <main>
         <section>

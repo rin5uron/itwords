@@ -3,6 +3,7 @@
 import Link from 'next/link'
 import { useState } from 'react'
 import TermPageHeader from '@/app/components/TermPageHeader'
+import AdInArticle from '@/app/components/AdInArticle'
 import FAQAccordion from '@/app/components/FAQAccordion'
 
 const faqs = [
@@ -55,6 +56,8 @@ export default function FrameworkPage() {
           'おすすめの学習順序',
         ]}
       />
+
+      <AdInArticle adSlot="2892250316" position="below-toc" />
 
       <main>
         <section>

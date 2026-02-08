@@ -3,6 +3,7 @@ import Image from 'next/image'
 import { Metadata } from 'next'
 import StructuredData from '@/app/components/StructuredData'
 import TermPageHeader from '@/app/components/TermPageHeader'
+import AdInArticle from '@/app/components/AdInArticle'
 import ZeroDayDemo from '@/components/ZeroDayDemo'
 export const metadata: Metadata = {
   title: 'ゼロデイ攻撃とは？「0日」の意味と防御法【攻撃者の視点で体験】',
@@ -100,6 +101,8 @@ export default function ZeroDayPage() {
           '個人でできる防御対策'
         ]}
       />
+
+      <AdInArticle adSlot="2892250316" position="below-toc" />
 
       <div style={{
         width: '100%',

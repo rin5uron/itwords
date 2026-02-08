@@ -4,6 +4,7 @@ import Link from 'next/link'
 import { useState } from 'react'
 import StructuredData from '@/app/components/StructuredData'
 import TermPageHeader from '@/app/components/TermPageHeader'
+import AdInArticle from '@/app/components/AdInArticle'
 export default function CLIGUIPage() {
   const [currentPath, setCurrentPath] = useState('/home/user')
   const [files, setFiles] = useState(['documents', 'photos', 'music'])
@@ -96,6 +97,8 @@ export default function CLIGUIPage() {
         dateCreated="2026-01-17"
         dateModified="2026-01-17"
       />
+
+      <AdInArticle adSlot="2892250316" position="below-toc" />
 
       <main>
         <section>

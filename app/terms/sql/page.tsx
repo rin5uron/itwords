@@ -4,6 +4,7 @@ import Link from 'next/link'
 import { useState } from 'react'
 import StructuredData from '@/app/components/StructuredData'
 import TermPageHeader from '@/app/components/TermPageHeader'
+import AdInArticle from '@/app/components/AdInArticle'
 export default function SQLPage() {
   const [selectedQuery, setSelectedQuery] = useState<string | null>(null)
 
@@ -83,6 +84,8 @@ export default function SQLPage() {
         dateCreated="2026-01-16"
         dateModified="2026-01-16"
       />
+
+      <AdInArticle adSlot="2892250316" position="below-toc" />
 
       <main>
         <section>

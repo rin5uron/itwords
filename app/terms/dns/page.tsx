@@ -5,6 +5,7 @@ import Image from 'next/image'
 import { useState } from 'react'
 import StructuredData from '@/app/components/StructuredData'
 import TermPageHeader from '@/app/components/TermPageHeader'
+import AdInArticle from '@/app/components/AdInArticle'
 export default function DNSPage() {
   const [currentStep, setCurrentStep] = useState(0)
 
@@ -71,6 +72,8 @@ export default function DNSPage() {
           'DNS設定方法と実践的な使い方'
         ]}
       />
+
+      <AdInArticle adSlot="2892250316" position="below-toc" />
 
       <div style={{
         width: '100%',

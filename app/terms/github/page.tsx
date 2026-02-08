@@ -3,6 +3,7 @@ import { Metadata } from 'next'
 import GitHubDemo from './GitHubDemo'
 import StructuredData from '@/app/components/StructuredData'
 import TermPageHeader from '@/app/components/TermPageHeader'
+import AdInArticle from '@/app/components/AdInArticle'
 import FAQAccordion from '@/app/components/FAQAccordion'
 
 export const metadata: Metadata = {
@@ -80,6 +81,8 @@ export default function GitHubPage() {
           'GitHubの便利な機能（Issues、Actions、Pagesなど）'
         ]}
       />
+
+      <AdInArticle adSlot="2892250316" position="below-toc" />
 
       <main>
         <section>

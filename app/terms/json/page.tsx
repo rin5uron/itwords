@@ -3,6 +3,7 @@ import type { Metadata } from 'next'
 import JsonDemo from '@/components/JsonDemo'
 import StructuredData from '@/app/components/StructuredData'
 import TermPageHeader from '@/app/components/TermPageHeader'
+import AdInArticle from '@/app/components/AdInArticle'
 import FAQAccordion from '@/app/components/FAQAccordion'
 
 export const metadata: Metadata = {
@@ -81,6 +82,8 @@ export default function JsonPage() {
         dateCreated="2024-01-01"
         dateModified="2026-01-16"
       />
+
+      <AdInArticle adSlot="2892250316" position="below-toc" />
 
       <main>
         <section>

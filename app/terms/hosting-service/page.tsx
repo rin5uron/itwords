@@ -5,6 +5,7 @@ import { useState } from 'react'
 import { Metadata } from 'next'
 import StructuredData from '@/app/components/StructuredData'
 import TermPageHeader from '@/app/components/TermPageHeader'
+import AdInArticle from '@/app/components/AdInArticle'
 export default function HostingServicePage() {
   const [selectedType, setSelectedType] = useState<'shared' | 'vps' | 'cloud' | 'serverless'>('shared')
 
@@ -88,6 +89,8 @@ export default function HostingServicePage() {
         dateCreated="2026-01-12"
         dateModified="2026-01-12"
       />
+
+      <AdInArticle adSlot="2892250316" position="below-toc" />
 
       <main>
         <section>

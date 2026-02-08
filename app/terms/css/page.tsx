@@ -5,6 +5,7 @@ import { useState } from 'react'
 import { Metadata } from 'next'
 import StructuredData from '@/app/components/StructuredData'
 import TermPageHeader from '@/app/components/TermPageHeader'
+import AdInArticle from '@/app/components/AdInArticle'
 import CSSStepByStepDemo from '@/components/CSSStepByStepDemo'
 import CSSWritingMethodsDemo from '@/components/CSSWritingMethodsDemo'
 
@@ -59,6 +60,8 @@ export default function CSSPage() {
           'CSSの書き方とよく使うプロパティ'
         ]}
       />
+
+      <AdInArticle adSlot="2892250316" position="below-toc" />
 
       <main>
         <section>

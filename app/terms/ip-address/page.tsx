@@ -1,6 +1,7 @@
 import Link from 'next/link'
 import StructuredData from '@/app/components/StructuredData'
 import TermPageHeader from '@/app/components/TermPageHeader'
+import AdInArticle from '@/app/components/AdInArticle'
 import { Metadata } from 'next'
 
 export const metadata: Metadata = {
@@ -70,6 +71,8 @@ export default function IPAddressPage() {
           'プロトコルとポート番号の関係'
         ]}
       />
+
+      <AdInArticle adSlot="2892250316" position="below-toc" />
 
       <main>
         <section>

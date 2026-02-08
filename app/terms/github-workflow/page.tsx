@@ -4,6 +4,7 @@ import Link from 'next/link'
 import GitFlowDemo from '../github/GitFlowDemo'
 import StructuredData from '@/app/components/StructuredData'
 import TermPageHeader from '@/app/components/TermPageHeader'
+import AdInArticle from '@/app/components/AdInArticle'
 import FAQAccordion from '@/app/components/FAQAccordion'
 export default function GitHubWorkflowPage() {
   const faqs = [
@@ -52,6 +53,8 @@ export default function GitHubWorkflowPage() {
           'よくあるブランチ戦略（GitHub Flow、Git Flow、Trunk-based）'
         ]}
       />
+
+      <AdInArticle adSlot="2892250316" position="below-toc" />
 
       <main>
         <section>

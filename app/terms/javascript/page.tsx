@@ -3,6 +3,7 @@ import { Metadata } from 'next'
 import JavaScriptDemo from '@/app/components/JavaScriptDemo'
 import StructuredData from '@/app/components/StructuredData'
 import TermPageHeader from '@/app/components/TermPageHeader'
+import AdInArticle from '@/app/components/AdInArticle'
 import FAQAccordion from '@/app/components/FAQAccordion'
 
 export const metadata: Metadata = {
@@ -67,6 +68,8 @@ export default function JavaScriptPage() {
           'ES6の新機能と基本構文'
         ]}
       />
+
+      <AdInArticle adSlot="2892250316" position="below-toc" />
 
       <main>
         <section>
