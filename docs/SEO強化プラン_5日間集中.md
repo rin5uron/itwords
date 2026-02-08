@@ -19,12 +19,12 @@
 
 ---
 
-### STEP 2: Search Console登録 + 構造化データ確認（2026年1月実装済み）
+### STEP 2: Search Console登録 + 構造化データ確認
 
 | タスク | 対象 | 変更内容 |
 |--------|------|----------|
-| Search Console登録 | - | プロパティ追加・所有権確認（実装済み） |
-| サイトマップ送信 | - | sitemap.xmlをSearch Consoleに登録（実装済み） |
+| Search Console登録 | - | プロパティ追加・所有権確認（2026年1月実装済み） |
+| サイトマップ送信 | - | sitemap.xmlをSearch Consoleに登録（2026年1月実装済み） |
 | リッチリザルトテスト | - | トップ・用語ページでテスト実施 |
 | Page Speed Insights | - | AESページでテスト実施 |
 
