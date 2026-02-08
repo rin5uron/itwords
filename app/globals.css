@@ -1583,10 +1583,10 @@ main a:not(.card-link):not(.breadcrumb-link):not(.term-name):active {
   /* 【用語ページ】目次の下の広告
    * 使用場所: 各用語ページ（例: app/terms/ssh/page.tsx）
    * コンポーネント: AdInArticle（position="below-toc"）
-   * 高さと幅を合わせる: aspect-ratio で横長に
+   * 高さを 5vh に固定（aspect-ratio は幅優先で高さが大きくなりがちなため削除）
    */
   .adsense-below-toc {
-    aspect-ratio: 5 / 1;
+    height: 5vh;
     max-height: 5vh;
     overflow: hidden;
   }
@@ -1617,10 +1617,10 @@ main a:not(.card-link):not(.breadcrumb-link):not(.term-name):active {
   /* 【用語ページ】目次の下の広告
    * 使用場所: 各用語ページ（例: app/terms/ssh/page.tsx）
    * コンポーネント: AdInArticle（position="below-toc"）
-   * 横長に強制: aspect-ratio 5/1
+   * 高さを 5vh に固定
    */
   .adsense-below-toc {
-    aspect-ratio: 5 / 1;
+    height: 5vh;
     max-height: 5vh;
     overflow: hidden;
   }
