@@ -4,7 +4,9 @@ import { Metadata } from 'next'
 import StructuredData from '@/app/components/StructuredData'
 import TermPageHeader from '@/app/components/TermPageHeader'
 import AdInArticle from '@/app/components/AdInArticle'
+import FAQAccordion from '@/app/components/FAQAccordion'
 import ZeroDayDemo from '@/components/ZeroDayDemo'
+
 export const metadata: Metadata = {
   title: 'ゼロデイ攻撃とは？「0日」の意味と防御法【攻撃者の視点で体験】',
   description: 'ゼロデイ攻撃とは？未知の脆弱性を狙うサイバー攻撃。「0日」の意味をシミュレーションで体験。対策も解説。',
@@ -100,38 +102,40 @@ export default function ZeroDayPage() {
           '実際にあった攻撃事例（Stuxnet、WannaCry等）',
           '個人でできる防御対策'
         ]}
+        heroImage={
+          <div
+            style={{
+              width: '100%',
+              maxWidth: '900px',
+              margin: '0 auto clamp(24px, 4vw, 32px) auto',
+              borderRadius: '12px',
+              overflow: 'hidden',
+              boxShadow: '0 4px 12px rgba(0,0,0,0.1)',
+              aspectRatio: '3 / 2',
+            }}
+          >
+            <Image
+              src="/images/terms/zero-day-hero.jpg"
+              alt="ゼロデイ攻撃のイメージ - Day 0の脆弱性を狙うサイバー攻撃"
+              width={1200}
+              height={630}
+              priority
+              style={{
+                width: '100%',
+                height: '100%',
+                objectFit: 'cover',
+                objectPosition: 'center',
+                display: 'block',
+              }}
+            />
+          </div>
+        }
       />
 
       <AdInArticle adSlot="2892250316" position="below-toc" />
 
-      <div style={{
-        width: '100%',
-        maxWidth: '900px',
-        margin: '0 auto 2rem auto',
-        borderRadius: '12px',
-        overflow: 'hidden',
-        boxShadow: '0 4px 12px rgba(0,0,0,0.1)',
-        height: 'auto',
-        minHeight: '400px'
-      }}>
-        <Image
-          src="/images/terms/zero-day-hero.jpg"
-          alt="ゼロデイ攻撃のイメージ - Day 0の脆弱性を狙うサイバー攻撃"
-          width={1200}
-          height={630}
-          priority
-          style={{
-            width: '100%',
-            height: '100%',
-            objectFit: 'cover',
-            objectPosition: 'center',
-            display: 'block'
-          }}
-        />
-      </div>
-
       <main>
-        <section>
+        <section className="term-content-section">
           <h2>概要</h2>
 
           <p>
@@ -140,7 +144,7 @@ export default function ZeroDayPage() {
           </p>
         </section>
 
-        <section>
+        <section className="term-content-section">
           <h2>「ゼロデイ」の名前の由来</h2>
           <p>
             なぜ「ゼロデイ」と呼ばれるのでしょうか？それは<strong>「対策できる日数がゼロ日（0日）」</strong>という意味から来ています。
@@ -160,8 +164,8 @@ export default function ZeroDayPage() {
           </p>
         </section>
 
-        <section>
-          <h2>⚡ 攻撃者の視点で体験してみよう</h2>
+        <section className="term-content-section">
+          <h2><i className="fas fa-bolt" aria-hidden /> 攻撃者の視点で体験してみよう</h2>
           <ZeroDayDemo />
 
           <h3>この体験で分かること</h3>
@@ -173,7 +177,7 @@ export default function ZeroDayPage() {
           </ul>
         </section>
 
-        <section>
+        <section className="term-content-section">
           <h2>実際のゼロデイ攻撃事例</h2>
           <p>
             ゼロデイ攻撃は歴史上、数多くの大規模な被害を引き起こしてきました。過去の事例を知ることで、その深刻さが理解できます。
@@ -215,7 +219,7 @@ export default function ZeroDayPage() {
           </p>
         </section>
 
-        <section>
+        <section className="term-content-section">
           <h2>なぜゼロデイ攻撃は危険なのか？</h2>
           <ul>
             <li><strong>防御策が存在しない</strong>：修正パッチがまだ提供されていないため、完全に防ぐことが困難</li>
@@ -224,7 +228,7 @@ export default function ZeroDayPage() {
           </ul>
         </section>
 
-        <section>
+        <section className="term-content-section">
           <h2>ゼロデイ攻撃への対策</h2>
           <ul>
             <li><strong>ソフトウェアの定期的な更新</strong>：OSやアプリケーションを常に最新の状態に保つ</li>
@@ -233,6 +237,7 @@ export default function ZeroDayPage() {
           </ul>
         </section>
 
+        <FAQAccordion faqs={faqs} />
       </main>
     </div>
   )
