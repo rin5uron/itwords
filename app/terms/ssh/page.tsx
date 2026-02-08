@@ -3,6 +3,7 @@ import Image from 'next/image'
 import { Metadata } from 'next'
 import StructuredData from '@/app/components/StructuredData'
 import TermPageHeader from '@/app/components/TermPageHeader'
+import AdInArticle from '@/app/components/AdInArticle'
 import FAQAccordion from '@/app/components/FAQAccordion'
 import SSHDemo from './SSHDemo'
 import SSHAccessFromOtherDemo from './SSHAccessFromOtherDemo'
@@ -97,6 +98,8 @@ export default function SSHPage() {
           </div>
         }
       />
+
+      <AdInArticle adSlot="2892250316" position="below-toc" />
 
       <main>
         <section className="term-content-section">

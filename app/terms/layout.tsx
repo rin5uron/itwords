@@ -10,7 +10,7 @@ export default function TermsLayout({
   return (
     <div className="terms-layout">
       {children}
-      <AdInArticle adSlot={SLOT_FOOTER} />
+      <AdInArticle adSlot={SLOT_FOOTER} position="footer" />
     </div>
   )
 }

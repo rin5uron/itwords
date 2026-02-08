@@ -1555,4 +1555,16 @@ main a:not(.card-link):not(.breadcrumb-link):not(.term-name):active {
     max-height: 10vh;
     overflow: hidden;
   }
+  /* 目次の下：フッター上より高さを抑える */
+  .adsense-below-toc {
+    min-height: 6vh;
+    max-height: 6vh;
+    overflow: hidden;
+  }
+  /* フッター上 */
+  .adsense-footer {
+    min-height: 10vh;
+    max-height: 10vh;
+    overflow: hidden;
+  }
 }
