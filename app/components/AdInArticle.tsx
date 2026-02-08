@@ -40,9 +40,7 @@ export default function AdInArticle({
       className={`adsense-in-article ${wrapperClass}`}
       style={{
         margin: '24px auto',
-        padding: '16px',
-        backgroundColor: '#f9f7ef',
-        borderRadius: '8px',
+        padding: 0,
         maxWidth: '800px',
         width: '100%',
       }}
