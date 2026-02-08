@@ -1499,9 +1499,9 @@ main a:not(.card-link):not(.breadcrumb-link):not(.term-name):active {
     width: 100%;
     max-width: 100%;
     min-width: 0;
-    max-height: 45vh;
+    max-height: none; /* スマホで高さ制限なし（全項目表示） */
     overflow-x: hidden; /* 横スライダーを出さない（一括指定） */
-    overflow-y: auto;
+    overflow-y: visible; /* スクロール不要 */
     -webkit-overflow-scrolling: touch;
     flex-wrap: nowrap;
     box-sizing: border-box;

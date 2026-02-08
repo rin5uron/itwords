@@ -62,27 +62,15 @@ export default function TableOfContents({ minHeadings = 4, className }: TableOfC
     if (isMobile) setIsOpen(false)
   }
 
-  const showCollapsed = isMobile && !isOpen
-
+  // スマホでは常時展開（開閉ボタンなし）
   return (
     <div className="toc-wrapper">
       <nav className={`table-of-contents ${className || ''}`} aria-label="目次">
         <div className="table-of-contents-header">
           <i className="fas fa-list" aria-hidden="true"></i>
           <span>目次</span>
-          {isMobile && (
-            <button
-              type="button"
-              className="toc-toggle"
-              onClick={() => setIsOpen(!isOpen)}
-              aria-expanded={isOpen}
-              aria-controls="toc-list"
-            >
-              {isOpen ? '目次を閉じる' : '目次を開く'}
-            </button>
-          )}
         </div>
-        <ul id="toc-list" style={showCollapsed ? { display: 'none' } : undefined}>
+        <ul id="toc-list">
           {headings.map((heading, index) => (
             <li key={heading.id}>
               <a

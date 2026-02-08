@@ -114,6 +114,7 @@ Claude Codeで使えるコマンド一覧。`.claude/commands/` の各ファイ�
 | 仕組み作り | [#20 Issue管理ルール整備](https://github.com/rin5uron/itwords/issues/20) | 進行中 |
 | AdSense | [#17 広告表示バグ調査](https://github.com/rin5uron/itwords/issues/17) | 進行中 |
 | SEO | [#18 全用語ページ - メタデータ改善](https://github.com/rin5uron/itwords/issues/18) | 進行中 |
+| SEO | [#36 全用語ページ - 外部リンク追加](https://github.com/rin5uron/itwords/issues/36) | 進行中 |
 | アイデア | [#30 Next.js学習システム構築](https://github.com/rin5uron/itwords/issues/30) | 提案 |
 | アイデア | [#31 インフラ用語ページ作成計画](https://github.com/rin5uron/itwords/issues/31) | 提案 |
 

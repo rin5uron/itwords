@@ -77,6 +77,33 @@ export default function RootLayout({
     <html lang="ja">
       <head>
         <link rel="stylesheet" href={FONT_AWESOME_CDN} />
+        {/* 構造化データ: WebSite */}
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify({
+              '@context': 'https://schema.org',
+              '@type': 'WebSite',
+              name: '実践型IT用語辞典',
+              alternateName: 'itwords',
+              url: 'https://itwords.jp',
+              description: 'API、JSON、GitHubなど40以上のIT用語を体験デモで学べる実践型IT用語辞典。プログラミング初心者が「読む」だけでなく「触って」理解できる。',
+              potentialAction: {
+                '@type': 'SearchAction',
+                target: {
+                  '@type': 'EntryPoint',
+                  urlTemplate: 'https://itwords.jp/search?q={search_term_string}',
+                },
+                'query-input': 'required name=search_term_string',
+              },
+              publisher: {
+                '@type': 'Organization',
+                name: '実践型IT用語辞典',
+                url: 'https://itwords.jp',
+              },
+            }),
+          }}
+        />
       </head>
       <body>
         {GA_ID && <GoogleAnalytics GA_ID={GA_ID} />}

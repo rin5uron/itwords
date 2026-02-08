@@ -112,9 +112,17 @@
 
 #### SEO自動設定
 - **メタディスクリプション**: 120文字以内で自然な文章
+- **descriptionルール**: (1)検索意図を先に分析 (2)要点は前半60〜80字 (3)検索ワードを入れると太字でCTR向上 (4)自然さ優先「とは？」で十分 (5)求めているものを先に「例」なら「例あり」を最初 (6)120字以内
 - **キーワード**: 5-8個のカンマ区切り
 - **構造化データ**: JSON-LD Article形式
 - **Open Graph**: 完全対応（title, description, image, url）
+
+#### 外部リンク（E-E-A-T対策）
+- **選ぶときの優先順位**: 公式ドキュメント・公的機関 > Wikipedia > 辞典サイト（e-words等）
+- **推奨**: 社名・機関名が分かるページから1本ずつ（例：SQL=Microsoft Docs、zero-day=JPCERT）
+- **foolproof例**: トヨタ公式「ポカヨケ」、厚生労働省「労働安全」、Wikipedia、e-words
+- **SQL例**: Microsoft Docs、Oracle、PostgreSQL、MySQL公式
+- **zero-day例**: JPCERT/CC、NIST、CISA、各社セキュリティアドバイザリ
 
 ---
 
