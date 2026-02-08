@@ -22,7 +22,10 @@ export default function AdSubtleHorizontal({
       style={{
         width: '100%',
         maxWidth: '400px',
-        margin: '12px auto',
+        margin: '24px auto',
+        padding: '16px',
+        backgroundColor: '#f9f7ef',
+        borderRadius: '8px',
       }}
     >
       <AdSenseUnit
