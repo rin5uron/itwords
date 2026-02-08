@@ -550,6 +550,7 @@ MIT`}</code></pre>
           </div>
         </section>
 
+
         <FAQAccordion faqs={faqs} />
       </main>
     </div>

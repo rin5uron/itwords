@@ -211,8 +211,8 @@ export default function WhiteHatHackerPage() {
           </ul>
         </section>
 
-        <FAQAccordion faqs={faqs} />
 
+        <FAQAccordion faqs={faqs} />
       </main>
     </div>
   )

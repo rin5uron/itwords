@@ -29,7 +29,7 @@ export default function AdSubtleHorizontal({
         adSlot={adSlot}
         adFormat="horizontal"
         responsive={true}
-        adStyle={{ minHeight: 50 }}
+        adStyle={{ minHeight: 90 }}
       />
     </div>
   )

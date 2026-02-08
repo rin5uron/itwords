@@ -4,7 +4,6 @@ import Link from 'next/link'
 import { useState } from 'react'
 import StructuredData from '@/app/components/StructuredData'
 import TermPageHeader from '@/app/components/TermPageHeader'
-
 export default function CLIGUIPage() {
   const [currentPath, setCurrentPath] = useState('/home/user')
   const [files, setFiles] = useState(['documents', 'photos', 'music'])
@@ -556,7 +555,6 @@ export default function CLIGUIPage() {
             </table>
           </div>
         </section>
-
       </main>
     </div>
   )

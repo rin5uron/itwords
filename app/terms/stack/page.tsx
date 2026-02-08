@@ -254,6 +254,7 @@ Changes not staged for commit:
           シンプルだけど、Undo・履歴・メモリ処理などいろんな場面で大活躍！
         </div>
 
+
         <FAQAccordion faqs={faqs} />
       </main>
     </div>

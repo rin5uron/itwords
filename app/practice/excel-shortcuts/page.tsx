@@ -5,8 +5,6 @@ import StructuredData from '@/app/components/StructuredData'
 import FAQAccordion from '@/app/components/FAQAccordion'
 import ExcelGrid from '@/app/components/ExcelGrid'
 import TermPageHeader from '@/app/components/TermPageHeader'
-import AdBelowRelatedTerms from '@/app/components/AdBelowRelatedTerms'
-
 // テンプレートカラー（.cursorrules 準拠）
 const ACCENT = '#14b8a6'
 const ACCENT_DARK = '#0d9488'
@@ -853,8 +851,6 @@ export default function ExcelShortcutsPage() {
             <li><strong>ショートカットシール（ステッカー）を活用</strong>：キーボードに貼るタイプも市販されています。手元を見ればすぐ確認できるのでおすすめです。</li>
           </ul>
         </section>
-
-        <AdBelowRelatedTerms />
 
         <FAQAccordion faqs={faqs} />
       </main>

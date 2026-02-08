@@ -78,6 +78,7 @@ export default function CookiePage() {
             Cookieは<Link href="/terms/http">HTTP</Link>通信の一部として自動的にサーバーに送信され、
             <Link href="/terms/localstorage">LocalStorage</Link>とは異なり、
             サーバー側でも情報を読み取ることができます。
+            詳しくは<a href="https://developer.mozilla.org/ja/docs/Web/API/Document/cookie" target="_blank" rel="noopener noreferrer">MDN - document.cookie</a>も参照してください。
           </p>
 
           {/* 体験デモを概要の直下に配置 */}

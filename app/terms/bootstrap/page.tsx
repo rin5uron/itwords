@@ -3,7 +3,6 @@ import { Metadata } from 'next'
 import StructuredData from '@/app/components/StructuredData'
 import TermPageHeader from '@/app/components/TermPageHeader'
 import FAQAccordion from '@/app/components/FAQAccordion'
-
 export const metadata: Metadata = {
   title: 'Bootstrapとは？小学生でもわかる【賛否両論のCSSフレームワーク】',
   description: 'なぜ人気なのに批判もされる？Bootstrapの賛否を実例で理解。「似たデザインになる」問題と「爆速開発」メリットを3分で学べます。',
@@ -481,7 +480,6 @@ export default function BootstrapPage() {
         </section>
 
         <FAQAccordion faqs={faqs} />
-
       </main>
     </div>
   )

@@ -5,7 +5,6 @@ import { useState } from 'react'
 import StructuredData from '@/app/components/StructuredData'
 import TermPageHeader from '@/app/components/TermPageHeader'
 import FAQAccordion from '@/app/components/FAQAccordion'
-import AdBelowRelatedTerms from '@/app/components/AdBelowRelatedTerms'
 
 export default function APIPage() {
   const [weatherLoading, setWeatherLoading] = useState(false)
@@ -116,6 +115,7 @@ export default function APIPage() {
 
           <p>
             <strong>API</strong>とは、<strong>他のサービスの機能やデータを呼び出して使う仕組み</strong>です。
+            詳しくは<a href="https://developer.mozilla.org/ja/docs/Glossary/API" target="_blank" rel="noopener noreferrer">MDN - API</a>も参照してください。
           </p>
           <p>
             Webサイトやアプリは、多くのAPIを組み合わせて作られています。
@@ -533,7 +533,6 @@ async function showQuote() {
           </div>
         </section>
 
-        <AdBelowRelatedTerms />
 
         <FAQAccordion faqs={faqs} />
       </main>

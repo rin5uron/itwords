@@ -5,7 +5,6 @@ import GitFlowDemo from '../github/GitFlowDemo'
 import StructuredData from '@/app/components/StructuredData'
 import TermPageHeader from '@/app/components/TermPageHeader'
 import FAQAccordion from '@/app/components/FAQAccordion'
-
 export default function GitHubWorkflowPage() {
   const faqs = [
     {
@@ -320,7 +319,6 @@ Closes #123`}</code></pre>
         </section>
 
         <FAQAccordion faqs={faqs} />
-
       </main>
     </div>
   )

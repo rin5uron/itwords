@@ -98,6 +98,7 @@ export default function LocalStoragePage() {
             <br />
             JavaScriptからアクセスできて、
             <strong>ページを閉じても情報が残る</strong>のが特徴。
+            詳しくは<a href="https://developer.mozilla.org/ja/docs/Web/API/Window/localStorage" target="_blank" rel="noopener noreferrer">MDN - localStorage</a>も参照してください。
           </p>
         </section>
 

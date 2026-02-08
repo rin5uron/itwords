@@ -5,7 +5,6 @@ import { useState, useEffect } from 'react'
 import StructuredData from '@/app/components/StructuredData'
 import TermPageHeader from '@/app/components/TermPageHeader'
 import FAQAccordion from '@/app/components/FAQAccordion'
-import AdBelowRelatedTerms from '@/app/components/AdBelowRelatedTerms'
 
 export default function MipsPage() {
   const [executedInstructions1, setExecutedInstructions1] = useState(0)
@@ -813,7 +812,6 @@ MIPSは「100万回/秒」の単位。1命令の時間 = 1秒 ÷ (MIPS×100万) 
           </div>
         </section>
 
-        <AdBelowRelatedTerms />
 
         <FAQAccordion faqs={faqs} />
       </main>

@@ -6,7 +6,6 @@ import { useState } from 'react'
 import { Metadata } from 'next'
 import StructuredData from '@/app/components/StructuredData'
 import TermPageHeader from '@/app/components/TermPageHeader'
-
 export default function ServerPage() {
   const [currentStep, setCurrentStep] = useState(0)
 
@@ -405,7 +404,6 @@ export default function ServerPage() {
             </table>
           </div>
         </section>
-
       </main>
     </div>
   )

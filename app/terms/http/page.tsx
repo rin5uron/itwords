@@ -95,6 +95,7 @@ export default function HTTPPage() {
           <p>
             <strong>HTTPS</strong>は、HTTPに<strong>「S（Secure）」</strong>が付いたもので、
             通信内容を暗号化して安全にやり取りできるようにしたバージョンです。
+            詳しくは<a href="https://developer.mozilla.org/ja/docs/Web/HTTP" target="_blank" rel="noopener noreferrer">MDN - HTTP</a>も参照してください。
           </p>
 
           {/* 体験デモを概要の直下に配置 */}

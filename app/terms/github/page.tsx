@@ -7,18 +7,18 @@ import FAQAccordion from '@/app/components/FAQAccordion'
 
 export const metadata: Metadata = {
   title: 'GitHubとは？使い方・仕組みを初心者向けに解説【デモ付き】',
-  description: 'GitHub（ギットハブ）とは？コード保存・共有・チーム開発ができるプラットフォーム。使い方と仕組みを図解とデモで初心者向けに解説。Gitとの違いも含む。',
+  description: 'GitHub（ギットハブ）とは？コード共有・チーム開発のプラットフォーム。Gitとの違い、使い方を体験デモで解説。',
   keywords: ['GitHub', 'GitHub とは', 'ギットハブ', 'GitHub 使い方', 'GitHub 初心者', 'Git', 'バージョン管理', 'リポジトリ', 'コミット', 'プッシュ'],
   openGraph: {
     title: 'GitHubとは？使い方・仕組みを初心者向けに解説【デモ付き】',
-    description: 'GitHub（ギットハブ）とは？コード保存・共有・チーム開発ができるプラットフォーム。初心者向けに解説。',
+    description: 'GitHub（ギットハブ）とは？コード共有・チーム開発のプラットフォーム。Gitとの違い、使い方を体験デモで解説。',
     type: 'article',
     url: 'https://itwords.jp/terms/github',
   },
   twitter: {
     card: 'summary_large_image',
     title: 'GitHubとは？使い方・仕組みを初心者向けに解説【デモ付き】',
-    description: 'GitHub（ギットハブ）とは？コード保存・共有・チーム開発ができるプラットフォーム。初心者向けに解説。',
+    description: 'GitHub（ギットハブ）とは？コード共有・チーム開発のプラットフォーム。Gitとの違い、使い方を体験デモで解説。',
   },
   alternates: {
     canonical: 'https://itwords.jp/terms/github',
@@ -695,6 +695,7 @@ node_modules/
             </table>
           </div>
         </section>
+
 
         <FAQAccordion faqs={faqs} />
       </main>

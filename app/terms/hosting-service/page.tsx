@@ -5,7 +5,6 @@ import { useState } from 'react'
 import { Metadata } from 'next'
 import StructuredData from '@/app/components/StructuredData'
 import TermPageHeader from '@/app/components/TermPageHeader'
-
 export default function HostingServicePage() {
   const [selectedType, setSelectedType] = useState<'shared' | 'vps' | 'cloud' | 'serverless'>('shared')
 

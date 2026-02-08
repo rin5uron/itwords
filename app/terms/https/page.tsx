@@ -85,6 +85,10 @@ export default function HTTPSPage() {
             <br />
             <code>https://itwords.jp</code> の「https」の「s」が、HTTPSで暗号化されていることを示しています。
           </p>
+
+          <p>
+            より詳しい仕組みは<a href="https://developer.mozilla.org/ja/docs/Glossary/HTTPS" target="_blank" rel="noopener noreferrer">MDN - HTTPS</a>を参照してください。
+          </p>
         </section>
 
         <section>

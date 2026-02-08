@@ -3,6 +3,7 @@ import Image from 'next/image'
 import { Metadata } from 'next'
 import StructuredData from '@/app/components/StructuredData'
 import TermPageHeader from '@/app/components/TermPageHeader'
+import AdSubtleHorizontal from '@/app/components/AdSubtleHorizontal'
 import FAQAccordion from '@/app/components/FAQAccordion'
 import SSHDemo from './SSHDemo'
 import SSHAccessFromOtherDemo from './SSHAccessFromOtherDemo'
@@ -97,6 +98,8 @@ export default function SSHPage() {
           </div>
         }
       />
+
+      <AdSubtleHorizontal adSlot="5675174441" position="bottom" />
 
       <main>
         <section className="term-content-section">

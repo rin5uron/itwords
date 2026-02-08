@@ -4,7 +4,6 @@ import Link from 'next/link'
 import { useState } from 'react'
 import StructuredData from '@/app/components/StructuredData'
 import TermPageHeader from '@/app/components/TermPageHeader'
-
 export default function SQLPage() {
   const [selectedQuery, setSelectedQuery] = useState<string | null>(null)
 
@@ -102,6 +101,7 @@ export default function SQLPage() {
           <p>
             例えば、ECサイトで「¥5,000以上の注文履歴を表示する」という処理も、
             裏側ではSQLを使ってデータベースに問い合わせています。
+            詳しくは<a href="https://learn.microsoft.com/ja-jp/sql/t-sql/language-reference" target="_blank" rel="noopener noreferrer">Microsoft SQL Server 公式ドキュメント</a>も参照してください。
           </p>
         </section>
 

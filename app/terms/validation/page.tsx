@@ -4,7 +4,6 @@ import Link from 'next/link'
 import StructuredData from '@/app/components/StructuredData'
 import TermPageHeader from '@/app/components/TermPageHeader'
 import ValidationDemo from '@/components/ValidationDemo'
-
 const metadata = {
   title: 'バリデーションとは？初心者向けにわかりやすく解説【実装例付き】 | 実践型IT用語辞典',
   description: 'バリデーション（Validation）とは、入力データが正しいかをチェックする仕組みです。メールアドレス、パスワード、電話番号など、フォーム入力のエラーを防ぐ具体的な実装方法を初心者にもわかりやすく解説します。',
@@ -660,7 +659,6 @@ document.getElementById('strength-bar').style.backgroundColor = result.color;`}<
             </table>
           </div>
         </section>
-
       </main>
     </div>
   )

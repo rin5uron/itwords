@@ -8,11 +8,11 @@ import FAQAccordion from '@/app/components/FAQAccordion'
 
 export const metadata: Metadata = {
   title: 'AESとは？暗号化の仕組みを初心者向けに解説【デモ付き】',
-  description: 'AES（Advanced Encryption Standard）とは？Wi-FiやHTTPSで使われる暗号化技術のこと。128と256の違い、仕組みを体験デモで初心者向けに解説。',
+  description: 'AESとは？わかりやすく解説。Wi-FiやHTTPSで使う暗号化技術。128と256の違いを体験デモで学ぶ。',
   keywords: ['AES', 'AES とは', '暗号化', 'Advanced Encryption Standard', 'AES-128', 'AES-256', '共通鍵暗号', 'セキュリティ', 'IT用語 わかりやすく', 'プログラミング 初心者', 'AES デモ', 'AES 実装'],
   openGraph: {
     title: 'AESとは？小学生でもわかる【動かして学べるデモ付き】',
-    description: 'AESとは？暗号化デモで仕組みを今すぐ体験。Wi-FiやHTTPSで使われる暗号化、128と256の違い、実装方法まで初心者向けに解説します。',
+    description: 'AESとは？わかりやすく解説。Wi-FiやHTTPSで使う暗号化技術。128と256の違いを体験デモで学ぶ。',
     type: 'article',
     images: [
       {
@@ -26,7 +26,7 @@ export const metadata: Metadata = {
   twitter: {
     card: 'summary_large_image',
     title: 'AESとは？暗号化の仕組みを初心者向けに解説【デモ付き】',
-    description: 'AES（Advanced Encryption Standard）とは？暗号化技術の仕組みを体験デモで解説。',
+    description: 'AESとは？わかりやすく解説。Wi-FiやHTTPSで使う暗号化技術。128と256の違いを体験デモで学ぶ。',
     images: ['/images/terms/aes-hero.jpg'],
   },
   alternates: {
@@ -93,34 +93,35 @@ export default function AESPage() {
           'AES-128と256の違いと選び方',
           'JavaScriptでの実装方法'
         ]}
+        heroImage={
+          <div
+            style={{
+              width: '100%',
+              maxWidth: '900px',
+              margin: '0 auto clamp(24px, 4vw, 32px) auto',
+              borderRadius: '12px',
+              overflow: 'hidden',
+              boxShadow: '0 4px 12px rgba(0,0,0,0.1)',
+              aspectRatio: '3 / 2',
+            }}
+          >
+            <Image
+              src="/images/terms/aes-hero.jpg"
+              alt="AES暗号化のイメージ - 共通鍵暗号方式"
+              width={1200}
+              height={630}
+              priority
+              style={{
+                width: '100%',
+                height: '100%',
+                objectFit: 'cover',
+                objectPosition: 'center',
+                display: 'block',
+              }}
+            />
+          </div>
+        }
       />
-
-      {/* ヒーロー画像（タイトルの下に配置） */}
-      <div style={{
-        width: '100%',
-        maxWidth: '900px',
-        margin: '0 auto 2rem auto',
-        borderRadius: '12px',
-        overflow: 'hidden',
-        boxShadow: '0 4px 12px rgba(0,0,0,0.1)',
-        height: 'auto',
-        minHeight: '400px'
-      }}>
-        <Image
-          src="/images/terms/aes-hero.jpg"
-          alt="AES暗号化のイメージ - 共通鍵暗号方式"
-          width={1200}
-          height={630}
-          priority
-          style={{
-            width: '100%',
-            height: '100%',
-            objectFit: 'cover',
-            objectPosition: 'center',
-            display: 'block'
-          }}
-        />
-      </div>
 
       <main>
         <section>
@@ -796,6 +797,7 @@ async function decryptData(ciphertext, key, iv) {
             </table>
           </div>
         </section>
+
 
         <FAQAccordion faqs={faqs} />
       </main>

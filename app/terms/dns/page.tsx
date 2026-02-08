@@ -5,7 +5,6 @@ import Image from 'next/image'
 import { useState } from 'react'
 import StructuredData from '@/app/components/StructuredData'
 import TermPageHeader from '@/app/components/TermPageHeader'
-
 export default function DNSPage() {
   const [currentStep, setCurrentStep] = useState(0)
 
@@ -137,6 +136,7 @@ github.com → DNS解決 → 140.82.121.4`}</code></pre>
             Webサイトへのアクセスを支える重要なインフラです。
             ドメイン名をIPアドレスに変換することで、
             私たちは簡単にインターネットを利用できます。
+            詳しくは<a href="https://www.cloudflare.com/ja-jp/learning/dns/what-is-dns/" target="_blank" rel="noopener noreferrer">Cloudflare - DNSとは</a>も参照してください。
           </p>
         </section>
 

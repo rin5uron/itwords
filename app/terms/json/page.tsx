@@ -89,6 +89,7 @@ export default function JsonPage() {
             <strong>JSON</strong>（JavaScript Object Notation）は、軽量で人間にも読みやすい
             <strong>データ交換フォーマット</strong>です。
             Web APIやデータ保存など、あらゆる場面で使われる標準的なデータ形式で、キー（名前）と値のペアでデータを表現します。
+            詳しくは<a href="https://developer.mozilla.org/ja/docs/Web/JavaScript/Reference/Global_Objects/JSON" target="_blank" rel="noopener noreferrer">MDN - JSON</a>も参照してください。
           </p>
         </section>
 
@@ -380,6 +381,7 @@ export default function JsonPage() {
             </table>
           </div>
         </section>
+
 
         <FAQAccordion faqs={faqs} />
       </main>

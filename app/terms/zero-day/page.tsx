@@ -4,14 +4,13 @@ import { Metadata } from 'next'
 import StructuredData from '@/app/components/StructuredData'
 import TermPageHeader from '@/app/components/TermPageHeader'
 import ZeroDayDemo from '@/components/ZeroDayDemo'
-
 export const metadata: Metadata = {
   title: 'ゼロデイ攻撃とは？「0日」の意味と防御法【攻撃者の視点で体験】',
-  description: 'ゼロデイ攻撃とは？攻撃シミュレーションで「0日」の意味を体験。防御が不可能な理由、LINEやiPhoneも狙われた実例から学ぶセキュリティ対策を解説します。',
+  description: 'ゼロデイ攻撃とは？未知の脆弱性を狙うサイバー攻撃。「0日」の意味をシミュレーションで体験。対策も解説。',
   keywords: ['ゼロデイ攻撃', 'Zero-day', 'ゼロデイ とは', 'ゼロデイ 由来', 'ゼロデイ攻撃 由来', 'セキュリティ', '脆弱性', 'サイバー攻撃', 'セキュリティパッチ', 'IT用語 わかりやすく', 'プログラミング 初心者', '体験デモ'],
   openGraph: {
     title: 'ゼロデイ攻撃とは？「0日」の意味と防御法【攻撃者の視点で体験】',
-    description: 'ゼロデイ攻撃とは？攻撃シミュレーションで「0日」の意味を体験。防御が不可能な理由、実例から学ぶセキュリティ対策を解説します。',
+    description: 'ゼロデイ攻撃とは？未知の脆弱性を狙うサイバー攻撃。「0日」の意味をシミュレーションで体験。対策も解説。',
     type: 'article',
     images: [
       {
@@ -25,7 +24,7 @@ export const metadata: Metadata = {
   twitter: {
     card: 'summary_large_image',
     title: 'ゼロデイ攻撃とは？「0日」の意味と防御法【攻撃者の視点で体験】',
-    description: 'ゼロデイ攻撃とは？攻撃シミュレーションで「0日」の意味を体験。防御が不可能な理由、実例から学ぶセキュリティ対策を解説します。',
+    description: 'ゼロデイ攻撃とは？未知の脆弱性を狙うサイバー攻撃。「0日」の意味をシミュレーションで体験。対策も解説。',
     images: ['/images/terms/zero-day-hero.jpg'],
   },
   alternates: {
@@ -134,6 +133,7 @@ export default function ZeroDayPage() {
 
           <p>
             <strong>ゼロデイ攻撃</strong>（Zero-day Attack）とは、<strong>脆弱性が発見されてから修正パッチが提供される前（対策日数がゼロ）に行われるサイバー攻撃</strong>です。
+            詳しくは<a href="https://www.jpcert.or.jp/magazine/acreport/zeroday.html" target="_blank" rel="noopener noreferrer">JPCERT/CC（ゼロデイ脆弱性対策）</a>も参照してください。
           </p>
         </section>
 
@@ -229,6 +229,7 @@ export default function ZeroDayPage() {
             <li><strong>不審なリンクやファイルを開かない</strong>：信頼できないWebサイトを訪問しない</li>
           </ul>
         </section>
+
       </main>
     </div>
   )

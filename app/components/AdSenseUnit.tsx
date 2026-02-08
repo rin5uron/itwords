@@ -33,7 +33,7 @@ export default function AdSenseUnit({
   }
 
   return (
-    <div className="adsense-wrapper" style={{ margin: '32px 0' }}>
+    <div className="adsense-wrapper" style={{ margin: '32px 0', minHeight: '90px' }}>
       <ins
         className="adsbygoogle"
         style={{

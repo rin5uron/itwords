@@ -55,9 +55,7 @@
 //    - 類似用語との比較（任意）
 //    - 関連用語の一覧
 //
-// 9. 広告スペース（推奨）
-//    - 関連用語の直下に AdBelowRelatedTerms を配置（NEXT_PUBLIC_ADSENSE_SLOT 設定時のみ表示）
-//    - 自動広告がオンでも、手動ユニットで確実に1箇所表示される
+// 9. 広告：terms/layout.tsx でフッター上に統一配置（AdSubtleHorizontal）。各ページでの追加不要。
 //
 // 10. FAQセクション（任意）
 //    - よくある質問と回答
@@ -89,6 +87,16 @@
 // 8. 絵文字: ✓🔍✅❌💡などは使わず Font Awesome で統一
 //    → 例: <i className="fas fa-check-circle" aria-hidden />（✅）、fas fa-search（🔍）、fas fa-lightbulb（💡）、fas fa-times-circle（❌）
 // 9. アイコン出典: app/lib/icons.ts で FONT_AWESOME_VERSION（5.15.4）を一括変更可能。layout で読み込み。
+//
+// ============================================
+// 枠デザイン・点線のルール（2026-02-07追加）
+// ============================================
+// - 点線は使わない（dashed / dotted の border 禁止）
+// - まとめ・強調は枠ベースで整理する
+// - ポイント・わかったこと → key-point-box
+// - 一言でいうと → key-point-box（SSHページと同じデザイン）
+// - 関連用語比較 → comparison-table
+// - コード例 → code-example
 //
 // ============================================
 // 今後のルール
@@ -148,8 +156,6 @@ import { Metadata } from 'next'
 import StructuredData from '@/app/components/StructuredData'
 import TermPageHeader from '@/app/components/TermPageHeader'
 import FAQAccordion from '@/app/components/FAQAccordion'
-import AdBelowRelatedTerms from '@/app/components/AdBelowRelatedTerms'
-
 // メタデータ（SEO対策）
 //
 // 【重要】title/descriptionのルール（2026-01-19更新）:
@@ -889,7 +895,7 @@ console.log('残りの列:', registerQueue);
           【重要】外部リンクと内部リンクの戦略（2026-01-19更新）
 
           1. 外部リンク（E-E-A-T対策）
-             - 公式ドキュメント、MDN、Wikipediaなどの信頼できるソースへリンク
+             - 優先順位「公式・公的機関 > Wikipedia > 辞典」。社名・機関名が分かるページから1本ずつ
              - 文章内に自然に埋め込む
              - 個人ブログや競合サイトへのリンクは避ける
              例：
@@ -1020,9 +1026,6 @@ console.log('残りの列:', registerQueue);
             </table>
           </div>
         </section>
-
-        {/* 広告スペース（関連用語の直下。NEXT_PUBLIC_ADSENSE_SLOT 設定時のみ表示） */}
-        <AdBelowRelatedTerms />
 
         {/* FAQセクション（FAQがある場合） */}
         <FAQAccordion faqs={faqs} />

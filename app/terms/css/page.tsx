@@ -329,7 +329,6 @@ p {
             </table>
           </div>
         </section>
-
       </main>
     </div>
   )

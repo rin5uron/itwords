@@ -197,7 +197,6 @@ export default function CVEPage() {
         </section>
 
         <FAQAccordion faqs={faqs} />
-
       </main>
     </div>
   )

@@ -9,7 +9,6 @@ import DisabledUIDemo from '@/components/DisabledUIDemo'
 import StructuredData from '@/app/components/StructuredData'
 import TermPageHeader from '@/app/components/TermPageHeader'
 import FAQAccordion from '@/app/components/FAQAccordion'
-import AdBelowRelatedTerms from '@/app/components/AdBelowRelatedTerms'
 
 export default function FoolProofPage() {
   const faqs = [
@@ -85,6 +84,7 @@ export default function FoolProofPage() {
           <p>
             「注意力」や「慣れ」に頼らず、
             <strong>設計そのものがミスを防ぐ</strong>ことを目的とします。
+            関連概念として<a href="https://www.toyota.co.jp/jpn/company/history/75years/data/automotive_business/production/system/explanation03.html" target="_blank" rel="noopener noreferrer">トヨタ自動車 - トヨタ生産方式「自働化」</a>（誤品取り出し防止などポカヨケの考え方）も参照してください。
           </p>
         </section>
 
@@ -254,7 +254,6 @@ if (confirmed) {
           </div>
         </section>
 
-        <AdBelowRelatedTerms />
 
         <FAQAccordion faqs={faqs} />
       </main>
