@@ -1551,7 +1551,7 @@ main a:not(.card-link):not(.breadcrumb-link):not(.term-name):active {
     overflow: hidden;
   }
   .adsense-subtle-bottom {
-    max-height: 50vh;
+    max-height: 10vh; /* 1/5 の高さ */
     overflow: hidden;
   }
 }
