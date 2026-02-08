@@ -1583,11 +1583,12 @@ main a:not(.card-link):not(.breadcrumb-link):not(.term-name):active {
   /* 【用語ページ】目次の下の広告
    * 使用場所: 各用語ページ（例: app/terms/ssh/page.tsx）
    * コンポーネント: AdInArticle（position="below-toc"）
-   * 高さを 5vh に固定（aspect-ratio は幅優先で高さが大きくなりがちなため削除）
+   * スマホ: 横長（aspect-ratio 4/1）で正方形表示を防ぐ
    */
   .adsense-below-toc {
-    height: 5vh;
-    max-height: 5vh;
+    aspect-ratio: 4 / 1;
+    max-height: 8vh;
+    min-height: 60px;
     overflow: hidden;
   }
 
@@ -1617,11 +1618,12 @@ main a:not(.card-link):not(.breadcrumb-link):not(.term-name):active {
   /* 【用語ページ】目次の下の広告
    * 使用場所: 各用語ページ（例: app/terms/ssh/page.tsx）
    * コンポーネント: AdInArticle（position="below-toc"）
-   * 高さを 5vh に固定
+   * PC: 横長（aspect-ratio 4/1）
    */
   .adsense-below-toc {
-    height: 5vh;
-    max-height: 5vh;
+    aspect-ratio: 4 / 1;
+    max-height: 8vh;
+    min-height: 80px;
     overflow: hidden;
   }
 
