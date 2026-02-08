@@ -1551,7 +1551,14 @@ main a:not(.card-link):not(.breadcrumb-link):not(.term-name):active {
     overflow: hidden;
   }
   .adsense-subtle-bottom {
-    max-height: 10vh; /* 1/5 の高さ */
+    min-height: 6vh; /* 余白を確保（CLS防止） */
+    max-height: 6vh;
+    padding: 8px !important;
+    margin: 12px auto !important;
     overflow: hidden;
+  }
+  .adsense-subtle-bottom .adsense-wrapper {
+    margin: 8px 0 !important;
+    min-height: 60px !important;
   }
 }
