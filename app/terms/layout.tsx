@@ -1,6 +1,6 @@
-import AdSubtleHorizontal from '@/app/components/AdSubtleHorizontal'
+import AdInArticle from '@/app/components/AdInArticle'
 
-const SLOT_BOTTOM = '2979910109' // 記事下部横長（上部はUXのため非表示）
+const SLOT_FOOTER = '2892250316' // 記事内広告（フッター上）
 
 export default function TermsLayout({
   children,
@@ -10,7 +10,7 @@ export default function TermsLayout({
   return (
     <div className="terms-layout">
       {children}
-      <AdSubtleHorizontal adSlot={SLOT_BOTTOM} position="bottom" />
+      <AdInArticle adSlot={SLOT_FOOTER} />
     </div>
   )
 }
