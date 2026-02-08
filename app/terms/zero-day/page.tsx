@@ -102,37 +102,35 @@ export default function ZeroDayPage() {
           '実際にあった攻撃事例（Stuxnet、WannaCry等）',
           '個人でできる防御対策'
         ]}
-        heroImage={
-          <div
-            style={{
-              width: '100%',
-              maxWidth: '900px',
-              margin: '0 auto clamp(24px, 4vw, 32px) auto',
-              borderRadius: '12px',
-              overflow: 'hidden',
-              boxShadow: '0 4px 12px rgba(0,0,0,0.1)',
-              aspectRatio: '3 / 2',
-            }}
-          >
-            <Image
-              src="/images/terms/zero-day-hero.jpg"
-              alt="ゼロデイ攻撃のイメージ - Day 0の脆弱性を狙うサイバー攻撃"
-              width={1200}
-              height={630}
-              priority
-              style={{
-                width: '100%',
-                height: '100%',
-                objectFit: 'cover',
-                objectPosition: 'center',
-                display: 'block',
-              }}
-            />
-          </div>
-        }
       />
 
       <AdInArticle adSlot="2892250316" position="below-toc" />
+
+      <div style={{
+        width: '100%',
+        maxWidth: '900px',
+        margin: '0 auto 2rem auto',
+        borderRadius: '12px',
+        overflow: 'hidden',
+        boxShadow: '0 4px 12px rgba(0,0,0,0.1)',
+        height: 'auto',
+        minHeight: '400px'
+      }}>
+        <Image
+          src="/images/terms/zero-day-hero.jpg"
+          alt="ゼロデイ攻撃のイメージ - Day 0の脆弱性を狙うサイバー攻撃"
+          width={1200}
+          height={630}
+          priority
+          style={{
+            width: '100%',
+            height: '100%',
+            objectFit: 'cover',
+            objectPosition: 'center',
+            display: 'block'
+          }}
+        />
+      </div>
 
       <main>
         <section className="term-content-section">
