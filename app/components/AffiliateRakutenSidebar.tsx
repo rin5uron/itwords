@@ -15,12 +15,12 @@ export default function AffiliateRakutenSidebar() {
       >
         <img
           src="https://hbb.afl.rakuten.co.jp/hsb/0ec09ba5.4d3660f9.0eb4bbaa.95151395/"
-          border={0}
+          style={{ border: 0 }}
           alt="お買い物は楽天で"
         />
       </a>
       <img
-        border={0}
+        style={{ border: 0 }}
         width={1}
         height={1}
         src="https://www19.a8.net/0.gif?a8mat=4AX6CG+BUADWY+2HOM+65ME9"

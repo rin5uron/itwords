@@ -1728,13 +1728,15 @@ main a:not(.card-link):not(.breadcrumb-link):not(.term-name):active {
     box-sizing: border-box;
   }
 
-  /* 【用語ページ】目次の下の広告
+  /* 【用語ページ】目次の下の広告（スマホは低めに固定・PCのaspect-ratioが効かないように）
    * 使用場所: 各用語ページ（例: app/terms/ssh/page.tsx）
    * コンポーネント: AdInArticle（position="below-toc"）
    */
   .adsense-below-toc {
-    height: 5vh;
-    max-height: 5vh;
+    height: 5vh !important;
+    max-height: 5vh !important;
+    min-height: 0;
+    aspect-ratio: unset;
     overflow: hidden;
   }
 
