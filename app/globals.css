@@ -537,6 +537,110 @@ nav ul li a:hover {
   color: #586e75;
 }
 
+/* PRカード（基本情報の本・人気の用語の右下） */
+.card-pr {
+  position: relative;
+}
+.card-pr .card-link {
+  text-align: center;
+}
+.category-tag-pr {
+  background-color: #ea9b8a !important;
+  color: #fff;
+}
+.card-pr-label {
+  display: block;
+  font-size: 0.8em;
+  color: #666;
+  margin-bottom: 6px;
+}
+.card-pr-title {
+  font-size: 0.85em;
+  line-height: 1.5;
+  margin: 0;
+  color: #333;
+}
+.card-pr-links {
+  margin-top: 10px;
+  font-size: 0.85em;
+}
+.card-pr-links a {
+  color: #14b8a6;
+  text-decoration: none;
+}
+.card-pr-links a:hover {
+  text-decoration: underline;
+}
+.card-pr-links-sep {
+  margin: 0 8px;
+  color: #999;
+}
+
+/* 関連おすすめ書籍（用語ページ・FAQの下） */
+.related-books {
+  margin-top: 2.5rem;
+  padding-top: 1.5rem;
+  border-top: 1px solid #eee8d5;
+}
+.related-books-title {
+  font-size: 1.4em;
+  color: #2c3e50;
+  border-bottom: 2px solid #14b8a6;
+  padding-bottom: 0.5em;
+  margin-top: 0;
+  margin-bottom: 1rem;
+}
+.related-books-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 1.25rem;
+  max-width: 800px;
+}
+.related-books-item {
+  display: flex;
+  gap: 1rem;
+  align-items: flex-start;
+  background: #fafaf8;
+  border: 1px solid #eee8d5;
+  border-radius: 8px;
+  padding: 1rem;
+  box-sizing: border-box;
+}
+.related-books-image-link {
+  flex-shrink: 0;
+}
+.related-books-image {
+  display: block;
+  border-radius: 4px;
+  object-fit: cover;
+}
+.related-books-body {
+  min-width: 0;
+}
+.related-books-name {
+  font-size: 0.9em;
+  line-height: 1.5;
+  margin: 0 0 0.5em;
+  color: #333;
+}
+.related-books-links {
+  font-size: 0.85em;
+}
+.related-books-links a {
+  color: #14b8a6;
+  text-decoration: none;
+}
+.related-books-links a:hover {
+  text-decoration: underline;
+}
+.related-books-sep {
+  margin: 0 6px;
+  color: #999;
+}
+
 .category-tag {
   display: inline-block;
   background-color: #2aa198;
@@ -942,6 +1046,43 @@ footer a:hover {
   font-size: 0.9rem;
   color: #666;
 }
+/* 用語ページ：2カラム（メイン + 楽天サイドバー）PCのみ */
+.terms-layout {
+  display: flex;
+  flex-direction: column;
+}
+.terms-main {
+  width: 100%;
+}
+.affiliate-rakuten-sidebar {
+  display: none;
+}
+@media (min-width: 1024px) {
+  .terms-layout {
+    flex-direction: row;
+    align-items: flex-start;
+    justify-content: center;
+    gap: 24px;
+    max-width: 1100px;
+    margin: 0 auto;
+  }
+  .terms-main {
+    flex: 1 1 auto;
+    max-width: 800px;
+    min-width: 0;
+  }
+  .affiliate-rakuten-sidebar {
+    display: block;
+    width: 160px;
+    flex-shrink: 0;
+  }
+  .affiliate-rakuten-sidebar img[alt="お買い物は楽天で"] {
+    display: block;
+    max-width: 100%;
+    height: auto;
+  }
+}
+
 /* 用語ページ：広告とフッターの間の余白を上の幅（24px）に合わせる
  * デフォルト4rem→24pxに縮小（AdInArticleのmargin-topと同程度）
  */

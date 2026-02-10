@@ -42,6 +42,40 @@ export default function Home() {
       <SiteHeader showNav={true} />
 
       <main>
+        <section id="new">
+          <h3>新着用語</h3>
+          <div className="card-container">
+            <div className="card" data-category="hardware">
+              <Link href="/terms/mips" className="card-link">
+                <span className="category-tag">ハードウェア</span>
+                <h4>MIPS</h4>
+                <p>コンピュータの処理速度を表す単位。命令実行速度デモと単位計算で基本情報試験対策。</p>
+              </Link>
+            </div>
+            <div className="card" data-category="infrastructure">
+              <Link href="/terms/ssh" className="card-link">
+                <span className="category-tag">インフラ</span>
+                <h4>SSH</h4>
+                <p>遠くのサーバーに安全に入る仕組み。暗号化・秘密鍵・sshdまで初心者向けに解説。</p>
+              </Link>
+            </div>
+            <div className="card" data-category="web">
+              <Link href="/terms/smtp" className="card-link">
+                <span className="category-tag">Web</span>
+                <h4>SMTP</h4>
+                <p>メールを送信するためのプロトコル。HTTPと同じ「インターネットの道」を使うが、目的が違う。</p>
+              </Link>
+            </div>
+            <div className="card" data-category="infrastructure">
+              <Link href="/terms/ip-address" className="card-link">
+                <span className="category-tag">インフラ</span>
+                <h4>IPアドレスとポート番号</h4>
+                <p>IPアドレスが「住所」、ポート番号が「部屋番号」。プロトコルとの関係も理解できます。</p>
+              </Link>
+            </div>
+          </div>
+        </section>
+
         <section id="popular">
           <h3>人気の用語</h3>
           <div className="card-container">
@@ -80,46 +114,46 @@ export default function Home() {
                 <p>JavaScriptのオブジェクト記法をベースにした軽量なデータ交換フォーマットです。</p>
               </Link>
             </div>
-            <div className="card" data-category="web">
-              <Link href="/terms/css" className="card-link">
-                <span className="category-tag">Web</span>
-                <h4>CSS</h4>
-                <p>Webページの見た目を整えるためのスタイルシート言語です。</p>
-              </Link>
-            </div>
-          </div>
-        </section>
-
-        <section id="new">
-          <h3>新着用語</h3>
-          <div className="card-container">
-            <div className="card" data-category="hardware">
-              <Link href="/terms/mips" className="card-link">
-                <span className="category-tag">ハードウェア</span>
-                <h4>MIPS</h4>
-                <p>コンピュータの処理速度を表す単位。命令実行速度デモと単位計算で基本情報試験対策。</p>
-              </Link>
-            </div>
-            <div className="card" data-category="infrastructure">
-              <Link href="/terms/ssh" className="card-link">
-                <span className="category-tag">インフラ</span>
-                <h4>SSH</h4>
-                <p>遠くのサーバーに安全に入る仕組み。暗号化・秘密鍵・sshdまで初心者向けに解説。</p>
-              </Link>
-            </div>
-            <div className="card" data-category="web">
-              <Link href="/terms/smtp" className="card-link">
-                <span className="category-tag">Web</span>
-                <h4>SMTP</h4>
-                <p>メールを送信するためのプロトコル。HTTPと同じ「インターネットの道」を使うが、目的が違う。</p>
-              </Link>
-            </div>
-            <div className="card" data-category="infrastructure">
-              <Link href="/terms/ip-address" className="card-link">
-                <span className="category-tag">インフラ</span>
-                <h4>IPアドレスとポート番号</h4>
-                <p>IPアドレスが「住所」、ポート番号が「部屋番号」。プロトコルとの関係も理解できます。</p>
-              </Link>
+            <div className="card card-pr">
+              <div className="card-link">
+                <span className="category-tag category-tag-pr">PR</span>
+                <span className="card-pr-label">おすすめの1冊</span>
+                <a
+                  href="https://af.moshimo.com/af/c/click?a_id=5375345&p_id=54&pc_id=54&pl_id=616&url=https%3A%2F%2Fitem.rakuten.co.jp%2Fbook%2F18432509%2F&m=http%3A%2F%2Fm.rakuten.co.jp%2Fbook%2Fi%2F21788388%2F"
+                  rel="nofollow"
+                  referrerPolicy="no-referrer-when-downgrade"
+                >
+                  <img
+                    src="https://thumbnail.image.rakuten.co.jp/@0_mall/book/cabinet/8214/9784815638214_1_2.jpg?_ex=128x128"
+                    alt="いちばんやさしい 基本情報技術者 絶対合格の教科書＋出る順問題集"
+                    width={128}
+                    height={128}
+                    style={{ display: 'block', margin: '0 auto 8px', border: 'none' }}
+                  />
+                  <p className="card-pr-title">【令和8年度】 いちばんやさしい 基本情報技術者 絶対合格の教科書＋出る順問題集［高橋 京介］</p>
+                </a>
+                <div className="card-pr-links">
+                  <a
+                    href="https://af.moshimo.com/af/c/click?a_id=5375345&p_id=54&pc_id=54&pl_id=616&url=https%3A%2F%2Fitem.rakuten.co.jp%2Fbook%2F18432509%2F&m=http%3A%2F%2Fm.rakuten.co.jp%2Fbook%2Fi%2F21788388%2F"
+                    rel="nofollow"
+                    referrerPolicy="no-referrer-when-downgrade"
+                  >
+                    楽天で見る
+                  </a>
+                  <span className="card-pr-links-sep">|</span>
+                  <a href="https://amzn.to/3Oy04c5" rel="nofollow">
+                    Amazonで見る
+                  </a>
+                </div>
+              </div>
+              <img
+                src="https://i.moshimo.com/af/i/impression?a_id=5375345&p_id=54&pc_id=54&pl_id=616"
+                alt=""
+                loading="lazy"
+                width={1}
+                height={1}
+                style={{ border: 0, position: 'absolute', pointerEvents: 'none' }}
+              />
             </div>
           </div>
         </section>
