@@ -26,7 +26,9 @@ export default function TermsLayout({
     <div className="terms-layout">
       <div className="terms-main">
         {children}
-        <RelatedBooks books={DEFAULT_BOOKS} />
+        <div className="container related-books-container">
+          <RelatedBooks books={DEFAULT_BOOKS} />
+        </div>
         <AdInArticle adSlot={SLOT_FOOTER} position="footer" />
       </div>
       <AffiliateRakutenSidebar />

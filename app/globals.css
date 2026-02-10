@@ -577,8 +577,11 @@ nav ul li a:hover {
 }
 
 /* 関連おすすめ書籍（用語ページ・FAQの下） */
+.related-books-container {
+  padding-top: 1.5rem;
+}
 .related-books {
-  margin-top: 2.5rem;
+  margin-top: 0;
   padding-top: 1.5rem;
   border-top: 1px solid #eee8d5;
 }
@@ -1754,13 +1757,13 @@ main a:not(.card-link):not(.breadcrumb-link):not(.term-name):active {
    ============================================ */
 
 @media (min-width: 769px) {
-  /* 【用語ページ】目次の下の広告
+  /* 【用語ページ】目次の下の広告（PC時はフッター上と同じ高さに統一）
    * 使用場所: 各用語ページ（例: app/terms/ssh/page.tsx）
    * コンポーネント: AdInArticle（position="below-toc"）
    */
   .adsense-below-toc {
-    height: 5vh;
-    max-height: 5vh;
+    aspect-ratio: 4 / 1;
+    max-height: 8vh;
     overflow: hidden;
   }
 
