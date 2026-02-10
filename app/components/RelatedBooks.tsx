@@ -17,8 +17,8 @@ export default function RelatedBooks({ books }: { books: RelatedBook[] }) {
   const displayBooks = books.slice(0, 3)
 
   return (
-    <section className="related-books" aria-label="関連おすすめ書籍">
-      <h2 className="related-books-title">関連おすすめ書籍</h2>
+    <section className="related-books" aria-label="関連本">
+      <h2 className="related-books-title">関連本</h2>
       <ul className="related-books-list">
         {displayBooks.map((book, i) => (
           <li key={i} className="related-books-item">

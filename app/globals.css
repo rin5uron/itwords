@@ -576,14 +576,18 @@ nav ul li a:hover {
   color: #999;
 }
 
-/* 関連おすすめ書籍（用語ページ・FAQの下） */
+/* 関連おすすめ書籍（用語ページ・FAQの下）Issue #38 */
 .related-books-container {
   padding-top: 1.5rem;
+  display: block;
 }
 .related-books {
   margin-top: 0;
   padding-top: 1.5rem;
+  padding-bottom: 1rem;
   border-top: 1px solid #eee8d5;
+  display: block;
+  min-height: 120px;
 }
 .related-books-title {
   font-size: 1.4em;
