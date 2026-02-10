@@ -14,7 +14,7 @@ export default function AffiliateRakutenSidebar() {
         target="_blank"
       >
         <img
-          src="http://hbb.afl.rakuten.co.jp/hsb/0ec09ba5.4d3660f9.0eb4bbaa.95151395/"
+          src="https://hbb.afl.rakuten.co.jp/hsb/0ec09ba5.4d3660f9.0eb4bbaa.95151395/"
           border={0}
           alt="お買い物は楽天で"
         />
