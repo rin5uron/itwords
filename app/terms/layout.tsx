@@ -41,12 +41,16 @@ export default function TermsLayout({
     <div className="terms-layout">
       <div className="terms-main">
         {children}
-        <div className="related-books-container">
-          <RelatedBooks books={DEFAULT_BOOKS} />
-        </div>
-        <AdInArticle adSlot={SLOT_FOOTER} position="footer" />
       </div>
-      <AffiliateRakutenSidebar />
+      <div className="terms-bottom-row">
+        <div className="terms-bottom-content">
+          <div className="related-books-container">
+            <RelatedBooks books={DEFAULT_BOOKS} />
+          </div>
+          <AdInArticle adSlot={SLOT_FOOTER} position="footer" />
+        </div>
+        <AffiliateRakutenSidebar />
+      </div>
     </div>
   )
 }

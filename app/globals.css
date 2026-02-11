@@ -1067,27 +1067,40 @@ footer a:hover {
   font-size: 0.9rem;
   color: #666;
 }
-/* 用語ページ：2カラム（メイン + 楽天サイドバー）PCのみ */
+/* 用語ページ：メイン + 関連書籍エリア（関連書籍・フッター広告とA8縦広告は上揃え） */
 .terms-layout {
-  display: flex;
-  flex-direction: column;
+  display: block;
 }
 .terms-main {
+  width: 100%;
+}
+.terms-bottom-row {
+  width: 100%;
+}
+.terms-bottom-content {
   width: 100%;
 }
 .affiliate-rakuten-sidebar {
   display: none;
 }
 @media (min-width: 1024px) {
-  .terms-layout {
+  .terms-main {
+    max-width: 800px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  /* 関連書籍・フッター広告とA8サイドバーを横並び、上端を揃える */
+  .terms-bottom-row {
+    display: flex;
     flex-direction: row;
     align-items: flex-start;
     justify-content: center;
     gap: 24px;
-    max-width: 1100px;
-    margin: 0 auto;
+    max-width: 984px; /* 800 + gap + 160 */
+    margin-left: auto;
+    margin-right: auto;
   }
-  .terms-main {
+  .terms-bottom-content {
     flex: 1 1 auto;
     max-width: 800px;
     min-width: 0;
@@ -1743,6 +1756,7 @@ main a:not(.card-link):not(.breadcrumb-link):not(.term-name):active {
     margin: 12px auto !important;
     box-sizing: border-box;
     overflow: hidden; /* 子要素がはみ出さない */
+    max-height: 6vh;
   }
 
   /* 【用語ページ】目次の下の広告（スマホは低めに固定・PCのaspect-ratioが効かないように）
