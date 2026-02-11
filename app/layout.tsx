@@ -1,7 +1,6 @@
 import type { Metadata } from 'next'
 import './globals.css'
 import GoogleAnalytics from './components/GoogleAnalytics'
-import GoogleAdSense from './components/GoogleAdSense'
 import Link from 'next/link'
 import { FONT_AWESOME_CDN } from './lib/icons'
 
@@ -104,10 +103,15 @@ export default function RootLayout({
             }),
           }}
         />
+        {/* AdSense: 通常の script で読み込み（next/script の data-nscript で警告が出るため） */}
+        <script
+          async
+          src={`https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=${AD_CLIENT_ID}`}
+          crossOrigin="anonymous"
+        />
       </head>
       <body>
         {GA_ID && <GoogleAnalytics GA_ID={GA_ID} />}
-        <GoogleAdSense adClientId={AD_CLIENT_ID} />
         {children}
         <footer className="site-footer-layout">
           <div className="footer-links-main">

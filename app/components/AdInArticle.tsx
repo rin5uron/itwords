@@ -34,15 +34,18 @@ export default function AdInArticle({
         width: '100%',
       }}
     >
-      <ins
-        className="adsbygoogle"
-        style={{ display: 'block', textAlign: 'center' }}
-        data-ad-layout="in-article"
-        data-ad-format="fluid"
-        data-full-width-responsive="false"
-        data-ad-client={adClientId}
-        data-ad-slot={adSlot}
-      />
+      {/* 内側ラッパー：AdSenseが外側に height:auto を付けてもここで高さをクリップ */}
+      <div className="adsense-in-article-inner">
+        <ins
+          className="adsbygoogle"
+          style={{ display: 'block', textAlign: 'center' }}
+          data-ad-layout="in-article"
+          data-ad-format="fluid"
+          data-full-width-responsive="false"
+          data-ad-client={adClientId}
+          data-ad-slot={adSlot}
+        />
+      </div>
       <Script
         id={`adsbygoogle-inarticle-${adSlot}`}
         strategy="afterInteractive"

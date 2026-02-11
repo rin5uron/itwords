@@ -1746,22 +1746,16 @@ main a:not(.card-link):not(.breadcrumb-link):not(.term-name):active {
   }
   
 
-  /* 【用語ページ】広告をコンテンツ幅（max-width: 800px）に収める
-   * Issue #40: スマホで全画面表示にならないよう幅・はみ出しを厳格に
-   * 縦マージンはスマホだけ詰める（24px→12px）で余白感を軽減
-   */
+  /* 記事内広告の共通：幅・マージンのみ。高さは下の .adsense-below-toc / .adsense-footer で指定（ここに max-height を書くとフッターが 6vh に縛られるので書かない） */
   .adsense-in-article {
     width: 100%;
-    max-width: min(800px, 100%); /* ビューポートを超えない（Issue #40） */
+    max-width: min(800px, 100%);
     margin: 12px auto !important;
     box-sizing: border-box;
-    overflow: hidden; /* 子要素がはみ出さない */
-    max-height: 6vh;
+    overflow: hidden;
   }
 
-  /* 【用語ページ】目次の下の広告（スマホは低めに固定・PCのaspect-ratioが効かないように）
-   * 使用場所: 各用語ページ（例: app/terms/ssh/page.tsx）
-   * コンポーネント: AdInArticle（position="below-toc"）
+  /* 目次の下（スマホ）：枠 5vh
    */
   .adsense-below-toc {
     height: 5vh !important;
@@ -1770,10 +1764,15 @@ main a:not(.card-link):not(.breadcrumb-link):not(.term-name):active {
     aspect-ratio: unset;
     overflow: hidden;
   }
+  .adsense-below-toc .adsense-in-article-inner {
+    height: 5vh !important;
+    max-height: 5vh !important;
+    min-height: 0;
+    overflow: hidden !important;
+    display: block;
+  }
 
-  /* 【用語ページ】フッター上の広告（スマホは高さ確定で余白伸び防止）
-   * 使用場所: app/terms/layout.tsx（一括配置）
-   * コンポーネント: AdInArticle（position="footer"）
+  /* フッター上（スマホ）：枠 8vh
    */
   .adsense-footer {
     height: 8vh !important;
@@ -1782,10 +1781,15 @@ main a:not(.card-link):not(.breadcrumb-link):not(.term-name):active {
     aspect-ratio: unset;
     overflow: hidden;
   }
+  .adsense-footer .adsense-in-article-inner {
+    height: 8vh !important;
+    max-height: 8vh !important;
+    min-height: 0;
+    overflow: hidden !important;
+    display: block;
+  }
 
-  /* 記事内広告（AdInArticle）の iframe：スマホで全画面にならないよう高さ・幅を明示
-   * Issue #40: 位置ごとの最大高さを指定
-   */
+  /* 記事内広告 iframe：枠に合わせる */
   .adsense-in-article iframe {
     max-width: 100% !important;
     box-sizing: border-box;
