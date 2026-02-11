@@ -44,7 +44,7 @@ export default function TermsLayout({
       </div>
       <div className="terms-bottom-row">
         <div className="terms-bottom-content">
-          <div className="container related-books-container">
+          <div className="related-books-container">
             <RelatedBooks books={DEFAULT_BOOKS} />
           </div>
           <AdInArticle adSlot={SLOT_FOOTER} position="footer" />
