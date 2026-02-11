@@ -2,7 +2,7 @@ import AdInArticle from '@/app/components/AdInArticle'
 import AffiliateRakutenSidebar from '@/app/components/AffiliateRakutenSidebar'
 import RelatedBooks from '@/app/components/RelatedBooks'
 
-const SLOT_FOOTER = '2892250316' // 記事内広告（フッター上）
+const SLOT_FOOTER = '7953005306' // 記事内広告（フッター上）。目次下は 2892250316
 
 /** Issue #38 / #42: 関連書籍。①ITパスポート ②基本情報 ③見るだけIT用語図鑑300 ④IT用語図鑑エンジニア編。画像160、全ページ共通 */
 const DEFAULT_BOOKS = [

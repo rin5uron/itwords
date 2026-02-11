@@ -618,13 +618,17 @@ nav ul li a:hover {
 }
 .related-books-image-link {
   flex-shrink: 0;
+  width: 120px;
 }
 .related-books-image {
   display: block;
+  width: 120px;
+  height: 160px;
   border-radius: 4px;
   object-fit: contain;
 }
 .related-books-body {
+  flex: 1;
   min-width: 0;
 }
 .related-books-name {
@@ -635,6 +639,7 @@ nav ul li a:hover {
 }
 .related-books-links {
   font-size: 0.85em;
+  white-space: nowrap;
 }
 .related-books-links a {
   color: #14b8a6;
@@ -1724,13 +1729,16 @@ main a:not(.card-link):not(.breadcrumb-link):not(.term-name):active {
   }
   
 
-  /* 【用語ページ】広告をコンテンツ幅（max-width: 800px）に収める */
+  /* 【用語ページ】広告をコンテンツ幅（max-width: 800px）に収める
+   * Issue #40: スマホで全画面表示にならないよう幅・はみ出しを厳格に
+   */
   .adsense-in-article {
-    max-width: 800px;
     width: 100%;
+    max-width: min(800px, 100%); /* ビューポートを超えない（Issue #40） */
     margin-left: auto;
     margin-right: auto;
     box-sizing: border-box;
+    overflow: hidden; /* 子要素がはみ出さない */
   }
 
   /* 【用語ページ】目次の下の広告（スマホは低めに固定・PCのaspect-ratioが効かないように）
@@ -1756,10 +1764,18 @@ main a:not(.card-link):not(.breadcrumb-link):not(.term-name):active {
     overflow: hidden;
   }
 
-  /* 記事内広告（AdInArticle）の iframe をコンテナに合わせる */
+  /* 記事内広告（AdInArticle）の iframe：スマホで全画面にならないよう高さ・幅を明示
+   * Issue #40: 位置ごとの最大高さを指定
+   */
   .adsense-in-article iframe {
-    max-height: 100% !important;
     max-width: 100% !important;
+    box-sizing: border-box;
+  }
+  .adsense-footer iframe {
+    max-height: 8vh !important;
+  }
+  .adsense-below-toc iframe {
+    max-height: 5vh !important;
   }
 }
 

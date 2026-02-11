@@ -48,6 +48,8 @@
 
 ### Issueの構造（テンプレート）
 ```markdown
+**作成日**: YYYY-MM-DD
+
 ## 📊 ページの現状
 **最終更新**: YYYY-MM-DD
 
