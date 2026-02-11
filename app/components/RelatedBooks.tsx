@@ -32,8 +32,8 @@ export default function RelatedBooks({ books }: { books: RelatedBook[] }) {
                 <img
                   src={book.imageUrl}
                   alt=""
-                  width={128}
-                  height={128}
+                  width={160}
+                  height={160}
                   className="related-books-image"
                 />
               </a>

@@ -622,7 +622,7 @@ nav ul li a:hover {
 .related-books-image {
   display: block;
   border-radius: 4px;
-  object-fit: cover;
+  object-fit: contain;
 }
 .related-books-body {
   min-width: 0;

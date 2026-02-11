@@ -1,7 +1,6 @@
 'use client'
 
 import Script from 'next/script'
-import { useEffect } from 'react'
 
 interface AdSenseUnitProps {
   adSlot: string
@@ -16,16 +15,6 @@ export default function AdSenseUnit({
   responsive = true,
   adStyle,
 }: AdSenseUnitProps) {
-  useEffect(() => {
-    try {
-      if (typeof window !== 'undefined' && (window as any).adsbygoogle) {
-        ((window as any).adsbygoogle = (window as any).adsbygoogle || []).push({})
-      }
-    } catch (err) {
-      console.error('AdSense initialization error:', err)
-    }
-  }, [])
-
   const adClientId = process.env.NEXT_PUBLIC_ADSENSE_ID || 'ca-pub-6439411211038936'
 
   if (!adSlot) {

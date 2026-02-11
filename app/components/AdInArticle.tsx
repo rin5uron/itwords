@@ -1,7 +1,6 @@
 'use client'
 
 import Script from 'next/script'
-import { useEffect } from 'react'
 
 type Position = 'below-toc' | 'footer'
 
@@ -17,16 +16,6 @@ export default function AdInArticle({
   adSlot: string
   position?: Position
 }) {
-  useEffect(() => {
-    try {
-      if (typeof window !== 'undefined' && (window as any).adsbygoogle) {
-        ((window as any).adsbygoogle = (window as any).adsbygoogle || []).push({})
-      }
-    } catch (err) {
-      console.error('AdSense initialization error:', err)
-    }
-  }, [])
-
   const adClientId = process.env.NEXT_PUBLIC_ADSENSE_ID || 'ca-pub-6439411211038936'
 
   if (!adSlot) {
