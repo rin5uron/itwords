@@ -78,20 +78,17 @@ export default function SSHPage() {
               borderRadius: '12px',
               overflow: 'hidden',
               boxShadow: '0 4px 12px rgba(0,0,0,0.1)',
-              aspectRatio: '3 / 2',
             }}
           >
             <Image
               src="/images/terms/ssh-hero.png"
               alt="SSH - 手元のPCから遠くのサーバーに安全に接続する仕組み"
               width={1536}
-              height={1024}
+              height={864}
               priority
               style={{
                 width: '100%',
-                height: '100%',
-                objectFit: 'cover',
-                objectPosition: 'center',
+                height: 'auto',
                 display: 'block',
               }}
             />

@@ -576,14 +576,10 @@ nav ul li a:hover {
   color: #999;
 }
 
-/* 関連書籍（用語ページ・FAQの下）Issue #38 / #42 */
-/* 関連書籍：本文と同じ幅で続きとして表示（別の白枠にしない） */
+/* 関連書籍（用語ページ・FAQの下）Issue #38 / #42。コンテンツエリア内（.container）で表示 */
 .terms-layout .related-books-container {
-  max-width: 800px;
-  margin: 0 auto;
-  padding: 1.5rem clamp(24px, 5vw, 50px) 1rem;
+  padding-top: 1.5rem;
   display: block;
-  box-sizing: border-box;
 }
 .related-books {
   margin-top: 0;
@@ -1105,10 +1101,12 @@ footer a:hover {
     max-width: 800px;
     min-width: 0;
   }
+  /* A8サイドバー上端を「関連書籍」見出しの下の線（薄い線）に揃える */
   .affiliate-rakuten-sidebar {
     display: block;
     width: 160px;
     flex-shrink: 0;
+    margin-top: 5rem; /* 関連書籍タイトル＋下線までの高さ（padding 1.5+1.5rem + 見出し〜線） */
   }
   .affiliate-rakuten-sidebar img[alt="お買い物は楽天で"] {
     display: block;

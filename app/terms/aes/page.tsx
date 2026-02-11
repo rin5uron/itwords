@@ -103,20 +103,17 @@ export default function AESPage() {
               borderRadius: '12px',
               overflow: 'hidden',
               boxShadow: '0 4px 12px rgba(0,0,0,0.1)',
-              aspectRatio: '3 / 2',
             }}
           >
             <Image
               src="/images/terms/aes-hero.jpg"
               alt="AES暗号化のイメージ - 共通鍵暗号方式"
               width={1200}
-              height={630}
+              height={675}
               priority
               style={{
                 width: '100%',
-                height: '100%',
-                objectFit: 'cover',
-                objectPosition: 'center',
+                height: 'auto',
                 display: 'block',
               }}
             />
