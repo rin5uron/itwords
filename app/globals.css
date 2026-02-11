@@ -577,9 +577,13 @@ nav ul li a:hover {
 }
 
 /* 関連書籍（用語ページ・FAQの下）Issue #38 / #42 */
-.related-books-container {
-  padding-top: 1.5rem;
+/* 関連書籍：本文と同じ幅で続きとして表示（別の白枠にしない） */
+.terms-layout .related-books-container {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 1.5rem clamp(24px, 5vw, 50px) 1rem;
   display: block;
+  box-sizing: border-box;
 }
 .related-books {
   margin-top: 0;
@@ -1731,12 +1735,12 @@ main a:not(.card-link):not(.breadcrumb-link):not(.term-name):active {
 
   /* 【用語ページ】広告をコンテンツ幅（max-width: 800px）に収める
    * Issue #40: スマホで全画面表示にならないよう幅・はみ出しを厳格に
+   * 縦マージンはスマホだけ詰める（24px→12px）で余白感を軽減
    */
   .adsense-in-article {
     width: 100%;
     max-width: min(800px, 100%); /* ビューポートを超えない（Issue #40） */
-    margin-left: auto;
-    margin-right: auto;
+    margin: 12px auto !important;
     box-sizing: border-box;
     overflow: hidden; /* 子要素がはみ出さない */
   }
@@ -1753,14 +1757,15 @@ main a:not(.card-link):not(.breadcrumb-link):not(.term-name):active {
     overflow: hidden;
   }
 
-  /* 【用語ページ】フッター上の広告
+  /* 【用語ページ】フッター上の広告（スマホは高さ確定で余白伸び防止）
    * 使用場所: app/terms/layout.tsx（一括配置）
    * コンポーネント: AdInArticle（position="footer"）
-   * 高さと幅を合わせる: aspect-ratio で横長に
    */
   .adsense-footer {
-    aspect-ratio: 4 / 1;
-    max-height: 8vh;
+    height: 8vh !important;
+    max-height: 8vh !important;
+    min-height: 0;
+    aspect-ratio: unset;
     overflow: hidden;
   }
 
