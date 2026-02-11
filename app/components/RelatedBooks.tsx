@@ -1,8 +1,8 @@
 'use client'
 
 /**
- * 関連おすすめ書籍（用語ページのFAQの下・一番下に表示）
- * 最大3冊。用語ごとの書籍は props で渡すか、後からマッピングで差し替え可能。
+ * 関連書籍（用語ページのFAQの下・一番下に表示）
+ * 画像=もしもタグ、クリック先Amazon、テキストで「Amazonで見る」「楽天で見る」。2列2行で最大4冊。
  */
 export type RelatedBook = {
   title: string
@@ -14,11 +14,11 @@ export type RelatedBook = {
 export default function RelatedBooks({ books }: { books: RelatedBook[] }) {
   if (!books || books.length === 0) return null
 
-  const displayBooks = books.slice(0, 3)
+  const displayBooks = books.slice(0, 4)
 
   return (
-    <section className="related-books" aria-label="関連本">
-      <h2 className="related-books-title">関連本</h2>
+    <section className="related-books" aria-label="関連書籍">
+      <h2 className="related-books-title">関連書籍</h2>
       <ul className="related-books-list">
         {displayBooks.map((book, i) => (
           <li key={i} className="related-books-item">
@@ -32,8 +32,8 @@ export default function RelatedBooks({ books }: { books: RelatedBook[] }) {
                 <img
                   src={book.imageUrl}
                   alt=""
-                  width={80}
-                  height={80}
+                  width={128}
+                  height={128}
                   className="related-books-image"
                 />
               </a>

@@ -576,7 +576,7 @@ nav ul li a:hover {
   color: #999;
 }
 
-/* 関連おすすめ書籍（用語ページ・FAQの下）Issue #38 */
+/* 関連書籍（用語ページ・FAQの下）Issue #38 / #42 */
 .related-books-container {
   padding-top: 1.5rem;
   display: block;
@@ -602,7 +602,7 @@ nav ul li a:hover {
   padding: 0;
   margin: 0;
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  grid-template-columns: repeat(2, 1fr);
   gap: 1.25rem;
   max-width: 800px;
 }
@@ -646,6 +646,11 @@ nav ul li a:hover {
 .related-books-sep {
   margin: 0 6px;
   color: #999;
+}
+@media (max-width: 480px) {
+  .related-books-list {
+    grid-template-columns: 1fr;
+  }
 }
 
 .category-tag {
