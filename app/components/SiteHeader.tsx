@@ -32,7 +32,7 @@ export default function SiteHeader({ showNav = false }: SiteHeaderProps) {
                 <Link href="#practice">練習</Link>
               </li>
               <li className="nav-item-about">
-                <Link href="#about">制作背景</Link>
+                <Link href="/about">制作背景</Link>
               </li>
             </ul>
           </nav>

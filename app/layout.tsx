@@ -124,7 +124,7 @@ export default function RootLayout({
             <Link href="/contact">お問い合わせ</Link>
           </div>
           <div className="footer-mobile-only">
-            <Link href="/#about">制作背景</Link>
+            <Link href="/about">制作背景</Link>
           </div>
           <p>&copy; 2026 itwords - 実践型IT用語辞典</p>
         </footer>
