@@ -70,38 +70,27 @@ export default function AboutPage() {
             「こんな用語を追加してほしい」「ここが分かりにくい」といったご意見があれば、ぜひお問い合わせからお知らせください。
           </p>
 
-          <nav
-            className="about-page-links"
-            aria-label="関連リンク"
-            style={{
-              marginTop: '2.5rem',
-              paddingTop: '1rem',
-              borderTop: '1px solid #e8e6e0',
-              fontSize: '0.85rem',
-              color: '#666',
-              maxWidth: '320px',
-            }}
-          >
-            <p style={{ marginBottom: '0.5rem' }}>関連リンク：</p>
-            <ul style={{ listStyle: 'none', paddingLeft: 0, margin: 0 }}>
-              <li style={{ marginBottom: '0.25rem' }}>
+          <nav className="about-page-links" aria-label="関連リンク">
+            <p className="about-page-links-title">関連リンク：</p>
+            <ul className="about-page-links-list">
+              <li>
                 <a
                   href="https://amzn.to/4bL5vya"
                   rel="nofollow"
                   target="_blank"
                   referrerPolicy="no-referrer-when-downgrade"
-                  style={{ color: '#666', textDecoration: 'underline' }}
+                  className="about-page-link"
                 >
                   クナイプ シュガースクラブ カメリア＆アルガン 200mL
                 </a>
               </li>
-              <li style={{ marginBottom: '0.25rem' }}>
+              <li>
                 <a
                   href="https://amzn.to/4rfHPHd"
                   rel="nofollow"
                   target="_blank"
                   referrerPolicy="no-referrer-when-downgrade"
-                  style={{ color: '#666', textDecoration: 'underline' }}
+                  className="about-page-link"
                 >
                   シャコット シェイピングプリマー 25g 001 ライトベージュ
                 </a>

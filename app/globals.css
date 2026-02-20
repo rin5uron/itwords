@@ -1163,6 +1163,56 @@ footer a:hover {
   }
 }
 
+/* 制作背景ページ：関連リンクブロック（目立たない表示） */
+.about-page-links {
+  margin-top: 2.5rem;
+  padding-top: 1rem;
+  border-top: 1px solid #e8e6e0;
+  font-size: 0.85rem;
+  color: #666;
+  max-width: 320px;
+}
+
+.about-page-links-title {
+  margin-bottom: 0.5rem;
+}
+
+.about-page-links-list {
+  list-style: none;
+  padding-left: 0;
+  margin: 0;
+}
+
+.about-page-links-list li {
+  margin-bottom: 0.25rem;
+}
+
+.about-page-link {
+  color: #666;
+  text-decoration: underline;
+}
+
+@media (max-width: 768px) {
+  .about-page-links {
+    max-width: 100%;
+    margin-top: 2rem;
+    padding-top: 1rem;
+    font-size: 0.9rem;
+  }
+
+  .about-page-links-list li {
+    margin-bottom: 0.5rem;
+  }
+
+  .about-page-link {
+    display: inline-block;
+    padding: 0.2em 0;
+    min-height: 2.5em;
+    line-height: 1.5;
+    overflow-wrap: break-word;
+  }
+}
+
 /* サイトヘッダー（共通）スタイル */
 .site-title-link {
   text-decoration: none;
