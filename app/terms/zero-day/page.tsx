@@ -106,13 +106,13 @@ export default function ZeroDayPage() {
 
       <AdInArticle adSlot="2892250316" position="below-toc" />
 
-      <div className="term-hero-image" style={{
+      <div style={{
         width: '100%',
         maxWidth: '900px',
         margin: '0 auto 2rem auto',
         borderRadius: '12px',
         overflow: 'hidden',
-        boxShadow: '0 4px 12px rgba(0,0,0,0.1)'
+        boxShadow: '0 4px 12px rgba(0,0,0,0.1)',
       }}>
         <Image
           src="/images/terms/zero-day-hero.jpg"
@@ -120,7 +120,11 @@ export default function ZeroDayPage() {
           width={1200}
           height={630}
           priority
-          className="term-hero-image__img"
+          style={{
+            width: '100%',
+            height: 'auto',
+            display: 'block',
+          }}
         />
       </div>
 
