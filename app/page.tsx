@@ -279,6 +279,13 @@ export default function Home() {
           <h4 style={{ marginTop: '40px', marginBottom: '20px', color: '#2c3e50', borderBottom: '2px solid #14b8a6', paddingBottom: '10px' }}>セキュリティ</h4>
           <div className="card-container">
             <div className="card" data-category="security">
+              <Link href="/terms/web-input-attacks" className="card-link">
+                <span className="category-tag">セキュリティ</span>
+                <h4>入力から狙われる4大Web攻撃</h4>
+                <p>SQLインジェクション・XSS・CSRF・ディレクトリトラバーサルを比較。基本情報頻出キーワード表付き。</p>
+              </Link>
+            </div>
+            <div className="card" data-category="security">
               <Link href="/terms/zero-day" className="card-link">
                 <span className="category-tag">セキュリティ</span>
                 <h4>ゼロデイ攻撃</h4>

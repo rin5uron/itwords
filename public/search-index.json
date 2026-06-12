@@ -1,7 +1,7 @@
 [
   {
     "title": "AESとは？暗号化の仕組みを初心者向けに解説【デモ付き】",
-    "description": "AES（Advanced Encryption Standard）とは？Wi-FiやHTTPSで使われる暗号化技術のこと。128と256の違い、仕組みを体験デモで初心者向けに解説。",
+    "description": "AESとは？わかりやすく解説。Wi-FiやHTTPSで使う暗号化技術。128と256の違いを体験デモで学ぶ。",
     "path": "/terms/aes"
   },
   {
@@ -188,6 +188,11 @@
     "title": "Vercelとは？初心者向けにわかりやすく解説 | 実践型IT用語辞典",
     "description": "Vercelとは「Webサイトやアプリを簡単に公開できるホスティングサービス」",
     "path": "/terms/vercel"
+  },
+  {
+    "title": "入力から狙われる4大Web攻撃とは？初心者向けにわかりやすく解説 | 実践型IT用語辞典",
+    "description": "入力から狙われる4大Web攻撃について、初心者向けにわかりやすく解説します。",
+    "path": "/terms/web-input-attacks"
   },
   {
     "title": "Webhookとは？初心者向けにわかりやすく解説 | 実践型IT用語辞典",
