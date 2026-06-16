@@ -3,6 +3,7 @@ import { Metadata } from 'next'
 import StructuredData from '@/app/components/StructuredData'
 import TermPageHeader from '@/app/components/TermPageHeader'
 import AdInArticle from '@/app/components/AdInArticle'
+import AdSenseUnit from '@/app/components/AdSenseUnit' 
 import FAQAccordion from '@/app/components/FAQAccordion'
 
 export const metadata: Metadata = {

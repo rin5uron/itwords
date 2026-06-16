@@ -1843,12 +1843,12 @@ main a:not(.card-link):not(.breadcrumb-link):not(.term-name):active {
     box-sizing: border-box;
   }
   .adsense-footer iframe {
-    max-height: 67px !important;
-  }
-  .adsense-below-toc iframe {
-    max-height: 42px !important;
-  }
+  max-height: 350px;
 }
+.adsense-below-toc iframe {
+  max-height: 350px;
+}
+
 
 /* ============================================
    AdSense PC時の高さ制限（769px以上）
