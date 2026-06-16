@@ -1807,29 +1807,22 @@ main a:not(.card-link):not(.breadcrumb-link):not(.term-name):active {
     overflow: hidden;
   }
 
-  /* 目次の下（スマホ）：
-   */
-  .adsense-below-toc {
-  min-height: 250px;
-  max-height: 350px;
-  aspect-ratio: unset;
-  overflow: hidden;
+.adsense-below-toc {
+  width: 100%;
+  overflow: visible;
 }
 .adsense-below-toc .adsense-in-article-inner {
-  min-height: 250px;
-  max-height: 350px;
-  overflow: hidden !important;
   display: block;
 }
 
-  /* フッター上（スマホ）：枠 8vh
-   */
-  .adsense-footer {
-  min-height: 250px;
-  max-height: 350px;
-  aspect-ratio: unset;
-  overflow: hidden;
+.adsense-footer {
+  width: 100%;
+  overflow: visible;
 }
+.adsense-footer .adsense-in-article-inner {
+  display: block;
+}
+
 .adsense-footer .adsense-in-article-inner {
   min-height: 250px;
   max-height: 350px;
