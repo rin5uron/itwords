@@ -33,20 +33,12 @@ export default function RepositoryPage() {
       answer: 'リポジトリとは、プログラムのソースコードやファイルを保存・管理する「保管庫」のことです。単なるフォルダと違い、変更履歴を記録したり、複数人で同時に作業したりできる仕組みが備わっています。',
     },
     {
-      question: 'リポジトリとフォルダの違いは？',
-      answer: 'フォルダは単なる「ファイルの入れ物」ですが、リポジトリは「変更履歴」「誰が」「いつ」「何を変更したか」を全て記録します。間違えて削除しても、過去の状態に戻せるのがリポジトリの強みです。',
-    },
-    {
       question: 'ローカルリポジトリとリモートリポジトリの違いは？',
       answer: 'ローカルリポジトリは自分のパソコン内にあるリポジトリ、リモートリポジトリはGitHub等のサーバー上にあるリポジトリです。ローカルで作業して、リモートに「push（アップロード）」することで共有します。',
     },
     {
       question: 'GitHubのリポジトリは無料ですか？',
       answer: 'はい、GitHubは無料でパブリックリポジトリ（公開）もプライベートリポジトリ（非公開）も無制限に作成できます。個人開発やオープンソースなら完全無料で使えます。',
-    },
-    {
-      question: 'リポジトリの名前はどう付ければいいですか？',
-      answer: 'プロジェクト名をそのまま使うのが一般的です。例：「my-portfolio」「todo-app」「personal-website」。小文字とハイフンを使い、スペースは避けましょう（URLに使われるため）。',
     },
   ]
 
@@ -58,7 +50,7 @@ export default function RepositoryPage() {
         title="リポジトリとは？小学生でもわかる【コードの保管庫】"
         description="リポジトリとは？フォルダ・ディレクトリとの違いを図解で理解。GitHubの「保管庫」の作り方とローカル・リモートの違いまで初心者向けに解説。"
         datePublished="2026-01-18"
-        dateModified="2026-01-18"
+        dateModified="2026-06-18"
       />
 
       <TermPageHeader
@@ -66,12 +58,13 @@ export default function RepositoryPage() {
         reading="Repository / レポジトリ"
         icon="fas fa-folder-open"
         dateCreated="2026-01-18"
-        dateModified="2026-01-18"
+        dateModified="2026-06-18"
         summaryItems={[
-          'リポジトリとは何か（コードの保管庫）',
-          'リポジトリ・フォルダ・ディレクトリの違い（図解付き）',
+          'リポジトリ・フォルダ・ディレクトリの違い',
           'ローカルリポジトリとリモートリポジトリの違い',
-          'GitHubでリポジトリを作る方法とREADMEの書き方'
+          'Gitとリポジトリ（.git / Git管理）',
+          'リポジトリの命名ルール',
+          'README.md = リポジトリの説明書',
         ]}
       />
 
@@ -79,7 +72,6 @@ export default function RepositoryPage() {
 
       <main>
         <section>
-          <h2>概要</h2>
           <p>
             <strong>リポジトリ（Repository）</strong>とは、<strong>プログラムのソースコードやファイルを保存・管理する「保管庫」</strong>のことです。
           </p>
@@ -287,133 +279,27 @@ export default function RepositoryPage() {
 <AdSenseUnit adSlot="8307635933"/>
 
         <section>
-          <h2>GitHubでリポジトリを作る方法</h2>
+          <h2>Gitとリポジトリ</h2>
           <p>
-            <Link href="/terms/github">GitHub</Link>でリポジトリを作るのは簡単です。
-            詳しい手順は<a href="https://docs.github.com/ja/repositories/creating-and-managing-repositories" target="_blank" rel="noopener noreferrer">GitHub公式ドキュメント</a>でも確認できます：
-          </p>
-
-          <ol>
-            <li>
-              <strong>GitHubにログイン</strong>
-              <br />
-              <a href="https://github.com" target="_blank" rel="noopener noreferrer">github.com</a>にアクセス
-            </li>
-            <li>
-              <strong>「New repository」をクリック</strong>
-              <br />
-              右上の「+」ボタンから「New repository」を選択
-            </li>
-            <li>
-              <strong>リポジトリ名を入力</strong>
-              <br />
-              例：<code>my-first-website</code>
-            </li>
-            <li>
-              <strong>Public / Private を選択</strong>
-              <br />
-              Public = 誰でも見れる（オープンソース）
-              <br />
-              Private = 自分だけ見れる
-            </li>
-            <li>
-              <strong>「Create repository」をクリック</strong>
-              <br />
-              これでリポジトリが完成！
-            </li>
-          </ol>
-
-          <p className="note">
-            <strong><i className="fas fa-lightbulb" aria-hidden /> ポイント</strong>
-            <br />
-            「Initialize this repository with a README」にチェックを入れると、
-            最初からREADME.mdファイルが作られて便利です。
-          </p>
-        </section>
-
-        <section>
-          <h2>リポジトリの構造</h2>
-          <p>
-            リポジトリの中身はこんな感じです：
+            リポジトリは、<strong>Git</strong>というバージョン管理システムで管理するためのフォルダです。
+            普通のフォルダに <code>git init</code> コマンドを実行すると、<code>.git</code> という隠しフォルダが作られ、そこからリポジトリになります。
           </p>
 
           <div className="code-example">
             <pre><code>{`my-website/
-├── .git/           # ← Git管理用フォルダ（変更履歴がここに記録される）
-├── index.html      # HTMLファイル
-├── style.css       # CSSファイル
-├── script.js       # JavaScriptファイル
-├── images/         # 画像フォルダ
-│   └── logo.png
-└── README.md       # プロジェクト説明ファイル`}</code></pre>
+├── .git/       ← これがあるとリポジトリ（Git管理中）
+├── index.html
+├── style.css
+└── README.md`}</code></pre>
           </div>
 
           <p>
-            <strong>.gitフォルダ</strong>が重要です。
-            ここに全ての変更履歴が記録されています。
-            このフォルダがあることで、普通のフォルダが「リポジトリ」になります。
-          </p>
-        </section>
-
-        <section>
-          <h2>リポジトリでできること</h2>
-          <ul>
-            <li>
-              <strong>変更履歴の確認</strong>：
-              いつ、誰が、何を変更したかが一目でわかる
-            </li>
-            <li>
-              <strong>過去の状態に戻す</strong>：
-              「昨日の状態に戻したい」が簡単にできる
-            </li>
-            <li>
-              <strong>ブランチで並行開発</strong>：
-              「新機能」「バグ修正」を同時進行できる
-            </li>
-            <li>
-              <strong>チームでの共同作業</strong>：
-              複数人で同じプロジェクトを編集できる
-            </li>
-            <li>
-              <strong>Issue（課題管理）</strong>：
-              「ここバグってる」「この機能追加したい」をメモできる
-            </li>
-            <li>
-              <strong>プルリクエスト</strong>：
-              「この変更を反映してください」とレビュー依頼できる
-            </li>
-          </ul>
-        </section>
-
-        <section>
-          <h2>有名なリポジトリの例</h2>
-          <p>
-            GitHubには、世界中の有名なプロジェクトのリポジトリがあります：
+            <strong>.git フォルダ</strong>の中に、「誰が」「いつ」「何を変更したか」という履歴が全て記録されます。
+            このフォルダを削除すると、ただのフォルダに戻ります。
           </p>
 
-          <ul>
-            <li>
-              <strong>React</strong>：
-              <a href="https://github.com/facebook/react" target="_blank" rel="noopener noreferrer">facebook/react</a>
-              <br />
-              Facebookが開発したJavaScriptライブラリ（⭐ 220,000以上）
-            </li>
-            <li>
-              <strong>TensorFlow</strong>：
-              <a href="https://github.com/tensorflow/tensorflow" target="_blank" rel="noopener noreferrer">tensorflow/tensorflow</a>
-              <br />
-              Googleの機械学習ライブラリ（⭐ 180,000以上）
-            </li>
-            <li>
-              <strong>Visual Studio Code</strong>：
-              <a href="https://github.com/microsoft/vscode" target="_blank" rel="noopener noreferrer">microsoft/vscode</a>
-              <br />
-              Microsoftのエディタ（⭐ 160,000以上）
-            </li>
-          </ul>
-
           <p>
-            これらは全て「オープンソース」で、誰でもコードを見たり、改善提案したりできます。
+            作ったリポジトリは <Link href="/terms/github">GitHub</Link> にアップロード（push）することで、チームで共有したりバックアップとして使えます。
           </p>
         </section>
 
@@ -465,44 +351,37 @@ export default function RepositoryPage() {
         </section>
 
         <section>
-          <h2>README.mdの重要性</h2>
+          <h2>README.md = リポジトリの説明書</h2>
           <p>
-            リポジトリには<strong>README.md</strong>というファイルを必ず作りましょう。
+            <strong>README.md</strong>は、そのリポジトリの「説明書」です。
+            <Link href="/terms/github">GitHub</Link> でリポジトリを開くと最初に表示されます。
           </p>
 
           <p>
-            README.mdは<strong>「このプロジェクトの説明書」</strong>です。
-            GitHubのリポジトリページを開くと、最初に表示されます。
+            書く内容は人それぞれですが、こんな例があります：
           </p>
-
-          <p>書くべき内容：</p>
-          <ul>
-            <li><strong>プロジェクト名</strong></li>
-            <li><strong>何をするプロジェクトか</strong></li>
-            <li><strong>使い方・インストール方法</strong></li>
-            <li><strong>技術スタック</strong>（使っている言語やライブラリ）</li>
-            <li><strong>ライセンス</strong></li>
-          </ul>
 
           <div className="code-example">
-            <pre><code>{`# My Portfolio
+            <pre><code>{`# 朝ごはん記録アプリ 🍳
 
-個人ポートフォリオサイトです。
+毎朝の朝ごはんを記録するアプリです。
+写真を撮って投稿すると、カロリーを自動計算してくれます。
+
+## 使い方
+1. アプリを開く
+2. 写真を撮る
+3. 「記録する」をタップ
 
 ## 使用技術
-- Next.js 15
-- TypeScript
-- Tailwind CSS
-
-## インストール
-\`\`\`bash
-npm install
-npm run dev
-\`\`\`
-
-## ライセンス
-MIT`}</code></pre>
+- React Native
+- OpenAI API（カロリー解析）`}</code></pre>
           </div>
+
+          <p className="note">
+            <strong><i className="fas fa-lightbulb" aria-hidden /> ポイント</strong>
+            <br />
+            README.mdは<strong>Markdown</strong>という記法で書きます。<code>#</code>で見出し、<code>-</code>で箇条書きが作れます。
+          </p>
         </section>
 
         <section className="term-comparison">
