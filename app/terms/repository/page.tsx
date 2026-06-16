@@ -60,11 +60,8 @@ export default function RepositoryPage() {
         dateCreated="2026-01-18"
         dateModified="2026-06-18"
         summaryItems={[
-          'リポジトリ・フォルダ・ディレクトリの違い',
+          'リポジトリ・フォルダ・ディレクトリの違い（図解付き）',
           'ローカルリポジトリとリモートリポジトリの違い',
-          'Gitとリポジトリ（.git / Git管理）',
-          'リポジトリの命名ルール',
-          'README.md = リポジトリの説明書',
         ]}
       />
 
@@ -385,7 +382,7 @@ export default function RepositoryPage() {
         </section>
 
         <section className="term-comparison">
-          <h2>関連用語</h2>
+          <h2 data-toc-exclude>関連用語</h2>
           <div className="comparison-table">
             <table>
               <thead>
