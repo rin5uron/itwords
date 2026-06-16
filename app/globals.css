@@ -1806,6 +1806,7 @@ main a:not(.card-link):not(.breadcrumb-link):not(.term-name):active {
     box-sizing: border-box;
     overflow: hidden;
   }
+}
 
 .adsense-below-toc {
   width: 100%;
@@ -1823,49 +1824,12 @@ main a:not(.card-link):not(.breadcrumb-link):not(.term-name):active {
   display: block;
 }
 
-.adsense-footer .adsense-in-article-inner {
-  min-height: 250px;
-  max-height: 350px;
-  overflow: hidden !important;
-  display: block;
-}
-
   /* 記事内広告 iframe：枠に合わせる */
   .adsense-in-article iframe {
     max-width: 100% !important;
     box-sizing: border-box;
   }
-  .adsense-footer iframe {
-  max-height: 350px;
-}
-.adsense-below-toc iframe {
-  max-height: 350px;
-}
 
 
-/* ============================================
-   AdSense PC時の高さ制限（769px以上）
-   ============================================ */
 
-@media (min-width: 769px) {
-  /* 【用語ページ】目次の下の広告（PC時はフッター上と同じ高さに統一）
-   * 使用場所: 各用語ページ（例: app/terms/ssh/page.tsx）
-   * コンポーネント: AdInArticle（position="below-toc"）
-   */
-  .adsense-below-toc {
-    aspect-ratio: 4 / 1;
-    max-height: 8vh;
-    overflow: hidden;
-  }
 
-  /* 【用語ページ】フッター上の広告
-   * 使用場所: app/terms/layout.tsx（一括配置）
-   * コンポーネント: AdInArticle（position="footer"）
-   * 横長に強制: aspect-ratio 4/1
-   */
-  .adsense-footer {
-    aspect-ratio: 4 / 1;
-    max-height: 8vh;
-    overflow: hidden;
-  }
-}
