@@ -2,6 +2,7 @@ import Link from 'next/link'
 import { Metadata } from 'next'
 import StructuredData from '@/app/components/StructuredData'
 import TermPageHeader from '@/app/components/TermPageHeader'
+import TableOfContents from '@/app/components/TableOfContents'
 import AdInArticle from '@/app/components/AdInArticle'
 import FAQAccordion from '@/app/components/FAQAccordion'
 
@@ -10,14 +11,12 @@ export const metadata: Metadata = {
   description: '基本情報技術者試験頻出！SQLインジェクション・XSS・CSRF・ディレクトリトラバーサルの4大攻撃を比較解説。試験問題を秒で見分けるキーワード表付き。',
   keywords: [
     'SQLインジェクション',
-    'XSS',
-    'クロスサイトスクリプティング',
-    'CSRF',
-    'クロスサイトリクエストフォージェリ',
+    'XSS クロスサイトスクリプティング',
+    'CSRF クロスサイトリクエストフォージェリ',
     'ディレクトリトラバーサル',
-    'Webセキュリティ',
-    'セキュリティ攻撃 まとめ',
+    'Webセキュリティ 攻撃 まとめ',
     '基本情報技術者試験 セキュリティ',
+    'セキュリティ攻撃 種類',
     'IT用語 わかりやすく',
   ],
   openGraph: {
@@ -38,28 +37,12 @@ export const metadata: Metadata = {
 export default function WebInputAttacksPage() {
   const faqs = [
     {
-      question: 'SQLインジェクションとXSSの違いは何ですか？',
-      answer: 'SQLインジェクションは入力欄に悪意ある命令文（SQL）を流し込みデータベースを不正操作する攻撃で、狙うのはデータベース（DB）です。一方XSSは悪意あるスクリプトをWebページに埋め込み、閲覧者のブラウザで実行させる攻撃です。SQLインジェクションはDB側、XSSはブラウザ側への攻撃という違いがあります。',
-    },
-    {
-      question: 'XSSとCSRFはどう見分けるのですか？',
-      answer: '両方とも「悪意あるスクリプト」がキーワードですが、影響する場所が違います。XSSは閲覧しているサイト自体のブラウザで実行されクッキーが盗まれます。CSRFは罠サイトを経由して別のWebサイトに意図しない操作を送りつけます。試験では「別のWebサイトで」「意図しない操作」という表現が出たらCSRFと判断できます。',
-    },
-    {
-      question: 'ディレクトリトラバーサルとは何ですか？',
-      answer: 'ディレクトリトラバーサルとは、URLや入力欄に「../」（一つ上のフォルダへ移動するパス）を入力し、公開していないサーバーのファイルを不正閲覧する攻撃です。「トラバーサル」は英語で「横断・通過」の意味で、ディレクトリ（フォルダ）を横断して本来アクセスできないファイルに到達することが由来です。',
-    },
-    {
       question: '基本情報技術者試験でよく出るセキュリティ攻撃は？',
       answer: 'SQLインジェクション・XSS・CSRF・ディレクトリトラバーサルの4つが入力系攻撃として頻出です。それ以外にはDoS/DDoS攻撃（大量リクエストでサーバーダウン）、ブルートフォース攻撃（パスワード総当たり）、フィッシング詐欺（偽サイトへ誘導）も出題されます。',
     },
     {
       question: 'CSRFはなぜ気づかれにくいのですか？',
       answer: 'CSRFはユーザーのログイン済みセッション（クッキー）を悪用するため、サーバー側には正規のリクエストに見えます。ユーザー自身も罠サイトを踏んだ瞬間に裏で別サイトへリクエストが送られるだけなので気づきにくいのです。対策としてはCSRFトークン（フォーム送信ごとに発行する使い捨て認証コード）が一般的に使われます。',
-    },
-    {
-      question: 'フィッシング詐欺と上の4つの攻撃は何が違いますか？',
-      answer: 'SQLインジェクション・XSS・CSRF・ディレクトリトラバーサルはシステムの脆弱性を技術的に突く攻撃です。フィッシング詐欺は本物そっくりの偽サイトへ誘導し、ユーザー自身にパスワードや認証コードを入力させる「心理的な詐欺」です。技術的な攻撃は裏で勝手に動き、フィッシングはユーザー自身が操作させられる点が大きな違いです。',
     },
   ]
 
@@ -81,30 +64,31 @@ export default function WebInputAttacksPage() {
         dateCreated="2026-06-12"
         dateModified="2026-06-12"
         summaryItems={[
-          'SQLインジェクション・XSS・CSRF・ディレクトリトラバーサルの4つを比較',
-          'XSSとCSRFの共通点と見分け方（どちらも「悪意あるスクリプト」）',
-          '基本情報技術者試験で秒殺するためのキーワード表',
-          'フィッシング詐欺との違い（技術的な攻撃 vs 心理的な詐欺）',
+          '4大攻撃（SQLi・XSS・CSRF・ディレクトリトラバーサル）を一覧比較',
+          'XSSとCSRFの見分け方（共通キーワードから2段階で判断）',
+          '試験で秒殺するキーワード表',
         ]}
+        showToc={false}
       />
 
-      <AdInArticle adSlot="2892250316" position="below-toc" />
+      
 
       <main>
         <section>
           <h2>概要</h2>
           <p>
             Webアプリケーションへの攻撃の多くは、<strong>「入力欄」に細工することから始まります</strong>。
-            ログインフォーム、検索ボックス、URLのパラメータ——これらはすべて攻撃の入口になりえます。
-          </p>
-          <p>
-            このページでは、基本情報技術者試験でも頻出の<strong>4大Web入力攻撃</strong>を比較し、
-            試験問題を素早く見分けるためのキーワードをまとめます。
+            ログインフォーム・検索ボックス・URLパラメータ——これらはすべて攻撃の入口です。
+            基本情報技術者試験で頻出の<strong>4大Web入力攻撃（SQLインジェクション・XSS・CSRF・ディレクトリトラバーサル）</strong>を比較し、試験問題を秒で見分けましょう。
           </p>
         </section>
 
+        <div className="term-page-header__toc">
+          <TableOfContents />
+        </div>
+<AdInArticle adSlot="2892250316" position="below-toc" />
         <section>
-          <h2>4大攻撃を比較する</h2>
+          <h2>4大攻撃の比較（SQLインジェクション・XSS・CSRF・ディレクトリトラバーサル）</h2>
           <p>それぞれの攻撃が「何を狙い」「どんな被害をもたらすか」を一覧で確認しましょう。</p>
 
           <div className="comparison-table">
@@ -224,6 +208,8 @@ export default function WebInputAttacksPage() {
           </div>
         </section>
 
+        <FAQAccordion faqs={faqs} />
+
         <section className="term-comparison">
           <h2>関連用語</h2>
           <div className="comparison-table">
@@ -291,8 +277,6 @@ export default function WebInputAttacksPage() {
             </table>
           </div>
         </section>
-
-        <FAQAccordion faqs={faqs} />
       </main>
     </div>
   )

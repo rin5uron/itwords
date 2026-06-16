@@ -22,6 +22,8 @@ export type TermPageHeaderProps = {
   summaryIcon?: string
   /** ヒーロー画像（わかることの直後・目次の直前に表示。省略時は表示しない） */
   heroImage?: ReactNode
+  /** 目次を表示するか（デフォルト: true）。概要→目次の順にしたいページは false にして手動配置 */
+  showToc?: boolean
 }
 
 /**
@@ -38,6 +40,7 @@ export default function TermPageHeader({
   summaryHeaderText,
   summaryIcon,
   heroImage,
+  showToc = true,
 }: TermPageHeaderProps) {
   const showDate =
     (dateCreated != null || dateModified != null) &&
@@ -77,9 +80,11 @@ export default function TermPageHeader({
         </div>
       )}
 
-      <div className="term-page-header__toc">
-        <TableOfContents />
-      </div>
+      {showToc && (
+        <div className="term-page-header__toc">
+          <TableOfContents />
+        </div>
+      )}
     </div>
   )
 }

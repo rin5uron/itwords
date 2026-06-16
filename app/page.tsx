@@ -42,14 +42,27 @@ export default function Home() {
       <SiteHeader showNav={true} />
 
       <main>
+        <section id="summary">
+          <h3>まとめ</h3>
+          <div className="card-container">
+            <div className="card" data-category="security">
+              <Link href="/terms/web-input-attacks" className="card-link">
+                <span className="category-tag">セキュリティ</span>
+                <h4>入力から狙われる4大Web攻撃</h4>
+                <p>SQLインジェクション・XSS・CSRF・ディレクトリトラバーサルを比較。基本情報頻出キーワード表付き。</p>
+              </Link>
+            </div>
+          </div>
+        </section>
+
         <section id="new">
           <h3>新着用語</h3>
           <div className="card-container">
-            <div className="card" data-category="hardware">
-              <Link href="/terms/mips" className="card-link">
-                <span className="category-tag">ハードウェア</span>
-                <h4>MIPS</h4>
-                <p>コンピュータの処理速度を表す単位。命令実行速度デモと単位計算で基本情報試験対策。</p>
+            <div className="card" data-category="security">
+              <Link href="/terms/web-input-attacks" className="card-link">
+                <span className="category-tag">セキュリティ</span>
+                <h4>入力から狙われる4大Web攻撃</h4>
+                <p>SQLインジェクション・XSS・CSRF・ディレクトリトラバーサルを比較。基本情報頻出キーワード表付き。</p>
               </Link>
             </div>
             <div className="card" data-category="infrastructure">
@@ -64,13 +77,6 @@ export default function Home() {
                 <span className="category-tag">Web</span>
                 <h4>SMTP</h4>
                 <p>メールを送信するためのプロトコル。HTTPと同じ「インターネットの道」を使うが、目的が違う。</p>
-              </Link>
-            </div>
-            <div className="card" data-category="infrastructure">
-              <Link href="/terms/ip-address" className="card-link">
-                <span className="category-tag">インフラ</span>
-                <h4>IPアドレスとポート番号</h4>
-                <p>IPアドレスが「住所」、ポート番号が「部屋番号」。プロトコルとの関係も理解できます。</p>
               </Link>
             </div>
           </div>

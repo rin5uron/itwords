@@ -283,6 +283,7 @@ export default function RepositoryPage() {
             <li>他の人がプル（受信）して、同じ状態になる</li>
           </ol>
         </section>
+<AdSenseUnit adSlot="8307635933"/>
 
         <section>
           <h2>GitHubでリポジトリを作る方法</h2>

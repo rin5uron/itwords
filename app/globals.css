@@ -1534,6 +1534,7 @@ footer a:hover {
 .toc-title {
   flex: 1;
   min-width: 0; /* flex子が縮むように */
+  text-align: left;/* 目次のスタイル左揃え */
   word-wrap: break-word;
   overflow-wrap: break-word;
   overflow: hidden;
@@ -1806,39 +1807,35 @@ main a:not(.card-link):not(.breadcrumb-link):not(.term-name):active {
     overflow: hidden;
   }
 
-  /* 目次の下（スマホ）：枠 5vh
+  /* 目次の下（スマホ）：
    */
   .adsense-below-toc {
-    height: 5vh !important;
-    max-height: 5vh !important;
-    min-height: 0;
-    aspect-ratio: unset;
-    overflow: hidden;
-  }
-  .adsense-below-toc .adsense-in-article-inner {
-    height: 5vh !important;
-    max-height: 5vh !important;
-    min-height: 0;
-    overflow: hidden !important;
-    display: block;
-  }
+  min-height: 250px;
+  max-height: 350px;
+  aspect-ratio: unset;
+  overflow: hidden;
+}
+.adsense-below-toc .adsense-in-article-inner {
+  min-height: 250px;
+  max-height: 350px;
+  overflow: hidden !important;
+  display: block;
+}
 
   /* フッター上（スマホ）：枠 8vh
    */
   .adsense-footer {
-    height: 8vh !important;
-    max-height: 8vh !important;
-    min-height: 0;
-    aspect-ratio: unset;
-    overflow: hidden;
-  }
-  .adsense-footer .adsense-in-article-inner {
-    height: 8vh !important;
-    max-height: 8vh !important;
-    min-height: 0;
-    overflow: hidden !important;
-    display: block;
-  }
+  min-height: 250px;
+  max-height: 350px;
+  aspect-ratio: unset;
+  overflow: hidden;
+}
+.adsense-footer .adsense-in-article-inner {
+  min-height: 250px;
+  max-height: 350px;
+  overflow: hidden !important;
+  display: block;
+}
 
   /* 記事内広告 iframe：枠に合わせる */
   .adsense-in-article iframe {
@@ -1846,10 +1843,10 @@ main a:not(.card-link):not(.breadcrumb-link):not(.term-name):active {
     box-sizing: border-box;
   }
   .adsense-footer iframe {
-    max-height: 8vh !important;
+    max-height: 67px !important;
   }
   .adsense-below-toc iframe {
-    max-height: 5vh !important;
+    max-height: 42px !important;
   }
 }
 

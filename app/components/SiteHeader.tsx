@@ -20,16 +20,16 @@ export default function SiteHeader({ showNav = false }: SiteHeaderProps) {
           <nav>
             <ul>
               <li>
-                <Link href="#popular">人気用語</Link>
+                <Link href="/#popular">人気用語</Link>
               </li>
               <li>
-                <Link href="#new">新着用語</Link>
+                <Link href="/#new">新着用語</Link>
               </li>
               <li>
-                <Link href="#all-terms">すべての用語</Link>
+                <Link href="/#all-terms">すべての用語</Link>
               </li>
               <li>
-                <Link href="#practice">練習</Link>
+                <Link href="/practice">練習</Link>
               </li>
               <li className="nav-item-about">
                 <Link href="/about">制作背景</Link>
