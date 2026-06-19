@@ -55,7 +55,7 @@ export default function RepositoryPage() {
 
       <TermPageHeader
         termName="リポジトリ"
-        reading="Repository / レポジトリ"
+        reading="リポジトリ（Repository）"
         icon="fas fa-folder-open"
         dateCreated="2026-01-18"
         dateModified="2026-06-18"

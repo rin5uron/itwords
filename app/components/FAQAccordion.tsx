@@ -20,7 +20,7 @@ export default function FAQAccordion({ faqs }: FAQAccordionProps) {
 
   return (
     <section className="faq-section">
-      <h2>よくある質問（FAQ）</h2>
+      <h2 data-toc-exclude>よくある質問（FAQ）</h2>
       <div className="faq-accordion">
         {faqs.map((faq, index) => (
           <div key={index} className="faq-item">
