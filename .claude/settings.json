@@ -1,0 +1,15 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(cp .claude/settings.local.json /tmp/settings.bak.json)",
+      "Bash(rm -f /tmp/claude-hook-check.txt)",
+      "Bash(jq '.hooks.PreToolUse[0].hooks[0].command = \\(\"echo fired-$\\(date +%s\\) >> /tmp/claude-hook-check.txt; \" + .hooks.PreToolUse[0].hooks[0].command\\)' .claude/settings.local.json)",
+      "Bash(mv /tmp/settings.tmp.json .claude/settings.local.json)",
+      "Bash(cp /tmp/settings.bak.json /Users/rin5uron/github-local/personal/career-transition/.claude/settings.local.json)",
+      "Bash(rm -f /Users/rin5uron/github-local/personal/career-transition/.claude/_hooktest.html /tmp/claude-hook-check.txt /tmp/settings.bak.json)",
+      "Bash(xargs -n1 basename)",
+      "Bash(grep -nE '\\\\bb\\\\s*\\\\{|\\\\.clean|b,|b\\\\s|strong|::marker|list-style|display:\\\\s*flex|columns|writing-mode|word-break|white-space' companies/dalab.html)",
+      "Bash(grep -v '^\\\\s*$')"
+    ]
+  }
+}
