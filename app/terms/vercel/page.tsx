@@ -1,9 +1,11 @@
 'use client'
 
 import Link from 'next/link'
+import Image from 'next/image'
 import { useState } from 'react'
 import StructuredData from '@/app/components/StructuredData'
 import TermPageHeader from '@/app/components/TermPageHeader'
+import TableOfContents from '@/app/components/TableOfContents'
 import AdInArticle from '@/app/components/AdInArticle'
 import FAQAccordion from '@/app/components/FAQAccordion'
 
@@ -55,14 +57,14 @@ export default function VercelPage() {
         title="Vercel（ヴァーセル）とは？読み方から使い方まで初心者向けに解説"
         description="Vercelとは？デプロイデモで使い方を今すぐ体験。読み方、Next.jsとの相性、無料プラン、GitHubとの自動連携まで初心者向けに解説します。"
         datePublished="2024-01-09"
-        dateModified="2026-01-16"
+        dateModified="2026-08-10"
       />
       <TermPageHeader
         termName="Vercel"
         reading="ヴァーセル"
         icon="fas fa-server"
         dateCreated="2024-01-09"
-        dateModified="2026-01-16"
+        dateModified="2026-08-10"
         summaryItems={[
           'Vercelとは何か？読み方は？',
           'GitHubと連携した自動デプロイの仕組み',
@@ -71,6 +73,8 @@ export default function VercelPage() {
         ]}
       />
 
+      <TableOfContents />
+
       <AdInArticle adSlot="2892250316" position="below-toc" />
 
       <main>
@@ -78,26 +82,14 @@ export default function VercelPage() {
           <h2>概要</h2>
 
           <p>
-            <strong>Vercel</strong>とは、
-            <strong>「Webサイトやアプリを簡単に公開できるホスティングサービス」</strong>です。
+            <strong>Vercelの読み方は「ヴァーセル」</strong>です。
+            Next.jsなどのフロントエンドを<strong>簡単にデプロイできるホスティングサービス</strong>です。
           </p>
 
           <p>
-            想像してみてください。あなたが一生懸命作ったWebサイトを、
-            世界中の人に見てもらうには、サーバーを用意して、設定して、公開する必要があります。
-            でも初心者にとって、これはかなりハードルが高いですよね。
-          </p>
-
-          <p>
-            Vercelは、そんな面倒な作業を<strong>ほぼ自動で</strong>やってくれます。
-            <Link href="/terms/github">GitHub</Link>にコードを push するだけで、
+            <Link href="/terms/github">GitHub</Link>にコードをpushするだけで、
             数秒後には世界中からアクセスできる状態になります。
-          </p>
-
-          <p>
-            Vercelは<Link href="/terms/data-center">データセンター</Link>上で<Link href="/terms/server">Webサーバー</Link>を提供しています。
-            URLでアクセスできるようにするため、<Link href="/terms/dns">DNS</Link>と連携しており、
-            ドメインを入力するだけで自動的にDNS設定を行ってくれます。
+            サーバーの設定や<Link href="/terms/dns">DNS</Link>設定も自動で行われます。
           </p>
 
           <p className="note">

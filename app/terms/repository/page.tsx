@@ -1,9 +1,11 @@
 import Link from 'next/link'
+import Image from 'next/image'
 import { Metadata } from 'next'
 import StructuredData from '@/app/components/StructuredData'
 import TermPageHeader from '@/app/components/TermPageHeader'
+import TableOfContents from '@/app/components/TableOfContents'
 import AdInArticle from '@/app/components/AdInArticle'
-import AdSenseUnit from '@/app/components/AdSenseUnit' 
+import AdSenseUnit from '@/app/components/AdSenseUnit'
 import FAQAccordion from '@/app/components/FAQAccordion'
 
 export const metadata: Metadata = {
@@ -50,7 +52,7 @@ export default function RepositoryPage() {
         title="リポジトリとは？小学生でもわかる【コードの保管庫】"
         description="リポジトリとは？フォルダ・ディレクトリとの違いを図解で理解。GitHubの「保管庫」の作り方とローカル・リモートの違いまで初心者向けに解説。"
         datePublished="2026-01-18"
-        dateModified="2026-06-18"
+        dateModified="2026-08-10"
       />
 
       <TermPageHeader
@@ -58,37 +60,42 @@ export default function RepositoryPage() {
         reading="リポジトリ（Repository）"
         icon="fas fa-folder-open"
         dateCreated="2026-01-18"
-        dateModified="2026-06-18"
+        dateModified="2026-08-10"
         summaryItems={[
           'リポジトリ・フォルダ・ディレクトリの違い（図解付き）',
           'ローカルリポジトリとリモートリポジトリの違い',
         ]}
       />
 
+      <TableOfContents />
+
       <AdInArticle adSlot="2892250316" position="below-toc" />
 
       <main>
         <section>
           <p>
-            <strong>リポジトリ（Repository）</strong>とは、<strong>プログラムのソースコードやファイルを保存・管理する「保管庫」</strong>のことです。
+            <strong>リポジトリ（Repository）</strong>とは、<strong>プログラムのソースコードやファイルを保存・管理する「保管庫」</strong>です。
+            変更履歴を記録できるので、間違えて削除しても過去の状態に戻せます。
           </p>
+
+          <figure className="concept-image" style={{ margin: '2rem 0', textAlign: 'center' }}>
+            <Image
+              src="/images/repository-concept.png"
+              alt="リポジトリの概念図：ローカルからGitHubへの流れと履歴管理"
+              width={800}
+              height={450}
+              priority
+              style={{ maxWidth: '100%', height: 'auto', borderRadius: '12px' }}
+            />
+            <figcaption style={{ marginTop: '1rem', fontSize: '0.9rem', color: '#666' }}>
+              リポジトリは変更履歴を記録できる「タイムマシン付きの本棚」
+            </figcaption>
+          </figure>
 
           <p>
             例えば、あなたがWebサイトを作っているとします。
             HTMLファイル、CSSファイル、画像ファイルなど、たくさんのファイルがあります。
             これらを<strong>まとめて管理する場所がリポジトリ</strong>です。
-          </p>
-
-          <p>
-            リポジトリは単なる「フォルダ」とは違います。
-            <strong>「誰が」「いつ」「何を変更したか」という履歴を全て記録</strong>してくれるので、
-            間違えて削除しても過去の状態に戻せます。
-          </p>
-
-          <p className="note">
-            <strong><i className="fas fa-lightbulb" aria-hidden /> このサイトもGitHubのリポジトリで管理されています</strong>
-            <br />
-            全ての変更履歴が記録され、いつでも過去の状態に戻せます。
           </p>
         </section>
 
