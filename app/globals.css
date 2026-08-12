@@ -1221,9 +1221,9 @@ footer a:hover {
 
 /* ヘッダーナビゲーション（パンくずリスト）スタイル */
 .breadcrumb-nav {
-  padding: 10px 0;
+  padding: 8px 0;
   border-bottom: 1px solid #e0e0e0;
-  margin-bottom: 20px;
+  margin-bottom: 12px;
 }
 
 .breadcrumb-container {
@@ -1340,10 +1340,10 @@ footer a:hover {
 .term-page-header__date {
   font-size: 14px;
   color: #666;
-  margin-top: 15px;
-  margin-bottom: 8px;
+  margin-top: 8px;
+  margin-bottom: 6px;
   padding-right: 5px;
-  padding-bottom: 8px;
+  padding-bottom: 6px;
   border-bottom: 1px solid #14b8a6;
   text-align: right;
 }
@@ -1369,9 +1369,9 @@ footer a:hover {
 @media (max-width: 768px) {
   .term-page-header__date {
     font-size: 12px;
-    margin-top: 10px;
-    margin-bottom: 6px;
-    padding-bottom: 6px;
+    margin-top: 6px;
+    margin-bottom: 4px;
+    padding-bottom: 4px;
     text-align: left;
   }
 }

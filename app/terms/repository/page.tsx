@@ -3,8 +3,6 @@ import Image from 'next/image'
 import { Metadata } from 'next'
 import StructuredData from '@/app/components/StructuredData'
 import TermPageHeader from '@/app/components/TermPageHeader'
-import TableOfContents from '@/app/components/TableOfContents'
-import AdInArticle from '@/app/components/AdInArticle'
 import AdSenseUnit from '@/app/components/AdSenseUnit'
 import FAQAccordion from '@/app/components/FAQAccordion'
 
@@ -66,10 +64,6 @@ export default function RepositoryPage() {
           'ローカルリポジトリとリモートリポジトリの違い',
         ]}
       />
-
-      <TableOfContents />
-
-      <AdInArticle adSlot="2892250316" position="below-toc" />
 
       <main>
         <section>
